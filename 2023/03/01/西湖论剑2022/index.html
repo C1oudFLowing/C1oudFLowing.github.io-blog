@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"c1oudflowing.github.io","root":"/blog/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Node Magical Login主界面 一个nodejs登录界面 源码附件main.js1234567891011121314151617181920212223242526272829303132333435363738394041const express &#x3D; require(&quot;express&quot;)const fs &#x3D; require(&quot;fs&quot;)con">
+<meta property="og:type" content="article">
+<meta property="og:title" content="西湖论剑2022">
+<meta property="og:url" content="http://c1oudflowing.github.io/blog/2023/03/01/%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%912022/index.html">
+<meta property="og:site_name" content="Blog,from C1oudFLowing">
+<meta property="og:description" content="Node Magical Login主界面 一个nodejs登录界面 源码附件main.js1234567891011121314151617181920212223242526272829303132333435363738394041const express &#x3D; require(&quot;express&quot;)const fs &#x3D; require(&quot;fs&quot;)con">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://c1oudflowing.github.io/blog/2023/03/01/%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%912022/1.png">
+<meta property="og:image" content="http://c1oudflowing.github.io/blog/2023/03/01/%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%912022/2.png">
+<meta property="og:image" content="http://c1oudflowing.github.io/blog/2023/03/01/%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%912022/3.png">
+<meta property="article:published_time" content="2023-03-01T09:13:35.000Z">
+<meta property="article:modified_time" content="2023-03-02T12:32:54.201Z">
+<meta property="article:author" content="CloudFlowing">
+<meta property="article:tag" content="CTF线上赛">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://c1oudflowing.github.io/blog/2023/03/01/%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%912022/1.png">
+
+<link rel="canonical" href="http://c1oudflowing.github.io/blog/2023/03/01/%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%912022/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>西湖论剑2022 | Blog,from C1oudFLowing</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Blog,from C1oudFLowing</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">基于hexo+next主题框架</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://c1oudflowing.github.io/blog/2023/03/01/%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%912022/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="CloudFlowing">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog,from C1oudFLowing">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          西湖论剑2022
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-03-01 17:13:35" itemprop="dateCreated datePublished" datetime="2023-03-01T17:13:35+08:00">2023-03-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-03-02 20:32:54" itemprop="dateModified" datetime="2023-03-02T20:32:54+08:00">2023-03-02</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Node-Magical-Login"><a href="#Node-Magical-Login" class="headerlink" title="Node Magical Login"></a>Node Magical Login</h1><h2 id="主界面"><a href="#主界面" class="headerlink" title="主界面"></a>主界面</h2><p><img src="/blog/2023/03/01/%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%912022/1.png" alt="1"></p>
+<p>一个nodejs登录界面</p>
+<h2 id="源码附件"><a href="#源码附件" class="headerlink" title="源码附件"></a>源码附件</h2><h3 id="main-js"><a href="#main-js" class="headerlink" title="main.js"></a>main.js</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&quot;express&quot;</span>)</span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&quot;fs&quot;</span>)</span><br><span class="line"><span class="keyword">const</span> cookieParser = <span class="built_in">require</span>(<span class="string">&quot;cookie-parser&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> controller = <span class="built_in">require</span>(<span class="string">&quot;./controller&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = <span class="title function_">express</span>();</span><br><span class="line"><span class="keyword">const</span> <span class="variable constant_">PORT</span> = <span class="title class_">Number</span>(process.<span class="property">env</span>.<span class="property">PORT</span>) || <span class="number">80</span></span><br><span class="line"><span class="keyword">const</span> <span class="variable constant_">HOST</span> = <span class="string">&#x27;0.0.0.0&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">app.<span class="title function_">use</span>(express.<span class="title function_">urlencoded</span>(&#123;<span class="attr">extended</span>:<span class="literal">false</span>&#125;))</span><br><span class="line">app.<span class="title function_">use</span>(<span class="title function_">cookieParser</span>())</span><br><span class="line">app.<span class="title function_">use</span>(express.<span class="title function_">json</span>())</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">use</span>(express.<span class="title function_">static</span>(<span class="string">&#x27;static&#x27;</span>))</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">post</span>(<span class="string">&quot;/login&quot;</span>,<span class="function">(<span class="params">req,res</span>) =&gt;</span> &#123;</span><br><span class="line">    controller.<span class="title class_">LoginController</span>(req,res)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&quot;/&quot;</span>,<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">    res.<span class="title function_">sendFile</span>(__dirname,<span class="string">&quot;static/index.html&quot;</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&quot;/flag1&quot;</span>,<span class="function">(<span class="params">req,res</span>) =&gt;</span> &#123;</span><br><span class="line">    controller.<span class="title class_">Flag1Controller</span>(req,res)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&quot;/flag2&quot;</span>,<span class="function">(<span class="params">req,res</span>) =&gt;</span> &#123;</span><br><span class="line">    controller.<span class="title class_">CheckInternalController</span>(req,res)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">post</span>(<span class="string">&quot;/getflag2&quot;</span>,<span class="function">(<span class="params">req,res</span>)=&gt;</span> &#123;</span><br><span class="line">    controller.<span class="title class_">CheckController</span>(req,res)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">listen</span>(<span class="variable constant_">PORT</span>,<span class="variable constant_">HOST</span>,<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Server is listening on Host <span class="subst">$&#123;HOST&#125;</span> Port <span class="subst">$&#123;PORT&#125;</span>.`</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="controller-js"><a href="#controller-js" class="headerlink" title="controller.js"></a>controller.js</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&quot;fs&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> <span class="variable constant_">SECRET_COOKIE</span> = process.<span class="property">env</span>.<span class="property">SECRET_COOKIE</span> || <span class="string">&quot;this_is_testing_cookie&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> flag1 = fs.<span class="title function_">readFileSync</span>(<span class="string">&quot;/flag1&quot;</span>)</span><br><span class="line"><span class="keyword">const</span> flag2 = fs.<span class="title function_">readFileSync</span>(<span class="string">&quot;/flag2&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">LoginController</span>(<span class="params">req,res</span>) &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> username = req.<span class="property">body</span>.<span class="property">username</span></span><br><span class="line">        <span class="keyword">const</span> password = req.<span class="property">body</span>.<span class="property">password</span></span><br><span class="line">        <span class="keyword">if</span> (username !== <span class="string">&quot;admin&quot;</span> || password !== <span class="title class_">Math</span>.<span class="title function_">random</span>().<span class="title function_">toString</span>()) &#123;</span><br><span class="line">            res.<span class="title function_">status</span>(<span class="number">401</span>).<span class="title function_">type</span>(<span class="string">&quot;text/html&quot;</span>).<span class="title function_">send</span>(<span class="string">&quot;Login Failed&quot;</span>)</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            res.<span class="title function_">cookie</span>(<span class="string">&quot;user&quot;</span>,<span class="variable constant_">SECRET_COOKIE</span>)</span><br><span class="line">            res.<span class="title function_">redirect</span>(<span class="string">&quot;/flag1&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (__) &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">CheckInternalController</span>(<span class="params">req,res</span>) &#123;</span><br><span class="line">    res.<span class="title function_">sendFile</span>(<span class="string">&quot;check.html&quot;</span>,&#123;<span class="attr">root</span>:<span class="string">&quot;static&quot;</span>&#125;)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">CheckController</span>(<span class="params">req,res</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> checkcode = req.<span class="property">body</span>.<span class="property">checkcode</span>?req.<span class="property">body</span>.<span class="property">checkcode</span>:<span class="number">1234</span>;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(req.<span class="property">body</span>)</span><br><span class="line">    <span class="keyword">if</span>(checkcode.<span class="property">length</span> === <span class="number">16</span>)&#123;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            checkcode = checkcode.<span class="title function_">toLowerCase</span>()<span class="comment">//被转成小写，但是这个处理不了数组格式</span></span><br><span class="line">            <span class="keyword">if</span>(checkcode !== <span class="string">&quot;aGr5AtSp55dRacer&quot;</span>)&#123;</span><br><span class="line">                res.<span class="title function_">status</span>(<span class="number">403</span>).<span class="title function_">json</span>(&#123;<span class="string">&quot;msg&quot;</span>:<span class="string">&quot;Invalid Checkcode1:&quot;</span> + checkcode&#125;)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">catch</span> (__) &#123;&#125;</span><br><span class="line">        res.<span class="title function_">status</span>(<span class="number">200</span>).<span class="title function_">type</span>(<span class="string">&quot;text/html&quot;</span>).<span class="title function_">json</span>(&#123;<span class="string">&quot;msg&quot;</span>:<span class="string">&quot;You Got Another Part Of Flag: &quot;</span> + flag2.<span class="title function_">toString</span>().<span class="title function_">trim</span>()&#125;)</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        res.<span class="title function_">status</span>(<span class="number">403</span>).<span class="title function_">type</span>(<span class="string">&quot;text/html&quot;</span>).<span class="title function_">json</span>(&#123;<span class="string">&quot;msg&quot;</span>:<span class="string">&quot;Invalid Checkcode2:&quot;</span> + checkcode&#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Flag1Controller</span>(<span class="params">req,res</span>)&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(req.<span class="property">cookies</span>.<span class="property">user</span> === <span class="variable constant_">SECRET_COOKIE</span>)&#123;</span><br><span class="line">            res.<span class="title function_">setHeader</span>(<span class="string">&quot;This_Is_The_Flag1&quot;</span>,flag1.<span class="title function_">toString</span>().<span class="title function_">trim</span>())</span><br><span class="line">            res.<span class="title function_">setHeader</span>(<span class="string">&quot;This_Is_The_Flag2&quot;</span>,flag2.<span class="title function_">toString</span>().<span class="title function_">trim</span>())</span><br><span class="line">            res.<span class="title function_">status</span>(<span class="number">200</span>).<span class="title function_">type</span>(<span class="string">&quot;text/html&quot;</span>).<span class="title function_">send</span>(<span class="string">&quot;Login success. Welcome,admin!&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(req.<span class="property">cookies</span>.<span class="property">user</span> === <span class="string">&quot;admin&quot;</span>) &#123;</span><br><span class="line">            res.<span class="title function_">setHeader</span>(<span class="string">&quot;This_Is_The_Flag1&quot;</span>, flag1.<span class="title function_">toString</span>().<span class="title function_">trim</span>())</span><br><span class="line">            res.<span class="title function_">status</span>(<span class="number">200</span>).<span class="title function_">type</span>(<span class="string">&quot;text/html&quot;</span>).<span class="title function_">send</span>(<span class="string">&quot;You Got One Part Of Flag! Try To Get Another Part of Flag!&quot;</span>)</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            res.<span class="title function_">status</span>(<span class="number">401</span>).<span class="title function_">type</span>(<span class="string">&quot;text/html&quot;</span>).<span class="title function_">send</span>(<span class="string">&quot;Unauthorized&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;<span class="keyword">catch</span> (__) &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">    <span class="title class_">LoginController</span>,</span><br><span class="line">    <span class="title class_">CheckInternalController</span>,</span><br><span class="line">    <span class="title class_">Flag1Controller</span>,</span><br><span class="line">    <span class="title class_">CheckController</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><ul>
+<li><p>先看获取flag的条件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">app.<span class="title function_">get</span>(<span class="string">&quot;/flag1&quot;</span>,<span class="function">(<span class="params">req,res</span>) =&gt;</span> &#123;</span><br><span class="line">    controller.<span class="title class_">Flag1Controller</span>(req,res)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&quot;/flag2&quot;</span>,<span class="function">(<span class="params">req,res</span>) =&gt;</span> &#123;</span><br><span class="line">    controller.<span class="title class_">CheckInternalController</span>(req,res)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">post</span>(<span class="string">&quot;/getflag2&quot;</span>,<span class="function">(<span class="params">req,res</span>)=&gt;</span> &#123;</span><br><span class="line">    controller.<span class="title class_">CheckController</span>(req,res)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p><strong>main.js</strong>指向<strong>controller.js</strong>中的几个方法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">LoginController</span>(<span class="params">req,res</span>) &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> username = req.<span class="property">body</span>.<span class="property">username</span></span><br><span class="line">        <span class="keyword">const</span> password = req.<span class="property">body</span>.<span class="property">password</span></span><br><span class="line">        <span class="keyword">if</span> (username !== <span class="string">&quot;admin&quot;</span> || password !== <span class="title class_">Math</span>.<span class="title function_">random</span>().<span class="title function_">toString</span>()) &#123;</span><br><span class="line">            res.<span class="title function_">status</span>(<span class="number">401</span>).<span class="title function_">type</span>(<span class="string">&quot;text/html&quot;</span>).<span class="title function_">send</span>(<span class="string">&quot;Login Failed&quot;</span>)</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            res.<span class="title function_">cookie</span>(<span class="string">&quot;user&quot;</span>,<span class="variable constant_">SECRET_COOKIE</span>)</span><br><span class="line">            res.<span class="title function_">redirect</span>(<span class="string">&quot;/flag1&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (__) &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">------------------------------------------------</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Flag1Controller</span>(<span class="params">req,res</span>)&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(req.<span class="property">cookies</span>.<span class="property">user</span> === <span class="variable constant_">SECRET_COOKIE</span>)&#123;</span><br><span class="line">            res.<span class="title function_">setHeader</span>(<span class="string">&quot;This_Is_The_Flag1&quot;</span>,flag1.<span class="title function_">toString</span>().<span class="title function_">trim</span>())</span><br><span class="line">            res.<span class="title function_">setHeader</span>(<span class="string">&quot;This_Is_The_Flag2&quot;</span>,flag2.<span class="title function_">toString</span>().<span class="title function_">trim</span>())</span><br><span class="line">            res.<span class="title function_">status</span>(<span class="number">200</span>).<span class="title function_">type</span>(<span class="string">&quot;text/html&quot;</span>).<span class="title function_">send</span>(<span class="string">&quot;Login success. Welcome,admin!&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(req.<span class="property">cookies</span>.<span class="property">user</span> === <span class="string">&quot;admin&quot;</span>) &#123;</span><br><span class="line">            res.<span class="title function_">setHeader</span>(<span class="string">&quot;This_Is_The_Flag1&quot;</span>, flag1.<span class="title function_">toString</span>().<span class="title function_">trim</span>())	<span class="comment">//cookie相等可以输出flag1</span></span><br><span class="line">            res.<span class="title function_">status</span>(<span class="number">200</span>).<span class="title function_">type</span>(<span class="string">&quot;text/html&quot;</span>).<span class="title function_">send</span>(<span class="string">&quot;You Got One Part Of Flag! Try To Get Another Part of Flag!&quot;</span>)</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            res.<span class="title function_">status</span>(<span class="number">401</span>).<span class="title function_">type</span>(<span class="string">&quot;text/html&quot;</span>).<span class="title function_">send</span>(<span class="string">&quot;Unauthorized&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;<span class="keyword">catch</span> (__) &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>获取flag有两种方法：</p>
+<p>一种是输入正确的username和password，但是密码是随机生成的</p>
+<p>另一种是使<code>user</code>的cookie相等</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">CheckInternalController</span>(<span class="params">req,res</span>) &#123;</span><br><span class="line">    res.<span class="title function_">sendFile</span>(<span class="string">&quot;check.html&quot;</span>,&#123;<span class="attr">root</span>:<span class="string">&quot;static&quot;</span>&#125;)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">CheckController</span>(<span class="params">req,res</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> checkcode = req.<span class="property">body</span>.<span class="property">checkcode</span>?req.<span class="property">body</span>.<span class="property">checkcode</span>:<span class="number">1234</span>;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(req.<span class="property">body</span>)</span><br><span class="line">    <span class="keyword">if</span>(checkcode.<span class="property">length</span> === <span class="number">16</span>)&#123;	<span class="comment">//传入长度需为16</span></span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            checkcode = checkcode.<span class="title function_">toLowerCase</span>()<span class="comment">//被转成小写，但是这个处理不了数组格式</span></span><br><span class="line">            <span class="keyword">if</span>(checkcode !== <span class="string">&quot;aGr5AtSp55dRacer&quot;</span>)&#123;</span><br><span class="line">                res.<span class="title function_">status</span>(<span class="number">403</span>).<span class="title function_">json</span>(&#123;<span class="string">&quot;msg&quot;</span>:<span class="string">&quot;Invalid Checkcode1:&quot;</span> + checkcode&#125;)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">catch</span> (__) &#123;&#125;</span><br><span class="line">        res.<span class="title function_">status</span>(<span class="number">200</span>).<span class="title function_">type</span>(<span class="string">&quot;text/html&quot;</span>).<span class="title function_">json</span>(&#123;<span class="string">&quot;msg&quot;</span>:<span class="string">&quot;You Got Another Part Of Flag: &quot;</span> + flag2.<span class="title function_">toString</span>().<span class="title function_">trim</span>()&#125;)	<span class="comment">//输出flag2</span></span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;		<span class="comment">//长度不足16会跳转至此</span></span><br><span class="line">        res.<span class="title function_">status</span>(<span class="number">403</span>).<span class="title function_">type</span>(<span class="string">&quot;text/html&quot;</span>).<span class="title function_">json</span>(&#123;<span class="string">&quot;msg&quot;</span>:<span class="string">&quot;Invalid Checkcode2:&quot;</span> + checkcode&#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>此处需满足<code>checkcode</code>&#x3D;&#x3D;aGr5AtSp55dRacer且长度为16即可获取flag2</p>
+</li>
+</ul>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ul>
+<li><p>在&#x2F;flag1传入<code>cookie=admin</code>获取flag1</p>
+</li>
+<li><p>**toLowerCase()**此函数会将字符串转成小写形式，但是不能处理数组格式，因此传参选择传入json数组格式且重复16遍</p>
+</li>
+<li><p>在&#x2F;getflag2中使用POST请求</p>
+</li>
+</ul>
+<h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><p><img src="/blog/2023/03/01/%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%912022/2.png" alt="2"></p>
+<p>可获取flag1</p>
+<p><img src="/blog/2023/03/01/%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%912022/3.png" alt="3"></p>
+<p>可获取flag2（记得把content-type改成json）</p>
+<h2 id="其他解"><a href="#其他解" class="headerlink" title="其他解"></a>其他解</h2><ul>
+<li><p>传数组时拆成16个字符</p>
+<blockquote>
+<p>常规数组解法</p>
+</blockquote>
+</li>
+<li><pre><code class="json">&#123;&quot;checkcode&quot;:&#123;&quot;length&quot;:16&#125;&#125;
+-------------------------------
+checkcode=1&amp;checkcode=1&amp;checkcode=1&amp;checkcode=1&amp;checkcode=1&amp;checkcode=1&amp;checkcode=1&amp;checkcode=1&amp;checkcode=1&amp;checkcode=1&amp;checkcode=1&amp;checkcode=1&amp;checkcode=1&amp;checkcode=1&amp;checkcode=1&amp;checkcode=1
+</code></pre>
+<blockquote>
+<p>使try语句报错</p>
+</blockquote>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" rel="tag"># CTF线上赛</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/blog/2023/02/28/Web%E7%AC%94%E8%AE%B0/" rel="prev" title="Web笔记">
+      <i class="fa fa-chevron-left"></i> Web笔记
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/blog/2023/03/02/Forestwolf/" rel="next" title="Forestwolf">
+      Forestwolf <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Node-Magical-Login"><span class="nav-number">1.</span> <span class="nav-text">Node Magical Login</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BB%E7%95%8C%E9%9D%A2"><span class="nav-number">1.1.</span> <span class="nav-text">主界面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%BA%90%E7%A0%81%E9%99%84%E4%BB%B6"><span class="nav-number">1.2.</span> <span class="nav-text">源码附件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#main-js"><span class="nav-number">1.2.1.</span> <span class="nav-text">main.js</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#controller-js"><span class="nav-number">1.2.2.</span> <span class="nav-text">controller.js</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E6%9E%90"><span class="nav-number">1.3.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF"><span class="nav-number">1.4.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C"><span class="nav-number">1.5.</span> <span class="nav-text">操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E8%A7%A3"><span class="nav-number">1.6.</span> <span class="nav-text">其他解</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">CloudFlowing</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/blog/archives/">
+        
+          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CloudFlowing</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/blog/js/utils.js"></script>
+
+<script src="/blog/js/motion.js"></script>
+
+
+<script src="/blog/js/schemes/pisces.js"></script>
+
+
+<script src="/blog/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
