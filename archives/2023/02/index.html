@@ -3,7 +3,7 @@
 <html lang="zh-CN">
     <head>
         <meta charset="UTF-8" />
-        <title>Archives | Blog,from C1oudFLowing</title>
+        <title>Archives | 遗世独立の幻想乡</title>
         <meta name="author" content="CloudFlowing" />
         <meta name="description" content="" />
         <meta name="keywords" content="" />
@@ -30,12 +30,16 @@
 
 
 
+<script src="/blog/js/lib/search.js"></script>
+
 
 
 <script src="/blog/js/lib/home.js"></script>
 
 <link rel="stylesheet" href="/blog/css/main.css" />
 
+        <!-- 页面点击小红心 -->
+        <script type = "text/javascript" src = "/blog/js/love-click.js"></script>
     <meta name="generator" content="Hexo 6.3.0"></head>
     <body>
         <div id="layout">
@@ -53,7 +57,7 @@
                 <nav id="menu" ref="menu">
     <div class="desktop-menu">
         <a class="title" href="/blog/">
-            <span>BLOG,FROM C1OUDFLOWING</span>
+            <span>遗世独立の幻想乡</span>
         </a>
         
         <a href="/blog/">
@@ -86,7 +90,7 @@
         <div class="curtain" v-show="showMenu" @click="showMenu = !showMenu"></div>
         <div class="title" @click="showMenu = !showMenu">
             <i class="fa-solid fa-bars fa-fw"></i>
-            <span>&emsp;BLOG,FROM C1OUDFLOWING</span>
+            <span>&emsp;遗世独立の幻想乡</span>
         </div>
         <transition name="slide">
         <div class="items" v-show="showMenu">
@@ -144,6 +148,8 @@
                 
 <div id="archives">
     
+    <input id="search-bar" class="input" placeholder="搜索" v-model="rawSearch" />
+    
     <div id="timeline-wrap" ref="timeline">
         
         <div class="timeline" data-title="helloworld">
@@ -177,7 +183,7 @@
                         
                         <span class="tag">
                             
-                            <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #00bcd4">CTF线上赛</a>
+                            <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #ffa2c4">CTF线上赛</a>
                         </span>
                         
                     </span>
@@ -203,7 +209,7 @@
                         
                         <span class="tag">
                             
-                            <a href="/blog/tags/%E5%AD%A6%E4%B9%A0/" style="color: #00a596">学习</a>
+                            <a href="/blog/tags/%E5%AD%A6%E4%B9%A0/" style="color: #ff7d73">学习</a>
                         </span>
                         
                     </span>
@@ -238,7 +244,7 @@
                         
                         <span class="tag">
                             
-                            <a href="/blog/tags/%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%91/" style="color: #ffa2c4">西湖论剑</a>
+                            <a href="/blog/tags/%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%91/" style="color: #ff7d73">西湖论剑</a>
                         </span>
                         
                     </span>
@@ -264,7 +270,7 @@
                         
                         <span class="tag">
                             
-                            <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #00a596">CTF线上赛</a>
+                            <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #03a9f4">CTF线上赛</a>
                         </span>
                         
                     </span>
@@ -280,7 +286,7 @@
     <div id="footer-wrap">
         <div>
             &copy;
-            2022 - 2023 Blog,from C1oudFLowing
+            2022 - 2023 遗世独立の幻想乡
             <span id="footer-icon">
                 <i class="fa-solid fa-font-awesome fa-fw"></i>
             </span>
@@ -305,6 +311,7 @@
             
         </div>
         <script src="/blog/js/main.js"></script>
-        
+         
     <script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/blog/live2dw/assets/z16.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
+

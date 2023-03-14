@@ -3,7 +3,7 @@
 <html lang="zh-CN">
     <head>
         <meta charset="UTF-8" />
-        <title>Web笔记 | Blog,from C1oudFLowing</title>
+        <title>Web笔记 | 遗世独立の幻想乡</title>
         <meta name="author" content="CloudFlowing" />
         <meta name="description" content="" />
         <meta name="keywords" content="" />
@@ -33,6 +33,10 @@
 
 
 
+<script src="https://cdn.staticfile.org/waline/2.14.7/waline.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/waline/2.14.7/waline.min.css" />
+<link rel="stylesheet" href="https://cdn.staticfile.org/waline/2.14.7/waline-meta.min.css" />
+
 
 
 
@@ -40,6 +44,8 @@
 
 <link rel="stylesheet" href="/blog/css/main.css" />
 
+        <!-- 页面点击小红心 -->
+        <script type = "text/javascript" src = "/blog/js/love-click.js"></script>
     <meta name="generator" content="Hexo 6.3.0"></head>
     <body>
         <div id="layout">
@@ -57,7 +63,7 @@
                 <nav id="menu" ref="menu">
     <div class="desktop-menu">
         <a class="title" href="/blog/">
-            <span>BLOG,FROM C1OUDFLOWING</span>
+            <span>遗世独立の幻想乡</span>
         </a>
         
         <a href="/blog/">
@@ -90,7 +96,7 @@
         <div class="curtain" v-show="showMenu" @click="showMenu = !showMenu"></div>
         <div class="title" @click="showMenu = !showMenu">
             <i class="fa-solid fa-bars fa-fw"></i>
-            <span>&emsp;BLOG,FROM C1OUDFLOWING</span>
+            <span>&emsp;遗世独立の幻想乡</span>
         </div>
         <transition name="slide">
         <div class="items" v-show="showMenu">
@@ -165,7 +171,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E5%AD%A6%E4%B9%A0/" style="color: #00bcd4">学习</a>
+                <a href="/blog/tags/%E5%AD%A6%E4%B9%A0/" style="color: #00a596">学习</a>
             </span>
             
         </span>
@@ -2077,6 +2083,10 @@ chmod 777 mysql-chowned.sh
     
     
     
+    <div id="comment">
+        <div id="waline-container"></div>
+    </div>
+    
     
     
 </div>
@@ -2085,7 +2095,7 @@ chmod 777 mysql-chowned.sh
     <div id="footer-wrap">
         <div>
             &copy;
-            2022 - 2023 Blog,from C1oudFLowing
+            2022 - 2023 遗世独立の幻想乡
             <span id="footer-icon">
                 <i class="fa-solid fa-font-awesome fa-fw"></i>
             </span>
@@ -2114,8 +2124,26 @@ chmod 777 mysql-chowned.sh
         
 
 
+<script>
+    Waline.init({
+        el: "#waline-container",
+        serverURL: "",
+        commentCount: true,
+        pageview: false,
+        emoji: ["https://unpkg.com/@waline/emojis@1.2.0/weibo","https://unpkg.com/@waline/emojis@1.2.0/alus","https://unpkg.com/@waline/emojis@1.2.0/bilibili","https://unpkg.com/@waline/emojis@1.2.0/qq","https://unpkg.com/@waline/emojis@1.2.0/tieba","https://unpkg.com/@waline/emojis@1.2.0/tw-emoji"],
+        meta: ["nick","mail","link"],
+        requiredMeta: ["nick"],
+        lang: "zh-CN",
+        wordLimit: 0,
+        pageSize: "10",
+        login: "enable",
+        locale: {},
+    });
+</script>
 
 
-        
+
+         
     <script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/blog/live2dw/assets/z16.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
+

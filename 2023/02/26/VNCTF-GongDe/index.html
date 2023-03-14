@@ -3,7 +3,7 @@
 <html lang="zh-CN">
     <head>
         <meta charset="UTF-8" />
-        <title>VNCTF GongDe | Blog,from C1oudFLowing</title>
+        <title>VNCTF GongDe | 遗世独立の幻想乡</title>
         <meta name="author" content="CloudFlowing" />
         <meta name="description" content="" />
         <meta name="keywords" content="" />
@@ -33,6 +33,10 @@
 
 
 
+<script src="https://cdn.staticfile.org/waline/2.14.7/waline.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/waline/2.14.7/waline.min.css" />
+<link rel="stylesheet" href="https://cdn.staticfile.org/waline/2.14.7/waline-meta.min.css" />
+
 
 
 
@@ -40,6 +44,8 @@
 
 <link rel="stylesheet" href="/blog/css/main.css" />
 
+        <!-- 页面点击小红心 -->
+        <script type = "text/javascript" src = "/blog/js/love-click.js"></script>
     <meta name="generator" content="Hexo 6.3.0"></head>
     <body>
         <div id="layout">
@@ -57,7 +63,7 @@
                 <nav id="menu" ref="menu">
     <div class="desktop-menu">
         <a class="title" href="/blog/">
-            <span>BLOG,FROM C1OUDFLOWING</span>
+            <span>遗世独立の幻想乡</span>
         </a>
         
         <a href="/blog/">
@@ -90,7 +96,7 @@
         <div class="curtain" v-show="showMenu" @click="showMenu = !showMenu"></div>
         <div class="title" @click="showMenu = !showMenu">
             <i class="fa-solid fa-bars fa-fw"></i>
-            <span>&emsp;BLOG,FROM C1OUDFLOWING</span>
+            <span>&emsp;遗世独立の幻想乡</span>
         </div>
         <transition name="slide">
         <div class="items" v-show="showMenu">
@@ -165,7 +171,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #00bcd4">CTF线上赛</a>
+                <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #03a9f4">CTF线上赛</a>
             </span>
             
         </span>
@@ -179,7 +185,7 @@
 </blockquote>
 <span id="more"></span>
 
-<h2 id="分析代码结构（main-rs）"><a href="#分析代码结构（main-rs）" class="headerlink" title="分析代码结构（main.rs）"></a>分析代码结构（main.rs）</h2><h3 id="初始页面及-每次修改后都要返回此页面查看数值"><a href="#初始页面及-每次修改后都要返回此页面查看数值" class="headerlink" title="初始页面及(每次修改后都要返回此页面查看数值)"></a>初始页面及(每次修改后都要返回此页面查看数值)</h3><p><img src="C:\Users\Asus\Desktop\hexo\source_posts\image-20230226221223336.png" alt="image-20230226221223336"></p>
+<h2 id="分析代码结构（main-rs）"><a href="#分析代码结构（main-rs）" class="headerlink" title="分析代码结构（main.rs）"></a>分析代码结构（main.rs）</h2><h3 id="初始页面及-每次修改后都要返回此页面查看数值"><a href="#初始页面及-每次修改后都要返回此页面查看数值" class="headerlink" title="初始页面及(每次修改后都要返回此页面查看数值)"></a>初始页面及(每次修改后都要返回此页面查看数值)</h3><p><img src="/blog/2023/02/26/VNCTF-GongDe/image-20230226221223336.png" alt="image-20230226221223336"></p>
 <h3 id="此段得知获取flag的条件"><a href="#此段得知获取flag的条件" class="headerlink" title="此段得知获取flag的条件"></a>此段得知获取flag的条件</h3><pre><code class="rust">#[get(&quot;/&quot;)]
 async fn index(tera: web::Data&lt;Tera&gt;) -&gt; Result&lt;HttpResponse, Error&gt; &#123;
     let mut context = Context::new();
@@ -321,8 +327,7 @@ async fn upgrade(body: web::Form&lt;Info&gt;) -&gt; Json&lt;APIResult&gt; &#123;
 <li>同时我们也注意到 <code>cost</code> 变量为 <code>i32 有符号整数</code>，上限为<strong>2,147,483,647</strong>，当我们要<strong>扣的功德足够大时就会造成溢出，得到一个绝对值非常大的负数</strong>。再加上并没有设置对 <code>quantity </code>参数的限制，办到这一点还是不难的。</li>
 </ul>
 <hr>
-<h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><p><img src="/blog/2023/02/26/VNCTF-GongDe/image-20230226221223336.png" alt="image-20230226221223336"></p>
-<ul>
+<h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><ul>
 <li>在upgrade中发出请求使功德扣至溢出</li>
 </ul>
 <p><img src="/blog/2023/02/26/VNCTF-GongDe/image-20230226224920856.png" alt="image-20230226224920856"></p>
@@ -336,6 +341,10 @@ async fn upgrade(body: web::Form&lt;Info&gt;) -&gt; Json&lt;APIResult&gt; &#123;
     
     
     
+    <div id="comment">
+        <div id="waline-container"></div>
+    </div>
+    
     
     
 </div>
@@ -344,7 +353,7 @@ async fn upgrade(body: web::Form&lt;Info&gt;) -&gt; Json&lt;APIResult&gt; &#123;
     <div id="footer-wrap">
         <div>
             &copy;
-            2022 - 2023 Blog,from C1oudFLowing
+            2022 - 2023 遗世独立の幻想乡
             <span id="footer-icon">
                 <i class="fa-solid fa-font-awesome fa-fw"></i>
             </span>
@@ -373,8 +382,26 @@ async fn upgrade(body: web::Form&lt;Info&gt;) -&gt; Json&lt;APIResult&gt; &#123;
         
 
 
+<script>
+    Waline.init({
+        el: "#waline-container",
+        serverURL: "",
+        commentCount: true,
+        pageview: false,
+        emoji: ["https://unpkg.com/@waline/emojis@1.2.0/weibo","https://unpkg.com/@waline/emojis@1.2.0/alus","https://unpkg.com/@waline/emojis@1.2.0/bilibili","https://unpkg.com/@waline/emojis@1.2.0/qq","https://unpkg.com/@waline/emojis@1.2.0/tieba","https://unpkg.com/@waline/emojis@1.2.0/tw-emoji"],
+        meta: ["nick","mail","link"],
+        requiredMeta: ["nick"],
+        lang: "zh-CN",
+        wordLimit: 0,
+        pageSize: "10",
+        login: "enable",
+        locale: {},
+    });
+</script>
 
 
-        
+
+         
     <script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/blog/live2dw/assets/z16.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
+
