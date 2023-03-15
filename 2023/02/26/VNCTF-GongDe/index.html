@@ -33,10 +33,6 @@
 
 
 
-<script src="https://cdn.staticfile.org/waline/2.14.7/waline.min.js"></script>
-<link rel="stylesheet" href="https://cdn.staticfile.org/waline/2.14.7/waline.min.css" />
-<link rel="stylesheet" href="https://cdn.staticfile.org/waline/2.14.7/waline-meta.min.css" />
-
 
 
 
@@ -46,6 +42,8 @@
 
         <!-- 页面点击小红心 -->
         <script type = "text/javascript" src = "/blog/js/love-click.js"></script>
+        <!-- 浏览器搞笑标题 -->
+        <script type="text/javascript" src="/blog/js/FunnyTitle.js"></script>
     <meta name="generator" content="Hexo 6.3.0"></head>
     <body>
         <div id="layout">
@@ -341,10 +339,6 @@ async fn upgrade(body: web::Form&lt;Info&gt;) -&gt; Json&lt;APIResult&gt; &#123;
     
     
     
-    <div id="comment">
-        <div id="waline-container"></div>
-    </div>
-    
     
     
 </div>
@@ -381,23 +375,6 @@ async fn upgrade(body: web::Form&lt;Info&gt;) -&gt; Json&lt;APIResult&gt; &#123;
         
         
 
-
-<script>
-    Waline.init({
-        el: "#waline-container",
-        serverURL: "",
-        commentCount: true,
-        pageview: false,
-        emoji: ["https://unpkg.com/@waline/emojis@1.2.0/weibo","https://unpkg.com/@waline/emojis@1.2.0/alus","https://unpkg.com/@waline/emojis@1.2.0/bilibili","https://unpkg.com/@waline/emojis@1.2.0/qq","https://unpkg.com/@waline/emojis@1.2.0/tieba","https://unpkg.com/@waline/emojis@1.2.0/tw-emoji"],
-        meta: ["nick","mail","link"],
-        requiredMeta: ["nick"],
-        lang: "zh-CN",
-        wordLimit: 0,
-        pageSize: "10",
-        login: "enable",
-        locale: {},
-    });
-</script>
 
 
 
