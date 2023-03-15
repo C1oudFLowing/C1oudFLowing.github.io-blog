@@ -17,13 +17,6 @@
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
 
-<script src="https://cdn.staticfile.org/highlight.js/11.7.0/highlight.min.js"></script>
-<link
-    rel="stylesheet"
-    href="https://cdn.staticfile.org/highlight.js/11.7.0/styles/github.min.css"
-/>
-<script src="/blog/js/lib/highlight.js"></script>
-
 
 
 <script src="/blog/js/lib/preview.js"></script>
@@ -178,7 +171,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/web/" style="color: #ff7d73">web</a>
+                <a href="/blog/tags/Web/" style="color: #ffa2c4">Web</a>
             </span>
             
         </span>
@@ -371,9 +364,7 @@ Sec-Fetch-User: ?1
 <li><p><strong>利用</strong></p>
 <p><code>$_SESSION[&quot;username&quot;]=参数</code></p>
 <p>当Session文件的内容可控，并且可以获取Session文件的路径，就可以通过包含Session文件进行攻击。</p>
-<ul>
-<li>Session的存储位置获取：</li>
-</ul>
+<p>Session的存储位置获取：</p>
 <p>​	（1）通过phpinfo的信息可以获取到Session的存储位置。phpinfo中的<strong>session.save_path</strong>存储的是Session的存放位置。通过phpinfo的信息获取到session.save_path为<code>/var/lib/php/session</code>。</p>
 <p>​	（2）通过猜测默认的Session存放位置进行尝试。通常Linux下Session默认存储在<code>/var/lib/php/session</code>目录下。默认存储Session存放位置。</p>
 </li>

@@ -56,7 +56,7 @@
     elBody.onclick = function(e) {
     if(bombFlag){
      // 坐标
-     var ev = e,//  IE浏览器兼容
+     var ev = e,
      x = ev.clientX,
         y = ev.clientY;
       // 随机产生文字颜色

