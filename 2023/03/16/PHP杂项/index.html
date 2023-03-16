@@ -3,7 +3,7 @@
 <html lang="zh-CN">
     <head>
         <meta charset="UTF-8" />
-        <title>PHP杂项 | 雲流の幻想乡</title>
+        <title>PHP杂项 | 雲流のLowest World</title>
         <meta name="author" content="CloudFlowing" />
         <meta name="description" content="" />
         <meta name="keywords" content="" />
@@ -69,7 +69,7 @@
                 <nav id="menu" ref="menu">
     <div class="desktop-menu">
         <a class="title" href="/blog/">
-            <span>雲流の幻想乡</span>
+            <span>雲流のLOWEST WORLD</span>
         </a>
         
         <a href="/blog/">
@@ -102,7 +102,7 @@
         <div class="curtain" v-show="showMenu" @click="showMenu = !showMenu"></div>
         <div class="title" @click="showMenu = !showMenu">
             <i class="fa-solid fa-bars fa-fw"></i>
-            <span>&emsp;雲流の幻想乡</span>
+            <span>&emsp;雲流のLOWEST WORLD</span>
         </div>
         <transition name="slide">
         <div class="items" v-show="showMenu">
@@ -186,7 +186,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/PHP/" style="color: #03a9f4">PHP</a>
+                <a href="/blog/tags/PHP/" style="color: #ff7d73">PHP</a>
             </span>
             
         </span>
@@ -230,16 +230,6 @@
 <h2 id="system-函数"><a href="#system-函数" class="headerlink" title="system()函数"></a>system()函数</h2><blockquote>
 <p>系统权限允许的情况执行系统命令，并输出结果</p>
 </blockquote>
-<hr>
-<h2 id="非法传参"><a href="#非法传参" class="headerlink" title="非法传参"></a>非法传参</h2><blockquote>
-<p>当变量名中出现点和空格时，变量名中的点和空格被转换成下划线</p>
-</blockquote>
-<ul>
-<li><p>版本：php &lt; 8</p>
-</li>
-<li><p>如果参数中出现中括号<code>[</code>，中括号会被转换成下划线<code>_</code>，但是会出现转换错误导致接下来如果该参数名中还有<code>非法字符</code>并不会继续转换成下划线<code>_</code>，也就是说如果中括号<code>[</code>出现在前面，那么中括号<code>[</code>还是会被转换成下划线<code>_</code>，但是因为出错导致接下来的非法字符并不会被转换成下划线<code>_</code></p>
-</li>
-</ul>
 <hr>
 <h2 id="PHP短标签"><a href="#PHP短标签" class="headerlink" title="PHP短标签"></a>PHP短标签</h2><pre><code class="php">&lt;? echo &#39;123&#39;;?&gt;  #前提是开启配置参数short_open_tags=on
 &lt;?=(表达式)?&gt;  等价于 &lt;?php echo (表达式)?&gt;  #不需要开启参数设置
@@ -501,7 +491,7 @@ echo hex2bin(&quot;48656c6c6f20576f726c6421&quot;);
     <div id="footer-wrap">
         <div>
             &copy;
-            2022 - 2023 雲流の幻想乡
+            2022 - 2023 雲流のLowest World
             <span id="footer-icon">
                 <i class="fa-solid fa-font-awesome fa-fw"></i>
             </span>

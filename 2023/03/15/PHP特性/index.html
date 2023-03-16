@@ -3,7 +3,7 @@
 <html lang="zh-CN">
     <head>
         <meta charset="UTF-8" />
-        <title>PHP特性 | 雲流の幻想乡</title>
+        <title>PHP特性 | 雲流のLowest World</title>
         <meta name="author" content="CloudFlowing" />
         <meta name="description" content="" />
         <meta name="keywords" content="" />
@@ -69,7 +69,7 @@
                 <nav id="menu" ref="menu">
     <div class="desktop-menu">
         <a class="title" href="/blog/">
-            <span>雲流の幻想乡</span>
+            <span>雲流のLOWEST WORLD</span>
         </a>
         
         <a href="/blog/">
@@ -102,7 +102,7 @@
         <div class="curtain" v-show="showMenu" @click="showMenu = !showMenu"></div>
         <div class="title" @click="showMenu = !showMenu">
             <i class="fa-solid fa-bars fa-fw"></i>
-            <span>&emsp;雲流の幻想乡</span>
+            <span>&emsp;雲流のLOWEST WORLD</span>
         </div>
         <transition name="slide">
         <div class="items" v-show="showMenu">
@@ -186,7 +186,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/Web/" style="color: #00bcd4">Web</a>
+                <a href="/blog/tags/Web/" style="color: #03a9f4">Web</a>
             </span>
             
         </span>
@@ -316,7 +316,30 @@ c/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/
 self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/se
 lf/root/proc/self/root/var/www/html/flag.php
 </code></pre>
-<h2 id="is-numeric-函数"><a href="#is-numeric-函数" class="headerlink" title="is_numeric()函数"></a>is_numeric()函数</h2><h2 id="trim-函数"><a href="#trim-函数" class="headerlink" title="trim()函数"></a>trim()函数</h2><hr>
+<h3 id="is-numeric-函数"><a href="#is-numeric-函数" class="headerlink" title="is_numeric()函数"></a>is_numeric()函数</h3><blockquote>
+<p>检测变量是否为数字或数字字符串</p>
+</blockquote>
+<blockquote>
+<p>PHP 4, PHP 5, PHP 7</p>
+</blockquote>
+<p>如果指定的变量是数字和数字字符串则返回 TRUE，否则返回 FALSE，注意<strong>浮点型</strong>返回 1，即 TRUE</p>
+<ul>
+<li><p>在数字前加上空格，也会被is_numeric函数认为是数字</p>
+<pre><code class="php">\n,\t,\f,\r,\v, .均可绕过
+</code></pre>
+</li>
+</ul>
+<h3 id="trim-函数"><a href="#trim-函数" class="headerlink" title="trim()函数"></a>trim()函数</h3><blockquote>
+<p>移除字符串两侧的空白字符或其他预定义字符</p>
+</blockquote>
+<blockquote>
+<p><code>ltrim() </code>移除字符串左侧的空白字符或其他预定义字符。<code>rtrim()</code>移除字符串右侧的空白字符或其他预定义字符。</p>
+</blockquote>
+<p>执行成功时返回删除了string字符串首部和尾部空格的字符串，发生错误时返回空字符串（””）。如果任何参数的值为NULL,trim() 函数返回NULL</p>
+<ul>
+<li>trim()函数过滤空格以及<code>\n\r\t\v\0</code>，但不会过滤<code>\f (%0c)</code></li>
+</ul>
+<hr>
 <h2 id="换行解析漏洞"><a href="#换行解析漏洞" class="headerlink" title="换行解析漏洞"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_46091464/article/details/108278486">换行解析漏洞</a></h2><blockquote>
 <p>在<code>apache2.40~2.4.29</code>版本中存在这个漏洞</p>
 </blockquote>
@@ -494,6 +517,16 @@ $$hell=&quot;def&quot;;等同于$abc=&quot;def&quot;;
 //          如果未设置 array 参数，由该函数设置的变量将覆盖已存在的同名变量。
 </code></pre>
 <hr>
+<h4 id="非法传参"><a href="#非法传参" class="headerlink" title="非法传参"></a>非法传参</h4><blockquote>
+<p>当变量名中出现点和空格时，变量名中的点和空格被转换成下划线</p>
+</blockquote>
+<ul>
+<li><p>版本：php &lt; 8</p>
+</li>
+<li><p>如果参数中出现中括号<code>[</code>，中括号会被转换成下划线<code>_</code>，但是会出现转换错误导致接下来如果该参数名中还有<code>非法字符</code>并不会继续转换成下划线<code>_</code>，也就是说如果中括号<code>[</code>出现在前面，那么中括号<code>[</code>还是会被转换成下划线<code>_</code>，但是因为出错导致接下来的非法字符并不会被转换成下划线<code>_</code></p>
+</li>
+</ul>
+<hr>
 <h2 id="md5等效值绕过"><a href="#md5等效值绕过" class="headerlink" title="md5等效值绕过"></a>md5等效值绕过</h2><ul>
 <li><p>弱类型绕过</p>
 <ul>
@@ -559,7 +592,7 @@ aaK1STfY
     <div id="footer-wrap">
         <div>
             &copy;
-            2022 - 2023 雲流の幻想乡
+            2022 - 2023 雲流のLowest World
             <span id="footer-icon">
                 <i class="fa-solid fa-font-awesome fa-fw"></i>
             </span>
