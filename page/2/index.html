@@ -3,7 +3,7 @@
 <html lang="zh-CN">
     <head>
         <meta charset="UTF-8" />
-        <title>遗世独立の幻想乡</title>
+        <title>雲流の幻想乡</title>
         <meta name="author" content="CloudFlowing" />
         <meta name="description" content="" />
         <meta name="keywords" content="" />
@@ -29,12 +29,27 @@
 
 <link rel="stylesheet" href="/blog/css/main.css" />
 
-        <!-- 页面点击小红心 -->
+        <!-- 引入jQuery-->
+        <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+        <!-- 页面点击小红心与文字 -->
         <script type = "text/javascript" src = "/blog/js/love-click.js"></script>
         <!-- 浏览器搞笑标题 -->
         <script type="text/javascript" src="/blog/js/FunnyTitle.js"></script>
     <meta name="generator" content="Hexo 6.3.0"></head>
     <body>
+        <!-- 代码块复制功能 -->
+        <!--未运行-->
+        <script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
+        <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+        <!-- <script type="text/javascript" src="/js/clipboard.js"></script>  -->
+        <script type="text/javascript" src="/js/clipboard_use.js"></script>
+
+        <!--动态背景-->
+        {% if theme.canvas_nest %}
+        <script type="text/javascript"
+        color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+        {% endif %}
+
         <div id="layout">
             <transition name="fade">
             <div id="loading" v-show="loading">
@@ -50,7 +65,7 @@
                 <nav id="menu" ref="menu">
     <div class="desktop-menu">
         <a class="title" href="/blog/">
-            <span>遗世独立の幻想乡</span>
+            <span>雲流の幻想乡</span>
         </a>
         
         <a href="/blog/">
@@ -83,7 +98,7 @@
         <div class="curtain" v-show="showMenu" @click="showMenu = !showMenu"></div>
         <div class="title" @click="showMenu = !showMenu">
             <i class="fa-solid fa-bars fa-fw"></i>
-            <span>&emsp;遗世独立の幻想乡</span>
+            <span>&emsp;雲流の幻想乡</span>
         </div>
         <transition name="slide">
         <div class="items" v-show="showMenu">
@@ -148,7 +163,7 @@
         <span class="loop"></span>
         <span class="info">
             <div class="wrap">
-                <h1>遗世独立の幻想乡</h1>
+                <h1>雲流の幻想乡</h1>
                 <h3>基于hexo+particlex主题框架</h3>
                 <h5></h5>
             </div>
@@ -162,8 +177,8 @@
             
 
 <div class="post">
-    <a href="/blog/2023/02/10/hello-world/">
-        <h2 class="post-title">Hello World</h2>
+    <a href="/blog/2023/02/26/VNCTF-GongDe/">
+        <h2 class="post-title">VNCTF GongDe</h2>
     </a>
     <div class="category-and-date">
         
@@ -171,7 +186,7 @@
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2023/2/10
+            2023/2/26
         </span>
         
         
@@ -179,28 +194,29 @@
     <div class="description">
         <div class="content" v-pre>
             
-            <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="bash">$ hexo new &quot;My New Post&quot;
-</code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="bash">$ hexo server
-</code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="bash">$ hexo generate
-</code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="bash">$ hexo deploy
-</code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
+            <h1 id="电子木鱼"><a href="#电子木鱼" class="headerlink" title="电子木鱼"></a>电子木鱼</h1><blockquote>
+<p>RUST文件代码审计</p>
+<p>整数溢出</p>
+</blockquote>
             
         </div>
     </div>
     <div class="post-tags">
         
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #ffa2c4">
+                CTF线上赛
+            </a>
+        </span>
         
     </div>
-    <a href="/blog/2023/02/10/hello-world/" class="go-post">阅读全文</a>
+    <a href="/blog/2023/02/26/VNCTF-GongDe/" class="go-post">阅读全文</a>
 </div>
 
 
@@ -275,7 +291,7 @@
     <div id="footer-wrap">
         <div>
             &copy;
-            2022 - 2023 遗世独立の幻想乡
+            2022 - 2023 雲流の幻想乡
             <span id="footer-icon">
                 <i class="fa-solid fa-font-awesome fa-fw"></i>
             </span>

@@ -3,7 +3,7 @@
 <html lang="zh-CN">
     <head>
         <meta charset="UTF-8" />
-        <title>博客更新日志 | 遗世独立の幻想乡</title>
+        <title>博客更新日志 | 雲流の幻想乡</title>
         <meta name="author" content="CloudFlowing" />
         <meta name="description" content="" />
         <meta name="keywords" content="" />
@@ -33,12 +33,27 @@
 
 <link rel="stylesheet" href="/blog/css/main.css" />
 
-        <!-- 页面点击小红心 -->
+        <!-- 引入jQuery-->
+        <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+        <!-- 页面点击小红心与文字 -->
         <script type = "text/javascript" src = "/blog/js/love-click.js"></script>
         <!-- 浏览器搞笑标题 -->
         <script type="text/javascript" src="/blog/js/FunnyTitle.js"></script>
     <meta name="generator" content="Hexo 6.3.0"></head>
     <body>
+        <!-- 代码块复制功能 -->
+        <!--未运行-->
+        <script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
+        <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+        <!-- <script type="text/javascript" src="/js/clipboard.js"></script>  -->
+        <script type="text/javascript" src="/js/clipboard_use.js"></script>
+
+        <!--动态背景-->
+        {% if theme.canvas_nest %}
+        <script type="text/javascript"
+        color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+        {% endif %}
+
         <div id="layout">
             <transition name="fade">
             <div id="loading" v-show="loading">
@@ -54,7 +69,7 @@
                 <nav id="menu" ref="menu">
     <div class="desktop-menu">
         <a class="title" href="/blog/">
-            <span>遗世独立の幻想乡</span>
+            <span>雲流の幻想乡</span>
         </a>
         
         <a href="/blog/">
@@ -87,7 +102,7 @@
         <div class="curtain" v-show="showMenu" @click="showMenu = !showMenu"></div>
         <div class="title" @click="showMenu = !showMenu">
             <i class="fa-solid fa-bars fa-fw"></i>
-            <span>&emsp;遗世独立の幻想乡</span>
+            <span>&emsp;雲流の幻想乡</span>
         </div>
         <transition name="slide">
         <div class="items" v-show="showMenu">
@@ -151,14 +166,18 @@
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2199/3/15
+            2077/12/31
         </span>
         
         
     </div>
     
     <div class="content" v-pre>
-        <h1 id="2023-3-15前"><a href="#2023-3-15前" class="headerlink" title="2023.3.15前"></a>2023.3.15前</h1><p>初步搭建<code>ParticleX</code>主题</p>
+        <h1 id="2023-3-16"><a href="#2023-3-16" class="headerlink" title="2023.3.16"></a>2023.3.16</h1><p>web笔记拆分为单模块</p>
+<p>引入jQuery实现点击浮现文字特效</p>
+<p>使用js添加动态背景</p>
+<h1 id="2023-3-15前"><a href="#2023-3-15前" class="headerlink" title="2023.3.15前"></a>2023.3.15前</h1><p>添加live2d</p>
+<p>初步搭建<code>ParticleX</code>主题</p>
 <p>添加爱心点击特效</p>
 <p>添加浏览器搞笑标题</p>
 
@@ -176,7 +195,7 @@
     <div id="footer-wrap">
         <div>
             &copy;
-            2022 - 2023 遗世独立の幻想乡
+            2022 - 2023 雲流の幻想乡
             <span id="footer-icon">
                 <i class="fa-solid fa-font-awesome fa-fw"></i>
             </span>

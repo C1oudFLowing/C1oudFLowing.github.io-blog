@@ -1,0 +1,538 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <title>PHP杂项 | 雲流の幻想乡</title>
+        <meta name="author" content="CloudFlowing" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+        <link rel="icon" href="/blog/images/croppedImage_cropped.jpg" />
+        <script src="https://cdn.staticfile.org/vue/3.2.45/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.2.1/css/all.min.css" />
+<link rel="stylesheet" href="/blog/css/fonts.min.css" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+
+
+<script src="/blog/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<script src="/blog/js/lib/home.js"></script>
+
+<link rel="stylesheet" href="/blog/css/main.css" />
+
+        <!-- 引入jQuery-->
+        <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+        <!-- 页面点击小红心与文字 -->
+        <script type = "text/javascript" src = "/blog/js/love-click.js"></script>
+        <!-- 浏览器搞笑标题 -->
+        <script type="text/javascript" src="/blog/js/FunnyTitle.js"></script>
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <!-- 代码块复制功能 -->
+        <!--未运行-->
+        <script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
+        <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+        <!-- <script type="text/javascript" src="/js/clipboard.js"></script>  -->
+        <script type="text/javascript" src="/js/clipboard_use.js"></script>
+
+        <!--动态背景-->
+        {% if theme.canvas_nest %}
+        <script type="text/javascript"
+        color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+        {% endif %}
+
+        <div id="layout">
+            <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存&ensp;浏览器默认开启</p>
+                    <img src="/blog/images/loading.gif" />
+                </div>
+            </div>
+            </transition>
+            <transition name="into">
+            <div id="main" v-show="!loading">
+                <nav id="menu" ref="menu">
+    <div class="desktop-menu">
+        <a class="title" href="/blog/">
+            <span>雲流の幻想乡</span>
+        </a>
+        
+        <a href="/blog/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/blog/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/blog/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/blog/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/blog/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </div>
+    <div id="mobile-menu">
+        <div class="curtain" v-show="showMenu" @click="showMenu = !showMenu"></div>
+        <div class="title" @click="showMenu = !showMenu">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;雲流の幻想乡</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="showMenu">
+            
+            <a href="/blog/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                </div>
+            </a>
+            
+            <a href="/blog/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                </div>
+            </a>
+            
+            <a href="/blog/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                </div>
+            </a>
+            
+            <a href="/blog/categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                </div>
+            </a>
+            
+            <a href="/blog/tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+
+                <div class="article">
+    <div>
+        <h1>PHP杂项</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/16
+        </span>
+        
+        <span class="category">
+            <a href="/blog/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                学习笔记
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/PHP/" style="color: #00bcd4">PHP</a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="PHP"><a href="#PHP" class="headerlink" title="PHP"></a><a target="_blank" rel="noopener" href="https://www.runoob.com/php/php-tutorial.html">PHP</a></h1><blockquote>
+<p>此篇用于记录一些php的基础知识与函数补充</p>
+</blockquote>
+<span id="more"></span>
+
+
+
+<p>PHP将查询字符串（在URL或正文中）转换为内部关联数组$_GET或关联数组$_POST。例如：**&#x2F;?foo&#x3D;bar变成Array([foo] &#x3D;&gt; “bar”).**  </p>
+<p>值得注意的是，查询字符串在解析的过程中<strong>会将某些字符删除或用下划线代替</strong></p>
+<blockquote>
+<p><strong>php需要将所有参数转换为有效的变量名，因此在解析查询字符串的时候，它会做两件事：</strong></p>
+<p><strong>①删除前后的空白符（空格符，制表符，换行符等统称空白符）</strong></p>
+<p><strong>②将某些字符转换为下划线（包括空格）</strong></p>
+</blockquote>
+<h2 id="弱类型下数字相等绕过方式："><a href="#弱类型下数字相等绕过方式：" class="headerlink" title="弱类型下数字相等绕过方式："></a>弱类型下数字相等绕过方式：</h2><p>  传入字符串</p>
+<p>  使用科学计数法</p>
+<blockquote>
+<p> 使用例</p>
+</blockquote>
+<pre><code class="php">if($year==2022 &amp;&amp; $year+1!==2023)&#123;
+  echo $flag; 
+</code></pre>
+<blockquote>
+<p>此时传入202.2e1即可绕过</p>
+</blockquote>
+<hr>
+<h2 id="phpinfo-函数"><a href="#phpinfo-函数" class="headerlink" title="phpinfo()函数"></a>phpinfo()函数</h2><blockquote>
+<p>会输出关于 PHP 配置的信息</p>
+<p>返回类型：phpinfo()函数返回一个布尔值</p>
+</blockquote>
+<pre><code class="php">phpinfo ([ int $what = INFO_ALL ] )
+</code></pre>
+<hr>
+<h2 id="system-函数"><a href="#system-函数" class="headerlink" title="system()函数"></a>system()函数</h2><blockquote>
+<p>系统权限允许的情况执行系统命令，并输出结果</p>
+</blockquote>
+<hr>
+<h2 id="非法传参"><a href="#非法传参" class="headerlink" title="非法传参"></a>非法传参</h2><blockquote>
+<p>当变量名中出现点和空格时，变量名中的点和空格被转换成下划线</p>
+</blockquote>
+<ul>
+<li><p>版本：php &lt; 8</p>
+</li>
+<li><p>如果参数中出现中括号<code>[</code>，中括号会被转换成下划线<code>_</code>，但是会出现转换错误导致接下来如果该参数名中还有<code>非法字符</code>并不会继续转换成下划线<code>_</code>，也就是说如果中括号<code>[</code>出现在前面，那么中括号<code>[</code>还是会被转换成下划线<code>_</code>，但是因为出错导致接下来的非法字符并不会被转换成下划线<code>_</code></p>
+</li>
+</ul>
+<hr>
+<h2 id="PHP短标签"><a href="#PHP短标签" class="headerlink" title="PHP短标签"></a>PHP短标签</h2><pre><code class="php">&lt;? echo &#39;123&#39;;?&gt;  #前提是开启配置参数short_open_tags=on
+&lt;?=(表达式)?&gt;  等价于 &lt;?php echo (表达式)?&gt;  #不需要开启参数设置
+&lt;% echo &#39;123&#39;;%&gt;   #开启配置参数asp_tags=on，并且只能在7.0以下版本使用
+&lt;script language=&quot;php&quot;&gt;echo &#39;123&#39;; &lt;/script&gt; #不需要修改参数开关，但是只能在7.0以下可用。
+</code></pre>
+<ul>
+<li>可绕过过滤&lt;?或php</li>
+</ul>
+<hr>
+<h2 id="substr函数"><a href="#substr函数" class="headerlink" title="substr函数"></a>substr函数</h2><blockquote>
+<p>返回字符串的一部分</p>
+</blockquote>
+<p>  如果 参数<code>start </code>是负数且 <code>length</code> 小于或等于 <code>start</code>，则 <code>length</code> 为 0。</p>
+<pre><code class="php">substr(string,start,length)
+</code></pre>
+<ul>
+<li><p><code>start</code>:</p>
+<p>正数 - 在字符串的指定位置开始</p>
+<p>负数 - 在从字符串结尾的指定位置开始</p>
+<p>0 - 在字符串中的第一个字符处开始</p>
+</li>
+<li><p><code>length</code>:</p>
+<p>正数 - 从<code>start</code>参数所在的位置向后返回字符个数</p>
+<p>负数 - 从字符串末端指定位置向前返回字符个数</p>
+</li>
+</ul>
+<hr>
+<h2 id="mt-srand函数"><a href="#mt-srand函数" class="headerlink" title="mt_srand函数"></a>mt_srand函数</h2><blockquote>
+<p>播种 Mersenne Twister 随机数生成器</p>
+</blockquote>
+<pre><code class="php"> mt_srand(seed);
+</code></pre>
+<ul>
+<li><code>seed</code>：可选，规定播种值，设置之后即为伪随机</li>
+</ul>
+<h3 id="伪随机数漏洞"><a href="#伪随机数漏洞" class="headerlink" title="伪随机数漏洞"></a>伪随机数漏洞</h3><p>存在可预测性：</p>
+<p>知道种子后，可以确定输出伪随机数的序列<br>知道随机数序列，可以确定你的种子</p>
+<hr>
+<h2 id="parse-url函数"><a href="#parse-url函数" class="headerlink" title="parse_url函数"></a>parse_url函数</h2><blockquote>
+<p>解析一个 URL 并返回一个关联数组，包含在 URL 中出现的各种组成部分</p>
+</blockquote>
+<pre><code class="php">parse_url(参数1,参数2)
+</code></pre>
+<ul>
+<li><p>参数1：必填 ，是一个完整的URL，如果不完整，函数会模糊补全。</p>
+<p>参数2：非必填，是一个大写参数变量，直接获取结果集的某一部分。</p>
+</li>
+</ul>
+<pre><code class="php">&lt;?php
+$url = &quot;https://www.baidu.com/s?ie=utf-8&amp;f=8&amp;rsv_bp=1&amp;rsv_idx=1&amp;tn=baidu#id&quot;;
+$arr = parse_url($url);
+echo &quot;&lt;pre&gt;&quot;;
+print_r($arr);
+echo &quot;&lt;/pre&gt;&quot;;
+?&gt;
+    
+//&lt;pre&gt;Array
+//(
+//    [scheme] =&gt; https
+//    [host] =&gt; www.baidu.com
+//    [path] =&gt; /s
+//    [query] =&gt; ie=utf-8&amp;f=8&amp;rsv_bp=1&amp;rsv_idx=1&amp;tn=baidu
+//    [fragment] =&gt; id
+//)
+//&lt;/pre&gt;
+</code></pre>
+<hr>
+<h2 id="parse-str-函数"><a href="#parse-str-函数" class="headerlink" title="parse_str()函数"></a>parse_str()函数</h2><blockquote>
+<p>把查询字符串解析到变量中</p>
+<p>PHP4+</p>
+</blockquote>
+<pre><code class="php">parse_str(string,array) 
+    
+    没有返回值
+    string 	必需。规定要解析的字符串。
+    array 	可选。规定存储变量的数组名称。该参数指示变量存储到数组中。
+</code></pre>
+<p><strong>注释：</strong>如果未设置 array 参数，由该函数设置的变量将覆盖已存在的同名变量。</p>
+<p><strong>注释：</strong>php.ini 文件中的 magic_quotes_gpc 设置影响该函数的输出。如果已启用，那么在 parse_str() 解析之前，变量会被 addslashes() 转换。</p>
+<blockquote>
+<p>例</p>
+</blockquote>
+<pre><code class="php">&lt;?php
+parse_str(&quot;name=Peter&amp;age=43&quot;,$myArray);
+print_r($myArray);
+?&gt;
+    
+    输出
+    Array ( [name] =&gt; Peter [age] =&gt; 43 ) 
+</code></pre>
+<hr>
+<h2 id="SERVER-‘REQUEST-URI’"><a href="#SERVER-‘REQUEST-URI’" class="headerlink" title="$_SERVER[‘REQUEST_URI’]"></a>$_SERVER[‘REQUEST_URI’]</h2><blockquote>
+<p>访问此页面所需的 URL</p>
+</blockquote>
+<hr>
+<h2 id="create-function函数"><a href="#create-function函数" class="headerlink" title="create_function函数"></a><a id="create_function">create_function函数</a></h2><blockquote>
+<p>该函数用来创建匿名函数,并为其返回唯一名称</p>
+<p>PHP4,PHP5,PHP7</p>
+</blockquote>
+<pre><code class="php">create_function(string $args,string $code)
+//string $args 声明的函数变量部分
+//string $code 执行的方法代码部分
+</code></pre>
+<ul>
+<li><p>使用例</p>
+<pre><code class="php">$id=$_GET[&#39;id&#39;];
+
+$code = &#39;echo $name. &#39;.&#39;的编号是&#39;.$id.&#39;; &#39;;
+
+$b = create_function(&#39;$name&#39;,$code);
+//实现
+function niming($name)&#123;
+echo $name.&quot;编号&quot;.$id;
+&#125;
+$b(&#39;sd&#39;);
+</code></pre>
+<p>payload：</p>
+<pre><code class="php">?id=2;&#125;phpinfo();/* 
+</code></pre>
+<pre><code class="php">此时代码为
+function niming($name)&#123;
+echo $name.编号2;
+     &#125;phpinfo();/*
+&#125;
+</code></pre>
+</li>
+</ul>
+<hr>
+<h2 id="foreach函数"><a href="#foreach函数" class="headerlink" title="foreach函数"></a>foreach函数</h2><blockquote>
+<p>遍历数组</p>
+</blockquote>
+<pre><code class="php">foreach (array_expression as $value) statement
+    
+foreach (array_expression as $key =&gt; $value) statement
+</code></pre>
+<ul>
+<li>当 foreach 开始执行时，数组内部的指针会自动指向第一个单元</li>
+</ul>
+<hr>
+<h2 id="mb-substr-函数"><a href="#mb-substr-函数" class="headerlink" title="mb_substr()函数"></a>mb_substr()函数</h2><blockquote>
+<p>返回字符串的一部分,如果失败则返回 FALSE，或者返回一个空字符串</p>
+<p>PHP：4+</p>
+</blockquote>
+<pre><code class="php">mb_substr ( string $str , int $start [, int $length = NULL [, string $encoding = mb_internal_encoding() ]] ) : string 
+</code></pre>
+<ul>
+<li><code>encoding</code>:可选。字符编码。如果省略，则使用内部字符编码。</li>
+</ul>
+<hr>
+<h2 id="mb-strpos-函数"><a href="#mb-strpos-函数" class="headerlink" title="mb_strpos()函数"></a><a id=strpos>mb_strpos()函数</a></h2><blockquote>
+<p>查找字符串在另一个字符串中首次出现的位置</p>
+<p>PHP 4 &gt;&#x3D; 4.0.6, PHP 5, PHP 7</p>
+</blockquote>
+<pre><code class="php">mb_strpos (haystack ,needle )
+//haystack：要被检查的字符串
+//needle：要搜索的字符串
+</code></pre>
+<ul>
+<li>以数字形式返回字符串位置，如果没有找到该字符串，则返回 false</li>
+</ul>
+<hr>
+<h2 id="strstr-函数"><a href="#strstr-函数" class="headerlink" title="strstr()函数"></a>strstr()函数</h2><blockquote>
+<p>判断字符串str2是否是str1的子串。如果是，则该函数返回 str1字符串从 str2第一次出现的位置开始到 str1结尾的字符串；否则，返回NULL。(搜索字符串在另一个字符串出现的位置，)</p>
+<p>PHP3，PHP4，PHP5</p>
+</blockquote>
+<pre><code class="php">strstr(str1,str2)
+</code></pre>
+<ul>
+<li>该函数区分大小写，不区分的可用<code>stristr()</code></li>
+</ul>
+<hr>
+<h2 id="strrev-函数"><a href="#strrev-函数" class="headerlink" title="strrev()函数"></a>strrev()函数</h2><blockquote>
+<p>反转字符串</p>
+</blockquote>
+<pre><code class="php">strrev(string) 
+</code></pre>
+<hr>
+<h2 id="str-ireplace-函数"><a href="#str-ireplace-函数" class="headerlink" title="str_ireplace()函数"></a>str_ireplace()函数</h2><blockquote>
+<p>替换字符串中的一些字符（不区分大小写）</p>
+<p>PHP5+</p>
+</blockquote>
+<pre><code class="php">str_ireplace(find,replace,string,count) 
+</code></pre>
+<ul>
+<li>可使用<code>str_replace()</code>函数执行区分大小写</li>
+</ul>
+<hr>
+<h2 id="foreach-函数"><a href="#foreach-函数" class="headerlink" title="foreach()函数"></a>foreach()函数</h2><blockquote>
+<p>一种遍历数组简便方法</p>
+<p>仅能用于数组，当试图将其用于其它数据类型或者一个未初始化的变量时会产生错误</p>
+</blockquote>
+<pre><code class="php">foreach (array_expression as $value) statement
+    //遍历给定的 array_expression 数组。每次循环中，当前单元的值被赋给 $value 并且数组内部的指针向前移一步
+</code></pre>
+<hr>
+<h2 id="glob-函数"><a href="#glob-函数" class="headerlink" title="glob()函数"></a>glob()函数</h2><blockquote>
+<p>返回匹配指定模式的文件名或目录</p>
+<p>返回一个包含有匹配文件 &#x2F; 目录的数组。如果出错返回 false</p>
+</blockquote>
+<pre><code class="php">glob(pattern,flags)
+    检索模式
+</code></pre>
+<hr>
+<h2 id="print与print-r"><a href="#print与print-r" class="headerlink" title="print与print_r"></a>print与print_r</h2><p><code>print</code>:只允许输出一个字符串</p>
+<p><code>print_r</code>:打印变量</p>
+<hr>
+<h2 id="file-put-content-函数"><a href="#file-put-content-函数" class="headerlink" title="file_put_content()函数"></a>file_put_content()函数</h2><blockquote>
+<p>将一个字符串写入文件</p>
+</blockquote>
+<pre><code class="php">int file_put_contents ( string filename, string data [, int flags [, resource context]] )
+
+filename 要被写入数据的文件名
+data 要写入的数据(支持伪协议)
+</code></pre>
+<hr>
+<h2 id="array-push-函数"><a href="#array-push-函数" class="headerlink" title="array_push()函数"></a>array_push()函数</h2><blockquote>
+<p>向第一个参数的数组尾部添加一个或多个元素（入栈），然后返回新数组的长度</p>
+</blockquote>
+<pre><code class="php">array_push(array,value1,value2...)
+</code></pre>
+<hr>
+<h2 id="hexdec-函数"><a href="#hexdec-函数" class="headerlink" title="hexdec()函数"></a>hexdec()函数</h2><blockquote>
+<p>返回与 <em>hex_string</em> 参数所表示的十六进制数等值的的十进制数</p>
+</blockquote>
+<pre><code class="php">hexdec(hex_string)
+</code></pre>
+<ul>
+<li><code>hexdec()</code> 会将遇到的所有非十六进制字符替换成 0，这样，所有左边的零都被忽略，但右边的零会计入值中</li>
+</ul>
+<h2 id="hex2bin-函数"><a href="#hex2bin-函数" class="headerlink" title="hex2bin()函数"></a>hex2bin()函数</h2><blockquote>
+<p>把十六进制值的字符串转换为 ASCII 字符</p>
+</blockquote>
+<pre><code class="php">&lt;?php
+echo hex2bin(&quot;48656c6c6f20576f726c6421&quot;);
+?&gt;
+     Hello World!
+</code></pre>
+<hr>
+<h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2><pre><code class="php">类名::方法名
+//调用此类的方法
+</code></pre>
+<hr>
+<h2 id="error-reporting-0"><a href="#error-reporting-0" class="headerlink" title="error_reporting(0)"></a>error_reporting(0)</h2><blockquote>
+<p>阻止报错</p>
+</blockquote>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+                <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2023 雲流の幻想乡
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;CloudFlowing
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+            </div>
+            </transition>
+            
+            <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+            </transition>
+            
+        </div>
+        <script src="/blog/js/main.js"></script>
+        
+        
+
+
+
+
+         
+    <script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/blog/live2dw/assets/z16.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
+
