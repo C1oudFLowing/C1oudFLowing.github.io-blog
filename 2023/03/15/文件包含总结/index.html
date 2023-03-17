@@ -186,7 +186,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/Web/" style="color: #ff7d73">Web</a>
+                <a href="/blog/tags/Web/" style="color: #00a596">Web</a>
             </span>
             
         </span>
@@ -194,19 +194,43 @@
     </div>
     
     <div class="content" v-pre>
-        <h2 id="文件包含"><a href="#文件包含" class="headerlink" title="文件包含"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45794666/article/details/111713495">文件包含</a></h2><span id="more"></span>
+        <h1 id="文件包含"><a href="#文件包含" class="headerlink" title="文件包含"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45794666/article/details/111713495">文件包含</a></h1><blockquote>
+<p><a href="#1">php伪协议</a></p>
+</blockquote>
+<blockquote>
+<p><a href="#2">Apache日志文件</a></p>
+</blockquote>
+<blockquote>
+<p><a href="#3">nginx日志文件</a></p>
+</blockquote>
+<blockquote>
+<p><a href="#4">LFI</a></p>
+</blockquote>
+<blockquote>
+<p><a href="#5">RFI</a></p>
+</blockquote>
+<blockquote>
+<p><a href="#6">session文件包含</a></p>
+</blockquote>
+<blockquote>
+<p><a href="#7">绕过死亡代码</a></p>
+</blockquote>
+<blockquote>
+<p><a href="#8">防御</a></p>
+</blockquote>
+<span id="more"></span>
 
 <hr>
-<h3 id="前置"><a href="#前置" class="headerlink" title="前置"></a>前置</h3><h4 id="PHP相关函数"><a href="#PHP相关函数" class="headerlink" title="PHP相关函数"></a>PHP相关函数</h4><p><code>include()</code>:包含一个文件，如错误则抛出警告</p>
+<h2 id="PHP相关函数"><a href="#PHP相关函数" class="headerlink" title="PHP相关函数"></a>PHP相关函数</h2><p><code>include()</code>:包含一个文件，如错误则抛出警告</p>
 <p><code>include_once()</code>:包含一个文件仅一次，和上面类似</p>
 <p><code>require()</code>:包含一个文件，如错误则报错并停止脚本</p>
 <p><code>require_once()</code>:包含一个文件仅一次，和上面类似</p>
 <p>注：<strong>任何类型</strong>的文件，只要其中含有合法PHP代码，PHP就可以包含并执行；如果没有，就会以纯文本形式显示文件中的内容</p>
 <hr>
-<h4 id="php伪协议"><a href="#php伪协议" class="headerlink" title="php伪协议"></a><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000018991087">php伪协议</a></h4><p><strong>php.ini配置文件参数：</strong></p>
+<h2 id="php伪协议"><a href="#php伪协议" class="headerlink" title="php伪协议"></a><a id=1 ><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000018991087">php伪协议</a></a></h2><p><strong>php.ini配置文件参数：</strong></p>
 <p><code>allow_url_fopen：on </code>#默认开启 ，表示允许url里的封装协议访问文件；</p>
 <p><code>allow_url_include：off</code> #默认关闭，表示不允许包含url里的封装协议包含文件；</p>
-<h5 id="php-x2F-x2F-协议"><a href="#php-x2F-x2F-协议" class="headerlink" title="php:&#x2F;&#x2F;协议"></a>php:&#x2F;&#x2F;协议</h5><ul>
+<h3 id="php-x2F-x2F-协议"><a href="#php-x2F-x2F-协议" class="headerlink" title="php:&#x2F;&#x2F;协议"></a>php:&#x2F;&#x2F;协议</h3><ul>
 <li><p><strong>条件</strong>：</p>
 <p><code>allow_url_fopen</code>:off&#x2F;on</p>
 <p><code>allow_url_include</code> :仅<code>php://input php://stdin php://memory php://temp </code>需要on</p>
@@ -249,14 +273,14 @@ echo iconv(&#39;UCS-2BE&#39;, &#39;UCS-2LE&#39;, $str);
 </ul>
 </li>
 </ul>
-<h5 id="data-x2F-x2F-协议"><a href="#data-x2F-x2F-协议" class="headerlink" title="data:&#x2F;&#x2F;协议"></a>data:&#x2F;&#x2F;协议</h5><blockquote>
+<h3 id="data-x2F-x2F-协议"><a href="#data-x2F-x2F-协议" class="headerlink" title="data:&#x2F;&#x2F;协议"></a>data:&#x2F;&#x2F;协议</h3><blockquote>
 <p>访问数据流，执行相应php代码</p>
 </blockquote>
 <p> 可用于flag被过滤的文件包含</p>
 <pre><code class="php">data://text/plain(;base64),编码后的php代码 
 </code></pre>
 <p>​    </p>
-<h5 id="file-x2F-x2F-协议"><a href="#file-x2F-x2F-协议" class="headerlink" title="file:&#x2F;&#x2F;协议"></a>file:&#x2F;&#x2F;协议</h5><blockquote>
+<h3 id="file-x2F-x2F-协议"><a href="#file-x2F-x2F-协议" class="headerlink" title="file:&#x2F;&#x2F;协议"></a>file:&#x2F;&#x2F;协议</h3><blockquote>
 <p><strong>可读取本地文件</strong></p>
 </blockquote>
 <p><strong>条件：</strong></p>
@@ -273,7 +297,7 @@ http://127.0.0.1/include.php?file=./phpinfo.txt
 http://[网络路径和文件名]
 http://127.0.0.1/include.php?file=http://127.0.0.1/phpinfo.txt
 </code></pre>
-<h5 id="zip-x2F-x2F-amp-bzip2-x2F-x2F-amp-zlib-x2F-x2F-协议"><a href="#zip-x2F-x2F-amp-bzip2-x2F-x2F-amp-zlib-x2F-x2F-协议" class="headerlink" title="zip:&#x2F;&#x2F; &amp; bzip2:&#x2F;&#x2F; &amp; zlib:&#x2F;&#x2F;协议"></a>zip:&#x2F;&#x2F; &amp; bzip2:&#x2F;&#x2F; &amp; zlib:&#x2F;&#x2F;协议</h5><blockquote>
+<h3 id="zip-x2F-x2F-amp-bzip2-x2F-x2F-amp-zlib-x2F-x2F-协议"><a href="#zip-x2F-x2F-amp-bzip2-x2F-x2F-amp-zlib-x2F-x2F-协议" class="headerlink" title="zip:&#x2F;&#x2F; &amp; bzip2:&#x2F;&#x2F; &amp; zlib:&#x2F;&#x2F;协议"></a>zip:&#x2F;&#x2F; &amp; bzip2:&#x2F;&#x2F; &amp; zlib:&#x2F;&#x2F;协议</h3><blockquote>
 <p><code>zip:// &amp; bzip2:// &amp; zlib://</code> 均属于压缩流，可以访问压缩文件中的子文件，更重要的是不需要指定后缀名，可修改为任意后缀：<code>jpg png gif xxx</code> 等等</p>
 </blockquote>
 <p><strong>条件：</strong></p>
@@ -294,7 +318,7 @@ http://127.0.0.1/include.php?file=compress.zlib://E:\phpStudy\PHPTutorial\WWW\ph
 压缩 phpinfo.txt 为 phpinfo.gz 并上传（同样支持任意后缀名）
 </code></pre>
 <hr>
-<h4 id="Apache日志文件"><a href="#Apache日志文件" class="headerlink" title="Apache日志文件"></a>Apache日志文件</h4><ul>
+<h2 id="Apache日志文件"><a href="#Apache日志文件" class="headerlink" title="Apache日志文件"></a><a id=2>Apache日志文件</a></h2><ul>
 <li><p><strong>access.log</strong></p>
 <p>记录网站的访问信息</p>
 <p><code>客户端IP - - [访问时间] &quot;请求记录&quot; HTTP状态码 字节数</code></p>
@@ -309,12 +333,19 @@ http://127.0.0.1/include.php?file=compress.zlib://E:\phpStudy\PHPTutorial\WWW\ph
 <p>第二次发包才包含到前一次的日志中的木马。</p>
 </blockquote>
 <hr>
-<h4 id="nginx日志文件"><a href="#nginx日志文件" class="headerlink" title="nginx日志文件"></a>nginx日志文件</h4><ul>
+<h2 id="nginx日志文件"><a href="#nginx日志文件" class="headerlink" title="nginx日志文件"></a><a id=3>nginx日志文件</a></h2><ul>
 <li>位置：&#x2F;var&#x2F;log&#x2F;nginx&#x2F;access.log</li>
 </ul>
 <hr>
-<h3 id="本地文件包含漏洞（LFI）"><a href="#本地文件包含漏洞（LFI）" class="headerlink" title="本地文件包含漏洞（LFI）"></a>本地文件包含漏洞（LFI）</h3><p><code>url+参数=挂马文件地址</code></p>
-<h4 id="Apache日志包含漏洞-目录穿越"><a href="#Apache日志包含漏洞-目录穿越" class="headerlink" title="Apache日志包含漏洞+目录穿越"></a>Apache日志包含漏洞+目录穿越</h4><ul>
+<h2 id="本地文件包含漏洞（LFI）"><a href="#本地文件包含漏洞（LFI）" class="headerlink" title="本地文件包含漏洞（LFI）"></a><a id=4>本地文件包含漏洞（LFI）</a></h2><p><code>url+参数=挂马文件地址</code></p>
+<h3 id="日志文件include"><a href="#日志文件include" class="headerlink" title="日志文件include"></a>日志文件include</h3><p>原理：对网站进行访问时,日志文件会记录相关信息(请求头中的信息)</p>
+<p>前提：知道日志文件所在,并能进行包含</p>
+<ul>
+<li>先访问网站在请求头中写入一句话(一般写在user-agent中)</li>
+<li>然后通过post去尝试执行</li>
+<li>执行成功后通过蚁剑连接得到shell</li>
+</ul>
+<h3 id="Apache日志包含漏洞-目录穿越"><a href="#Apache日志包含漏洞-目录穿越" class="headerlink" title="Apache日志包含漏洞+目录穿越"></a>Apache日志包含漏洞+目录穿越</h3><ul>
 <li><p>使用BurpSuite发送请求，在UA头写入一句话木马</p>
 <p>然后就可以include到当前php文件中，实现命令执行，把PHP一句话写进access.log里</p>
 </li>
@@ -325,7 +356,7 @@ http://127.0.0.1/include.php?file=compress.zlib://E:\phpStudy\PHPTutorial\WWW\ph
 <p>注：如果不知道日志文件的地址，可以把参数设置成一个不存在的文件名，比如<code>?jumpTo=114514</code>，这样网页会报错显示网站的绝对路径  （如果没有屏蔽报错），使用了各种面板的会显示面板的错误信息，可以以此来判断日志路径。</p>
 </blockquote>
 <hr>
-<h4 id="截断攻击"><a href="#截断攻击" class="headerlink" title="截断攻击"></a>截断攻击</h4><blockquote>
+<h3 id="截断攻击"><a href="#截断攻击" class="headerlink" title="截断攻击"></a>截断攻击</h3><blockquote>
 <p>PHP &lt; 5.3.4</p>
 </blockquote>
 <ul>
@@ -333,7 +364,7 @@ http://127.0.0.1/include.php?file=compress.zlib://E:\phpStudy\PHPTutorial\WWW\ph
 <li>在ASCII字符集中，<code>%00</code>代表的是<strong>字符串的结束</strong>，也就是说，如果在一串字符的中间插入<code>%00</code>，那么后面的字符串会被丢弃。如果把参数值改为<code>shell.jpg%00</code>，那么之后拼接的字符串将被<code>include</code>方法所丢弃。这样就能成功访问一句话木马。</li>
 </ul>
 <hr>
-<h3 id="远程文件包含漏洞（RFI）"><a href="#远程文件包含漏洞（RFI）" class="headerlink" title="远程文件包含漏洞（RFI）"></a>远程文件包含漏洞（RFI）</h3><p>本质是使用<strong>PHP伪协议</strong>进行包含</p>
+<h2 id="远程文件包含漏洞（RFI）"><a href="#远程文件包含漏洞（RFI）" class="headerlink" title="远程文件包含漏洞（RFI）"></a><a id=5>远程文件包含漏洞（RFI）</a></h2><p>本质是使用<strong>PHP伪协议</strong>进行包含</p>
 <ul>
 <li><p>无限制：参数之后加上危险脚本的URL</p>
 </li>
@@ -355,19 +386,11 @@ Sec-Fetch-User: ?1
 </li>
 </ul>
 <hr>
-<h3 id="日志文件include"><a href="#日志文件include" class="headerlink" title="日志文件include"></a>日志文件include</h3><p>原理：对网站进行访问时,日志文件会记录相关信息(请求头中的信息)</p>
-<p>前提：知道日志文件所在,并能进行包含</p>
-<ul>
-<li>先访问网站在请求头中写入一句话(一般写在user-agent中)</li>
-<li>然后通过post去尝试执行</li>
-<li>执行成功后通过蚁剑连接得到shell</li>
-</ul>
-<hr>
-<h3 id="Session文件包含"><a href="#Session文件包含" class="headerlink" title="Session文件包含"></a>Session文件包含</h3><blockquote>
+<h2 id="Session文件包含"><a href="#Session文件包含" class="headerlink" title="Session文件包含"></a><a id=6>Session文件包含</a></h2><blockquote>
 <p>php中唯一能无后缀控制</p>
 <p>通过向session传入恶意代码并访问其文件实现</p>
 </blockquote>
-<h4 id="session工作原理"><a href="#session工作原理" class="headerlink" title="session工作原理"></a>session工作原理</h4><p>（1）首先使用<code>session_start()</code>函数进行初始化。</p>
+<h3 id="session工作原理"><a href="#session工作原理" class="headerlink" title="session工作原理"></a>session工作原理</h3><p>（1）首先使用<code>session_start()</code>函数进行初始化。</p>
 <p>（2）当执行PHP脚本时，通过使用<strong>SESSION超全局变量</strong>注册session变量。</p>
 <p>（3）当PHP脚本执行结束时，未被销毁的session变量会被自动保存在本地一定路径下的session库中，这个路径可以通过php.ini文件中的session.savepath指定，下次浏览网页时可以加载使用。</p>
 <ul>
@@ -384,7 +407,7 @@ Sec-Fetch-User: ?1
 <p>​	（2）通过猜测默认的Session存放位置进行尝试。通常Linux下Session默认存储在<code>/var/lib/php/session</code>目录下。默认存储Session存放位置。</p>
 </li>
 </ul>
-<h4 id="关键：session-upload-progress"><a href="#关键：session-upload-progress" class="headerlink" title="关键：session.upload_progress"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38154820/article/details/120300273?ops_request_misc=&request_id=&biz_id=102&utm_term=session%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-0-120300273.nonecase&spm=1018.2226.3001.4187">关键：session.upload_progress</a></h4><blockquote>
+<h3 id="关键：session-upload-progress"><a href="#关键：session-upload-progress" class="headerlink" title="关键：session.upload_progress"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38154820/article/details/120300273?ops_request_misc=&request_id=&biz_id=102&utm_term=session%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-0-120300273.nonecase&spm=1018.2226.3001.4187">关键：session.upload_progress</a></h3><blockquote>
 <p>Session Support :enable</p>
 <p>当我们将<code>session.upload_progress.enabled</code>的值设置为<strong>on</strong>时，此时我们再往服务器中上传一个文件时，PHP会把该文件的详细信息(如上传时间、上传进度等)存储在session当中。</p>
 </blockquote>
@@ -404,7 +427,7 @@ Sec-Fetch-User: ?1
 <li><p><strong>session.upload_progress_prefix</strong>：可以设置上传文件内容的前缀，与session.upload_progress_name 将表示为 session 中的键名</p>
 </li>
 </ul>
-<h4 id="条件竞争"><a href="#条件竞争" class="headerlink" title="条件竞争"></a>条件竞争</h4><blockquote>
+<h3 id="条件竞争"><a href="#条件竞争" class="headerlink" title="条件竞争"></a>条件竞争</h3><blockquote>
 <p>by <a target="_blank" rel="noopener" href="https://ph0ebus.github.io/post/[%E7%AC%AC%E4%BA%94%E7%A9%BA%E9%97%B4%202021]EasyCleanup">ph0ebus</a></p>
 </blockquote>
 <ul>
@@ -469,7 +492,52 @@ if __name__ == &#39;__main__&#39;:
     event.set()
 </code></pre>
 <hr>
-<h3 id="防御"><a href="#防御" class="headerlink" title="防御"></a>防御</h3><ul>
+<h2 id="绕过死亡代码"><a href="#绕过死亡代码" class="headerlink" title="绕过死亡代码"></a><a id=7><a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/8163#toc-3">绕过死亡代码</a></a></h2><blockquote>
+<p>原型</p>
+</blockquote>
+<pre><code class="php">1. file_put_contents($filename,&quot;&lt;?php exit();&quot;.$content);
+
+2. file_put_contents($content,&quot;&lt;?php exit();&quot;.$content);
+
+3. file_put_contents($filename,$content . &quot;\nxxxxxx&quot;);
+</code></pre>
+<ol>
+<li><ul>
+<li><p><strong>base64编码绕过</strong></p>
+<p>利用base64解码，将死亡代码解码成乱码，使得php引擎无法识别</p>
+</li>
+</ul>
+<pre><code class="php">$filename=&#39;php://filter/write=convert.base64-decode/resource=1.php&#39;;
+$content = &#39;aPD9waHAgcGhwaW5mbygpOz8+&#39;;
+
+$content加了一个a，是因为base64在解码的时候是将4个字节转化为3个字节，又因为死亡代码只有phpexit/phpdie参与了解码，所以补上一位就可以完全转化
+</code></pre>
+<ul>
+<li><p><strong>rot13编码绕过</strong></p>
+<p>原理和base64一样，可以直接转码分解死亡代码</p>
+</li>
+</ul>
+<blockquote>
+<p>注：因为我们生成的文件内容之中前面的<code>&lt;?</code>并没有分解掉，这时，如果服务器开启了短标签，那么就会被解析，所以所以后面的代码就会错误；也就失去了作用</p>
+</blockquote>
+<ul>
+<li><p><strong>.htaccess的预包含利用</strong></p>
+<p>利用 .htaccess的预包含文件的功能来进行攻破；自定义包含我们的flag文件</p>
+</li>
+</ul>
+<pre><code class="php">$filename=php://filter/write=string.strip_tags/resource=.htaccess
+
+$content=?&gt;php_value%20auto_prepend_file%20G:\s1mple.php
+    
+首先来解释$filename的代码，这里引用了string.strip_tags过滤器，可以过滤.htaccess内容的html标签，自然也就消除了死亡代码；$content即闭合死亡代码使其完全消除，并且写入自定义包含文件
+</code></pre>
+<blockquote>
+<p>但是这种方法也是具有一定的局限性，首先我们需要知道flag文件的位置，和文件的名字，一般的比赛中可以盲猜  flag.php flag   &#x2F;flag  &#x2F;flag.php  等等；另外还有个很大的问题是，string.strip_tags过滤器只是可以在php5的环境下顺利的使用，如果题目环境是在php7.3.0以上的环境下，则会发生段错误。导致写不进去；根本来说是php7.3.0中废弃了string.strip_tags这个过滤器</p>
+</blockquote>
+</li>
+</ol>
+<hr>
+<h2 id="防御"><a href="#防御" class="headerlink" title="防御"></a><a id=8>防御</a></h2><ul>
 <li><p><strong>调整php.ini中的不合理配置</strong></p>
 <ul>
 <li><strong>magic_quotes_gpc&#x3D;On</strong>，将参数中的异常字符进行转义。</li>
