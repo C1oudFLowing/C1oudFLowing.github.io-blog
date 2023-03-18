@@ -177,7 +177,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #ffa2c4">CTF线上赛</a>
+                <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #00bcd4">CTF线上赛</a>
             </span>
             
         </span>
@@ -186,7 +186,66 @@
     
     <div class="content" v-pre>
         <p><img src="/blog/2023/03/02/Forestwolf/1.png" alt="1"></p>
-<h1 id="MISC"><a href="#MISC" class="headerlink" title="MISC"></a>MISC</h1><h1 id="咕咕咕"><a href="#咕咕咕" class="headerlink" title="咕咕咕"></a>咕咕咕</h1>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>南森这个说是新生赛，也确实是个新生赛，题目难度不会太高，甚至有好几题都是网上搜到的buu有的题目（笑），但是web题个人觉得还是有一定学习空间的（虽然谁会把文件上传题放公共靶机就是了），这里先对个人感兴趣的web题进行复现，其他方向先咕了（</p>
+<span id="more"></span>
+
+
+
+<h1 id="WEB"><a href="#WEB" class="headerlink" title="WEB"></a>WEB</h1><h2 id="黑心的网站"><a href="#黑心的网站" class="headerlink" title="黑心的网站"></a>黑心的网站</h2><blockquote>
+<p>源码泄露+misc(?)</p>
+</blockquote>
+<p>因为题目环境在比赛结束后立刻就关闭了且没有复现，所以这边直接贴官方wp</p>
+<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>域名打开是一个文件传输的页面，页面内没有可交互的东西（<del>所以为什么题目页是nc+域名啊</del>）</p>
+<p><img src="/blog/2023/03/02/Forestwolf/image-20230318163115790.png" alt="image-20230318163115790"></p>
+<p>查看页面源代码</p>
+<p><img src="/blog/2023/03/02/Forestwolf/image-20230318163305172.png" alt="image-20230318163305172"></p>
+<p>提示源码泄露，但是不让扫（悲）</p>
+<p>于是这边就自己写脚本进行扫描。。。</p>
+<pre><code class="python">import requests
+
+# 扫描地址
+url1 = &quot;需要扫描的地址&quot;
+
+# 常见网站源码备份文件名
+dir1 = [&#39;web&#39;,&#39;website&#39;,&#39;backup&#39;,&#39;www&#39;,&#39;wwwroot&#39;,&#39;temp&#39;]
+
+# 常见网站源码备份文件后缀
+final2 = [&#39;tar&#39;,&#39;tar.gz&#39;,&#39;zip&#39;,&#39;rar&#39;,&#39;bak&#39;]
+
+# 开始扫描
+for i in dir1:
+    for j in final 2:
+        # 拼接备份文件名
+        filename = str(i) + &#39;.&#39; + str(j)
+        # 拼接最终url
+        url = str(url1) + &#39;/&#39; + filename
+        # 返回文件名
+        print(filename + &#39; &#39;,end=&#39;&#39;)
+        # 返回数据包长度，根据长度判断网站备份文件
+        print(len(request.get(url).text))
+</code></pre>
+<p>得到<code>backup.tar.gz</code>，下载后代码审计（<del>当时博主后缀手动爆破出来过，但是当时没想到还要爆文件名</del>）</p>
+<p><img src="/blog/2023/03/02/Forestwolf/image-20230318164735914.png" alt="image-20230318164735914"></p>
+<p>得知靶机所在路径 &#x2F;NFPC，进入下面的这个页面</p>
+<p><img src="/blog/2023/03/02/Forestwolf/wps1.jpg" alt="img"></p>
+<p>目录遍历进入are you crazy now根据提示完成xss:</p>
+<pre><code>&quot;&gt; &lt;scr***\*script\****ipt&gt;alert(343)&lt;/s***\*script\****cript&gt;
+</code></pre>
+<p><img src="/blog/2023/03/02/Forestwolf/wps2.jpg" alt="img"> </p>
+<p>据此得知flag应该藏在&#x2F;WAxiangxiangzuichaofan&#x2F;flag中</p>
+<p>或者不进行xss，直接查看网页源代码也能发现</p>
+<p><img src="/blog/2023/03/02/Forestwolf/image-20230318165457873.png" alt="image-20230318165457873"></p>
+<p>（非预期解)（<del>其实这才是预期解吧</del>）</p>
+<p>用winhex查看，发现文件头文件尾特征，foremost中分离文件</p>
+<p><img src="/blog/2023/03/02/Forestwolf/image-20230318165739269.png" alt="image-20230318165739269"></p>
+<p><img src="/blog/2023/03/02/Forestwolf/wps5.jpg" alt="img"> </p>
+<p><img src="/blog/2023/03/02/Forestwolf/wps6.png" alt="img"> </p>
+<p>得到flag{Friend3inForestwo1f}</p>
+<hr>
+<h2 id="上传小考验"><a href="#上传小考验" class="headerlink" title="上传小考验"></a>上传小考验</h2><blockquote>
+<p>文件上传+misc(?)</p>
+</blockquote>
+
     </div>
     
     
