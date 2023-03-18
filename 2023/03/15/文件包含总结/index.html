@@ -39,12 +39,12 @@
         <script type = "text/javascript" src = "/blog/js/love-click.js"></script>
         <!-- 浏览器搞笑标题 -->
         <script type="text/javascript" src="/blog/js/FunnyTitle.js"></script>
+        
     <meta name="generator" content="Hexo 6.3.0"></head>
     <body>
         <!--flag{never_g0nna g1ve_you up}-->
 
-        <!-- 代码块复制功能 -->
-        <!--未运行-->
+        <!-- 代码块复制功能(未启用) -->
         <script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
         <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
         <!-- <script type="text/javascript" src="/js/clipboard.js"></script>  -->
@@ -54,6 +54,11 @@
         <script type="text/javascript"
         color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
 
+        <div id="toc" class="toc-article">
+    <div class="toc-title">目录</div>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB"><span class="toc-text">文件包含</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#PHP%E7%9B%B8%E5%85%B3%E5%87%BD%E6%95%B0"><span class="toc-text">PHP相关函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#php%E4%BC%AA%E5%8D%8F%E8%AE%AE"><span class="toc-text">php伪协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#php-x2F-x2F-%E5%8D%8F%E8%AE%AE"><span class="toc-text">php:&#x2F;&#x2F;协议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#data-x2F-x2F-%E5%8D%8F%E8%AE%AE"><span class="toc-text">data:&#x2F;&#x2F;协议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#file-x2F-x2F-%E5%8D%8F%E8%AE%AE"><span class="toc-text">file:&#x2F;&#x2F;协议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#zip-x2F-x2F-amp-bzip2-x2F-x2F-amp-zlib-x2F-x2F-%E5%8D%8F%E8%AE%AE"><span class="toc-text">zip:&#x2F;&#x2F; &amp; bzip2:&#x2F;&#x2F; &amp; zlib:&#x2F;&#x2F;协议</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Apache%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6"><span class="toc-text">Apache日志文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nginx%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6"><span class="toc-text">nginx日志文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E%EF%BC%88LFI%EF%BC%89"><span class="toc-text">本地文件包含漏洞（LFI）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6include"><span class="toc-text">日志文件include</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Apache%E6%97%A5%E5%BF%97%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E-%E7%9B%AE%E5%BD%95%E7%A9%BF%E8%B6%8A"><span class="toc-text">Apache日志包含漏洞+目录穿越</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%88%AA%E6%96%AD%E6%94%BB%E5%87%BB"><span class="toc-text">截断攻击</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9C%E7%A8%8B%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E%EF%BC%88RFI%EF%BC%89"><span class="toc-text">远程文件包含漏洞（RFI）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Session%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB"><span class="toc-text">Session文件包含</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#session%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-text">session工作原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%EF%BC%9Asession-upload-progress"><span class="toc-text">关键：session.upload_progress</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E7%AB%9E%E4%BA%89"><span class="toc-text">条件竞争</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%95%E8%BF%87%E6%AD%BB%E4%BA%A1%E4%BB%A3%E7%A0%81"><span class="toc-text">绕过死亡代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%B2%E5%BE%A1"><span class="toc-text">防御</span></a></li></ol></li></ol>
+</div>
+        
         <div id="layout">
             <transition name="fade">
             <div id="loading" v-show="loading">

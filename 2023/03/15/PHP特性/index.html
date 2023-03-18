@@ -39,12 +39,12 @@
         <script type = "text/javascript" src = "/blog/js/love-click.js"></script>
         <!-- 浏览器搞笑标题 -->
         <script type="text/javascript" src="/blog/js/FunnyTitle.js"></script>
+        
     <meta name="generator" content="Hexo 6.3.0"></head>
     <body>
         <!--flag{never_g0nna g1ve_you up}-->
 
-        <!-- 代码块复制功能 -->
-        <!--未运行-->
+        <!-- 代码块复制功能(未启用) -->
         <script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
         <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
         <!-- <script type="text/javascript" src="/js/clipboard.js"></script>  -->
@@ -54,6 +54,11 @@
         <script type="text/javascript"
         color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
 
+        <div id="toc" class="toc-article">
+    <div class="toc-title">目录</div>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#PHP%E7%89%B9%E6%80%A7"><span class="toc-text">PHP特性</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#preg-match-%E5%87%BD%E6%95%B0"><span class="toc-text">preg_match()函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#intval-%E5%87%BD%E6%95%B0"><span class="toc-text">intval()函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#strpos%E5%87%BD%E6%95%B0"><span class="toc-text">strpos函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#in-array-%E5%87%BD%E6%95%B0"><span class="toc-text">in_array()函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ereg-%E5%87%BD%E6%95%B0"><span class="toc-text">ereg()函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#is-file-%E5%87%BD%E6%95%B0"><span class="toc-text">is_file()函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#is-numeric-%E5%87%BD%E6%95%B0"><span class="toc-text">is_numeric()函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#trim-%E5%87%BD%E6%95%B0"><span class="toc-text">trim()函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8D%A2%E8%A1%8C%E8%A7%A3%E6%9E%90%E6%BC%8F%E6%B4%9E"><span class="toc-text">换行解析漏洞</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%AF%E5%BE%84%E7%BB%95%E8%BF%87"><span class="toc-text">路径绕过</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6%E4%BC%98%E5%85%88%E7%BA%A7"><span class="toc-text">运算符优先级</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E7%BD%AE%E7%B1%BB"><span class="toc-text">内置类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Exception-%E5%87%BD%E6%95%B0"><span class="toc-text">Exception()函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8D%E5%B0%84%E7%B1%BBReflectionClass"><span class="toc-text">反射类ReflectionClass</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E8%BF%AD%E4%BB%A3%E5%99%A8FilesystemIterator"><span class="toc-text">文件系统迭代器FilesystemIterator</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E7%A0%81%E7%BB%95%E8%BF%87"><span class="toc-text">编码绕过</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E8%A6%86%E7%9B%96"><span class="toc-text">变量覆盖</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">$$</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#extract-%E5%87%BD%E6%95%B0"><span class="toc-text">extract()函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#parse-str-%E5%87%BD%E6%95%B0"><span class="toc-text">parse_str()函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9D%9E%E6%B3%95%E4%BC%A0%E5%8F%82"><span class="toc-text">非法传参</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#md5%E7%AD%89%E6%95%88%E5%80%BC%E7%BB%95%E8%BF%87"><span class="toc-text">md5等效值绕过</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SHA1"><span class="toc-text">SHA1</span></a></li></ol></li></ol>
+</div>
+        
         <div id="layout">
             <transition name="fade">
             <div id="loading" v-show="loading">
@@ -186,7 +191,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/Web/" style="color: #00a596">Web</a>
+                <a href="/blog/tags/Web/" style="color: #ff7d73">Web</a>
             </span>
             
         </span>
