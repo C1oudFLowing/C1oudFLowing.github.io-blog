@@ -57,7 +57,7 @@
 
         <div id="toc" class="toc-article">
     <div class="toc-title"></div>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-text">反序列化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95"><span class="toc-text">语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95"><span class="toc-text">魔术方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#POP%E9%93%BE"><span class="toc-text">POP链</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-text">反序列化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%86%9F%E6%82%89PHP%E7%9A%84%E7%B1%BB%E5%92%8C%E6%96%B9%E6%B3%95"><span class="toc-text">熟悉PHP的类和方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95"><span class="toc-text">语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95"><span class="toc-text">魔术方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#invoke"><span class="toc-text">__invoke():</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#construst"><span class="toc-text">__construst():</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#toString-NaN"><span class="toc-text">__toString():</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#POP%E9%93%BE"><span class="toc-text">POP链</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%A7%BF%E5%8A%BF"><span class="toc-text">常用姿势</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%87%E6%BB%A4%E7%BB%95%E8%BF%87"><span class="toc-text">过滤绕过</span></a></li></ol></li></ol></li></ol>
 </div>
         
         <div id="layout">
@@ -193,7 +193,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/Web/" style="color: #ff7d73">Web</a>
+                <a href="/blog/tags/Web/" style="color: #ffa2c4">Web</a>
             </span>
             
         </span>
@@ -206,18 +206,70 @@
 </blockquote>
 <span id="more"></span>
 
-<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><pre><code class="php">$a=new wllm()	//自定义参数实例化类
+<h2 id="熟悉PHP的类和方法"><a href="#熟悉PHP的类和方法" class="headerlink" title="熟悉PHP的类和方法"></a>熟悉PHP的类和方法</h2><h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><pre><code class="php">$a=new wllm()	//自定义参数实例化类
 $a-&gt;admin=&quot;admin&quot;;		//调用指针指向变量或方法并赋值
 $b=serialize($a);
 </code></pre>
-<h2 id="魔术方法"><a href="#魔术方法" class="headerlink" title="魔术方法"></a>魔术方法</h2><ul>
-<li><p>__invoke():当尝试以调用函数的方式调用对象的时候，就会调用该方法</p>
+<h2 id="魔术方法"><a href="#魔术方法" class="headerlink" title="魔术方法"></a>魔术方法</h2><h3 id="invoke"><a href="#invoke" class="headerlink" title="__invoke():"></a>__invoke():</h3><blockquote>
+<p>当尝试以调用函数的方式（如eval:代码执行）调用对象的时候，就会调用该方法</p>
+</blockquote>
+<pre><code class="php">&lt;?php
+class InvokeDemo
+&#123;
+    public function __construct()
+    &#123;
+        echo &#39;我被创建了&#39;.PHP_EOL;
+    &#125;
+
+    public function __invoke()
+    &#123;
+        // TODO: Implement __invoke() method.
+        echo &#39;触发invoke&#39;.PHP_EOL;
+    &#125;
+&#125;
+$invokeDemo = new InvokeDemo();
+print_r($invokeDemo());
+    输出：我被创建了
+         触发invoke
+</code></pre>
+<h3 id="construst"><a href="#construst" class="headerlink" title="__construst():"></a>__construst():</h3><blockquote>
+<p>具有构造函数的类在创建新对象的时候，回调此方法</p>
+</blockquote>
+<p>eg:</p>
+<pre><code class="php">&lt;?php
+    class Person
+    &#123;                                                                      
+            public $name;        
+            public $age;        
+            public $sex;        
+                                                                 
+        /**
+         * 显示声明一个构造方法且带参数
+*/                                                                                      
+        public function __construct($name=&quot;&quot;, $sex=&quot;男&quot;, $age=22)
+        &#123;      
+            $this-&gt;name = $name;
+            $this-&gt;sex = $sex;
+            $this-&gt;age = $age;
+        &#125;
+        /**
+         * say 方法
+         */
+        public function say()
+        &#123; 
+            echo &quot;我叫：&quot; . $this-&gt;name . &quot;，性别：&quot; . $this-&gt;sex . &quot;，年龄：&quot; . $this-&gt;age;
+        &#125;   
+    &#125;
+$Person1 = new Person();
+echo $Person1-&gt;say(); //输出:我叫：，性别：男，年龄：22
+
+$Person2 = new Person(&quot;1998&quot;);
+echo $Person2-&gt;say(); //输出：我叫：1998，性别：男，年龄：22
+
+$Person3 = new Person(&quot;李四&quot;,&quot;男&quot;,25);
+echo $Person3-&gt;say(); //输出：我叫：李四，性别：男，年龄：25
+</code></pre>
 <ul>
-<li>eval:代码执行</li>
-</ul>
-</li>
-<li><p>__construst():具有构造函数的类在创建新对象的时候，回调此方法</p>
-</li>
 <li><p>__destruct():反序列化的时候，或者对象销毁的时候调用</p>
 </li>
 <li><p><strong>__wakeup()</strong>:反序列化的时候调用</p>
@@ -227,11 +279,23 @@ $b=serialize($a);
 </li>
 <li><p>__sleep():序列化的时候调用</p>
 </li>
-<li><p>__toString():把类当成字符串的时候调用</p>
-<ul>
-<li>一般在echo处生效</li>
 </ul>
-</li>
+<h3 id="toString-NaN"><a href="#toString-NaN" class="headerlink" title="__toString():"></a>__toString():</h3><blockquote>
+<p>把类当成字符串的时候调用，当使用echo或者print输出对象时，将对象转化成字符串</p>
+</blockquote>
+<pre><code class="php">&lt;?php
+
+class people&#123;
+    public function __toString()&#123;
+        return &quot;I am toString module&quot;;
+    &#125;
+&#125;
+$peo = new people();
+echo $peo;
+?&gt;
+    输出：I am toString module
+</code></pre>
+<ul>
 <li><p>__set():在给不可访问的(protected或者private)或者不存在的属性赋值的时候，会被调用</p>
 </li>
 <li><p>__get():读取不可访问或者不存在的属性的时候，进行赋值</p>
@@ -239,7 +303,10 @@ $b=serialize($a);
 <li><p>__call():在对象中调用一个不存在或不可访问的方法的时候，会被执行</p>
 </li>
 </ul>
-<h2 id="POP链"><a href="#POP链" class="headerlink" title="POP链"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_62422842/article/details/123988229?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522166876201416782428623647%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=166876201416782428623647&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_click~default-1-123988229-null-null.142%5Ev65%5Eopensearch_v2,201%5Ev3%5Econtrol,213%5Ev2%5Et3_esquery_v2&utm_term=pop%E9%93%BE&spm=1018.2226.3001.4187">POP链</a></h2><ul>
+<h2 id="POP链"><a href="#POP链" class="headerlink" title="POP链"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_62422842/article/details/123988229?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522166876201416782428623647%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=166876201416782428623647&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_click~default-1-123988229-null-null.142%5Ev65%5Eopensearch_v2,201%5Ev3%5Econtrol,213%5Ev2%5Et3_esquery_v2&utm_term=pop%E9%93%BE&spm=1018.2226.3001.4187">POP链</a></h2><blockquote>
+<p>它是一种面向属性编程，常用于构造调用链的方法。在题目中的代码里找到一系列能调用的指令，并将这些指令整合成一条有逻辑的能达到恶意攻击效果的代码</p>
+</blockquote>
+<ul>
 <li><p>public:公有的类成员可以在任何地方被访问</p>
 </li>
 <li><p>protected:受保护的类成员则可以被其自身以及其子类和父类访问</p>
@@ -261,7 +328,7 @@ $b=serialize($a);
 </li>
 </ul>
 <p><a target="_blank" rel="noopener" href="https://www.ctfer.vip/problem/440">例题源码</a></p>
-<pre><code class="php"> &lt;?php
+<pre><code class="php">&lt;?php
 
 error_reporting(0);
 show_source(&quot;index.php&quot;);
@@ -346,6 +413,7 @@ echo urlencode(serialize($b));
 ?&gt;
 </code></pre>
 <hr>
+<h2 id="常用姿势"><a href="#常用姿势" class="headerlink" title="常用姿势"></a>常用姿势</h2><h3 id="过滤绕过"><a href="#过滤绕过" class="headerlink" title="过滤绕过"></a>过滤绕过</h3><p><code>/[oc]:\d+:/i</code>：匹配O: C: +数字</p>
 
     </div>
     

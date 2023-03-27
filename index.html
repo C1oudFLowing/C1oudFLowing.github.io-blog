@@ -216,6 +216,57 @@
 </div>
 
 <div class="post">
+    <a href="/blog/2023/03/27/NKCTF2023/">
+        <h2 class="post-title">NKCTF2023</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/blog/categories/Writeup/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                Writeup
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/27
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <p><img src="/blog/2023/03/27/NKCTF2023/image-20230327161133897.png" alt="image-20230327161133897"></p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>久违的三人组队比赛<del>(虽然博主一个人就拿下了队伍一半的分数就是了)</del>，这次的web题意外的只有php架构和模板注入的类型，但是博主做出来的几道题已经算是穷尽目前所学了。顺带一提出题人里头混进了车万人，星莲船lunatic难度很好玩，下次建议上绀珠传（</p>
+<p><del>感觉博主得多修几个方向了，不然队伍里pwn和re没人做还是太难受了</del></p>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #03a9f4">
+                CTF线上赛
+            </a>
+        </span>
+        
+    </div>
+    <a href="/blog/2023/03/27/NKCTF2023/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
     <a href="/blog/2023/03/16/PHP%E6%9D%82%E9%A1%B9/">
         <h2 class="post-title">PHP杂项</h2>
     </a>
@@ -257,7 +308,7 @@
         
         <span class="tag">
             
-            <a href="/blog/tags/PHP/" style="color: #ff7d73">
+            <a href="/blog/tags/PHP/" style="color: #00a596">
                 PHP
             </a>
         </span>
@@ -308,7 +359,7 @@
         
         <span class="tag">
             
-            <a href="/blog/tags/Web/" style="color: #03a9f4">
+            <a href="/blog/tags/Web/" style="color: #00bcd4">
                 Web
             </a>
         </span>
@@ -345,6 +396,12 @@
         <div class="content" v-pre>
             
             <h1 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44159028/article/details/114325805">SQL注入</a></h1><p><a target="_blank" rel="noopener" href="http://sqlwiki.radare.cn/#/injectionTypes/errorBased">wiki</a></p>
+<p>原型</p>
+<pre><code class="sql">//拼接sql语句查找指定ID用户
+$sql = &quot;select username,password from table_name where username !=&#39;flag&#39; and id = &#39;&quot;.$_GET[&#39;id&#39;].&quot;&#39; limit 1;&quot;;
+</code></pre>
+<p>基本思路</p>
+<p>用<code>1&#39;</code>闭合前面的语句，执行自己构造的语句</p>
             
         </div>
     </div>
@@ -406,7 +463,7 @@
         
         <span class="tag">
             
-            <a href="/blog/tags/Web/" style="color: #00bcd4">
+            <a href="/blog/tags/Web/" style="color: #00a596">
                 Web
             </a>
         </span>
@@ -455,7 +512,7 @@
         
         <span class="tag">
             
-            <a href="/blog/tags/Web/" style="color: #03a9f4">
+            <a href="/blog/tags/Web/" style="color: #ffa2c4">
                 Web
             </a>
         </span>
@@ -527,7 +584,7 @@
         
         <span class="tag">
             
-            <a href="/blog/tags/Web/" style="color: #ff7d73">
+            <a href="/blog/tags/Web/" style="color: #ffa2c4">
                 Web
             </a>
         </span>
@@ -597,7 +654,7 @@
         
         <span class="tag">
             
-            <a href="/blog/tags/Web/" style="color: #03a9f4">
+            <a href="/blog/tags/Web/" style="color: #ff7d73">
                 Web
             </a>
         </span>
@@ -612,6 +669,15 @@
     </a>
     <div class="category-and-date">
         
+        <span class="category">
+            <a href="/blog/categories/%E8%B5%9B%E5%90%8E%E5%A4%8D%E7%8E%B0/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                赛后复现
+            </a>
+        </span>
+        
         <span class="date">
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
@@ -625,59 +691,7 @@
         <div class="content" v-pre>
             
             <p><img src="/blog/2023/03/02/Forestwolf/1.png" alt="1"></p>
-<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>南森新生赛，确实是个新生赛，题目难度不会太高，甚至有好几题都是网上搜到的buu有的题目（笑），但是web题个人觉得还是有一定学习空间的（虽然谁会把文件上传题放公共靶机就是了），这里先对个人感兴趣的web题进行复现，其他方向先咕了（</p>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        <span class="tag">
-            
-            <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #00a596">
-                CTF线上赛
-            </a>
-        </span>
-        
-    </div>
-    <a href="/blog/2023/03/02/Forestwolf/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/blog/2023/03/01/%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%912022/">
-        <h2 class="post-title">西湖论剑2022</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/blog/categories/%E8%B5%9B%E5%90%8E%E5%A4%8D%E5%81%9A/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                赛后复做
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/3/1
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>这次比赛web题成功0解（悲），赛后看别人的wp的时候发现还是有几道题是我能做的，比赛时还是被没见过的语言框架和题目提示给唬住了，所以说以后看见不认识的语言框架还是多花点去看看，指不准就有思路了呢（笑）</p>
-<hr>
-<h1 id="Node-Magical-Login"><a href="#Node-Magical-Login" class="headerlink" title="Node Magical Login"></a>Node Magical Login</h1><h2 id="主界面"><a href="#主界面" class="headerlink" title="主界面"></a>主界面</h2><p><img src="/blog/2023/03/01/%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%912022/1.png" alt="1"></p>
-<p>一个nodejs登录界面</p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>南森新生赛，确实是新生级别的赛事，题目难度不会太高，甚至有好几题都是网上搜到的buu有的题目（笑），但是web题个人觉得还是有一定学习空间的（虽然谁会把文件上传题放公共靶机就是了），这里先对个人感兴趣的web题进行复现，其他方向先咕了（</p>
             
         </div>
     </div>
@@ -696,7 +710,7 @@
         </span>
         
     </div>
-    <a href="/blog/2023/03/01/%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%912022/" class="go-post">阅读全文</a>
+    <a href="/blog/2023/03/02/Forestwolf/" class="go-post">阅读全文</a>
 </div>
 
 
