@@ -3,7 +3,7 @@
 <html lang="zh-CN">
     <head>
         <meta charset="UTF-8" />
-        <title>tags | 雲流のLowest World</title>
+        <title>记一次对eval函数和php短标签的探索 | 雲流のLowest World</title>
         <meta name="author" content="CloudFlowing" />
         <meta name="description" content="" />
         <meta name="keywords" content="" />
@@ -20,6 +20,10 @@
 
 
 <script src="/blog/js/lib/preview.js"></script>
+
+
+
+
 
 
 
@@ -53,7 +57,7 @@
 
         <div id="toc" class="toc-article" style="position: absolute; top: 40px; z-index: 2;">
     <div class="toc-title"></div>
-    
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#eval%E5%87%BD%E6%95%B0%E4%B8%8Ephp%E7%9F%AD%E6%A0%87%E7%AD%BE%E4%B8%8E%E5%8F%8D%E5%BC%95%E5%8F%B7%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C"><span class="toc-text">eval函数与php短标签与反引号命令执行</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B5%B7%E5%9B%A0"><span class="toc-text">起因</span></a></li></ol></li></ol>
 </div>
         
         <div id="layout">
@@ -160,44 +164,55 @@
     </div>
 </nav>
 
-                <div id="archives">
-    
-    <div class="categories-tags">
-        
-        
-        <span>
-            <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="background: #03a9f4">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                CTF线上赛
-            </a>
+                <div class="article">
+    <div>
+        <h1>记一次对eval函数和php短标签的探索</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/28
         </span>
         
-        
-        
-        <span>
-            <a href="/blog/tags/PHP/" style="background: #ffa2c4">
+        <span class="category">
+            <a href="/blog/categories/PHP/">
                 <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
                 PHP
             </a>
         </span>
         
         
-        
-        <span>
-            <a href="/blog/tags/Web/" style="background: #ffa2c4">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                Web
-            </a>
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/Web/" style="color: #ffa2c4">Web</a>
+            </span>
+            
         </span>
         
-        
     </div>
+    
+    <div class="content" v-pre>
+        <h1 id="eval函数与php短标签与反引号命令执行"><a href="#eval函数与php短标签与反引号命令执行" class="headerlink" title="eval函数与php短标签与反引号命令执行"></a>eval函数与php短标签与反引号命令执行</h1><h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><pre><code class="php">&lt;?php
+eval(&#39;?&gt;&lt;?=`ls`;?&gt;&#39;);
+?&gt;
+</code></pre>
+
+    </div>
+    
+    
+    
+    
+    
+    
     
 </div>
 
@@ -230,6 +245,12 @@
             
         </div>
         <script src="/blog/js/main.js"></script>
+        
+        
+
+
+
+
          
     <script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/blog/live2dw/assets/z16.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>

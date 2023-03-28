@@ -55,9 +55,9 @@
         <script type="text/javascript"
         color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
 
-        <div id="toc" class="toc-article">
+        <div id="toc" class="toc-article" style="position: absolute; top: 40px; z-index: 2;">
     <div class="toc-title"></div>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#PHP%E7%89%B9%E6%80%A7"><span class="toc-text">PHP特性</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#preg-match-%E5%87%BD%E6%95%B0"><span class="toc-text">preg_match()函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#intval-%E5%87%BD%E6%95%B0"><span class="toc-text">intval()函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#strpos%E5%87%BD%E6%95%B0"><span class="toc-text">strpos函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#in-array-%E5%87%BD%E6%95%B0"><span class="toc-text">in_array()函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ereg-%E5%87%BD%E6%95%B0"><span class="toc-text">ereg()函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#is-file-%E5%87%BD%E6%95%B0"><span class="toc-text">is_file()函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#is-numeric-%E5%87%BD%E6%95%B0"><span class="toc-text">is_numeric()函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#trim-%E5%87%BD%E6%95%B0"><span class="toc-text">trim()函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8D%A2%E8%A1%8C%E8%A7%A3%E6%9E%90%E6%BC%8F%E6%B4%9E"><span class="toc-text">换行解析漏洞</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%AF%E5%BE%84%E7%BB%95%E8%BF%87"><span class="toc-text">路径绕过</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6%E4%BC%98%E5%85%88%E7%BA%A7"><span class="toc-text">运算符优先级</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E7%BD%AE%E7%B1%BB"><span class="toc-text">内置类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Exception-%E5%87%BD%E6%95%B0"><span class="toc-text">Exception()函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8D%E5%B0%84%E7%B1%BBReflectionClass"><span class="toc-text">反射类ReflectionClass</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E8%BF%AD%E4%BB%A3%E5%99%A8FilesystemIterator"><span class="toc-text">文件系统迭代器FilesystemIterator</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E7%A0%81%E7%BB%95%E8%BF%87"><span class="toc-text">编码绕过</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E8%A6%86%E7%9B%96"><span class="toc-text">变量覆盖</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">$$</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#extract-%E5%87%BD%E6%95%B0"><span class="toc-text">extract()函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#parse-str-%E5%87%BD%E6%95%B0"><span class="toc-text">parse_str()函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9D%9E%E6%B3%95%E4%BC%A0%E5%8F%82"><span class="toc-text">非法传参</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#md5%E7%AD%89%E6%95%88%E5%80%BC%E7%BB%95%E8%BF%87"><span class="toc-text">md5等效值绕过</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SHA1"><span class="toc-text">SHA1</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#PHP%E7%89%B9%E6%80%A7"><span class="toc-text">PHP特性</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#preg-match-%E5%87%BD%E6%95%B0"><span class="toc-text">preg_match()函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#intval-%E5%87%BD%E6%95%B0"><span class="toc-text">intval()函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#strpos%E5%87%BD%E6%95%B0"><span class="toc-text">strpos函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#in-array-%E5%87%BD%E6%95%B0"><span class="toc-text">in_array()函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ereg-%E5%87%BD%E6%95%B0"><span class="toc-text">ereg()函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#is-file-%E5%87%BD%E6%95%B0"><span class="toc-text">is_file()函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#is-numeric-%E5%87%BD%E6%95%B0"><span class="toc-text">is_numeric()函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#trim-%E5%87%BD%E6%95%B0"><span class="toc-text">trim()函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8D%A2%E8%A1%8C%E8%A7%A3%E6%9E%90%E6%BC%8F%E6%B4%9E"><span class="toc-text">换行解析漏洞</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%AF%E5%BE%84%E7%BB%95%E8%BF%87"><span class="toc-text">路径绕过</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6%E4%BC%98%E5%85%88%E7%BA%A7"><span class="toc-text">运算符优先级</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E7%BD%AE%E7%B1%BB"><span class="toc-text">内置类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Exception-%E5%87%BD%E6%95%B0"><span class="toc-text">Exception()函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8D%E5%B0%84%E7%B1%BBReflectionClass"><span class="toc-text">反射类ReflectionClass</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E8%BF%AD%E4%BB%A3%E5%99%A8FilesystemIterator"><span class="toc-text">文件系统迭代器FilesystemIterator</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E7%A0%81%E7%BB%95%E8%BF%87"><span class="toc-text">编码绕过</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E8%A6%86%E7%9B%96"><span class="toc-text">变量覆盖</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">$$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#extract-%E5%87%BD%E6%95%B0"><span class="toc-text">extract()函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#parse-str-%E5%87%BD%E6%95%B0"><span class="toc-text">parse_str()函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%9E%E6%B3%95%E4%BC%A0%E5%8F%82"><span class="toc-text">非法传参</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#md5%E7%AD%89%E6%95%88%E5%80%BC%E7%BB%95%E8%BF%87"><span class="toc-text">md5等效值绕过</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SHA1"><span class="toc-text">SHA1</span></a></li></ol></li></ol>
 </div>
         
         <div id="layout">
@@ -315,7 +315,7 @@ echo intval(&#39;1e10&#39;);                  // 1
 </blockquote>
 <ul>
 <li>可运用伪协议</li>
-<li>目录溢出：该函数最多能处理330位字符串，超出后会认为不是一个文件</li>
+<li>目录溢出：该函数最多能处理330位字符串（大概？），超出后会认为不是一个文件</li>
 </ul>
 <pre><code>/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/p
 roc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/pro
@@ -323,7 +323,7 @@ c/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/
 self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/se
 lf/root/proc/self/root/var/www/html/flag.php
 </code></pre>
-<h3 id="is-numeric-函数"><a href="#is-numeric-函数" class="headerlink" title="is_numeric()函数"></a>is_numeric()函数</h3><blockquote>
+<h2 id="is-numeric-函数"><a href="#is-numeric-函数" class="headerlink" title="is_numeric()函数"></a>is_numeric()函数</h2><blockquote>
 <p>检测变量是否为数字或数字字符串</p>
 </blockquote>
 <blockquote>
@@ -336,7 +336,7 @@ lf/root/proc/self/root/var/www/html/flag.php
 </code></pre>
 </li>
 </ul>
-<h3 id="trim-函数"><a href="#trim-函数" class="headerlink" title="trim()函数"></a>trim()函数</h3><blockquote>
+<h2 id="trim-函数"><a href="#trim-函数" class="headerlink" title="trim()函数"></a>trim()函数</h2><blockquote>
 <p>移除字符串两侧的空白字符或其他预定义字符</p>
 </blockquote>
 <blockquote>
@@ -486,7 +486,7 @@ extract()函数
 parse_str()函数
 import_request_variables()函数
 </code></pre>
-<h4 id=""><a href="#" class="headerlink" title="$$"></a>$$</h4><blockquote>
+<h3 id=""><a href="#" class="headerlink" title="$$"></a>$$</h3><blockquote>
 <p>将之前定义的变量的值重新定义新的变量</p>
 </blockquote>
 <pre><code class="php">$a=b
@@ -505,7 +505,7 @@ $$hell=&quot;def&quot;;等同于$abc=&quot;def&quot;;
 <p>可在过滤相关命令执行函数情况下使用</p>
 </li>
 </ul>
-<h4 id="extract-函数"><a href="#extract-函数" class="headerlink" title="extract()函数"></a>extract()函数</h4><blockquote>
+<h3 id="extract-函数"><a href="#extract-函数" class="headerlink" title="extract()函数"></a>extract()函数</h3><blockquote>
 <p>将数组中的变量导入到当前的符号表</p>
 </blockquote>
 <pre><code class="php">extract(array,extract_rules,prefix) 
@@ -514,7 +514,7 @@ $$hell=&quot;def&quot;;等同于$abc=&quot;def&quot;;
 //extract_rules 可有可无，如果为空，则默认为EXTR_OVERWRITE
 //prefix可选。如果 extract_rules 参数的值是 EXTR_PREFIX_SAME、EXTR_PREFIX_ALL、 EXTR_PREFIX_INVALID 或 EXTR_PREFIX_IF_EXISTS，则 prefix 是必需的。该参数规定了前缀。前缀和数组键名之间会自动加上一个下划线。
 </code></pre>
-<h4 id="parse-str-函数"><a href="#parse-str-函数" class="headerlink" title="parse_str()函数"></a>parse_str()函数</h4><blockquote>
+<h3 id="parse-str-函数"><a href="#parse-str-函数" class="headerlink" title="parse_str()函数"></a>parse_str()函数</h3><blockquote>
 <p>把传入的字符串放入变量数组中去</p>
 </blockquote>
 <pre><code class="php">parse_str(string,array)
@@ -524,7 +524,7 @@ $$hell=&quot;def&quot;;等同于$abc=&quot;def&quot;;
 //          如果未设置 array 参数，由该函数设置的变量将覆盖已存在的同名变量。
 </code></pre>
 <hr>
-<h4 id="非法传参"><a href="#非法传参" class="headerlink" title="非法传参"></a>非法传参</h4><blockquote>
+<h3 id="非法传参"><a href="#非法传参" class="headerlink" title="非法传参"></a>非法传参</h3><blockquote>
 <p>当变量名中出现点和空格时，变量名中的点和空格被转换成下划线</p>
 </blockquote>
 <ul>
