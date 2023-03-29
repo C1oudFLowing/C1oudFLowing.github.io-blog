@@ -37,7 +37,7 @@
         <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
         <!-- 页面点击小红心与文字 -->
         <script type = "text/javascript" src = "/blog/js/love-click.js"></script>
-        <!-- 浏览器搞笑标题 -->
+        <!-- 浏览器标题 -->
         <script type="text/javascript" src="/blog/js/FunnyTitle.js"></script>
 
         
@@ -55,11 +55,18 @@
         <script type="text/javascript"
         color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
 
+        <!--文章目录-->
         <div id="toc" class="toc-article" style="position: absolute; top: 40px; z-index: 2;">
     <div class="toc-title"></div>
     <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0upload"><span class="toc-text">文件上传upload</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E9%99%90%E5%88%B6"><span class="toc-text">前端限制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8E%E7%AB%AF%E9%99%90%E5%88%B6"><span class="toc-text">后端限制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#user-ini%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%BB%95%E8%BF%87"><span class="toc-text">.user.ini配置文件绕过</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#htaccess-%E7%8E%AF%E5%A2%83%E4%B8%BAApache%E6%97%B6%E4%BD%BF%E7%94%A8"><span class="toc-text">.htaccess(环境为Apache时使用)</span></a></li></ol></li></ol></li></ol>
 </div>
         
+        <!--返回顶部-->
+        <div id="totop" style="position:fixed;bottom:50px;right:50px;font-size: 32px;cursor: pointer;z-index: 10;">
+            <a title="返回顶部">↑</a>
+            </div>
+        <script src="/blog/js/totop.js"></script>
+
         <div id="layout">
             <transition name="fade">
             <div id="loading" v-show="loading">
@@ -193,7 +200,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/Web/" style="color: #03a9f4">Web</a>
+                <a href="/blog/tags/Web/" style="color: #00bcd4">Web</a>
             </span>
             
         </span>

@@ -37,7 +37,7 @@
         <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
         <!-- 页面点击小红心与文字 -->
         <script type = "text/javascript" src = "/blog/js/love-click.js"></script>
-        <!-- 浏览器搞笑标题 -->
+        <!-- 浏览器标题 -->
         <script type="text/javascript" src="/blog/js/FunnyTitle.js"></script>
 
         
@@ -55,11 +55,18 @@
         <script type="text/javascript"
         color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
 
+        <!--文章目录-->
         <div id="toc" class="toc-article" style="position: absolute; top: 40px; z-index: 2;">
     <div class="toc-title"></div>
     <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SQL%E6%B3%A8%E5%85%A5"><span class="toc-text">SQL注入</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#SQL%E8%AF%AD%E6%B3%95"><span class="toc-text">SQL语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%87%E8%83%BD%E5%AF%86%E7%A0%81%E7%BB%95%E8%BF%87"><span class="toc-text">万能密码绕过</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E5%85%A5%E4%BD%8D%E7%BD%AE"><span class="toc-text">注入位置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E5%85%A5%E6%89%8B%E6%B3%95"><span class="toc-text">注入手法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%81%94%E5%90%88%E6%9F%A5%E8%AF%A2%E6%B3%A8%E5%85%A5"><span class="toc-text">联合查询注入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%83%E5%B0%94%E7%9B%B2%E6%B3%A8"><span class="toc-text">布尔盲注</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5"><span class="toc-text">报错注入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A0%86%E5%8F%A0%E6%B3%A8%E5%85%A5"><span class="toc-text">堆叠注入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%99%90%E5%88%B6%E7%BB%95%E8%BF%87"><span class="toc-text">限制绕过</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%8D%E6%95%B0%E9%95%BF%E5%BA%A6%E4%B8%8D%E8%B6%B3"><span class="toc-text">位数长度不足</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%87%E6%BB%A4%E6%9B%BF%E6%8D%A2"><span class="toc-text">过滤替换</span></a></li></ol></li></ol></li></ol>
 </div>
         
+        <!--返回顶部-->
+        <div id="totop" style="position:fixed;bottom:50px;right:50px;font-size: 32px;cursor: pointer;z-index: 10;">
+            <a title="返回顶部">↑</a>
+            </div>
+        <script src="/blog/js/totop.js"></script>
+
         <div id="layout">
             <transition name="fade">
             <div id="loading" v-show="loading">
@@ -193,7 +200,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/Web/" style="color: #03a9f4">Web</a>
+                <a href="/blog/tags/Web/" style="color: #00a596">Web</a>
             </span>
             
         </span>

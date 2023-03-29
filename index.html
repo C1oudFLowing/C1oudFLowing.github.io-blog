@@ -33,7 +33,7 @@
         <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
         <!-- 页面点击小红心与文字 -->
         <script type = "text/javascript" src = "/blog/js/love-click.js"></script>
-        <!-- 浏览器搞笑标题 -->
+        <!-- 浏览器标题 -->
         <script type="text/javascript" src="/blog/js/FunnyTitle.js"></script>
 
         
@@ -51,11 +51,18 @@
         <script type="text/javascript"
         color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
 
+        <!--文章目录-->
         <div id="toc" class="toc-article" style="position: absolute; top: 40px; z-index: 2;">
     <div class="toc-title"></div>
     
 </div>
         
+        <!--返回顶部-->
+        <div id="totop" style="position:fixed;bottom:50px;right:50px;font-size: 32px;cursor: pointer;z-index: 10;">
+            <a title="返回顶部">↑</a>
+            </div>
+        <script src="/blog/js/totop.js"></script>
+
         <div id="layout">
             <transition name="fade">
             <div id="loading" v-show="loading">
@@ -205,7 +212,7 @@
 <p>具体可以阅读此篇文章</p>
 <p>之后或许会把更早之前比赛的wp也搬上来的把。。。大概（</p>
 <p>…未完待续</p>
-<h1 id="2023-3-28"><a href="#2023-3-28" class="headerlink" title="2023.3.28"></a>2023.3.28</h1><p>实现文章目录</p>
+<h1 id="2023-3-29"><a href="#2023-3-29" class="headerlink" title="2023.3.29"></a>2023.3.29</h1><p>添加返回顶部按钮</p>
             
         </div>
     </div>
@@ -244,10 +251,17 @@
         <div class="content" v-pre>
             
             <h1 id="eval函数与php短标签与反引号命令执行"><a href="#eval函数与php短标签与反引号命令执行" class="headerlink" title="eval函数与php短标签与反引号命令执行"></a>eval函数与php短标签与反引号命令执行</h1><h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><pre><code class="php">&lt;?php
-eval(&#39;?&gt;&lt;?=`ls`;?&gt;&#39;);
+eval(&#39;?&gt;&lt;?=`dir`;?&gt;&#39;);
 ?&gt;
+    注：因为博主在Windows环境进行测试，因此这里使用dos指令
 </code></pre>
-
+<p>博主与舍友试图探究这段语句的执行原理</p>
+<ul>
+<li>eval()函数的插入机制</li>
+<li>反引号的作用情况</li>
+<li>短标签<code>&lt;?=</code>的运用</li>
+<li>分号与结束符<code>?&gt;</code>的不同</li>
+</ul>
             
         </div>
     </div>
@@ -260,7 +274,7 @@ eval(&#39;?&gt;&lt;?=`ls`;?&gt;&#39;);
         
         <span class="tag">
             
-            <a href="/blog/tags/Web/" style="color: #00bcd4">
+            <a href="/blog/tags/Web/" style="color: #00a596">
                 Web
             </a>
         </span>
@@ -311,7 +325,7 @@ eval(&#39;?&gt;&lt;?=`ls`;?&gt;&#39;);
         
         <span class="tag">
             
-            <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #00bcd4">
+            <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #00a596">
                 CTF线上赛
             </a>
         </span>
@@ -362,7 +376,7 @@ eval(&#39;?&gt;&lt;?=`ls`;?&gt;&#39;);
         
         <span class="tag">
             
-            <a href="/blog/tags/PHP/" style="color: #00a596">
+            <a href="/blog/tags/PHP/" style="color: #ffa2c4">
                 PHP
             </a>
         </span>
@@ -413,7 +427,7 @@ eval(&#39;?&gt;&lt;?=`ls`;?&gt;&#39;);
         
         <span class="tag">
             
-            <a href="/blog/tags/Web/" style="color: #ff7d73">
+            <a href="/blog/tags/Web/" style="color: #ffa2c4">
                 Web
             </a>
         </span>
@@ -566,7 +580,7 @@ $sql = &quot;select username,password from table_name where username !=&#39;flag
         
         <span class="tag">
             
-            <a href="/blog/tags/Web/" style="color: #ffa2c4">
+            <a href="/blog/tags/Web/" style="color: #00bcd4">
                 Web
             </a>
         </span>
@@ -716,7 +730,7 @@ $sql = &quot;select username,password from table_name where username !=&#39;flag
         
         <span class="tag">
             
-            <a href="/blog/tags/Web/" style="color: #ffa2c4">
+            <a href="/blog/tags/Web/" style="color: #00a596">
                 Web
             </a>
         </span>
