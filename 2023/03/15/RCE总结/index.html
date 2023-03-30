@@ -17,6 +17,13 @@
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
 
+<script src="https://cdn.staticfile.org/highlight.js/11.7.0/highlight.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.7.0/styles/Github.min.css"
+/>
+<script src="/blog/js/lib/highlight.js"></script>
+
 
 
 <script src="/blog/js/lib/preview.js"></script>
@@ -39,17 +46,21 @@
         <script type = "text/javascript" src = "/blog/js/love-click.js"></script>
         <!-- 浏览器标题 -->
         <script type="text/javascript" src="/blog/js/FunnyTitle.js"></script>
-
         
+        <script type="text/javascript" src="/blog/libs/codeBlock/codeBlockFuction.js"></script>
+        <!-- 代码语言 -->
+        <script type="text/javascript" src="/blog/libs/codeBlock/codeLang.js"></script>
+        <!-- 代码块复制 -->
+        <script type="text/javascript" src="/blog/libs/codeBlock/codeCopy.js"></script>
+        <script type="text/javascript" src="/blog/libs/codeBlock/clipboard.min.js"></script>
+        <!-- 代码块收缩 -->
+        <script type="text/javascript" src="/blog/libs/codeBlock/codeShrink.js"></script> 
+        <!-- 代码块折行 -->
+        <style type="text/css">code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }</style>
+
     <meta name="generator" content="Hexo 6.3.0"></head>
     <body>
         <!--flag{never_g0nna g1ve_you up}-->
-
-        <!-- 代码块复制功能(未启用) -->
-        <script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
-        <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-        <!-- <script type="text/javascript" src="/js/clipboard.js"></script>  -->
-        <script type="text/javascript" src="/js/clipboard_use.js"></script>
 
         <!--动态背景-->
         <script type="text/javascript"
@@ -58,7 +69,7 @@
         <!--文章目录-->
         <div id="toc" class="toc-article" style="position: absolute; top: 40px; z-index: 2;">
     <div class="toc-title"></div>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#RCE-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C"><span class="toc-text">RCE(命令执行)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%B1%E9%99%A9%E5%87%BD%E6%95%B0"><span class="toc-text">危险函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux%E6%8C%87%E4%BB%A4"><span class="toc-text">Linux指令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86"><span class="toc-text">文件管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Glob%E9%80%9A%E9%85%8D%E7%AC%A6"><span class="toc-text">Glob通配符</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%91%BD%E4%BB%A4"><span class="toc-text">系统命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%95%E8%BF%87%E8%A2%AB%E8%BF%87%E6%BB%A4%E7%9A%84%E5%AD%97%E7%AC%A6"><span class="toc-text">绕过被过滤的字符</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BC%96%E7%A0%81%E7%BB%95%E8%BF%87"><span class="toc-text">编码绕过</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#base64"><span class="toc-text">base64</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hex"><span class="toc-text">hex</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#oct-x2F-%E5%AD%97%E8%8A%82"><span class="toc-text">oct&#x2F;字节</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%9C%A8%E9%A9%AC"><span class="toc-text">一句话木马</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E5%BC%95%E5%8F%B7%E5%8F%8C%E5%BC%95%E5%8F%B7%E7%BB%95%E8%BF%87"><span class="toc-text">单引号双引号绕过</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8D%E6%96%9C%E6%9D%A0%E7%BB%95%E8%BF%87"><span class="toc-text">反斜杠绕过</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E5%AD%97%E6%AF%8Drce"><span class="toc-text">无字母rce</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%96%E5%8F%8D"><span class="toc-text">取反</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%82%E6%88%96"><span class="toc-text">异或</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%A2%9E"><span class="toc-text">自增</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%B4%E6%97%B6%E6%96%87%E4%BB%B6"><span class="toc-text">临时文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E5%9B%9E%E6%98%BErce"><span class="toc-text">无回显rce</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E5%8F%82rce"><span class="toc-text">无参rce</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AA%81%E7%A0%B4%E7%A6%81%E7%94%A8%E5%87%BD%E6%95%B0"><span class="toc-text">突破禁用函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%89%93%E5%8D%B0"><span class="toc-text">输出打印:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E7%9B%AE%E5%BD%95%EF%BC%9A"><span class="toc-text">查看目录：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6"><span class="toc-text">读取文件:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ob-%E4%BB%A3%E7%A0%81%E5%BA%94%E5%AF%B9"><span class="toc-text">ob_代码应对</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E6%9E%84%E9%80%A0%E5%91%BD%E4%BB%A4"><span class="toc-text">系统环境变量构造命令</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#RCE-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C"><span class="toc-text">RCE(命令执行)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%B1%E9%99%A9%E5%87%BD%E6%95%B0"><span class="toc-text">危险函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux%E6%8C%87%E4%BB%A4"><span class="toc-text">Linux指令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86"><span class="toc-text">文件管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Glob%E9%80%9A%E9%85%8D%E7%AC%A6"><span class="toc-text">Glob通配符</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%91%BD%E4%BB%A4"><span class="toc-text">系统命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%95%E8%BF%87%E8%A2%AB%E8%BF%87%E6%BB%A4%E7%9A%84%E5%AD%97%E7%AC%A6"><span class="toc-text">绕过被过滤的字符</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BC%96%E7%A0%81%E7%BB%95%E8%BF%87"><span class="toc-text">编码绕过</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#base64"><span class="toc-text">base64</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hex"><span class="toc-text">hex</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#oct-x2F-%E5%AD%97%E8%8A%82"><span class="toc-text">oct&#x2F;字节</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%9C%A8%E9%A9%AC"><span class="toc-text">一句话木马</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E5%BC%95%E5%8F%B7%E5%8F%8C%E5%BC%95%E5%8F%B7%E7%BB%95%E8%BF%87"><span class="toc-text">单引号双引号绕过</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8D%E6%96%9C%E6%9D%A0%E7%BB%95%E8%BF%87"><span class="toc-text">反斜杠绕过</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E5%AD%97%E6%AF%8Drce"><span class="toc-text">无字母rce</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%96%E5%8F%8D"><span class="toc-text">取反</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%82%E6%88%96"><span class="toc-text">异或</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%A2%9E"><span class="toc-text">自增</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%B4%E6%97%B6%E6%96%87%E4%BB%B6"><span class="toc-text">临时文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E5%9B%9E%E6%98%BErce"><span class="toc-text">无回显rce</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E5%8F%82rce"><span class="toc-text">无参rce</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AA%81%E7%A0%B4%E7%A6%81%E7%94%A8%E5%87%BD%E6%95%B0"><span class="toc-text">突破禁用函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%89%93%E5%8D%B0"><span class="toc-text">输出打印:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E7%9B%AE%E5%BD%95%EF%BC%9A"><span class="toc-text">查看目录：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6"><span class="toc-text">读取文件:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ob-%E4%BB%A3%E7%A0%81%E5%BA%94%E5%AF%B9"><span class="toc-text">ob_代码应对</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E6%9E%84%E9%80%A0%E5%91%BD%E4%BB%A4"><span class="toc-text">系统环境变量构造命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F-%E4%BB%A5%E9%9D%B6%E6%9C%BA%E4%B8%BA%E4%BE%8B"><span class="toc-text">环境变量(以靶机为例)</span></a></li></ol></li></ol></li></ol>
 </div>
         
         <!--返回顶部-->
@@ -200,7 +211,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/Web/" style="color: #00bcd4">Web</a>
+                <a href="/blog/tags/Web/" style="color: #ff7d73">Web</a>
             </span>
             
         </span>
@@ -208,27 +219,7 @@
     </div>
     
     <div class="content" v-pre>
-        <blockquote>
-<ol>
-<li><p><a href="#1"><strong>危险函数</strong></a></p>
-</li>
-<li><p><strong><a href="#2">Linux指令</a></strong></p>
-</li>
-<li><p><strong><a href="#3">系统命令</a></strong></p>
-</li>
-<li><p><strong><a href="#4">绕过被过滤的字符</a></strong></p>
-</li>
-<li><p><strong><a href="#5">无字母rce</a></strong></p>
-</li>
-<li><p><strong><a href="#6">无回显rce</a></strong></p>
-</li>
-<li><p><strong><a href="#7">无参rce</a></strong></p>
-</li>
-<li><p><strong><a href="#8">突破禁用函数</a></strong></p>
-</li>
-</ol>
-</blockquote>
-<hr>
+        <hr>
 <h1 id="RCE-命令执行"><a href="#RCE-命令执行" class="headerlink" title="RCE(命令执行)"></a>RCE(命令执行)</h1><span id="more"></span>
 
 <blockquote>
@@ -1056,16 +1047,17 @@ exit(0);
 <hr>
 <h2 id="系统环境变量构造命令"><a href="#系统环境变量构造命令" class="headerlink" title="系统环境变量构造命令"></a>系统环境变量构造命令</h2><p><img src="/blog/2023/03/15/RCE%E6%80%BB%E7%BB%93/image-20230327203103652.png" alt="image-20230327203103652"></p>
 <blockquote>
-<p>利用环境变量取字母进行拼接构造命令</p>
+<p>利用环境变量取字母进行拼接构造命令(可用通配符)</p>
+<p>一般构造&#x2F;bin&#x2F;(相关命令) flag.php</p>
 </blockquote>
-<p><strong>bin文件名利用</strong>：</p>
-<p>path为<code>/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin</code>时</p>
-<p>pwd为<code>/var/www/html</code>时</p>
-<pre><code class="powershell">$&#123;PATH:~0&#125;或$&#123;PATH:~A&#125;
-获取字符n（0和字母都代表从最后面数）
-$&#123;PWD:~0&#125;
-获取字符l
-</code></pre>
+<h3 id="环境变量-以靶机为例"><a href="#环境变量-以靶机为例" class="headerlink" title="环境变量(以靶机为例)"></a>环境变量(以靶机为例)</h3><p><strong>PATH</strong>:&#x2F;usr&#x2F;local&#x2F;sbin:&#x2F;usr&#x2F;local&#x2F;bin:&#x2F;usr&#x2F;sbin:&#x2F;usr&#x2F;bin:&#x2F;sbin:&#x2F;bin</p>
+<p><strong>PWD</strong>:&#x2F;var&#x2F;www&#x2F;html</p>
+<p><strong>USER</strong>:www-data</p>
+<p><strong>HOME</strong>:当前用户的主目录</p>
+<p><strong>SHLVL</strong>:记录多个 Bash 进程实例嵌套深度的累加器，默认恒为<strong>1</strong></p>
+<p><strong>PHP_VERSION</strong>:以<strong>7.3.22</strong>为例</p>
+<p>&#96;&#96;&#96;powershell<br>${PATH:<del>0}或${PATH:</del>A}<br>获取字符n（0和字母都代表从最后面数）<br>${PWD:~0}<br>获取字符l<br>${PWD:0}<br>&#x2F;var&#x2F;www&#x2F;html<br>${PWD:1}<br>var&#x2F;www&#x2F;html<br>${PWD:2:3}(第三位是长度)<br>ar&#x2F;</p>
+<p>$或$:$}或${PWD:${Z}:$</p>
 
     </div>
     

@@ -17,6 +17,13 @@
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
 
+<script src="https://cdn.staticfile.org/highlight.js/11.7.0/highlight.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.7.0/styles/Github.min.css"
+/>
+<script src="/blog/js/lib/highlight.js"></script>
+
 
 
 <script src="/blog/js/lib/preview.js"></script>
@@ -35,17 +42,21 @@
         <script type = "text/javascript" src = "/blog/js/love-click.js"></script>
         <!-- 浏览器标题 -->
         <script type="text/javascript" src="/blog/js/FunnyTitle.js"></script>
-
         
+        <script type="text/javascript" src="/blog/libs/codeBlock/codeBlockFuction.js"></script>
+        <!-- 代码语言 -->
+        <script type="text/javascript" src="/blog/libs/codeBlock/codeLang.js"></script>
+        <!-- 代码块复制 -->
+        <script type="text/javascript" src="/blog/libs/codeBlock/codeCopy.js"></script>
+        <script type="text/javascript" src="/blog/libs/codeBlock/clipboard.min.js"></script>
+        <!-- 代码块收缩 -->
+        <script type="text/javascript" src="/blog/libs/codeBlock/codeShrink.js"></script> 
+        <!-- 代码块折行 -->
+        <style type="text/css">code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }</style>
+
     <meta name="generator" content="Hexo 6.3.0"></head>
     <body>
         <!--flag{never_g0nna g1ve_you up}-->
-
-        <!-- 代码块复制功能(未启用) -->
-        <script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
-        <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-        <!-- <script type="text/javascript" src="/js/clipboard.js"></script>  -->
-        <script type="text/javascript" src="/js/clipboard_use.js"></script>
 
         <!--动态背景-->
         <script type="text/javascript"
@@ -325,7 +336,7 @@ eval(&#39;?&gt;&lt;?=`dir`;?&gt;&#39;);
         
         <span class="tag">
             
-            <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #00a596">
+            <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #ff7d73">
                 CTF线上赛
             </a>
         </span>
@@ -376,7 +387,7 @@ eval(&#39;?&gt;&lt;?=`dir`;?&gt;&#39;);
         
         <span class="tag">
             
-            <a href="/blog/tags/PHP/" style="color: #ffa2c4">
+            <a href="/blog/tags/PHP/" style="color: #00a596">
                 PHP
             </a>
         </span>
@@ -427,7 +438,7 @@ eval(&#39;?&gt;&lt;?=`dir`;?&gt;&#39;);
         
         <span class="tag">
             
-            <a href="/blog/tags/Web/" style="color: #ffa2c4">
+            <a href="/blog/tags/Web/" style="color: #00bcd4">
                 Web
             </a>
         </span>
@@ -482,7 +493,7 @@ $sql = &quot;select username,password from table_name where username !=&#39;flag
         
         <span class="tag">
             
-            <a href="/blog/tags/Web/" style="color: #00a596">
+            <a href="/blog/tags/Web/" style="color: #ffa2c4">
                 Web
             </a>
         </span>
@@ -531,7 +542,7 @@ $sql = &quot;select username,password from table_name where username !=&#39;flag
         
         <span class="tag">
             
-            <a href="/blog/tags/Web/" style="color: #00bcd4">
+            <a href="/blog/tags/Web/" style="color: #ff7d73">
                 Web
             </a>
         </span>
@@ -580,7 +591,7 @@ $sql = &quot;select username,password from table_name where username !=&#39;flag
         
         <span class="tag">
             
-            <a href="/blog/tags/Web/" style="color: #00bcd4">
+            <a href="/blog/tags/Web/" style="color: #00a596">
                 Web
             </a>
         </span>
@@ -616,31 +627,7 @@ $sql = &quot;select username,password from table_name where username !=&#39;flag
     <div class="description">
         <div class="content" v-pre>
             
-            <h1 id="文件包含"><a href="#文件包含" class="headerlink" title="文件包含"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45794666/article/details/111713495">文件包含</a></h1><blockquote>
-<p><a href="#1">php伪协议</a></p>
-</blockquote>
-<blockquote>
-<p><a href="#2">Apache日志文件</a></p>
-</blockquote>
-<blockquote>
-<p><a href="#3">nginx日志文件</a></p>
-</blockquote>
-<blockquote>
-<p><a href="#4">LFI</a></p>
-</blockquote>
-<blockquote>
-<p><a href="#5">RFI</a></p>
-</blockquote>
-<blockquote>
-<p><a href="#6">session文件包含</a></p>
-</blockquote>
-<blockquote>
-<p><a href="#7">绕过死亡代码</a></p>
-</blockquote>
-<blockquote>
-<p><a href="#8">防御</a></p>
-</blockquote>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol>
+            <h1 id="文件包含"><a href="#文件包含" class="headerlink" title="文件包含"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45794666/article/details/111713495">文件包含</a></h1><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol>
 <li>看服务器类型</li>
 <li>测试是否能够直接读取</li>
 <li>根据过滤找出可用的伪协议</li>
@@ -660,7 +647,7 @@ $sql = &quot;select username,password from table_name where username !=&#39;flag
         
         <span class="tag">
             
-            <a href="/blog/tags/Web/" style="color: #00bcd4">
+            <a href="/blog/tags/Web/" style="color: #03a9f4">
                 Web
             </a>
         </span>
@@ -696,27 +683,7 @@ $sql = &quot;select username,password from table_name where username !=&#39;flag
     <div class="description">
         <div class="content" v-pre>
             
-            <blockquote>
-<ol>
-<li><p><a href="#1"><strong>危险函数</strong></a></p>
-</li>
-<li><p><strong><a href="#2">Linux指令</a></strong></p>
-</li>
-<li><p><strong><a href="#3">系统命令</a></strong></p>
-</li>
-<li><p><strong><a href="#4">绕过被过滤的字符</a></strong></p>
-</li>
-<li><p><strong><a href="#5">无字母rce</a></strong></p>
-</li>
-<li><p><strong><a href="#6">无回显rce</a></strong></p>
-</li>
-<li><p><strong><a href="#7">无参rce</a></strong></p>
-</li>
-<li><p><strong><a href="#8">突破禁用函数</a></strong></p>
-</li>
-</ol>
-</blockquote>
-<hr>
+            <hr>
 <h1 id="RCE-命令执行"><a href="#RCE-命令执行" class="headerlink" title="RCE(命令执行)"></a>RCE(命令执行)</h1>
             
         </div>
