@@ -211,7 +211,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/Web/" style="color: #00bcd4">Web</a>
+                <a href="/blog/tags/Web/" style="color: #ff7d73">Web</a>
             </span>
             
         </span>
@@ -1056,8 +1056,37 @@ exit(0);
 <p><strong>HOME</strong>:当前用户的主目录</p>
 <p><strong>SHLVL</strong>:记录多个 Bash 进程实例嵌套深度的累加器，默认恒为<strong>1</strong></p>
 <p><strong>PHP_VERSION</strong>:以<strong>7.3.22</strong>为例</p>
-<p>&#96;&#96;&#96;bash<br>${PATH:<del>0}或${PATH:</del>A}<br>获取字符n（0和字母都代表从最后面数）<br>${PWD:~0}<br>获取字符l<br>${PWD:0}<br>&#x2F;var&#x2F;www&#x2F;html<br>${PWD:1}<br>var&#x2F;www&#x2F;html<br>${PWD:2:3}(第三位是长度)<br>ar&#x2F;</p>
-<p>$或$:$}或${PWD:${Z}:$</p>
+<blockquote>
+<p>此处防止渲染失败使用了%，实际使用时需删去%</p>
+</blockquote>
+<pre><code class="bash">$&#123;PATH:~0&#125;或$&#123;PATH:~A&#125;
+获取字符n（0和字母都代表从最后面数）
+$&#123;PWD:~0&#125;
+获取字符l
+$&#123;PWD:0&#125;
+/var/www/html
+$&#123;PWD:1&#125;
+var/www/html
+$&#123;PWD:2:4&#125;(第三位是长度)
+ar/w
+
+$&#123;%#%&#125;
+获取数字0
+$&#123;%#SHLVL%&#125;或$&#123;%##%&#125;或$&#123;%#?%&#125;
+获取数字1
+$&#123;%PHP_VERSION:~A%&#125;
+从7.3.22中获取数字2
+$&#123;%#IFS%&#125;=3
+linux下是3，mac里是4
+$&#123;%#RANDOM%&#125;
+获取4或5
+$&#123;%HOME:$&#123;%#%&#125;:$&#123;%##%&#125;%&#125;或$&#123;%PWD:$&#123;%Z%&#125;:$&#123;%#SHLVL%&#125;%&#125;
+获取/
+$&#123;%USER:~A%&#125;
+获取a
+$&#123;%HOME:$&#123;%#HOSTNAME%&#125;:$&#123;%#SHLVL%&#125;%&#125;
+获取t
+</code></pre>
 
     </div>
     
