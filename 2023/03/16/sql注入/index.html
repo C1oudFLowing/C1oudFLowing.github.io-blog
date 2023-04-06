@@ -211,7 +211,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/Web/" style="color: #03a9f4">Web</a>
+                <a href="/blog/tags/Web/" style="color: #ffa2c4">Web</a>
             </span>
             
         </span>
@@ -261,6 +261,7 @@ SELECT FROM table_name;
 </ul>
 <h2 id="万能密码绕过"><a href="#万能密码绕过" class="headerlink" title="万能密码绕过"></a>万能密码绕过</h2><p>原理：使相关语句永真</p>
 <pre><code class="sql">&#39;1&#39;or 1 = 1#
+1&#39;or&#39;1&#39;=&#39;1
 
 此时
 select username,password from user where username !=&#39;flag&#39; and id = &#39;1&#39; or 1=1;
@@ -392,6 +393,7 @@ F or T = T
 <hr>
 <h3 id="过滤替换"><a href="#过滤替换" class="headerlink" title="过滤替换"></a>过滤替换</h3><p>空格：&#x2F;**&#x2F;</p>
 <p>等号：like</p>
+<p>单独select: 大写</p>
 <p>select…where…：</p>
 <ul>
 <li><p>show + datebases &#x2F; tables &#x2F; columns from table </p>
