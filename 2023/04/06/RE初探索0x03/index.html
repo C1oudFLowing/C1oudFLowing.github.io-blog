@@ -3,7 +3,7 @@
 <html lang="zh-CN">
     <head>
         <meta charset="UTF-8" />
-        <title>记一次对eval函数和php短标签的探索 | 雲流のLowest World</title>
+        <title>RE初探索0x03 | 雲流のLowest World</title>
         <meta name="author" content="CloudFlowing" />
         <meta name="description" content="" />
         <meta name="keywords" content="" />
@@ -69,7 +69,7 @@
         <!--文章目录-->
         <div id="toc" class="toc-article" style="position: absolute; top: 40px; z-index: 2;">
     <div class="toc-title"></div>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#eval%E5%87%BD%E6%95%B0%E4%B8%8Ephp%E7%9F%AD%E6%A0%87%E7%AD%BE%E4%B8%8E%E5%8F%8D%E5%BC%95%E5%8F%B7%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C"><span class="toc-text">eval函数与php短标签与反引号命令执行</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B5%B7%E5%9B%A0"><span class="toc-text">起因</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%8F%E8%BF%87"><span class="toc-text">经过</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-text">知识点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-text">题目</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF"><span class="toc-text">思路</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C"><span class="toc-text">操作</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol>
 </div>
         
         <!--返回顶部-->
@@ -184,22 +184,22 @@
 
                 <div class="article">
     <div>
-        <h1>记一次对eval函数和php短标签的探索</h1>
+        <h1>RE初探索0x03</h1>
     </div>
     <div class="info">
         <span class="date">
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2023/3/28
+            2023/4/6
         </span>
         
         <span class="category">
-            <a href="/blog/categories/PHP/">
+            <a href="/blog/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
-                PHP
+                学习笔记
             </a>
         </span>
         
@@ -211,7 +211,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/Web/" style="color: #00bcd4">Web</a>
+                <a href="/blog/tags/REVERSE/" style="color: #ffa2c4">REVERSE</a>
             </span>
             
         </span>
@@ -219,22 +219,78 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="eval函数与php短标签与反引号命令执行"><a href="#eval函数与php短标签与反引号命令执行" class="headerlink" title="eval函数与php短标签与反引号命令执行"></a>eval函数与php短标签与反引号命令执行</h1><h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><pre><code class="php">&lt;?php
-eval(&#39;?&gt;&lt;?=`dir`;?&gt;&#39;);
-?&gt;
-    注：因为博主在Windows环境进行测试，因此这里使用dos指令
-</code></pre>
-<p>博主与舍友试图探究这段语句的执行原理</p>
-<ul>
-<li>eval()函数的插入机制</li>
-<li>反引号的作用情况</li>
-<li>短标签<code>&lt;?=</code>的运用</li>
-<li>分号与结束符<code>?&gt;</code>的不同</li>
-</ul>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>NSS上的<a target="_blank" rel="noopener" href="https://www.nssctf.cn/problem/2145">[NSSCTF 2022 Spring Recruit]easy C</a></p>
+<h1 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h1><p>C</p>
+<p>字符自增与异或</p>
 <span id="more"></span>
 
-<hr>
-<h2 id="经过"><a href="#经过" class="headerlink" title="经过"></a>经过</h2>
+<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>下载题目附件得到C源码</p>
+<pre><code class="c">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main()
+&#123;
+    char a[] = &quot;wwwwwww&quot;;
+    char b[] = &quot;d`vxbQd&quot;;
+
+    // try to find out the flag
+    printf(&quot;please input flag:&quot;);
+    scanf(&quot; %s&quot;, &amp;a);
+
+    if (strlen(a) != 7)
+    &#123;
+        printf(&quot;NoNoNo\n&quot;);
+        system(&quot;pause&quot;);
+        return 0;
+    &#125;
+
+    for (int i = 0; i &lt; 7; i++)
+    &#123;
+        a[i]++;
+        a[i] = a[i] ^ 2;
+    &#125;
+
+    if (!strcmp(a, b))
+    &#123;
+        printf(&quot;good!\n&quot;);
+        system(&quot;pause&quot;);
+        return 0;
+    &#125;
+
+    printf(&quot;NoNoNo\n&quot;);
+    system(&quot;pause&quot;);
+    return 0;
+    // flag 记得包上 NSSCTF&#123;&#125; 再提交!!!
+&#125;
+</code></pre>
+<p><code>a</code>为我们要输入的7位长度参数，在执行for循环中的自增与异或后与<code>b</code>进行比较</p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>要让<code>a</code>先自增再异或从而得到<code>b</code></p>
+<p>这里就反过来让<code>b</code>先异或再自减得到<code>a</code></p>
+<h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><p>编写c脚本</p>
+<pre><code class="c">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+int main()
+&#123;
+    char b[] = &quot;d`vxbQd&quot;;
+    for (int i = 0; i &lt; 7; i++)
+    &#123;
+        b[i] = b[i] ^ 2;
+        b[i]--;
+    &#125;
+    printf(&quot;%s&quot;, b);
+    return 0;
+&#125;
+//easy_Re
+</code></pre>
+<p>附大佬的python脚本</p>
+<pre><code class="python">str=&quot;d`vxbQd&quot;
+flag=&#39;&#39;
+for i in str:
+    flag += chr((ord(i)^2)-1)
+print(flag)
+</code></pre>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>学习自增的逆向方法，辨认逆向语句的前后顺序</p>
+
     </div>
     
     
