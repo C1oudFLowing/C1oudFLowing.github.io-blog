@@ -3,7 +3,7 @@
 <html lang="zh-CN">
     <head>
         <meta charset="UTF-8" />
-        <title>NKCTF2023 | 雲流のLowest World</title>
+        <title>RE初探索0x04 | 雲流のLowest World</title>
         <meta name="author" content="CloudFlowing" />
         <meta name="description" content="" />
         <meta name="keywords" content="" />
@@ -69,7 +69,7 @@
         <!--文章目录-->
         <div id="toc" class="toc-article" style="position: absolute; top: 40px; z-index: 2;">
     <div class="toc-title"></div>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#WEB"><span class="toc-text">WEB</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-text">知识点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-text">题目</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF"><span class="toc-text">思路</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9F%A5%E8%AF%86%E8%A1%A5%E5%85%85"><span class="toc-text">知识补充</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#python-join-%E6%96%B9%E6%B3%95"><span class="toc-text">python join()方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#python-urllib-parse-quote-%E6%96%B9%E6%B3%95"><span class="toc-text">python urllib.parse.quote()方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C"><span class="toc-text">操作</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol>
 </div>
         
         <!--返回顶部-->
@@ -184,22 +184,22 @@
 
                 <div class="article">
     <div>
-        <h1>NKCTF2023</h1>
+        <h1>RE初探索0x04</h1>
     </div>
     <div class="info">
         <span class="date">
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2023/3/27
+            2023/4/7
         </span>
         
         <span class="category">
-            <a href="/blog/categories/Writeup/">
+            <a href="/blog/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
-                Writeup
+                学习笔记
             </a>
         </span>
         
@@ -211,7 +211,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #ffa2c4">CTF线上赛</a>
+                <a href="/blog/tags/REVERSE/" style="color: #ff7d73">REVERSE</a>
             </span>
             
         </span>
@@ -219,12 +219,82 @@
     </div>
     
     <div class="content" v-pre>
-        <p><img src="/blog/2023/03/27/NKCTF2023/image-20230327161133897.png" alt="image-20230327161133897"></p>
-<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>久违的三人组队比赛<del>(虽然博主一个人就拿下了队伍一半的分数就是了)</del>，这次的web题意外的只有php架构和模板注入的类型，但是博主做出来的几道题已经算是穷尽目前所学了。顺带一提出题人里头混进了车万人，星莲船lunatic难度很好玩，下次建议上绀珠传（</p>
-<p><del>感觉博主得多修几个方向了，不然队伍里pwn和re没人做还是太难受了</del></p>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>NSS上<a target="_blank" rel="noopener" href="https://www.nssctf.cn/problem/404">[SWPUCTF 2021 新生赛]简简单单的解密</a></p>
+<h1 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h1><p>python</p>
+<p>RC4解密</p>
 <span id="more"></span>
 
-<h1 id="WEB"><a href="#WEB" class="headerlink" title="WEB"></a>WEB</h1>
+<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>下载附件得到python源码</p>
+<pre><code class="python">import base64, urllib.parse
+
+key = &quot;HereIsFlagggg&quot;
+flag = &quot;xxxxxxxxxxxxxxxxxxx&quot;
+
+s_box = list(range(256))
+j = 0
+for i in range(256):
+    j = (j + s_box[i] + ord(key[i % len(key)])) % 256
+    s_box[i], s_box[j] = s_box[j], s_box[i]
+res = []
+i = j = 0
+for s in flag:
+    i = (i + 1) % 256
+    j = (j + s_box[i]) % 256
+    s_box[i], s_box[j] = s_box[j], s_box[i]
+    t = (s_box[i] + s_box[j]) % 256
+    k = s_box[t]
+    res.append(chr(ord(s) ^ k))
+cipher = &quot;&quot;.join(res)
+crypt = (str(base64.b64encode(cipher.encode(&#39;utf-8&#39;)), &#39;utf-8&#39;))
+enc = str(base64.b64decode(crypt), &#39;utf-8&#39;)
+enc = urllib.parse.quote(enc)
+print(enc)
+# enc = %C2%A6n%C2%87Y%1Ag%3F%C2%A01.%C2%9C%C3%B7%C3%8A%02%C3%80%C2%92W%C3%8C%C3%BA
+</code></pre>
+<p>两个for循环语句是<code>flag</code>进行RC4加密的过程</p>
+<p><code>key</code>作为密钥</p>
+<p><code>flag</code>经过RC4加密后又被进行一次base64加密和解密（等于不变），最后url编码得到<code>enc</code></p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="知识补充"><a href="#知识补充" class="headerlink" title="知识补充"></a>知识补充</h2><h3 id="python-join-方法"><a href="#python-join-方法" class="headerlink" title="python join()方法"></a>python join()方法</h3><blockquote>
+<p>将序列中的元素以指定的字符连接生成一个新的字符串</p>
+</blockquote>
+<pre><code class="python">symbol = &quot;-&quot;
+seq = (&quot;a&quot;, &quot;b&quot;, &quot;c&quot;) # 字符串序列
+print symbol.join( seq )
+
+#a-b-c
+</code></pre>
+<h3 id="python-urllib-parse-quote-方法"><a href="#python-urllib-parse-quote-方法" class="headerlink" title="python urllib.parse.quote()方法"></a>python urllib.parse.quote()方法</h3><blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.runoob.com/python3/python-urllib.html">urllib库</a></p>
+<p>URL 编码</p>
+</blockquote>
+<p>解码用<strong>urllib.request.unquote()</strong></p>
+<p>​	</p>
+<h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><p>将<code>enc</code>url解码后对其再次进行RC4加密（即解密）</p>
+<p>按位获取flag</p>
+<pre><code class="python">import urllib.parse
+key = &quot;HereIsFlagggg&quot;
+enc = &#39;%C2%A6n%C2%87Y%1Ag%3F%C2%A01.%C2%9C%C3%B7%C3%8A%02%C3%80%C2%92W%C3%8C%C3%BA&#39;
+flag = &quot;&quot;
+crypt = urllib.parse.unquote(enc)
+s_box = list(range(256))
+j = 0
+for i in range(256):
+    j = (j + s_box[i] + ord(key[i % len(key)])) % 256
+    s_box[i], s_box[j] = s_box[j], s_box[i]
+res = []
+i = j = 0
+for s in crypt:
+    i = (i + 1) % 256
+    j = (j + s_box[i]) % 256
+    s_box[i], s_box[j] = s_box[j], s_box[i]
+    t = (s_box[i] + s_box[j]) % 256
+    k = s_box[t]
+    flag+=(chr(ord(s) ^ k))
+print(flag)
+#NSSCTF&#123;REAL_EZ_RC4&#125;
+</code></pre>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>学习RC4的解密方法</p>
+
     </div>
     
     
