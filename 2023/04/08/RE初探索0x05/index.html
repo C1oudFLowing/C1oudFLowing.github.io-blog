@@ -3,7 +3,7 @@
 <html lang="zh-CN">
     <head>
         <meta charset="UTF-8" />
-        <title>Tags: REVERSE | 雲流のLowest World</title>
+        <title>RE初探索0x05 | 雲流のLowest World</title>
         <meta name="author" content="CloudFlowing" />
         <meta name="description" content="" />
         <meta name="keywords" content="" />
@@ -27,6 +27,10 @@
 
 
 <script src="/blog/js/lib/preview.js"></script>
+
+
+
+
 
 
 
@@ -65,7 +69,7 @@
         <!--文章目录-->
         <div id="toc" class="toc-article" style="position: absolute; top: 40px; z-index: 2;">
     <div class="toc-title"></div>
-    
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-text">知识点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-text">题目</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF"><span class="toc-text">思路</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C"><span class="toc-text">操作</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol>
 </div>
         
         <!--返回顶部-->
@@ -178,232 +182,96 @@
     </div>
 </nav>
 
-                <div id="archives">
-    
-    <div class="categories-tags">
+                <div class="article">
+    <div>
+        <h1>RE初探索0x05</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/4/8
+        </span>
         
-        
-        <span>
-            <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="background: #00a596">
+        <span class="category">
+            <a href="/blog/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
                 <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
-                CTF线上赛
+                学习笔记
             </a>
         </span>
         
         
-        
-        <span>
-            <a href="/blog/tags/PHP/" style="background: #03a9f4">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                PHP
-            </a>
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/REVERSE/" style="color: #03a9f4">REVERSE</a>
+            </span>
+            
         </span>
         
-        
-        
-        <span>
-            <a href="/blog/tags/Web/" style="background: #ffa2c4">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                Web
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/blog/tags/REVERSE/" style="background: linear-gradient(120deg, #9abbf7 0%, #ffbbf4 100%)">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                REVERSE
-            </a>
-        </span>
-        
-        
-        
-        
     </div>
     
-    <div class="timeline">
-        <div class="timeline-tail"></div>
-        <div class="timeline-content">
-            <div class="item-time">2023/4/8</div>
-            <a href="/blog/2023/04/08/RE%E5%88%9D%E6%8E%A2%E7%B4%A20x05/">
-                <h3>RE初探索0x05</h3>
-            </a>
-            <div class="info">
-                
-                <span class="category">
-                    <a href="/blog/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
-                        <span class="icon">
-                            <i class="fa-solid fa-bookmark fa-fw"></i>
-                        </span>
-                        学习笔记
-                    </a>
-                </span>
-                
-                
-                <span class="tags">
-                    <span class="icon">
-                        <i class="fa-solid fa-tags fa-fw"></i>
-                    </span>
-                    
-                    <span class="tag">
-                        
-                        <a href="/blog/tags/REVERSE/" style="color: #ff7d73">REVERSE</a>
-                    </span>
-                    
-                </span>
-                
-            </div>
-        </div>
+    <div class="content" v-pre>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>NSS上的<a target="_blank" rel="noopener" href="https://www.nssctf.cn/problem/445">[SWPUCTF 2021 新生赛]re2</a></p>
+<h1 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h1><p>C</p>
+<p>ida初步运用</p>
+<p>字符替换</p>
+<span id="more"></span>
+
+<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>下载题目附件得到exe程序，拖入ida并f5查看</p>
+<p><img src="/blog/2023/04/08/RE%E5%88%9D%E6%8E%A2%E7%B4%A20x05/1.png" alt="屏幕截图 2023-04-08 101249"></p>
+<p><code>Str</code>为我们输入的参数，输入后进入for循环中的字符替换</p>
+<p><code>Str2</code>是我们要进行比较的字符串，为<code>ylqq]aycqyp&#123;</code></p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><p>思路很明显，对for循环中的语句进行逆向将<code>Str2</code>传入即可得到flag</p>
+<p>（记得把if条件中的语句也逆向了）</p>
+<p>直接编写C脚本</p>
+<pre><code class="c">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+int main()
+&#123;
+    char Str[] = &#123;&quot;ylqq]aycqyp&#123;&quot;&#125;;
+    int v7 = strlen(Str);
+    for (int i = 0; i &lt; v7; ++i)
+    &#123;
+        if ((Str[i] &gt; 96 || Str[i] &lt;= 98) &amp;&amp; (Str[i] &gt; 64 || Str[i] &lt;= 66))
+            Str[i] += 2;
+        else
+            Str[i] -= 24;
+    &#125;
+    printf(Str);
+    return 0;
+&#125;
+//&#123;nss_c&#123;es&#123;r&#125;
+</code></pre>
+<p><img src="/blog/2023/04/08/RE%E5%88%9D%E6%8E%A2%E7%B4%A20x05/2.png" alt="屏幕截图 2023-04-08 102216"></p>
+<p>但是提交时需要将里面的<code>&#123;</code>改为<code>a</code>（怪</p>
+<p>这里再附上大佬的python脚本</p>
+<pre><code class="python">enc = &quot;ylqq]aycqyp&#123;&quot;
+flag = &quot;&quot;
+for i in enc:
+    if (ord(i) &lt;= 94 or ord(i) &gt; 96) and (ord(i) &lt;= 62 or ord(i) &gt; 64):
+        flag+=chr(ord(i)+2)
+    else:
+        flag+=chr(ord(i)-24)
+print(flag)
+#&#123;nss_c&#123;es&#123;r&#125;
+</code></pre>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>一道入门级的字符替换题</p>
+
     </div>
     
-    <div class="timeline">
-        <div class="timeline-tail"></div>
-        <div class="timeline-content">
-            <div class="item-time">2023/4/7</div>
-            <a href="/blog/2023/04/07/RE%E5%88%9D%E6%8E%A2%E7%B4%A20x04/">
-                <h3>RE初探索0x04</h3>
-            </a>
-            <div class="info">
-                
-                <span class="category">
-                    <a href="/blog/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
-                        <span class="icon">
-                            <i class="fa-solid fa-bookmark fa-fw"></i>
-                        </span>
-                        学习笔记
-                    </a>
-                </span>
-                
-                
-                <span class="tags">
-                    <span class="icon">
-                        <i class="fa-solid fa-tags fa-fw"></i>
-                    </span>
-                    
-                    <span class="tag">
-                        
-                        <a href="/blog/tags/REVERSE/" style="color: #ff7d73">REVERSE</a>
-                    </span>
-                    
-                </span>
-                
-            </div>
-        </div>
-    </div>
     
-    <div class="timeline">
-        <div class="timeline-tail"></div>
-        <div class="timeline-content">
-            <div class="item-time">2023/4/6</div>
-            <a href="/blog/2023/04/06/RE%E5%88%9D%E6%8E%A2%E7%B4%A20x03/">
-                <h3>RE初探索0x03</h3>
-            </a>
-            <div class="info">
-                
-                <span class="category">
-                    <a href="/blog/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
-                        <span class="icon">
-                            <i class="fa-solid fa-bookmark fa-fw"></i>
-                        </span>
-                        学习笔记
-                    </a>
-                </span>
-                
-                
-                <span class="tags">
-                    <span class="icon">
-                        <i class="fa-solid fa-tags fa-fw"></i>
-                    </span>
-                    
-                    <span class="tag">
-                        
-                        <a href="/blog/tags/REVERSE/" style="color: #ff7d73">REVERSE</a>
-                    </span>
-                    
-                </span>
-                
-            </div>
-        </div>
-    </div>
     
-    <div class="timeline">
-        <div class="timeline-tail"></div>
-        <div class="timeline-content">
-            <div class="item-time">2023/4/5</div>
-            <a href="/blog/2023/04/05/RE%E5%88%9D%E6%8E%A2%E7%B4%A20x02/">
-                <h3>RE初探索0x02</h3>
-            </a>
-            <div class="info">
-                
-                <span class="category">
-                    <a href="/blog/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
-                        <span class="icon">
-                            <i class="fa-solid fa-bookmark fa-fw"></i>
-                        </span>
-                        学习笔记
-                    </a>
-                </span>
-                
-                
-                <span class="tags">
-                    <span class="icon">
-                        <i class="fa-solid fa-tags fa-fw"></i>
-                    </span>
-                    
-                    <span class="tag">
-                        
-                        <a href="/blog/tags/REVERSE/" style="color: #ff7d73">REVERSE</a>
-                    </span>
-                    
-                </span>
-                
-            </div>
-        </div>
-    </div>
     
-    <div class="timeline">
-        <div class="timeline-tail"></div>
-        <div class="timeline-content">
-            <div class="item-time">2023/4/5</div>
-            <a href="/blog/2023/04/05/RE%E5%88%9D%E6%8E%A2%E7%B4%A20x01/">
-                <h3>RE初探索0x01</h3>
-            </a>
-            <div class="info">
-                
-                <span class="category">
-                    <a href="/blog/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
-                        <span class="icon">
-                            <i class="fa-solid fa-bookmark fa-fw"></i>
-                        </span>
-                        学习笔记
-                    </a>
-                </span>
-                
-                
-                <span class="tags">
-                    <span class="icon">
-                        <i class="fa-solid fa-tags fa-fw"></i>
-                    </span>
-                    
-                    <span class="tag">
-                        
-                        <a href="/blog/tags/REVERSE/" style="color: #03a9f4">REVERSE</a>
-                    </span>
-                    
-                </span>
-                
-            </div>
-        </div>
-    </div>
+    
+    
     
 </div>
 
@@ -436,6 +304,12 @@
             
         </div>
         <script src="/blog/js/main.js"></script>
+        
+        
+
+
+
+
          
     <script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/blog/live2dw/assets/z16.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
