@@ -211,7 +211,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/REVERSE/" style="color: #ff7d73">REVERSE</a>
+                <a href="/blog/tags/REVERSE/" style="color: #00bcd4">REVERSE</a>
             </span>
             
         </span>
@@ -228,8 +228,8 @@
 <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>下载题目附件得到exe程序，拖入ida并f5查看</p>
 <p><img src="/blog/2023/04/05/RE%E5%88%9D%E6%8E%A2%E7%B4%A20x02/1.png" alt="屏幕截图 2023-04-05 225053"></p>
 <p><code>str1</code>为输入的参数，输入后将进入for循环中的字符替换</p>
-<p><code>str2</code>通过<a target="_blank" rel="noopener" href="https://www.runoob.com/cprogramming/c-function-strcpy.html"><code>strcpy函数</code></a>把字符串<code>&#123;34sy_r3v3rs3&#125;</code>复制给自己</p>
-<p>最后通过<a target="_blank" rel="noopener" href="https://www.runoob.com/cprogramming/c-function-strcmp.html"><code>strcmp函数</code></a>检测str1与str2是否相同</p>
+<p><code>str2</code>通过<a target="_blank" rel="noopener" href="https://www.runoob.com/cprogramming/c-function-strcpy.html"><code>strcpy函数(链)</code></a>把字符串<code>&#123;34sy_r3v3rs3&#125;</code>复制给自己</p>
+<p>最后通过<a target="_blank" rel="noopener" href="https://www.runoob.com/cprogramming/c-function-strcmp.html"><code>strcmp函数(链)</code></a>检测str1与str2是否相同</p>
 <h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="知识补充"><a href="#知识补充" class="headerlink" title="知识补充"></a>知识补充</h2><h3 id="python-replace-方法"><a href="#python-replace-方法" class="headerlink" title="python replace()方法"></a>python replace()方法</h3><blockquote>
 <p>把字符串中的 old（旧字符串） 替换成 new(新字符串)，如果指定第三个参数max，则替换不超过 max 次</p>
 </blockquote>
