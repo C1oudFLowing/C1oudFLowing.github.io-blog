@@ -211,7 +211,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/Web/" style="color: #03a9f4">Web</a>
+                <a href="/blog/tags/Web/" style="color: #ffa2c4">Web</a>
             </span>
             
         </span>
@@ -246,6 +246,12 @@
 <li><p>一句话木马中字符过滤</p>
 <p><code>[]</code>：尝试使用<code>&#123;&#125;</code></p>
 <p><code>;</code>：尝试使用php闭合标签<code>?&gt;</code></p>
+<p><code>()</code>：此时约等于<code>eval</code>不能用</p>
+<p>​		可以考虑直接进行命令执行</p>
+<pre><code class="php">&lt;?=`tac ../f*`?&gt;
+</code></pre>
+<p>​		或用<code>include</code>、<code>require</code>、<code>echo</code>这类不需要括号的函数</p>
+<p>​		或用取反与异或进行绕过(使用data协议)</p>
 </li>
 <li><p>传入shell失败</p>
 <p>可尝试直接传入命令执行</p>
