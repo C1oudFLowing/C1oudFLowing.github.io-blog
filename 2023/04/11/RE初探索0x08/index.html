@@ -17,13 +17,6 @@
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
 
-<script src="https://cdn.staticfile.org/highlight.js/11.7.0/highlight.min.js"></script>
-<link
-    rel="stylesheet"
-    href="https://cdn.staticfile.org/highlight.js/11.7.0/styles/Github.min.css"
-/>
-<script src="/blog/js/lib/highlight.js"></script>
-
 
 
 <script src="/blog/js/lib/preview.js"></script>
@@ -211,7 +204,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/REVERSE/" style="color: #03a9f4">REVERSE</a>
+                <a href="/blog/tags/REVERSE/" style="color: #ff7d73">REVERSE</a>
             </span>
             
         </span>
@@ -225,20 +218,20 @@
 <span id="more"></span>
 
 <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>下载题目附件得到python源码</p>
-<pre><code class="python">import random
-flag = &#39;xxxxxxxxxxxxxxxxxxxx&#39;
-random.seed(1)
-l = []
-for i in range(4):
-    l.append(random.getrandbits(8))
-result=[]
-for i in range(len(l)):
-    random.seed(l[i])
-    for n in range(5):
-        result.append(ord(flag[i*5+n])^random.getrandbits(8))
-print(result)
-# result = [201, 8, 198, 68, 131, 152, 186, 136, 13, 130, 190, 112, 251, 93, 212, 1, 31, 214, 116, 244]
-</code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> random
+flag <span class="token operator">=</span> <span class="token string">'xxxxxxxxxxxxxxxxxxxx'</span>
+random<span class="token punctuation">.</span>seed<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+l <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    l<span class="token punctuation">.</span>append<span class="token punctuation">(</span>random<span class="token punctuation">.</span>getrandbits<span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+result<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>l<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    random<span class="token punctuation">.</span>seed<span class="token punctuation">(</span>l<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> n <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        result<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token builtin">ord</span><span class="token punctuation">(</span>flag<span class="token punctuation">[</span>i<span class="token operator">*</span><span class="token number">5</span><span class="token operator">+</span>n<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">^</span>random<span class="token punctuation">.</span>getrandbits<span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span>
+<span class="token comment"># result = [201, 8, 198, 68, 131, 152, 186, 136, 13, 130, 190, 112, 251, 93, 212, 1, 31, 214, 116, 244]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p><code>random.seed</code>确定随机数种子</p>
 <p><code>random.getrandbits(8)</code>返回一个数字</p>
 <p>然后与<code>flag</code>中的某位数进行异或</p>
@@ -259,30 +252,32 @@ print(result)
 <h3 id="python-append-方法"><a href="#python-append-方法" class="headerlink" title="python append()方法"></a>python append()方法</h3><blockquote>
 <p>在列表末尾添加新的对象</p>
 </blockquote>
-<pre><code class="python">list1 = [&#39;Google&#39;, &#39;Runoob&#39;, &#39;Taobao&#39;]
-list1.append(&#39;Baidu&#39;)
-print (&quot;更新后的列表 : &quot;, list1)
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">list1 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'Google'</span><span class="token punctuation">,</span> <span class="token string">'Runoob'</span><span class="token punctuation">,</span> <span class="token string">'Taobao'</span><span class="token punctuation">]</span>
+list1<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token string">'Baidu'</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">"更新后的列表 : "</span><span class="token punctuation">,</span> list1<span class="token punctuation">)</span>
 
-&gt;&gt;&gt;更新后的列表 :[&#39;Google&#39;, &#39;Runoob&#39;, &#39;Taobao&#39;, &#39;Baidu&#39;]
-</code></pre>
+<span class="token operator">>></span><span class="token operator">></span>更新后的列表 <span class="token punctuation">:</span><span class="token punctuation">[</span><span class="token string">'Google'</span><span class="token punctuation">,</span> <span class="token string">'Runoob'</span><span class="token punctuation">,</span> <span class="token string">'Taobao'</span><span class="token punctuation">,</span> <span class="token string">'Baidu'</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>类似于<code>+=</code>（？</p>
 <h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><p>因为<code>seed</code>随机数种子已经被指定，所以随机数处理那部分直接copy即可</p>
 <p>然后修改最底下的异或语句即可</p>
 <p>编写python脚本如下</p>
-<pre><code class="python">import random
-result = [201, 8, 198, 68, 131, 152, 186, 136, 13, 130, 190, 112, 251, 93, 212, 1, 31, 214, 116, 244]
-random.seed(1)
-l = []
-for i in range(4):
-    l.append(random.getrandbits(8))
-flag=&#39;&#39;
-for i in range(len(l)):
-    random.seed(l[i])
-    for n in range(5):
-        flag+=chr((result[i*5+n])^random.getrandbits(8))
-print(flag)
-&gt;&gt;&gt;NSSCTF&#123;FakeE_random&#125;
-</code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> random
+result <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">201</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">198</span><span class="token punctuation">,</span> <span class="token number">68</span><span class="token punctuation">,</span> <span class="token number">131</span><span class="token punctuation">,</span> <span class="token number">152</span><span class="token punctuation">,</span> <span class="token number">186</span><span class="token punctuation">,</span> <span class="token number">136</span><span class="token punctuation">,</span> <span class="token number">13</span><span class="token punctuation">,</span> <span class="token number">130</span><span class="token punctuation">,</span> <span class="token number">190</span><span class="token punctuation">,</span> <span class="token number">112</span><span class="token punctuation">,</span> <span class="token number">251</span><span class="token punctuation">,</span> <span class="token number">93</span><span class="token punctuation">,</span> <span class="token number">212</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">31</span><span class="token punctuation">,</span> <span class="token number">214</span><span class="token punctuation">,</span> <span class="token number">116</span><span class="token punctuation">,</span> <span class="token number">244</span><span class="token punctuation">]</span>
+random<span class="token punctuation">.</span>seed<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+l <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    l<span class="token punctuation">.</span>append<span class="token punctuation">(</span>random<span class="token punctuation">.</span>getrandbits<span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+flag<span class="token operator">=</span><span class="token string">''</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>l<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    random<span class="token punctuation">.</span>seed<span class="token punctuation">(</span>l<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> n <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        flag<span class="token operator">+=</span><span class="token builtin">chr</span><span class="token punctuation">(</span><span class="token punctuation">(</span>result<span class="token punctuation">[</span>i<span class="token operator">*</span><span class="token number">5</span><span class="token operator">+</span>n<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">^</span>random<span class="token punctuation">.</span>getrandbits<span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>flag<span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span>NSSCTF<span class="token punctuation">&#123;</span>FakeE_random<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>一次对随机数的逆向，本质还是异或</p>
 
     </div>

@@ -17,13 +17,6 @@
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
 
-<script src="https://cdn.staticfile.org/highlight.js/11.7.0/highlight.min.js"></script>
-<link
-    rel="stylesheet"
-    href="https://cdn.staticfile.org/highlight.js/11.7.0/styles/Github.min.css"
-/>
-<script src="/blog/js/lib/highlight.js"></script>
-
 
 
 <script src="/blog/js/lib/preview.js"></script>
@@ -211,7 +204,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #ff7d73">CTF线上赛</a>
+                <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #03a9f4">CTF线上赛</a>
             </span>
             
         </span>
@@ -225,185 +218,187 @@
 <p>一个nodejs登录界面</p>
 <span id="more"></span>
 
-<h2 id="源码附件"><a href="#源码附件" class="headerlink" title="源码附件"></a>源码附件</h2><h3 id="main-js"><a href="#main-js" class="headerlink" title="main.js"></a>main.js</h3><pre><code class="javascript">const express = require(&quot;express&quot;)
-const fs = require(&quot;fs&quot;)
-const cookieParser = require(&quot;cookie-parser&quot;);
-const controller = require(&quot;./controller&quot;)
+<h2 id="源码附件"><a href="#源码附件" class="headerlink" title="源码附件"></a>源码附件</h2><h3 id="main-js"><a href="#main-js" class="headerlink" title="main.js"></a>main.js</h3><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> express <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"express"</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> fs <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"fs"</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> cookieParser <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"cookie-parser"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> controller <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"./controller"</span><span class="token punctuation">)</span>
 
-const app = express();
-const PORT = Number(process.env.PORT) || 80
-const HOST = &#39;0.0.0.0&#39;
-
-
-app.use(express.urlencoded(&#123;extended:false&#125;))
-app.use(cookieParser())
-app.use(express.json())
-
-app.use(express.static(&#39;static&#39;))
-
-app.post(&quot;/login&quot;,(req,res) =&gt; &#123;
-    controller.LoginController(req,res)
-&#125;)
+<span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">express</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token constant">PORT</span> <span class="token operator">=</span> <span class="token function">Number</span><span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">PORT</span><span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token number">80</span>
+<span class="token keyword">const</span> <span class="token constant">HOST</span> <span class="token operator">=</span> <span class="token string">'0.0.0.0'</span>
 
 
-app.get(&quot;/&quot;,(res) =&gt; &#123;
-    res.sendFile(__dirname,&quot;static/index.html&quot;)
-&#125;)
+app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>express<span class="token punctuation">.</span><span class="token function">urlencoded</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token literal-property property">extended</span><span class="token operator">:</span><span class="token boolean">false</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token function">cookieParser</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>express<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>express<span class="token punctuation">.</span><span class="token function">static</span><span class="token punctuation">(</span><span class="token string">'static'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+app<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token string">"/login"</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span>res</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+    controller<span class="token punctuation">.</span><span class="token function">LoginController</span><span class="token punctuation">(</span>req<span class="token punctuation">,</span>res<span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
 
 
-app.get(&quot;/flag1&quot;,(req,res) =&gt; &#123;
-    controller.Flag1Controller(req,res)
-&#125;)
-
-app.get(&quot;/flag2&quot;,(req,res) =&gt; &#123;
-    controller.CheckInternalController(req,res)
-&#125;)
-
-app.post(&quot;/getflag2&quot;,(req,res)=&gt; &#123;
-    controller.CheckController(req,res)
-&#125;)
-
-app.listen(PORT,HOST,() =&gt; &#123;
-    console.log(`Server is listening on Host $&#123;HOST&#125; Port $&#123;PORT&#125;.`)
-&#125;)
-</code></pre>
-<h3 id="controller-js"><a href="#controller-js" class="headerlink" title="controller.js"></a>controller.js</h3><pre><code class="javascript">const fs = require(&quot;fs&quot;);
-const SECRET_COOKIE = process.env.SECRET_COOKIE || &quot;this_is_testing_cookie&quot;
-
-const flag1 = fs.readFileSync(&quot;/flag1&quot;)
-const flag2 = fs.readFileSync(&quot;/flag2&quot;)
+app<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"/"</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token parameter">res</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+    res<span class="token punctuation">.</span><span class="token function">sendFile</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span><span class="token string">"static/index.html"</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
 
 
-function LoginController(req,res) &#123;
-    try &#123;
-        const username = req.body.username
-        const password = req.body.password
-        if (username !== &quot;admin&quot; || password !== Math.random().toString()) &#123;
-            res.status(401).type(&quot;text/html&quot;).send(&quot;Login Failed&quot;)
-        &#125; else &#123;
-            res.cookie(&quot;user&quot;,SECRET_COOKIE)
-            res.redirect(&quot;/flag1&quot;)
-        &#125;
-    &#125; catch (__) &#123;&#125;
-&#125;
+app<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"/flag1"</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span>res</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+    controller<span class="token punctuation">.</span><span class="token function">Flag1Controller</span><span class="token punctuation">(</span>req<span class="token punctuation">,</span>res<span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
 
-function CheckInternalController(req,res) &#123;
-    res.sendFile(&quot;check.html&quot;,&#123;root:&quot;static&quot;&#125;)
+app<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"/flag2"</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span>res</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+    controller<span class="token punctuation">.</span><span class="token function">CheckInternalController</span><span class="token punctuation">(</span>req<span class="token punctuation">,</span>res<span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
 
-&#125;
+app<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token string">"/getflag2"</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span>res</span><span class="token punctuation">)</span><span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+    controller<span class="token punctuation">.</span><span class="token function">CheckController</span><span class="token punctuation">(</span>req<span class="token punctuation">,</span>res<span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
 
-function CheckController(req,res) &#123;
-    let checkcode = req.body.checkcode?req.body.checkcode:1234;
-    console.log(req.body)
-    if(checkcode.length === 16)&#123;
-        try&#123;
-            checkcode = checkcode.toLowerCase()//被转成小写，但是这个处理不了数组格式
-            if(checkcode !== &quot;aGr5AtSp55dRacer&quot;)&#123;
-                res.status(403).json(&#123;&quot;msg&quot;:&quot;Invalid Checkcode1:&quot; + checkcode&#125;)
-            &#125;
-        &#125;catch (__) &#123;&#125;
-        res.status(200).type(&quot;text/html&quot;).json(&#123;&quot;msg&quot;:&quot;You Got Another Part Of Flag: &quot; + flag2.toString().trim()&#125;)
-    &#125;else&#123;
-        res.status(403).type(&quot;text/html&quot;).json(&#123;&quot;msg&quot;:&quot;Invalid Checkcode2:&quot; + checkcode&#125;)
-    &#125;
-&#125;
+app<span class="token punctuation">.</span><span class="token function">listen</span><span class="token punctuation">(</span><span class="token constant">PORT</span><span class="token punctuation">,</span><span class="token constant">HOST</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Server is listening on Host </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span><span class="token constant">HOST</span><span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token string"> Port </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span><span class="token constant">PORT</span><span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token string">.</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-function Flag1Controller(req,res)&#123;
-    try &#123;
-        if(req.cookies.user === SECRET_COOKIE)&#123;
-            res.setHeader(&quot;This_Is_The_Flag1&quot;,flag1.toString().trim())
-            res.setHeader(&quot;This_Is_The_Flag2&quot;,flag2.toString().trim())
-            res.status(200).type(&quot;text/html&quot;).send(&quot;Login success. Welcome,admin!&quot;)
-        &#125;
-        if(req.cookies.user === &quot;admin&quot;) &#123;
-            res.setHeader(&quot;This_Is_The_Flag1&quot;, flag1.toString().trim())
-            res.status(200).type(&quot;text/html&quot;).send(&quot;You Got One Part Of Flag! Try To Get Another Part of Flag!&quot;)
-        &#125;else&#123;
-            res.status(401).type(&quot;text/html&quot;).send(&quot;Unauthorized&quot;)
-        &#125;
-    &#125;catch (__) &#123;&#125;
-&#125;
+<h3 id="controller-js"><a href="#controller-js" class="headerlink" title="controller.js"></a>controller.js</h3><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> fs <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"fs"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token constant">SECRET_COOKIE</span> <span class="token operator">=</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">SECRET_COOKIE</span> <span class="token operator">||</span> <span class="token string">"this_is_testing_cookie"</span>
+
+<span class="token keyword">const</span> flag1 <span class="token operator">=</span> fs<span class="token punctuation">.</span><span class="token function">readFileSync</span><span class="token punctuation">(</span><span class="token string">"/flag1"</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> flag2 <span class="token operator">=</span> fs<span class="token punctuation">.</span><span class="token function">readFileSync</span><span class="token punctuation">(</span><span class="token string">"/flag2"</span><span class="token punctuation">)</span>
 
 
+<span class="token keyword">function</span> <span class="token function">LoginController</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span>res</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">try</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">const</span> username <span class="token operator">=</span> req<span class="token punctuation">.</span>body<span class="token punctuation">.</span>username
+        <span class="token keyword">const</span> password <span class="token operator">=</span> req<span class="token punctuation">.</span>body<span class="token punctuation">.</span>password
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>username <span class="token operator">!==</span> <span class="token string">"admin"</span> <span class="token operator">||</span> password <span class="token operator">!==</span> Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            res<span class="token punctuation">.</span><span class="token function">status</span><span class="token punctuation">(</span><span class="token number">401</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">type</span><span class="token punctuation">(</span><span class="token string">"text/html"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">"Login Failed"</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+            res<span class="token punctuation">.</span><span class="token function">cookie</span><span class="token punctuation">(</span><span class="token string">"user"</span><span class="token punctuation">,</span><span class="token constant">SECRET_COOKIE</span><span class="token punctuation">)</span>
+            res<span class="token punctuation">.</span><span class="token function">redirect</span><span class="token punctuation">(</span><span class="token string">"/flag1"</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>__<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
 
-module.exports = &#123;
-    LoginController,
-    CheckInternalController,
-    Flag1Controller,
+<span class="token keyword">function</span> <span class="token function">CheckInternalController</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span>res</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    res<span class="token punctuation">.</span><span class="token function">sendFile</span><span class="token punctuation">(</span><span class="token string">"check.html"</span><span class="token punctuation">,</span><span class="token punctuation">&#123;</span><span class="token literal-property property">root</span><span class="token operator">:</span><span class="token string">"static"</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">function</span> <span class="token function">CheckController</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span>res</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">let</span> checkcode <span class="token operator">=</span> req<span class="token punctuation">.</span>body<span class="token punctuation">.</span>checkcode<span class="token operator">?</span>req<span class="token punctuation">.</span>body<span class="token punctuation">.</span>checkcode<span class="token operator">:</span><span class="token number">1234</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>req<span class="token punctuation">.</span>body<span class="token punctuation">)</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>checkcode<span class="token punctuation">.</span>length <span class="token operator">===</span> <span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">try</span><span class="token punctuation">&#123;</span>
+            checkcode <span class="token operator">=</span> checkcode<span class="token punctuation">.</span><span class="token function">toLowerCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment">//被转成小写，但是这个处理不了数组格式</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>checkcode <span class="token operator">!==</span> <span class="token string">"aGr5AtSp55dRacer"</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+                res<span class="token punctuation">.</span><span class="token function">status</span><span class="token punctuation">(</span><span class="token number">403</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token string-property property">"msg"</span><span class="token operator">:</span><span class="token string">"Invalid Checkcode1:"</span> <span class="token operator">+</span> checkcode<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span><span class="token keyword">catch</span> <span class="token punctuation">(</span>__<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+        res<span class="token punctuation">.</span><span class="token function">status</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">type</span><span class="token punctuation">(</span><span class="token string">"text/html"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token string-property property">"msg"</span><span class="token operator">:</span><span class="token string">"You Got Another Part Of Flag: "</span> <span class="token operator">+</span> flag2<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">trim</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span><span class="token keyword">else</span><span class="token punctuation">&#123;</span>
+        res<span class="token punctuation">.</span><span class="token function">status</span><span class="token punctuation">(</span><span class="token number">403</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">type</span><span class="token punctuation">(</span><span class="token string">"text/html"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token string-property property">"msg"</span><span class="token operator">:</span><span class="token string">"Invalid Checkcode2:"</span> <span class="token operator">+</span> checkcode<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">function</span> <span class="token function">Flag1Controller</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span>res</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">try</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>req<span class="token punctuation">.</span>cookies<span class="token punctuation">.</span>user <span class="token operator">===</span> <span class="token constant">SECRET_COOKIE</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            res<span class="token punctuation">.</span><span class="token function">setHeader</span><span class="token punctuation">(</span><span class="token string">"This_Is_The_Flag1"</span><span class="token punctuation">,</span>flag1<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">trim</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+            res<span class="token punctuation">.</span><span class="token function">setHeader</span><span class="token punctuation">(</span><span class="token string">"This_Is_The_Flag2"</span><span class="token punctuation">,</span>flag2<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">trim</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+            res<span class="token punctuation">.</span><span class="token function">status</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">type</span><span class="token punctuation">(</span><span class="token string">"text/html"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">"Login success. Welcome,admin!"</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>req<span class="token punctuation">.</span>cookies<span class="token punctuation">.</span>user <span class="token operator">===</span> <span class="token string">"admin"</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            res<span class="token punctuation">.</span><span class="token function">setHeader</span><span class="token punctuation">(</span><span class="token string">"This_Is_The_Flag1"</span><span class="token punctuation">,</span> flag1<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">trim</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+            res<span class="token punctuation">.</span><span class="token function">status</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">type</span><span class="token punctuation">(</span><span class="token string">"text/html"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">"You Got One Part Of Flag! Try To Get Another Part of Flag!"</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#125;</span><span class="token keyword">else</span><span class="token punctuation">&#123;</span>
+            res<span class="token punctuation">.</span><span class="token function">status</span><span class="token punctuation">(</span><span class="token number">401</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">type</span><span class="token punctuation">(</span><span class="token string">"text/html"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">"Unauthorized"</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span><span class="token keyword">catch</span> <span class="token punctuation">(</span>__<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+
+
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+    LoginController<span class="token punctuation">,</span>
+    CheckInternalController<span class="token punctuation">,</span>
+    Flag1Controller<span class="token punctuation">,</span>
     CheckController
-&#125;
-</code></pre>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
 <hr>
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><ul>
 <li><p>先看获取flag的条件</p>
-<pre><code class="javascript">app.get(&quot;/flag1&quot;,(req,res) =&gt; &#123;
-    controller.Flag1Controller(req,res)
-&#125;)
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">app<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"/flag1"</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span>res</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+    controller<span class="token punctuation">.</span><span class="token function">Flag1Controller</span><span class="token punctuation">(</span>req<span class="token punctuation">,</span>res<span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
 
-app.get(&quot;/flag2&quot;,(req,res) =&gt; &#123;
-    controller.CheckInternalController(req,res)
-&#125;)
+app<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"/flag2"</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span>res</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+    controller<span class="token punctuation">.</span><span class="token function">CheckInternalController</span><span class="token punctuation">(</span>req<span class="token punctuation">,</span>res<span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
 
-app.post(&quot;/getflag2&quot;,(req,res)=&gt; &#123;
-    controller.CheckController(req,res)
-&#125;)
-</code></pre>
+app<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token string">"/getflag2"</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span>res</span><span class="token punctuation">)</span><span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+    controller<span class="token punctuation">.</span><span class="token function">CheckController</span><span class="token punctuation">(</span>req<span class="token punctuation">,</span>res<span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p><strong>main.js</strong>指向<strong>controller.js</strong>中的几个方法</p>
-<pre><code class="javascript">function LoginController(req,res) &#123;
-    try &#123;
-        const username = req.body.username
-        const password = req.body.password
-        if (username !== &quot;admin&quot; || password !== Math.random().toString()) &#123;
-            res.status(401).type(&quot;text/html&quot;).send(&quot;Login Failed&quot;)
-        &#125; else &#123;
-            res.cookie(&quot;user&quot;,SECRET_COOKIE)
-            res.redirect(&quot;/flag1&quot;)
-        &#125;
-    &#125; catch (__) &#123;&#125;
-&#125;
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">LoginController</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span>res</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">try</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">const</span> username <span class="token operator">=</span> req<span class="token punctuation">.</span>body<span class="token punctuation">.</span>username
+        <span class="token keyword">const</span> password <span class="token operator">=</span> req<span class="token punctuation">.</span>body<span class="token punctuation">.</span>password
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>username <span class="token operator">!==</span> <span class="token string">"admin"</span> <span class="token operator">||</span> password <span class="token operator">!==</span> Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            res<span class="token punctuation">.</span><span class="token function">status</span><span class="token punctuation">(</span><span class="token number">401</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">type</span><span class="token punctuation">(</span><span class="token string">"text/html"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">"Login Failed"</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+            res<span class="token punctuation">.</span><span class="token function">cookie</span><span class="token punctuation">(</span><span class="token string">"user"</span><span class="token punctuation">,</span><span class="token constant">SECRET_COOKIE</span><span class="token punctuation">)</span>
+            res<span class="token punctuation">.</span><span class="token function">redirect</span><span class="token punctuation">(</span><span class="token string">"/flag1"</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>__<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
 
-------------------------------------------------
+<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span>
 
-function Flag1Controller(req,res)&#123;
-    try &#123;
-        if(req.cookies.user === SECRET_COOKIE)&#123;
-            res.setHeader(&quot;This_Is_The_Flag1&quot;,flag1.toString().trim())
-            res.setHeader(&quot;This_Is_The_Flag2&quot;,flag2.toString().trim())
-            res.status(200).type(&quot;text/html&quot;).send(&quot;Login success. Welcome,admin!&quot;)
-        &#125;
-        if(req.cookies.user === &quot;admin&quot;) &#123;
-            res.setHeader(&quot;This_Is_The_Flag1&quot;, flag1.toString().trim())	//cookie相等可以输出flag1
-            res.status(200).type(&quot;text/html&quot;).send(&quot;You Got One Part Of Flag! Try To Get Another Part of Flag!&quot;)
-        &#125;else&#123;
-            res.status(401).type(&quot;text/html&quot;).send(&quot;Unauthorized&quot;)
-        &#125;
-    &#125;catch (__) &#123;&#125;
-&#125;
-</code></pre>
+<span class="token keyword">function</span> <span class="token function">Flag1Controller</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span>res</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">try</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>req<span class="token punctuation">.</span>cookies<span class="token punctuation">.</span>user <span class="token operator">===</span> <span class="token constant">SECRET_COOKIE</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            res<span class="token punctuation">.</span><span class="token function">setHeader</span><span class="token punctuation">(</span><span class="token string">"This_Is_The_Flag1"</span><span class="token punctuation">,</span>flag1<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">trim</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+            res<span class="token punctuation">.</span><span class="token function">setHeader</span><span class="token punctuation">(</span><span class="token string">"This_Is_The_Flag2"</span><span class="token punctuation">,</span>flag2<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">trim</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+            res<span class="token punctuation">.</span><span class="token function">status</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">type</span><span class="token punctuation">(</span><span class="token string">"text/html"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">"Login success. Welcome,admin!"</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>req<span class="token punctuation">.</span>cookies<span class="token punctuation">.</span>user <span class="token operator">===</span> <span class="token string">"admin"</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            res<span class="token punctuation">.</span><span class="token function">setHeader</span><span class="token punctuation">(</span><span class="token string">"This_Is_The_Flag1"</span><span class="token punctuation">,</span> flag1<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">trim</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>	<span class="token comment">//cookie相等可以输出flag1</span>
+            res<span class="token punctuation">.</span><span class="token function">status</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">type</span><span class="token punctuation">(</span><span class="token string">"text/html"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">"You Got One Part Of Flag! Try To Get Another Part of Flag!"</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#125;</span><span class="token keyword">else</span><span class="token punctuation">&#123;</span>
+            res<span class="token punctuation">.</span><span class="token function">status</span><span class="token punctuation">(</span><span class="token number">401</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">type</span><span class="token punctuation">(</span><span class="token string">"text/html"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">"Unauthorized"</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span><span class="token keyword">catch</span> <span class="token punctuation">(</span>__<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>获取flag有两种方法：</p>
 <p>一种是输入正确的username和password，但是密码是随机生成的</p>
 <p>另一种是使<code>user</code>的cookie相等</p>
-<pre><code class="javascript">function CheckInternalController(req,res) &#123;
-    res.sendFile(&quot;check.html&quot;,&#123;root:&quot;static&quot;&#125;)
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">CheckInternalController</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span>res</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    res<span class="token punctuation">.</span><span class="token function">sendFile</span><span class="token punctuation">(</span><span class="token string">"check.html"</span><span class="token punctuation">,</span><span class="token punctuation">&#123;</span><span class="token literal-property property">root</span><span class="token operator">:</span><span class="token string">"static"</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
 
-&#125;
+<span class="token punctuation">&#125;</span>
 
-function CheckController(req,res) &#123;
-    let checkcode = req.body.checkcode?req.body.checkcode:1234;
-    console.log(req.body)
-    if(checkcode.length === 16)&#123;	//传入长度需为16
-        try&#123;
-            checkcode = checkcode.toLowerCase()//被转成小写，但是这个处理不了数组格式
-            if(checkcode !== &quot;aGr5AtSp55dRacer&quot;)&#123;
-                res.status(403).json(&#123;&quot;msg&quot;:&quot;Invalid Checkcode1:&quot; + checkcode&#125;)
-            &#125;
-        &#125;catch (__) &#123;&#125;
-        res.status(200).type(&quot;text/html&quot;).json(&#123;&quot;msg&quot;:&quot;You Got Another Part Of Flag: &quot; + flag2.toString().trim()&#125;)	//输出flag2
-    &#125;else&#123;		//长度不足16会跳转至此
-        res.status(403).type(&quot;text/html&quot;).json(&#123;&quot;msg&quot;:&quot;Invalid Checkcode2:&quot; + checkcode&#125;)
-    &#125;
-&#125;
-</code></pre>
+<span class="token keyword">function</span> <span class="token function">CheckController</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span>res</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">let</span> checkcode <span class="token operator">=</span> req<span class="token punctuation">.</span>body<span class="token punctuation">.</span>checkcode<span class="token operator">?</span>req<span class="token punctuation">.</span>body<span class="token punctuation">.</span>checkcode<span class="token operator">:</span><span class="token number">1234</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>req<span class="token punctuation">.</span>body<span class="token punctuation">)</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>checkcode<span class="token punctuation">.</span>length <span class="token operator">===</span> <span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>	<span class="token comment">//传入长度需为16</span>
+        <span class="token keyword">try</span><span class="token punctuation">&#123;</span>
+            checkcode <span class="token operator">=</span> checkcode<span class="token punctuation">.</span><span class="token function">toLowerCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment">//被转成小写，但是这个处理不了数组格式</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>checkcode <span class="token operator">!==</span> <span class="token string">"aGr5AtSp55dRacer"</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+                res<span class="token punctuation">.</span><span class="token function">status</span><span class="token punctuation">(</span><span class="token number">403</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token string-property property">"msg"</span><span class="token operator">:</span><span class="token string">"Invalid Checkcode1:"</span> <span class="token operator">+</span> checkcode<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span><span class="token keyword">catch</span> <span class="token punctuation">(</span>__<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+        res<span class="token punctuation">.</span><span class="token function">status</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">type</span><span class="token punctuation">(</span><span class="token string">"text/html"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token string-property property">"msg"</span><span class="token operator">:</span><span class="token string">"You Got Another Part Of Flag: "</span> <span class="token operator">+</span> flag2<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">trim</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span>	<span class="token comment">//输出flag2</span>
+    <span class="token punctuation">&#125;</span><span class="token keyword">else</span><span class="token punctuation">&#123;</span>		<span class="token comment">//长度不足16会跳转至此</span>
+        res<span class="token punctuation">.</span><span class="token function">status</span><span class="token punctuation">(</span><span class="token number">403</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">type</span><span class="token punctuation">(</span><span class="token string">"text/html"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token string-property property">"msg"</span><span class="token operator">:</span><span class="token string">"Invalid Checkcode2:"</span> <span class="token operator">+</span> checkcode<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>此处需满足<code>checkcode</code>&#x3D;&#x3D;aGr5AtSp55dRacer且长度为16即可获取flag2</p>
 </li>
 </ul>

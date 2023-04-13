@@ -17,13 +17,6 @@
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
 
-<script src="https://cdn.staticfile.org/highlight.js/11.7.0/highlight.min.js"></script>
-<link
-    rel="stylesheet"
-    href="https://cdn.staticfile.org/highlight.js/11.7.0/styles/Github.min.css"
-/>
-<script src="/blog/js/lib/highlight.js"></script>
-
 
 
 <script src="/blog/js/lib/preview.js"></script>
@@ -211,7 +204,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/REVERSE/" style="color: #00a596">REVERSE</a>
+                <a href="/blog/tags/REVERSE/" style="color: #00bcd4">REVERSE</a>
             </span>
             
         </span>
@@ -226,15 +219,15 @@
 <span id="more"></span>
 
 <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>下载题目附件得到python源码</p>
-<pre><code class="python">flag = &#39;xxxxxxxxxxxxxxxxxx&#39;
-list = [47, 138, 127, 57, 117, 188, 51, 143, 17, 84, 42, 135, 76, 105, 28, 169, 25]
-result = &#39;&#39;
-for i in range(len(list)):
-    key = (list[i]&gt;&gt;4)+((list[i] &amp; 0xf)&lt;&lt;4)
-    result += str(hex(ord(flag[i])^key))[2:].zfill(2)
-print(result)
-# result=bcfba4d0038d48bd4b00f82796d393dfec
-</code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">flag <span class="token operator">=</span> <span class="token string">'xxxxxxxxxxxxxxxxxx'</span>
+<span class="token builtin">list</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">47</span><span class="token punctuation">,</span> <span class="token number">138</span><span class="token punctuation">,</span> <span class="token number">127</span><span class="token punctuation">,</span> <span class="token number">57</span><span class="token punctuation">,</span> <span class="token number">117</span><span class="token punctuation">,</span> <span class="token number">188</span><span class="token punctuation">,</span> <span class="token number">51</span><span class="token punctuation">,</span> <span class="token number">143</span><span class="token punctuation">,</span> <span class="token number">17</span><span class="token punctuation">,</span> <span class="token number">84</span><span class="token punctuation">,</span> <span class="token number">42</span><span class="token punctuation">,</span> <span class="token number">135</span><span class="token punctuation">,</span> <span class="token number">76</span><span class="token punctuation">,</span> <span class="token number">105</span><span class="token punctuation">,</span> <span class="token number">28</span><span class="token punctuation">,</span> <span class="token number">169</span><span class="token punctuation">,</span> <span class="token number">25</span><span class="token punctuation">]</span>
+result <span class="token operator">=</span> <span class="token string">''</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span><span class="token builtin">list</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    key <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token builtin">list</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">>></span><span class="token number">4</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token builtin">list</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&amp;</span> <span class="token number">0xf</span><span class="token punctuation">)</span><span class="token operator">&lt;&lt;</span><span class="token number">4</span><span class="token punctuation">)</span>
+    result <span class="token operator">+=</span> <span class="token builtin">str</span><span class="token punctuation">(</span><span class="token builtin">hex</span><span class="token punctuation">(</span><span class="token builtin">ord</span><span class="token punctuation">(</span>flag<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">^</span>key<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">.</span>zfill<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span>
+<span class="token comment"># result=bcfba4d0038d48bd4b00f82796d393dfec</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p><code>key</code>为异或要用到的密钥（？</p>
 <p>那么<code>list</code>就为key生成需引用的列表</p>
 <p><code>result</code>就是<strong>flag</strong>与<strong>key</strong>异或的结果</p>
@@ -244,9 +237,9 @@ print(result)
 <h3 id="ord"><a href="#ord" class="headerlink" title="ord"></a>ord</h3><blockquote>
 <p>以一个字符（长度为1的字符串）作为参数，返回对应的 ASCII 数值，或者 Unicode 数值</p>
 </blockquote>
-<pre><code class="python">ord(&#39;a&#39;)
-#97
-</code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token builtin">ord</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span>
+<span class="token comment">#97</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <p>是 <code>chr()</code> 函数（对于8位的ASCII字符串）或 <code>unichr()</code> 函数（对于Unicode对象）的配对函数</p>
 <h3 id="hex"><a href="#hex" class="headerlink" title="hex"></a>hex</h3><blockquote>
 <p>生成16进制字符串带0x前缀</p>
@@ -258,27 +251,31 @@ print(result)
 </blockquote>
 <p>大致作用应该是补足位数为2位</p>
 <h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><p>利用附件信息直接编写脚本得到flag</p>
-<pre><code class="python">result = &#39;bcfba4d0038d48bd4b00f82796d393dfec&#39;
-list = [
-    47, 138, 127, 57, 117, 188, 51, 143, 17, 84, 42, 135, 76, 105, 28, 169, 25
-]
-flag = &#39;&#39;
-for i in range(len(list)):
-    key = (list[i] &gt;&gt; 4) + ((list[i] &amp; 0xf) &lt;&lt; 4)
-    flag += chr(int(result[2 * i:2 * i + 2], 16) ^ key)
-print(flag)
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">result <span class="token operator">=</span> <span class="token string">'bcfba4d0038d48bd4b00f82796d393dfec'</span>
+<span class="token builtin">list</span> <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token number">47</span><span class="token punctuation">,</span> <span class="token number">138</span><span class="token punctuation">,</span> <span class="token number">127</span><span class="token punctuation">,</span> <span class="token number">57</span><span class="token punctuation">,</span> <span class="token number">117</span><span class="token punctuation">,</span> <span class="token number">188</span><span class="token punctuation">,</span> <span class="token number">51</span><span class="token punctuation">,</span> <span class="token number">143</span><span class="token punctuation">,</span> <span class="token number">17</span><span class="token punctuation">,</span> <span class="token number">84</span><span class="token punctuation">,</span> <span class="token number">42</span><span class="token punctuation">,</span> <span class="token number">135</span><span class="token punctuation">,</span> <span class="token number">76</span><span class="token punctuation">,</span> <span class="token number">105</span><span class="token punctuation">,</span> <span class="token number">28</span><span class="token punctuation">,</span> <span class="token number">169</span><span class="token punctuation">,</span> <span class="token number">25</span>
+<span class="token punctuation">]</span>
+flag <span class="token operator">=</span> <span class="token string">''</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span><span class="token builtin">list</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    key <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token builtin">list</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">>></span> <span class="token number">4</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token builtin">list</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&amp;</span> <span class="token number">0xf</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token number">4</span><span class="token punctuation">)</span>
+    flag <span class="token operator">+=</span> <span class="token builtin">chr</span><span class="token punctuation">(</span><span class="token builtin">int</span><span class="token punctuation">(</span>result<span class="token punctuation">[</span><span class="token number">2</span> <span class="token operator">*</span> i<span class="token punctuation">:</span><span class="token number">2</span> <span class="token operator">*</span> i <span class="token operator">+</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">)</span> <span class="token operator">^</span> key<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>flag<span class="token punctuation">)</span>
 
-#NSSCTF&#123;EZEZ_RERE&#125;
-</code></pre>
+<span class="token comment">#NSSCTF&#123;EZEZ_RERE&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
 <p>据说还可以暴力破解，这里直接贴别的大佬的脚本</p>
-<pre><code class="python">list = [47, 138, 127, 57, 117, 188, 51, 143, 17, 84, 42, 135, 76, 105, 28, 169, 25]
-result = [‘bc’,‘fb’,‘a4’,‘d0’,‘03’,‘8d’,‘48’,‘bd’,‘4b’,‘00’,‘f8’,‘27’,‘96’,‘d3’,‘93’,‘df’,‘ec’]
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token builtin">list</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">47</span><span class="token punctuation">,</span> <span class="token number">138</span><span class="token punctuation">,</span> <span class="token number">127</span><span class="token punctuation">,</span> <span class="token number">57</span><span class="token punctuation">,</span> <span class="token number">117</span><span class="token punctuation">,</span> <span class="token number">188</span><span class="token punctuation">,</span> <span class="token number">51</span><span class="token punctuation">,</span> <span class="token number">143</span><span class="token punctuation">,</span> <span class="token number">17</span><span class="token punctuation">,</span> <span class="token number">84</span><span class="token punctuation">,</span> <span class="token number">42</span><span class="token punctuation">,</span> <span class="token number">135</span><span class="token punctuation">,</span> <span class="token number">76</span><span class="token punctuation">,</span> <span class="token number">105</span><span class="token punctuation">,</span> <span class="token number">28</span><span class="token punctuation">,</span> <span class="token number">169</span><span class="token punctuation">,</span> <span class="token number">25</span><span class="token punctuation">]</span>
+result <span class="token operator">=</span> <span class="token punctuation">[</span>‘bc’<span class="token punctuation">,</span>‘fb’<span class="token punctuation">,</span>‘a4’<span class="token punctuation">,</span>‘d0’<span class="token punctuation">,</span>‘<span class="token number">03</span>’<span class="token punctuation">,</span>‘8d’<span class="token punctuation">,</span>‘<span class="token number">48</span>’<span class="token punctuation">,</span>‘bd’<span class="token punctuation">,</span>‘4b’<span class="token punctuation">,</span>‘<span class="token number">00</span>’<span class="token punctuation">,</span>‘f8’<span class="token punctuation">,</span>‘<span class="token number">27</span>’<span class="token punctuation">,</span>‘<span class="token number">96</span>’<span class="token punctuation">,</span>‘d3’<span class="token punctuation">,</span>‘<span class="token number">93</span>’<span class="token punctuation">,</span>‘df’<span class="token punctuation">,</span>‘ec’<span class="token punctuation">]</span>
 
-for i in range(len(list)):
-key = (list[i]&gt;&gt;4)+((list[i] &amp; 0xf)&lt;&lt;4)
-print(chr(int(result[i], 16) ^ key))
-#flag:NSSCTF&#123;EZEZ_RERE&#125;
-</code></pre>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span><span class="token builtin">list</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+key <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token builtin">list</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">>></span><span class="token number">4</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token builtin">list</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&amp;</span> <span class="token number">0xf</span><span class="token punctuation">)</span><span class="token operator">&lt;&lt;</span><span class="token number">4</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">chr</span><span class="token punctuation">(</span><span class="token builtin">int</span><span class="token punctuation">(</span>result<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">)</span> <span class="token operator">^</span> key<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment">#flag:NSSCTF&#123;EZEZ_RERE&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>用于入门逆向的异或操作，真不错（</p>
 
     </div>

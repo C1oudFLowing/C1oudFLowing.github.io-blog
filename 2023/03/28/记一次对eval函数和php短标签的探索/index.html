@@ -17,13 +17,6 @@
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
 
-<script src="https://cdn.staticfile.org/highlight.js/11.7.0/highlight.min.js"></script>
-<link
-    rel="stylesheet"
-    href="https://cdn.staticfile.org/highlight.js/11.7.0/styles/Github.min.css"
-/>
-<script src="/blog/js/lib/highlight.js"></script>
-
 
 
 <script src="/blog/js/lib/preview.js"></script>
@@ -211,7 +204,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/Web/" style="color: #00bcd4">Web</a>
+                <a href="/blog/tags/Web/" style="color: #ffa2c4">Web</a>
             </span>
             
         </span>
@@ -219,11 +212,11 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="eval函数与php短标签与反引号命令执行"><a href="#eval函数与php短标签与反引号命令执行" class="headerlink" title="eval函数与php短标签与反引号命令执行"></a>eval函数与php短标签与反引号命令执行</h1><h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><pre><code class="php">&lt;?php
-eval(&#39;?&gt;&lt;?=`dir`;?&gt;&#39;);
-?&gt;
-    注：因为博主在Windows环境进行测试，因此这里使用dos指令
-</code></pre>
+        <h1 id="eval函数与php短标签与反引号命令执行"><a href="#eval函数与php短标签与反引号命令执行" class="headerlink" title="eval函数与php短标签与反引号命令执行"></a>eval函数与php短标签与反引号命令执行</h1><h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">eval</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'?>&lt;?=`dir`;?>'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token delimiter important">?></span></span>
+    注：因为博主在Windows环境进行测试，因此这里使用dos指令<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>博主与舍友试图探究这段语句的执行原理</p>
 <ul>
 <li>eval()函数的插入机制</li>

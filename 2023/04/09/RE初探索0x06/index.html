@@ -17,13 +17,6 @@
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
 
-<script src="https://cdn.staticfile.org/highlight.js/11.7.0/highlight.min.js"></script>
-<link
-    rel="stylesheet"
-    href="https://cdn.staticfile.org/highlight.js/11.7.0/styles/Github.min.css"
-/>
-<script src="/blog/js/lib/highlight.js"></script>
-
 
 
 <script src="/blog/js/lib/preview.js"></script>
@@ -211,7 +204,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/REVERSE/" style="color: #ffa2c4">REVERSE</a>
+                <a href="/blog/tags/REVERSE/" style="color: #00bcd4">REVERSE</a>
             </span>
             
         </span>
@@ -225,16 +218,16 @@
 <span id="more"></span>
 
 <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>下载附件得到python源码</p>
-<pre><code class="python">flag = &#39;xxxxxxxxxxxxxxxxxxxxx&#39;
-s = &#39;wesyvbniazxchjko1973652048@$+-&amp;*&lt;&gt;&#39;
-result = &#39;&#39;
-for i in range(len(flag)):
-    s1 = ord(flag[i])//17
-    s2 = ord(flag[i])%17
-    result += s[(s1+i)%34]+s[-(s2+i+1)%34]
-print(result)
-# result = &#39;v0b9n1nkajz@j0c4jjo3oi1h1i937b395i5y5e0e$i&#39;
-</code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">flag <span class="token operator">=</span> <span class="token string">'xxxxxxxxxxxxxxxxxxxxx'</span>
+s <span class="token operator">=</span> <span class="token string">'wesyvbniazxchjko1973652048@$+-&amp;*&lt;>'</span>
+result <span class="token operator">=</span> <span class="token string">''</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>flag<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    s1 <span class="token operator">=</span> <span class="token builtin">ord</span><span class="token punctuation">(</span>flag<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">//</span><span class="token number">17</span>
+    s2 <span class="token operator">=</span> <span class="token builtin">ord</span><span class="token punctuation">(</span>flag<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">%</span><span class="token number">17</span>
+    result <span class="token operator">+=</span> s<span class="token punctuation">[</span><span class="token punctuation">(</span>s1<span class="token operator">+</span>i<span class="token punctuation">)</span><span class="token operator">%</span><span class="token number">34</span><span class="token punctuation">]</span><span class="token operator">+</span>s<span class="token punctuation">[</span><span class="token operator">-</span><span class="token punctuation">(</span>s2<span class="token operator">+</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">%</span><span class="token number">34</span><span class="token punctuation">]</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span>
+<span class="token comment"># result = 'v0b9n1nkajz@j0c4jjo3oi1h1i937b395i5y5e0e$i'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>for循环中，</p>
 <p>执行次数为<code>flag</code>的长度</p>
 <p><code>s1</code>是对<code>flag</code>的ASCll值取整得到的</p>
@@ -243,42 +236,48 @@ print(result)
 <h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="知识补充"><a href="#知识补充" class="headerlink" title="知识补充"></a>知识补充</h2><h3 id="python3-range-函数"><a href="#python3-range-函数" class="headerlink" title="python3 range()函数"></a><a target="_blank" rel="noopener" href="https://www.runoob.com/python3/python3-func-range.html">python3 range()函数</a></h3><blockquote>
 <p>返回的是一个可迭代对象（类型是对象），而不是列表类型， 所以打印的时候不会打印列表</p>
 </blockquote>
-<pre><code class="python">for number in range(1, 6, 2):#开始值，结束值，步长(负数时从结束值生成序列)
-    print(number)
-#1
-#3
-#5
-</code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">for</span> number <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token comment">#开始值，结束值，步长(负数时从结束值生成序列)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>number<span class="token punctuation">)</span>
+<span class="token comment">#1</span>
+<span class="token comment">#3</span>
+<span class="token comment">#5</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
 <h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><p>因为<code>result</code>的获取需要同时对<code>s1</code>和<code>s2</code>进行运算，所以这里博主选择通过遍历字符的方式对<code>flag</code>进行爆破</p>
 <p>那么就要再套一层for循环用于遍历每个字符，即<code>for j in range(255)</code></p>
 <p>注意这里是将爆破出来的<code>temp</code>与<code>result</code>按位进行比较，而且加密算法中的<code>+</code>是拼接字符的意思，所以第一层的for循环步长需为<strong>2</strong></p>
 <p>加密算法不变，但是由于<code>i</code>的序列变化，所以这里需要再使用一个<code>num</code>参数，在判断成功语句结尾使值**+1**</p>
 <p>编写python脚本如下</p>
-<pre><code class="python">flag = &#39;&#39;
-s = &#39;wesyvbniazxchjko1973652048@$+-&amp;*&lt;&gt;&#39;
-result = &#39;v0b9n1nkajz@j0c4jjo3oi1h1i937b395i5y5e0e$i&#39;
-temp = &#39;&#39;
-num = 0
-for i in range(0, len(result), 2):
-    for j in range(255):
-        s1 = j // 17
-        s2 = j % 17
-        temp = s[(s1 + num) % 34] + s[-(s2 + num + 1) % 34]
-        if (temp == result[i:i + 2]):
-            flag += chr(j)  
-            num += 1
-print(flag)
-</code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">flag <span class="token operator">=</span> <span class="token string">''</span>
+s <span class="token operator">=</span> <span class="token string">'wesyvbniazxchjko1973652048@$+-&amp;*&lt;>'</span>
+result <span class="token operator">=</span> <span class="token string">'v0b9n1nkajz@j0c4jjo3oi1h1i937b395i5y5e0e$i'</span>
+temp <span class="token operator">=</span> <span class="token string">''</span>
+num <span class="token operator">=</span> <span class="token number">0</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">255</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        s1 <span class="token operator">=</span> j <span class="token operator">//</span> <span class="token number">17</span>
+        s2 <span class="token operator">=</span> j <span class="token operator">%</span> <span class="token number">17</span>
+        temp <span class="token operator">=</span> s<span class="token punctuation">[</span><span class="token punctuation">(</span>s1 <span class="token operator">+</span> num<span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">34</span><span class="token punctuation">]</span> <span class="token operator">+</span> s<span class="token punctuation">[</span><span class="token operator">-</span><span class="token punctuation">(</span>s2 <span class="token operator">+</span> num <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">34</span><span class="token punctuation">]</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>temp <span class="token operator">==</span> result<span class="token punctuation">[</span>i<span class="token punctuation">:</span>i <span class="token operator">+</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            flag <span class="token operator">+=</span> <span class="token builtin">chr</span><span class="token punctuation">(</span>j<span class="token punctuation">)</span>  
+            num <span class="token operator">+=</span> <span class="token number">1</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>flag<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
 <p>这里还有大佬的非爆破解法一并贴上,好像是对模的逆运算（？</p>
-<pre><code class="python">flag = &#39;&#39;
-s = &#39;wesyvbniazxchjko1973652048@$+-&amp;*&lt;&gt;&#39;
-result = &#39;v0b9n1nkajz@j0c4jjo3oi1h1i937b395i5y5e0e$i&#39;
-for i in range(0,len(result),2):
-    s1 = s.index(result[i]) - i//2
-    s2 = 34 - s.index(result[i+1]) -i//2 -1
-    flag += chr(s1*17+s2)
-print(flag)
-</code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">flag <span class="token operator">=</span> <span class="token string">''</span>
+s <span class="token operator">=</span> <span class="token string">'wesyvbniazxchjko1973652048@$+-&amp;*&lt;>'</span>
+result <span class="token operator">=</span> <span class="token string">'v0b9n1nkajz@j0c4jjo3oi1h1i937b395i5y5e0e$i'</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token builtin">len</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    s1 <span class="token operator">=</span> s<span class="token punctuation">.</span>index<span class="token punctuation">(</span>result<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span> i<span class="token operator">//</span><span class="token number">2</span>
+    s2 <span class="token operator">=</span> <span class="token number">34</span> <span class="token operator">-</span> s<span class="token punctuation">.</span>index<span class="token punctuation">(</span>result<span class="token punctuation">[</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span>i<span class="token operator">//</span><span class="token number">2</span> <span class="token operator">-</span><span class="token number">1</span>
+    flag <span class="token operator">+=</span> <span class="token builtin">chr</span><span class="token punctuation">(</span>s1<span class="token operator">*</span><span class="token number">17</span><span class="token operator">+</span>s2<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>flag<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>年轻人的第一次爆破（</p>
 
     </div>

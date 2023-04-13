@@ -17,13 +17,6 @@
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
 
-<script src="https://cdn.staticfile.org/highlight.js/11.7.0/highlight.min.js"></script>
-<link
-    rel="stylesheet"
-    href="https://cdn.staticfile.org/highlight.js/11.7.0/styles/Github.min.css"
-/>
-<script src="/blog/js/lib/highlight.js"></script>
-
 
 
 <script src="/blog/js/lib/preview.js"></script>
@@ -211,7 +204,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/REVERSE/" style="color: #ff7d73">REVERSE</a>
+                <a href="/blog/tags/REVERSE/" style="color: #00a596">REVERSE</a>
             </span>
             
         </span>
@@ -263,13 +256,13 @@
 <p><img src="/blog/2023/04/10/RE%E5%88%9D%E6%8E%A2%E7%B4%A20x07/5.png" alt="5"></p>
 <p>需将<code>EB FF</code>全部换成<code>90</code>，即jmp-&gt;nop（将其转换成空指令）</p>
 <p>于是编写python脚本在ida中运行</p>
-<pre><code class="python">startaddr=0x1135
-endaddr=0x3100
-for i in range(startaddr,endaddr):
-    if get_wide_byte(i)==0xEB:
-        if get_wide_byte(i+1)==0xFF:
-            patch_byte(i,0x90)
-</code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">startaddr<span class="token operator">=</span><span class="token number">0x1135</span>
+endaddr<span class="token operator">=</span><span class="token number">0x3100</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>startaddr<span class="token punctuation">,</span>endaddr<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> get_wide_byte<span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token operator">==</span><span class="token number">0xEB</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> get_wide_byte<span class="token punctuation">(</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">==</span><span class="token number">0xFF</span><span class="token punctuation">:</span>
+            patch_byte<span class="token punctuation">(</span>i<span class="token punctuation">,</span><span class="token number">0x90</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>然后一路翻下去可以找到flag的字符</p>
 <p><img src="/blog/2023/04/10/RE%E5%88%9D%E6%8E%A2%E7%B4%A20x07/6.png" alt="6"></p>
 <p>GCTF{u_are2wordy}</p>

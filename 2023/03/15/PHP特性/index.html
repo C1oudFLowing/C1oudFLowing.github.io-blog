@@ -17,13 +17,6 @@
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
 
-<script src="https://cdn.staticfile.org/highlight.js/11.7.0/highlight.min.js"></script>
-<link
-    rel="stylesheet"
-    href="https://cdn.staticfile.org/highlight.js/11.7.0/styles/Github.min.css"
-/>
-<script src="/blog/js/lib/highlight.js"></script>
-
 
 
 <script src="/blog/js/lib/preview.js"></script>
@@ -211,7 +204,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/Web/" style="color: #ffa2c4">Web</a>
+                <a href="/blog/tags/Web/" style="color: #00a596">Web</a>
             </span>
             
         </span>
@@ -230,9 +223,9 @@
 <h2 id="intval-函数"><a href="#intval-函数" class="headerlink" title="intval()函数"></a>intval()函数</h2><blockquote>
 <p>将给定变量转换成整型变量，获取变量的整数值</p>
 </blockquote>
-<pre><code class="php">int intval ( var , base )
-////var指要转换成 integer 的数量值,base指转化所使用的进制 
-</code></pre>
+  <pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token keyword type-declaration">int</span> <span class="token function">intval</span> <span class="token punctuation">(</span> <span class="token keyword">var</span> <span class="token punctuation">,</span> base <span class="token punctuation">)</span>
+<span class="token comment">////var指要转换成 integer 的数量值,base指转化所使用的进制 </span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <ul>
 <li><p><code>var</code> 可以是任何标量类型，变量不能是array和object格式</p>
 <p>除非<code>var</code>参数是字符串，否则 <strong>intval()</strong> 的 <code>base </code>参数不会有效果</p>
@@ -256,40 +249,37 @@
 </blockquote>
 <ul>
 <li><p>过滤某个数字时，我们可以利用它的进制转换来绕过</p>
-<pre><code class="php">&lt;?php
-echo intval(042);                     // 34
-echo intval(0x1A);                    // 2
-?&gt; 
-</code></pre>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">echo</span> <span class="token function">intval</span><span class="token punctuation">(</span><span class="token number">042</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                     <span class="token comment">// 34</span>
+<span class="token keyword">echo</span> <span class="token function">intval</span><span class="token punctuation">(</span><span class="token number">0x1A</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                    <span class="token comment">// 2</span>
+<span class="token delimiter important">?></span></span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 <li><p>数组绕过</p>
 <blockquote>
 <p>返回值<br>成功时返回 var 的 integer 值，失败时返回 0。空的 array 返回 0，非空的 array 返回 1。 </p>
 </blockquote>
-<pre><code class="php">if(a!=b)&#123;
-    if(a==b)&#123;
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token keyword">if</span><span class="token punctuation">(</span>a<span class="token operator">!=</span>b<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>a<span class="token operator">==</span>b<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
         
-    &#125;
-&#125;
-    //输入a[]=1和b[]=2绕过(此时两个不同但是都返回1)
-</code></pre>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+    <span class="token comment">//输入a[]=1和b[]=2绕过(此时两个不同但是都返回1)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 <li><p>小数点绕过</p>
 <blockquote>
 <p>小数点后的数字会直接舍去</p>
 </blockquote>
-<pre><code class="php">echo intval(42);                      // 42
-echo intval(4.2);                     // 4
-</code></pre>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token keyword">echo</span> <span class="token function">intval</span><span class="token punctuation">(</span><span class="token number">42</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                      <span class="token comment">// 42</span>
+<span class="token keyword">echo</span> <span class="token function">intval</span><span class="token punctuation">(</span><span class="token number">4.2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                     <span class="token comment">// 4</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 </li>
 <li><p>单引号字母绕过</p>
 <blockquote>
 <p>单引号传值的时候，它只识别字母前面的一部分</p>
 <p>进行get传参时,默认加单引号</p>
 </blockquote>
-<pre><code class="php">echo intval(1e10);                    // 1410065408
-echo intval(&#39;1e10&#39;);                  // 1
-</code></pre>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token keyword">echo</span> <span class="token function">intval</span><span class="token punctuation">(</span><span class="token number">1e10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                    <span class="token comment">// 1410065408</span>
+<span class="token keyword">echo</span> <span class="token function">intval</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'1e10'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                  <span class="token comment">// 1</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <ul>
 <li>仅在<strong>php5</strong>下可实现1e10&#x3D;1；<strong>php7</strong>下会转换成10的10次方</li>
 <li>计算时1e10会自动转换为10的10次方</li>
@@ -302,24 +292,28 @@ echo intval(&#39;1e10&#39;);                  // 1
 <h2 id="in-array-函数"><a href="#in-array-函数" class="headerlink" title="in_array()函数"></a>in_array()函数</h2><blockquote>
 <p>判断一个值是否在数组中</p>
 </blockquote>
-<pre><code class="php">in_array(value,array,type)
-//value ：要搜索的值
-//array ：被搜索的数组
-//type ： 类型，true全等 ，false非全等(默认)
-</code></pre>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token function">in_array</span><span class="token punctuation">(</span>value<span class="token punctuation">,</span><span class="token keyword type-declaration">array</span><span class="token punctuation">,</span>type<span class="token punctuation">)</span>
+<span class="token comment">//value ：要搜索的值</span>
+<span class="token comment">//array ：被搜索的数组</span>
+<span class="token comment">//type ： 类型，true全等 ，false非全等(默认)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
 <blockquote>
 <p>没有设置第三个参数 就可以形成自动转换(弱类型比较忽略后面的字符串)</p>
 </blockquote>
-<pre><code class="php">eg:n=1.php自动转换为1
-</code></pre>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">eg<span class="token punctuation">:</span>n<span class="token operator">=</span><span class="token number">1.</span>php自动转换为<span class="token number">1</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
 <h2 id="ereg-函数"><a href="#ereg-函数" class="headerlink" title="ereg()函数"></a>ereg()函数</h2><blockquote>
 <p>用指定的模式搜索一个字符串中指定的字符串,如果匹配成功返回true,否则,则返回false</p>
 <p>搜索字母的字符是大小写敏感的</p>
 </blockquote>
-<pre><code class="php">int ereg(string pattern, string originalstring, [array regs]);
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token keyword type-declaration">int</span> <span class="token function">ereg</span><span class="token punctuation">(</span><span class="token keyword type-declaration">string</span> pattern<span class="token punctuation">,</span> <span class="token keyword type-declaration">string</span> originalstring<span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token keyword type-declaration">array</span> regs<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-可选的输入参数regs包含由正则表达式中的括号组成的所有匹配表达式的数组
-</code></pre>
+可选的输入参数regs包含由正则表达式中的括号组成的所有匹配表达式的数组<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <ul>
 <li><strong>漏洞</strong>：<ul>
 <li>NULL截断：使用**%00**截断前后语句的正则匹配</li>
@@ -335,12 +329,14 @@ echo intval(&#39;1e10&#39;);                  // 1
 <li>可运用伪协议</li>
 <li>目录溢出：该函数最多能处理330位字符串（大概？），超出后会认为不是一个文件</li>
 </ul>
-<pre><code>/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/p
-roc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/pro
-c/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/
-self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/se
-lf/root/proc/self/root/var/www/html/flag.php
-</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;proc&#x2F;self&#x2F;root&#x2F;proc&#x2F;self&#x2F;root&#x2F;proc&#x2F;self&#x2F;root&#x2F;proc&#x2F;self&#x2F;root&#x2F;proc&#x2F;self&#x2F;root&#x2F;p
+roc&#x2F;self&#x2F;root&#x2F;proc&#x2F;self&#x2F;root&#x2F;proc&#x2F;self&#x2F;root&#x2F;proc&#x2F;self&#x2F;root&#x2F;proc&#x2F;self&#x2F;root&#x2F;pro
+c&#x2F;self&#x2F;root&#x2F;proc&#x2F;self&#x2F;root&#x2F;proc&#x2F;self&#x2F;root&#x2F;proc&#x2F;self&#x2F;root&#x2F;proc&#x2F;self&#x2F;root&#x2F;proc&#x2F;
+self&#x2F;root&#x2F;proc&#x2F;self&#x2F;root&#x2F;proc&#x2F;self&#x2F;root&#x2F;proc&#x2F;self&#x2F;root&#x2F;proc&#x2F;self&#x2F;root&#x2F;proc&#x2F;se
+lf&#x2F;root&#x2F;proc&#x2F;self&#x2F;root&#x2F;var&#x2F;www&#x2F;html&#x2F;flag.php<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
 <h2 id="is-numeric-函数"><a href="#is-numeric-函数" class="headerlink" title="is_numeric()函数"></a>is_numeric()函数</h2><blockquote>
 <p>检测变量是否为数字或数字字符串</p>
 </blockquote>
@@ -350,9 +346,7 @@ lf/root/proc/self/root/var/www/html/flag.php
 <p>如果指定的变量是数字和数字字符串则返回 TRUE，否则返回 FALSE，注意<strong>浮点型</strong>返回 1，即 TRUE</p>
 <ul>
 <li><p>在数字前加上空格，也会被is_numeric函数认为是数字</p>
-<pre><code class="php">\n,\t,\f,\r,\v, .均可绕过
-</code></pre>
-</li>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">\n<span class="token punctuation">,</span>\t<span class="token punctuation">,</span>\f<span class="token punctuation">,</span>\r<span class="token punctuation">,</span>\v<span class="token punctuation">,</span> <span class="token operator">.</span>均可绕过<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 </ul>
 <h2 id="trim-函数"><a href="#trim-函数" class="headerlink" title="trim()函数"></a>trim()函数</h2><blockquote>
 <p>移除字符串两侧的空白字符或其他预定义字符</p>
@@ -367,16 +361,16 @@ lf/root/proc/self/root/var/www/html/flag.php
 <h2 id="SERVER-‘argv’"><a href="#SERVER-‘argv’" class="headerlink" title="$_SERVER[‘argv’]"></a>$_SERVER[‘argv’]</h2><blockquote>
 <p>传递给该脚本的参数，以数组方式传回里面的内容</p>
 </blockquote>
-<pre><code class="php">&lt;?php
-$a=$_SERVER[&#39;argv&#39;];
-var_dump($a);
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token variable">$a</span><span class="token operator">=</span><span class="token variable">$_SERVER</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'argv'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-&gt;&gt;&gt;url/?$a=1b=2
-&gt;&gt;&gt;array(1) &#123; [0]=&gt; string(7) &quot;$a=1b=2&quot; &#125; 
+<span class="token operator">>></span><span class="token operator">></span>url<span class="token operator">/</span><span class="token operator">?</span><span class="token variable">$a</span><span class="token operator">=</span><span class="token number">1</span>b<span class="token operator">=</span><span class="token number">2</span>
+<span class="token operator">>></span><span class="token operator">></span><span class="token keyword">array</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">=></span> <span class="token keyword type-declaration">string</span><span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">)</span> <span class="token string double-quoted-string">"<span class="token interpolation"><span class="token variable">$a</span></span>=1b=2"</span> <span class="token punctuation">&#125;</span> 
 
-&gt;&gt;&gt;url/?a=1+b=2
-&gt;&gt;&gt;array(2) &#123; [0]=&gt; string(3) &quot;a=1&quot; [1]=&gt; string(3) &quot;b=2&quot; &#125; 
-</code></pre>
+<span class="token operator">>></span><span class="token operator">></span>url<span class="token operator">/</span><span class="token operator">?</span>a<span class="token operator">=</span><span class="token number">1</span><span class="token operator">+</span>b<span class="token operator">=</span><span class="token number">2</span>
+<span class="token operator">>></span><span class="token operator">></span><span class="token keyword">array</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">=></span> <span class="token keyword type-declaration">string</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token string double-quoted-string">"a=1"</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">=></span> <span class="token keyword type-declaration">string</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token string double-quoted-string">"b=2"</span> <span class="token punctuation">&#125;</span> </span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p><code>+</code>具有分隔的作用</p>
 <p>读取内容为get请求后的<code>?</code></p>
 <p>可以利用这个对变量进行赋值</p>
@@ -391,17 +385,21 @@ var_dump($a);
 </blockquote>
 <p>和<code>phpinfo()</code>一样是无参方法，可以直接被<code>call_user_func</code>调用</p>
 <hr>
-<h2 id="正则绕过"><a href="#正则绕过" class="headerlink" title="正则绕过"></a>正则绕过</h2><pre><code class="php">preg_match(&#39;/.+?ctfshow/is&#39;, $f)
-?作为通配符可以匹配至少一个任意字符，但是如果没有这个字符则不匹配，因此ctfshow可以直接绕过
-</code></pre>
+<h2 id="正则绕过"><a href="#正则绕过" class="headerlink" title="正则绕过"></a>正则绕过</h2><pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token function">preg_match</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'/.+?ctfshow/is'</span><span class="token punctuation">,</span> <span class="token variable">$f</span><span class="token punctuation">)</span>
+<span class="token operator">?</span>作为通配符可以匹配至少一个任意字符，但是如果没有这个字符则不匹配，因此ctfshow可以直接绕过<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+
+
+
 <h2 id="换行解析漏洞"><a href="#换行解析漏洞" class="headerlink" title="换行解析漏洞"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_46091464/article/details/108278486">换行解析漏洞</a></h2><blockquote>
 <p>在<code>apache2.40~2.4.29</code>版本中存在这个漏洞</p>
 </blockquote>
-<pre><code class="php+HTML">&lt;FilesMatch \.php$&gt;
-    SetHandler application/x-httpd-php
-&lt;/FilesMatch&gt;
-匹配上面的正则表达式就可以进行绕过
-</code></pre>
+<pre class="line-numbers language-php+HTML" data-language="php+HTML"><code class="language-php+HTML">&lt;FilesMatch \.php$&gt;
+    SetHandler application&#x2F;x-httpd-php
+&lt;&#x2F;FilesMatch&gt;
+匹配上面的正则表达式就可以进行绕过<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
 <ul>
 <li><p>正则表达式中<code>$</code></p>
 <blockquote>
@@ -415,34 +413,42 @@ var_dump($a);
 <h2 id="路径绕过"><a href="#路径绕过" class="headerlink" title="路径绕过"></a>路径绕过</h2><blockquote>
 <p>原型</p>
 </blockquote>
-<pre><code class="php">if(isset($_GET[&#39;u&#39;]))&#123;
-    if($_GET[&#39;u&#39;]==&#39;flag.php&#39;)&#123;
-        die(&quot;no no no&quot;);
-    &#125;else&#123;
-        highlight_file($_GET[&#39;u&#39;]);
-    &#125;
-&#125; 
-</code></pre>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'u'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'u'</span><span class="token punctuation">]</span><span class="token operator">==</span><span class="token string single-quoted-string">'flag.php'</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"no no no"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span><span class="token keyword">else</span><span class="token punctuation">&#123;</span>
+        <span class="token function">highlight_file</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'u'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>只匹配<code>flag.php</code>,所以可以加入当前路径</p>
-<pre><code>./flag.php
-var/www/html/flag.php
-</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">.&#x2F;flag.php
+var&#x2F;www&#x2F;html&#x2F;flag.php<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+
 <h2 id="目录穿越"><a href="#目录穿越" class="headerlink" title="目录穿越"></a>目录穿越</h2><p>读取文件时可以利用以下语句访问</p>
-<pre><code class="powershell">../../../../etc/passwd
-../../../../var/www/html
-</code></pre>
+<pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell"><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token operator">/</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token operator">/</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token operator">/</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token operator">/</span>etc/passwd
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token operator">/</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token operator">/</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token operator">/</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token operator">/</span><span class="token keyword">var</span><span class="token operator">/</span>www/html<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <p>注：若路径中有不存在的文件夹会直接跳过此段路径查看</p>
-<pre><code class="powershell">../aaa/../../../var/www/html == 上面那段语句
-</code></pre>
+<pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell"><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token operator">/</span>aaa/<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token operator">/</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token operator">/</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token operator">/</span><span class="token keyword">var</span><span class="token operator">/</span>www/html == 上面那段语句<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+
+
 <h2 id="运算符优先级"><a href="#运算符优先级" class="headerlink" title="运算符优先级"></a>运算符优先级</h2><blockquote>
 <p>&amp;&amp; &gt; || &gt; &#x3D; &gt; and &gt; or</p>
 </blockquote>
 <p>赋值语句中出现<code>=</code>和多个<code>and</code>时只会赋第一个值</p>
-<pre><code class="php">$v0=is_numeric($v1) and is_numeric($v2) and is_numeric($v3);
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token variable">$v0</span><span class="token operator">=</span><span class="token function">is_numeric</span><span class="token punctuation">(</span><span class="token variable">$v1</span><span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token function">is_numeric</span><span class="token punctuation">(</span><span class="token variable">$v2</span><span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token function">is_numeric</span><span class="token punctuation">(</span><span class="token variable">$v3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-=的运算符比and高
-对于v0的值只需要看v1就可以v2,v3是干扰
-</code></pre>
+<span class="token operator">=</span>的运算符比<span class="token keyword">and</span>高
+对于v0的值只需要看v1就可以v2<span class="token punctuation">,</span>v3是干扰<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
 <hr>
 <h2 id="内置类"><a href="#内置类" class="headerlink" title="内置类"></a>内置类</h2><blockquote>
 <p>题目有调用类语句时可用</p>
@@ -452,60 +458,62 @@ var/www/html/flag.php
 <h3 id="Exception-函数"><a href="#Exception-函数" class="headerlink" title="Exception()函数"></a><a target="_blank" rel="noopener" href="https://www.runoob.com/php/php-exception.html">Exception()函数</a></h3><blockquote>
 <p>用于报错</p>
 </blockquote>
-<pre><code class="php">throw new Exception(&quot;Value must be 1 or below&quot;);
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Exception</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"Value must be 1 or below"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-Fatal error: Uncaught exception &#39;Exception&#39; with message &#39;Value must be 1 or below&#39; in /www/runoob/test/test.php:7 Stack trace: #0 /www/runoob/test/test.php(13): checkNum(2) #1 &#123;main&#125; thrown in /www/runoob/test/test.php on line 7
+Fatal error<span class="token punctuation">:</span> Uncaught exception <span class="token string single-quoted-string">'Exception'</span> with message <span class="token string single-quoted-string">'Value must be 1 or below'</span> in <span class="token operator">/</span>www<span class="token operator">/</span>runoob<span class="token operator">/</span>test<span class="token operator">/</span>test<span class="token operator">.</span>php<span class="token punctuation">:</span><span class="token number">7</span> Stack trace<span class="token punctuation">:</span> <span class="token comment">#0 /www/runoob/test/test.php(13): checkNum(2) #1 &#123;main&#125; thrown in /www/runoob/test/test.php on line 7</span>
 
-因此可以在()中执行函数
-</code></pre>
+因此可以在<span class="token punctuation">(</span><span class="token punctuation">)</span>中执行函数<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <ul>
 <li><code>Exception</code>对象还定义了**__toString()**方法，我们可以直接使用print或echo显示异常对象信息。</li>
 </ul>
 <h3 id="反射类ReflectionClass"><a href="#反射类ReflectionClass" class="headerlink" title="反射类ReflectionClass"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/raoxiaoya/article/details/92797765?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522167854036216800186542643%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=167854036216800186542643&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-1-92797765-null-null.142%5Ev73%5Einsert_down1,201%5Ev4%5Eadd_ask,239%5Ev2%5Einsert_chatgpt&utm_term=php%E5%8F%8D%E5%B0%84%E7%B1%BB%E7%94%A8%E6%B3%95&spm=1018.2226.3001.4187">反射类ReflectionClass</a></h3><blockquote>
 <p>通过<strong>ReflectionClass</strong>，我们可以得到相关类的所有信息，接下来把类名传递即可</p>
 </blockquote>
-<pre><code class="php">&lt;?php
-class A&#123;
-public static $flag=&quot;flag&#123;123123123&#125;&quot;;
-const  PI=3.14;
-static function hello()&#123;
-    echo &quot;hello&lt;/br&gt;&quot;;
-&#125;
-&#125;
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">A</span><span class="token punctuation">&#123;</span>
+<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token variable">$flag</span><span class="token operator">=</span><span class="token string double-quoted-string">"flag&#123;123123123&#125;"</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span>  <span class="token constant">PI</span><span class="token operator">=</span><span class="token number">3.14</span><span class="token punctuation">;</span>
+<span class="token keyword">static</span> <span class="token keyword">function</span> <span class="token function-definition function">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">echo</span> <span class="token string double-quoted-string">"hello&lt;/br>"</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
 
-$a=new ReflectionClass(&#39;A&#39;);	//实例化
+<span class="token variable">$a</span><span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">ReflectionClass</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'A'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>	<span class="token comment">//实例化</span>
  
  
-var_dump($a-&gt;getConstants());  获取一组常量
+<span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token operator">-></span><span class="token function">getConstants</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  获取一组常量
 输出
- array(1) &#123;
-  [&quot;PI&quot;]=&gt;
-  float(3.14)
-&#125;
+ <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token punctuation">[</span><span class="token string double-quoted-string">"PI"</span><span class="token punctuation">]</span><span class="token operator">=></span>
+  <span class="token keyword type-declaration">float</span><span class="token punctuation">(</span><span class="token number">3.14</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span>
  
-var_dump($a-&gt;getName());    获取类名
+<span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token operator">-></span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    获取类名
 输出
-string(1) &quot;A&quot;
+<span class="token keyword type-declaration">string</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token string double-quoted-string">"A"</span>
  
-var_dump($a-&gt;getStaticProperties()); 获取静态属性
+<span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token operator">-></span><span class="token function">getStaticProperties</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 获取静态属性
 输出
-array(1) &#123;
-  [&quot;flag&quot;]=&gt;
-  string(15) &quot;flag&#123;123123123&#125;&quot;
-&#125;
+<span class="token keyword">array</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token punctuation">[</span><span class="token string double-quoted-string">"flag"</span><span class="token punctuation">]</span><span class="token operator">=></span>
+  <span class="token keyword type-declaration">string</span><span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">)</span> <span class="token string double-quoted-string">"flag&#123;123123123&#125;"</span>
+<span class="token punctuation">&#125;</span>
  
-var_dump($a-&gt;getMethods()); 获取类中的方法
+<span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token operator">-></span><span class="token function">getMethods</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 获取类中的方法
 输出
-array(1) &#123;
-  [0]=&gt;
-  object(ReflectionMethod)#2 (2) &#123;
-    [&quot;name&quot;]=&gt;
-    string(5) &quot;hello&quot;
-    [&quot;class&quot;]=&gt;
-    string(1) &quot;A&quot;
-  &#125;
-&#125;
-</code></pre>
+<span class="token keyword">array</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">=></span>
+  <span class="token keyword type-declaration">object</span><span class="token punctuation">(</span>ReflectionMethod<span class="token punctuation">)</span><span class="token comment">#2 (2) &#123;</span>
+    <span class="token punctuation">[</span><span class="token string double-quoted-string">"name"</span><span class="token punctuation">]</span><span class="token operator">=></span>
+    <span class="token keyword type-declaration">string</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span> <span class="token string double-quoted-string">"hello"</span>
+    <span class="token punctuation">[</span><span class="token string double-quoted-string">"class"</span><span class="token punctuation">]</span><span class="token operator">=></span>
+    <span class="token keyword type-declaration">string</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token string double-quoted-string">"A"</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
 <h3 id="文件系统迭代器FilesystemIterator"><a href="#文件系统迭代器FilesystemIterator" class="headerlink" title="文件系统迭代器FilesystemIterator"></a>文件系统迭代器FilesystemIterator</h3><blockquote>
 <p>可以显示当前目录下的文件结构，默认只显示第一个文件，需要遍历</p>
 </blockquote>
@@ -515,14 +523,14 @@ array(1) &#123;
 <h2 id="编码绕过"><a href="#编码绕过" class="headerlink" title="编码绕过"></a>编码绕过</h2><blockquote>
 <p>原型1</p>
 </blockquote>
-<pre><code class="php">$v4 = is_numeric($v2) and is_numeric($v3);
-if($v4)&#123;
-    $s = substr($v2,2);
-    $str = call_user_func($v1,$s);
-    echo $str;
-    file_put_contents($v3,$str);
-&#125;
-</code></pre>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token variable">$v4</span> <span class="token operator">=</span> <span class="token function">is_numeric</span><span class="token punctuation">(</span><span class="token variable">$v2</span><span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token function">is_numeric</span><span class="token punctuation">(</span><span class="token variable">$v3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$v4</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token variable">$s</span> <span class="token operator">=</span> <span class="token function">substr</span><span class="token punctuation">(</span><span class="token variable">$v2</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token variable">$str</span> <span class="token operator">=</span> <span class="token function">call_user_func</span><span class="token punctuation">(</span><span class="token variable">$v1</span><span class="token punctuation">,</span><span class="token variable">$s</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">echo</span> <span class="token variable">$str</span><span class="token punctuation">;</span>
+    <span class="token function">file_put_contents</span><span class="token punctuation">(</span><span class="token variable">$v3</span><span class="token punctuation">,</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <ul>
 <li>v1传入hex2bin函数</li>
 <li>v2传入base64后的16进制ascll码</li>
@@ -535,22 +543,22 @@ if($v4)&#123;
 <blockquote>
 <p>用我们自定义的参数值替换程序原有的变量值</p>
 </blockquote>
-<pre><code class="php">$$ 
-extract()函数
-parse_str()函数
-import_request_variables()函数
-</code></pre>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">$$ 
+<span class="token function">extract</span><span class="token punctuation">(</span><span class="token punctuation">)</span>函数
+<span class="token function">parse_str</span><span class="token punctuation">(</span><span class="token punctuation">)</span>函数
+<span class="token function">import_request_variables</span><span class="token punctuation">(</span><span class="token punctuation">)</span>函数<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h3 id=""><a href="#" class="headerlink" title="$$"></a>$$</h3><blockquote>
 <p>将之前定义的变量的值重新定义新的变量</p>
 </blockquote>
-<pre><code class="php">$a=b
-$b=c
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token variable">$a</span><span class="token operator">=</span><span class="token class-name type-declaration">b</span>
+<span class="token variable">$b</span><span class="token operator">=</span><span class="token class-name type-declaration">c</span>
 
-$$a = $($a) = $b = c
+<span class="token variable">$$a</span> <span class="token operator">=</span> $<span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token variable">$b</span> <span class="token operator">=</span> <span class="token class-name type-declaration">c</span>
     
-$hell=&quot;abc&quot;;
-$$hell=&quot;def&quot;;等同于$abc=&quot;def&quot;;
-</code></pre>
+<span class="token variable">$hell</span><span class="token operator">=</span><span class="token string double-quoted-string">"abc"</span><span class="token punctuation">;</span>
+<span class="token variable">$$hell</span><span class="token operator">=</span><span class="token string double-quoted-string">"def"</span><span class="token punctuation">;</span>等同于<span class="token variable">$abc</span><span class="token operator">=</span><span class="token string double-quoted-string">"def"</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <ul>
 <li><p>$GLOBALS</p>
 <blockquote>
@@ -562,36 +570,40 @@ $$hell=&quot;def&quot;;等同于$abc=&quot;def&quot;;
 <h3 id="extract-函数"><a href="#extract-函数" class="headerlink" title="extract()函数"></a>extract()函数</h3><blockquote>
 <p>将数组中的变量导入到当前的符号表</p>
 </blockquote>
-<pre><code class="php">extract(array,extract_rules,prefix) 
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token function">extract</span><span class="token punctuation">(</span><span class="token keyword type-declaration">array</span><span class="token punctuation">,</span>extract_rules<span class="token punctuation">,</span>prefix<span class="token punctuation">)</span> 
     
-//array 必需的，规定要使用的数组
-//extract_rules 可有可无，如果为空，则默认为EXTR_OVERWRITE
-//prefix可选。如果 extract_rules 参数的值是 EXTR_PREFIX_SAME、EXTR_PREFIX_ALL、 EXTR_PREFIX_INVALID 或 EXTR_PREFIX_IF_EXISTS，则 prefix 是必需的。该参数规定了前缀。前缀和数组键名之间会自动加上一个下划线。
-</code></pre>
+<span class="token comment">//array 必需的，规定要使用的数组</span>
+<span class="token comment">//extract_rules 可有可无，如果为空，则默认为EXTR_OVERWRITE</span>
+<span class="token comment">//prefix可选。如果 extract_rules 参数的值是 EXTR_PREFIX_SAME、EXTR_PREFIX_ALL、 EXTR_PREFIX_INVALID 或 EXTR_PREFIX_IF_EXISTS，则 prefix 是必需的。该参数规定了前缀。前缀和数组键名之间会自动加上一个下划线。</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
 <h3 id="parse-str-函数"><a href="#parse-str-函数" class="headerlink" title="parse_str()函数"></a>parse_str()函数</h3><blockquote>
 <p>把查询字符串解析到变量中</p>
 <p>PHP4+</p>
 </blockquote>
-<pre><code class="php">parse_str(string,array) 
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token function">parse_str</span><span class="token punctuation">(</span><span class="token keyword type-declaration">string</span><span class="token punctuation">,</span><span class="token keyword type-declaration">array</span><span class="token punctuation">)</span> 
     
 没有返回值
-//string 	必需。规定要解析的字符串。
-//array 	可选。规定存储变量的数组名称。该参数指示变量存储到数组中。
-//          如果未设置 array 参数，由该函数设置的变量将覆盖已存在的同名变量。
-</code></pre>
+<span class="token comment">//string 	必需。规定要解析的字符串。</span>
+<span class="token comment">//array 	可选。规定存储变量的数组名称。该参数指示变量存储到数组中。</span>
+<span class="token comment">//          如果未设置 array 参数，由该函数设置的变量将覆盖已存在的同名变量。</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p><strong>注释：</strong>如果未设置 array 参数，由该函数设置的变量将覆盖已存在的同名变量。</p>
 <p><strong>注释：</strong>php.ini 文件中的 magic_quotes_gpc 设置影响该函数的输出。如果已启用，那么在 parse_str() 解析之前，变量会被 addslashes() 转换。</p>
 <blockquote>
 <p>例</p>
 </blockquote>
-<pre><code class="php">&lt;?php
-parse_str(&quot;name=Peter&amp;age=43&quot;,$myArray);
-print_r($myArray);
-?&gt;
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token function">parse_str</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"name=Peter&amp;age=43"</span><span class="token punctuation">,</span><span class="token variable">$myArray</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">print_r</span><span class="token punctuation">(</span><span class="token variable">$myArray</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token delimiter important">?></span></span>
     
     输出
-    Array ( [name] =&gt; Peter [age] =&gt; 43 ) 
-</code></pre>
+    Array ( [name] => Peter [age] => 43 ) <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
 <hr>
 <h2 id="非法传参"><a href="#非法传参" class="headerlink" title="非法传参"></a>非法传参</h2><blockquote>
 <p>当变量名中出现点和空格时，变量名中的点和空格被转换成下划线</p>
@@ -608,7 +620,7 @@ print_r($myArray);
 <ul>
 <li><p>以0e开头的数字后面会被忽略（科学计数法）</p>
 <p>即返回<code>0</code></p>
-<pre><code>QNKCDZO
+<pre class="line-numbers language-none"><code class="language-none">QNKCDZO
 
 240610708
 
@@ -616,8 +628,7 @@ s878926199a
 
 s155964671a
 
-s1091221200a
-</code></pre>
+s1091221200a<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 <li><p>数组绕过</p>
 <p>原理是<strong>md5等函数不能处理数组，导致函数返回Null</strong>。而Null是等于Null的，导致了绕过。</p>
@@ -626,33 +637,28 @@ s1091221200a
 </li>
 <li><p>强类型绕过</p>
 <p>用MD值完全相同的字符来进行绕过</p>
-<pre><code>psycho%0A%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00W%ADZ%AF%3C%8A%13V%B5%96%18m%A5%EA2%81_%FB%D9%24%22%2F%8F%D4D%A27vX%B8%08%D7m%2C%E0%D4LR%D7%FBo%10t%19%02%82%7D%7B%2B%9Bt%05%FFl%AE%8DE%F4%1F%84%3C%AE%01%0F%9B%12%D4%81%A5J%F9H%0FyE%2A%DC%2B%B1%B4%0F%DEcC%40%DA29%8B%C3%00%7F%8B_h%C6%D3%8Bd8%AF%85%7C%14w%06%C2%3AC%BC%0C%1B%FD%BB%98%CE%16%CE%B7%B6%3A%F3%99%B59%F9%FF%C2
+<pre class="line-numbers language-none"><code class="language-none">psycho%0A%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00W%ADZ%AF%3C%8A%13V%B5%96%18m%A5%EA2%81_%FB%D9%24%22%2F%8F%D4D%A27vX%B8%08%D7m%2C%E0%D4LR%D7%FBo%10t%19%02%82%7D%7B%2B%9Bt%05%FFl%AE%8DE%F4%1F%84%3C%AE%01%0F%9B%12%D4%81%A5J%F9H%0FyE%2A%DC%2B%B1%B4%0F%DEcC%40%DA29%8B%C3%00%7F%8B_h%C6%D3%8Bd8%AF%85%7C%14w%06%C2%3AC%BC%0C%1B%FD%BB%98%CE%16%CE%B7%B6%3A%F3%99%B59%F9%FF%C2
 
-psycho%0A%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00W%ADZ%AF%3C%8A%13V%B5%96%18m%A5%EA2%81_%FB%D9%A4%22%2F%8F%D4D%A27vX%B8%08%D7m%2C%E0%D4LR%D7%FBo%10t%19%02%02%7E%7B%2B%9Bt%05%FFl%AE%8DE%F4%1F%04%3C%AE%01%0F%9B%12%D4%81%A5J%F9H%0FyE%2A%DC%2B%B1%B4%0F%DEc%C3%40%DA29%8B%C3%00%7F%8B_h%C6%D3%8Bd8%AF%85%7C%14w%06%C2%3AC%3C%0C%1B%FD%BB%98%CE%16%CE%B7%B6%3A%F3%9959%F9%FF%C2
-</code></pre>
+psycho%0A%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00W%ADZ%AF%3C%8A%13V%B5%96%18m%A5%EA2%81_%FB%D9%A4%22%2F%8F%D4D%A27vX%B8%08%D7m%2C%E0%D4LR%D7%FBo%10t%19%02%02%7E%7B%2B%9Bt%05%FFl%AE%8DE%F4%1F%04%3C%AE%01%0F%9B%12%D4%81%A5J%F9H%0FyE%2A%DC%2B%B1%B4%0F%DEc%C3%40%DA29%8B%C3%00%7F%8B_h%C6%D3%8Bd8%AF%85%7C%14w%06%C2%3AC%3C%0C%1B%FD%BB%98%CE%16%CE%B7%B6%3A%F3%9959%F9%FF%C2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 </li>
 <li><p>自身和md5后都是0e开头</p>
-<pre><code>0e215962017
-</code></pre>
-</li>
+<pre class="line-numbers language-none"><code class="language-none">0e215962017<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 </ul>
 <h2 id="SHA1"><a href="#SHA1" class="headerlink" title="SHA1"></a>SHA1</h2><ul>
 <li><p>弱类型</p>
 <ul>
 <li><p>数组绕过</p>
 </li>
-<li><pre><code>aaO8zKZF
-aaK1STfY
-</code></pre>
-</li>
+<li><pre class="line-numbers language-none"><code class="language-none">aaO8zKZF
+aaK1STfY<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
 </ul>
 </li>
 <li><p>强类型绕过</p>
 </li>
 </ul>
-<pre><code>array1=%25PDF-1.3%0A%25%E2%E3%CF%D3%0A%0A%0A1%200%20obj%0A%3C%3C/Width%202%200%20R/Height%203%200%20R/Type%204%200%20R/Subtype%205%200%20R/Filter%206%200%20R/ColorSpace%207%200%20R/Length%208%200%20R/BitsPerComponent%208%3E%3E%0Astream%0A%FF%D8%FF%FE%00%24SHA-1%20is%20dead%21%21%21%21%21%85/%EC%09%239u%9C9%B1%A1%C6%3CL%97%E1%FF%FE%01%7FF%DC%93%A6%B6%7E%01%3B%02%9A%AA%1D%B2V%0BE%CAg%D6%88%C7%F8K%8CLy%1F%E0%2B%3D%F6%14%F8m%B1i%09%01%C5kE%C1S%0A%FE%DF%B7%608%E9rr/%E7%ADr%8F%0EI%04%E0F%C20W%0F%E9%D4%13%98%AB%E1.%F5%BC%94%2B%E35B%A4%80-%98%B5%D7%0F%2A3.%C3%7F%AC5%14%E7M%DC%0F%2C%C1%A8t%CD%0Cx0Z%21Vda0%97%89%60k%D0%BF%3F%98%CD%A8%04F%29%A1
-&amp;array2=%25PDF-1.3%0A%25%E2%E3%CF%D3%0A%0A%0A1%200%20obj%0A%3C%3C/Width%202%200%20R/Height%203%200%20R/Type%204%200%20R/Subtype%205%200%20R/Filter%206%200%20R/ColorSpace%207%200%20R/Length%208%200%20R/BitsPerComponent%208%3E%3E%0Astream%0A%FF%D8%FF%FE%00%24SHA-1%20is%20dead%21%21%21%21%21%85/%EC%09%239u%9C9%B1%A1%C6%3CL%97%E1%FF%FE%01sF%DC%91f%B6%7E%11%8F%02%9A%B6%21%B2V%0F%F9%CAg%CC%A8%C7%F8%5B%A8Ly%03%0C%2B%3D%E2%18%F8m%B3%A9%09%01%D5%DFE%C1O%26%FE%DF%B3%DC8%E9j%C2/%E7%BDr%8F%0EE%BC%E0F%D2%3CW%0F%EB%14%13%98%BBU.%F5%A0%A8%2B%E31%FE%A4%807%B8%B5%D7%1F%0E3.%DF%93%AC5%00%EBM%DC%0D%EC%C1%A8dy%0Cx%2Cv%21V%60%DD0%97%91%D0k%D0%AF%3F%98%CD%A4%BCF%29%B1
-</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">array1&#x3D;%25PDF-1.3%0A%25%E2%E3%CF%D3%0A%0A%0A1%200%20obj%0A%3C%3C&#x2F;Width%202%200%20R&#x2F;Height%203%200%20R&#x2F;Type%204%200%20R&#x2F;Subtype%205%200%20R&#x2F;Filter%206%200%20R&#x2F;ColorSpace%207%200%20R&#x2F;Length%208%200%20R&#x2F;BitsPerComponent%208%3E%3E%0Astream%0A%FF%D8%FF%FE%00%24SHA-1%20is%20dead%21%21%21%21%21%85&#x2F;%EC%09%239u%9C9%B1%A1%C6%3CL%97%E1%FF%FE%01%7FF%DC%93%A6%B6%7E%01%3B%02%9A%AA%1D%B2V%0BE%CAg%D6%88%C7%F8K%8CLy%1F%E0%2B%3D%F6%14%F8m%B1i%09%01%C5kE%C1S%0A%FE%DF%B7%608%E9rr&#x2F;%E7%ADr%8F%0EI%04%E0F%C20W%0F%E9%D4%13%98%AB%E1.%F5%BC%94%2B%E35B%A4%80-%98%B5%D7%0F%2A3.%C3%7F%AC5%14%E7M%DC%0F%2C%C1%A8t%CD%0Cx0Z%21Vda0%97%89%60k%D0%BF%3F%98%CD%A8%04F%29%A1
+&amp;array2&#x3D;%25PDF-1.3%0A%25%E2%E3%CF%D3%0A%0A%0A1%200%20obj%0A%3C%3C&#x2F;Width%202%200%20R&#x2F;Height%203%200%20R&#x2F;Type%204%200%20R&#x2F;Subtype%205%200%20R&#x2F;Filter%206%200%20R&#x2F;ColorSpace%207%200%20R&#x2F;Length%208%200%20R&#x2F;BitsPerComponent%208%3E%3E%0Astream%0A%FF%D8%FF%FE%00%24SHA-1%20is%20dead%21%21%21%21%21%85&#x2F;%EC%09%239u%9C9%B1%A1%C6%3CL%97%E1%FF%FE%01sF%DC%91f%B6%7E%11%8F%02%9A%B6%21%B2V%0F%F9%CAg%CC%A8%C7%F8%5B%A8Ly%03%0C%2B%3D%E2%18%F8m%B3%A9%09%01%D5%DFE%C1O%26%FE%DF%B3%DC8%E9j%C2&#x2F;%E7%BDr%8F%0EE%BC%E0F%D2%3CW%0F%EB%14%13%98%BBU.%F5%A0%A8%2B%E31%FE%A4%807%B8%B5%D7%1F%0E3.%DF%93%AC5%00%EBM%DC%0D%EC%C1%A8dy%0Cx%2Cv%21V%60%DD0%97%91%D0k%D0%AF%3F%98%CD%A4%BCF%29%B1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 
     </div>
     

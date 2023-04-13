@@ -17,13 +17,6 @@
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
 
-<script src="https://cdn.staticfile.org/highlight.js/11.7.0/highlight.min.js"></script>
-<link
-    rel="stylesheet"
-    href="https://cdn.staticfile.org/highlight.js/11.7.0/styles/Github.min.css"
-/>
-<script src="/blog/js/lib/highlight.js"></script>
-
 
 
 <script src="/blog/js/lib/preview.js"></script>
@@ -211,7 +204,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/REVERSE/" style="color: #ffa2c4">REVERSE</a>
+                <a href="/blog/tags/REVERSE/" style="color: #03a9f4">REVERSE</a>
             </span>
             
         </span>
@@ -232,37 +225,39 @@
 <h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><p>思路很明显，对for循环中的语句进行逆向将<code>Str2</code>传入即可得到flag</p>
 <p>（记得把if条件中的语句也逆向了）</p>
 <p>直接编写C脚本</p>
-<pre><code class="c">#include &lt;stdio.h&gt;
-#include &lt;string.h&gt;
-int main()
-&#123;
-    char Str[] = &#123;&quot;ylqq]aycqyp&#123;&quot;&#125;;
-    int v7 = strlen(Str);
-    for (int i = 0; i &lt; v7; ++i)
-    &#123;
-        if ((Str[i] &gt; 96 || Str[i] &lt;= 98) &amp;&amp; (Str[i] &gt; 64 || Str[i] &lt;= 66))
-            Str[i] += 2;
-        else
-            Str[i] -= 24;
-    &#125;
-    printf(Str);
-    return 0;
-&#125;
-//&#123;nss_c&#123;es&#123;r&#125;
-</code></pre>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;string.h></span></span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">char</span> Str<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token string">"ylqq]aycqyp&#123;"</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> v7 <span class="token operator">=</span> <span class="token function">strlen</span><span class="token punctuation">(</span>Str<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> v7<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>Str<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">></span> <span class="token number">96</span> <span class="token operator">||</span> Str<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&lt;=</span> <span class="token number">98</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span>Str<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">></span> <span class="token number">64</span> <span class="token operator">||</span> Str<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&lt;=</span> <span class="token number">66</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+            Str<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+        <span class="token keyword">else</span>
+            Str<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">-=</span> <span class="token number">24</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span>Str<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token comment">//&#123;nss_c&#123;es&#123;r&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p><img src="/blog/2023/04/08/RE%E5%88%9D%E6%8E%A2%E7%B4%A20x05/2.png" alt="屏幕截图 2023-04-08 102216"></p>
 <p>但是提交时需要将里面的<code>&#123;</code>改为<code>a</code>（怪</p>
 <p>这里再附上大佬的python脚本</p>
-<pre><code class="python">enc = &quot;ylqq]aycqyp&#123;&quot;
-flag = &quot;&quot;
-for i in enc:
-    if (ord(i) &lt;= 94 or ord(i) &gt; 96) and (ord(i) &lt;= 62 or ord(i) &gt; 64):
-        flag+=chr(ord(i)+2)
-    else:
-        flag+=chr(ord(i)-24)
-print(flag)
-#&#123;nss_c&#123;es&#123;r&#125;
-</code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">enc <span class="token operator">=</span> <span class="token string">"ylqq]aycqyp&#123;"</span>
+flag <span class="token operator">=</span> <span class="token string">""</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> enc<span class="token punctuation">:</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token builtin">ord</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token operator">&lt;=</span> <span class="token number">94</span> <span class="token keyword">or</span> <span class="token builtin">ord</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">96</span><span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token punctuation">(</span><span class="token builtin">ord</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token operator">&lt;=</span> <span class="token number">62</span> <span class="token keyword">or</span> <span class="token builtin">ord</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">64</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        flag<span class="token operator">+=</span><span class="token builtin">chr</span><span class="token punctuation">(</span><span class="token builtin">ord</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">2</span><span class="token punctuation">)</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        flag<span class="token operator">+=</span><span class="token builtin">chr</span><span class="token punctuation">(</span><span class="token builtin">ord</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">24</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>flag<span class="token punctuation">)</span>
+<span class="token comment">#&#123;nss_c&#123;es&#123;r&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>一道入门级的字符替换题</p>
 
     </div>

