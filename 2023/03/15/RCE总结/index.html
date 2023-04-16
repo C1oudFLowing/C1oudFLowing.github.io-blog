@@ -205,7 +205,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/Web/" style="color: #ffa2c4">Web</a>
+                <a href="/blog/tags/Web/" style="color: #03a9f4">Web</a>
             </span>
             
         </span>
@@ -420,7 +420,7 @@
 <pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
         <span class="token keyword">echo</span> <span class="token function">exec</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"ls"</span><span class="token punctuation">,</span><span class="token variable">$output</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token keyword">echo</span> <span class="token string double-quoted-string">"&lt;/br>"</span><span class="token punctuation">;</span>
-        <span class="token function">print_r</span><span class="token punctuation">(</span><span class="token variable">$file</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">print_r</span><span class="token punctuation">(</span><span class="token variable">$output</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token delimiter important">?></span></span>
 
 //$output：数组格式，用于存储输出的信息
@@ -726,6 +726,11 @@ ls<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><
 <p>打印输出或者返回 filename 文件中语法高亮版本的代码，相当于就是用来读取文件的</p>
 </blockquote>
 <p>被过滤时:print(file_get_contents())</p>
+</li>
+<li><p><strong>reset()函数</strong></p>
+<blockquote>
+<p>表示内部指针指向数组的第一个元素并输出</p>
+</blockquote>
 </li>
 <li><p><strong>next()函数</strong></p>
 <blockquote>
@@ -1054,7 +1059,9 @@ $lib为要加载和链接的共享库文件名称，
 <p>利用环境变量取字母进行拼接构造命令(可用通配符)</p>
 </blockquote>
 <p><strong>一般构造&#x2F;bin&#x2F;(读取命令或base64) flag.php</strong></p>
-<h3 id="环境变量-以靶机为例"><a href="#环境变量-以靶机为例" class="headerlink" title="环境变量(以靶机为例)"></a>环境变量(以靶机为例)</h3><p><strong>PATH</strong>:&#x2F;usr&#x2F;local&#x2F;sbin:&#x2F;usr&#x2F;local&#x2F;bin:&#x2F;usr&#x2F;sbin:&#x2F;usr&#x2F;bin:&#x2F;sbin:&#x2F;bin</p>
+<h3 id="环境变量-以靶机为例"><a href="#环境变量-以靶机为例" class="headerlink" title="环境变量(以靶机为例)"></a>环境变量(以靶机为例)</h3><p><code>env</code>可查看所有环境变量</p>
+<p><code>set</code>可查看本地定义的环境变量</p>
+<p><strong>PATH</strong>:&#x2F;usr&#x2F;local&#x2F;sbin:&#x2F;usr&#x2F;local&#x2F;bin:&#x2F;usr&#x2F;sbin:&#x2F;usr&#x2F;bin:&#x2F;sbin:&#x2F;bin</p>
 <p><strong>PWD</strong>:&#x2F;var&#x2F;www&#x2F;html</p>
 <p><strong>USER</strong>:www-data</p>
 <p><strong>HOME</strong>:当前用户的主目录</p>
