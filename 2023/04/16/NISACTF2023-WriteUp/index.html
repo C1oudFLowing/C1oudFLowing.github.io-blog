@@ -205,7 +205,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #00a596">CTF线上赛</a>
+                <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #03a9f4">CTF线上赛</a>
             </span>
             
         </span>
@@ -450,7 +450,7 @@ flag<span class="token operator">=</span> <span class="token string">''</span>
 <p>使用<code>sudo -l</code>查看授权的命令列表</p>
 <p><img src="/blog/2023/04/16/NISACTF2023-WriteUp/image-20230416220915711.png" alt="image-20230416220915711"></p>
 <p>发现只有<code>base64</code>命令可以使用</p>
-<p>在<a target="_blank" rel="noopener" href="https://gtfobins.github.io/%E4%B8%8A%E6%9F%A5%E8%AF%A2%E5%AF%B9%E5%BA%94%E7%9A%84exp">https://gtfobins.github.io/上查询对应的exp</a></p>
+<p>在<a target="_blank" rel="noopener" href="https://gtfobins.github.io/">网站</a>上查询对应的exp</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> base64 <span class="token string">"<span class="token variable">$LFILE</span>"</span> <span class="token operator">|</span> base64 <span class="token parameter variable">--decode</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>由此可以读取flag</p>
