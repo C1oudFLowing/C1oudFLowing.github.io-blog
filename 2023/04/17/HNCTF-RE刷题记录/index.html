@@ -63,7 +63,7 @@
         <!--文章目录-->
         <div id="toc" class="toc-article" style="position: absolute; top: 40px; z-index: 2;">
     <div class="toc-title"></div>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HNCTF-2022-Week1-%E8%B6%85%E7%BA%A7%E7%AD%BE%E5%88%B0"><span class="toc-text">[HNCTF 2022 Week1]超级签到</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HNCTF-2022-Week1-%E8%B6%85%E7%BA%A7%E7%AD%BE%E5%88%B0"><span class="toc-text">[HNCTF 2022 Week1]超级签到</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HNCTF-2022-Week1-%E8%B4%9D%E6%96%AF%E6%98%AF%E4%BB%80%E4%B9%88%E4%B9%90%E5%99%A8%E5%95%8A%EF%BC%9F"><span class="toc-text">[HNCTF 2022 Week1]贝斯是什么乐器啊？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HNCTF-2022-Week1-X0r"><span class="toc-text">[HNCTF 2022 Week1]X0r</span></a></li></ol>
 </div>
         
         <!--返回顶部-->
@@ -213,22 +213,70 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p> <a target="_blank" rel="noopener" href="https://dqgom7v7dl.feishu.cn/docx/doxcnFESSimJ4UEvZK9ja8ZnArg">官方WP</a></p>
-<p>顺着<a target="_blank" rel="noopener" href="https://blog.probius.xyz/2023/04/16/CTF%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%E6%89%8B%E5%86%8C/#%E2%9C%A8Revese">CTF快速入门手册</a>的指引，前来做题，也算是正式入门的开始</p>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p><a target="_blank" rel="noopener" href="https://dqgom7v7dl.feishu.cn/docx/doxcnFESSimJ4UEvZK9ja8ZnArg">官方WP</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.probius.xyz/2023/04/16/CTF%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%E6%89%8B%E5%86%8C/#%E2%9C%A8Revese">CTF快速入门手册</a>推荐，于是从这里开始刷题，也算是正式入门的开始</p>
 <span id="more"></span>
 
-<h1 id="HNCTF-2022-Week1-超级签到"><a href="#HNCTF-2022-Week1-超级签到" class="headerlink" title="[HNCTF 2022 Week1]超级签到"></a>[HNCTF 2022 Week1]超级签到</h1><p>下载题目附件得到exe程序，拖入ida并f5查看main_0函数</p>
+<h1 id="HNCTF-2022-Week1-超级签到"><a href="#HNCTF-2022-Week1-超级签到" class="headerlink" title="[HNCTF 2022 Week1]超级签到"></a>[HNCTF 2022 Week1]超级签到</h1><blockquote>
+<p>ida简单使用</p>
+</blockquote>
+<p>下载题目附件得到exe程序，拖入ida并f5查看main_0函数</p>
 <p><img src="/blog/2023/04/17/HNCTF-RE%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/image-20230417220106196.png" alt="image-20230417220106196"></p>
-<p>观察伪代码发现最底下判断正误条件是<code>str1</code>和<code>str2</code>是否相等</p>
-<p>flag应该是<code>str2</code>对应的字符串</p>
-<p>同时注意到<code>str2</code>被上面的for循环中的if语句处理过</p>
+<p>观察伪代码发现最底下判断正误条件是<code>str1</code>和<code>Str2</code>是否相等</p>
+<p>flag应该是<code>Str2</code>对应的字符串</p>
+<p>同时注意到<code>Str2</code>被上面的for循环中的if语句处理过</p>
 <p>按R把ASCll码转换为char字符</p>
 <p><img src="/blog/2023/04/17/HNCTF-RE%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/20230417220636.png" alt="image-20230417220658185"></p>
 <p>发现是把其中的<code>o</code>转换成<code>0</code></p>
-<p>然后双击<code>str2</code>查看内存发现对应的字符串</p>
+<p>然后双击<code>Str2</code>查看内存发现对应的字符串</p>
 <p><img src="/blog/2023/04/17/HNCTF-RE%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/image-20230417221009988.png" alt="image-20230417221009988"></p>
 <p>按上面的逻辑替换可以得到flag为</p>
-<p><code>NSSCTF&#123;&#123;hell0_w0rld&#125;&#125;</code></p>
+<p><code>NSSCTF&#123;hell0_w0rld&#125;</code></p>
+<hr>
+<h1 id="HNCTF-2022-Week1-贝斯是什么乐器啊？"><a href="#HNCTF-2022-Week1-贝斯是什么乐器啊？" class="headerlink" title="[HNCTF 2022 Week1]贝斯是什么乐器啊？"></a>[HNCTF 2022 Week1]贝斯是什么乐器啊？</h1><blockquote>
+<p>base64算法识别</p>
+</blockquote>
+<p>下载题目附件得到exe程序，拖入ida并f5查看main()函数</p>
+<p><img src="/blog/2023/04/17/HNCTF-RE%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/image-20230419010602868.png" alt="image-20230419010602868"></p>
+<p>观察伪代码发现判断正误条件为<code>enc</code>与<code>Str2</code>是否相等</p>
+<p><code>Str2</code>是由我们输入的<code>Str</code>每一位ASCll值加上数组的下标，然后base64编码得到</p>
+<p>双击<code>enc</code>查看内存发现对应的字符串</p>
+<p><img src="/blog/2023/04/17/HNCTF-RE%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/image-20230419010643821.png" alt="image-20230419010643821"></p>
+<p>逆向编写python脚本解码得到flag</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> base64 <span class="token keyword">import</span> <span class="token operator">*</span>
+
+enc <span class="token operator">=</span> <span class="token string">'TlJRQFBBdTs4alsrKFI6MjgwNi5p'</span>
+flag <span class="token operator">=</span> b64decode<span class="token punctuation">(</span>enc<span class="token punctuation">)</span><span class="token punctuation">.</span>decode<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>flag<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">chr</span><span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token builtin">ord</span><span class="token punctuation">(</span>flag<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> end<span class="token operator">=</span><span class="token string">""</span><span class="token punctuation">)</span>
+    
+<span class="token operator">>></span><span class="token operator">></span> NSSCTF<span class="token punctuation">&#123;</span>B@se64_HAHAHA<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<hr>
+<h1 id="HNCTF-2022-Week1-X0r"><a href="#HNCTF-2022-Week1-X0r" class="headerlink" title="[HNCTF 2022 Week1]X0r"></a>[HNCTF 2022 Week1]X0r</h1><blockquote>
+<p>异或</p>
+</blockquote>
+<p>下载题目附件得到exe程序，拖入ida并f5查看main()函数</p>
+<p><img src="/blog/2023/04/17/HNCTF-RE%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/image-20230419195315550.png" alt="image-20230419195315550"></p>
+<p>一个简单的异或加密程序</p>
+<p>双击<code>arr</code>查看数组获得每个字符的16位值（这里也可以shift+e查看）</p>
+<p><img src="/blog/2023/04/17/HNCTF-RE%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/image-20230419195555272.png" alt="image-20230419195555272"></p>
+<p><img src="/blog/2023/04/17/HNCTF-RE%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/image-20230419195829444.png" alt="image-20230419195829444"></p>
+<p>逆向编写python脚本获取flag</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">arr <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token number">0x3fe</span><span class="token punctuation">,</span> <span class="token number">0x3eb</span><span class="token punctuation">,</span> <span class="token number">0x3eb</span><span class="token punctuation">,</span> <span class="token number">0x3fb</span><span class="token punctuation">,</span> <span class="token number">0x3e4</span><span class="token punctuation">,</span> <span class="token number">0x3f6</span><span class="token punctuation">,</span> <span class="token number">0x3d3</span><span class="token punctuation">,</span> <span class="token number">0x3d0</span><span class="token punctuation">,</span> <span class="token number">0x388</span><span class="token punctuation">,</span> <span class="token number">0x3ca</span><span class="token punctuation">,</span>
+    <span class="token number">0x3ef</span><span class="token punctuation">,</span> <span class="token number">0x389</span><span class="token punctuation">,</span> <span class="token number">0x3cb</span><span class="token punctuation">,</span> <span class="token number">0x3ef</span><span class="token punctuation">,</span> <span class="token number">0x3cb</span><span class="token punctuation">,</span> <span class="token number">0x388</span><span class="token punctuation">,</span> <span class="token number">0x3ef</span><span class="token punctuation">,</span> <span class="token number">0x3d5</span><span class="token punctuation">,</span> <span class="token number">0x3d9</span><span class="token punctuation">,</span> <span class="token number">0x3cb</span><span class="token punctuation">,</span>
+    <span class="token number">0x3d1</span><span class="token punctuation">,</span> <span class="token number">0x3cd</span>
+<span class="token punctuation">]</span>
+flag <span class="token operator">=</span> <span class="token string">''</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    flag <span class="token operator">+=</span> <span class="token builtin">chr</span><span class="token punctuation">(</span><span class="token punctuation">(</span>arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">-</span> <span class="token number">900</span><span class="token punctuation">)</span> <span class="token operator">^</span> <span class="token number">0x34</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>flag<span class="token punctuation">)</span>
+
+<span class="token operator">>></span><span class="token operator">></span>NSSCTF<span class="token punctuation">&#123;</span>x0r_1s_s0_easy<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 
     </div>
     

