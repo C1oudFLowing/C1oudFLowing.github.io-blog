@@ -205,7 +205,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/REVERSE/" style="color: #ff7d73">REVERSE</a>
+                <a href="/blog/tags/REVERSE/" style="color: #ffa2c4">REVERSE</a>
             </span>
             
         </span>
@@ -284,6 +284,23 @@ flag <span class="token operator">=</span> <span class="token string">''</span>
 <p>java逆向</p>
 </blockquote>
 <p><a target="_blank" rel="noopener" href="https://github.com/java-decompiler/jd-gui/releases">JD-GUI逆向工具</a></p>
+<p>下载题目附件得到.class文件，拖入JD-GUI进行反编译</p>
+<p><img src="/blog/2023/04/17/HNCTF-RE%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/image-20230420234930904.png" alt="image-20230420234930904"></p>
+<p>一眼找到加密代码</p>
+<p>逆向编写python脚本进行解密得到flag</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> base64 <span class="token keyword">import</span> <span class="token operator">*</span>
+
+key <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token number">180</span><span class="token punctuation">,</span> <span class="token number">136</span><span class="token punctuation">,</span> <span class="token number">137</span><span class="token punctuation">,</span> <span class="token number">147</span><span class="token punctuation">,</span> <span class="token number">191</span><span class="token punctuation">,</span> <span class="token number">137</span><span class="token punctuation">,</span> <span class="token number">147</span><span class="token punctuation">,</span> <span class="token number">191</span><span class="token punctuation">,</span> <span class="token number">148</span><span class="token punctuation">,</span> <span class="token number">136</span><span class="token punctuation">,</span> <span class="token number">133</span><span class="token punctuation">,</span> <span class="token number">191</span><span class="token punctuation">,</span> <span class="token number">134</span><span class="token punctuation">,</span> <span class="token number">140</span><span class="token punctuation">,</span> <span class="token number">129</span><span class="token punctuation">,</span>
+    <span class="token number">135</span><span class="token punctuation">,</span> <span class="token number">191</span><span class="token punctuation">,</span> <span class="token number">65</span>
+<span class="token punctuation">]</span>
+flag <span class="token operator">=</span> <span class="token string">''</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    flag <span class="token operator">+=</span> <span class="token builtin">chr</span><span class="token punctuation">(</span>key<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">-</span> <span class="token number">64</span> <span class="token operator">^</span> <span class="token number">0x20</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>flag<span class="token punctuation">)</span>
+
+<span class="token operator">>></span><span class="token operator">></span>This_is_the_flag_!<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 
     </div>
     
