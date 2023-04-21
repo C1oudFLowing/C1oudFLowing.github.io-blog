@@ -248,7 +248,7 @@ result <span class="token operator">=</span> <span class="token string">''</span
 <h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><p>因为<code>result</code>的获取需要同时对<code>s1</code>和<code>s2</code>进行运算，所以这里博主选择通过遍历字符的方式对<code>flag</code>进行爆破</p>
 <p>那么就要再套一层for循环用于遍历每个字符，即<code>for j in range(255)</code></p>
 <p>注意这里是将爆破出来的<code>temp</code>与<code>result</code>按位进行比较，而且加密算法中的<code>+</code>是拼接字符的意思，所以第一层的for循环步长需为<strong>2</strong></p>
-<p>加密算法不变，但是由于<code>i</code>的序列变化，所以这里需要再使用一个<code>num</code>参数，在判断成功语句结尾使值**+1**</p>
+<p>加密算法不变，但是由于<code>i</code>的序列变化，所以这里需要再使用一个<code>num</code>参数，在判断成功语句结尾使值+1</p>
 <p>编写python脚本如下</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">flag <span class="token operator">=</span> <span class="token string">''</span>
 s <span class="token operator">=</span> <span class="token string">'wesyvbniazxchjko1973652048@$+-&amp;*&lt;>'</span>
