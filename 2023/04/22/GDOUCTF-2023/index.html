@@ -63,7 +63,7 @@
         <!--文章目录-->
         <div id="toc" class="toc-article" style="position: absolute; top: 40px; z-index: 2;">
     <div class="toc-title"></div>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#WEB"><span class="toc-text">WEB</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#hate-eat-snake"><span class="toc-text">hate eat snake</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#WEB"><span class="toc-text">WEB</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#hate-eat-snake"><span class="toc-text">hate eat snake</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#EZ-WEB"><span class="toc-text">EZ WEB</span></a></li></ol></li></ol>
 </div>
         
         <!--返回顶部-->
@@ -205,7 +205,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #ff7d73">CTF线上赛</a>
+                <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #00a596">CTF线上赛</a>
             </span>
             
         </span>
@@ -221,8 +221,43 @@
 <span id="more"></span>
 
 <h1 id="WEB"><a href="#WEB" class="headerlink" title="WEB"></a>WEB</h1><h2 id="hate-eat-snake"><a href="#hate-eat-snake" class="headerlink" title="hate eat snake"></a>hate eat snake</h2><blockquote>
-<p>js游戏</p>
+<p>js代码混淆</p>
 </blockquote>
+<p>题目是一个贪吃蛇游戏，右键检查查看js文件</p>
+<p>发现使用了js代码混淆，难以直接找到flag</p>
+<p><img src="/blog/2023/04/22/GDOUCTF-2023/image-20230422222808648.png" alt="image-20230422222808648"></p>
+<p>于是查找if语句，发现判断胜利的语句是<code>getScore&gt;60</code></p>
+<p>搜索发现<code>getScore</code>在<code>Snake.prototype</code>中</p>
+<p><img src="/blog/2023/04/22/GDOUCTF-2023/image-20230422223311444.png" alt="image-20230422223311444"></p>
+<p>于是在控制台中执行并启动游戏得到flag</p>
+<p><img src="/blog/2023/04/22/GDOUCTF-2023/image-20230422223517422.png" alt="image-20230422223517422"></p>
+<h2 id="EZ-WEB"><a href="#EZ-WEB" class="headerlink" title="EZ WEB"></a>EZ WEB</h2><blockquote>
+<p>src源码泄露</p>
+<p>PUT请求</p>
+</blockquote>
+<p>打开题目，f12查看网页源码发现提示&#x2F;src泄露</p>
+<p><img src="/blog/2023/04/22/GDOUCTF-2023/image-20230422223856533.png" alt="image-20230422223856533"></p>
+<p>访问&#x2F;src得到python源码</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> flask
+
+app <span class="token operator">=</span> flask<span class="token punctuation">.</span>Flask<span class="token punctuation">(</span>__name__<span class="token punctuation">)</span>
+
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">,</span> methods<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'GET'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">index</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+  <span class="token keyword">return</span> flask<span class="token punctuation">.</span>send_file<span class="token punctuation">(</span><span class="token string">'index.html'</span><span class="token punctuation">)</span>
+
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/src'</span><span class="token punctuation">,</span> methods<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'GET'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">source</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+  <span class="token keyword">return</span> flask<span class="token punctuation">.</span>send_file<span class="token punctuation">(</span><span class="token string">'app.py'</span><span class="token punctuation">)</span>
+
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/super-secret-route-nobody-will-guess'</span><span class="token punctuation">,</span> methods<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'PUT'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">flag</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+  <span class="token keyword">return</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">'flag'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>很明显是要求我们用<code>PUT</code>请求访问其路由，于是启动burpsuite</p>
+<p>修改为PUT请求发送得到flag</p>
+<p><img src="/blog/2023/04/22/GDOUCTF-2023/image-20230422224250826.png" alt="image-20230422224250826"></p>
+<p><img src="/blog/2023/04/22/GDOUCTF-2023/image-20230422224423788.png" alt="image-20230422224423788"></p>
 
     </div>
     
