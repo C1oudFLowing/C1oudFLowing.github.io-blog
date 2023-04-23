@@ -63,7 +63,7 @@
         <!--文章目录-->
         <div id="toc" class="toc-article" style="position: absolute; top: 40px; z-index: 2;">
     <div class="toc-title"></div>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%92%95"><span class="toc-text">咕</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Question"><span class="toc-text">Question</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Answer"><span class="toc-text">Answer</span></a></li></ol>
 </div>
         
         <!--返回顶部-->
@@ -189,11 +189,11 @@
         </span>
         
         <span class="category">
-            <a href="/blog/categories/F-Q/">
+            <a href="/blog/categories/Q-A/">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
-                F&amp;Q
+                Q&amp;A
             </a>
         </span>
         
@@ -213,7 +213,21 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="咕"><a href="#咕" class="headerlink" title="咕"></a>咕</h1>
+        <h1 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h1><p>博主之前因为有编写脚本的需求于是需要Crypto库，于是直接<code>pip install Crypto</code>了</p>
+<p>但是在import的时候输入完<code>Crypto.</code>后找不到对应模块了(如Util等)</p>
+<p>报错提示是<code>&#39;Crypto.Util.number&#39; not be resolved</code></p>
+<span id="more"></span>
+
+<h1 id="Answer"><a href="#Answer" class="headerlink" title="Answer"></a>Answer</h1><p>直接安装Crypto的话由于一些历史原因比较混乱</p>
+<blockquote>
+<p>pycrypto、pycrytodome和crypto是一个东西，crypto在python上面的名字是pycrypto，它是一个第三方库，但是已经停止更新三年了，所以不建议安装这个库</p>
+</blockquote>
+<p>所以这里要安装的是pycryptodome库</p>
+<p>于是</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pip <span class="token function">install</span> crypto pycryptodome<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>可以解决</p>
+
     </div>
     
     
