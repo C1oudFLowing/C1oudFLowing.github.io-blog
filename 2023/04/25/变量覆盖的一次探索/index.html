@@ -3,7 +3,7 @@
 <html lang="zh-CN">
     <head>
         <meta charset="UTF-8" />
-        <title>雲流のLowest World</title>
+        <title>变量覆盖的一次探索 | 雲流のLowest World</title>
         <meta name="author" content="C1oudfL0w0" />
         <meta name="description" content="" />
         <meta name="keywords" content="" />
@@ -20,6 +20,10 @@
 
 
 <script src="/blog/js/lib/preview.js"></script>
+
+
+
+
 
 
 
@@ -59,7 +63,7 @@
         <!--文章目录-->
         <div id="toc" class="toc-article" style="position: absolute; top: 40px; z-index: 2;">
     <div class="toc-title"></div>
-    
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%A3%E6%96%87"><span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B5%E9%9D%A2%E6%BA%90%E7%A0%81"><span class="toc-text">页面源码</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol>
 </div>
         
         <!--返回顶部-->
@@ -172,206 +176,97 @@
     </div>
 </nav>
 
-                <div id="home-head">
-    <div id="home-background" ref="homeBackground" data-image="/blog/images/dcep12_pc.png"></div>
-    
-    <div id="home-info" @click="homeClick">
-        <span class="loop"></span>
-        <span class="loop"></span>
-        <span class="loop"></span>
-        <span class="loop"></span>
-        <span class="info">
-            <div class="wrap">
-                <h1>雲流のLowest World</h1>
-                <h3>此博客基于hexo+particlex+本人魔改的主题</h3>
-                <h5></h5>
-            </div>
-        </span>
+                <div class="article">
+    <div>
+        <h1>变量覆盖的一次探索</h1>
     </div>
-    
-</div>
-<div id="home-posts-wrap"  ref="homePostsWrap">
-    <div id="home-posts">
-        <div id="posts">
-            
-
-<div class="post">
-    <a href="/blog/2023/03/01/%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%912022/">
-        <h2 class="post-title">西湖论剑2022</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/blog/categories/%E8%B5%9B%E5%90%8E%E5%A4%8D%E7%8E%B0/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                赛后复现
-            </a>
-        </span>
-        
+    <div class="info">
         <span class="date">
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2023/3/1
+            2023/4/25
         </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>这次比赛web题成功0解（悲），赛后看别人的wp的时候发现还是有几道题是我能做的，比赛时还是被没见过的语言框架和题目提示给唬住了，所以说以后看见不认识的语言框架还是多花点去看看，指不准就有思路了呢（笑）</p>
-<hr>
-<h1 id="Node-Magical-Login"><a href="#Node-Magical-Login" class="headerlink" title="Node Magical Login"></a>Node Magical Login</h1><h2 id="主界面"><a href="#主界面" class="headerlink" title="主界面"></a>主界面</h2><p><img src="/blog/2023/03/01/%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%912022/1.png" alt="1"></p>
-<p>一个nodejs登录界面</p>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        <span class="tag">
-            
-            <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #00a596">
-                CTF线上赛
-            </a>
-        </span>
-        
-    </div>
-    <a href="/blog/2023/03/01/%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%912022/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/blog/2023/02/26/VNCTF-GongDe/">
-        <h2 class="post-title">VNCTF GongDe</h2>
-    </a>
-    <div class="category-and-date">
         
         <span class="category">
-            <a href="/blog/categories/%E8%B5%9B%E5%90%8E%E5%A4%8D%E7%8E%B0/">
+            <a href="/blog/categories/Web/">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
-                赛后复现
+                Web
             </a>
         </span>
         
-        <span class="date">
+        
+        <span class="tags">
             <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
+                <i class="fa-solid fa-tags fa-fw"></i>
             </span>
-            2023/2/26
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
             
-            <h1 id="电子木鱼"><a href="#电子木鱼" class="headerlink" title="电子木鱼"></a>电子木鱼</h1><blockquote>
-<p>RUST文件代码审计</p>
-<p>整数溢出</p>
-</blockquote>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        <span class="tag">
-            
-            <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #00a596">
-                CTF线上赛
-            </a>
-        </span>
-        
-    </div>
-    <a href="/blog/2023/02/26/VNCTF-GongDe/" class="go-post">阅读全文</a>
-</div>
-
-
-            <div class="page-current">
-    <div class="prev">
-        
-        <a class="page-num" href="/blog/page/3/">
-            <i class="fa-solid fa-caret-left fa-fw"></i>
-        </a>
-        
-    </div>
-    <div class="page-index">
-        
-        <span>
-            
-            <a class="page-num" href="/blog/">1</a>
-            <span class="page-omit">...</span>
-            
-            
+            <span class="tag">
                 
-                
-                <a class="page-num" href="/blog/page/2">2</a>
-                
+                <a href="/blog/tags/PHP/" style="color: #ffa2c4">PHP</a>
+            </span>
             
-            <a class="page-num" href="/blog/page/3/">3</a>
         </span>
         
-        <span class="current">4</span>
-        
-    </div>
-    <div class="next">
-        
-    </div>
-</div>
-
-        </div>
     </div>
     
-    <div id="home-card">
-        <div id="card-div">
-    <div class="card-style" style="width: 300px">
-        <div class="avatar">
-            <img src="/blog/images/croppedImage_cropped.jpg" alt="avatar" />
-        </div>
-        <div class="name">C1oudfL0w0</div>
-        <div class="description">
-            <p>一切恐惧来源于实力不足<br>NULL</p>
+    <div class="content" v-pre>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>做<a target="_blank" rel="noopener" href="https://www.nssctf.cn/problem/3727">[GDOUCTF 2023]受不了一点</a>这道题时想到的一些知识补充</p>
+<p>遂记录下来</p>
+<span id="more"></span>
 
-        </div>
-        
-        <div class="icon-links">
-            
-            <span class="icon-link">
-                <a target="_blank" rel="noopener" href="https://github.com/C1oudfL0w0">
-                    <i
-                        class="fa-brands fa-github fa-fw"
-                    ></i>
-                </a>
-            </span>
-            
-        </div>
-        
-        
-        <div class="friend-links">
-            
-            <div class="friend-link">
-                <a target="_blank" rel="noopener" href="https://floating-ocean.github.io/blog">Floating-Ocean</a>
-            </div>
-            
-        </div>
-        
-    </div>
-</div>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><p>在本地php环境上进行实验</p>
+<h2 id="页面源码"><a href="#页面源码" class="headerlink" title="页面源码"></a>页面源码</h2><pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token variable">$flag</span><span class="token operator">=</span><span class="token string single-quoted-string">'Thisisflag'</span><span class="token punctuation">;</span>
+<span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token variable">$_POST</span> <span class="token keyword">as</span> <span class="token variable">$key</span> <span class="token operator">=></span> <span class="token variable">$value</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token variable">$$key</span> <span class="token operator">=</span> <span class="token variable">$value</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token variable">$_GET</span> <span class="token keyword">as</span> <span class="token variable">$key</span> <span class="token operator">=></span> <span class="token variable">$value</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token variable">$$key</span> <span class="token operator">=</span> <span class="token variable">$$value</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token function">print_r</span><span class="token punctuation">(</span><span class="token function">get_defined_vars</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token string double-quoted-string">"\n"</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token variable">$flag</span><span class="token punctuation">;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>为了能够直观的查看各个变量的值，这里使用<code>get_defined_vars()</code>函数返回一个包含所有已定义变量列表的多维数组</p>
+<p><code>foreach()</code>语句能把post&#x2F;get进去的数组键名作为变量，数组中的键值作为变量的值</p>
+<p>打开页面</p>
+<p><img src="/blog/2023/04/25/%E5%8F%98%E9%87%8F%E8%A6%86%E7%9B%96%E7%9A%84%E4%B8%80%E6%AC%A1%E6%8E%A2%E7%B4%A2/image-20230426004621030.png" alt="image-20230426004621030"></p>
+<p>可以看到目前的全部变量以及flag值的回显</p>
+<p>然后我们传入get请求<code>?flag=1</code></p>
+<p><img src="/blog/2023/04/25/%E5%8F%98%E9%87%8F%E8%A6%86%E7%9B%96%E7%9A%84%E4%B8%80%E6%AC%A1%E6%8E%A2%E7%B4%A2/image-20230426005323417.png" alt="image-20230426005323417"></p>
+<p>可以发现此时<code>$key-&gt;flag</code>,<code>$flag-&gt;$value-&gt;1</code>，但是flag的值并没有回显，为什么呢？</p>
+<p>原因是在get请求的foreach语句中，<code>$$key=$$value</code>，于是我们传进去的参数会变成<code>$flag=$1</code>，但是<code>$1</code>并没有被赋值，所以没有回显</p>
+<p>而post请求的foreach语句是<code>$$key=$value</code></p>
+<p>那我们就单独post请求传一个<code>flag=1</code>看看会发生什么</p>
+<p><img src="/blog/2023/04/25/%E5%8F%98%E9%87%8F%E8%A6%86%E7%9B%96%E7%9A%84%E4%B8%80%E6%AC%A1%E6%8E%A2%E7%B4%A2/image-20230426095709508.png" alt="image-20230426095709508"></p>
+<p>可以看到回显的<code>$flag</code>变成了1</p>
+<p>原因是我们传进去的post请求参数会变成<code>$key-&gt;flag</code>,<code>$value-&gt;1</code>，那么post的foreach执行语句就会变成<code>$flag=1</code>，所以会回显1</p>
+<p>现在我们同时get传入<code>?flag=1</code>，post传入<code>1=flag</code>看看会发生什么</p>
+<p><img src="/blog/2023/04/25/%E5%8F%98%E9%87%8F%E8%A6%86%E7%9B%96%E7%9A%84%E4%B8%80%E6%AC%A1%E6%8E%A2%E7%B4%A2/image-20230426005418362.png" alt="image-20230426005418362"></p>
+<p>很明显这里<code>$flag</code>的值为flag，因为实际foreach语句中为<code>$flag=$1</code>，<code>$1=flag</code>，所以这样子会导致<code>$flag</code>变量被覆盖</p>
+<p>现在我们对回显加一个限制</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'flag'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'flag'</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token variable">$flag</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">echo</span> <span class="token variable">$flag</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="/blog/2023/04/25/%E5%8F%98%E9%87%8F%E8%A6%86%E7%9B%96%E7%9A%84%E4%B8%80%E6%AC%A1%E6%8E%A2%E7%B4%A2/image-20230426143550954.png" alt="image-20230426143550954"></p>
+<p>再看看get传入<code>1=flag</code>和<code>flag=1</code>的效果</p>
+<p><img src="/blog/2023/04/25/%E5%8F%98%E9%87%8F%E8%A6%86%E7%9B%96%E7%9A%84%E4%B8%80%E6%AC%A1%E6%8E%A2%E7%B4%A2/image-20230426143508655.png" alt="image-20230426143508655"></p>
+<p>此时<code>$1=$flag=&#39;Thisisflag&#39;</code>，然后<code>$flag=$1</code>，这样子<code>$flag</code>内的值没有发生改变可以直接匹配’Thisisflag’于是成功回显</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>变量覆盖的大致思路就是这样，限于本人思维能力，本篇文章叙述表达可能不大清晰555</p>
 
     </div>
+    
+    
+    
+    
+    
+    
     
 </div>
 
@@ -404,6 +299,12 @@
             
         </div>
         <script src="/blog/js/main.js"></script>
+        
+        
+
+
+
+
          
     <script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/blog/live2dw/assets/z16.model.json"},"display":{"position":"left","width":150,"height":290},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
