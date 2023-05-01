@@ -3,7 +3,7 @@
 <html lang="zh-CN">
     <head>
         <meta charset="UTF-8" />
-        <title>Categories: 待填的坑 | 雲流のLowest World</title>
+        <title>一次基于ChatGPT的PHP OpenSSL加解密学习 | 雲流のLowest World</title>
         <meta name="author" content="C1oudfL0w0" />
         <meta name="description" content="" />
         <meta name="keywords" content="" />
@@ -20,6 +20,10 @@
 
 
 <script src="/blog/js/lib/preview.js"></script>
+
+
+
+
 
 
 
@@ -59,7 +63,7 @@
         <!--文章目录-->
         <div id="toc" class="toc-article" style="position: absolute; top: 40px; z-index: 2;">
     <div class="toc-title"></div>
-    
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFOpenSSL"><span class="toc-text">什么是OpenSSL</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#AES%E5%8A%A0%E8%A7%A3%E5%AF%86"><span class="toc-text">AES加解密</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PEM%E8%A7%A3%E5%AF%86"><span class="toc-text">PEM解密</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9F%E6%88%90PEM%E7%A7%81%E9%92%A5"><span class="toc-text">生成PEM私钥</span></a></li></ol></li></ol>
 </div>
         
         <!--返回顶部-->
@@ -172,46 +176,20 @@
     </div>
 </nav>
 
-                <div id="archives">
-    
-    <div class="categories-tags">
-        
-        
-        <span>
-            <a href="/blog/categories/%E8%B5%9B%E5%90%8E%E5%A4%8D%E7%8E%B0/" style="background: #03a9f4">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                赛后复现
-            </a>
+                <div class="article">
+    <div>
+        <h1>一次基于ChatGPT的PHP OpenSSL加解密学习</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/5/2
         </span>
         
-        
-        
-        <span>
-            <a href="/blog/categories/REVERSE/" style="background: #ff7d73">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                REVERSE
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/blog/categories/Writeup/" style="background: #ff7d73">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                Writeup
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/blog/categories/Web/" style="background: #03a9f4">
+        <span class="category">
+            <a href="/blog/categories/Web/">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
@@ -220,89 +198,85 @@
         </span>
         
         
-        
-        <span>
-            <a href="/blog/categories/%E5%BE%85%E5%A1%AB%E7%9A%84%E5%9D%91/" style="background: linear-gradient(120deg, #9abbf7 0%, #ffbbf4 100%)">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                待填的坑
-            </a>
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/PHP/" style="color: #ff7d73">PHP</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/OpenSSL/" style="color: #00bcd4">OpenSSL</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/ChatGPT/" style="color: #03a9f4">ChatGPT</a>
+            </span>
+            
         </span>
-        
-        
-        
-        
-        
-        <span>
-            <a href="/blog/categories/Q-A/" style="background: #03a9f4">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                Q&amp;A
-            </a>
-        </span>
-        
         
     </div>
     
-    <div class="timeline">
-        <div class="timeline-tail"></div>
-        <div class="timeline-content">
-            <div class="item-time">2023/4/20</div>
-            <a href="/blog/2023/04/20/nc%E6%8C%87%E4%BB%A4/">
-                <h3>nc指令</h3>
-            </a>
-            <div class="info">
-                
-                <span class="category">
-                    <a href="/blog/categories/%E5%BE%85%E5%A1%AB%E7%9A%84%E5%9D%91/">
-                        <span class="icon">
-                            <i class="fa-solid fa-bookmark fa-fw"></i>
-                        </span>
-                        待填的坑
-                    </a>
-                </span>
-                
-                
-            </div>
-        </div>
+    <div class="content" v-pre>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>博主在打某比赛的时候遇到了PHP文件加密，故尝试向ChatGPT询问以获取所需的知识，也是第一次尝试基于ChatGPT的学习</p>
+<span id="more"></span>
+
+<h1 id="什么是OpenSSL"><a href="#什么是OpenSSL" class="headerlink" title="什么是OpenSSL"></a>什么是OpenSSL</h1><blockquote>
+<p>是一个开源的安全套接字层（SSL）协议的实现，支持多种加密算法，包括AES和DES等</p>
+</blockquote>
+<p>本文中OpenSSL将被用于实现PHP文件的加解密</p>
+<p>Kali自带OpenSSL工具</p>
+<h2 id="AES加解密"><a href="#AES加解密" class="headerlink" title="AES加解密"></a>AES加解密</h2><p>加密</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">openssl enc -aes-256-cbc <span class="token parameter variable">-salt</span> <span class="token parameter variable">-in</span> example.php <span class="token parameter variable">-out</span> example.php.enc<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>解密</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">openssl enc <span class="token parameter variable">-d</span> -aes-256-cbc <span class="token parameter variable">-in</span> example.php.enc <span class="token parameter variable">-out</span> example.php<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+<h2 id="PEM解密"><a href="#PEM解密" class="headerlink" title="PEM解密"></a>PEM解密</h2><p>使用OpenSSL对PHP文件进行PEM解密，您需要使用以下步骤：</p>
+<ol>
+<li><p>将PEM公钥保存到文件中（例如pemkey.pem）。</p>
+</li>
+<li><p>将使用PEM公钥加密的PHP文件（例如encrypted.php）保存到您的计算机上。</p>
+</li>
+<li><p>打开终端或命令行界面，然后运行以下命令：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">openssl pkeyutl <span class="token parameter variable">-decrypt</span> <span class="token parameter variable">-in</span> encrypted.php <span class="token parameter variable">-inkey</span> pemkey.pem <span class="token parameter variable">-out</span> decrypted.php<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>该命令将使用PEM密钥解密encrypted.php文件，并将解密结果保存到decrypted.php文件中。</p>
+</li>
+</ol>
+<p>如果不知道使用的私钥，则无法使用OpenSSL或任何其他工具对使用该私钥加密的PHP文件进行解密</p>
+<h2 id="生成PEM私钥"><a href="#生成PEM私钥" class="headerlink" title="生成PEM私钥"></a>生成PEM私钥</h2><p>要生成PEM私钥，您可以使用OpenSSL命令行工具。以下是一些简单的步骤：</p>
+<ol>
+<li><p>打开终端或命令行界面。</p>
+</li>
+<li><p>运行以下命令来生成PEM私钥：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">openssl genpkey <span class="token parameter variable">-algorithm</span> RSA <span class="token parameter variable">-out</span> private_key.pem <span class="token parameter variable">-aes256</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>该命令将生成一个RSA算法的PEM私钥，并将其保存到private_key.pem文件中，使用AES256算法进行加密。</p>
+</li>
+<li><p>输入密码并确认密码，以保护您的私钥。请注意，这是一个重要的安全步骤，因为私钥将用于加密和解密敏感数据。</p>
+</li>
+<li><p>如果您需要查看私钥内容，可以使用以下命令：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">openssl pkey <span class="token parameter variable">-in</span> private_key.pem <span class="token parameter variable">-text</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>该命令将显示PEM私钥的详细信息，包括算法、密钥长度和加密参数等。</p>
+</li>
+</ol>
+
     </div>
     
-    <div class="timeline">
-        <div class="timeline-tail"></div>
-        <div class="timeline-content">
-            <div class="item-time">2023/3/28</div>
-            <a href="/blog/2023/03/28/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%AF%B9eval%E5%87%BD%E6%95%B0%E5%92%8Cphp%E7%9F%AD%E6%A0%87%E7%AD%BE%E7%9A%84%E6%8E%A2%E7%B4%A2/">
-                <h3>记一次对eval函数和php短标签的探索</h3>
-            </a>
-            <div class="info">
-                
-                <span class="category">
-                    <a href="/blog/categories/%E5%BE%85%E5%A1%AB%E7%9A%84%E5%9D%91/">
-                        <span class="icon">
-                            <i class="fa-solid fa-bookmark fa-fw"></i>
-                        </span>
-                        待填的坑
-                    </a>
-                </span>
-                
-                
-                <span class="tags">
-                    <span class="icon">
-                        <i class="fa-solid fa-tags fa-fw"></i>
-                    </span>
-                    
-                    <span class="tag">
-                        
-                        <a href="/blog/tags/PHP/" style="color: #00a596">PHP</a>
-                    </span>
-                    
-                </span>
-                
-            </div>
-        </div>
-    </div>
+    
+    
+    
+    
+    
     
 </div>
 
@@ -335,6 +309,12 @@
             
         </div>
         <script src="/blog/js/main.js"></script>
+        
+        
+
+
+
+
          
     <script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/blog/live2dw/assets/z16.model.json"},"display":{"position":"left","width":150,"height":290},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>

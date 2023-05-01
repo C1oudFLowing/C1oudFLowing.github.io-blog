@@ -63,7 +63,7 @@
         <!--文章目录-->
         <div id="toc" class="toc-article" style="position: absolute; top: 40px; z-index: 2;">
     <div class="toc-title"></div>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#invoke"><span class="toc-text">__invoke():</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#construct"><span class="toc-text">__construct():</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#destruct"><span class="toc-text">__destruct():</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#wakeup"><span class="toc-text">__wakeup():</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#sleep"><span class="toc-text">__sleep():</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#toString-NaN"><span class="toc-text">__toString():</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#set"><span class="toc-text">__set():</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#get"><span class="toc-text">__get():</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#call"><span class="toc-text">__call():</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#serialize"><span class="toc-text">__serialize()</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#unserialize"><span class="toc-text">__unserialize()</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">::</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#clone"><span class="toc-text">__clone()</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#invoke"><span class="toc-text">__invoke():</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#construct"><span class="toc-text">__construct():</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#destruct"><span class="toc-text">__destruct():</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#wakeup"><span class="toc-text">__wakeup():</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#sleep"><span class="toc-text">__sleep():</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#toString-NaN"><span class="toc-text">__toString():</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#set"><span class="toc-text">__set():</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#get"><span class="toc-text">__get():</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#call"><span class="toc-text">__call():</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#isset"><span class="toc-text">__isset()</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#serialize"><span class="toc-text">__serialize()</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#unserialize"><span class="toc-text">__unserialize()</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">::</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#clone"><span class="toc-text">__clone()</span></a></li></ol>
 </div>
         
         <!--返回顶部-->
@@ -205,12 +205,12 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/PHP/" style="color: #00a596">PHP</a>
+                <a href="/blog/tags/PHP/" style="color: #03a9f4">PHP</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="color: #03a9f4">反序列化</a>
+                <a href="/blog/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="color: #ffa2c4">反序列化</a>
             </span>
             
         </span>
@@ -357,6 +357,47 @@ Hello<span class="token punctuation">,</span> world<span class="token operator">
 
 
 
+<h1 id="isset"><a href="#isset" class="headerlink" title="__isset()"></a>__isset()</h1><blockquote>
+<p>当对不可访问属性调用 isset() 或 empty() 时，__isset() 会被调用</p>
+</blockquote>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">Person</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token variable">$sex</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token variable">$name</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token variable">$age</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">__construct</span><span class="token punctuation">(</span><span class="token variable">$name</span> <span class="token operator">=</span> <span class="token string double-quoted-string">""</span><span class="token punctuation">,</span> <span class="token variable">$age</span> <span class="token operator">=</span> <span class="token number">25</span><span class="token punctuation">,</span> <span class="token variable">$sex</span> <span class="token operator">=</span> <span class="token string single-quoted-string">'男'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token variable">$this</span><span class="token operator">-></span><span class="token property">name</span> <span class="token operator">=</span> <span class="token variable">$name</span><span class="token punctuation">;</span>
+        <span class="token variable">$this</span><span class="token operator">-></span><span class="token property">age</span> <span class="token operator">=</span> <span class="token variable">$age</span><span class="token punctuation">;</span>
+        <span class="token variable">$this</span><span class="token operator">-></span><span class="token property">sex</span> <span class="token operator">=</span> <span class="token variable">$sex</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token comment">/**
+     * @param $content
+     *
+     * @return bool
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">__isset</span><span class="token punctuation">(</span><span class="token variable">$content</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token keyword">echo</span> <span class="token string double-quoted-string">"当在类外部使用isset()函数测定私有成员<span class="token interpolation"><span class="token punctuation">&#123;</span><span class="token variable">$content</span><span class="token punctuation">&#125;</span></span>时，自动调用"</span><span class="token punctuation">;</span>
+        <span class="token keyword">echo</span> <span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-></span><span class="token variable">$content</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token variable">$person</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"小明"</span><span class="token punctuation">,</span> <span class="token number">25</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 初始赋值</span>
+<span class="token keyword">echo</span> <span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$person</span><span class="token operator">-></span><span class="token property">sex</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">""</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$person</span><span class="token operator">-></span><span class="token property">name</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">""</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$person</span><span class="token operator">-></span><span class="token property">age</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">""</span><span class="token punctuation">;</span>
+
+<span class="token comment">// public 可以 isset()</span>
+<span class="token operator">>></span><span class="token operator">></span><span class="token number">1</span>当在类外部使用<span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token punctuation">)</span>函数测定私有成员name时，自动调用<span class="token number">1</span> <span class="token comment">// __isset() 内 第一个echo</span>
+<span class="token comment">// __isset() 内第二个echo</span>
+</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+
+
+<hr>
 <h1 id="serialize"><a href="#serialize" class="headerlink" title="__serialize()"></a>__serialize()</h1><blockquote>
 <p><code>serialize()</code>函数会检查类中是否存在一个魔术方法<code>__serialize()</code>。如果存在，该方法将在任何序列化之前优先执行</p>
 </blockquote>
