@@ -205,12 +205,12 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/PHP/" style="color: #ffa2c4">PHP</a>
+                <a href="/blog/tags/PHP/" style="color: #00a596">PHP</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="color: #ff7d73">反序列化</a>
+                <a href="/blog/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="color: #00bcd4">反序列化</a>
             </span>
             
         </span>
@@ -286,8 +286,24 @@
 <p>使用例：</p>
 <pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token keyword">new</span> <span class="token function">SplFileObject</span><span class="token punctuation">(</span><span class="token argument-name">php</span><span class="token punctuation">:</span><span class="token comment">//filter/convert.base64-encode/resource=flag.php)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-
-
+<p>方法：</p>
+<ol>
+<li><code>__construct()</code>：该方法用于创建一个 <code>SplFileObject</code> 对象，并打开指定的文件。该方法有多个参数，用于指定文件路径、打开模式等信息。</li>
+<li><code>fopen()</code>：该方法用于打开文件，可以指定打开模式、是否锁定文件等信息。</li>
+<li><code>fgets()</code>：该方法用于按行读取文件内容，每次读取一行，并返回该行内容。该方法可以接收一个可选的参数，用于指定读取的最大字节数。</li>
+<li><code>fgetcsv()</code>：该方法用于按 CSV 格式读取文件内容，每次读取一行，并返回该行内容的数组形式。该方法可以接收多个可选参数，用于指定 CSV 的分隔符、字段包围符号等信息。</li>
+<li><code>fread()</code>：该方法用于按字节读取文件内容，可以指定读取的字节数，并返回读取的内容。</li>
+<li><code>fwrite()</code>：该方法用于向文件中写入内容，可以指定要写入的内容和写入的长度，并返回写入的字节数。</li>
+<li><code>feof()</code>：该方法用于判断是否已到达文件末尾。</li>
+<li><code>rewind()</code>：该方法用于将文件指针重新指向文件开头。</li>
+<li><code>seek()</code>：该方法用于将文件指针定位到指定位置。</li>
+<li><code>current()</code>：该方法用于返回当前位置的行内容。</li>
+<li><code>key()</code>：该方法用于返回当前位置的行号。</li>
+<li><code>next()</code>：该方法用于将文件指针指向下一行。</li>
+<li><code>valid()</code>：该方法用于判断当前位置是否有效。</li>
+<li><code>getFlags()</code>：该方法用于获取打开文件时使用的标志。</li>
+<li><code>setFlags()</code>：该方法用于设置打开文件时使用的标志。</li>
+</ol>
 <h1 id="SplFileInfo"><a href="#SplFileInfo" class="headerlink" title="SplFileInfo"></a>SplFileInfo</h1><blockquote>
 <p>这个类提供了一种面向对象的方式来获取有关文件的信息，例如文件大小、文件类型、文件访问时间等等</p>
 </blockquote>
@@ -296,6 +312,20 @@
 </blockquote>
 <p>并不能产生回显</p>
 <p>然而，如果攻击者在目标服务器上创建了一个恶意的文件，该文件的内容包含攻击者控制的数据，例如一个 PHP 代码段，那么攻击者可以利用 <code>DirectoryIterator</code> 来读取该文件的内容（包括 PHP 代码），从而达到回显的目的</p>
+<p>方法：</p>
+<ol>
+<li><code>__construct($path, $flags = 0)</code>：创建一个新的 DirectoryIterator 实例。 <code>$path</code> 参数指定要遍历的目录路径，<code>$flags</code> 参数允许你指定一些选项，比如是否遍历隐藏文件和只列出文件而不包括子目录等。</li>
+<li><code>current()</code>：返回当前迭代器指向的文件或目录的 DirectoryIterator 实例。</li>
+<li><code>getChildren()</code>：返回当前迭代器指向的目录的 DirectoryIterator 实例，用于遍历其子目录。</li>
+<li><code>getFilename()</code>：返回当前迭代器指向的文件或目录的文件名。</li>
+<li><code>isDir()</code>：返回当前迭代器指向的文件或目录是否为目录。</li>
+<li><code>isDot()</code>：返回当前迭代器指向的文件或目录是否为当前目录（<code>.</code>）或上级目录（<code>..</code>）。</li>
+<li><code>isFile()</code>：返回当前迭代器指向的文件或目录是否为文件。</li>
+<li><code>key()</code>：返回当前迭代器指向的文件或目录的键名，即文件名或目录名。</li>
+<li><code>next()</code>：将迭代器指向下一个文件或目录。</li>
+<li><code>rewind()</code>：将迭代器指向第一个文件或目录。</li>
+<li><code>valid()</code>：检查当前迭代器指向的文件或目录是否存在，如果存在返回 <code>true</code>，否则返回 <code>false</code>。</li>
+</ol>
 <h1 id="FilesystemIterator"><a href="#FilesystemIterator" class="headerlink" title="FilesystemIterator"></a>FilesystemIterator</h1><blockquote>
 <p>这个类继承了 <code>DirectoryIterator</code> 类，并提供了一些额外的功能，例如可以按照不同的排序方式对文件进行排序。</p>
 </blockquote>
