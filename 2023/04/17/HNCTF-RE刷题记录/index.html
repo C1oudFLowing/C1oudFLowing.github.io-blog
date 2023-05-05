@@ -205,7 +205,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E5%88%B7%E9%A2%98/" style="color: #00a596">刷题</a>
+                <a href="/blog/tags/%E5%88%B7%E9%A2%98/" style="color: #ffa2c4">刷题</a>
             </span>
             
         </span>
@@ -343,9 +343,32 @@ flag <span class="token operator">=</span> <span class="token string">'N'</span>
 
 <hr>
 <h1 id="HNCTF-2022-Week1-Little-Endian"><a href="#HNCTF-2022-Week1-Little-Endian" class="headerlink" title="[HNCTF 2022 Week1]Little Endian"></a>[HNCTF 2022 Week1]Little Endian</h1><blockquote>
-<p>数据存储</p>
+<p>小段存储</p>
 </blockquote>
-<p>下载题目附件得到exe程序，拖入ida并f5进行反编译</p>
+<blockquote>
+<p>小端存储（Little Endian）是一种计算机数据存储的方式，在这种存储方式中，数值的低位（即数值的最右边）存储在内存的低地址处，而数值的高位（即数值的最左边）则存储在内存的高地址处。by ChatGPT</p>
+</blockquote>
+<p>下载题目附件得到exe程序，拖入ida并f5对main函数进行反编译</p>
+<p><img src="/blog/2023/04/17/HNCTF-RE%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/image-20230505182433565.png" alt="image-20230505182433565"></p>
+<p>双击查看<code>enc</code>的x86汇编语言指令</p>
+<p><img src="/blog/2023/04/17/HNCTF-RE%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/image-20230505182740412.png" alt="image-20230505182740412"></p>
+<p>这是一条x86汇编语言的指令，用于在内存中存储一系列32位的双字（DWORD）数据</p>
+<p>该指令的语法为：</p>
+<pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">dd value1, value2, value3, ..., valuen<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>其中，value1、value2、value3等为32位无符号整数的十六进制表示</p>
+<p>在这个例子中，dd指令将存储7个双字，分别为51670536h、5E4F102Ch、7E402211h、7C71094Bh、7C553F1Ch、6F5A3816h和两个0。</p>
+<p>逆向编写python脚本获得flag</p>
+<p>(因为小端存储数据是逆向存的 所以最后要旋转一下)</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> Crypto<span class="token punctuation">.</span>Util<span class="token punctuation">.</span>number <span class="token keyword">import</span> <span class="token operator">*</span>
+
+enc <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0x51670536</span><span class="token punctuation">,</span> <span class="token number">0x5e4f102c</span><span class="token punctuation">,</span> <span class="token number">0x7e402211</span><span class="token punctuation">,</span> <span class="token number">0x7c71094b</span><span class="token punctuation">,</span> <span class="token number">0x7c553f1c</span><span class="token punctuation">,</span> <span class="token number">0x6f5a3816</span><span class="token punctuation">]</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> enc<span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>long_to_bytes<span class="token punctuation">(</span>i <span class="token operator">^</span> <span class="token number">0x12345678</span><span class="token punctuation">)</span><span class="token punctuation">.</span>decode<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> end<span class="token operator">=</span><span class="token string">''</span><span class="token punctuation">)</span>
+
+<span class="token operator">>></span><span class="token operator">></span>NSSCTF<span class="token punctuation">&#123;</span>Littl3_Endiannnn<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><a href="https://c1oudfl0w0.github.io/blog/2023/05/05/python-long-to-bytes-%E5%87%BD%E6%95%B0/">long_to_bytes</a></p>
 
     </div>
     
