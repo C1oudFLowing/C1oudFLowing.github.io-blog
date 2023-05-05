@@ -63,7 +63,7 @@
         <!--文章目录-->
         <div id="toc" class="toc-article" style="position: absolute; top: 40px; z-index: 2;">
     <div class="toc-title"></div>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%BB%E5%8F%96PHP%E4%B8%AD%E5%AD%98%E5%9C%A8%E7%9A%84%E5%8E%9F%E7%94%9F%E7%B1%BB"><span class="toc-text">读取PHP中存在的原生类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SoapClient"><span class="toc-text">SoapClient</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#CRLF%E6%B3%A8%E5%85%A5"><span class="toc-text">CRLF注入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#EXP"><span class="toc-text">EXP</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SplFileObject"><span class="toc-text">SplFileObject</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SplFileInfo"><span class="toc-text">SplFileInfo</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DirectoryIterator"><span class="toc-text">DirectoryIterator</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#FilesystemIterator"><span class="toc-text">FilesystemIterator</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SplTempFileObject"><span class="toc-text">SplTempFileObject</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#GlobIterator"><span class="toc-text">GlobIterator</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%BB%E5%8F%96PHP%E4%B8%AD%E5%AD%98%E5%9C%A8%E7%9A%84%E5%8E%9F%E7%94%9F%E7%B1%BB"><span class="toc-text">读取PHP中存在的原生类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SoapClient"><span class="toc-text">SoapClient</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#CRLF%E6%B3%A8%E5%85%A5"><span class="toc-text">CRLF注入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#EXP"><span class="toc-text">EXP</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SplFileInfo"><span class="toc-text">SplFileInfo</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SplFileObject"><span class="toc-text">SplFileObject</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SplTempFileObject"><span class="toc-text">SplTempFileObject</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DirectoryIterator"><span class="toc-text">DirectoryIterator</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#FilesystemIterator"><span class="toc-text">FilesystemIterator</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#GlobIterator"><span class="toc-text">GlobIterator</span></a></li></ol>
 </div>
         
         <!--返回顶部-->
@@ -205,12 +205,12 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/PHP/" style="color: #00a596">PHP</a>
+                <a href="/blog/tags/PHP/" style="color: #00bcd4">PHP</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="color: #00bcd4">反序列化</a>
+                <a href="/blog/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="color: #03a9f4">反序列化</a>
             </span>
             
         </span>
@@ -272,8 +272,11 @@
 
 
 <hr>
+<h1 id="SplFileInfo"><a href="#SplFileInfo" class="headerlink" title="SplFileInfo"></a>SplFileInfo</h1><blockquote>
+<p>这个类提供了一种面向对象的方式来获取有关文件的信息，例如文件大小、文件类型、文件访问时间等等</p>
+</blockquote>
 <h1 id="SplFileObject"><a href="#SplFileObject" class="headerlink" title="SplFileObject"></a>SplFileObject</h1><blockquote>
-<p>PHP编程文件处理类，为文件提供了一个面向对象接口</p>
+<p>继承自 <code>SplFileInfo</code> 类，PHP编程文件处理类，为文件提供了一个面向对象接口</p>
 </blockquote>
 <p>以下代码可以打开一个文本文件、逐行读取其内容并输出到屏幕上</p>
 <pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token variable">$file</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SplFileObject</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'example.txt'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -304,8 +307,8 @@
 <li><code>getFlags()</code>：该方法用于获取打开文件时使用的标志。</li>
 <li><code>setFlags()</code>：该方法用于设置打开文件时使用的标志。</li>
 </ol>
-<h1 id="SplFileInfo"><a href="#SplFileInfo" class="headerlink" title="SplFileInfo"></a>SplFileInfo</h1><blockquote>
-<p>这个类提供了一种面向对象的方式来获取有关文件的信息，例如文件大小、文件类型、文件访问时间等等</p>
+<h1 id="SplTempFileObject"><a href="#SplTempFileObject" class="headerlink" title="SplTempFileObject"></a>SplTempFileObject</h1><blockquote>
+<p>这个类提供了一个临时文件对象，您可以使用它来读取和写入临时文件</p>
 </blockquote>
 <h1 id="DirectoryIterator"><a href="#DirectoryIterator" class="headerlink" title="DirectoryIterator"></a>DirectoryIterator</h1><blockquote>
 <p>这个类提供了一种面向对象的方式来遍历目录并读取目录中的文件。您可以使用它来获取目录中的文件列表，以及文件的基本信息</p>
@@ -328,9 +331,6 @@
 </ol>
 <h1 id="FilesystemIterator"><a href="#FilesystemIterator" class="headerlink" title="FilesystemIterator"></a>FilesystemIterator</h1><blockquote>
 <p>这个类继承了 <code>DirectoryIterator</code> 类，并提供了一些额外的功能，例如可以按照不同的排序方式对文件进行排序。</p>
-</blockquote>
-<h1 id="SplTempFileObject"><a href="#SplTempFileObject" class="headerlink" title="SplTempFileObject"></a>SplTempFileObject</h1><blockquote>
-<p>这个类提供了一个临时文件对象，您可以使用它来读取和写入临时文件</p>
 </blockquote>
 <hr>
 <h1 id="GlobIterator"><a href="#GlobIterator" class="headerlink" title="GlobIterator"></a>GlobIterator</h1><blockquote>
