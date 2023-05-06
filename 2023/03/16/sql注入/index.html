@@ -205,7 +205,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/Sql/" style="color: #00a596">Sql</a>
+                <a href="/blog/tags/Sql/" style="color: #03a9f4">Sql</a>
             </span>
             
         </span>
@@ -218,8 +218,7 @@
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">//拼接sql语句查找指定ID用户</span>
 $<span class="token keyword">sql</span> <span class="token operator">=</span> <span class="token string">"select username,password from table_name where username !='flag' and id = '"</span><span class="token punctuation">.</span>$_GET<span class="token punctuation">[</span><span class="token string">'id'</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token string">"' limit 1;"</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-
-
+<p>PS:此语句中存在<code>limit 1</code>即只回显一行</p>
 <p>基本思路</p>
 <p>用<code>1&#39;</code>闭合前面的语句，执行自己构造的语句</p>
 <span id="more"></span>

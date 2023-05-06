@@ -63,7 +63,7 @@
         <!--文章目录-->
         <div id="toc" class="toc-article" style="position: absolute; top: 40px; z-index: 2;">
     <div class="toc-title"></div>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SQL%E8%AF%AD%E6%B3%95"><span class="toc-text">SQL语法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E8%AF%AD%E5%8F%A5"><span class="toc-text">基础语句</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4"><span class="toc-text">命令</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#SELECT"><span class="toc-text">SELECT</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%A5%E6%B3%95"><span class="toc-text">句法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#WHERE-%E5%AD%90%E5%8F%A5"><span class="toc-text">WHERE 子句</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ORDER-BY-%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-text">ORDER BY 关键字</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1"><span class="toc-text">面向对象</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SQL%E8%AF%AD%E6%B3%95"><span class="toc-text">SQL语法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E8%AF%AD%E5%8F%A5"><span class="toc-text">基础语句</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4"><span class="toc-text">命令</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#SELECT"><span class="toc-text">SELECT</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%A5%E6%B3%95"><span class="toc-text">句法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#WHERE-%E5%AD%90%E5%8F%A5"><span class="toc-text">WHERE 子句</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#LIKE-%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="toc-text">LIKE 操作符</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ORDER-BY-%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-text">ORDER BY 关键字</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%87%BD%E6%95%B0"><span class="toc-text">函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#COUNT-%E5%87%BD%E6%95%B0"><span class="toc-text">COUNT() 函数</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1"><span class="toc-text">面向对象</span></a></li></ol>
 </div>
         
         <!--返回顶部-->
@@ -205,7 +205,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/Sql/" style="color: #03a9f4">Sql</a>
+                <a href="/blog/tags/Sql/" style="color: #00a596">Sql</a>
             </span>
             
         </span>
@@ -255,8 +255,16 @@
 </blockquote>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> column_name<span class="token punctuation">,</span>column_name <span class="token keyword">FROM</span> table_name <span class="token keyword">WHERE</span> condition<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
+<h3 id="LIKE-操作符"><a href="#LIKE-操作符" class="headerlink" title="LIKE 操作符"></a>LIKE 操作符</h3><blockquote>
+<p>用于在 WHERE 子句中搜索列中的指定模式</p>
+</blockquote>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> column_name<span class="token punctuation">,</span> column_name <span class="token keyword">FROM</span> table_name <span class="token keyword">WHERE</span> <span class="token keyword">column</span> <span class="token operator">LIKE</span> pattern<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
+<p>“%” 符号用于在模式的前后定义通配符（默认字母）</p>
+<p>eg：下列语句选取 name 以字母 “G” 开始的所有字段</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">FROM</span> table_name <span class="token keyword">WHERE</span> name <span class="token operator">LIKE</span> <span class="token string">'G%'</span><span class="token punctuation">;</span> <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
+<p>以此类推<code>%G</code>,<code>%G%</code>分别为结尾和包含</p>
 <h2 id="ORDER-BY-关键字"><a href="#ORDER-BY-关键字" class="headerlink" title="ORDER BY 关键字"></a>ORDER BY 关键字</h2><blockquote>
 <p>对结果集按照一个列或者多个列进行排序</p>
 </blockquote>
@@ -265,6 +273,15 @@
 <p><strong>ASC</strong>：表示按升序排序。</p>
 <p><strong>DESC</strong>：表示按降序排序。</p>
 <p>当按照多个列进行排序时，只有第一列的值相同时才使用第二列</p>
+<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><h2 id="COUNT-函数"><a href="#COUNT-函数" class="headerlink" title="COUNT() 函数"></a>COUNT() 函数</h2><blockquote>
+<p>返回匹配指定条件的行数</p>
+</blockquote>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token function">COUNT</span><span class="token punctuation">(</span>column_name<span class="token punctuation">)</span> <span class="token keyword">FROM</span> table_name<span class="token punctuation">;</span> <span class="token comment"># 返回指定列的值的数目（NULL 不计入）</span>
+<span class="token keyword">SELECT</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token keyword">FROM</span> table_name<span class="token punctuation">;</span> <span class="token comment"># 返回表中的记录数</span>
+<span class="token keyword">SELECT</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token keyword">DISTINCT</span> column_name<span class="token punctuation">)</span> <span class="token keyword">FROM</span> table_name<span class="token punctuation">;</span> <span class="token comment"># 返回指定列的不同值的数目</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+
 <h1 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h1><pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token variable">$servername</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"localhost"</span><span class="token punctuation">;</span>
 <span class="token variable">$username</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"username"</span><span class="token punctuation">;</span>

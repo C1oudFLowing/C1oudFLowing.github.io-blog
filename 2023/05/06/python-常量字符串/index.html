@@ -3,7 +3,7 @@
 <html lang="zh-CN">
     <head>
         <meta charset="UTF-8" />
-        <title>RE初探索0xA | 雲流のLowest World</title>
+        <title>python 常量字符串 | 雲流のLowest World</title>
         <meta name="author" content="C1oudfL0w0" />
         <meta name="description" content="" />
         <meta name="keywords" content="" />
@@ -63,7 +63,7 @@
         <!--文章目录-->
         <div id="toc" class="toc-article" style="position: absolute; top: 40px; z-index: 2;">
     <div class="toc-title"></div>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-text">知识点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-text">题目</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF"><span class="toc-text">思路</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9F%A5%E8%AF%86%E8%A1%A5%E5%85%85"><span class="toc-text">知识补充</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#C-%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4"><span class="toc-text">C++命名空间</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C"><span class="toc-text">操作</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%B8%E9%87%8F%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">常量字符串</span></a></li></ol>
 </div>
         
         <!--返回顶部-->
@@ -178,23 +178,14 @@
 
                 <div class="article">
     <div>
-        <h1>RE初探索0xA</h1>
+        <h1>python 常量字符串</h1>
     </div>
     <div class="info">
         <span class="date">
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2023/4/14
-        </span>
-        
-        <span class="category">
-            <a href="/blog/categories/REVERSE/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                REVERSE
-            </a>
+            2023/5/6
         </span>
         
         
@@ -205,17 +196,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E5%BC%82%E6%88%96/" style="color: #ffa2c4">异或</a>
-            </span>
-            
-            <span class="tag">
-                
-                <a href="/blog/tags/C/" style="color: #00bcd4">C++</a>
-            </span>
-            
-            <span class="tag">
-                
-                <a href="/blog/tags/%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4/" style="color: #00a596">命名空间</a>
+                <a href="/blog/tags/python/" style="color: #00bcd4">python</a>
             </span>
             
         </span>
@@ -223,42 +204,21 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>NSS上<a target="_blank" rel="noopener" href="https://www.nssctf.cn/problem/2041">[NISACTF 2022]sign-ezc++</a></p>
-<p>博主的RE入门系列来到了第十期，这次是NISA2022的题，恰巧明天就是NISA2023校赛的日子，而且本篇博客也会和<code>0xA</code>扯上点关系</p>
-<p>缘，妙不可言（</p>
-<h1 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h1><p>c++</p>
-<p>命名空间</p>
-<p>异或</p>
+        <h1 id="常量字符串"><a href="#常量字符串" class="headerlink" title="常量字符串"></a>常量字符串</h1><blockquote>
+<p>python内置string模块</p>
+</blockquote>
 <span id="more"></span>
 
-<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>下载题目附件得到exe程序，拖入ida并f5查看main函数</p>
-<p><img src="/blog/2023/04/14/RE%E5%88%9D%E6%8E%A2%E7%B4%A20xA/image-20230414200137140.png" alt="image-20230414200137140"></p>
-<p>乍一看找不到flag相关的信息，但是发现有两个不一样的命名空间<code>Man</code>和<code>Human</code></p>
-<p>两个都打开看看发现指向同一段地址(?)（目前博主不确定叫什么</p>
-<p><img src="/blog/2023/04/14/RE%E5%88%9D%E6%8E%A2%E7%B4%A20xA/image-20230414200654618.png" alt="image-20230414200654618"></p>
-<p>打开此地址发现<code>Human::give_flag</code>这个函数</p>
-<p><img src="/blog/2023/04/14/RE%E5%88%9D%E6%8E%A2%E7%B4%A20xA/image-20230414200859488.png" alt="image-20230414200859488"></p>
-<p>打开此函数可以看到flag相关的异或操作</p>
-<p><img src="/blog/2023/04/14/RE%E5%88%9D%E6%8E%A2%E7%B4%A20xA/image-20230414201003642.png" alt="image-20230414201003642"></p>
-<p>将<code>flag</code>按位与<code>0xA</code>进行异或</p>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="知识补充"><a href="#知识补充" class="headerlink" title="知识补充"></a>知识补充</h2><h3 id="C-命名空间"><a href="#C-命名空间" class="headerlink" title="C++命名空间"></a>C++命名空间</h3><blockquote>
-<p>解决命名冲突的问题</p>
-</blockquote>
-<p>类似于同名函数在不同的类以防止冲突，逆向时或许可以当类中的函数处理（？</p>
-<h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><p>这里<code>flag</code>参数是可以查看内存中的值</p>
-<p><img src="/blog/2023/04/14/RE%E5%88%9D%E6%8E%A2%E7%B4%A20xA/image-20230414230044333.png" alt="image-20230414230044333"></p>
-<p>两行db后绿色的值就是<code>flag</code>值的每一位(十六进制)</p>
-<p><code>2 dup(59h)</code>说明连续出现两次</p>
-<p>于是得到<code>flag</code>的值为<code>0x44,0x59,0x59,0x49,0x5E,0x4C,0x71,0x7E,0x62,0x63,0x79,0x55,0x63,0x79,0x55,0x44,0x43,0x59,0x4B,0x55,0x78,0x6F,0x55,0x79,0x63,0x6D,0x64,0x77,0x14</code></p>
-<p>然后编写python脚本执行异或获取题目的flag</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">flag<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">0x44</span><span class="token punctuation">,</span><span class="token number">0x59</span><span class="token punctuation">,</span><span class="token number">0x59</span><span class="token punctuation">,</span><span class="token number">0x49</span><span class="token punctuation">,</span><span class="token number">0x5E</span><span class="token punctuation">,</span><span class="token number">0x4C</span><span class="token punctuation">,</span><span class="token number">0x71</span><span class="token punctuation">,</span><span class="token number">0x7E</span><span class="token punctuation">,</span><span class="token number">0x62</span><span class="token punctuation">,</span><span class="token number">0x63</span><span class="token punctuation">,</span><span class="token number">0x79</span><span class="token punctuation">,</span><span class="token number">0x55</span><span class="token punctuation">,</span><span class="token number">0x63</span><span class="token punctuation">,</span><span class="token number">0x79</span><span class="token punctuation">,</span><span class="token number">0x55</span><span class="token punctuation">,</span><span class="token number">0x44</span><span class="token punctuation">,</span><span class="token number">0x43</span><span class="token punctuation">,</span><span class="token number">0x59</span><span class="token punctuation">,</span><span class="token number">0x4B</span><span class="token punctuation">,</span><span class="token number">0x55</span><span class="token punctuation">,</span><span class="token number">0x78</span><span class="token punctuation">,</span><span class="token number">0x6F</span><span class="token punctuation">,</span><span class="token number">0x55</span><span class="token punctuation">,</span><span class="token number">0x79</span><span class="token punctuation">,</span><span class="token number">0x63</span><span class="token punctuation">,</span><span class="token number">0x6D</span><span class="token punctuation">,</span><span class="token number">0x64</span><span class="token punctuation">,</span><span class="token number">0x77</span><span class="token punctuation">,</span><span class="token number">0x14</span><span class="token punctuation">]</span>
-<span class="token keyword">for</span> i <span class="token keyword">in</span> flag<span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">chr</span><span class="token punctuation">(</span>i<span class="token operator">^</span><span class="token builtin">ord</span><span class="token punctuation">(</span><span class="token string">'\n'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>end<span class="token operator">=</span><span class="token string">""</span><span class="token punctuation">)</span>	<span class="token comment"># ord(‘\n’)==0xA</span>
-<span class="token operator">>></span><span class="token operator">></span>NSSCTF<span class="token punctuation">&#123;</span>this_is_NISA_re_sign<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>初步了解命名空间相关的逆向方法</p>
+<p>Python中常用的常量字符串包括：</p>
+<ol>
+<li><code>string.ascii_letters</code>：包含所有ASCII字母，即<code>&#39;a&#39;</code>到<code>&#39;z&#39;</code>和<code>&#39;A&#39;</code>到<code>&#39;Z&#39;</code>。</li>
+<li><code>string.ascii_lowercase</code>：包含所有小写ASCII字母，即<code>&#39;a&#39;</code>到<code>&#39;z&#39;</code>。</li>
+<li><code>string.ascii_uppercase</code>：包含所有大写ASCII字母，即<code>&#39;A&#39;</code>到<code>&#39;Z&#39;</code>。</li>
+<li><code>string.digits</code>：包含所有数字字符，即<code>&#39;0&#39;</code>到<code>&#39;9&#39;</code>。</li>
+<li><code>string.hexdigits</code>：包含所有十六进制数字字符，即<code>&#39;0&#39;</code>到<code>&#39;9&#39;</code>和<code>&#39;a&#39;</code>到<code>&#39;f&#39;</code>。</li>
+<li><code>string.octdigits</code>：包含所有八进制数字字符，即<code>&#39;0&#39;</code>到<code>&#39;7&#39;</code>。</li>
+<li><code>string.punctuation</code>：包含所有特殊字符，如<code>&#39;!&#39;</code>、<code>&#39;@&#39;</code>、<code>&#39;#&#39;</code>等。</li>
+</ol>
 
     </div>
     
