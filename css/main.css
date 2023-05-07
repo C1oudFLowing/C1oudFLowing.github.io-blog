@@ -385,11 +385,13 @@
     display: inline-block;
     margin-left: 60px;
     margin-right: 5px;
+    font-size: 18px;
 }
 #menu .desktop-menu a {
     color: #555;
     display: inline-block;
     margin-left: 30px;
+    font-size: 18px;
 }
 #menu #mobile-menu {
     min-height: 50px;
