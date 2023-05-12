@@ -207,7 +207,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/PHP/" style="color: #00a596">PHP</a>
+                <a href="/blog/tags/PHP/" style="color: #00bcd4">PHP</a>
             </span>
             
         </span>
@@ -292,41 +292,12 @@
 <h3 id="伪随机数漏洞"><a href="#伪随机数漏洞" class="headerlink" title="伪随机数漏洞"></a>伪随机数漏洞</h3><p>存在可预测性：</p>
 <p>知道种子后，可以确定输出伪随机数的序列<br>知道随机数序列，可以确定你的种子</p>
 <hr>
-<h2 id="parse-url函数"><a href="#parse-url函数" class="headerlink" title="parse_url函数"></a>parse_url函数</h2><blockquote>
+<h2 id="parse-url函数"><a href="#parse-url函数" class="headerlink" title="parse_url函数"></a><a href="https://c1oudfl0w0.github.io/blog/2023/05/13/ctfshow%E5%91%A8%E6%9C%AB%E5%A4%A7%E6%8C%91%E6%88%98parse-url-%E4%B8%93%E5%9C%BA/">parse_url函数</a></h2><blockquote>
 <p>解析一个 URL 并返回一个关联数组，包含在 URL 中出现的各种组成部分</p>
 </blockquote>
-<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token function">parse_url</span><span class="token punctuation">(</span>参数<span class="token number">1</span><span class="token punctuation">,</span>参数<span class="token number">2</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<ul>
-<li><p>参数1：必填 ，是一个完整的URL，如果不完整，函数会模糊补全。</p>
-<p>参数2：非必填，是一个大写参数变量，直接获取结果集的某一部分。</p>
-</li>
-</ul>
-<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
-<span class="token variable">$url</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"https://www.baidu.com/s?ie=utf-8&amp;f=8&amp;rsv_bp=1&amp;rsv_idx=1&amp;tn=baidu#id"</span><span class="token punctuation">;</span>
-<span class="token variable">$arr</span> <span class="token operator">=</span> <span class="token function">parse_url</span><span class="token punctuation">(</span><span class="token variable">$url</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">echo</span> <span class="token string double-quoted-string">"&lt;pre>"</span><span class="token punctuation">;</span>
-<span class="token function">print_r</span><span class="token punctuation">(</span><span class="token variable">$arr</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">echo</span> <span class="token string double-quoted-string">"&lt;/pre>"</span><span class="token punctuation">;</span>
-<span class="token delimiter important">?></span></span>
-    
-//<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>pre</span><span class="token punctuation">></span></span>Array
-//(
-//    [scheme] => https
-//    [host] => www.baidu.com
-//    [path] => /s
-//    [query] => ie=utf-8&amp;f=8&amp;rsv_bp=1&amp;rsv_idx=1&amp;tn=baidu
-//    [fragment] => id
-//)
-//<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>pre</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-
-
-
 <hr>
 <h2 id="php预定义变量-SERVER"><a href="#php预定义变量-SERVER" class="headerlink" title="php预定义变量$_SERVER"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/zhiliu/p/16474321.html">php预定义变量$_SERVER</a></h2><hr>
-<h2 id="create-function函数"><a href="#create-function函数" class="headerlink" title="create_function函数"></a><a id="create_function">create_function函数</a></h2><blockquote>
+<h2 id="create-function函数"><a href="#create-function函数" class="headerlink" title="create_function函数"></a>create_function函数</h2><blockquote>
 <p>该函数用来创建匿名函数,并为其返回唯一名称</p>
 <p>PHP4,PHP5,PHP7</p>
 </blockquote>

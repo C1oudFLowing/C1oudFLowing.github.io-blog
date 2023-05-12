@@ -207,7 +207,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/Sql/" style="color: #ff7d73">Sql</a>
+                <a href="/blog/tags/Sql/" style="color: #03a9f4">Sql</a>
             </span>
             
         </span>
@@ -218,7 +218,11 @@
         <h1 id="时间盲注"><a href="#时间盲注" class="headerlink" title="时间盲注"></a>时间盲注</h1><blockquote>
 <p>页面的显示信息是固定的，即不会出现查询的信息，也不会出现报错信息。但可以根据页面响应的时间，来判断输入的信息是否正确</p>
 </blockquote>
-<p>通过构造的语句查看页面响应时间来判断<br>会用到的函数：length、substr、ascii 、limit、ord<br>if（条件,A,B）如果条件成立执行A 否则执行B</p>
+<p>通过构造的语句查看页面响应时间来判断</p>
+<p>以下是可能用到的函数</p>
+<p>语句返回值：if</p>
+<p>截取字符：substr、left、right、mid</p>
+<p>字符编码：ascii、ord、hex</p>
 <span id="more"></span>
 
 <h1 id="二分法"><a href="#二分法" class="headerlink" title="二分法"></a>二分法</h1><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">返回正常说明长度小于<span class="token number">10</span> 
@@ -226,7 +230,7 @@
 返回正常说明长度大于<span class="token number">5</span>
 <span class="token operator">and</span> <span class="token keyword">exists</span><span class="token punctuation">(</span><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> admin <span class="token keyword">where</span> id<span class="token operator">=</span><span class="token number">1</span> <span class="token operator">and</span> <span class="token function">len</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token operator">></span> <span class="token number">5</span><span class="token punctuation">)</span>
 返回正常说明密码第一个字符是应用（<span class="token string">'0'</span><span class="token operator">=</span><span class="token string">'48'</span><span class="token punctuation">,</span><span class="token string">'a'</span><span class="token operator">=</span><span class="token string">'65'</span><span class="token punctuation">,</span><span class="token string">'A‘=97）
-and exists (select * from admin where id=1 and mid(password,1,1)>'</span>a'<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+and exists(select * from admin where id=1 and mid(password,1,1)>'</span>a'<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>以ctfshow web190为例</p>
 <p>用<code>substr((&#123;payload&#125;),&#123;i&#125;,1)</code>匹配flag中的字符进行逐个爆破，if语句若成功返回超时，失败返回1（也就是固定回显内容）</p>
