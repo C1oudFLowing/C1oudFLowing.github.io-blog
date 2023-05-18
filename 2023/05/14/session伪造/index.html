@@ -69,7 +69,7 @@
         <!--文章目录-->
         <div id="toc" class="toc-article" style="position: absolute; top: 40px; z-index: 2;">
     <div class="toc-title"></div>
-    
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Session-ID"><span class="toc-text">Session ID</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%87%BA%E7%8E%B0%E5%9C%BA%E6%99%AF"><span class="toc-text">出现场景</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8E%9F%E5%A7%8B%E4%BB%A3%E7%A0%81"><span class="toc-text">原始代码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Session%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86"><span class="toc-text">Session加密解密</span></a></li></ol>
 </div>
         
         <!--返回顶部-->
@@ -195,11 +195,71 @@
             2023/5/14
         </span>
         
+        <span class="category">
+            <a href="/blog/categories/Web/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                Web
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/session/" style="color: #ff7d73">session</a>
+            </span>
+            
+        </span>
         
     </div>
     
     <div class="content" v-pre>
-        
+        <blockquote>
+<p>个人总结，可能有些地方有误</p>
+</blockquote>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://paoka1.top/2022/05/28/Flask-%E7%9A%84-SESSION-%E4%BC%AA%E9%80%A0/">外链</a></p>
+</blockquote>
+<h1 id="Session-ID"><a href="#Session-ID" class="headerlink" title="Session ID"></a>Session ID</h1><p>是服务器为每个用户在登录时生成的一个随机字符串，用于标识用户身份和会话状态，通常存储在Cookie中</p>
+<h1 id="出现场景"><a href="#出现场景" class="headerlink" title="出现场景"></a>出现场景</h1><p>响应头中存在<code>Vary: cookie</code>且cookie中存在相关的session参数</p>
+<p>使用Flask框架：因为Session变量的内容一般保存在服务端，但是Flask并不包含数据库框架的操作，于是Flask通过一个<code>secret_key</code>来解决这类问题，换言之只要知道了<code>secret_key</code>就能进行session伪造</p>
+<span id="more"></span>
+
+<h1 id="原始代码"><a href="#原始代码" class="headerlink" title="原始代码"></a>原始代码</h1><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> flask <span class="token keyword">import</span> Flask<span class="token punctuation">,</span> session
+
+app <span class="token operator">=</span> Flask<span class="token punctuation">(</span>__name__<span class="token punctuation">)</span>
+app<span class="token punctuation">.</span>secret_key <span class="token operator">=</span> <span class="token string">'SCFmkpovdDVCJPO21cvcds'</span>
+
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">set_session</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> <span class="token string">'name'</span> <span class="token keyword">in</span> session<span class="token punctuation">:</span>
+        name <span class="token operator">=</span> session<span class="token punctuation">[</span><span class="token string">'name'</span><span class="token punctuation">]</span>
+        <span class="token keyword">if</span> name <span class="token operator">==</span> <span class="token string">"anonymous"</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token string">'Session 已设置，你是 anonymous'</span>
+        <span class="token keyword">elif</span> name <span class="token operator">==</span> <span class="token string">'admin'</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token string">'Session 已设置，你是 admin'</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token string">'Session 已设置，你是 ？？？'</span>
+    session<span class="token punctuation">[</span><span class="token string">'name'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'anonymous'</span>
+    <span class="token keyword">return</span> <span class="token string">'Session 未设置，现已设置'</span>
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    app<span class="token punctuation">.</span>run<span class="token punctuation">(</span>debug<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> port<span class="token operator">=</span><span class="token number">8080</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h1 id="Session加密解密"><a href="#Session加密解密" class="headerlink" title="Session加密解密"></a>Session加密解密</h1><p><a target="_blank" rel="noopener" href="https://github.com/noraj/flask-session-cookie-manager">Github上的脚本</a></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">解密：python flask_session_cookie_manager3.py decode <span class="token parameter variable">-s</span> “secret_key” <span class="token parameter variable">-c</span> “需要解密的session值”
+加密：python flask_session_cookie_manager3.py encode <span class="token parameter variable">-s</span> “secret_key” <span class="token parameter variable">-t</span> “需要加密的session值”<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>由此可以抓包进行session伪造实现身份认证绕过</p>
+
     </div>
     
     

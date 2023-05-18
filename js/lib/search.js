@@ -6,7 +6,7 @@ mixins.search = {
         search(value) {
             let timeline = this.$refs.timeline.childNodes;
             for (let i of timeline)
-                if (!value || i.dataset.title.includes(value)) {
+                if (!value || i.dataset.title.includes(value) || i.dataset.content.includes(value)) {
                     i.style.opacity = 1;
                     i.style.visibility = "visible";
                     i.style.marginTop = 0;
@@ -19,7 +19,7 @@ mixins.search = {
     },
     computed: {
         search() {
-            return this.rawSearch.toLowerCase().replace(/s+/gm, "");
+            return this.rawSearch.toLowerCase().replace(/\s+/gm, "");
         },
     },
 };
