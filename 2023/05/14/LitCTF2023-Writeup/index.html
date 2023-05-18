@@ -69,7 +69,7 @@
         <!--文章目录-->
         <div id="toc" class="toc-article" style="position: absolute; top: 40px; z-index: 2;">
     <div class="toc-title"></div>
-    
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#WEB"><span class="toc-text">WEB</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%BC%E5%BC%B9%E8%BF%B7%E8%B8%AA"><span class="toc-text">导弹迷踪</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PHP%E6%98%AF%E4%B8%96%E7%95%8C%E4%B8%8A%E6%9C%80%E5%A5%BD%E7%9A%84%E8%AF%AD%E8%A8%80%EF%BC%81%EF%BC%81"><span class="toc-text">PHP是世界上最好的语言！！</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1zjs"><span class="toc-text">1zjs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91Flag%E5%91%A2%EF%BC%9F"><span class="toc-text">我Flag呢？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ping"><span class="toc-text">Ping</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Follow-me-and-hack-me"><span class="toc-text">Follow me and hack me</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BD%A9%E8%9B%8B"><span class="toc-text">彩蛋</span></a></li></ol></li></ol>
 </div>
         
         <!--返回顶部-->
@@ -195,11 +195,103 @@
             2023/5/14
         </span>
         
+        <span class="category">
+            <a href="/blog/categories/Writeup/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                Writeup
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #00a596">CTF线上赛</a>
+            </span>
+            
+        </span>
         
     </div>
     
     <div class="content" v-pre>
-        
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p><del>探姬杯好耶</del></p>
+<p>评价：<del>年轻人的第一次ak</del>，就web而言大多数题目很简单而且考点还是挺明显的，同时也能学到一点新的知识，对新生还是非常友好的，</p>
+<p>​			mc服务器挺好玩的，</p>
+<p>​			尝试用GPT4做KOH（x</p>
+<p>​			<del>让我狠狠的社探姬</del></p>
+<p><img src="/blog/2023/05/14/LitCTF2023-Writeup/1684412143599.jpg" alt="image"></p>
+<p><img src="/blog/2023/05/14/LitCTF2023-Writeup/image-20230518201803887.png" alt="image-20230518201803887"></p>
+<span id="more"></span>
+
+<h1 id="WEB"><a href="#WEB" class="headerlink" title="WEB"></a>WEB</h1><h2 id="导弹迷踪"><a href="#导弹迷踪" class="headerlink" title="导弹迷踪"></a>导弹迷踪</h2><blockquote>
+<p>js</p>
+</blockquote>
+<p>进去直接翻js文件，在game.js下找到flag</p>
+<p><img src="/blog/2023/05/14/LitCTF2023-Writeup/image-20230518202914966.png" alt="image-20230518202914966"></p>
+<hr>
+<h2 id="PHP是世界上最好的语言！！"><a href="#PHP是世界上最好的语言！！" class="headerlink" title="PHP是世界上最好的语言！！"></a>PHP是世界上最好的语言！！</h2><blockquote>
+<p>基本PHP命令执行</p>
+</blockquote>
+<p>进入后发现右边有个能跑代码的框，直接<code>system(&#39;ls&#39;)</code>尝试回显目录</p>
+<p><img src="/blog/2023/05/14/LitCTF2023-Writeup/image-20230518203218304.png" alt="image-20230518203218304"></p>
+<p>成功回显，<code>system(&#39;ls /&#39;)</code>查看根目录</p>
+<p><img src="/blog/2023/05/14/LitCTF2023-Writeup/image-20230518203415080.png" alt="image-20230518203415080"></p>
+<p>那接下来就直接<code>cat /flag</code>获取flag即可</p>
+<p><img src="/blog/2023/05/14/LitCTF2023-Writeup/image-20230518203528515.png" alt="image-20230518203528515"></p>
+<hr>
+<h2 id="1zjs"><a href="#1zjs" class="headerlink" title="1zjs"></a>1zjs</h2><blockquote>
+<p>jsfuck</p>
+</blockquote>
+<p>打开又是一个游戏页面，查看js</p>
+<p>先看看(index)</p>
+<p><img src="/blog/2023/05/14/LitCTF2023-Writeup/image-20230518203735795.png" alt="image-20230518203735795"></p>
+<p>游戏的js脚本指向<code>./dist/index.umd.js</code>，那就顺着去找看看</p>
+<p><img src="/blog/2023/05/14/LitCTF2023-Writeup/image-20230518203857046.png" alt="image-20230518203857046"></p>
+<p>在开头的注释处发现提示，访问<code>/f@k3f1ag.php</code></p>
+<p><img src="/blog/2023/05/14/LitCTF2023-Writeup/image-20230518203955492.png" alt="image-20230518203955492"></p>
+<p>发现jsfuck，复制到控制台跑一下得到flag</p>
+<hr>
+<h2 id="我Flag呢？"><a href="#我Flag呢？" class="headerlink" title="我Flag呢？"></a>我Flag呢？</h2><blockquote>
+<p>f12查看html注释</p>
+</blockquote>
+<p><img src="/blog/2023/05/14/LitCTF2023-Writeup/image-20230518204147442.png" alt="image-20230518204147442"></p>
+<p>发现flag</p>
+<hr>
+<h2 id="Ping"><a href="#Ping" class="headerlink" title="Ping"></a>Ping</h2><blockquote>
+<p>ping</p>
+</blockquote>
+<blockquote>
+<p>前端绕过</p>
+</blockquote>
+<p>进去发现一个ping的命令框，尝试直接<code>127.0.0.1;ls;</code>查看目录</p>
+<p><img src="/blog/2023/05/14/LitCTF2023-Writeup/image-20230518204626388.png" alt="image-20230518204626388"></p>
+<p>发现被拦下来了，因为弹出的是一个窗口，猜测是前端过滤，使用burpsuite抓包发到重放器中</p>
+<p><img src="/blog/2023/05/14/LitCTF2023-Writeup/image-20230518205347255.png" alt="image-20230518205347255"></p>
+<p>发现js脚本的前端过滤和文本输入框传入的参数<code>command</code>与方式<code>POST</code></p>
+<p>这里用发包的方式进行命令执行（也可以直接禁用js在页面进行命令执行）</p>
+<p><img src="/blog/2023/05/14/LitCTF2023-Writeup/image-20230518205629818.png" alt="image-20230518205629818"></p>
+<p>成功回显目录</p>
+<p>查看根目录发现flag</p>
+<p><img src="/blog/2023/05/14/LitCTF2023-Writeup/image-20230518205723747.png" alt="image-20230518205723747"></p>
+<p>直接<code>cat /flag</code>即可</p>
+<p><img src="/blog/2023/05/14/LitCTF2023-Writeup/image-20230518205808974.png" alt="image-20230518205808974"></p>
+<hr>
+<h2 id="Follow-me-and-hack-me"><a href="#Follow-me-and-hack-me" class="headerlink" title="Follow me and hack me"></a>Follow me and hack me</h2><blockquote>
+<p>get与post请求</p>
+</blockquote>
+<p>进去按要求传参即可获得flag</p>
+<p><img src="/blog/2023/05/14/LitCTF2023-Writeup/image-20230518210009479.png" alt="image-20230518210009479"></p>
+<h2 id="彩蛋"><a href="#彩蛋" class="headerlink" title="彩蛋"></a>彩蛋</h2><p>第一个彩蛋在控制台发现，执行题目提示的函数，得到第一段flag</p>
+<p><img src="/blog/2023/05/14/LitCTF2023-Writeup/image-20230518204319016.png" alt="image-20230518204319016"></p>
+<p>第三个彩蛋在备份文件<code>www.zip</code>下，下载下来，将<code>index.php.bak</code>改成<code>index.php</code>，打开发现第三段flag</p>
+<p><img src="/blog/2023/05/14/LitCTF2023-Writeup/image-20230518210201148.png" alt="image-20230518210201148"></p>
+
     </div>
     
     
