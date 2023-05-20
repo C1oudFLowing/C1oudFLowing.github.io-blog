@@ -69,7 +69,7 @@
         <!--文章目录-->
         <div id="toc" class="toc-article" style="position: absolute; top: 40px; z-index: 2;">
     <div class="toc-title"></div>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Session-ID"><span class="toc-text">Session ID</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%87%BA%E7%8E%B0%E5%9C%BA%E6%99%AF"><span class="toc-text">出现场景</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8E%9F%E5%A7%8B%E4%BB%A3%E7%A0%81"><span class="toc-text">原始代码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Session%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86"><span class="toc-text">Session加密解密</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Session-ID"><span class="toc-text">Session ID</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%87%BA%E7%8E%B0%E5%9C%BA%E6%99%AF"><span class="toc-text">出现场景</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8E%9F%E5%A7%8B%E4%BB%A3%E7%A0%81"><span class="toc-text">原始代码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Session%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86"><span class="toc-text">Session加密解密</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E7%94%9F%E6%88%90Session"><span class="toc-text">本地生成Session</span></a></li></ol>
 </div>
         
         <!--返回顶部-->
@@ -212,7 +212,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/session/" style="color: #00a596">session</a>
+                <a href="/blog/tags/session/" style="color: #03a9f4">session</a>
             </span>
             
         </span>
@@ -259,6 +259,29 @@ app<span class="token punctuation">.</span>secret_key <span class="token operato
 加密：python flask_session_cookie_manager3.py encode <span class="token parameter variable">-s</span> “secret_key” <span class="token parameter variable">-t</span> “需要加密的session值”<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>由此可以抓包进行session伪造实现身份认证绕过</p>
+<h1 id="本地生成Session"><a href="#本地生成Session" class="headerlink" title="本地生成Session"></a>本地生成Session</h1><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> base64
+<span class="token keyword">import</span> os
+<span class="token keyword">from</span> flask <span class="token keyword">import</span> <span class="token punctuation">(</span>Flask<span class="token punctuation">,</span> render_template<span class="token punctuation">,</span> request<span class="token punctuation">,</span> url_for<span class="token punctuation">,</span> redirect<span class="token punctuation">,</span> session<span class="token punctuation">,</span>
+                   render_template_string<span class="token punctuation">)</span>
+<span class="token keyword">from</span> flask_session <span class="token keyword">import</span> Session
+
+app <span class="token operator">=</span> Flask<span class="token punctuation">(</span>__name__<span class="token punctuation">)</span>
+app<span class="token punctuation">.</span>secret_key <span class="token operator">=</span> <span class="token builtin">str</span><span class="token punctuation">(</span>base64<span class="token punctuation">.</span>b64encode<span class="token punctuation">(</span>
+    os<span class="token punctuation">.</span>urandom<span class="token punctuation">(</span><span class="token number">30</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>decode<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"*NeepuCTF*"</span>  <span class="token comment">#改成获取的key</span>
+
+
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">index</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment">#要伪造的数据</span>
+    txt <span class="token operator">=</span> <span class="token string">'1'</span>
+    session<span class="token punctuation">[</span><span class="token string">'admin'</span><span class="token punctuation">]</span> <span class="token operator">=</span> txt  <span class="token comment">#放入session中会用key自动加密后发给客户端</span>
+    ls <span class="token operator">=</span> <span class="token triple-quoted-string string">'''can can word session '''</span>
+    <span class="token keyword">return</span> render_template_string<span class="token punctuation">(</span>ls<span class="token punctuation">)</span>
+
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span>
+    app<span class="token punctuation">.</span>run<span class="token punctuation">(</span>host<span class="token operator">=</span><span class="token string">'0.0.0.0'</span><span class="token punctuation">,</span> debug<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 
     </div>
     
