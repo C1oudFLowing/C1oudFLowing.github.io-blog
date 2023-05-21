@@ -1,0 +1,371 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <title>维吉尼亚密码 | 雲流のLowest World</title>
+        <meta name="author" content="C1oudfL0w0" />
+        <meta name="description" content="by 一言顶真" />
+        <meta name="keywords" content="" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+        <link rel="icon" href="/blog/images/croppedImage_cropped.jpg" />
+        <script src="https://cdn.staticfile.org/vue/3.2.45/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.2.1/css/all.min.css" />
+<link rel="stylesheet" href="/blog/css/fonts.min.css" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+<!--改成了prismjs高亮-->
+
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.25.0/prism.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/prismjs@1.25.0/themes/prism.css" rel="stylesheet" />
+<script src="/blog/js/lib/prism.js"></script>
+
+
+
+<script src="/blog/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<script src="/blog/js/lib/home.js"></script>
+
+<link rel="stylesheet" href="/blog/css/main.css" />
+
+        <!-- 引入jQuery-->
+        <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+        <!-- 页面点击小红心与文字 -->
+        <script type = "text/javascript" src = "/blog/js/love-click.js"></script>
+        <!-- 浏览器标题 -->
+        <script type="text/javascript" src="/blog/js/FunnyTitle.js"></script>
+        
+        
+        <script type="text/javascript" src="/blog/libs/codeBlock/codeBlockFuction.js"></script>
+        <!-- 代码语言 -->
+        <script type="text/javascript" src="/blog/libs/codeBlock/codeLang.js"></script>
+        <!-- 代码块复制 -->
+        <!-- 引入clipboard -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+        <script type="text/javascript" src="/blog/libs/codeBlock/codeCopy.js"></script>
+        <!-- 代码块收缩 -->
+        <script type="text/javascript" src="/blog/libs/codeBlock/codeShrink.js"></script> 
+        <!-- 代码块折行 -->
+        <style type="text/css">code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }</style>
+
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <!--flag{never_g0nna g1ve_you up}-->
+
+        <!--动态背景-->
+        <script type="text/javascript"
+        color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+        <!--文章目录-->
+        <div id="toc" class="toc-article" style="position: absolute; top: 40px; z-index: 2;">
+    <div class="toc-title"></div>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-text">简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90-by-GPT"><span class="toc-text">例子(by GPT)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9C%A8%E7%BA%BF%E8%A7%A3%E5%AF%86%E7%BD%91%E7%AB%99"><span class="toc-text">在线解密网站</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%84%9A%E6%9C%AC"><span class="toc-text">脚本</span></a></li></ol>
+</div>
+        
+        <!--返回顶部-->
+        <div id="totop" style="position:fixed;bottom:50px;right:60px;font-size: 48px;cursor: pointer;z-index: 10;">
+            <a title="返回顶部">↑</a>
+            </div>
+        <script src="/blog/js/totop.js"></script>
+
+        <div id="layout">
+            <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>第一次加载可能会花费较长时间，请耐心等待</p>
+                    <p>要不挂个梯子试试？（x</p>
+                    <p>加载过慢请开启缓存&ensp;浏览器默认开启</p>
+                    <img src="/blog/images/loading.gif" />
+                </div>
+            </div>
+            </transition>
+            <transition name="into">
+            <div id="main" v-show="!loading">
+                <nav id="menu" ref="menu">
+    <div class="desktop-menu">
+        <a class="title" href="/blog/">
+            <span>雲流のLOWEST WORLD</span>
+        </a>
+        
+        <a href="/blog/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/blog/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/blog/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/blog/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/blog/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </div>
+    <div id="mobile-menu">
+        <div class="curtain" v-show="showMenu" @click="showMenu = !showMenu"></div>
+        <div class="title" @click="showMenu = !showMenu">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;雲流のLOWEST WORLD</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="showMenu">
+            
+            <a href="/blog/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                </div>
+            </a>
+            
+            <a href="/blog/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                </div>
+            </a>
+            
+            <a href="/blog/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                </div>
+            </a>
+            
+            <a href="/blog/categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                </div>
+            </a>
+            
+            <a href="/blog/tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+
+                <div class="article">
+    <div>
+        <h1>维吉尼亚密码</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/5/21
+        </span>
+        
+        <span class="category">
+            <a href="/blog/categories/Crypto/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                Crypto
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/%E5%8F%A4%E5%85%B8%E5%AF%86%E7%A0%81/" style="color: #ffa2c4">古典密码</a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>维吉尼亚密码（Vigenère cipher）是一种多表代换密码，也称为多重代换密码</p>
+<p>维吉尼亚密码的加密过程是将明文按照关键词（密钥）重复排列，然后用不同的<strong>凯撒密码</strong>表对每个字符进行加密。每个凯撒密码表是由26个字母构成的，其中每个字母按照固定的偏移量进行置换。关键词的长度可以与明文的长度不同。解密时，需要使用相同的关键词和偏移量，依次对密文中的每个字符进行解密。</p>
+<span id="more"></span>
+
+<h1 id="例子-by-GPT"><a href="#例子-by-GPT" class="headerlink" title="例子(by GPT)"></a>例子(by GPT)</h1><p>下面是一个使用关键词“SECRET”对明文“HELLO WORLD”进行加密的例子：</p>
+<p>明文： H E L L O   W O R L D<br>关键词： S E C R E T S E C R E<br>密钥表： S E C R E T S E C R E<br> -——————<br> A B C D E F G H I J K L M N O P Q R S T U V W X Y Z<br> -————————————————<br> S: S T U V W X Y Z A B C D E F G H I J K L M N O P Q R<br> E: E F G H I J K L M N O P Q R S T U V W X Y Z A B C D<br> C: C D E F G H I J K L M N O P Q R S T U V W X Y Z A B<br> R: R S T U V W X Y Z A B C D E F G H I J K L M N O P Q<br> E: E F G</p>
+<p>加密后的密文： T L V V M   A H F K X</p>
+<p>解密时，使用相同的关键词“SECRET”和密钥表，依次对密文中的每个字符进行解密，即可得到明文“HELLO WORLD”。</p>
+<h1 id="在线解密网站"><a href="#在线解密网站" class="headerlink" title="在线解密网站"></a>在线解密网站</h1><p><a target="_blank" rel="noopener" href="https://www.guballa.de/vigenere-solver">Vigenere Solver | guballa.de</a></p>
+<h1 id="脚本"><a href="#脚本" class="headerlink" title="脚本"></a>脚本</h1><p>来源于nss上某位大佬的脚本</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">letter_list <span class="token operator">=</span> <span class="token string">'ABCDEFGHIJKLMNOPQRSTUVWXYZ'</span>  <span class="token comment"># 字母表</span>
+
+
+<span class="token comment"># 根据输入的key生成key列表</span>
+<span class="token keyword">def</span> <span class="token function">Get_KeyList</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    key_list <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token keyword">for</span> ch <span class="token keyword">in</span> key<span class="token punctuation">:</span>
+        key_list<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token builtin">ord</span><span class="token punctuation">(</span>ch<span class="token punctuation">.</span>upper<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">65</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> key_list
+
+
+<span class="token comment"># 加密函数</span>
+<span class="token keyword">def</span> <span class="token function">Encrypt</span><span class="token punctuation">(</span>plaintext<span class="token punctuation">,</span> key_list<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    ciphertext <span class="token operator">=</span> <span class="token string">""</span>
+
+    i <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token keyword">for</span> ch <span class="token keyword">in</span> plaintext<span class="token punctuation">:</span>  <span class="token comment"># 遍历明文</span>
+        <span class="token keyword">if</span> <span class="token number">0</span> <span class="token operator">==</span> i <span class="token operator">%</span> <span class="token builtin">len</span><span class="token punctuation">(</span>key_list<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            i <span class="token operator">=</span> <span class="token number">0</span>
+        <span class="token keyword">if</span> ch<span class="token punctuation">.</span>isalpha<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>  <span class="token comment"># 明文是否为字母,如果是,则判断大小写,分别进行加密</span>
+            <span class="token keyword">if</span> ch<span class="token punctuation">.</span>isupper<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+                ciphertext <span class="token operator">+=</span> letter_list<span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token builtin">ord</span><span class="token punctuation">(</span>ch<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">65</span> <span class="token operator">+</span> key_list<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">26</span><span class="token punctuation">]</span>
+                i <span class="token operator">+=</span> <span class="token number">1</span>
+            <span class="token keyword">else</span><span class="token punctuation">:</span>
+                ciphertext <span class="token operator">+=</span> letter_list<span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token builtin">ord</span><span class="token punctuation">(</span>ch<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">97</span> <span class="token operator">+</span> key_list<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">%</span>
+                                          <span class="token number">26</span><span class="token punctuation">]</span><span class="token punctuation">.</span>lower<span class="token punctuation">(</span><span class="token punctuation">)</span>
+                i <span class="token operator">+=</span> <span class="token number">1</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>  <span class="token comment"># 如果密文不为字母,直接添加到密文字符串里</span>
+            ciphertext <span class="token operator">+=</span> ch
+    <span class="token keyword">return</span> ciphertext
+
+
+<span class="token comment"># 解密函数</span>
+<span class="token keyword">def</span> <span class="token function">Decrypt</span><span class="token punctuation">(</span>ciphertext<span class="token punctuation">,</span> key<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    plaintext <span class="token operator">=</span> <span class="token string">""</span>
+
+    i <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token keyword">for</span> ch <span class="token keyword">in</span> ciphertext<span class="token punctuation">:</span>  <span class="token comment"># 遍历密文</span>
+        <span class="token keyword">if</span> <span class="token number">0</span> <span class="token operator">==</span> i <span class="token operator">%</span> <span class="token builtin">len</span><span class="token punctuation">(</span>key_list<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            i <span class="token operator">=</span> <span class="token number">0</span>
+        <span class="token keyword">if</span> ch<span class="token punctuation">.</span>isalpha<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>  <span class="token comment"># 密文为否为字母,如果是,则判断大小写,分别进行解密</span>
+            <span class="token keyword">if</span> ch<span class="token punctuation">.</span>isupper<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+                plaintext <span class="token operator">+=</span> letter_list<span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token builtin">ord</span><span class="token punctuation">(</span>ch<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">65</span> <span class="token operator">-</span> key_list<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">26</span><span class="token punctuation">]</span>
+                i <span class="token operator">+=</span> <span class="token number">1</span>
+            <span class="token keyword">else</span><span class="token punctuation">:</span>
+                plaintext <span class="token operator">+=</span> letter_list<span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token builtin">ord</span><span class="token punctuation">(</span>ch<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">97</span> <span class="token operator">-</span> key_list<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">%</span>
+                                         <span class="token number">26</span><span class="token punctuation">]</span><span class="token punctuation">.</span>lower<span class="token punctuation">(</span><span class="token punctuation">)</span>
+                i <span class="token operator">+=</span> <span class="token number">1</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>  <span class="token comment"># 如果密文不为字母,直接添加到明文字符串里</span>
+            plaintext <span class="token operator">+=</span> ch
+    <span class="token keyword">return</span> plaintext
+
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"加密请按D,解密请按E:"</span><span class="token punctuation">)</span>
+    user_input <span class="token operator">=</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>user_input <span class="token operator">!=</span> <span class="token string">'D'</span> <span class="token keyword">and</span> user_input <span class="token operator">!=</span> <span class="token string">'E'</span><span class="token punctuation">)</span><span class="token punctuation">:</span>  <span class="token comment"># 输入合法性判断</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"输入有误!请重新输入:"</span><span class="token punctuation">)</span>
+        user_input <span class="token operator">=</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"请输入密钥，随便输后面会爆破,大写字母就行:"</span><span class="token punctuation">)</span>
+    key <span class="token operator">=</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token boolean">False</span> <span class="token operator">==</span> key<span class="token punctuation">.</span>isalpha<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>  <span class="token comment"># 输入合法性判断</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"输入有误!密钥为字母,请重新输入:"</span><span class="token punctuation">)</span>
+        key <span class="token operator">=</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    key_list <span class="token operator">=</span> Get_KeyList<span class="token punctuation">(</span>key<span class="token punctuation">)</span>
+    <span class="token comment"># print(key_list)</span>
+    <span class="token keyword">if</span> user_input <span class="token operator">==</span> <span class="token string">'D'</span><span class="token punctuation">:</span>
+        <span class="token comment"># 加密</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"请输入明文:"</span><span class="token punctuation">)</span>
+        plaintext <span class="token operator">=</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        ciphertext <span class="token operator">=</span> Encrypt<span class="token punctuation">(</span>plaintext<span class="token punctuation">,</span> key_list<span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"密文为:\n%s"</span> <span class="token operator">%</span> ciphertext<span class="token punctuation">)</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        <span class="token comment"># 解密</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>key_list<span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"请输入密文,把密文输进去:"</span><span class="token punctuation">)</span>
+        ciphertext <span class="token operator">=</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">26</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">26</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+                <span class="token keyword">for</span> k <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">26</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+                    key_list <span class="token operator">=</span> <span class="token punctuation">[</span>i<span class="token punctuation">,</span> j<span class="token punctuation">,</span> k<span class="token punctuation">]</span>
+                    plaintext <span class="token operator">=</span> Decrypt<span class="token punctuation">(</span>ciphertext<span class="token punctuation">,</span> key_list<span class="token punctuation">)</span>
+                    <span class="token keyword">if</span> <span class="token string">"NSS"</span> <span class="token keyword">in</span> plaintext<span class="token punctuation">:</span>
+                        <span class="token keyword">print</span><span class="token punctuation">(</span>plaintext<span class="token punctuation">)</span>
+                        <span class="token keyword">break</span>
+                    <span class="token comment"># print("明文为:\n%s" % plaintext)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+                <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2023 雲流のLowest World
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;C1oudfL0w0
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+            </div>
+            </transition>
+            
+            <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+            </transition>
+            
+        </div>
+        <script src="/blog/js/main.js"></script>
+        
+        
+
+
+
+
+         
+    <script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/blog/live2dw/assets/z16.model.json"},"display":{"position":"left","width":150,"height":290},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
+
