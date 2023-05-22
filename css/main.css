@@ -1102,3 +1102,22 @@ pre[class*="language-"] {
 code[class*="language-"]{
     font-size:1.2em
 }
+
+.archive-list {
+    font-size: 1.4em;
+    padding: 15px 20px;
+}
+
+.archive-list .archive-list-count {
+    margin-left: 8px;
+    font-size: 1.2em;
+    color:fuchsia
+}
+
+.archive-list .archive-list-count:before {
+    content: "[";
+}
+
+.archive-list .archive-list-count:after {
+    content: "]";
+}
