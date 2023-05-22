@@ -217,7 +217,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="color: #ffa2c4">反序列化</a>
+                <a href="/blog/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="color: #ff7d73">反序列化</a>
             </span>
             
         </span>
@@ -301,7 +301,8 @@
 <p>执行<code>unserialize()</code>时，先会调用这个函数</p>
 </blockquote>
 <ul>
-<li>当序列化字符串中表示对象属性个数的值大于真实的属性个数会跳过_wakeup的执行（CVE-2016-7124）(版本：<strong>PHP5 &lt; 5.6.25</strong>  <strong>PHP7 &lt; 7.0.10</strong>)</li>
+<li>当序列化字符串中表示对象属性个数的值大于真实的属性个数会跳过__wakeup的执行（CVE-2016-7124）(版本：<strong>PHP5 &lt; 5.6.25</strong>  <strong>PHP7 &lt; 7.0.10</strong>)</li>
+<li>如果__wakeup内有属性在创建时尚未设置，则不会被调用</li>
 </ul>
 <h1 id="sleep"><a href="#sleep" class="headerlink" title="__sleep():"></a>__sleep():</h1><blockquote>
 <p>执行<code>serialize()</code>时，先会调用这个函数</p>
