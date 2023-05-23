@@ -1103,9 +1103,16 @@ code[class*="language-"]{
     font-size:1.2em
 }
 
+
 .archive-list {
-    font-size: 1.4em;
-    padding: 15px 20px;
+    font-size: 1.2em;
+    padding: 15px 25px;
+    position:fixed;
+	top:150px;
+	left:50px;
+    border: 0.5px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
 }
 
 .archive-list .archive-list-count {
