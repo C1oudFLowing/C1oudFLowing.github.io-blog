@@ -212,12 +212,12 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/PHP/" style="color: #00bcd4">PHP</a>
+                <a href="/blog/tags/PHP/" style="color: #00a596">PHP</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E6%BA%90%E7%A0%81%E6%B3%84%E9%9C%B2/" style="color: #00a596">源码泄露</a>
+                <a href="/blog/tags/%E6%BA%90%E7%A0%81%E6%B3%84%E9%9C%B2/" style="color: #03a9f4">源码泄露</a>
             </span>
             
         </span>
@@ -247,7 +247,7 @@
 <p>会返回</p>
 <p><img src="/blog/2023/05/22/PHP-7-4-21%E6%BA%90%E7%A0%81%E6%B3%84%E9%9C%B2%E6%BC%8F%E6%B4%9E/image-20230522143257691.png" alt="1"></p>
 <p>这里我们稍微解释一下第一个GET和第二个GET的作用分别是什么</p>
-<p>第一个GET后的<code>/phpinfo.php</code>是直接访问已存在的phpinfo.php文件</p>
+<p>第一个GET后的<code>/phpinfo.php</code>是直接访问已存在的phpinfo.php文件（一般可以是访问index.php）</p>
 <blockquote>
 <p>PHP源码中的<code>php_cli_server_request_translate_vpath</code>函数将请求的PHP文件的路径转换为文件系统上的完整路径。如果请求的文件是一个目录，它会检查是否存在索引文件，如index.php或 index.html，并使用其中一个文件的路径（如果找到的话）。这允许服务器响应请求提供正确的文件 </p>
 </blockquote>
