@@ -69,7 +69,7 @@
         <!--文章目录-->
         <div id="toc" class="toc-article" style="position: absolute; top: 40px; z-index: 2;">
     <div class="toc-title"></div>
-    
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#BeautifulSoup%E5%BA%93"><span class="toc-text">BeautifulSoup库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#selenium%E5%BA%93"><span class="toc-text">selenium库</span></a></li></ol>
 </div>
         
         <!--返回顶部-->
@@ -196,10 +196,34 @@
         </span>
         
         
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/python/" style="color: #00bcd4">python</a>
+            </span>
+            
+        </span>
+        
     </div>
     
     <div class="content" v-pre>
-        
+        <p>本篇介绍一些python中解析网页html的库</p>
+<span id="more"></span>
+
+<h1 id="BeautifulSoup库"><a href="#BeautifulSoup库" class="headerlink" title="BeautifulSoup库"></a>BeautifulSoup库</h1><blockquote>
+<p>用于从HTML或XML文件中提取数据，转换为一个python对象</p>
+</blockquote>
+<p>一般先用requests库获取html或xml的文本数据再用BeautifulSoup库进行解析</p>
+<p>它可以自动将输入文档转换为Unicode编码，以便处理任何类型的文本数据。BeautifulSoup库提供了一种简单而灵活的方式来遍历HTML或XML文档，并从中提取所需的信息。它支持多种解析器（如Python标准库中的html.parser，lxml HTML解析器和lxml XML解析器）以及不同的查找方法，例如通过标签名、属性或CSS选择器来查找特定的元素。使用BeautifulSoup库可以方便地提取网页中的数据，例如网页标题、段落文本、链接、图像等等。</p>
+<h1 id="selenium库"><a href="#selenium库" class="headerlink" title="selenium库"></a>selenium库</h1><blockquote>
+<p>可以模拟用户在浏览器中的操作</p>
+</blockquote>
+<p>由此解析一些BeautifulSoup库无法解析到的标签</p>
+
     </div>
     
     
