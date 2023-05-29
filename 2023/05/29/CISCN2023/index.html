@@ -3,7 +3,7 @@
 <html lang="zh-CN">
     <head>
         <meta charset="UTF-8" />
-        <title>python几个解析网页的库 | 雲流のLowest World</title>
+        <title>CISCN2023 | 雲流のLowest World</title>
         <meta name="author" content="C1oudfL0w0" />
         <meta name="description" content="by 一言顶真" />
         <meta name="keywords" content="" />
@@ -69,7 +69,7 @@
         <!--文章目录-->
         <div id="toc" class="toc-article">
     <div class="toc-title"></div>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#BeautifulSoup%E5%BA%93"><span class="toc-text">BeautifulSoup库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#selenium%E5%BA%93"><span class="toc-text">selenium库</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#WEB"><span class="toc-text">WEB</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Unzip"><span class="toc-text">Unzip</span></a></li></ol></li></ol>
 </div>
         
         <!--返回顶部-->
@@ -185,14 +185,23 @@
 
                 <div class="article">
     <div>
-        <h1>python几个解析网页的库</h1>
+        <h1>CISCN2023</h1>
     </div>
     <div class="info">
         <span class="date">
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2023/5/19
+            2023/5/29
+        </span>
+        
+        <span class="category">
+            <a href="/blog/categories/%E8%B5%9B%E5%90%8E%E5%A4%8D%E7%8E%B0/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                赛后复现
+            </a>
         </span>
         
         
@@ -203,7 +212,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/python/" style="color: #ffa2c4">python</a>
+                <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #ff7d73">CTF线上赛</a>
             </span>
             
         </span>
@@ -211,18 +220,30 @@
     </div>
     
     <div class="content" v-pre>
-        <p>本篇介绍一些python中解析网页html的库</p>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>比赛那两天感冒了直接大脑宕机，赛后看看还是能学到很多东西的</p>
 <span id="more"></span>
 
-<h1 id="BeautifulSoup库"><a href="#BeautifulSoup库" class="headerlink" title="BeautifulSoup库"></a>BeautifulSoup库</h1><blockquote>
-<p>用于从HTML或XML文件中提取数据，转换为一个python对象</p>
+<h1 id="WEB"><a href="#WEB" class="headerlink" title="WEB"></a>WEB</h1><h2 id="Unzip"><a href="#Unzip" class="headerlink" title="Unzip"></a>Unzip</h2><blockquote>
+<p>文件上传</p>
 </blockquote>
-<p>一般先用requests库获取html或xml的文本数据再用BeautifulSoup库进行解析</p>
-<p>它可以自动将输入文档转换为Unicode编码，以便处理任何类型的文本数据。BeautifulSoup库提供了一种简单而灵活的方式来遍历HTML或XML文档，并从中提取所需的信息。它支持多种解析器（如Python标准库中的html.parser，lxml HTML解析器和lxml XML解析器）以及不同的查找方法，例如通过标签名、属性或CSS选择器来查找特定的元素。使用BeautifulSoup库可以方便地提取网页中的数据，例如网页标题、段落文本、链接、图像等等。</p>
-<h1 id="selenium库"><a href="#selenium库" class="headerlink" title="selenium库"></a>selenium库</h1><blockquote>
-<p>可以模拟用户在浏览器中的操作</p>
+<blockquote>
+<p>linux软连接</p>
 </blockquote>
-<p>由此解析一些BeautifulSoup库无法解析到的标签</p>
+<blockquote>
+<p>推荐搜索关键字：web unzip</p>
+</blockquote>
+<p>进入题目点下上传按钮就可以看到题目的源码</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token function">error_reporting</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">highlight_file</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token variable">$finfo</span> <span class="token operator">=</span> <span class="token function">finfo_open</span><span class="token punctuation">(</span><span class="token constant">FILEINFO_MIME_TYPE</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">finfo_file</span><span class="token punctuation">(</span><span class="token variable">$finfo</span><span class="token punctuation">,</span> <span class="token variable">$_FILES</span><span class="token punctuation">[</span><span class="token string double-quoted-string">"file"</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string double-quoted-string">"tmp_name"</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token string single-quoted-string">'application/zip'</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token function">exec</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'cd /tmp &amp;&amp; unzip -o '</span> <span class="token operator">.</span> <span class="token variable">$_FILES</span><span class="token punctuation">[</span><span class="token string double-quoted-string">"file"</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string double-quoted-string">"tmp_name"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+
+<span class="token comment">//only this! </span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 
     </div>
     

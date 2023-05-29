@@ -212,7 +212,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" style="color: #00a596">文件上传</a>
+                <a href="/blog/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" style="color: #00bcd4">文件上传</a>
             </span>
             
         </span>
@@ -241,12 +241,12 @@
 <p>这个时候就需要用到我们的软连接</p>
 <p>原理我这里大概形容一下：<del>(纯脑测，尚未经过本人测试)</del></p>
 <p>我们在本地的kali路径下创建一个软连接，指向网页的主目录<code>/var/www/html</code>，</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">ln</span> <span class="token parameter variable">-s</span> /var/www/html kali<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">ln</span> <span class="token parameter variable">-s</span> /var/www/html cmd<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>然后进行上传，此时这个软连接的位置在上传文件的文件夹中(假设在<code>/tmp/uploads</code>)</p>
-<p>这个时候那边应该为<code>/tmp/uploads/kali</code>，指向<code>/var/www/html</code></p>
-<p>此时我们再写一个具有一句话木马的php文件，取名为<code>.kali.php</code></p>
-<p>上传文件，实际上是传入了<code>/tmp/uploads/kali</code>这个目录下，但是这是一个软连接，访问之后会跳转至指向的文件夹，也就是说最后被传到了<code>/var/www/html</code>下</p>
+<p>这个时候那边应该为<code>/tmp/uploads/cmd</code>，指向<code>/var/www/html</code></p>
+<p>此时我们再写一个具有一句话木马的php文件，抓包上传时取名为<code>/cmd/1.php</code>(即在cmd文件夹下的1.php)</p>
+<p>上传文件，实际上是传入了<code>/tmp/uploads/cmd</code>这个目录下，但是这是一个软连接，访问之后会跳转至指向的文件夹，也就是说最后被传到了<code>/var/www/html</code>下</p>
 
     </div>
     
