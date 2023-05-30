@@ -69,7 +69,7 @@
         <!--文章目录-->
         <div id="toc" class="toc-article">
     <div class="toc-title"></div>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-text">简介</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-text">简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90"><span class="toc-text">例子</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A7%A3%E5%AF%86%E8%84%9A%E6%9C%AC"><span class="toc-text">解密脚本</span></a></li></ol>
 </div>
         
         <!--返回顶部-->
@@ -212,7 +212,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E5%8F%A4%E5%85%B8%E5%AF%86%E7%A0%81/" style="color: #00a596">古典密码</a>
+                <a href="/blog/tags/%E5%8F%A4%E5%85%B8%E5%AF%86%E7%A0%81/" style="color: #00bcd4">古典密码</a>
             </span>
             
         </span>
@@ -220,7 +220,44 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>咕咕咕</p>
+        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>一种替换密码，即将明文中的每个字母都替换为字母表中固定数量的字母</p>
+<p>例如，如果将明文中的每个字母向右移动3个位置，那么字母”A”将被替换为字母”D”，字母”B”将被替换为字母”E”，以此类推。这个固定的移动量被称为密钥或偏移量。</p>
+<span id="more"></span>
+
+<h1 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h1><p>假设我们要加密明文”HELLO”并使用偏移量3。首先，我们将明文中的每个字母向右移动3个位置。这将产生密文”KHOOR”。解密就是将密文中的每个字母向左移动3个位置，即将偏移量取反，以还原原始明文。</p>
+<h1 id="解密脚本"><a href="#解密脚本" class="headerlink" title="解密脚本"></a>解密脚本</h1><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">caesar_decrypt</span><span class="token punctuation">(</span>ciphertext<span class="token punctuation">,</span> shift<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""
+    凯撒密码解密函数
+    :param ciphertext: 密文
+    :param shift: 移位数
+    :return: 明文
+    """</span>
+    plaintext <span class="token operator">=</span> <span class="token string">""</span>
+    <span class="token keyword">for</span> char <span class="token keyword">in</span> ciphertext<span class="token punctuation">:</span>
+        <span class="token keyword">if</span> char<span class="token punctuation">.</span>isalpha<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token comment"># 将字母转换为ASCII码，并减去65或97，使得A或a的ASCII码为0</span>
+            ascii_code <span class="token operator">=</span> <span class="token builtin">ord</span><span class="token punctuation">(</span>char<span class="token punctuation">)</span> <span class="token operator">-</span> shift
+            <span class="token comment"># 处理超出字母表范围的ASCII码</span>
+            <span class="token keyword">if</span> char<span class="token punctuation">.</span>isupper<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+                <span class="token keyword">if</span> ascii_code <span class="token operator">&lt;</span> <span class="token number">65</span><span class="token punctuation">:</span>
+                    ascii_code <span class="token operator">+=</span> <span class="token number">26</span>
+            <span class="token keyword">else</span><span class="token punctuation">:</span>
+                <span class="token keyword">if</span> ascii_code <span class="token operator">&lt;</span> <span class="token number">97</span><span class="token punctuation">:</span>
+                    ascii_code <span class="token operator">+=</span> <span class="token number">26</span>
+            <span class="token comment"># 将ASCII码转换回字符</span>
+            plaintext <span class="token operator">+=</span> <span class="token builtin">chr</span><span class="token punctuation">(</span>ascii_code<span class="token punctuation">)</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            plaintext <span class="token operator">+=</span> char
+    <span class="token keyword">return</span> plaintext
+
+
+ciphertext <span class="token operator">=</span> <span class="token string">""</span>
+<span class="token comment"># ciphertext = ''.join([chr(i) for i in [86, 116, 128, 80, 98, 85, 139, 122, 134, 114, 125, 136, 117, 123, 129, 127, 128, 128, 142, 130, 140, 147, 127, 132, 131, 136, 151, 134, 152, 164]])</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    shift <span class="token operator">=</span> i
+    plaintext <span class="token operator">=</span> caesar_decrypt<span class="token punctuation">(</span>ciphertext<span class="token punctuation">,</span> shift<span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>plaintext<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 
     </div>
     
