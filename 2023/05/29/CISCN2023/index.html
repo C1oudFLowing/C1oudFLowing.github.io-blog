@@ -69,7 +69,7 @@
         <!--文章目录-->
         <div id="toc" class="toc-article">
     <div class="toc-title"></div>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#WEB"><span class="toc-text">WEB</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Unzip"><span class="toc-text">Unzip</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#REVERSE"><span class="toc-text">REVERSE</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#babyRE"><span class="toc-text">babyRE</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MISC"><span class="toc-text">MISC</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#pyshell"><span class="toc-text">pyshell</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#WEB"><span class="toc-text">WEB</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Unzip"><span class="toc-text">Unzip</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#dumpit"><span class="toc-text">dumpit</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#go-session"><span class="toc-text">go_session</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#REVERSE"><span class="toc-text">REVERSE</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#babyRE"><span class="toc-text">babyRE</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Crypto"><span class="toc-text">Crypto</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Sign-in-passwd"><span class="toc-text">Sign_in_passwd</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MISC"><span class="toc-text">MISC</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A2%AB%E5%8A%A0%E5%AF%86%E7%9A%84%E7%94%9F%E4%BA%A7%E6%B5%81%E9%87%8F"><span class="toc-text">被加密的生产流量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pyshell"><span class="toc-text">pyshell</span></a></li></ol></li></ol>
 </div>
         
         <!--返回顶部-->
@@ -212,7 +212,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #00a596">CTF线上赛</a>
+                <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #ffa2c4">CTF线上赛</a>
             </span>
             
         </span>
@@ -286,6 +286,18 @@
 <p>成功getshell</p>
 <p><img src="/blog/2023/05/29/CISCN2023/image-20230530161826150.png" alt="image-20230530161826150"></p>
 <p>那直接<code>cat /falg_is_here.txt</code>即可</p>
+<h2 id="dumpit"><a href="#dumpit" class="headerlink" title="dumpit"></a>dumpit</h2><blockquote>
+<p>并不是sql注入，而是命令执行</p>
+</blockquote>
+<p>因为sql查询语句本质上也是一个命令执行，题目中存在%0a截断，所以截断后执行命令就行</p>
+<p>（这题尚且没有环境复现，只能先云一云）</p>
+<p>大多数人的解法都是非预期直接<code>env</code>看环境变量发现flag</p>
+<p>cat不能读flag，应该是权限不足，预期解好像只有dump是具有读取权限的，猜测要提权（？</p>
+<h2 id="go-session"><a href="#go-session" class="headerlink" title="go_session"></a>go_session</h2><blockquote>
+<p>go session伪造 ssti</p>
+</blockquote>
+<p>这题感觉能看懂，先学学相关的东西，回头来看看（</p>
+<hr>
 <h1 id="REVERSE"><a href="#REVERSE" class="headerlink" title="REVERSE"></a>REVERSE</h1><h2 id="babyRE"><a href="#babyRE" class="headerlink" title="babyRE"></a>babyRE</h2><blockquote>
 <p>异或</p>
 </blockquote>
@@ -318,7 +330,65 @@ flag <span class="token operator">=</span> <span class="token string">'f'</span>
 
 
 
-<h1 id="MISC"><a href="#MISC" class="headerlink" title="MISC"></a>MISC</h1><h2 id="pyshell"><a href="#pyshell" class="headerlink" title="pyshell"></a>pyshell</h2><blockquote>
+<hr>
+<h1 id="Crypto"><a href="#Crypto" class="headerlink" title="Crypto"></a>Crypto</h1><h2 id="Sign-in-passwd"><a href="#Sign-in-passwd" class="headerlink" title="Sign_in_passwd"></a>Sign_in_passwd</h2><blockquote>
+<p>换表base64</p>
+</blockquote>
+<p>下载题目附件，得到两行字符(第二行需经过url解码)</p>
+<pre class="line-numbers language-none"><code class="language-none">j2rXjx8yjd&#x3D;YRZWyTIuwRdbyQdbqR3R9iZmsScutj2iqj3&#x2F;tidj1jd&#x3D;D
+GHI3KLMNJOPQRSTUb&#x3D;cdefghijklmnopWXYZ&#x2F;12+406789VaqrstuvwxyzABCDEF5<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>是换表base64</p>
+<p>脚本解：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> base64
+<span class="token keyword">import</span> string
+<span class="token keyword">from</span> Crypto<span class="token punctuation">.</span>Util<span class="token punctuation">.</span>number <span class="token keyword">import</span> <span class="token operator">*</span>
+str1 <span class="token operator">=</span> <span class="token string">"j2rXjx8yjd=YRZWyTIuwRdbyQdbqR3R9iZmsScutj2iqj3/tidj1jd=D"</span>
+new  <span class="token operator">=</span> <span class="token string">"GHI3KLMNJOPQRSTUb=cdefghijklmnopWXYZ/12+406789VaqrstuvwxyzABCDEF"</span>
+inti <span class="token operator">=</span> <span class="token string">"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"</span>
+
+<span class="token keyword">print</span> <span class="token punctuation">(</span>base64<span class="token punctuation">.</span>b64decode<span class="token punctuation">(</span>str1<span class="token punctuation">.</span>translate<span class="token punctuation">(</span><span class="token builtin">str</span><span class="token punctuation">.</span>maketrans<span class="token punctuation">(</span>new<span class="token punctuation">,</span>inti<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 输出</span>
+<span class="token comment"># b'flag&#123;8e4b2888-6148-4003-b725-3ff0d93a6ee4&#125;'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<hr>
+<h1 id="MISC"><a href="#MISC" class="headerlink" title="MISC"></a>MISC</h1><h2 id="被加密的生产流量"><a href="#被加密的生产流量" class="headerlink" title="被加密的生产流量"></a>被加密的生产流量</h2><p>下载题目附件，追踪modbus流量包的tcp流发现base32，解码获得flag</p>
+<p><img src="/blog/2023/05/29/CISCN2023/image-20230601203045209.png" alt="image-20230601203045209"></p>
+<p>法2：nss上看见大佬写的自动提取脚本，copy来用一下（</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> pyshark
+
+flag <span class="token operator">=</span> <span class="token string">''</span>
+tmp <span class="token operator">=</span> <span class="token number">0</span>
+cap <span class="token operator">=</span> pyshark<span class="token punctuation">.</span>FileCapture<span class="token punctuation">(</span>input_file<span class="token operator">=</span><span class="token string">"modbus.pcap"</span><span class="token punctuation">,</span>tshark_path<span class="token operator">=</span><span class="token string">'D:\WireShark\Wireshark.exe'</span><span class="token punctuation">,</span>display_filter<span class="token operator">=</span><span class="token string">'modbus  &amp;&amp; frame.len == 66'</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> <span class="token function">hex2str</span><span class="token punctuation">(</span><span class="token builtin">id</span><span class="token punctuation">:</span><span class="token builtin">str</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">str</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token builtin">str</span><span class="token punctuation">(</span><span class="token builtin">bytes</span><span class="token punctuation">.</span>fromhex<span class="token punctuation">(</span><span class="token builtin">id</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"b"</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"\'"</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">for</span> p <span class="token keyword">in</span> cap<span class="token punctuation">:</span>
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span>p<span class="token punctuation">.</span>modbus<span class="token punctuation">.</span>word_cnt<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">5</span><span class="token punctuation">:</span>
+            tmp <span class="token operator">=</span> p<span class="token punctuation">.</span>modbus<span class="token punctuation">.</span>word_cnt
+            tmp <span class="token operator">=</span> <span class="token builtin">str</span><span class="token punctuation">(</span><span class="token builtin">hex</span><span class="token punctuation">(</span><span class="token builtin">int</span><span class="token punctuation">(</span>p<span class="token punctuation">.</span>modbus<span class="token punctuation">.</span>word_cnt<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"0x"</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">)</span>
+            flag <span class="token operator">=</span> flag <span class="token operator">+</span> tmp
+    <span class="token keyword">except</span><span class="token punctuation">:</span>
+        <span class="token keyword">pass</span>
+
+flag <span class="token operator">=</span> hex2str<span class="token punctuation">(</span>flag<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>flag<span class="token punctuation">)</span>
+
+<span class="token comment"># 输出</span>
+<span class="token comment"># MMYWMX3GNEYWOXZRGAYDA=</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+
+
+<h2 id="pyshell"><a href="#pyshell" class="headerlink" title="pyshell"></a>pyshell</h2><blockquote>
 <p>python</p>
 </blockquote>
 <p>nc连上靶机，回显”Welcome to this python shell,try to find the flag!”</p>
