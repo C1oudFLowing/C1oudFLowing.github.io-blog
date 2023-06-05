@@ -243,14 +243,14 @@
         
         <span class="tag">
             
-            <a href="/blog/tags/PHP/" style="color: #03a9f4">
+            <a href="/blog/tags/PHP/" style="color: #00bcd4">
                 PHP
             </a>
         </span>
         
         <span class="tag">
             
-            <a href="/blog/tags/ChatGPT/" style="color: #ffa2c4">
+            <a href="/blog/tags/ChatGPT/" style="color: #00a596">
                 ChatGPT
             </a>
         </span>
@@ -264,6 +264,157 @@
         
     </div>
     <a href="/blog/2023/05/02/%E4%B8%80%E6%AC%A1%E5%9F%BA%E4%BA%8EChatGPT%E7%9A%84PHP-OpenSSL%E5%8A%A0%E8%A7%A3%E5%AF%86%E5%AD%A6%E4%B9%A0/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/blog/2023/05/01/ISCC2023-Writeup/">
+        <h2 class="post-title">ISCC2023 Writeup</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/blog/categories/Writeup/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                Writeup
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/5/1
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>还就那个pycc（乐</p>
+<p>web里面塞crypto是真的顶不住…</p>
+<!---more-->
+
+<h1 id="WEB"><a href="#WEB" class="headerlink" title="WEB"></a>WEB</h1><h2 id="羊了个羊"><a href="#羊了个羊" class="headerlink" title="羊了个羊"></a>羊了个羊</h2><p>打开题目发现是小游戏，f12和右键还要crtl+u全被禁用了</p>
+<p>那我们反手把js禁用了</p>
+<p><img src="/blog/2023/05/01/ISCC2023-Writeup/image-20230501084549482.png" alt="image-20230501084549482"></p>
+<p>回到题目f12</p>
+<p>在网页源码处发现base64编码的语句</p>
+<p><img src="/blog/2023/05/01/ISCC2023-Writeup/image-20230501084701429.png" alt="image-20230501084701429"></p>
+<p>发现是假flag</p>
+<p><img src="/blog/2023/05/01/ISCC2023-Writeup/image-20230501084756975.png" alt="image-20230501084756975"></p>
+<p>那就还得去翻js文件，重新启用js刷新页面，刷新记得别把f12关掉</p>
+<p>看到两个js文件，(index)里面的是假flag，那我们就找另一个js</p>
+<p>猜测最终的flag会以<code>alert</code>形式发出，直接crtl+f搜索</p>
+<p><img src="/blog/2023/05/01/ISCC2023-Writeup/image-20230501085336735.png" alt="image-20230501085336735"></p>
+<p>base64解密两次得到flag</p>
+<p><img src="/blog/2023/05/01/ISCC2023-Writeup/image-20230501085549833.png" alt="image-20230501085549833"></p>
+<h2 id="Where-is-your-love-未完成"><a href="#Where-is-your-love-未完成" class="headerlink" title="Where_is_your_love(未完成)"></a>Where_is_your_love(未完成)</h2><p>和第一题一样的方式看到网页源码</p>
+<p><img src="/blog/2023/05/01/ISCC2023-Writeup/image-20230501094521029.png" alt="image-20230501094521029"></p>
+<p>发现三个路由</p>
+<p><strong>LoveStory.php</strong></p>
+<pre class="line-numbers language-PHP" data-language="PHP"><code class="language-PHP">?&gt;&lt;?php 
+include(&quot;.&#x2F;xxxiscc.php&quot;); 
+class boy &#123; 
+    public $like; 
+    public function __destruct() &#123; 
+        echo &quot;能请你喝杯奶茶吗？&lt;br&gt;&quot;; 
+        @$this-&gt;like-&gt;make_friends(); 
+    &#125; 
+    public function __toString() &#123; 
+        echo &quot;拱火大法好&lt;br&gt;&quot;; 
+        return $this-&gt;like-&gt;string; 
+    &#125; 
+&#125; 
+
+class girl &#123; 
+    private $boyname; 
+    public function __call($func, $args) &#123; 
+        echo &quot;我害羞羞&lt;br&gt;&quot;; 
+        isset($this-&gt;boyname-&gt;name);   
+    &#125; 
+&#125; 
+
+class helper &#123; 
+    private $name; 
+    private $string; 
+    public function __construct($string) &#123; 
+        $this-&gt;string &#x3D; $string; 
+    &#125; 
+    public function __isset($val) &#123; 
+        echo &quot;僚机上线&lt;br&gt;&quot;; 
+        echo $this-&gt;name; 
+    &#125; 
+    public function __get($name) &#123; 
+        echo &quot;僚机不懈努力&lt;br&gt;&quot;; 
+        $var &#x3D; $this-&gt;$name; 
+        $var[$name](); 
+    &#125; 
+&#125; 
+class love_story &#123; 
+    public function love() &#123; 
+        echo &quot;爱情萌芽&lt;br&gt;&quot;; 
+        array_walk($this, function($make, $colo)&#123; 
+            echo &quot;坠入爱河，给你爱的密码&lt;br&gt;&quot;; 
+            if ($make[0] &#x3D;&#x3D;&#x3D; &quot;girl_and_boy&quot; &amp;&amp; $colo &#x3D;&#x3D;&#x3D; &quot;fall_in_love&quot;) &#123; 
+                global $flag; 
+                echo $flag; 
+            &#125; 
+        &#125;); 
+    &#125; 
+&#125; 
+
+if (isset($_GET[&quot;iscc&quot;])) &#123; 
+    $a&#x3D;unserialize($_GET[&#39;iscc&#39;]); 
+&#125; else &#123; 
+    highlight_file(__FILE__); 
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>题目是寻找你的爱情故事</p>
+<p>所以pop的方向也应顺着它</p>
+<p><code>boy-&gt;girl-&gt;helper-&gt;love_story</code></p>
+<p>目前未知 array_walk($this, function($make, $colo) 如何给 $make, $colo传参</p>
+<p>按推理应给是 $var[$name](); 此条传参</p>
+<p><strong>Download.php</strong></p>
+<p>获得一串.pem公钥</p>
+<p><strong>enc.php</strong></p>
+<p>获得一串乱码的php文件，推测被加密</p>
+<p>那么接下来就要思考如何将这个php文件解密，pem文件里只有公钥没有私钥（可能跟girl_and_boy和fall_in_love）有关</p>
+<hr>
+<h1 id="REVERSE"><a href="#REVERSE" class="headerlink" title="REVERSE"></a>REVERSE</h1><h2 id="变形记"><a href="#变形记" class="headerlink" title="变形记"></a>变形记</h2><p>进IDA直接看到一个疑似base</p>
+<p><img src="/blog/2023/05/01/ISCC2023-Writeup/img" alt="img"></p>
+<p>复制下来跑exp</p>
+<pre class="line-numbers language-Python" data-language="Python"><code class="language-Python">from base64 import b64decode
+secret &#x3D; &quot;填入找到的base字符串&quot;
+flag &#x3D; []
+for i,v in enumerate(b64decode(secret[::-1].encode()).decode()):
+    if v.isdigit() &#x3D;&#x3D; False:
+        flag.append(v)
+    else:
+        flag.append((b64decode(secret[::-1].encode()).decode()[i-1])*(int(v)-1))
+print(&quot;&quot;.join(flag))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #ffa2c4">
+                CTF线上赛
+            </a>
+        </span>
+        
+    </div>
+    <a href="/blog/2023/05/01/ISCC2023-Writeup/" class="go-post">阅读全文</a>
 </div>
 
 <div class="post">
@@ -315,7 +466,7 @@
         
         <span class="tag">
             
-            <a href="/blog/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="color: #03a9f4">
+            <a href="/blog/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="color: #ffa2c4">
                 反序列化
             </a>
         </span>
@@ -373,7 +524,7 @@
         
         <span class="tag">
             
-            <a href="/blog/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="color: #00bcd4">
+            <a href="/blog/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="color: #03a9f4">
                 反序列化
             </a>
         </span>
@@ -423,7 +574,7 @@
         
         <span class="tag">
             
-            <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #00bcd4">
+            <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #03a9f4">
                 CTF线上赛
             </a>
         </span>
@@ -473,7 +624,7 @@
         
         <span class="tag">
             
-            <a href="/blog/tags/PHP/" style="color: #00bcd4">
+            <a href="/blog/tags/PHP/" style="color: #00a596">
                 PHP
             </a>
         </span>
@@ -523,7 +674,7 @@
         
         <span class="tag">
             
-            <a href="/blog/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="color: #00bcd4">
+            <a href="/blog/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="color: #ff7d73">
                 反序列化
             </a>
         </span>
@@ -574,7 +725,7 @@
         
         <span class="tag">
             
-            <a href="/blog/tags/python/" style="color: #ffa2c4">
+            <a href="/blog/tags/python/" style="color: #00a596">
                 python
             </a>
         </span>
@@ -625,7 +776,7 @@
         
         <span class="tag">
             
-            <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #ff7d73">
+            <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #ffa2c4">
                 CTF线上赛
             </a>
         </span>
@@ -678,52 +829,13 @@
         
         <span class="tag">
             
-            <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #00bcd4">
+            <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #ffa2c4">
                 CTF线上赛
             </a>
         </span>
         
     </div>
     <a href="/blog/2023/04/22/GDOUCTF-2023/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/blog/2023/04/20/nc%E6%8C%87%E4%BB%A4/">
-        <h2 class="post-title">nc指令</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/blog/categories/%E5%BE%85%E5%A1%AB%E7%9A%84%E5%9D%91/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                待填的坑
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/4/20
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h1 id="咕"><a href="#咕" class="headerlink" title="咕"></a>咕</h1><p>提醒自己要填坑（</p>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-    </div>
-    <a href="/blog/2023/04/20/nc%E6%8C%87%E4%BB%A4/" class="go-post">阅读全文</a>
 </div>
 
 
@@ -760,7 +872,7 @@
             
             
             <span class="page-omit">...</span>
-            <a class="page-num" href="/blog/page/8">8</a>
+            <a class="page-num" href="/blog/page/9">9</a>
             
         </span>
         
