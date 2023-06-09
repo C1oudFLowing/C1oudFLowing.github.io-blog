@@ -69,7 +69,7 @@
         <!--文章目录-->
         <div id="toc" class="toc-article">
     <div class="toc-title"></div>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-text">原理</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E6%88%98"><span class="toc-text">实战</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#beginner"><span class="toc-text">beginner</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-1"><span class="toc-text">level 1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-2"><span class="toc-text">level 2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-3"><span class="toc-text">level 3</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-text">原理</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E6%88%98"><span class="toc-text">实战</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#beginner"><span class="toc-text">beginner</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-1"><span class="toc-text">level 1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-2"><span class="toc-text">level 2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-2-5"><span class="toc-text">level 2.5</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-3"><span class="toc-text">level 3</span></a></li></ol></li></ol>
 </div>
         
         <!--返回顶部-->
@@ -212,12 +212,12 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/python/" style="color: #00a596">python</a>
+                <a href="/blog/tags/python/" style="color: #ff7d73">python</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/blog/tags/jail/" style="color: #ff7d73">jail</a>
+                <a href="/blog/tags/jail/" style="color: #00bcd4">jail</a>
             </span>
             
         </span>
@@ -317,10 +317,29 @@ ascii_str <span class="token operator">=</span> <span class="token string">"+"</
 <p>从而我们可以拿到shell</p>
 <p><img src="/blog/2023/06/07/python-jail/image-20230608184453373.png" alt="image-20230608184453373"></p>
 <hr>
+<h2 id="level-2-5"><a href="#level-2-5" class="headerlink" title="level 2.5"></a><a target="_blank" rel="noopener" href="https://www.nssctf.cn/problem/2944">level 2.5</a></h2><blockquote>
+<p>breakpoint()</p>
+</blockquote>
+<p>和level2比起来多加了一次关键词过滤</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">filter</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    BLACKLIST <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"exec"</span><span class="token punctuation">,</span><span class="token string">"input"</span><span class="token punctuation">,</span><span class="token string">"eval"</span><span class="token punctuation">]</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> BLACKLIST<span class="token punctuation">:</span>
+        <span class="token keyword">if</span> i <span class="token keyword">in</span> s<span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f'</span><span class="token interpolation"><span class="token punctuation">&#123;</span>i<span class="token conversion-option punctuation">!r</span><span class="token punctuation">&#125;</span></span><span class="token string"> has been banned for security reasons'</span></span><span class="token punctuation">)</span>
+            exit<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>这过滤一加，既不能正常命令执行也不能通过再套一层的方式逃逸</p>
+<p>这里也是一个姿势，利用<code>breakpoint()</code>，能够进入到pdb模块</p>
+<blockquote>
+<p>pdb 模块定义了一个交互式源代码调试器，用于 Python 程序。它支持在源码行间设置（有条件的）断点和单步执行，检视堆栈帧，列出源码列表，以及在任何堆栈帧的上下文中运行任意 Python 代码。它还支持事后调试，可以在程序控制下调用。</p>
+</blockquote>
+<p>所以进去pdb模块之后就可以正常进行命令执行了</p>
+<p><img src="/blog/2023/06/07/python-jail/image-20230609151752104.png" alt="image-20230609151752104"></p>
+<hr>
 <h2 id="level-3"><a href="#level-3" class="headerlink" title="level 3"></a><a target="_blank" rel="noopener" href="https://www.nssctf.cn/problem/2912">level 3</a></h2><blockquote>
 <p>限制长度+help()</p>
 </blockquote>
-<p>跟level2相比限制缩短到7</p>
+<p>跟level2相比限制缩短到7，那level2.5的做法也失效了</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span>input_data<span class="token punctuation">)</span><span class="token operator">></span><span class="token number">7</span><span class="token punctuation">:</span>
     <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Oh hacker!"</span><span class="token punctuation">)</span>
     exit<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>

