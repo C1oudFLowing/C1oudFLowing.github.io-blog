@@ -69,7 +69,7 @@
         <!--文章目录-->
         <div id="toc" class="toc-article">
     <div class="toc-title"></div>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-text">原理</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E6%88%98"><span class="toc-text">实战</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#beginner"><span class="toc-text">beginner</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-1"><span class="toc-text">level 1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-2"><span class="toc-text">level 2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-2-5"><span class="toc-text">level 2.5</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-3"><span class="toc-text">level 3</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-text">原理</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E6%88%98"><span class="toc-text">实战</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#beginner"><span class="toc-text">beginner</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#python2-input-JAIL"><span class="toc-text">python2 input(JAIL)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-1"><span class="toc-text">level 1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-2"><span class="toc-text">level 2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-2-5"><span class="toc-text">level 2.5</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-3"><span class="toc-text">level 3</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#lake-lake-lake"><span class="toc-text">lake lake lake</span></a></li></ol></li></ol>
 </div>
         
         <!--返回顶部-->
@@ -217,7 +217,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/jail/" style="color: #00bcd4">jail</a>
+                <a href="/blog/tags/jail/" style="color: #03a9f4">jail</a>
             </span>
             
         </span>
@@ -261,10 +261,45 @@ input_data <span class="token operator">=</span> <span class="token builtin">inp
 
 <p><img src="/blog/2023/06/07/python-jail/image-20230607115540253.png" alt="image-20230607115540253"></p>
 <hr>
+<h2 id="python2-input-JAIL"><a href="#python2-input-JAIL" class="headerlink" title="python2 input(JAIL)"></a><a target="_blank" rel="noopener" href="https://www.nssctf.cn/problem/2913">python2 input(JAIL)</a></h2><blockquote>
+<p>python2</p>
+</blockquote>
+<p>题目源码</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># It's escape this repeat!</span>
+
+WELCOME <span class="token operator">=</span> <span class="token triple-quoted-string string">'''
+              _   _      ___        ___    _____             _    _ _   
+             | | | |    / _ \      |__ \  |_   _|           | |  | | |  
+  _ __  _   _| |_| |__ | | | |_ __    ) |   | |  _ __  _ __ | |  | | |_ 
+ | '_ \| | | | __| '_ \| | | | '_ \  / /    | | | '_ \| '_ \| |  | | __|
+ | |_) | |_| | |_| | | | |_| | | | |/ /_   _| |_| | | | |_) | |__| | |_ 
+ | .__/ \__, |\__|_| |_|\___/|_| |_|____| |_____|_| |_| .__/ \____/ \__|
+ | |     __/ |                                        | |               
+ |_|    |___/                                         |_|                               
+'''</span>
+
+<span class="token keyword">print</span> WELCOME
+
+<span class="token keyword">print</span> <span class="token string">"Welcome to the python jail"</span>
+<span class="token keyword">print</span> <span class="token string">"But this program will repeat your messages"</span>
+input_data <span class="token operator">=</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"> "</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span> input_data<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>语法上很明显是python2语法</p>
+<ul>
+<li>在python 2中，<code>input</code>函数从标准输入接收输入，并且自动<code>eval</code>求值，返回求出来的值；</li>
+<li>在python 2中，<code>raw_input</code>函数从标准输入接收输入，返回输入字符串；</li>
+<li>在python 3中，<code>input</code>函数从标准输入接收输入，返回输入字符串；</li>
+<li>可以认为，python 2 <code>input()</code> &#x3D; python 2 <code>eval(raw_input())</code> &#x3D; python 3 <code>eval(input())</code></li>
+</ul>
+<p>这题没有限制和过滤</p>
+<p>直接命令执行即可</p>
+<p><img src="/blog/2023/06/07/python-jail/image-20230609195756589.png" alt="image-20230609195756589"></p>
+<hr>
 <h2 id="level-1"><a href="#level-1" class="headerlink" title="level 1"></a><a target="_blank" rel="noopener" href="https://www.nssctf.cn/problem/2910">level 1</a></h2><blockquote>
 <p>chr()</p>
 </blockquote>
-<p>跟上题比起来多加了过滤</p>
+<p>跟beginner比起来多加了过滤</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">filter</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">:</span>
     not_allowed <span class="token operator">=</span> <span class="token builtin">set</span><span class="token punctuation">(</span><span class="token string">'"\'`ib'</span><span class="token punctuation">)</span>
     <span class="token keyword">return</span> <span class="token builtin">any</span><span class="token punctuation">(</span>c <span class="token keyword">in</span> not_allowed <span class="token keyword">for</span> c <span class="token keyword">in</span> s<span class="token punctuation">)</span>
@@ -350,6 +385,71 @@ ascii_str <span class="token operator">=</span> <span class="token string">"+"</
 <p>在后面使用<code>!命令</code>即可造成命令执行</p>
 <p><img src="/blog/2023/06/07/python-jail/image-20230608190904819.png" alt="image-20230608190904819"></p>
 <p><img src="/blog/2023/06/07/python-jail/image-20230608190658562.png" alt="image-20230608190658562"></p>
+<hr>
+<h2 id="lake-lake-lake"><a href="#lake-lake-lake" class="headerlink" title="lake lake lake"></a><a target="_blank" rel="noopener" href="https://www.nssctf.cn/problem/2946">lake lake lake</a></h2><blockquote>
+<p>全局变量泄露</p>
+</blockquote>
+<p>题目源码</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment">#it seems have a backdoor</span>
+<span class="token comment">#can u find the key of it and use the backdoor</span>
+
+fake_key_var_in_the_local_but_real_in_the_remote <span class="token operator">=</span> <span class="token string">"[DELETED]"</span>
+
+<span class="token keyword">def</span> <span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    code <span class="token operator">=</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">">"</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>code<span class="token punctuation">)</span><span class="token operator">></span><span class="token number">9</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"you're hacker!"</span><span class="token punctuation">)</span>
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">eval</span><span class="token punctuation">(</span>code<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">except</span><span class="token punctuation">:</span>
+        <span class="token keyword">pass</span>
+
+<span class="token keyword">def</span> <span class="token function">backdoor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Please enter the admin key"</span><span class="token punctuation">)</span>
+    key <span class="token operator">=</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">">"</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>key <span class="token operator">==</span> fake_key_var_in_the_local_but_real_in_the_remote<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        code <span class="token operator">=</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">">"</span><span class="token punctuation">)</span>
+        <span class="token keyword">try</span><span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">eval</span><span class="token punctuation">(</span>code<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token keyword">except</span><span class="token punctuation">:</span>
+            <span class="token keyword">pass</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Nooo!!!!"</span><span class="token punctuation">)</span>
+
+WELCOME <span class="token operator">=</span> <span class="token triple-quoted-string string">'''
+  _       _          _       _          _       _        
+ | |     | |        | |     | |        | |     | |       
+ | | __ _| | _____  | | __ _| | _____  | | __ _| | _____ 
+ | |/ _` | |/ / _ \ | |/ _` | |/ / _ \ | |/ _` | |/ / _ \
+ | | (_| |   &lt;  __/ | | (_| |   &lt;  __/ | | (_| |   &lt;  __/
+ |_|\__,_|_|\_\___| |_|\__,_|_|\_\___| |_|\__,_|_|\_\___|                                                                                                                                                                     
+'''</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>WELCOME<span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Now the program has two functions"</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"can you use dockerdoor"</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"1.func"</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"2.backdoor"</span><span class="token punctuation">)</span>
+input_data <span class="token operator">=</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"> "</span><span class="token punctuation">)</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span>input_data <span class="token operator">==</span> <span class="token string">"1"</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    func<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    exit<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+<span class="token keyword">elif</span><span class="token punctuation">(</span>input_data <span class="token operator">==</span> <span class="token string">"2"</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    backdoor<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    exit<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+<span class="token keyword">else</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"not found the choice"</span><span class="token punctuation">)</span>
+    exit<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>可以看到一开始这里存在两个选项</p>
+<p>选项1限制了长度不能超过9，这里尝试了一下发现<code>help()</code>函数在这里不可实现rce</p>
+<p>所以这里得找另一个姿势进行绕过，此时我们发现选项2没有进行限制，但是需要<code>key</code>才能进入</p>
+<p>而在源码中可以发现key是一个全局变量</p>
+<p>所以我们可以在选项1中使用<code>globals()</code>函数读取全局变量获取到key的值</p>
+<p>然后带上key的值进入选项2命令执行即可获取flag</p>
+<p><img src="/blog/2023/06/07/python-jail/image-20230609201016178.png" alt="image-20230609201016178"></p>
+<hr>
 
     </div>
     

@@ -212,7 +212,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/ctf%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #03a9f4">ctf线上赛</a>
+                <a href="/blog/tags/ctf%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #ff7d73">ctf线上赛</a>
             </span>
             
         </span>
@@ -377,7 +377,7 @@ cookie<span class="token punctuation">:</span> <span class="token constant">PHPS
 <p>所以直接复制这串为参数然后传参</p>
 <p>至于底下的过滤，不允许 <code>/，和 ../ </code>开头，用伪协议就能实现绕过了(官方wp使用<code>%00</code>绕过)</p>
 <p>但是传参后发现并没有出现flag，其实是被<code> throw new Exception(&#39;seino&#39;);</code> 影响到了</p>
-<p>我们可以通过 fast destruct 提前触发魔术方法，从而绕过 throw 语句，注意我们传递 payload 的时候，需要将最后面的 } 删掉（即删掉最后一个%7D）(by 官方wp，这里我还没理解)</p>
+<p>我们可以通过 <a href="https://c1oudfl0w0.github.io/blog/2023/06/09/fast-destruct%E6%8E%A2%E7%B4%A2/">fast_destruct</a> 提前触发魔术方法，从而绕过最后的 throw 语句，即在我们传递 payload 的时候，需要将最后面的<code> &#125;</code> 删掉（即删掉最后一个<code>%7D</code>）</p>
 <p><img src="/blog/2023/06/03/%E9%99%95%E8%A5%BF%E7%9C%81%E7%9C%81%E8%B5%9B2023/image-20230609005342058.png" alt="image-20230609005342058"></p>
 <p>获取base64编码的flag</p>
 <h2 id="unserialize-复现"><a href="#unserialize-复现" class="headerlink" title="unserialize(复现)"></a>unserialize(复现)</h2><blockquote>
