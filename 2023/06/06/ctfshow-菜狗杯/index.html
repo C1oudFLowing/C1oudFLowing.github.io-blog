@@ -123,6 +123,11 @@
             <span>&ensp;Tags</span>
         </a>
         
+        <a href="/blog/links">
+            <i class="fa-solid fa-link fa-fw"></i>
+            <span>&ensp;Links</span>
+        </a>
+        
     </div>
     <div id="mobile-menu">
         <div class="curtain" v-show="showMenu" @click="showMenu = !showMenu"></div>
@@ -178,6 +183,15 @@
                 </div>
             </a>
             
+            <a href="/blog/links">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-link fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Links</div>
+                </div>
+            </a>
+            
         </div>
         </transition>
     </div>
@@ -212,7 +226,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #00bcd4">CTF线上赛</a>
+                <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #ff7d73">CTF线上赛</a>
             </span>
             
             <span class="tag">
@@ -411,7 +425,7 @@ app<span class="token punctuation">.</span>config<span class="token punctuation"
 <span class="token keyword">echo</span> <span class="token function">assert</span><span class="token punctuation">(</span><span class="token function">intval</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'num'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">echo</span> <span class="token string double-quoted-string">"&lt;br>"</span><span class="token punctuation">;</span>
 <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">assert</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"intval(<span class="token interpolation"><span class="token variable">$_GET</span><span class="token punctuation">[</span>num<span class="token punctuation">]</span></span>)==114515"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-    <span class="token keyword">echo</span> <span class="token string double-quoted-string">"win"</span><span class="token punctuation">;</span>
+    <span class="token keyword">echo</span> <span class="token string double-quoted-string">"suki"</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p><img src="/blog/2023/06/06/ctfshow-%E8%8F%9C%E7%8B%97%E6%9D%AF/image-20230606154439244.png" alt="image-20230606154439244"></p>
