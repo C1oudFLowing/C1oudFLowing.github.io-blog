@@ -5,7 +5,7 @@
         <meta charset="UTF-8" />
         <title>雲流のLowest World</title>
         <meta name="author" content="C1oudfL0w0" />
-        <meta name="description" content="by 一言顶真" />
+        <meta name="description" content="" />
         <meta name="keywords" content="" />
         <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
         <link rel="icon" href="/blog/images/croppedImage_cropped.jpg" />
@@ -204,9 +204,32 @@
         <span class="info">
             <div class="wrap">
                 <h1>雲流のLowest World</h1>
-                <h4 id="hitokoto"><a href="#" id="hitokoto_text">:D 获取中...</a></h4>
-                <h6>by 一言顶真</h6>
-                <script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script>
+                <h4 id="hitokoto"><span id="hitokoto_text">:D 获取中...</span></h4>
+                <div id="info" style="font-size: larger;"></div>
+                <!--一言接口-->
+                <script>
+                    window.onload = function() {
+                        var hitokoto = document.getElementById("hitokoto_text");
+                        var info = document.getElementById("info");
+                        var xhr = new XMLHttpRequest();
+                        xhr.open('get', 'https://v1.hitokoto.cn/?encode=json&charset=utf-8&c=a&c=c&c=f', true);
+                        xhr.onreadystatechange = function() {
+                            if (xhr.readyState === 4 && xhr.status === 200) {
+                                var data = JSON.parse(xhr.responseText);
+                                hitokoto.innerText = data.hitokoto;
+                                if (data.from_who) {
+                                    info.innerText = data.from_who + ' · ' + data.from;
+                                } else {
+                                    info.innerText = '「' + data.from + '」';
+                                }
+                            } else {
+                                hitokoto.innerText = '获取失败';
+                            }
+                        };
+                        xhr.send();
+                    };
+                </script>
+                <h6></h6>
             </div>
         </span>
     </div>
@@ -260,7 +283,7 @@
         
         <span class="tag">
             
-            <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #ff7d73">
+            <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #ffa2c4">
                 CTF线上赛
             </a>
         </span>
@@ -311,7 +334,7 @@
         
         <span class="tag">
             
-            <a href="/blog/tags/PHP/" style="color: #ffa2c4">
+            <a href="/blog/tags/PHP/" style="color: #00a596">
                 PHP
             </a>
         </span>
@@ -423,7 +446,7 @@ $<span class="token keyword">sql</span> <span class="token operator">=</span> <s
         
         <span class="tag">
             
-            <a href="/blog/tags/Sql/" style="color: #ffa2c4">
+            <a href="/blog/tags/Sql/" style="color: #03a9f4">
                 Sql
             </a>
         </span>
@@ -472,7 +495,7 @@ $<span class="token keyword">sql</span> <span class="token operator">=</span> <s
         
         <span class="tag">
             
-            <a href="/blog/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" style="color: #ffa2c4">
+            <a href="/blog/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" style="color: #00a596">
                 文件上传
             </a>
         </span>
@@ -521,7 +544,7 @@ $<span class="token keyword">sql</span> <span class="token operator">=</span> <s
         
         <span class="tag">
             
-            <a href="/blog/tags/PHP/" style="color: #ff7d73">
+            <a href="/blog/tags/PHP/" style="color: #00bcd4">
                 PHP
             </a>
         </span>
@@ -635,14 +658,14 @@ $<span class="token keyword">sql</span> <span class="token operator">=</span> <s
         
         <span class="tag">
             
-            <a href="/blog/tags/PHP/" style="color: #ff7d73">
+            <a href="/blog/tags/PHP/" style="color: #03a9f4">
                 PHP
             </a>
         </span>
         
         <span class="tag">
             
-            <a href="/blog/tags/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/" style="color: #00bcd4">
+            <a href="/blog/tags/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/" style="color: #03a9f4">
                 文件包含
             </a>
         </span>
@@ -692,7 +715,7 @@ $<span class="token keyword">sql</span> <span class="token operator">=</span> <s
         
         <span class="tag">
             
-            <a href="/blog/tags/RCE/" style="color: #03a9f4">
+            <a href="/blog/tags/RCE/" style="color: #ffa2c4">
                 RCE
             </a>
         </span>

@@ -5,7 +5,7 @@
         <meta charset="UTF-8" />
         <title>雲流のLowest World</title>
         <meta name="author" content="C1oudfL0w0" />
-        <meta name="description" content="by 一言顶真" />
+        <meta name="description" content="" />
         <meta name="keywords" content="" />
         <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
         <link rel="icon" href="/blog/images/croppedImage_cropped.jpg" />
@@ -204,9 +204,32 @@
         <span class="info">
             <div class="wrap">
                 <h1>雲流のLowest World</h1>
-                <h4 id="hitokoto"><a href="#" id="hitokoto_text">:D 获取中...</a></h4>
-                <h6>by 一言顶真</h6>
-                <script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script>
+                <h4 id="hitokoto"><span id="hitokoto_text">:D 获取中...</span></h4>
+                <div id="info" style="font-size: larger;"></div>
+                <!--一言接口-->
+                <script>
+                    window.onload = function() {
+                        var hitokoto = document.getElementById("hitokoto_text");
+                        var info = document.getElementById("info");
+                        var xhr = new XMLHttpRequest();
+                        xhr.open('get', 'https://v1.hitokoto.cn/?encode=json&charset=utf-8&c=a&c=c&c=f', true);
+                        xhr.onreadystatechange = function() {
+                            if (xhr.readyState === 4 && xhr.status === 200) {
+                                var data = JSON.parse(xhr.responseText);
+                                hitokoto.innerText = data.hitokoto;
+                                if (data.from_who) {
+                                    info.innerText = data.from_who + ' · ' + data.from;
+                                } else {
+                                    info.innerText = '「' + data.from + '」';
+                                }
+                            } else {
+                                hitokoto.innerText = '获取失败';
+                            }
+                        };
+                        xhr.send();
+                    };
+                </script>
+                <h6></h6>
             </div>
         </span>
     </div>
@@ -257,7 +280,7 @@
         
         <span class="tag">
             
-            <a href="/blog/tags/JSON/" style="color: #ff7d73">
+            <a href="/blog/tags/JSON/" style="color: #ffa2c4">
                 JSON
             </a>
         </span>
@@ -439,7 +462,7 @@
         
         <span class="tag">
             
-            <a href="/blog/tags/python/" style="color: #00a596">
+            <a href="/blog/tags/python/" style="color: #03a9f4">
                 python
             </a>
         </span>
@@ -489,7 +512,7 @@
         
         <span class="tag">
             
-            <a href="/blog/tags/%E5%8F%A4%E5%85%B8%E5%AF%86%E7%A0%81/" style="color: #03a9f4">
+            <a href="/blog/tags/%E5%8F%A4%E5%85%B8%E5%AF%86%E7%A0%81/" style="color: #00a596">
                 古典密码
             </a>
         </span>
@@ -663,7 +686,7 @@
         
         <span class="tag">
             
-            <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #00a596">
+            <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #ffa2c4">
                 CTF线上赛
             </a>
         </span>
