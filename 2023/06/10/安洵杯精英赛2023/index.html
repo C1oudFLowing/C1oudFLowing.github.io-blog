@@ -209,6 +209,15 @@
             2023/6/10
         </span>
         
+        <span class="category">
+            <a href="/blog/categories/%E8%B5%9B%E5%90%8E%E5%A4%8D%E7%8E%B0/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                赛后复现
+            </a>
+        </span>
+        
         
         <span class="tags">
             <span class="icon">
@@ -217,7 +226,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #03a9f4">CTF线上赛</a>
+                <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #ff7d73">CTF线上赛</a>
             </span>
             
         </span>
@@ -231,7 +240,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">390字</span>
+        <span class="post-count">555字</span>
       </span>
     </span>
 
@@ -240,7 +249,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">1分</span>
+        <span class="post-count">2分</span>
       </span>
     </span>
 </div>
@@ -251,6 +260,7 @@
     <div class="content" v-pre>
         <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>web又爆零了555，不过这次做的两题倒是都有收获一点新的思路，直接开等wp</p>
 <p>yysy考点确实挺多的</p>
+<p><a target="_blank" rel="noopener" href="https://kdocs.cn/l/cpcke0jhBRxh">官方wp</a></p>
 <span id="more"></span>
 
 <h1 id="WEB"><a href="#WEB" class="headerlink" title="WEB"></a>WEB</h1><h2 id="CarelessPy"><a href="#CarelessPy" class="headerlink" title="CarelessPy"></a>CarelessPy</h2><blockquote>
@@ -264,6 +274,9 @@
 <p>但是本人在做题的时候发现怎么传cmd都返回500，不知道问题在哪</p>
 <p>看了wp才突然意识到，当时页面回显的是根目录下的所有文件和文件夹</p>
 <p>也就是说我们要传入cmd的值是路径</p>
+<p>(脑测部分)</p>
+<p>传入<code>?cmd=app</code>发现存在__pycache__文件夹</p>
+<p>查看__pycache__文件夹，发现存在part.cpython-311.pyc文件</p>
 <p><code>/login</code></p>
 <p>一个登录页面</p>
 <p>session解码一下可以发现</p>
@@ -279,6 +292,26 @@ python /app/app.py
 <span class="token function">rm</span> <span class="token parameter variable">-f</span> /start.sh<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>同时也尝试下载&#x2F;etc&#x2F;environment和.dockerenv，但是里面都没有内容</p>
+<p>于是路径穿越下载pyc文件进行反编译</p>
+<pre class="line-numbers language-http" data-language="http"><code class="language-http">/download?file=../../../app/__pycache`**`__`**`/part.cpython-311.pyc<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><a target="_blank" rel="noopener" href="https://www.lddgo.net/string/pyc-compile-decompile">在线反编译网站</a></p>
+<p>得到<code>part.py</code>源码</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> os
+<span class="token keyword">import</span> random
+<span class="token keyword">import</span> hashlib
+<span class="token keyword">from</span> flask <span class="token keyword">import</span> <span class="token operator">*</span>
+<span class="token keyword">from</span> lxml <span class="token keyword">import</span> etree
+app <span class="token operator">=</span> Flask<span class="token punctuation">(</span>__name__<span class="token punctuation">)</span>
+app<span class="token punctuation">.</span>config<span class="token punctuation">[</span><span class="token string">'SECRET_KEY'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'o2takuXX_donot_like_ntr'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>得到key</p>
+<p>然后就可以伪造session为<code>&#123;&#39;islogin&#39;: True&#125;</code></p>
+<p>即<code>eyJpc2xvZ2luIjp0cnVlfQ.ZIPg0A.ygraPDQc1WFID0dsaTEsUVUfRCs</code></p>
+<p>然后去<code>/login</code>实现登录</p>
+<p>登录成功后页面回显 <code>登录成功~呜呜呜~请前往 /th1s_1s_The_L4st_one</code></p>
+<p>然后去<code>/th1s_1s_The_L4st_one</code> 路由</p>
+<p>这里是xml页面，要用到xxe，等学会了再补wp（</p>
 <hr>
 <h2 id="Confronting-robot"><a href="#Confronting-robot" class="headerlink" title="Confronting robot"></a>Confronting robot</h2><blockquote>
 <p>报错注入+getshell</p>
