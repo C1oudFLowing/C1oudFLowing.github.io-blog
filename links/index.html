@@ -206,6 +206,8 @@
         </span>
         
         
+        <!--文章字数统计-->
+        
     </div>
     
     <div class="content" v-pre>
@@ -213,64 +215,63 @@
    <div id="links">
       <style>
          .links-content{
-         margin-top:1rem;
+            margin-top:1rem;
          }
          .link-navigation::after {
-         content: " ";
-         display: block;
-         clear: both;
+            content: " ";
+            display: block;
+            clear: both;
          }
          .card {
-         width: 45%;
-         font-size: 1rem;
-         padding: 10px 20px;
-         border-radius: 4px;
-         transition-duration: 0.15s;
-         margin-bottom: 1rem;
-         display:flex;
-         }
-         .card:nth-child(odd) {
-         float: left;
-         }
-         .card:nth-child(even) {
-         float: right;
+            width: 45%;
+            font-size: 1rem;
+            padding: 10px 20px;
+            border-radius: 4px;
+            transition-duration: 0.15s;
+            margin-bottom: 1rem;
+            display: inline-block;
+            vertical-align: top;
          }
          .card:hover {
-         transform: scale(1.1);
-         box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.12), 0 0 6px 0 rgba(0, 0, 0, 0.04);
+            transform: scale(1.1);
+            box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.12), 0 0 6px 0 rgba(0, 0, 0, 0.04);
          }
          .card a {
-         border:none;
+            border:none;
          }
          .card .ava {
-         width: 3rem!important;
-         height: 3rem!important;
-         margin:0!important;
-         margin-right: 1em!important;
-         border-radius:4px;
+            width: 3rem!important;
+            height: 3rem!important;
+            margin:0!important;
+            margin-right: 1em!important;
+            border-radius:4px;
+            float: left;
+            object-fit: cover;
          }
          .card .card-header {
-         font-style: italic;
-         overflow: hidden;
-         width: 100%;
+            font-style: italic;
+            overflow: hidden;
+            width: calc(100% - 4rem);
+            float: left;
          }
          .card .card-header a {
-         font-style: normal;
-         color: #2bbc8a;
-         font-weight: bold;
-         text-decoration: none;
+            font-style: normal;
+            color: #2bbc8a;
+            font-weight: bold;
+            text-decoration: none;
          }
          .card .card-header a:hover {
-         color: #d480aa;
-         text-decoration: none;
+            color: #d480aa;
+            text-decoration: none;
          }
          .card .card-header .info {
-         font-style:normal;
-         color:#a3a3a3;
-         font-size:14px;
-         min-width: 0;
-         overflow: hidden;
-         white-space: nowrap;
+            font-style:normal;
+            color:#a3a3a3;
+            font-size:14px;
+            min-width: 0;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
          }
       </style>
       <div class="links-content">
@@ -297,6 +298,8 @@
       </div>
    </div>
 </div>
+
+
     </div>
     
     
