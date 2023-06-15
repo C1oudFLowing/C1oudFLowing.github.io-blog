@@ -69,7 +69,7 @@
         <!--文章目录-->
         <div id="toc" class="toc-article">
     <div class="toc-title"></div>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#flask-jwt"><span class="toc-text">flask?jwt?</span></a></li></ol>
 </div>
         
         <!--返回顶部-->
@@ -240,7 +240,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">12字</span>
+        <span class="post-count">255字</span>
       </span>
     </span>
 
@@ -258,7 +258,36 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p><del>金币不够复现，救救孩子</del></p>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>唉，又爆零了，最简单的一道还因为自己少考虑到某些信息没做出来呜呜呜</p>
+<span id="more"></span>
+
+<hr>
+<h1 id="flask-jwt"><a href="#flask-jwt" class="headerlink" title="flask?jwt?"></a>flask?jwt?</h1><blockquote>
+<p>session伪造</p>
+</blockquote>
+<p>进入题目，发现是一个登录界面</p>
+<p><img src="/blog/2023/06/04/NSSCTF-ROUND-13/image-20230615234324229.png" alt="image-20230615234324229"></p>
+<p>那我们就注册个账号登录试试</p>
+<p><img src="/blog/2023/06/04/NSSCTF-ROUND-13/image-20230615234402614.png" alt="image-20230615234402614"></p>
+<p>登录之后出现一个拿flag的按钮</p>
+<p><img src="/blog/2023/06/04/NSSCTF-ROUND-13/image-20230615234643908.png" alt="image-20230615234643908"></p>
+<p>点击后来到<code>/getFlag</code>路由，回显”不不不，你不是 admin“</p>
+<p><img src="/blog/2023/06/04/NSSCTF-ROUND-13/image-20230615234830585.png" alt="image-20230615234830585"></p>
+<p>这个时候基本可以知道是session伪造了</p>
+<p>拿一下cookie中的session解密看看</p>
+<p><img src="/blog/2023/06/04/NSSCTF-ROUND-13/image-20230615235339072.png" alt="image-20230615235339072"></p>
+<p>猜测admin的<code>_user_id</code>为1</p>
+<p>接下来就是去找密钥了</p>
+<p>回到登录页面，发现这里还有一个<strong>忘记密码</strong>的按钮，右下角有个邮箱<code>adm1n@flag.com</code>(其实这个没什么用)</p>
+<p>点击忘记密码来到<code>/changePassword</code>路由</p>
+<p>f12发现<code>secretkey</code>为<code>th3f1askisfunny</code>(当时做的时候就是没f12看看才没做出来的555)</p>
+<p><img src="/blog/2023/06/04/NSSCTF-ROUND-13/image-20230615235720924.png" alt="image-20230615235720924"></p>
+<p>于是丢进加密脚本，构造<code>&quot;_user_id&quot;:&quot;1&quot;</code>的session值</p>
+<p>注：因为python语法的原因，上面解出来的true要改成True</p>
+<p><img src="/blog/2023/06/04/NSSCTF-ROUND-13/image-20230616002046193.png" alt="image-20230616002046193"></p>
+<p>带着session值来到<code>/getFlag</code>路由获取flag</p>
+<p><img src="/blog/2023/06/04/NSSCTF-ROUND-13/image-20230616002403551.png" alt="image-20230616002403551"></p>
+<hr>
 
     </div>
     
