@@ -526,6 +526,12 @@ body::-webkit-scrollbar-track {
 .code-copy:not(.copied) i:last-child {
     opacity: 0;
 }
+
+.count {
+    font-size: 1em;
+    font-weight: bold;
+}
+
 .fade-enter-active,
 .fade-leave-active {
     transition: opacity 0.3s;
