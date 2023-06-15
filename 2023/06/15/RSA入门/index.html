@@ -3,7 +3,7 @@
 <html lang="zh-CN">
     <head>
         <meta charset="UTF-8" />
-        <title>一次基于ChatGPT的PHP OpenSSL加解密学习 | 雲流のLowest World</title>
+        <title>RSA入门 | 雲流のLowest World</title>
         <meta name="author" content="C1oudfL0w0" />
         <meta name="description" content="" />
         <meta name="keywords" content="" />
@@ -26,6 +26,9 @@
 
 <script src="/blog/js/lib/preview.js"></script>
 
+
+<script src="https://cdn.staticfile.org/crypto-js/4.1.1/crypto-js.min.js"></script>
+<script src="/blog/js/lib/crypto.js"></script>
 
 
 
@@ -69,7 +72,7 @@
         <!--文章目录-->
         <div id="toc" class="toc-article">
     <div class="toc-title"></div>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFOpenSSL"><span class="toc-text">什么是OpenSSL</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#AES%E5%8A%A0%E8%A7%A3%E5%AF%86"><span class="toc-text">AES加解密</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PEM%E8%A7%A3%E5%AF%86"><span class="toc-text">PEM解密</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9F%E6%88%90PEM%E7%A7%81%E9%92%A5"><span class="toc-text">生成PEM私钥</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86"><span class="toc-text">非对称加密</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#RSA"><span class="toc-text">RSA</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E5%85%AC%E7%A7%81%E9%92%A5"><span class="toc-text">生成公私钥</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A0%E5%AF%86"><span class="toc-text">加密</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E5%AF%86"><span class="toc-text">解密</span></a></li></ol></li></ol>
 </div>
         
         <!--返回顶部-->
@@ -199,22 +202,22 @@
 
                 <div class="article">
     <div>
-        <h1>一次基于ChatGPT的PHP OpenSSL加解密学习</h1>
+        <h1>RSA入门</h1>
     </div>
     <div class="info">
         <span class="date">
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2023/5/2
+            2023/6/15
         </span>
         
         <span class="category">
-            <a href="/blog/categories/Web/">
+            <a href="/blog/categories/Crypto/">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
-                Web
+                Crypto
             </a>
         </span>
         
@@ -226,17 +229,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/PHP/" style="color: #00bcd4">PHP</a>
-            </span>
-            
-            <span class="tag">
-                
-                <a href="/blog/tags/ChatGPT/" style="color: #00a596">ChatGPT</a>
-            </span>
-            
-            <span class="tag">
-                
-                <a href="/blog/tags/OpenSSL/" style="color: #03a9f4">OpenSSL</a>
+                <a href="/blog/tags/RSA/" style="color: #ffa2c4">RSA</a>
             </span>
             
         </span>
@@ -250,7 +243,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">487字</span>
+        <span class="post-count">775字</span>
       </span>
     </span>
 
@@ -259,7 +252,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">1分</span>
+        <span class="post-count">2分</span>
       </span>
     </span>
 </div>
@@ -267,55 +260,19 @@
           
     </div>
     
-    <div class="content" v-pre>
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>博主在打某比赛的时候遇到了PHP文件加密，故尝试向ChatGPT询问以获取所需的知识，也是第一次尝试基于ChatGPT的学习</p>
-<span id="more"></span>
-
-<h1 id="什么是OpenSSL"><a href="#什么是OpenSSL" class="headerlink" title="什么是OpenSSL"></a>什么是OpenSSL</h1><blockquote>
-<p>是一个开源的安全套接字层（SSL）协议的实现，支持多种加密算法，包括AES和DES等</p>
-</blockquote>
-<p>本文中OpenSSL将被用于实现PHP文件的加解密</p>
-<p>Kali自带OpenSSL工具</p>
-<h2 id="AES加解密"><a href="#AES加解密" class="headerlink" title="AES加解密"></a>AES加解密</h2><p>加密</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">openssl enc -aes-256-cbc <span class="token parameter variable">-salt</span> <span class="token parameter variable">-in</span> example.php <span class="token parameter variable">-out</span> example.php.enc<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>解密</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">openssl enc <span class="token parameter variable">-d</span> -aes-256-cbc <span class="token parameter variable">-in</span> example.php.enc <span class="token parameter variable">-out</span> example.php<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-
-
-<h2 id="PEM解密"><a href="#PEM解密" class="headerlink" title="PEM解密"></a>PEM解密</h2><p>使用OpenSSL对PHP文件进行PEM解密，您需要使用以下步骤：</p>
-<ol>
-<li><p>将PEM公钥保存到文件中（例如pemkey.pem）。</p>
-</li>
-<li><p>将使用PEM公钥加密的PHP文件（例如encrypted.php）保存到您的计算机上。</p>
-</li>
-<li><p>打开终端或命令行界面，然后运行以下命令：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">openssl pkeyutl <span class="token parameter variable">-decrypt</span> <span class="token parameter variable">-in</span> encrypted.php <span class="token parameter variable">-inkey</span> pemkey.pem <span class="token parameter variable">-out</span> decrypted.php<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>该命令将使用PEM密钥解密encrypted.php文件，并将解密结果保存到decrypted.php文件中。</p>
-</li>
-</ol>
-<p>如果不知道使用的私钥，则无法使用OpenSSL或任何其他工具对使用该私钥加密的PHP文件进行解密</p>
-<h2 id="生成PEM私钥"><a href="#生成PEM私钥" class="headerlink" title="生成PEM私钥"></a>生成PEM私钥</h2><p>要生成PEM私钥，您可以使用OpenSSL命令行工具。以下是一些简单的步骤：</p>
-<ol>
-<li><p>打开终端或命令行界面。</p>
-</li>
-<li><p>运行以下命令来生成PEM私钥：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">openssl genpkey <span class="token parameter variable">-algorithm</span> RSA <span class="token parameter variable">-out</span> private_key.pem <span class="token parameter variable">-aes256</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>该命令将生成一个RSA算法的PEM私钥，并将其保存到private_key.pem文件中，使用AES256算法进行加密。</p>
-</li>
-<li><p>输入密码并确认密码，以保护您的私钥。请注意，这是一个重要的安全步骤，因为私钥将用于加密和解密敏感数据。</p>
-</li>
-<li><p>如果您需要查看私钥内容，可以使用以下命令：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">openssl pkey <span class="token parameter variable">-in</span> private_key.pem <span class="token parameter variable">-text</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>该命令将显示PEM私钥的详细信息，包括算法、密钥长度和加密参数等。</p>
-</li>
-</ol>
-
-    </div>
+    
+    <input
+        id="crypto"
+        class="input"
+        ref="crypto"
+        placeholder="文章被加密，请输入密码"
+        data-encrypted="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"
+        data-shasum="6def03133e7df64a74ae03da8bae1e72f672abab6ad6a6c641304f3bb0c7fb45"
+        v-model="crypto"
+    />
+    <transition name="fade">
+    <div class="content" ref="content" v-show="check"></div>
+    </transition>
     
     
     
