@@ -302,9 +302,20 @@
     
 </div>
 
-                
-        <script src="/blog/js/lib/valine.min.js"></script>
+            </div>
+            </transition>
+            
+            <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+            </transition>
+            
+        </div>
+        <script src="/blog/js/main.js"></script>
+         
         
+        <script src="/blog/js/lib/valine.min.js"></script>
             <script>
                 new Valine({
                     el: '#vcomments',
@@ -312,8 +323,8 @@
                     appKey: 'SzWOnY0PWLGNuL6jW8TZYc7j',
                 });
             </script>
-            
-                <footer id="footer">
+
+        <footer id="footer">
     <div id="footer-wrap">
         <div>
             &copy;
@@ -330,19 +341,6 @@
         
     </div>
 </footer>
-
-            </div>
-            </transition>
-            
-            <transition name="fade">
-            <div id="preview" ref="preview" v-show="previewShow">
-                <img id="preview-content" ref="previewContent" />
-            </div>
-            </transition>
-            
-        </div>
-        <script src="/blog/js/main.js"></script>
-         
 
     <script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/blog/live2dw/assets/z16.model.json"},"display":{"position":"left","width":150,"height":290},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>

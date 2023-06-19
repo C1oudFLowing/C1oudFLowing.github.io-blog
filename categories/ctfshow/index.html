@@ -209,7 +209,7 @@
         
         
         <span>
-            <a href="/blog/categories/%E6%B8%97%E9%80%8F/" style="background: #03a9f4">
+            <a href="/blog/categories/%E6%B8%97%E9%80%8F/" style="background: #ff7d73">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
@@ -221,7 +221,7 @@
         
         
         <span>
-            <a href="/blog/categories/%E8%B5%9B%E5%90%8E%E5%A4%8D%E7%8E%B0/" style="background: #00a596">
+            <a href="/blog/categories/%E8%B5%9B%E5%90%8E%E5%A4%8D%E7%8E%B0/" style="background: #ffa2c4">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
@@ -233,7 +233,7 @@
         
         
         <span>
-            <a href="/blog/categories/Writeup/" style="background: #ffa2c4">
+            <a href="/blog/categories/Writeup/" style="background: #00bcd4">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
@@ -245,7 +245,7 @@
         
         
         <span>
-            <a href="/blog/categories/REVERSE/" style="background: #03a9f4">
+            <a href="/blog/categories/REVERSE/" style="background: #ff7d73">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
@@ -257,7 +257,7 @@
         
         
         <span>
-            <a href="/blog/categories/Crypto/" style="background: #03a9f4">
+            <a href="/blog/categories/Crypto/" style="background: #00a596">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
@@ -269,7 +269,7 @@
         
         
         <span>
-            <a href="/blog/categories/Linux/" style="background: #ff7d73">
+            <a href="/blog/categories/Linux/" style="background: #ffa2c4">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
@@ -281,7 +281,7 @@
         
         
         <span>
-            <a href="/blog/categories/MISC/" style="background: #03a9f4">
+            <a href="/blog/categories/MISC/" style="background: #ffa2c4">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
@@ -319,7 +319,7 @@
         
         
         <span>
-            <a href="/blog/categories/Pwn/" style="background: #03a9f4">
+            <a href="/blog/categories/Pwn/" style="background: #ffa2c4">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
@@ -362,7 +362,7 @@
                     
                     <span class="tag">
                         
-                        <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #00bcd4">CTF线上赛</a>
+                        <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #ff7d73">CTF线上赛</a>
                     </span>
                     
                 </span>
@@ -397,7 +397,7 @@
                     
                     <span class="tag">
                         
-                        <a href="/blog/tags/%E5%88%B7%E9%A2%98/" style="color: #ffa2c4">刷题</a>
+                        <a href="/blog/tags/%E5%88%B7%E9%A2%98/" style="color: #00a596">刷题</a>
                     </span>
                     
                 </span>
@@ -467,7 +467,7 @@
                     
                     <span class="tag">
                         
-                        <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #00bcd4">CTF线上赛</a>
+                        <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #00a596">CTF线上赛</a>
                     </span>
                     
                 </span>
@@ -478,9 +478,20 @@
     
 </div>
 
-                
-        <script src="/blog/js/lib/valine.min.js"></script>
+            </div>
+            </transition>
+            
+            <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+            </transition>
+            
+        </div>
+        <script src="/blog/js/main.js"></script>
+         
         
+        <script src="/blog/js/lib/valine.min.js"></script>
             <script>
                 new Valine({
                     el: '#vcomments',
@@ -488,8 +499,8 @@
                     appKey: 'SzWOnY0PWLGNuL6jW8TZYc7j',
                 });
             </script>
-            
-                <footer id="footer">
+
+        <footer id="footer">
     <div id="footer-wrap">
         <div>
             &copy;
@@ -506,19 +517,6 @@
         
     </div>
 </footer>
-
-            </div>
-            </transition>
-            
-            <transition name="fade">
-            <div id="preview" ref="preview" v-show="previewShow">
-                <img id="preview-content" ref="previewContent" />
-            </div>
-            </transition>
-            
-        </div>
-        <script src="/blog/js/main.js"></script>
-         
 
     <script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/blog/live2dw/assets/z16.model.json"},"display":{"position":"left","width":150,"height":290},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>

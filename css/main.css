@@ -1149,47 +1149,67 @@ code[class*="language-"]{
 }
 
 #vcomments {
-    margin-top: 15px;
-    max-width: 850px; /* 设置最大宽度 */
-    margin: 0 auto; /* 居中 */
-    position: relative; /* 添加相对定位 */
-    border: 2px solid #ddd;
-    border-radius: 10px;
-  }
-  #vcomments .vedit {
-    padding: 15px;
-  }
-  #vcomments .vinput {
-    background-color: rgba(255, 255, 255, 0.8);
+    width: 53%;
+    border: 2px solid #dedede;
     border-radius: 5px;
-  }
-  #vcomments .vnick {
-    margin-left: 15px;
-    margin-right: 5px; /* 将昵称输入框的右边距设置为 5 像素 */
-    margin-top: 10px;
-    padding: 15px;
-  }
-  #vcomments .vmail {
-    margin-left: 20px; /* 将邮箱输入框的左边距设置为 5 像素 */
-    margin-top: 10px;
-    padding: 15px;
-  }
-  #vcomments .vlink{
+    margin: 0 auto;
+    position: relative;
+}
+#vcomments .vinput {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 5px
+}
+#vcomments .vnick {
+    width: 31%;
+    border: 2px solid #dedede;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 5px
+}
+#vcomments .vmail {
+    width: 31%;
+    border: 2px solid #dedede;
+    margin-left: 34px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 5px
+}
+#vcomments .vlink{
     display: none;
-  }
+}
 
-  #vcomments .vsubmit {
-    margin-top: 20px; /* 将提交按钮下移 */
-    margin-right: 10px;
+#vcomments .vsubmit {
     background-color: blue;
     color: white;
-  }
-  #vcomments .vicon{
-    margin-left: 10px;
-  }
-  #vcomments .vpower {
-    position: absolute;
-    bottom: 0;
-    left: 10px; /* 将 "powered by Valine" 左对齐 */
-    margin-left: 10px;
-  }
+}
+#vcomments .vcards .vcard {
+    padding: 15px 20px 0 20px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0 0 4px 1px rgba(0, 0, 0, .12);
+    transition: all .3s
+}
+
+#vcomments .vcards .vcard:hover {
+    box-shadow: 0 0 8px 3px rgba(0, 0, 0, .12)
+}
+
+#vcomments .vcards .vcard .vh .vcard {
+    border: none;
+    box-shadow: none;
+}
+img.vimg {
+    transition: all 1s   /* 旋转时间为 1s */
+}
+
+img.vimg:hover {
+    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+}
+
+

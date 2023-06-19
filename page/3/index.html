@@ -192,7 +192,7 @@
 </nav>
 
                 <div id="home-head">
-    <div id="home-background" ref="homeBackground" data-image="/blog/images/murasame.png,/blog/images/dcep12_pc.png,/blog/images/nanami.jpg,/blog/images/HonkaiImpact3rd.png"></div>
+    <div id="home-background" ref="homeBackground" data-image="/blog/images/murasame.png,https:/pic.imgdb.cn/item/648dd72b1ddac507cc8005dc.png,https:/pic.imgdb.cn/item/648dd72c1ddac507cc80082e.jpg,https:/pic.imgdb.cn/item/648dd72c1ddac507cc80077c.png"></div>
     
     <div id="home-info" @click="homeClick">
         <span class="loop"></span>
@@ -282,7 +282,7 @@
         
         <span class="tag">
             
-            <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #00a596">
+            <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #ffa2c4">
                 CTF线上赛
             </a>
         </span>
@@ -332,14 +332,14 @@
         
         <span class="tag">
             
-            <a href="/blog/tags/PHP/" style="color: #00bcd4">
+            <a href="/blog/tags/PHP/" style="color: #ffa2c4">
                 PHP
             </a>
         </span>
         
         <span class="tag">
             
-            <a href="/blog/tags/%E6%BA%90%E7%A0%81%E6%B3%84%E9%9C%B2/" style="color: #03a9f4">
+            <a href="/blog/tags/%E6%BA%90%E7%A0%81%E6%B3%84%E9%9C%B2/" style="color: #00a596">
                 源码泄露
             </a>
         </span>
@@ -389,7 +389,7 @@
         
         <span class="tag">
             
-            <a href="/blog/tags/%E6%8F%90%E6%9D%83/" style="color: #03a9f4">
+            <a href="/blog/tags/%E6%8F%90%E6%9D%83/" style="color: #00a596">
                 提权
             </a>
         </span>
@@ -484,7 +484,7 @@
         
         <span class="tag">
             
-            <a href="/blog/tags/JSON/" style="color: #ff7d73">
+            <a href="/blog/tags/JSON/" style="color: #03a9f4">
                 JSON
             </a>
         </span>
@@ -534,7 +534,7 @@
         
         <span class="tag">
             
-            <a href="/blog/tags/%E5%8F%A4%E5%85%B8%E5%AF%86%E7%A0%81/" style="color: #ffa2c4">
+            <a href="/blog/tags/%E5%8F%A4%E5%85%B8%E5%AF%86%E7%A0%81/" style="color: #03a9f4">
                 古典密码
             </a>
         </span>
@@ -586,7 +586,7 @@
         
         <span class="tag">
             
-            <a href="/blog/tags/%E6%8F%90%E6%9D%83/" style="color: #ffa2c4">
+            <a href="/blog/tags/%E6%8F%90%E6%9D%83/" style="color: #00a596">
                 提权
             </a>
         </span>
@@ -716,7 +716,7 @@
         
         <span class="tag">
             
-            <a href="/blog/tags/%E5%8F%A4%E5%85%B8%E5%AF%86%E7%A0%81/" style="color: #ff7d73">
+            <a href="/blog/tags/%E5%8F%A4%E5%85%B8%E5%AF%86%E7%A0%81/" style="color: #03a9f4">
                 古典密码
             </a>
         </span>
@@ -817,9 +817,20 @@
     
 </div>
 
-                
-        <script src="/blog/js/lib/valine.min.js"></script>
+            </div>
+            </transition>
+            
+            <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+            </transition>
+            
+        </div>
+        <script src="/blog/js/main.js"></script>
+         
         
+        <script src="/blog/js/lib/valine.min.js"></script>
             <script>
                 new Valine({
                     el: '#vcomments',
@@ -827,8 +838,8 @@
                     appKey: 'SzWOnY0PWLGNuL6jW8TZYc7j',
                 });
             </script>
-            
-                <footer id="footer">
+
+        <footer id="footer">
     <div id="footer-wrap">
         <div>
             &copy;
@@ -845,19 +856,6 @@
         
     </div>
 </footer>
-
-            </div>
-            </transition>
-            
-            <transition name="fade">
-            <div id="preview" ref="preview" v-show="previewShow">
-                <img id="preview-content" ref="previewContent" />
-            </div>
-            </transition>
-            
-        </div>
-        <script src="/blog/js/main.js"></script>
-         
 
     <script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/blog/live2dw/assets/z16.model.json"},"display":{"position":"left","width":150,"height":290},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
