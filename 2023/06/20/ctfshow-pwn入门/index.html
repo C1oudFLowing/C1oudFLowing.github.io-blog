@@ -67,7 +67,7 @@
         <!--文章目录-->
         <div id="toc" class="toc-article">
     <div class="toc-title"></div>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Test-your-nc"><span class="toc-text">Test_your_nc</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E7%BD%AE%E5%9F%BA%E7%A1%80"><span class="toc-text">前置基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80"><span class="toc-text">汇编语言</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#pwn5"><span class="toc-text">pwn5</span></a></li></ol></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Test-your-nc"><span class="toc-text">Test_your_nc</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E7%BD%AE%E5%9F%BA%E7%A1%80"><span class="toc-text">前置基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80"><span class="toc-text">汇编语言</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#pwn5"><span class="toc-text">pwn5</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pwn6"><span class="toc-text">pwn6</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pwn7"><span class="toc-text">pwn7</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pwn8"><span class="toc-text">pwn8</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pwn9"><span class="toc-text">pwn9</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pwn10"><span class="toc-text">pwn10</span></a></li></ol></li></ol></li></ol>
 </div>
         
         <!--返回顶部-->
@@ -122,7 +122,7 @@
         </a>
         
         <a href="/blog/links">
-            <i class="fa-solid fa-link fa-fw"></i>
+            <i class="fa-solid fa-links fa-fw"></i>
             <span>&ensp;Links</span>
         </a>
         
@@ -184,7 +184,7 @@
             <a href="/blog/links">
                 <div class="item">
                     <div style="min-width: 20px; max-width: 50px; width: 10%">
-                        <i class="fa-solid fa-link fa-fw"></i>
+                        <i class="fa-solid fa-links fa-fw"></i>
                     </div>
                     <div style="min-width: 100px; max-width: 150%; width: 20%">Links</div>
                 </div>
@@ -226,7 +226,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">571字</span>
+        <span class="post-count">1.1k字</span>
       </span>
     </span>
 
@@ -235,7 +235,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">2分</span>
+        <span class="post-count">4分</span>
       </span>
     </span>
 </div>
@@ -249,7 +249,8 @@
 
 <h1 id="Test-your-nc"><a href="#Test-your-nc" class="headerlink" title="Test_your_nc"></a>Test_your_nc</h1><p>简单的nc操作，只需会一点linux命令和代码审计能力就能ak的部分</p>
 <hr>
-<h1 id="前置基础"><a href="#前置基础" class="headerlink" title="前置基础"></a>前置基础</h1><h2 id="汇编语言"><a href="#汇编语言" class="headerlink" title="汇编语言"></a>汇编语言</h2><h3 id="pwn5"><a href="#pwn5" class="headerlink" title="pwn5"></a>pwn5</h3><p>pwn题的起手式一般是在拿到附件之后先丢到虚拟机中</p>
+<h1 id="前置基础"><a href="#前置基础" class="headerlink" title="前置基础"></a>前置基础</h1><h2 id="汇编语言"><a href="#汇编语言" class="headerlink" title="汇编语言"></a>汇编语言</h2><p>pwn5~pwn12附件相同</p>
+<h3 id="pwn5"><a href="#pwn5" class="headerlink" title="pwn5"></a>pwn5</h3><p>pwn题的起手式一般是在拿到附件之后先丢到虚拟机中</p>
 <p>给可执行文件加上执行权限</p>
 <p><code>checksec</code>检查保护状态和文件的位数</p>
 <p><img src="/blog/2023/06/20/ctfshow-pwn%E5%85%A5%E9%97%A8/image-20230621005020007.png" alt="image-20230621005020007"></p>
@@ -266,10 +267,10 @@
 
 <p>本题还给了asm汇编源代码，直接打开或cat读取其内容</p>
 <pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">section .data
-    msg db &quot;Welcome_to_CTFshow_PWN&quot;, 0
+    msg db &quot;Welcome_to_CTFshow_PWN&quot;, 0	; 声明了一个名为msg的字符串，包含了18个字符和一个空字符。最后的0是一个字节的空字符，用于表示字符串的结束
 
 section .text
-    global _start
+    global _start	; 定义了程序的入口点_start
 
 _start:
 
@@ -321,7 +322,64 @@ _start:
 <p>那我们直接运行即可</p>
 <p><img src="/blog/2023/06/20/ctfshow-pwn%E5%85%A5%E9%97%A8/image-20230621005648539.png" alt="image-20230621005648539"></p>
 <p>flag就是<code>ctfshow&#123;Welcome_to_CTFshow_PWN&#125;</code></p>
+<hr>
+<h3 id="pwn6"><a href="#pwn6" class="headerlink" title="pwn6"></a>pwn6</h3><blockquote>
+<p>立即寻址方式结束后eax寄存器的值为？</p>
+</blockquote>
+<p>那我们直接看立即寻址部分即可</p>
+<pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">; 立即寻址方式
+    mov eax, 11         ; 将11赋值给eax
+    add eax, 114504     ; eax加上114504
+    sub eax, 1          ; eax减去1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
+<p>旁边的注释写的很清晰了</p>
+<p>这里就是一个基础的运算eax&#x3D;11+114504-1&#x3D;114514</p>
+<p>即flag为<code>ctfshow&#123;114514&#125;</code></p>
+<hr>
+<h3 id="pwn7"><a href="#pwn7" class="headerlink" title="pwn7"></a>pwn7</h3><blockquote>
+<p>寄存器寻址方式结束后edx寄存器的值为？</p>
+</blockquote>
+<p>看寄存器寻址方式部分</p>
+<pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">; 寄存器寻址方式
+    mov ebx, 0x36d      ; 将0x36d赋值给ebx
+    mov edx, ebx        ; 将ebx的值赋值给edx<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>如注释所说的，edx&#x3D;ebx&#x3D;0x36d</p>
+<p>flag:<code>ctfshow&#123;0x36D&#125;</code>(这里的flag要大写D)</p>
+<hr>
+<h3 id="pwn8"><a href="#pwn8" class="headerlink" title="pwn8"></a>pwn8</h3><blockquote>
+<p>直接寻址方式结束后ecx寄存器的值为？</p>
+</blockquote>
+<p>看直接寻址部分</p>
+<pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">; 直接寻址方式
+    mov ecx, [msg]      ; 将msg的地址赋值给ecx<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>如注释，ecx&#x3D;[msg]</p>
+<p>要获取这里的msg地址需将可执行文件用ida进行反编译</p>
+<p><img src="/blog/2023/06/20/ctfshow-pwn%E5%85%A5%E9%97%A8/image-20230621214459412.png" alt="image-20230621214459412"></p>
+<p>找到ecx寄存器，旁边这个<code>dword_80490E8</code>就是[msg]，点击<code>dword_80490E8</code>跟进</p>
+<p><img src="/blog/2023/06/20/ctfshow-pwn%E5%85%A5%E9%97%A8/image-20230621214644454.png" alt="image-20230621214644454"></p>
+<p>.data后面的<code>080490E8</code>就是msg的地址</p>
+<p>所以flag：<code>ctfshow&#123;0x80490E8&#125;</code>(这里是16进制数据，0后面要补上x)</p>
+<hr>
+<h3 id="pwn9"><a href="#pwn9" class="headerlink" title="pwn9"></a>pwn9</h3><blockquote>
+<p>寄存器间接寻址方式结束后eax寄存器的值为？</p>
+</blockquote>
+<p>看间接寻址部分</p>
+<pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">; 寄存器间接寻址方式
+    mov esi, msg        ; 将msg的地址赋值给esi
+    mov eax, [esi]      ; 将esi所指向的地址的值赋值给eax<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>如注释，eax&#x3D;[esi]&#x3D;msg</p>
+<p>此时esi寄存器的值为msg，即上题中的<code>080490E8</code></p>
+<p><img src="/blog/2023/06/20/ctfshow-pwn%E5%85%A5%E9%97%A8/image-20230621220453896.png" alt="image-20230621220453896"></p>
+<p><code>mov eax,[esi]</code>将esi中的值作为地址，然后将该地址单元的值赋给eax</p>
+<p>即把080490E8地址单元中的值<code>636C6557h</code>赋给eax</p>
+<p><img src="/blog/2023/06/20/ctfshow-pwn%E5%85%A5%E9%97%A8/image-20230621221113156.png" alt="image-20230621221113156"></p>
+<p>所以eax&#x3D;636C6557h，末尾的h表示十六进制</p>
+<p>则flag：<code>ctfshow&#123;0x636C6557&#125;</code></p>
+<hr>
+<h3 id="pwn10"><a href="#pwn10" class="headerlink" title="pwn10"></a>pwn10</h3>
     </div>
     
     

@@ -67,7 +67,7 @@
         <!--文章目录-->
         <div id="toc" class="toc-article">
     <div class="toc-title"></div>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-text">寄存器</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-text">寄存器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AB%8B%E5%8D%B3%E6%95%B0"><span class="toc-text">立即数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8C%87%E4%BB%A4"><span class="toc-text">指令</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#db"><span class="toc-text">db</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mov"><span class="toc-text">mov</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#add"><span class="toc-text">add</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sub"><span class="toc-text">sub</span></a></li></ol></li></ol>
 </div>
         
         <!--返回顶部-->
@@ -122,7 +122,7 @@
         </a>
         
         <a href="/blog/links">
-            <i class="fa-solid fa-link fa-fw"></i>
+            <i class="fa-solid fa-links fa-fw"></i>
             <span>&ensp;Links</span>
         </a>
         
@@ -184,7 +184,7 @@
             <a href="/blog/links">
                 <div class="item">
                     <div style="min-width: 20px; max-width: 50px; width: 10%">
-                        <i class="fa-solid fa-link fa-fw"></i>
+                        <i class="fa-solid fa-links fa-fw"></i>
                     </div>
                     <div style="min-width: 100px; max-width: 150%; width: 20%">Links</div>
                 </div>
@@ -224,7 +224,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/x86%E6%B1%87%E7%BC%96/" style="color: #ffa2c4">x86汇编</a>
+                <a href="/blog/tags/x86%E6%B1%87%E7%BC%96/" style="color: #00bcd4">x86汇编</a>
             </span>
             
         </span>
@@ -238,7 +238,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">117字</span>
+        <span class="post-count">401字</span>
       </span>
     </span>
 
@@ -260,13 +260,40 @@
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/a8471760/article/details/101500360?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522168329330816800182791498%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=168329330816800182791498&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-101500360-null-null.142%5Ev86%5Ekoosearch_v1,239%5Ev2%5Einsert_chatgpt&utm_term=x86%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80&spm=1018.2226.3001.4187">引用</a></p>
 <span id="more"></span>
 
-<h1 id="寄存器"><a href="#寄存器" class="headerlink" title="寄存器"></a>寄存器</h1><p><img src="/blog/2023/05/05/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E5%88%9D%E6%AD%A5%E5%AD%A6%E4%B9%A0/image-20230505213645550.png" alt="image-20230505213645550"></p>
+<h1 id="寄存器"><a href="#寄存器" class="headerlink" title="寄存器"></a>寄存器</h1><blockquote>
+<p>是用于存储和处理数据的重要组成部分。每个CPU架构都有一组特定的寄存器，这些寄存器在汇编语言中通常用作操作数、临时存储器和地址指针。</p>
+</blockquote>
+<p><img src="/blog/2023/05/05/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E5%88%9D%E6%AD%A5%E5%AD%A6%E4%B9%A0/image-20230505213645550.png" alt="image-20230505213645550"></p>
 <p>EAX通常用于计算</p>
 <p>ECX通常用于循环变量计数</p>
 <p>ESP和EBP有专门用途</p>
 <p>ESP指示栈指针(用于指示栈顶位置)</p>
 <p>EBP是基址指针（用于指示子程序或函数调用的基址指针）</p>
 <p>应用寄存器时，其名称大小写是不敏感的</p>
+<hr>
+<h1 id="立即数"><a href="#立即数" class="headerlink" title="立即数"></a>立即数</h1><blockquote>
+<p>指令中直接包含的、不需要从内存或寄存器中获取的常数</p>
+</blockquote>
+<p>通常用于立即寻址（immediate addressing）方式，即直接将一个常数值作为操作数传递给指令</p>
+<hr>
+<h1 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h1><h2 id="db"><a href="#db" class="headerlink" title="db"></a>db</h2><blockquote>
+<p>表示定义一个字节（byte）类型的数据</p>
+</blockquote>
+<h2 id="mov"><a href="#mov" class="headerlink" title="mov"></a>mov</h2><blockquote>
+<p>将数据从一个位置移动到另一个位置</p>
+</blockquote>
+<pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">mov destination, source<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><code>destination</code>是目标操作数（destination operand），用于存储数据的位置，可以是一个寄存器、一个内存地址或一个立即数</p>
+<p><code>source</code>是源操作数（source operand），用于提供要移动的数据的位置，可以是一个寄存器、一个内存地址或一个立即数</p>
+<h2 id="add"><a href="#add" class="headerlink" title="add"></a>add</h2><blockquote>
+<p>将两个操作数相加，并将结果存储到一个目标操作数</p>
+</blockquote>
+<pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">add destination, source<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="sub"><a href="#sub" class="headerlink" title="sub"></a>sub</h2><blockquote>
+<p>将两个操作数相减，并将结果存储到一个目标操作数中</p>
+</blockquote>
 
     </div>
     
