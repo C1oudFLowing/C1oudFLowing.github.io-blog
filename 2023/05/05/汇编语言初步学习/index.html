@@ -223,7 +223,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/x86%E6%B1%87%E7%BC%96/" style="color: #03a9f4">x86汇编</a>
+                <a href="/blog/tags/x86%E6%B1%87%E7%BC%96/" style="color: #ffa2c4">x86汇编</a>
             </span>
             
         </span>
@@ -237,7 +237,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">401字</span>
+        <span class="post-count">759字</span>
       </span>
     </span>
 
@@ -246,7 +246,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">1分</span>
+        <span class="post-count">2分</span>
       </span>
     </span>
 </div>
@@ -275,7 +275,20 @@
 </blockquote>
 <p>通常用于立即寻址（immediate addressing）方式，即直接将一个常数值作为操作数传递给指令</p>
 <hr>
-<h1 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h1><h2 id="db"><a href="#db" class="headerlink" title="db"></a>db</h2><blockquote>
+<h1 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h1><p>此内容by GPT</p>
+<ol>
+<li>MOV：将数据从一个地方移动到另一个地方。例如，MOV AX, BX 将 BX 中的值移动到 AX 中。</li>
+<li>ADD&#x2F;SUB：执行加法或减法操作。例如，ADD AX, BX 将 AX 和 BX 中的值相加。</li>
+<li>CMP：比较两个值并设置标志位，以便后续的条件分支指令可以使用。例如，CMP AX, BX 比较 AX 和 BX 的值。</li>
+<li>JMP：无条件跳转到指定的地址。例如，JMP LABEL 将程序的控制权转移到标记为 LABEL 的位置。</li>
+<li>JE&#x2F;JNE：根据先前的 CMP 指令设置的标志位，执行条件跳转。JE 指令在相等时跳转，JNE 指令在不相等时跳转。</li>
+<li>CALL&#x2F;RET：调用和返回子程序。CALL 指令将程序的控制权转移到指定的子程序，RET 指令将程序的控制权返回到调用它的位置。</li>
+<li>PUSH&#x2F;POP：压入和弹出数据。PUSH 指令将数据压入堆栈，POP 指令将数据从堆栈中弹出。</li>
+<li>AND&#x2F;OR&#x2F;XOR：执行逻辑运算。AND&#x2F;OR&#x2F;XOR 分别执行按位与、按位或和按位异或操作。</li>
+<li>INC&#x2F;DEC：增加或减少一个值。INC 和 DEC 分别将一个值增加 1 或减少 1。</li>
+<li>LOOP：根据计数器的值执行循环。LOOP 指令将计数器减少 1，然后跳转到指定的标记处，直到计数器为零。</li>
+</ol>
+<h2 id="db"><a href="#db" class="headerlink" title="db"></a>db</h2><blockquote>
 <p>表示定义一个字节（byte）类型的数据</p>
 </blockquote>
 <h2 id="mov"><a href="#mov" class="headerlink" title="mov"></a>mov</h2><blockquote>
@@ -323,6 +336,8 @@
 
          
         
+    <div id="vcomments"></div>
+    
         <script src="/blog/js/lib/valine.min.js"></script>
             <script>
                 new Valine({
