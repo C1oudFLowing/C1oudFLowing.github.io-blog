@@ -66,7 +66,7 @@
         <!--文章目录-->
         <div id="toc" class="toc-article">
     <div class="toc-title"></div>
-    
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4"><span class="toc-text">命令</span></a></li></ol>
 </div>
         
         <!--返回顶部-->
@@ -225,7 +225,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">0字</span>
+        <span class="post-count">168字</span>
       </span>
     </span>
 
@@ -243,7 +243,22 @@
     </div>
     
     <div class="content" v-pre>
-        
+        <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>在Linux中，<code>base64</code>命令可以将二进制数据编码为Base64格式，或者将Base64编码的数据解码为二进制格式。</p>
+<span id="more"></span>
+
+<h1 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h1><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">base64 input_file <span class="token parameter variable">-o</span> output_file<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>这个命令将<code>input_file</code>文件中的内容编码成Base64格式，并将结果写入<code>output_file</code>文件中</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">base64 <span class="token parameter variable">-d</span> input_file <span class="token parameter variable">-o</span> output_file<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>这个命令将<code>input_file</code>文件中的Base64编码数据解码为二进制格式，并将结果写入<code>output_file</code>文件中</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">base64 input_file<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>这个命令将<code>input_file</code>文件中的内容编码成Base64格式，并直接在终端输出</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">echo</span> <span class="token string">"base64-encoded-data"</span> <span class="token operator">|</span> base64 <span class="token parameter variable">-d</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>这个命令将Base64编码的数据输入到终端，并将其解码成二进制格式</p>
+
     </div>
     
     

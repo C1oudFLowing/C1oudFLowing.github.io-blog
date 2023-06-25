@@ -66,7 +66,7 @@
         <!--文章目录-->
         <div id="toc" class="toc-article">
     <div class="toc-title"></div>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%BB%E5%8F%96PHP%E4%B8%AD%E5%AD%98%E5%9C%A8%E7%9A%84%E5%8E%9F%E7%94%9F%E7%B1%BB"><span class="toc-text">读取PHP中存在的原生类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SoapClient"><span class="toc-text">SoapClient</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#CRLF%E6%B3%A8%E5%85%A5"><span class="toc-text">CRLF注入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#EXP"><span class="toc-text">EXP</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SplFileInfo"><span class="toc-text">SplFileInfo</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SplFileObject"><span class="toc-text">SplFileObject</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SplTempFileObject"><span class="toc-text">SplTempFileObject</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DirectoryIterator"><span class="toc-text">DirectoryIterator</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#FilesystemIterator"><span class="toc-text">FilesystemIterator</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#GlobIterator"><span class="toc-text">GlobIterator</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%BB%E5%8F%96PHP%E4%B8%AD%E5%AD%98%E5%9C%A8%E7%9A%84%E5%8E%9F%E7%94%9F%E7%B1%BB"><span class="toc-text">读取PHP中存在的原生类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SoapClient"><span class="toc-text">SoapClient</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#CRLF%E6%B3%A8%E5%85%A5"><span class="toc-text">CRLF注入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#EXP"><span class="toc-text">EXP</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SplFileInfo"><span class="toc-text">SplFileInfo</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SplFileObject"><span class="toc-text">SplFileObject</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SplTempFileObject"><span class="toc-text">SplTempFileObject</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DirectoryIterator"><span class="toc-text">DirectoryIterator</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#FilesystemIterator"><span class="toc-text">FilesystemIterator</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#GlobIterator"><span class="toc-text">GlobIterator</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Exception"><span class="toc-text">Exception</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Error"><span class="toc-text">Error</span></a></li></ol>
 </div>
         
         <!--返回顶部-->
@@ -223,12 +223,12 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/PHP/" style="color: #00a596">PHP</a>
+                <a href="/blog/tags/PHP/" style="color: #ffa2c4">PHP</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="color: #00a596">反序列化</a>
+                <a href="/blog/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="color: #00bcd4">反序列化</a>
             </span>
             
         </span>
@@ -242,7 +242,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">1.5k字</span>
+        <span class="post-count">1.8k字</span>
       </span>
     </span>
 
@@ -251,7 +251,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">5分</span>
+        <span class="post-count">6分</span>
       </span>
     </span>
 </div>
@@ -387,6 +387,49 @@
 <span class="token variable">$dir</span><span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">GlobIterator</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"/*flag*"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">echo</span> <span class="token variable">$dir</span><span class="token punctuation">;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
+
+
+<hr>
+<h1 id="Exception"><a href="#Exception" class="headerlink" title="Exception"></a>Exception</h1><blockquote>
+<p>所有异常类的基类</p>
+</blockquote>
+<ol>
+<li><p><code>Exception::__construct()</code>：创建一个新的异常对象，可以指定异常消息、异常代码和上一个异常对象。</p>
+</li>
+<li><p><code>Exception::__toString()</code>：将异常转换为字符串，返回一个包含异常消息、文件名和行号的字符串。</p>
+<p>测试：</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token variable">$class</span><span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Exception</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"test string"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token variable">$class</span><span class="token operator">-></span><span class="token function">__toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>输出：Exception: test string in 路径:2 Stack trace: #0 {main}</p>
+</li>
+<li><p><code>Exception::getMessage()</code>：获取异常消息。</p>
+</li>
+<li><p><code>Exception::getCode()</code>：获取异常代码。</p>
+</li>
+<li><p><code>Exception::getFile()</code>：获取抛出异常的文件名。</p>
+</li>
+<li><p><code>Exception::getLine()</code>：获取抛出异常的行号。</p>
+</li>
+<li><p><code>Exception::getTrace()</code>：获取异常的堆栈跟踪信息数组。</p>
+</li>
+<li><p><code>Exception::getPrevious()</code>：获取上一个异常对象。</p>
+</li>
+</ol>
+<hr>
+<h1 id="Error"><a href="#Error" class="headerlink" title="Error"></a>Error</h1><blockquote>
+<p>所有错误类的基类。与异常不同，错误是在编译时或运行时发生的问题，通常不能恢复并且会导致程序终止</p>
+</blockquote>
+<ol>
+<li><code>Error::__construct()</code>：创建一个新的错误对象，可以指定错误消息、错误代码和上一个错误对象。</li>
+<li><code>Error::getMessage()</code>：获取错误消息。</li>
+<li><code>Error::getCode()</code>：获取错误代码。</li>
+<li><code>Error::getFile()</code>：获取抛出错误的文件名。</li>
+<li><code>Error::getLine()</code>：获取抛出错误的行号。</li>
+<li><code>Error::getTrace()</code>：获取错误的堆栈跟踪信息数组。</li>
+<li><code>Error::getPrevious()</code>：获取上一个错误对象。</li>
+</ol>
 
     </div>
     

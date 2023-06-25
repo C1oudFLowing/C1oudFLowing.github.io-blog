@@ -66,7 +66,7 @@
         <!--文章目录-->
         <div id="toc" class="toc-article">
     <div class="toc-title"></div>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%92%95"><span class="toc-text">咕</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%94%A8%E6%B3%95"><span class="toc-text">用法</span></a></li></ol>
 </div>
         
         <!--返回顶部-->
@@ -225,7 +225,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">8字</span>
+        <span class="post-count">347字</span>
       </span>
     </span>
 
@@ -243,7 +243,31 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="咕"><a href="#咕" class="headerlink" title="咕"></a>咕</h1><p>提醒自己要填坑（</p>
+        <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>全称Netcat。它可以在不同的计算机之间建立TCP或UDP连接，进行数据传输和网络调试</p>
+<span id="more"></span>
+
+<h1 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h1><ol>
+<li><p>建立TCP连接：使用<code>nc</code>命令可以建立TCP连接。例如，可以使用以下命令连接到主机<code>example.com</code>的端口80</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">nc</span> example.com <span class="token number">80</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>这将在命令行中打开一个连接，并允许你输入和接收数据</p>
+</li>
+<li><p>发送数据：在建立连接后，可以使用<code>nc</code>命令发送数据。例如，可以使用以下命令向连接的主机发送一条HTTP请求</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">GET / HTTP/1.1<span class="token punctuation">\</span>r<span class="token punctuation">\</span>nHost: example.com<span class="token punctuation">\</span>r<span class="token punctuation">\</span>n<span class="token punctuation">\</span>r<span class="token punctuation">\</span>n<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>这将向主机发送一个HTTP GET请求，并显示响应数据</p>
+</li>
+<li><p>监听端口：使用<code>nc</code>命令也可以作为一个简单的服务器，监听指定的端口。例如，可以使用以下命令在本地主机的端口12345上监听TCP连接：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">nc</span> <span class="token parameter variable">-l</span> <span class="token number">12345</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>这将在命令行中打开一个监听端口，并等待来自客户端的连接请求</p>
+</li>
+<li><p>接收数据：在监听端口后，可以使用<code>nc</code>命令接收来自客户端的数据。例如，如果有一个客户端连接到本地主机的端口12345，并发送了一条消息，可以使用以下命令接收该消息：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">nc</span> <span class="token parameter variable">-l</span> <span class="token number">12345</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>这将在命令行中显示接收到的数据。</p>
+</li>
+</ol>
 
     </div>
     
