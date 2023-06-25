@@ -66,7 +66,7 @@
         <!--文章目录-->
         <div id="toc" class="toc-article">
     <div class="toc-title"></div>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5"><span class="toc-text">动态链接</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5"><span class="toc-text">动态链接</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#plt%E5%92%8Cgot%E8%A1%A8"><span class="toc-text">plt和got表</span></a></li></ol>
 </div>
         
         <!--返回顶部-->
@@ -225,7 +225,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">135字</span>
+        <span class="post-count">574字</span>
       </span>
     </span>
 
@@ -249,6 +249,25 @@
 <h1 id="动态链接"><a href="#动态链接" class="headerlink" title="动态链接"></a>动态链接</h1><p>在 Linux 中，库（library）是预编译的可重用代码的集合，它可以在不同的程序中使用。</p>
 <p>有两种类型的库：静态库和动态库。</p>
 <p>静态库在<strong>程序编译</strong>时被静态链接进可执行文件中，而动态库在<strong>程序运行</strong>时被动态加载到内存中</p>
+<h1 id="plt和got表"><a href="#plt和got表" class="headerlink" title="plt和got表"></a>plt和got表</h1><p>以下内容来自<a target="_blank" rel="noopener" href="https://undefinedchen.top/2022/09/15/32%E4%BD%8D%E6%A0%88%E6%BA%A2%E5%87%BA/#plt%E8%A1%A8%E5%92%8Cgot%E8%A1%A8">chen爷的博客</a></p>
+<p>这里举一个简单的例子</p>
+<p>某公司开发了一款软件，实现的代码调用了大量的函数，这些函数的每次实现都需要在文件(这个软件)中对应的前置来实现他</p>
+<p>这样子就增大了文件的体积</p>
+<p>但是如果将实现这些函数的前置在程序运行时载入到内存中呢？</p>
+<p>这样每一款软件都无需额外的内存占用，并且用户也能成功运行</p>
+<p>所以这里就出现了plt表和got表的概念</p>
+<p><img src="/blog/2023/06/23/Linux%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E4%B8%AD%E7%9A%84PLT%E5%92%8CGOT/image-20230625213241750.png" alt="image-20230625213241750"></p>
+<p>当我们需要调用system函数时，他会去自动寻找system的plt表</p>
+<p>其plt表中存储了system函数的got表的地址</p>
+<p>其就是system在libc(libc同样在谢师傅的视频中有所介绍)中的地址</p>
+<p>但是我们在第一次调用system函数的时候，其got表中的地址并不知道system在libc中的哪里</p>
+<p>于是第一次调用无果后，system的plt表便会收到消息，去给got表找到system在libc的位置</p>
+<p>经过原定好的代码实现，plt表便查找到了libc中system的地址，并将其填充给了got表</p>
+<p>接下来plt表再去got表中，他就得知了地址，就可以成功调用system函数</p>
+<p>所以我们可以将整个流程用下图来展示</p>
+<p><img src="/blog/2023/06/23/Linux%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E4%B8%AD%E7%9A%84PLT%E5%92%8CGOT/image-20230625213259459.png" alt="image-20230625213259459"></p>
+<p>而在之前程序已经调用了system函数进行echo 字符串，所以我们此时再去system的plt表中就能获取到system在libc中的地址</p>
+<p>这里你可能会无法理解，但是在初期的学习我们只需要记住，plt表是调用该函数，got表中存的地址是为了获得真实地址</p>
 
     </div>
     

