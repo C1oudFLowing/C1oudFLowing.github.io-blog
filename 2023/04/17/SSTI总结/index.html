@@ -223,7 +223,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/SSTI/" style="color: #ffa2c4">SSTI</a>
+                <a href="/blog/tags/SSTI/" style="color: #03a9f4">SSTI</a>
             </span>
             
         </span>
@@ -310,7 +310,7 @@
 <p>初始化类，返回类型是function</p>
 </blockquote>
 <h2 id="可利用的模块"><a href="#可利用的模块" class="headerlink" title="可利用的模块"></a>可利用的模块</h2><h3 id="获取基本类"><a href="#获取基本类" class="headerlink" title="获取基本类"></a>获取基本类</h3><h4 id="config"><a href="#config" class="headerlink" title="config"></a>config</h4><blockquote>
-<p>获取当前设置</p>
+<p>获取当前设置，是一个用于存储应用程序配置变量的字典</p>
 </blockquote>
 <p>如果题目类似<code>app.config [&#39;FLAG&#39;] = os.environ.pop（&#39;FLAG&#39;）</code>，那可以直接访问<code>&#123;&#123;config['FLAG']&#125;&#125;</code>或者<code>&#123;&#123;config.FLAG&#125;&#125;</code>得到flag</p>
 <h4 id="request"><a href="#request" class="headerlink" title="request"></a>request</h4><pre class="line-numbers language-python" data-language="python"><code class="language-python">request<span class="token punctuation">.</span>method <span class="token comment"># 请求方式</span>
