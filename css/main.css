@@ -1212,9 +1212,10 @@ img.vimg:hover {
     -ms-transform: rotate(360deg);
 }
 
-#busuanzi_container_site_uv{
-    display: inline !important;
-}
-#busuanzi_container_page_pv{
-    display: inline !important;
+#busuanzi_container_site_pv,
+#busuanzi_container_site_uv,
+#busuanzi_container_article_pv,
+#busuanzi_container_article_uv,
+#busuanzi_container_page_pv {
+  display: inline !important;
 }
