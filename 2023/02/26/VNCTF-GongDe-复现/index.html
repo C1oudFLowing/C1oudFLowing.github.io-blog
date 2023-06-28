@@ -1,0 +1,478 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <title>VNCTF GongDe 复现 | 雲流のLowest World</title>
+        <meta name="author" content="C1oudfL0w0" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+        <link rel="icon" href="/blog/images/croppedImage_cropped.jpg" />
+        <script src="https://cdn.staticfile.org/vue/3.2.45/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.2.1/css/all.min.css" />
+<link rel="stylesheet" href="/blog/css/fonts.min.css" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+<!--改成了prismjs高亮-->
+
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.25.0/prism.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/prismjs@1.25.0/themes/prism.css" rel="stylesheet" />
+<script src="/blog/js/lib/prism.js"></script>
+
+
+
+<script src="/blog/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<script src="/blog/js/lib/home.js"></script>
+
+<link rel="stylesheet" href="/blog/css/main.css" />
+<!-- 引入jQuery-->
+<script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<!-- 引入不蒜子-->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <!-- 页面点击小红心与文字 -->
+        <script type = "text/javascript" src = "/blog/js/love-click.js"></script>
+        <!-- 浏览器标题 -->
+        <script type="text/javascript" src="/blog/js/FunnyTitle.js"></script>
+        
+        <script type="text/javascript" src="/blog/libs/codeBlock/codeBlockFuction.js"></script>
+<!-- 代码语言 -->
+<script type="text/javascript" src="/blog/libs/codeBlock/codeLang.js"></script>
+<!-- 代码块复制 -->
+<!-- 引入clipboard -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+<script type="text/javascript" src="/blog/libs/codeBlock/codeCopy.js"></script>
+<!-- 代码块收缩 -->
+<script type="text/javascript" src="/blog/libs/codeBlock/codeShrink.js"></script> 
+<!-- 代码块折行 -->
+<style type="text/css">code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }</style>
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <!--flag{never_g0nna g1ve_you up}-->
+
+        <!--动态背景-->
+        <script type="text/javascript"
+        color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+        <!--文章目录-->
+        <div id="toc" class="toc-article">
+    <div class="toc-title"></div>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%94%B5%E5%AD%90%E6%9C%A8%E9%B1%BC"><span class="toc-text">电子木鱼</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E6%9E%90%E4%BB%A3%E7%A0%81%E7%BB%93%E6%9E%84%EF%BC%88main-rs%EF%BC%89"><span class="toc-text">分析代码结构（main.rs）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E9%A1%B5%E9%9D%A2%E5%8F%8A-%E6%AF%8F%E6%AC%A1%E4%BF%AE%E6%94%B9%E5%90%8E%E9%83%BD%E8%A6%81%E8%BF%94%E5%9B%9E%E6%AD%A4%E9%A1%B5%E9%9D%A2%E6%9F%A5%E7%9C%8B%E6%95%B0%E5%80%BC"><span class="toc-text">初始页面及(每次修改后都要返回此页面查看数值)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A4%E6%AE%B5%E5%BE%97%E7%9F%A5%E8%8E%B7%E5%8F%96flag%E7%9A%84%E6%9D%A1%E4%BB%B6"><span class="toc-text">此段得知获取flag的条件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89name-%E9%80%89%E9%A1%B9-%E5%8F%8A%E5%85%B6Cost-%E8%8A%B1%E8%B4%B9%E7%9A%84%E5%8A%9F%E5%BE%B7"><span class="toc-text">定义name(选项)及其Cost(花费的功德)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E5%88%A4%E6%96%AD%E9%83%A8%E5%88%86"><span class="toc-text">主要判断部分</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF"><span class="toc-text">思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C"><span class="toc-text">操作</span></a></li></ol></li></ol>
+</div>
+        
+        <!--返回顶部-->
+        <div id="totop" style="position:fixed;bottom:50px;right:60px;font-size: 48px;cursor: pointer;z-index: 10;">
+            <a title="返回顶部">↑</a>
+            </div>
+        <script src="/blog/js/totop.js"></script>
+
+        <div id="layout">
+            <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>第一次加载可能会花费较长时间，请耐心等待</p>
+                    <p>要不挂个梯子试试？（x</p>
+                    <p>加载过慢请开启缓存&ensp;浏览器默认开启</p>
+                    <img src="/blog/images/loading.gif" />
+                </div>
+            </div>
+            </transition>
+            <transition name="into">
+            <div id="main" v-show="!loading">
+                <nav id="menu" ref="menu">
+    <div class="desktop-menu">
+        <a class="title" href="/blog/">
+            <span>雲流のLOWEST WORLD</span>
+        </a>
+        
+        <a href="/blog/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/blog/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/blog/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/blog/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/blog/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+        <a href="/blog/links">
+            <i class="fa-solid fa-link fa-fw"></i>
+            <span>&ensp;Links</span>
+        </a>
+        
+    </div>
+    <div id="mobile-menu">
+        <div class="curtain" v-show="showMenu" @click="showMenu = !showMenu"></div>
+        <div class="title" @click="showMenu = !showMenu">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;雲流のLOWEST WORLD</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="showMenu">
+            
+            <a href="/blog/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                </div>
+            </a>
+            
+            <a href="/blog/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                </div>
+            </a>
+            
+            <a href="/blog/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                </div>
+            </a>
+            
+            <a href="/blog/categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                </div>
+            </a>
+            
+            <a href="/blog/tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                </div>
+            </a>
+            
+            <a href="/blog/links">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-link fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Links</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+
+                <div class="article">
+    <div>
+        <h1>VNCTF GongDe 复现</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/2/26
+        </span>
+        
+        <span class="category">
+            <a href="/blog/categories/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                CTF线上赛
+            </a>
+        </span>
+        
+        
+        <!--文章字数统计-->
+        
+            
+<div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <!-- 安装插件npm install hexo-wordcount --save -->
+        <span class="post-count">813字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">3分</span>
+      </span>
+    </span>
+    
+    <!--不蒜子统计访问数-->
+    <span id="busuanzi_container_page_pv">
+    &nbsp; | &nbsp;
+    总文章阅读量：<span id="busuanzi_value_page_pv"></span>次
+    </span>
+</div>
+
+          
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="电子木鱼"><a href="#电子木鱼" class="headerlink" title="电子木鱼"></a>电子木鱼</h1><blockquote>
+<p>RUST文件代码审计</p>
+<p>整数溢出</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="分析代码结构（main-rs）"><a href="#分析代码结构（main-rs）" class="headerlink" title="分析代码结构（main.rs）"></a>分析代码结构（main.rs）</h2><h3 id="初始页面及-每次修改后都要返回此页面查看数值"><a href="#初始页面及-每次修改后都要返回此页面查看数值" class="headerlink" title="初始页面及(每次修改后都要返回此页面查看数值)"></a>初始页面及(每次修改后都要返回此页面查看数值)</h3><p><img src="/blog/2023/02/26/VNCTF-GongDe-%E5%A4%8D%E7%8E%B0/image-20230226221223336.png" alt="image-20230226221223336"></p>
+<h3 id="此段得知获取flag的条件"><a href="#此段得知获取flag的条件" class="headerlink" title="此段得知获取flag的条件"></a>此段得知获取flag的条件</h3><pre class="line-numbers language-rust" data-language="rust"><code class="language-rust"><span class="token attribute attr-name">#[get(<span class="token string">"/"</span>)]</span>
+<span class="token keyword">async</span> <span class="token keyword">fn</span> <span class="token function-definition function">index</span><span class="token punctuation">(</span>tera<span class="token punctuation">:</span> <span class="token namespace">web<span class="token punctuation">::</span></span><span class="token class-name">Data</span><span class="token operator">&lt;</span><span class="token class-name">Tera</span><span class="token operator">></span><span class="token punctuation">)</span> <span class="token punctuation">-></span> <span class="token class-name">Result</span><span class="token operator">&lt;</span><span class="token class-name">HttpResponse</span><span class="token punctuation">,</span> <span class="token class-name">Error</span><span class="token operator">></span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">let</span> <span class="token keyword">mut</span> context <span class="token operator">=</span> <span class="token class-name">Context</span><span class="token punctuation">::</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    context<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span><span class="token string">"gongde"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span><span class="token constant">GONGDE</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">if</span> <span class="token constant">GONGDE</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">1_000_000_000</span> <span class="token punctuation">&#123;</span>	<span class="token comment">//GONGDE大于1_000_000_000即可获取flag</span>
+        context<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span>
+            <span class="token string">"flag"</span><span class="token punctuation">,</span>
+            <span class="token operator">&amp;</span><span class="token namespace">std<span class="token punctuation">::</span>env<span class="token punctuation">::</span></span><span class="token function">var</span><span class="token punctuation">(</span><span class="token string">"FLAG"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">unwrap_or_else</span><span class="token punctuation">(</span><span class="token closure-params"><span class="token closure-punctuation punctuation">|</span>_<span class="token closure-punctuation punctuation">|</span></span> <span class="token string">"flag&#123;test_flag&#125;"</span><span class="token punctuation">.</span><span class="token function">to_string</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">match</span> tera<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token string">"index.html"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>context<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">Ok</span><span class="token punctuation">(</span>body<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token class-name">Ok</span><span class="token punctuation">(</span><span class="token class-name">HttpResponse</span><span class="token punctuation">::</span><span class="token class-name">Ok</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">body</span><span class="token punctuation">(</span>body<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token class-name">Err</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token class-name">Err</span><span class="token punctuation">(</span><span class="token namespace">error<span class="token punctuation">::</span></span><span class="token class-name">ErrorInternalServerError</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<hr>
+<pre class="line-numbers language-rust" data-language="rust"><code class="language-rust"><span class="token keyword">struct</span> <span class="token type-definition class-name">APIResult</span> <span class="token punctuation">&#123;</span>
+    success<span class="token punctuation">:</span> <span class="token keyword">bool</span><span class="token punctuation">,</span>
+    message<span class="token punctuation">:</span> <span class="token operator">&amp;</span><span class="token lifetime-annotation symbol">'static</span> <span class="token keyword">str</span><span class="token punctuation">,</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token attribute attr-name">#[derive(Deserialize)]</span>
+<span class="token keyword">struct</span> <span class="token type-definition class-name">Info</span> <span class="token punctuation">&#123;</span>
+    name<span class="token punctuation">:</span> <span class="token class-name">String</span><span class="token punctuation">,</span>
+    quantity<span class="token punctuation">:</span> <span class="token keyword">i32</span><span class="token punctuation">,</span><span class="token comment">//定义quantity为i32类型的有符号整数</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token attribute attr-name">#[derive(Debug, Copy, Clone, Serialize)]</span>
+<span class="token keyword">struct</span> <span class="token type-definition class-name">Payload</span> <span class="token punctuation">&#123;</span>
+    name<span class="token punctuation">:</span> <span class="token operator">&amp;</span><span class="token lifetime-annotation symbol">'static</span> <span class="token keyword">str</span><span class="token punctuation">,</span>
+    cost<span class="token punctuation">:</span> <span class="token keyword">i32</span><span class="token punctuation">,</span>
+<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>定义类及参数</p>
+<hr>
+<h3 id="定义name-选项-及其Cost-花费的功德"><a href="#定义name-选项-及其Cost-花费的功德" class="headerlink" title="定义name(选项)及其Cost(花费的功德)"></a>定义<code>name</code>(选项)及其<code>Cost</code>(花费的功德)</h3><pre class="line-numbers language-rust" data-language="rust"><code class="language-rust"><span class="token keyword">const</span> <span class="token constant">PAYLOADS</span><span class="token punctuation">:</span> <span class="token operator">&amp;</span><span class="token punctuation">[</span><span class="token class-name">Payload</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token operator">&amp;</span><span class="token punctuation">[</span>
+    <span class="token class-name">Payload</span> <span class="token punctuation">&#123;</span>
+        name<span class="token punctuation">:</span> <span class="token string">"Cost"</span><span class="token punctuation">,</span>
+        cost<span class="token punctuation">:</span> <span class="token number">10</span><span class="token punctuation">,</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+    <span class="token class-name">Payload</span> <span class="token punctuation">&#123;</span>
+        name<span class="token punctuation">:</span> <span class="token string">"Loan"</span><span class="token punctuation">,</span>
+        cost<span class="token punctuation">:</span> <span class="token operator">-</span><span class="token number">1_000</span><span class="token punctuation">,</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+    <span class="token class-name">Payload</span> <span class="token punctuation">&#123;</span>
+        name<span class="token punctuation">:</span> <span class="token string">"CCCCCost"</span><span class="token punctuation">,</span>
+        cost<span class="token punctuation">:</span> <span class="token number">500</span><span class="token punctuation">,</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+    <span class="token class-name">Payload</span> <span class="token punctuation">&#123;</span>
+        name<span class="token punctuation">:</span> <span class="token string">"Donate"</span><span class="token punctuation">,</span>
+        cost<span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+    <span class="token class-name">Payload</span> <span class="token punctuation">&#123;</span>
+        name<span class="token punctuation">:</span> <span class="token string">"Sleep"</span><span class="token punctuation">,</span>
+        cost<span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<hr>
+<h3 id="主要判断部分"><a href="#主要判断部分" class="headerlink" title="主要判断部分"></a>主要判断部分</h3><pre class="line-numbers language-rust" data-language="rust"><code class="language-rust"><span class="token attribute attr-name">#[post(<span class="token string">"/upgrade"</span>)]</span>		<span class="token comment">//此段说明在/upgrade中传参方式为POST</span>
+<span class="token keyword">async</span> <span class="token keyword">fn</span> <span class="token function-definition function">upgrade</span><span class="token punctuation">(</span>body<span class="token punctuation">:</span> <span class="token namespace">web<span class="token punctuation">::</span></span><span class="token class-name">Form</span><span class="token operator">&lt;</span><span class="token class-name">Info</span><span class="token operator">></span><span class="token punctuation">)</span> <span class="token punctuation">-></span> <span class="token class-name">Json</span><span class="token operator">&lt;</span><span class="token class-name">APIResult</span><span class="token operator">></span> <span class="token punctuation">&#123;</span>	<span class="token comment">//从Info中获取参数名</span>
+    <span class="token keyword">if</span> <span class="token constant">GONGDE</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token namespace">web<span class="token punctuation">::</span></span><span class="token class-name">Json</span><span class="token punctuation">(</span><span class="token class-name">APIResult</span> <span class="token punctuation">&#123;</span>
+            success<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+            message<span class="token punctuation">:</span> <span class="token string">"功德都搞成负数了，佛祖对你很失望"</span><span class="token punctuation">,</span>
+        <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">if</span> body<span class="token punctuation">.</span>quantity <span class="token operator">&lt;=</span> <span class="token number">0</span> <span class="token punctuation">&#123;</span>		<span class="token comment">//禁止传入小于等于0的数</span>
+        <span class="token keyword">return</span> <span class="token namespace">web<span class="token punctuation">::</span></span><span class="token class-name">Json</span><span class="token punctuation">(</span><span class="token class-name">APIResult</span> <span class="token punctuation">&#123;</span>
+            success<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+            message<span class="token punctuation">:</span> <span class="token string">"佛祖面前都敢作弊，真不怕遭报应啊"</span><span class="token punctuation">,</span>
+        <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">if</span> <span class="token keyword">let</span> <span class="token class-name">Some</span><span class="token punctuation">(</span>payload<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token constant">PAYLOADS</span><span class="token punctuation">.</span><span class="token function">iter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token closure-params"><span class="token closure-punctuation punctuation">|</span>u<span class="token closure-punctuation punctuation">|</span></span> u<span class="token punctuation">.</span>name <span class="token operator">==</span> body<span class="token punctuation">.</span>name<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>		<span class="token comment">//根据传入name的类型进入不同分支</span>
+        <span class="token keyword">let</span> <span class="token keyword">mut</span> cost <span class="token operator">=</span> payload<span class="token punctuation">.</span>cost<span class="token punctuation">;</span>
+
+        <span class="token keyword">if</span> payload<span class="token punctuation">.</span>name <span class="token operator">==</span> <span class="token string">"Donate"</span> <span class="token operator">||</span> payload<span class="token punctuation">.</span>name <span class="token operator">==</span> <span class="token string">"Cost"</span> <span class="token punctuation">&#123;</span>
+            cost <span class="token operator">*=</span> body<span class="token punctuation">.</span>quantity<span class="token punctuation">;</span>		<span class="token comment">//在 name 参数为 Donate 或Cost 的时候会将原本的功德消耗值乘上我们传入的 </span>
+        <span class="token punctuation">&#125;</span>								<span class="token comment">//quantity参数值计算功德消耗</span>
+
+        <span class="token keyword">if</span> <span class="token constant">GONGDE</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> cost <span class="token keyword">as</span> <span class="token keyword">i32</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> <span class="token namespace">web<span class="token punctuation">::</span></span><span class="token class-name">Json</span><span class="token punctuation">(</span><span class="token class-name">APIResult</span> <span class="token punctuation">&#123;</span>
+                success<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+                message<span class="token punctuation">:</span> <span class="token string">"功德不足"</span><span class="token punctuation">,</span>
+            <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+
+        <span class="token keyword">if</span> cost <span class="token operator">!=</span> <span class="token number">0</span> <span class="token punctuation">&#123;</span>
+            <span class="token constant">GONGDE</span><span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token constant">GONGDE</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> cost <span class="token keyword">as</span> <span class="token keyword">i32</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+
+        <span class="token keyword">if</span> payload<span class="token punctuation">.</span>name <span class="token operator">==</span> <span class="token string">"Cost"</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> <span class="token namespace">web<span class="token punctuation">::</span></span><span class="token class-name">Json</span><span class="token punctuation">(</span><span class="token class-name">APIResult</span> <span class="token punctuation">&#123;</span>
+                success<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+                message<span class="token punctuation">:</span> <span class="token string">"小扣一手功德"</span><span class="token punctuation">,</span>
+            <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token keyword">if</span> payload<span class="token punctuation">.</span>name <span class="token operator">==</span> <span class="token string">"CCCCCost"</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> <span class="token namespace">web<span class="token punctuation">::</span></span><span class="token class-name">Json</span><span class="token punctuation">(</span><span class="token class-name">APIResult</span> <span class="token punctuation">&#123;</span>
+                success<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+                message<span class="token punctuation">:</span> <span class="token string">"功德都快扣没了，怎么睡得着的"</span><span class="token punctuation">,</span>
+            <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token keyword">if</span> payload<span class="token punctuation">.</span>name <span class="token operator">==</span> <span class="token string">"Loan"</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> <span class="token namespace">web<span class="token punctuation">::</span></span><span class="token class-name">Json</span><span class="token punctuation">(</span><span class="token class-name">APIResult</span> <span class="token punctuation">&#123;</span>
+                success<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+                message<span class="token punctuation">:</span> <span class="token string">"我向佛祖许愿，佛祖借我功德，快说谢谢佛祖"</span><span class="token punctuation">,</span>
+            <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token keyword">if</span> payload<span class="token punctuation">.</span>name <span class="token operator">==</span> <span class="token string">"Donate"</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> <span class="token namespace">web<span class="token punctuation">::</span></span><span class="token class-name">Json</span><span class="token punctuation">(</span><span class="token class-name">APIResult</span> <span class="token punctuation">&#123;</span>
+                success<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+                message<span class="token punctuation">:</span> <span class="token string">"好人有好报"</span><span class="token punctuation">,</span>
+            <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token keyword">if</span> payload<span class="token punctuation">.</span>name <span class="token operator">==</span> <span class="token string">"Sleep"</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> <span class="token namespace">web<span class="token punctuation">::</span></span><span class="token class-name">Json</span><span class="token punctuation">(</span><span class="token class-name">APIResult</span> <span class="token punctuation">&#123;</span>
+                success<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+                message<span class="token punctuation">:</span> <span class="token string">"这是什么？床，睡一下"</span><span class="token punctuation">,</span>
+            <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token namespace">web<span class="token punctuation">::</span></span><span class="token class-name">Json</span><span class="token punctuation">(</span><span class="token class-name">APIResult</span> <span class="token punctuation">&#123;</span>
+        success<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+        message<span class="token punctuation">:</span> <span class="token string">"禁止开摆"</span><span class="token punctuation">,</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>返回均为json页面</li>
+</ul>
+<hr>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ul>
+<li>在 <code>name</code> 参数为 <code>Donate </code>或<code>Cost</code> 的时候会将原本的功德消耗值乘上我们传入的 <code>quantity</code> 参数值计算功德消耗</li>
+<li>但是唯一能使功德增加的 <code>Loan</code> 选项并没有出现在此分支的条件判断中，因此无法直接正向增加功德一步到位。正向的路基本被堵死</li>
+<li>同时我们也注意到 <code>cost</code> 变量为 <code>i32 有符号整数</code>，上限为<strong>2,147,483,647</strong>，当我们要<strong>扣的功德足够大时就会造成溢出，得到一个绝对值非常大的负数</strong>。再加上并没有设置对 <code>quantity </code>参数的限制，办到这一点还是不难的。</li>
+</ul>
+<hr>
+<h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><ul>
+<li>在upgrade中发出请求使功德扣至溢出</li>
+</ul>
+<p><img src="/blog/2023/02/26/VNCTF-GongDe-%E5%A4%8D%E7%8E%B0/image-20230226224920856.png" alt="image-20230226224920856"></p>
+<ul>
+<li>返回页面获取flag</li>
+</ul>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            </div>
+            </transition>
+            
+            <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+            </transition>
+            
+        </div>
+        <script src="/blog/js/main.js"></script>
+        
+        
+
+
+
+
+         
+        
+    <div id="vcomments"></div>
+    
+        <script src="/blog/js/lib/valine.min.js"></script>
+            <script>
+                new Valine({
+                    el: '#vcomments',
+                    appId: 'U9mZLKunkRUTcBFthjXPjnZE-9Nh9j0Va',
+                    appKey: 'SzWOnY0PWLGNuL6jW8TZYc7j',
+                });
+            </script>
+
+        <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2023 雲流のLowest World
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;C1oudfL0w0
+            <span id="busuanzi_container_site_uv"> 
+                本站访客数<span id="busuanzi_value_site_uv"></span>人次
+            </span>
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+    <script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/blog/live2dw/assets/z16.model.json"},"display":{"position":"left","width":150,"height":290},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
+

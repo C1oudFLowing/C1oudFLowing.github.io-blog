@@ -1,0 +1,368 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <title>NSSCTF ROUND#13 复现 | 雲流のLowest World</title>
+        <meta name="author" content="C1oudfL0w0" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+        <link rel="icon" href="/blog/images/croppedImage_cropped.jpg" />
+        <script src="https://cdn.staticfile.org/vue/3.2.45/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.2.1/css/all.min.css" />
+<link rel="stylesheet" href="/blog/css/fonts.min.css" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+<!--改成了prismjs高亮-->
+
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.25.0/prism.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/prismjs@1.25.0/themes/prism.css" rel="stylesheet" />
+<script src="/blog/js/lib/prism.js"></script>
+
+
+
+<script src="/blog/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<script src="/blog/js/lib/home.js"></script>
+
+<link rel="stylesheet" href="/blog/css/main.css" />
+<!-- 引入jQuery-->
+<script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<!-- 引入不蒜子-->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <!-- 页面点击小红心与文字 -->
+        <script type = "text/javascript" src = "/blog/js/love-click.js"></script>
+        <!-- 浏览器标题 -->
+        <script type="text/javascript" src="/blog/js/FunnyTitle.js"></script>
+        
+        <script type="text/javascript" src="/blog/libs/codeBlock/codeBlockFuction.js"></script>
+<!-- 代码语言 -->
+<script type="text/javascript" src="/blog/libs/codeBlock/codeLang.js"></script>
+<!-- 代码块复制 -->
+<!-- 引入clipboard -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+<script type="text/javascript" src="/blog/libs/codeBlock/codeCopy.js"></script>
+<!-- 代码块收缩 -->
+<script type="text/javascript" src="/blog/libs/codeBlock/codeShrink.js"></script> 
+<!-- 代码块折行 -->
+<style type="text/css">code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }</style>
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <!--flag{never_g0nna g1ve_you up}-->
+
+        <!--动态背景-->
+        <script type="text/javascript"
+        color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+        <!--文章目录-->
+        <div id="toc" class="toc-article">
+    <div class="toc-title"></div>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#flask-jwt"><span class="toc-text">flask?jwt?</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ez-factors"><span class="toc-text">ez_factors</span></a></li></ol>
+</div>
+        
+        <!--返回顶部-->
+        <div id="totop" style="position:fixed;bottom:50px;right:60px;font-size: 48px;cursor: pointer;z-index: 10;">
+            <a title="返回顶部">↑</a>
+            </div>
+        <script src="/blog/js/totop.js"></script>
+
+        <div id="layout">
+            <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>第一次加载可能会花费较长时间，请耐心等待</p>
+                    <p>要不挂个梯子试试？（x</p>
+                    <p>加载过慢请开启缓存&ensp;浏览器默认开启</p>
+                    <img src="/blog/images/loading.gif" />
+                </div>
+            </div>
+            </transition>
+            <transition name="into">
+            <div id="main" v-show="!loading">
+                <nav id="menu" ref="menu">
+    <div class="desktop-menu">
+        <a class="title" href="/blog/">
+            <span>雲流のLOWEST WORLD</span>
+        </a>
+        
+        <a href="/blog/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/blog/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/blog/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/blog/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/blog/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+        <a href="/blog/links">
+            <i class="fa-solid fa-link fa-fw"></i>
+            <span>&ensp;Links</span>
+        </a>
+        
+    </div>
+    <div id="mobile-menu">
+        <div class="curtain" v-show="showMenu" @click="showMenu = !showMenu"></div>
+        <div class="title" @click="showMenu = !showMenu">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;雲流のLOWEST WORLD</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="showMenu">
+            
+            <a href="/blog/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                </div>
+            </a>
+            
+            <a href="/blog/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                </div>
+            </a>
+            
+            <a href="/blog/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                </div>
+            </a>
+            
+            <a href="/blog/categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                </div>
+            </a>
+            
+            <a href="/blog/tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                </div>
+            </a>
+            
+            <a href="/blog/links">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-link fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Links</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+
+                <div class="article">
+    <div>
+        <h1>NSSCTF ROUND#13 复现</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/6/4
+        </span>
+        
+        <span class="category">
+            <a href="/blog/categories/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                CTF线上赛
+            </a>
+        </span>
+        
+        
+        <!--文章字数统计-->
+        
+            
+<div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <!-- 安装插件npm install hexo-wordcount --save -->
+        <span class="post-count">449字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">1分</span>
+      </span>
+    </span>
+    
+    <!--不蒜子统计访问数-->
+    <span id="busuanzi_container_page_pv">
+    &nbsp; | &nbsp;
+    总文章阅读量：<span id="busuanzi_value_page_pv"></span>次
+    </span>
+</div>
+
+          
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>唉，又爆零了，最简单的一道还因为自己少考虑到某些信息没做出来呜呜呜</p>
+<p>贴个<a target="_blank" rel="noopener" href="https://ph0ebus.cn/post/NSSRound13%20WEB.html">ph0ebus大佬的wp</a></p>
+<span id="more"></span>
+
+<hr>
+<h1 id="flask-jwt"><a href="#flask-jwt" class="headerlink" title="flask?jwt?"></a>flask?jwt?</h1><blockquote>
+<p>session伪造</p>
+</blockquote>
+<p>进入题目，发现是一个登录界面</p>
+<p><img src="/blog/2023/06/04/NSSCTF-ROUND-13-%E5%A4%8D%E7%8E%B0/image-20230615234324229.png" alt="image-20230615234324229"></p>
+<p>那我们就注册个账号登录试试</p>
+<p><img src="/blog/2023/06/04/NSSCTF-ROUND-13-%E5%A4%8D%E7%8E%B0/image-20230615234402614.png" alt="image-20230615234402614"></p>
+<p>登录之后出现一个拿flag的按钮</p>
+<p><img src="/blog/2023/06/04/NSSCTF-ROUND-13-%E5%A4%8D%E7%8E%B0/image-20230615234643908.png" alt="image-20230615234643908"></p>
+<p>点击后来到<code>/getFlag</code>路由，回显”不不不，你不是 admin“</p>
+<p><img src="/blog/2023/06/04/NSSCTF-ROUND-13-%E5%A4%8D%E7%8E%B0/image-20230615234830585.png" alt="image-20230615234830585"></p>
+<p>这个时候基本可以知道是session伪造了</p>
+<p>拿一下cookie中的session解密看看</p>
+<p><img src="/blog/2023/06/04/NSSCTF-ROUND-13-%E5%A4%8D%E7%8E%B0/image-20230615235339072.png" alt="image-20230615235339072"></p>
+<p>猜测admin的<code>_user_id</code>为1</p>
+<p>接下来就是去找密钥了</p>
+<p>回到登录页面，发现这里还有一个<strong>忘记密码</strong>的按钮，右下角有个邮箱<code>adm1n@flag.com</code>(其实这个没什么用)</p>
+<p>点击忘记密码来到<code>/changePassword</code>路由</p>
+<p>f12发现<code>secretkey</code>为<code>th3f1askisfunny</code>(当时做的时候就是没f12看看才没做出来的555)</p>
+<p><img src="/blog/2023/06/04/NSSCTF-ROUND-13-%E5%A4%8D%E7%8E%B0/image-20230615235720924.png" alt="image-20230615235720924"></p>
+<p>于是丢进加密脚本，构造<code>&quot;_user_id&quot;:&quot;1&quot;</code>的session值</p>
+<p>注：因为python语法的原因，上面解出来的true要改成True</p>
+<p><img src="/blog/2023/06/04/NSSCTF-ROUND-13-%E5%A4%8D%E7%8E%B0/image-20230616002046193.png" alt="image-20230616002046193"></p>
+<p>带着session值来到<code>/getFlag</code>路由获取flag</p>
+<p><img src="/blog/2023/06/04/NSSCTF-ROUND-13-%E5%A4%8D%E7%8E%B0/image-20230616002403551.png" alt="image-20230616002403551"></p>
+<hr>
+<h1 id="ez-factors"><a href="#ez-factors" class="headerlink" title="ez_factors"></a>ez_factors</h1><blockquote>
+<p>换行漏洞+编码读取文件</p>
+</blockquote>
+<p>题目描述：原生 Linux 因数爆破工具。flag在根目录</p>
+<p>进入题目，点击Tool，来到&#x2F;factors&#x2F;114514</p>
+<p><img src="/blog/2023/06/04/NSSCTF-ROUND-13-%E5%A4%8D%E7%8E%B0/image-20230616211027121.png" alt="image-20230616211027121"></p>
+<p>可以发现这里把114514分解出因数了，猜测是命令执行</p>
+<p>尝试利用换行符<code>%0a</code>进行命令执行，发现可行</p>
+<p>直接<code>tac /flag</code>试试，记得<code>/</code>需要url编码不然会出歧义</p>
+<p><img src="/blog/2023/06/04/NSSCTF-ROUND-13-%E5%A4%8D%E7%8E%B0/image-20230616211643663.png" alt="image-20230616211643663"></p>
+<p>看得出来命令执行了，但是只返回了一串数字，猜测只会返回数字</p>
+<p>那就尝试用编码读flag</p>
+<p>这里使用<code>od</code>命令，用<code>od -b</code>以八进制形式输出文件内容，payload建议url编码一下以免出问题（</p>
+<pre class="line-numbers language-http" data-language="http"><code class="language-http">/factors/114514%0aod%20-b%20%2fflag<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/blog/2023/06/04/NSSCTF-ROUND-13-%E5%A4%8D%E7%8E%B0/image-20230616212056732.png" alt="image-20230616212056732"></p>
+<p>扔进赛博厨子解码得到flag</p>
+<p><img src="/blog/2023/06/04/NSSCTF-ROUND-13-%E5%A4%8D%E7%8E%B0/image-20230616212217390.png" alt="image-20230616212217390"></p>
+<hr>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            </div>
+            </transition>
+            
+            <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+            </transition>
+            
+        </div>
+        <script src="/blog/js/main.js"></script>
+        
+        
+
+
+
+
+         
+        
+    <div id="vcomments"></div>
+    
+        <script src="/blog/js/lib/valine.min.js"></script>
+            <script>
+                new Valine({
+                    el: '#vcomments',
+                    appId: 'U9mZLKunkRUTcBFthjXPjnZE-9Nh9j0Va',
+                    appKey: 'SzWOnY0PWLGNuL6jW8TZYc7j',
+                });
+            </script>
+
+        <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2023 雲流のLowest World
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;C1oudfL0w0
+            <span id="busuanzi_container_site_uv"> 
+                本站访客数<span id="busuanzi_value_site_uv"></span>人次
+            </span>
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+    <script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/blog/live2dw/assets/z16.model.json"},"display":{"position":"left","width":150,"height":290},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
+
