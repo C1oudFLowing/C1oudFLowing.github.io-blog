@@ -266,12 +266,12 @@
 <p>这将向主机发送一个HTTP GET请求，并显示响应数据</p>
 </li>
 <li><p>监听端口：使用<code>nc</code>命令也可以作为一个简单的服务器，监听指定的端口。例如，可以使用以下命令在本地主机的端口12345上监听TCP连接：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">nc</span> <span class="token parameter variable">-l</span> <span class="token number">12345</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">nc</span> <span class="token parameter variable">-lvvnp</span> <span class="token number">12345</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>这将在命令行中打开一个监听端口，并等待来自客户端的连接请求</p>
 </li>
 <li><p>接收数据：在监听端口后，可以使用<code>nc</code>命令接收来自客户端的数据。例如，如果有一个客户端连接到本地主机的端口12345，并发送了一条消息，可以使用以下命令接收该消息：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">nc</span> <span class="token parameter variable">-l</span> <span class="token number">12345</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">nc</span> <span class="token parameter variable">-lvvnp</span> <span class="token number">12345</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>这将在命令行中显示接收到的数据。</p>
 </li>

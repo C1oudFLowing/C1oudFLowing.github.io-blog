@@ -225,7 +225,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/PHP/" style="color: #ff7d73">PHP</a>
+                <a href="/blog/tags/PHP/" style="color: #00a596">PHP</a>
             </span>
             
         </span>
@@ -679,6 +679,8 @@ Fatal error<span class="token punctuation">:</span> Uncaught exception <span cla
 </blockquote>
 <ul>
 <li><p>版本：php &lt; 8</p>
+</li>
+<li><p>在变量解析中，php会把请求参数中的非法字符转为下划线</p>
 </li>
 <li><p>如果参数中出现中括号<code>[</code>，中括号会被转换成下划线<code>_</code>，但是会出现转换错误导致接下来如果该参数名中还有<code>非法字符</code>并不会继续转换成下划线<code>_</code>，也就是说如果中括号<code>[</code>出现在前面，那么中括号<code>[</code>还是会被转换成下划线<code>_</code>，但是因为出错导致接下来的非法字符并不会被转换成下划线<code>_</code></p>
 </li>
