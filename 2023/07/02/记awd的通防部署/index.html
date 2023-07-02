@@ -1,0 +1,331 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <title>记awd的通防部署 | 雲流のLowest World</title>
+        <meta name="author" content="C1oudfL0w0" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+        <link rel="icon" href="/blog/images/croppedImage_cropped.jpg" />
+        <script src="https://cdn.staticfile.org/vue/3.2.45/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.2.1/css/all.min.css" />
+<link rel="stylesheet" href="/blog/css/fonts.min.css" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+<!--改成了prismjs高亮-->
+
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.25.0/prism.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/prismjs@1.25.0/themes/prism.css" rel="stylesheet" />
+<script src="/blog/js/lib/prism.js"></script>
+
+
+
+<script src="/blog/js/lib/preview.js"></script>
+
+
+<script src="https://cdn.staticfile.org/crypto-js/4.1.1/crypto-js.min.js"></script>
+<script src="/blog/js/lib/crypto.js"></script>
+
+
+
+
+
+
+
+
+<script src="/blog/js/lib/home.js"></script>
+
+<link rel="stylesheet" href="/blog/css/main.css" />
+<!-- 引入jQuery-->
+<script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<!-- 引入不蒜子-->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <!-- 页面点击小红心与文字 -->
+        <script type = "text/javascript" src = "/blog/js/love-click.js"></script>
+        <!-- 浏览器标题 -->
+        <script type="text/javascript" src="/blog/js/FunnyTitle.js"></script>
+        
+        <script type="text/javascript" src="/blog/libs/codeBlock/codeBlockFuction.js"></script>
+<!-- 代码语言 -->
+<script type="text/javascript" src="/blog/libs/codeBlock/codeLang.js"></script>
+<!-- 代码块复制 -->
+<!-- 引入clipboard -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+<script type="text/javascript" src="/blog/libs/codeBlock/codeCopy.js"></script>
+<!-- 代码块收缩 -->
+<script type="text/javascript" src="/blog/libs/codeBlock/codeShrink.js"></script> 
+<!-- 代码块折行 -->
+<style type="text/css">code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }</style>
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <!--flag{never_g0nna g1ve_you up}-->
+
+        <!--动态背景-->
+        <script type="text/javascript"
+        color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+        <!--文章目录-->
+        <div id="toc" class="toc-article">
+    <div class="toc-title"></div>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%80%9A%E9%98%B2WatchBird"><span class="toc-text">通防WatchBird</span></a></li></ol>
+</div>
+        
+        <!--返回顶部-->
+        <div id="totop" style="position:fixed;bottom:50px;right:60px;font-size: 48px;cursor: pointer;z-index: 10;">
+            <a title="返回顶部">↑</a>
+            </div>
+        <script src="/blog/js/totop.js"></script>
+
+        <div id="layout">
+            <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>第一次加载可能会花费较长时间，请耐心等待</p>
+                    <p>要不挂个梯子试试？（x</p>
+                    <p>加载过慢请开启缓存&ensp;浏览器默认开启</p>
+                    <img src="/blog/images/loading.gif" />
+                </div>
+            </div>
+            </transition>
+            <transition name="into">
+            <div id="main" v-show="!loading">
+                <nav id="menu" ref="menu">
+    <div class="desktop-menu">
+        <a class="title" href="/blog/">
+            <span>雲流のLOWEST WORLD</span>
+        </a>
+        
+        <a href="/blog/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/blog/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/blog/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/blog/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/blog/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+        <a href="/blog/links">
+            <i class="fa-solid fa-link fa-fw"></i>
+            <span>&ensp;Links</span>
+        </a>
+        
+    </div>
+    <div id="mobile-menu">
+        <div class="curtain" v-show="showMenu" @click="showMenu = !showMenu"></div>
+        <div class="title" @click="showMenu = !showMenu">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;雲流のLOWEST WORLD</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="showMenu">
+            
+            <a href="/blog/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                </div>
+            </a>
+            
+            <a href="/blog/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                </div>
+            </a>
+            
+            <a href="/blog/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                </div>
+            </a>
+            
+            <a href="/blog/categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                </div>
+            </a>
+            
+            <a href="/blog/tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                </div>
+            </a>
+            
+            <a href="/blog/links">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-link fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Links</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+
+                <div class="article">
+    <div>
+        <h1>记awd的通防部署</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/7/2
+        </span>
+        
+        <span class="category">
+            <a href="/blog/categories/AWD/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                AWD
+            </a>
+        </span>
+        
+        
+        <!--文章字数统计-->
+        
+            
+<div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <!-- 安装插件npm install hexo-wordcount --save -->
+        <span class="post-count">310字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">1分</span>
+      </span>
+    </span>
+    
+    <!--不蒜子统计访问数-->
+    <span id="busuanzi_container_page_pv">
+    &nbsp; | &nbsp;
+    总文章阅读量：<span id="busuanzi_value_page_pv"></span>次
+    </span>
+</div>
+
+          
+    </div>
+    
+    
+    <input
+        id="crypto"
+        class="input"
+        ref="crypto"
+        placeholder="文章被加密，请输入密码"
+        data-encrypted="U2FsdGVkX1+skbwk5E/1VpqcUdoEyBKQa4Y16vdhXrDFApZkl1snDnmnDJMszIYG7GcrvImkr9rcRs4Q0kpHrIIPLZKu1oeaft5ySGrpf8BY2ItFlpGSCDSK2hJoUsyRVvEKBc+3ruZdUFm8BxV1JeyooXz5LLHrm8uCofYyN5/iTr2jlShUIkRCZEQDcOuiAeFr8F9kcf1jOdk2ETwiUMfkS/rpsGJV9xVpUpQ113hz+t+nj7r7EFjcGnZ+O6uQszZF3mO3bBEiTwJ0e5VLQraeFTJiKGviunO3b6OZuafG7ze8qOE//UeE2XDgQKsJFiMX8VFlmHy8nTc/Y8nbHk0GhmladYdUWWdyU5sh7iA2X6VpWbg67A7mI7Q+dh2UU7WGCVfUYza9FXmknDsEyoTNXlReIwFDPSHXe2sOz6IM3z7HeWHT0veQh3wGFtTmIls060+cAE4VCNmV61+k+xCT5GHCMmkOlJpo2yeJYMdx2ZL9zkuTFEnQ4llqSgkhHMK+5xNHG73+uySzl7mCSVLrF8tL7D0EUFOhue+mdll5u90H1+OVhq9cnWAIajdMivEP2S9HRGcht6tFE+G7vw1k6moIedvA553lm60Cr4z9JcAi2lVcRUMEmUks/0/CnuTRooyVHRYfoIhLWCKjYR7xw/N19jZX4mWIS0H5gsk7ucPH4bxCZO4O+kKVUZUPlx2MBDtZDxKjxP3drh4/lhkFwibu2yLBDAyIBSdszCvGW61XOJPtAZDK6buE/lIWC76+Y4KkQ72Gw2E4e54zwbBPD5MBrlrhJt1paXkDE0wFkkrq6NV/UjDf0VzHSsef+S+4wlNnKanA4HTql+RypBBRrU7jz/CUL2aBP15pE5ndzPEj0rBUb3I2ZkPBT178tZryAUngtmLrYALqDR94ooKcD3zrf5rW9h2mOIA8QA+p5PcyTuszBR/K08vUZS+vAMuxQMOMQdmqi2VvHwi//YxRmC3MtdUWXVs+Xnekbq8BCgka5TFPbC5XmNn1OOcOBxXVTK2fcwdfd6gVdyGc16GRPRy9aw25T55w//OIQ6vxs3hWn/ybgyfFux+TXqK7c8/xJeBStcr3/kRvdfXR2w+fVU5khkEMoTe2cRQqCRAlODC5YSlYKX6crDqg/a5Y0v9MIZVJCZJ5yCrAJBDKEcg3cPNeWUK0f3g3X2O+O6jsoKSNs8rrE/HNbCTCVTH5YwM+4yel+l3VuWQavfkXzUi+2KmVkkbqHOdMZuBMFEj24SCT+d/SLD3k6ECjwDCDpF6uvozprJpV1GrUWgPA7NRGzHyUuvfqDkdX5mB7YM3KMn00gSjcGaE8wSdOODMbQV7KFpuw/MMraafvFRvl9AatUgChrrKs6KFKRf8TAK5oiua4A57VXFwaf/1hAcuNX1iyB56BuumvAL9X+hlssKg6YzuAauLz2llZExrNQbt9vsBRTAEztgIxydKcFnwDtjVCCrSizV1u2k/8wodhuLm1xK7SOwXX4a73c8T0/8XkVbxVUPzt+B9I0LtxC0+um7k4e3Qpj0ZZrYFqa4K2vrCpOcGMRgD6fmAyRTXVc1d6n+p9NRIJHwqgUcvUR3dqIFPO2kp4Y2sVAVqaH7lVM3Y1ZoAnS14KGElD3+2rMCyd9OZTltfeAxrKponyfUihnF7IJf/yInhnLNLLNBfLJnp8EnUOiisdtdpyGo0i6Z1YPdIFubKiE+8DmfW2AoAvu5+Tipfq5bXdiJta/hRoD73DZCSy3qjvZvWLlKYRUPDC/ILhYxoiOvsPx/7QhcH7EoZjUx/9ytexGGKj07Rmq/PhzP69WDdhWxR81lGqeGWF232uKRgmdy2LAcM38AeBm4iGLUQ6Apv+eiqJXpO0NId6iGPet4SPMa6eLQ9XeL6PkswXANXiHI82o6L/Q751L2ElLeLmdy8O+txg19B104T1sTZrB/QmbDswH7QZjjZtnG1JEyTDtuYNS7f/9H//kgp6AZreKCjuuzXk4IWMMJ5NXl6oiT6iekQ85yq+DiEX0+j2LMa/OhITRfZXrwZV0z0Fip+HuQ1MpcEbO4g8FsSBHUk1UwHpJWdSe6oWIM7jZPN4iDiuEi2T5YOeZ6kZLd2VdwQqHWvCMcpW0wQG67215HokeSEGd0RXGxgPr8vEi+zLiQOj2BzIzT+Qr0FZ6TuGDQSRjDTW9v6yN0tf0tmvoFLmS5zyVt1kzhDmUHFpMufohfTi0tfUs2/JaCw93Ec92MDaLibJgbMjMTA6/0rLhMF7L7/3t7lGEM/3lqXrB5kGPPop5OL+5u5VIa/sXbzcf1DYQk5L4DL1oCIOOFBAdO7zrOe7Bj1F0dHOHdlMWxOT7YYQJKtKQttMzsB043aaDkL7vl4jtmNdnyCdJjSSXA9B6un/hoK0yHwsNE6XqpgzofakMniso0pNNKUGoG6xv8dRshQZaQIedToMgljVF6Fs5Z53J66p8sOromqt1laOu88r5VQ5D8UxcXGHyiQ8a+2bn/rFbJEAfJBEsVjcmrzBXM0AbFOKMlKoiGFC9g9A49TldyErXsHhqFkJ64SfUuNckgUoDvHyfSrTmiPRmXnxQC5bDX9eww5olCWvhNmfT8iU8nU3bD+GNgdrtW28uyXhsNWZLaUjST8JRMQOIwa2Nb7tLucWolbzOXiyFOJZ/jUwzlV10Pb9JF1Ct3kP32gKv58IuPKJ/7zZJ6gKh5Ss3b4mMj0pWG01rGm+vWWCwPyS/j1xtQ79JaKIFDEB/NIzoHBkIMr2jSycgFYgmcrnxDuw0161Dzoq06SYf2TLzXNQlyDYrgz2T3SEk+R6s+jbtvC8t93cFveNllbI+rFsTCiUjK/hA70WEO5Hz8J/MTAhTtC1pQwCLuDcteW77bqyDWT2QmWxct9b2wfwECXZ+9UQonlX7OlLXcH7vZL15BvtCzxmmdAifUfPo9WH/ss+M63xOhu/iS55OK1ekfNI7DdLkcD0yp07OndzFbKtvURlzwYmxcm8SkXFuzjtV3l1vtzqdkU/eGUGY24UffElsKAAYCp4f/84FwPjxE21NL1ardHLkAyMQePJ2SHDF1ylqwOpG+hgsT0LBcwKxi7wsVBR4bo9dmJUmUxv2ZajWOE3ZGP9dt/xuZ9Z"
+        data-shasum="69d9cad30cbd5164e1a0740b8b86bae51dcb163335ecacf4e652204399019647"
+        v-model="crypto"
+    />
+    <transition name="fade">
+    <div class="content" ref="content" v-show="check"></div>
+    </transition>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            </div>
+            </transition>
+            
+            <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+            </transition>
+            
+        </div>
+        <script src="/blog/js/main.js"></script>
+        
+        
+
+
+
+
+         
+        
+    <div id="vcomments"></div>
+    
+        <script src="/blog/js/lib/valine.min.js"></script>
+            <script>
+                new Valine({
+                    el: '#vcomments',
+                    appId: 'U9mZLKunkRUTcBFthjXPjnZE-9Nh9j0Va',
+                    appKey: 'SzWOnY0PWLGNuL6jW8TZYc7j',
+                });
+            </script>
+
+        <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2023 雲流のLowest World
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;C1oudfL0w0
+            <span id="busuanzi_container_site_uv"> 
+                本站访客数<span id="busuanzi_value_site_uv"></span>人次
+            </span>
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+    <script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/blog/live2dw/assets/z16.model.json"},"display":{"position":"left","width":150,"height":290},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
+
