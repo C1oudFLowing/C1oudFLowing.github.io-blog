@@ -69,7 +69,7 @@
         <!--文章目录-->
         <div id="toc" class="toc-article">
     <div class="toc-title"></div>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-text">寄存器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#EBP"><span class="toc-text">EBP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ESP"><span class="toc-text">ESP</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AB%8B%E5%8D%B3%E6%95%B0"><span class="toc-text">立即数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8C%87%E4%BB%A4"><span class="toc-text">指令</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#db"><span class="toc-text">db</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mov"><span class="toc-text">mov</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#add"><span class="toc-text">add</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sub"><span class="toc-text">sub</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-text">寄存器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#EBP"><span class="toc-text">EBP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ESP"><span class="toc-text">ESP</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AB%8B%E5%8D%B3%E6%95%B0"><span class="toc-text">立即数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8C%87%E4%BB%A4"><span class="toc-text">指令</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#db"><span class="toc-text">db</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mov"><span class="toc-text">mov</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#add"><span class="toc-text">add</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sub"><span class="toc-text">sub</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E5%88%86%E6%94%AF%E6%8C%87%E4%BB%A4"><span class="toc-text">条件分支指令</span></a></li></ol>
 </div>
         
         <!--返回顶部-->
@@ -226,7 +226,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/x86%E6%B1%87%E7%BC%96/" style="color: #ffa2c4">x86汇编</a>
+                <a href="/blog/tags/x86%E6%B1%87%E7%BC%96/" style="color: #00bcd4">x86汇编</a>
             </span>
             
         </span>
@@ -240,7 +240,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">1.1k字</span>
+        <span class="post-count">1.3k字</span>
       </span>
     </span>
 
@@ -328,6 +328,30 @@
 <h2 id="sub"><a href="#sub" class="headerlink" title="sub"></a>sub</h2><blockquote>
 <p>将两个操作数相减，并将结果存储到一个目标操作数中</p>
 </blockquote>
+<hr>
+<h1 id="条件分支指令"><a href="#条件分支指令" class="headerlink" title="条件分支指令"></a>条件分支指令</h1><blockquote>
+<p>实现if语句功能</p>
+</blockquote>
+<ol>
+<li><code>JZ</code>（Jump If Zero）：如果零标志位（ZF）被设置，则跳转到指定的标签。</li>
+<li><code>JNZ</code>（Jump If Not Zero）：如果零标志位（ZF）未被设置，则跳转到指定的标签。</li>
+<li><code>JC</code>（Jump If Carry）：如果进位标志位（CF）被设置，则跳转到指定的标签。</li>
+<li><code>JNC</code>（Jump If Not Carry）：如果进位标志位（CF）未被设置，则跳转到指定的标签。</li>
+</ol>
+<p>例：</p>
+<pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">MOV AX, 5 ; 将5赋值给AX寄存器
+CMP AX, 0 ; 比较AX寄存器和0
+JG greater_than_zero ; 如果AX大于0，跳转到greater_than_zero标签
+JMP end ; 否则跳转到end标签
+
+greater_than_zero:
+    ; 如果执行到这里，说明AX大于0
+    ; 在这里写需要执行的代码
+    JMP end
+
+end:
+    ; 程序结束<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 
     </div>
     
