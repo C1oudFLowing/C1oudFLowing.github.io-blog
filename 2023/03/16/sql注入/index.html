@@ -3,7 +3,7 @@
 <html lang="zh-CN">
     <head>
         <meta charset="UTF-8" />
-        <title>SQL注入 | 雲流のLowest World</title>
+        <title>sql注入 | 雲流のLowest World</title>
         <meta name="author" content="C1oudfL0w0" />
         <meta name="description" content="" />
         <meta name="keywords" content="" />
@@ -199,7 +199,7 @@
 
                 <div class="article">
     <div>
-        <h1>SQL注入</h1>
+        <h1>sql注入</h1>
     </div>
     <div class="info">
         <span class="date">
@@ -226,7 +226,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/Sql/" style="color: #00a596">Sql</a>
+                <a href="/blog/tags/Sql/" style="color: #ff7d73">Sql</a>
             </span>
             
         </span>
@@ -348,8 +348,8 @@ F <span class="token operator">or</span> T <span class="token operator">=</span>
 <h2 id="堆叠注入"><a href="#堆叠注入" class="headerlink" title="堆叠注入"></a>堆叠注入</h2><blockquote>
 <p>使用<code>;</code>执行多条sql语句</p>
 </blockquote>
-<p><img src="/blog/2023/03/16/SQL%E6%B3%A8%E5%85%A5/image-20230728174634319.png" alt="image-20230728174634319"></p>
-<p><img src="/blog/2023/03/16/SQL%E6%B3%A8%E5%85%A5/image-20230728174706631.png" alt="image-20230728174706631"></p>
+<p><img src="/blog/2023/03/16/sql%E6%B3%A8%E5%85%A5/image-20230728174634319.png" alt="image-20230728174634319"></p>
+<p><img src="/blog/2023/03/16/sql%E6%B3%A8%E5%85%A5/image-20230728174706631.png" alt="image-20230728174706631"></p>
 <p><strong>区别</strong>：联合查询注入只能执行<strong>查询语句</strong>，堆叠注入可执行任意语句（增删查改）</p>
 <h3 id="重置密码"><a href="#重置密码" class="headerlink" title="重置密码"></a>重置密码</h3><blockquote>
 <p>ctfshow web195</p>
@@ -453,11 +453,11 @@ F <span class="token operator">or</span> T <span class="token operator">=</span>
 <p>例：间隔符为”<code>.</code>“，编码间隔符为<code>CHAR(46)</code>，这样str就是</p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token keyword">REPLACE</span><span class="token punctuation">(</span><span class="token string">"."</span><span class="token punctuation">,</span><span class="token keyword">CHAR</span><span class="token punctuation">(</span><span class="token number">46</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">"."</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p><img src="/blog/2023/03/16/SQL%E6%B3%A8%E5%85%A5/image-20230624184640501.png" alt="image-20230624184640501"></p>
+<p><img src="/blog/2023/03/16/sql%E6%B3%A8%E5%85%A5/image-20230624184640501.png" alt="image-20230624184640501"></p>
 <p>构造出来的结果就是</p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token keyword">REPLACE</span><span class="token punctuation">(</span><span class="token string">'REPLACE(".",CHAR(46),".")'</span><span class="token punctuation">,</span><span class="token keyword">CHAR</span><span class="token punctuation">(</span><span class="token number">46</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">'REPLACE(".",CHAR(46),".")'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p><img src="/blog/2023/03/16/SQL%E6%B3%A8%E5%85%A5/image-20230624185624959.png" alt="image-20230624185624959"></p>
+<p><img src="/blog/2023/03/16/sql%E6%B3%A8%E5%85%A5/image-20230624185624959.png" alt="image-20230624185624959"></p>
 <p>但是此时可以发现单双引号还没实现一致</p>
 <p>这时候就需要使用<code>REPLACE</code>将<code>str</code>的双引号换成单引号，这样最后就不会出现引号不一致的情况了</p>
 <p>因此升级版Quine的基本形式，<code>CHAR(34)</code>是双引号，<code>CHAR(39)</code>是单引号</p>
@@ -471,14 +471,14 @@ F <span class="token operator">or</span> T <span class="token operator">=</span>
 </blockquote>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token keyword">replace</span><span class="token punctuation">(</span><span class="token keyword">replace</span><span class="token punctuation">(</span><span class="token string">'replace(replace(".",char(34),char(39)),char(46),".")'</span><span class="token punctuation">,</span><span class="token keyword">char</span><span class="token punctuation">(</span><span class="token number">34</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token keyword">char</span><span class="token punctuation">(</span><span class="token number">39</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token keyword">char</span><span class="token punctuation">(</span><span class="token number">46</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">'replace(replace(".",char(34),char(39)),char(46),".")'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p><img src="/blog/2023/03/16/SQL%E6%B3%A8%E5%85%A5/image-20230624205209275.png" alt="image-20230624205209275"></p>
+<p><img src="/blog/2023/03/16/sql%E6%B3%A8%E5%85%A5/image-20230624205209275.png" alt="image-20230624205209275"></p>
 <hr>
 <h2 id="限制绕过"><a href="#限制绕过" class="headerlink" title="限制绕过"></a>限制绕过</h2><h3 id="位数长度不足"><a href="#位数长度不足" class="headerlink" title="位数长度不足"></a>位数长度不足</h3><p>使用截断函数</p>
 <ul>
 <li><strong>substr()函数</strong></li>
 </ul>
 <p>​	  <code>substr(string,start,length)</code></p>
-<p><img src="/blog/2023/03/16/SQL%E6%B3%A8%E5%85%A5/image-20221207161642898.png" alt="1"></p>
+<p><img src="/blog/2023/03/16/sql%E6%B3%A8%E5%85%A5/image-20221207161642898.png" alt="1"></p>
 <ul>
 <li><p><strong>left()函数</strong></p>
 <p>获得源字符串左边的子串</p>

