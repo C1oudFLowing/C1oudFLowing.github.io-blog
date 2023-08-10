@@ -69,7 +69,7 @@
         <!--文章目录-->
         <div id="toc" class="toc-article">
     <div class="toc-title"></div>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB"><span class="toc-text">文件包含</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF"><span class="toc-text">思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PHP%E7%9B%B8%E5%85%B3%E5%87%BD%E6%95%B0"><span class="toc-text">PHP相关函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B4%E6%8E%A5%E8%AF%BB%E5%8F%96"><span class="toc-text">直接读取</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#php%E4%BC%AA%E5%8D%8F%E8%AE%AE"><span class="toc-text">php伪协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Apache%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6"><span class="toc-text">Apache日志文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nginx%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6"><span class="toc-text">nginx日志文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E%EF%BC%88LFI%EF%BC%89"><span class="toc-text">本地文件包含漏洞（LFI）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6include"><span class="toc-text">日志文件include</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A5%E5%BF%97%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E-%E7%9B%AE%E5%BD%95%E7%A9%BF%E8%B6%8A"><span class="toc-text">日志包含漏洞+目录穿越</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%88%AA%E6%96%AD%E6%94%BB%E5%87%BB"><span class="toc-text">截断攻击</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9C%E7%A8%8B%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E%EF%BC%88RFI%EF%BC%89"><span class="toc-text">远程文件包含漏洞（RFI）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Session%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB"><span class="toc-text">Session文件包含</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#session%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-text">session工作原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%EF%BC%9Asession-upload-progress"><span class="toc-text">关键：session.upload_progress</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E7%AB%9E%E4%BA%89"><span class="toc-text">条件竞争</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%95%E8%BF%87%E6%AD%BB%E4%BA%A1%E4%BB%A3%E7%A0%81"><span class="toc-text">绕过死亡代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%B2%E5%BE%A1"><span class="toc-text">防御</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB"><span class="toc-text">文件包含</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF"><span class="toc-text">思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E5%87%BD%E6%95%B0"><span class="toc-text">相关函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B4%E6%8E%A5%E8%AF%BB%E5%8F%96"><span class="toc-text">直接读取</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#php%E4%BC%AA%E5%8D%8F%E8%AE%AE"><span class="toc-text">php伪协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Apache%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6"><span class="toc-text">Apache日志文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nginx%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6"><span class="toc-text">nginx日志文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E%EF%BC%88LFI%EF%BC%89"><span class="toc-text">本地文件包含漏洞（LFI）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB"><span class="toc-text">日志文件包含</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#00%E6%88%AA%E6%96%AD%E6%94%BB%E5%87%BB"><span class="toc-text">%00截断攻击</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9C%E7%A8%8B%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E%EF%BC%88RFI%EF%BC%89"><span class="toc-text">远程文件包含漏洞（RFI）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Session%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB"><span class="toc-text">Session文件包含</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#session%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-text">session工作原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%EF%BC%9Asession-upload-progress"><span class="toc-text">关键：session.upload_progress</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E7%AB%9E%E4%BA%89"><span class="toc-text">条件竞争</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%95%E8%BF%87%E6%AD%BB%E4%BA%A1%E4%BB%A3%E7%A0%81"><span class="toc-text">绕过死亡代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%B2%E5%BE%A1"><span class="toc-text">防御</span></a></li></ol></li></ol>
 </div>
         
         <!--返回顶部-->
@@ -226,12 +226,12 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/" style="color: #ff7d73">文件包含</a>
+                <a href="/blog/tags/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/" style="color: #03a9f4">文件包含</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/blog/tags/PHP/" style="color: #ffa2c4">PHP</a>
+                <a href="/blog/tags/PHP/" style="color: #00a596">PHP</a>
             </span>
             
         </span>
@@ -245,7 +245,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">3.1k字</span>
+        <span class="post-count">3.2k字</span>
       </span>
     </span>
 
@@ -280,7 +280,7 @@
 <span id="more"></span>
 
 <hr>
-<h2 id="PHP相关函数"><a href="#PHP相关函数" class="headerlink" title="PHP相关函数"></a>PHP相关函数</h2><p><code>include()</code>:包含一个文件，如错误则抛出警告</p>
+<h2 id="相关函数"><a href="#相关函数" class="headerlink" title="相关函数"></a>相关函数</h2><p><code>include()</code>:包含一个文件，如错误则抛出警告</p>
 <p><code>include_once()</code>:包含一个文件仅一次，和上面类似</p>
 <p><code>require()</code>:包含一个文件，如错误则报错并停止脚本</p>
 <p><code>require_once()</code>:包含一个文件仅一次，和上面类似</p>
@@ -292,15 +292,13 @@
 
 <span class="token operator">/</span><span class="token keyword">var</span><span class="token operator">/</span>www/html+文件名<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-
-
-
-
+<p>或者利用<code>../</code>相对路径进行目录穿越读取特定文件</p>
 <hr>
-<h2 id="php伪协议"><a href="#php伪协议" class="headerlink" title="php伪协议"></a><a href="https://c1oudfl0w0.github.io/blog/2023/03/15/PHP%E4%BC%AA%E5%8D%8F%E8%AE%AE/">php伪协议</a></h2><hr>
+<h2 id="php伪协议"><a href="#php伪协议" class="headerlink" title="php伪协议"></a><a href="https://c1oudfl0w0.github.io/blog/2023/03/15/PHP%E4%BC%AA%E5%8D%8F%E8%AE%AE/">php伪协议</a></h2><p>有时候包含的文件直接读取会产生报错，就需要采用伪协议进行内容读取</p>
+<hr>
 <h2 id="Apache日志文件"><a href="#Apache日志文件" class="headerlink" title="Apache日志文件"></a>Apache日志文件</h2><ul>
 <li><p><strong>access.log</strong></p>
-<p>记录网站的访问信息</p>
+<p>记录网站的访问信息，包括user-agent头的信息，</p>
 <p><code>客户端IP - - [访问时间] &quot;请求记录&quot; HTTP状态码 字节数</code></p>
 </li>
 <li><p><strong>error.log</strong></p>
@@ -308,24 +306,23 @@
 </li>
 </ul>
 <blockquote>
-<p>注：每次的日志会记录，所以，上传命令之后，如果产生报错或者不执行的情况必须重启容器。  </p>
-<p>再就是可能会有人问为什么发送第二次包的时候才会出现flag。这是因为发送第一个包的时候，将一句话木马写入access.log日志</p>
-<p>第二次发包才包含到前一次的日志中的木马。</p>
+<p>注：每次的日志会记录，所以，上传命令之后，如果产生报错或者不执行的情况必须重启容器。 再就是可能会有人问为什么发送第二次包的时候才会出现flag。这是因为发送第一个包的时候，将一句话木马写入access.log日志，第二次发包才包含到前一次的日志中的木马。</p>
 </blockquote>
 <hr>
-<h2 id="nginx日志文件"><a href="#nginx日志文件" class="headerlink" title="nginx日志文件"></a>nginx日志文件</h2><ul>
-<li>位置：&#x2F;var&#x2F;log&#x2F;nginx&#x2F;access.log</li>
-</ul>
+<h2 id="nginx日志文件"><a href="#nginx日志文件" class="headerlink" title="nginx日志文件"></a>nginx日志文件</h2><p>位置：&#x2F;var&#x2F;log&#x2F;nginx&#x2F;access.log</p>
+<p>格式为</p>
+<pre class="line-numbers language-nginx" data-language="nginx"><code class="language-nginx"><span class="token directive"><span class="token keyword">log_format</span> access <span class="token string">'<span class="token variable">$remote_addr</span> – <span class="token variable">$remote_user</span> [<span class="token variable">$time_local]</span> "<span class="token variable">$request</span>"'</span> <span class="token string">'<span class="token variable">$status</span> <span class="token variable">$body_bytes_sent</span> "<span class="token variable">$http_referer</span>"'</span> <span class="token string">'"<span class="token variable">$http_user_agent</span>" <span class="token variable">$http_x_forwarded_for</span>'</span></span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
 <hr>
-<h2 id="本地文件包含漏洞（LFI）"><a href="#本地文件包含漏洞（LFI）" class="headerlink" title="本地文件包含漏洞（LFI）"></a>本地文件包含漏洞（LFI）</h2><p><code>url+参数=挂马文件地址</code></p>
-<h3 id="日志文件include"><a href="#日志文件include" class="headerlink" title="日志文件include"></a>日志文件include</h3><p>原理：对网站进行访问时,日志文件会记录相关信息(请求头中的信息)</p>
-<p>前提：知道日志文件所在,并能进行包含</p>
-<ul>
-<li>先访问网站在请求头中写入一句话(一般写在user-agent中)</li>
-<li>然后通过post去尝试执行</li>
-<li>执行成功后通过蚁剑连接得到shell</li>
-</ul>
-<h3 id="日志包含漏洞-目录穿越"><a href="#日志包含漏洞-目录穿越" class="headerlink" title="日志包含漏洞+目录穿越"></a>日志包含漏洞+目录穿越</h3><blockquote>
+<h2 id="本地文件包含漏洞（LFI）"><a href="#本地文件包含漏洞（LFI）" class="headerlink" title="本地文件包含漏洞（LFI）"></a>本地文件包含漏洞（LFI）</h2><pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+    <span class="token keyword">include</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string double-quoted-string">"a"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+
+<h3 id="日志文件包含"><a href="#日志文件包含" class="headerlink" title="日志文件包含"></a>日志文件包含</h3><p>原理：对网站进行访问时，日志文件会记录相关信息(请求头中的信息)，而且一旦写入php一句话木马就可以被包含执行</p>
+<p>前提：知道日志文件所在，并能进行包含</p>
+<blockquote>
 <p>ctfshow web150</p>
 </blockquote>
 <p><img src="/blog/2023/03/15/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%80%BB%E7%BB%93/image-20230718120031429.png" alt="image-20230718120031429"></p>
@@ -340,17 +337,20 @@
 <p>注：如果不知道日志文件的地址，可以把参数设置成一个不存在的文件名，比如<code>?jumpTo=114514</code>，这样网页会报错显示网站的绝对路径  （如果没有屏蔽报错），使用了各种面板的会显示面板的错误信息，可以以此来判断日志路径。</p>
 </blockquote>
 <hr>
-<h3 id="截断攻击"><a href="#截断攻击" class="headerlink" title="截断攻击"></a>截断攻击</h3><blockquote>
+<h3 id="00截断攻击"><a href="#00截断攻击" class="headerlink" title="%00截断攻击"></a>%00截断攻击</h3><blockquote>
 <p>PHP &lt; 5.3.4</p>
 </blockquote>
+<p>场景：对传入的参数使用字符串拼接</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+    <span class="token keyword">include</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'a'</span><span class="token punctuation">]</span><span class="token operator">.</span><span class="token string double-quoted-string">"txt"</span><span class="token punctuation">)</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <ul>
-<li>场景：对传入的参数使用字符串拼接</li>
 <li>在ASCII字符集中，<code>%00</code>代表的是<strong>字符串的结束</strong>，也就是说，如果在一串字符的中间插入<code>%00</code>，那么后面的字符串会被丢弃。如果把参数值改为<code>shell.jpg%00</code>，那么之后拼接的字符串将被<code>include</code>方法所丢弃。这样就能成功访问一句话木马。</li>
 </ul>
 <hr>
 <h2 id="远程文件包含漏洞（RFI）"><a href="#远程文件包含漏洞（RFI）" class="headerlink" title="远程文件包含漏洞（RFI）"></a>远程文件包含漏洞（RFI）</h2><p>本质是使用<strong>PHP伪协议</strong>进行包含</p>
 <ul>
-<li><p>无限制：参数之后加上危险脚本的URL</p>
+<li><p>无限制：参数之后加上危险脚本的URL，一般把如一句话木马的php脚本放在自己的vps上进行远程包含</p>
 </li>
 <li><p>有限制时截断：</p>
 <ul>

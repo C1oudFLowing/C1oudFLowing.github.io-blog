@@ -226,7 +226,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/PHP/" style="color: #ff7d73">PHP</a>
+                <a href="/blog/tags/PHP/" style="color: #ffa2c4">PHP</a>
             </span>
             
         </span>
@@ -389,7 +389,7 @@
 
 <ul>
 <li><strong>漏洞</strong>：<ul>
-<li>NULL截断：使用**%00**截断前后语句的正则匹配</li>
+<li>NULL截断：使用<code>%00</code>截断前后语句的正则匹配</li>
 <li>只能处理字符串，遇到数组做参数返回NULL</li>
 </ul>
 </li>
@@ -431,22 +431,24 @@ lf&#x2F;root&#x2F;proc&#x2F;self&#x2F;root&#x2F;var&#x2F;www&#x2F;html&#x2F;flag
 <ul>
 <li>trim()函数过滤空格以及<code>\n\r\t\v\0</code>，但不会过滤<code>\f (%0c)</code></li>
 </ul>
+<hr>
 <h2 id="SERVER-‘argv’"><a href="#SERVER-‘argv’" class="headerlink" title="$_SERVER[‘argv’]"></a>$_SERVER[‘argv’]</h2><blockquote>
 <p>传递给该脚本的参数，以数组方式传回里面的内容</p>
 </blockquote>
 <pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token variable">$a</span><span class="token operator">=</span><span class="token variable">$_SERVER</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'argv'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<span class="token operator">>></span><span class="token operator">></span>url<span class="token operator">/</span><span class="token operator">?</span><span class="token variable">$a</span><span class="token operator">=</span><span class="token number">1</span>b<span class="token operator">=</span><span class="token number">2</span>
-<span class="token operator">>></span><span class="token operator">></span><span class="token keyword">array</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">=></span> <span class="token keyword type-declaration">string</span><span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">)</span> <span class="token string double-quoted-string">"<span class="token interpolation"><span class="token variable">$a</span></span>=1b=2"</span> <span class="token punctuation">&#125;</span> 
-
-<span class="token operator">>></span><span class="token operator">></span>url<span class="token operator">/</span><span class="token operator">?</span>a<span class="token operator">=</span><span class="token number">1</span><span class="token operator">+</span>b<span class="token operator">=</span><span class="token number">2</span>
-<span class="token operator">>></span><span class="token operator">></span><span class="token keyword">array</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">=></span> <span class="token keyword type-declaration">string</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token string double-quoted-string">"a=1"</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">=></span> <span class="token keyword type-declaration">string</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token string double-quoted-string">"b=2"</span> <span class="token punctuation">&#125;</span> </span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p><code>+</code>具有分隔的作用</p>
-<p>读取内容为get请求后的<code>?</code></p>
-<p>可以利用这个对变量进行赋值</p>
+<p>这里分别测试一下传入参数<code>1</code>，<code>a=1&amp;b=1</code>，<code>a=1+b=1</code></p>
+<p><img src="/blog/2023/03/15/PHP%E7%89%B9%E6%80%A7/image-20230804124857920.png" alt="image-20230804124857920"></p>
+<p><img src="/blog/2023/03/15/PHP%E7%89%B9%E6%80%A7/image-20230804124935710.png" alt="image-20230804124935710"></p>
+<p><img src="/blog/2023/03/15/PHP%E7%89%B9%E6%80%A7/image-20230804125002066.png" alt="image-20230804125002066"></p>
+<p>从这里可以发现几个问题</p>
+<ul>
+<li><code>&amp;</code>无法分割参数，真正能分割参数的是<code>+</code></li>
+<li>等号无法赋值，而是会直接被传进去当作参数</li>
+</ul>
+<hr>
 <h2 id="gettext-函数"><a href="#gettext-函数" class="headerlink" title="gettext()函数"></a>gettext()函数</h2><blockquote>
 <p>可以直接输出文本，需要php扩展目录下有php_gettext.dll</p>
 </blockquote>

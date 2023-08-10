@@ -226,7 +226,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/" style="color: #ffa2c4">文件包含</a>
+                <a href="/blog/tags/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/" style="color: #00a596">文件包含</a>
             </span>
             
         </span>
@@ -249,7 +249,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">8分</span>
+        <span class="post-count">7分</span>
       </span>
     </span>
     
@@ -298,15 +298,7 @@
 <li><p>开启register_argc_argv，docker默认开了</p>
 <p>当我们开启register_argc_argv选项的时候，<code>$_SERVER[‘argv’]</code>就会生效</p>
 <p>URL中?后面的内容会全部传入至<code>$_SERVER[&#39;argv&#39;]</code>这个变量内，无论后面的内容是否有等号</p>
-<p>这里分别测试一下传入参数<code>1</code>，<code>a=1&amp;b=1</code>，<code>a=1+b=1</code></p>
-<p><img src="/blog/2023/07/25/LFI%E5%8C%85%E5%90%ABpearcmd-php%E8%BF%9B%E8%A1%8C%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/image-20230804124857920.png" alt="image-20230804124857920"></p>
-<p><img src="/blog/2023/07/25/LFI%E5%8C%85%E5%90%ABpearcmd-php%E8%BF%9B%E8%A1%8C%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/image-20230804124935710.png" alt="image-20230804124935710"></p>
-<p><img src="/blog/2023/07/25/LFI%E5%8C%85%E5%90%ABpearcmd-php%E8%BF%9B%E8%A1%8C%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/image-20230804125002066.png" alt="image-20230804125002066"></p>
-<p>从这里可以发现几个问题</p>
-<ul>
-<li><code>&amp;</code>无法分割参数，真正能分割参数的是<code>+</code></li>
-<li>等号无法赋值，而是会直接被传进去当作参数</li>
-</ul>
+<p>参考<a href="https://c1oudfl0w0.github.io/blog/2023/03/15/PHP%E7%89%B9%E6%80%A7/#SERVER-%E2%80%98argv%E2%80%99">php特性中$_SERVER[‘argv’]</a></p>
 </li>
 <li><p>而<code>$_SERVER[‘argv’]</code>有什么用呢，我们来看一下pearcmd.php的获取参数的代码段</p>
 <pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token class-name static-context">PEAR_Command</span><span class="token operator">::</span><span class="token function">setFrontendType</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'CLI'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
