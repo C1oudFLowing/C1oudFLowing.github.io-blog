@@ -228,7 +228,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">401字</span>
+        <span class="post-count">436字</span>
       </span>
     </span>
 
@@ -237,7 +237,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">1分</span>
+        <span class="post-count">2分</span>
       </span>
     </span>
     
@@ -313,6 +313,9 @@ if (isset($_POST[&#39;rce&#39;])) &#123;
 <p>fuzz脚本测试了一下，发现and、sleep、handler、extractvalue、@、#、–、空格、information_schema被禁用了</p>
 <p>首先，空格可以用<code>/**/</code>来替代</p>
 <p>然后是过滤了#，也就意味着我们要自行闭合语句</p>
+<p>接着是information_schema，意味着我们要进行无列名注入</p>
+<p>题目告诉我们flag在flag表的flag列中</p>
+<p>直接payload打进去</p>
 
     </div>
     
