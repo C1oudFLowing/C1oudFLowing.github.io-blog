@@ -226,7 +226,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/Java/" style="color: #00a596">Java</a>
+                <a href="/blog/tags/Java/" style="color: #03a9f4">Java</a>
             </span>
             
         </span>
@@ -584,14 +584,15 @@ phone p1<span class="token operator">=</span><span class="token punctuation">(</
 <li>halt(int status): 终止当前JVM，并返回一个指定的状态码。</li>
 </ul>
 <p>我们可以发现这里的<code>exec()</code>方法明显能用来进行命令执行</p>
-<p>利用反射可以实现弹计算器（注：jdk版本要小于9，博主这里都jdk19了，<del>暂时就不复现了</del>）</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Class</span> p<span class="token operator">=</span><span class="token class-name">Class</span><span class="token punctuation">.</span>*forName<span class="token operator">*</span><span class="token punctuation">(</span><span class="token string">"java.lang.Runtime"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token class-name">Constructor</span> constructor<span class="token operator">=</span>p<span class="token punctuation">.</span><span class="token function">getDeclaredConstructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//调用私有构造器</span>
-constructor<span class="token punctuation">.</span><span class="token function">setAccessible</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//修改作用域</span>
-<span class="token class-name">Method</span> m<span class="token operator">=</span>p<span class="token punctuation">.</span><span class="token function">getMethod</span><span class="token punctuation">(</span><span class="token string">"exec"</span><span class="token punctuation">,</span> <span class="token class-name">String</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//获取exec方法</span>
-<span class="token class-name">Object</span> o<span class="token operator">=</span>constructor<span class="token punctuation">.</span><span class="token function">newInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//实例化对象</span>
-m<span class="token punctuation">.</span><span class="token function">invoke</span><span class="token punctuation">(</span>o<span class="token punctuation">,</span><span class="token string">"calc"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//调用exec方法，执行calc命令</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>利用反射可以实现弹计算器（注：jdk版本要小于9）</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Class</span> p <span class="token operator">=</span> <span class="token class-name">Class</span><span class="token punctuation">.</span><span class="token function">forName</span><span class="token punctuation">(</span><span class="token string">"java.lang.Runtime"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">Constructor</span> constructor <span class="token operator">=</span> p<span class="token punctuation">.</span><span class="token function">getDeclaredConstructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 调用私有构造器</span>
+constructor<span class="token punctuation">.</span><span class="token function">setAccessible</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 修改作用域</span>
+<span class="token class-name">Method</span> m <span class="token operator">=</span> p<span class="token punctuation">.</span><span class="token function">getMethod</span><span class="token punctuation">(</span><span class="token string">"exec"</span><span class="token punctuation">,</span> <span class="token class-name">String</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 获取exec方法</span>
+<span class="token class-name">Object</span> o <span class="token operator">=</span> constructor<span class="token punctuation">.</span><span class="token function">newInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 实例化对象</span>
+m<span class="token punctuation">.</span><span class="token function">invoke</span><span class="token punctuation">(</span>o<span class="token punctuation">,</span> <span class="token string">"calc"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 调用exec方法，执行calc命令</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<p><img src="/blog/2023/07/03/Java%E5%8F%8D%E5%B0%84/image-20230822164454262.png" alt="image-20230822164454262"></p>
 <hr>
 <h2 id="利用ProcessBuilder执行命令"><a href="#利用ProcessBuilder执行命令" class="headerlink" title="利用ProcessBuilder执行命令"></a>利用ProcessBuilder执行命令</h2>
     </div>

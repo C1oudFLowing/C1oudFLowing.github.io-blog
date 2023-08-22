@@ -3,7 +3,7 @@
 <html lang="zh-CN">
     <head>
         <meta charset="UTF-8" />
-        <title>反序列化 | 雲流のLowest World</title>
+        <title>PHP反序列化 | 雲流のLowest World</title>
         <meta name="author" content="C1oudfL0w0" />
         <meta name="description" content="" />
         <meta name="keywords" content="" />
@@ -69,7 +69,7 @@
         <!--文章目录-->
         <div id="toc" class="toc-article">
     <div class="toc-title"></div>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-text">反序列化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%86%9F%E6%82%89PHP%E7%9A%84%E7%B1%BB%E5%92%8C%E6%96%B9%E6%B3%95"><span class="toc-text">熟悉PHP的类和方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95"><span class="toc-text">语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95"><span class="toc-text">魔术方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E7%94%9F%E7%B1%BB"><span class="toc-text">原生类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#POP%E9%93%BE"><span class="toc-text">POP链</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%A7%BF%E5%8A%BF"><span class="toc-text">常用姿势</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#shell%E8%8E%B7%E5%8F%96%E5%88%A9%E7%94%A8"><span class="toc-text">shell获取利用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%87%E6%BB%A4%E7%BB%95%E8%BF%87"><span class="toc-text">过滤绕过</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%80%83%E9%80%B8"><span class="toc-text">字符串逃逸</span></a></li></ol></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-text">PHP反序列化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%86%9F%E6%82%89PHP%E7%9A%84%E7%B1%BB%E5%92%8C%E6%96%B9%E6%B3%95"><span class="toc-text">熟悉PHP的类和方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95"><span class="toc-text">语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95"><span class="toc-text">魔术方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E7%94%9F%E7%B1%BB"><span class="toc-text">原生类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#POP%E9%93%BE"><span class="toc-text">POP链</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%A7%BF%E5%8A%BF"><span class="toc-text">常用姿势</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#shell%E8%8E%B7%E5%8F%96%E5%88%A9%E7%94%A8"><span class="toc-text">shell获取利用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%87%E6%BB%A4%E7%BB%95%E8%BF%87"><span class="toc-text">过滤绕过</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%80%83%E9%80%B8"><span class="toc-text">字符串逃逸</span></a></li></ol></li></ol></li></ol>
 </div>
         
         <!--返回顶部-->
@@ -199,7 +199,7 @@
 
                 <div class="article">
     <div>
-        <h1>反序列化</h1>
+        <h1>PHP反序列化</h1>
     </div>
     <div class="info">
         <span class="date">
@@ -226,7 +226,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="color: #00a596">反序列化</a>
+                <a href="/blog/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="color: #ffa2c4">反序列化</a>
             </span>
             
         </span>
@@ -240,7 +240,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">633字</span>
+        <span class="post-count">708字</span>
       </span>
     </span>
 
@@ -249,7 +249,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">2分</span>
+        <span class="post-count">3分</span>
       </span>
     </span>
     
@@ -264,48 +264,45 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="反序列化"><a href="#反序列化" class="headerlink" title="反序列化"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/solitudi/article/details/113588692">反序列化</a></h1><blockquote>
+        <h1 id="PHP反序列化"><a href="#PHP反序列化" class="headerlink" title="PHP反序列化"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/solitudi/article/details/113588692">PHP反序列化</a></h1><blockquote>
 <p>O(对象):(类的字符长度):(类名):(项数):{s&#x2F;i(字符串&#x2F;数字):(长度):(内容);}</p>
 </blockquote>
-<blockquote>
-<p>利用方向： 魔术方法的调用逻辑-如触发条件 </p>
-<p>​					语言原生类的调用逻辑-如SoapClient</p>
-<p>​					语言自身的安全缺陷-如CVE-2016-7124</p>
-</blockquote>
+<p>利用方向： </p>
+<p>魔术方法的调用逻辑-如触发条件 </p>
+<p>语言原生类的调用逻辑-如SoapClient </p>
+<p>语言自身的安全缺陷-如CVE-2016-7124</p>
 <span id="more"></span>
 
-<h2 id="熟悉PHP的类和方法"><a href="#熟悉PHP的类和方法" class="headerlink" title="熟悉PHP的类和方法"></a>熟悉PHP的类和方法</h2><h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token variable">$a</span><span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">wllm</span><span class="token punctuation">(</span><span class="token punctuation">)</span>	<span class="token comment">//自定义参数实例化类</span>
-<span class="token variable">$a</span><span class="token operator">-></span><span class="token property">admin</span><span class="token operator">=</span><span class="token string double-quoted-string">"admin"</span><span class="token punctuation">;</span>		<span class="token comment">//调用指针指向变量或方法并赋值</span>
-<span class="token variable">$b</span><span class="token operator">=</span><span class="token function">serialize</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h2 id="熟悉PHP的类和方法"><a href="#熟悉PHP的类和方法" class="headerlink" title="熟悉PHP的类和方法"></a>熟悉PHP的类和方法</h2><p>public：公有的类成员可以在任何地方被访问</p>
+<p>protected：受保护的类成员则可以被其自身以及其子类和父类访问，其属性序列化后的字符串会变成<code>%00*%00</code>+受保护的属性名</p>
+<p>private：私有的类成员则只能被其定义所在的类访问，其属性序列化后的字符串会变成<code>%00类名%00</code>+私有属性名</p>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">wllm</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token variable">$admin</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">__construct</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token variable">$this</span><span class="token operator">-></span><span class="token property">admin</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token variable">$a</span><span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">wllm</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>	<span class="token comment">//自定义参数实例化类</span>
+<span class="token variable">$a</span><span class="token operator">-></span><span class="token property">admin</span><span class="token operator">=</span><span class="token string double-quoted-string">"C1oudfL0w0"</span><span class="token punctuation">;</span>		<span class="token comment">//调用指针指向变量或方法并赋值</span>
+<span class="token variable">$b</span><span class="token operator">=</span><span class="token function">serialize</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token variable">$b</span><span class="token punctuation">;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-
-
-<h2 id="魔术方法"><a href="#魔术方法" class="headerlink" title="魔术方法"></a><a href="https://c1oudfl0w0.github.io/blog/2023/04/30/PHP%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95">魔术方法</a></h2><p><a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/language.oop5.magic.php#object.serialize">官方文档</a></p>
+<p>运行后可以得到序列化的字符串<code>O:4:&quot;wllm&quot;:1:&#123;s:5:&quot;admin&quot;;s:10:&quot;C1oudfL0w0&quot;;&#125;</code></p>
+<h2 id="魔术方法"><a href="#魔术方法" class="headerlink" title="魔术方法"></a><a href="https://c1oudfl0w0.github.io/blog/2023/04/30/PHP%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95">魔术方法</a></h2><p>是一组特殊的方法，它们在特定的情况下会自动调用，以提供对类的行为和属性的控制。这些方法的名称都以两个下划线 <code>__</code> 开头和结尾</p>
 <hr>
-<h2 id="原生类"><a href="#原生类" class="headerlink" title="原生类"></a><a href="https://c1oudfl0w0.github.io/blog/2023/04/30/PHP%E5%8E%9F%E7%94%9F%E7%B1%BB">原生类</a></h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_52988816/article/details/124573109">外链</a></p>
+<h2 id="原生类"><a href="#原生类" class="headerlink" title="原生类"></a><a href="https://c1oudfl0w0.github.io/blog/2023/04/30/PHP%E5%8E%9F%E7%94%9F%E7%B1%BB">原生类</a></h2><p>即内置类，是 PHP 本身提供的核心功能和特性的一部分</p>
 <hr>
-<h2 id="POP链"><a href="#POP链" class="headerlink" title="POP链"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_62422842/article/details/123988229?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522166876201416782428623647%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=166876201416782428623647&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_click~default-1-123988229-null-null.142%5Ev65%5Eopensearch_v2,201%5Ev3%5Econtrol,213%5Ev2%5Et3_esquery_v2&utm_term=pop%E9%93%BE&spm=1018.2226.3001.4187">POP链</a></h2><blockquote>
+<h2 id="POP链"><a href="#POP链" class="headerlink" title="POP链"></a>POP链</h2><blockquote>
 <p>它是一种面向属性编程，常用于构造调用链的方法。在题目中的代码里找到一系列能调用的指令，并将这些指令整合成一条有逻辑的能达到恶意攻击效果的代码</p>
 </blockquote>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_62422842/article/details/123988229?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522166876201416782428623647%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=166876201416782428623647&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_click~default-1-123988229-null-null.142%5Ev65%5Eopensearch_v2,201%5Ev3%5Econtrol,213%5Ev2%5Et3_esquery_v2&utm_term=pop%E9%93%BE&spm=1018.2226.3001.4187">参考文章</a></p>
 <ul>
-<li><p>public:公有的类成员可以在任何地方被访问</p>
-</li>
-<li><p>protected:受保护的类成员则可以被其自身以及其子类和父类访问</p>
-<p>.*.</p>
-</li>
-<li><p>private:私有的类成员则只能被其定义所在的类访问</p>
-<p>.类名.</p>
-<ul>
-<li><p>private 声明的字段为私有字段，只在所声明的类中可见，在该类的子类和该类的对象实例中均不可见。因此私有字段的字段名在序列化时，类名和字段名前面都会加上0的前缀。字符串长度也包括所加前缀的长度：即%00</p>
-<p>因此需要<code>urlencode</code></p>
-</li>
-</ul>
-</li>
 <li><p>入口： __destruct()或___wakeup()</p>
 </li>
 <li><p>出口：__invoke()</p>
 </li>
-<li><p>通过this-&gt;指针调用其他类构造pop链</p>
+<li><p>通过<code>-&gt;</code>指针调用其他类构造pop链</p>
 </li>
 </ul>
 <p><a target="_blank" rel="noopener" href="https://www.ctfer.vip/problem/440">例题源码</a></p>
