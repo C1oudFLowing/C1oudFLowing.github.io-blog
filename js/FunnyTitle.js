@@ -7,7 +7,7 @@ document.addEventListener('visibilitychange', function () {
         clearTimeout(titleTime);
     }
     else {
-        document.title = '(ฅ>ω<*ฅ) 活过来惹 ~' + OriginTitle;
+        document.title = '欢迎回来 ᕕ(◠ڼ◠)ᕗ ' + OriginTitle;
         titleTime = setTimeout(function () {
             document.title = OriginTitle;
         }, 2000);

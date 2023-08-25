@@ -34,6 +34,7 @@
 
 
 
+
 <script src="/blog/js/lib/home.js"></script>
 
 <link rel="stylesheet" href="/blog/css/main.css" />
@@ -67,10 +68,13 @@
         color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
 
         <!--文章目录-->
-        <div id="toc" class="toc-article">
-    <div class="toc-title"></div>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB"><span class="toc-text">文件包含</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF"><span class="toc-text">思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E5%87%BD%E6%95%B0"><span class="toc-text">相关函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B4%E6%8E%A5%E8%AF%BB%E5%8F%96"><span class="toc-text">直接读取</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#php%E4%BC%AA%E5%8D%8F%E8%AE%AE"><span class="toc-text">php伪协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Apache%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6"><span class="toc-text">Apache日志文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nginx%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6"><span class="toc-text">nginx日志文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E%EF%BC%88LFI%EF%BC%89"><span class="toc-text">本地文件包含漏洞（LFI）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB"><span class="toc-text">日志文件包含</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#00%E6%88%AA%E6%96%AD%E6%94%BB%E5%87%BB"><span class="toc-text">%00截断攻击</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9C%E7%A8%8B%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E%EF%BC%88RFI%EF%BC%89"><span class="toc-text">远程文件包含漏洞（RFI）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Session%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB"><span class="toc-text">Session文件包含</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#session%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-text">session工作原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%EF%BC%9Asession-upload-progress"><span class="toc-text">关键：session.upload_progress</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E7%AB%9E%E4%BA%89"><span class="toc-text">条件竞争</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%95%E8%BF%87%E6%AD%BB%E4%BA%A1%E4%BB%A3%E7%A0%81"><span class="toc-text">绕过死亡代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%B2%E5%BE%A1"><span class="toc-text">防御</span></a></li></ol></li></ol>
-</div>
+        
+    <div id="toc" class="toc-article">
+    <h3><i class="fa-brands fa-readme"></i>  目录</h3>
+      <div class="toc-title"></div>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB"><span class="toc-text">文件包含</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF"><span class="toc-text">思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E5%87%BD%E6%95%B0"><span class="toc-text">相关函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B4%E6%8E%A5%E8%AF%BB%E5%8F%96"><span class="toc-text">直接读取</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#php%E4%BC%AA%E5%8D%8F%E8%AE%AE"><span class="toc-text">php伪协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Apache%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6"><span class="toc-text">Apache日志文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nginx%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6"><span class="toc-text">nginx日志文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E%EF%BC%88LFI%EF%BC%89"><span class="toc-text">本地文件包含漏洞（LFI）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB"><span class="toc-text">日志文件包含</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#00%E6%88%AA%E6%96%AD%E6%94%BB%E5%87%BB"><span class="toc-text">%00截断攻击</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9C%E7%A8%8B%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E%EF%BC%88RFI%EF%BC%89"><span class="toc-text">远程文件包含漏洞（RFI）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Session%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB"><span class="toc-text">Session文件包含</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#session%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-text">session工作原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%EF%BC%9Asession-upload-progress"><span class="toc-text">关键：session.upload_progress</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E7%AB%9E%E4%BA%89"><span class="toc-text">条件竞争</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%95%E8%BF%87%E6%AD%BB%E4%BA%A1%E4%BB%A3%E7%A0%81"><span class="toc-text">绕过死亡代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%B2%E5%BE%A1"><span class="toc-text">防御</span></a></li></ol></li></ol>
+    </div>
+  
         
         <!--返回顶部-->
         <div id="totop" style="position:fixed;bottom:50px;right:60px;font-size: 48px;cursor: pointer;z-index: 10;">
@@ -226,12 +230,12 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/" style="color: #00a596">文件包含</a>
+                <a href="/blog/tags/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/" style="color: #ffa2c4">文件包含</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/blog/tags/PHP/" style="color: #ff7d73">PHP</a>
+                <a href="/blog/tags/PHP/" style="color: #ffa2c4">PHP</a>
             </span>
             
         </span>
