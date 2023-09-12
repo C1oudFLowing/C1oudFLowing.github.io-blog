@@ -1238,3 +1238,15 @@ img.vimg:hover {
 #busuanzi_container_page_pv {
   display: inline !important;
 }
+
+/*links*/
+.card {
+    display: flex;
+    align-items: center;
+}
+  
+.ava {
+    width: 100px;
+    height: 100px;
+    margin-right: 10px;
+}
