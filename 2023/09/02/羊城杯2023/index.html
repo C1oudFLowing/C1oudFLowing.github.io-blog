@@ -71,7 +71,7 @@
     <div id="toc" class="toc-article">
     <h3><i class="fa-brands fa-readme"></i>  目录</h3>
       <div class="toc-title"></div>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Web"><span class="toc-text">Web</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#D0n%E2%80%99t-pl4y-g4m3"><span class="toc-text">D0n’t pl4y g4m3!!!</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Serpent"><span class="toc-text">Serpent</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Web"><span class="toc-text">Web</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#D0n%E2%80%99t-pl4y-g4m3"><span class="toc-text">D0n’t pl4y g4m3!!!</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Serpent"><span class="toc-text">Serpent</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ArkNights"><span class="toc-text">ArkNights</span></a></li></ol></li></ol>
     </div>
   
         
@@ -231,7 +231,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">730字</span>
+        <span class="post-count">949字</span>
       </span>
     </span>
 
@@ -240,7 +240,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">3分</span>
+        <span class="post-count">5分</span>
       </span>
     </span>
     
@@ -348,7 +348,7 @@
 
 <p>这题的链子和neepuctf的ezphp很像</p>
 <p>然后问题就在于怎么绕过过滤</p>
-<p>这里琢磨了半天选择直接读文件</p>
+<p>这里琢磨了半天选择直接读文件（ps：因为是<code>preg_replace</code>，所以可以双写system绕过）</p>
 <p>测试了几个方法最后用<code>highlight_file</code>读出来的</p>
 <pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token function">error_reporting</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -436,6 +436,57 @@
 <p>带回session</p>
 <p><img src="/blog/2023/09/02/%E7%BE%8A%E5%9F%8E%E6%9D%AF2023/image-20230902204301517.png" alt="image-20230902204301517"></p>
 <p>接下来就是pickle反序列化了，<del>但是我还没学</del></p>
+<hr>
+<h2 id="ArkNights"><a href="#ArkNights" class="headerlink" title="ArkNights"></a>ArkNights</h2><p>源码</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> uuid
+<span class="token keyword">from</span> flask <span class="token keyword">import</span> <span class="token operator">*</span>
+<span class="token keyword">from</span> werkzeug<span class="token punctuation">.</span>utils <span class="token keyword">import</span> <span class="token operator">*</span>
+app <span class="token operator">=</span> Flask<span class="token punctuation">(</span>__name__<span class="token punctuation">)</span>
+app<span class="token punctuation">.</span>config<span class="token punctuation">[</span><span class="token string">'SECRET_KEY'</span><span class="token punctuation">]</span> <span class="token operator">=</span><span class="token builtin">str</span><span class="token punctuation">(</span>uuid<span class="token punctuation">.</span>uuid4<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"-"</span><span class="token punctuation">,</span><span class="token string">"*"</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token string">"Boogipopisweak"</span>
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">index</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    name<span class="token operator">=</span>request<span class="token punctuation">.</span>args<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">,</span><span class="token string">"name"</span><span class="token punctuation">)</span>
+    m1sery<span class="token operator">=</span><span class="token punctuation">[</span>request<span class="token punctuation">.</span>args<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"m1sery"</span><span class="token punctuation">,</span><span class="token string">"Doctor.Boogipop"</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>session<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token operator">==</span><span class="token string">"Dr.Boog1pop"</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        blacklist<span class="token operator">=</span>re<span class="token punctuation">.</span>findall<span class="token punctuation">(</span><span class="token string">"/ba|sh|\\\\|\[|]|#|system|'|\"/"</span><span class="token punctuation">,</span> name<span class="token punctuation">,</span> re<span class="token punctuation">.</span>IGNORECASE<span class="token punctuation">)</span>
+        <span class="token keyword">if</span> blacklist<span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token string">"bad hacker no way"</span>
+        <span class="token keyword">exec</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f'for [</span><span class="token interpolation"><span class="token punctuation">&#123;</span>name<span class="token punctuation">&#125;</span></span><span class="token string">] in [</span><span class="token interpolation"><span class="token punctuation">&#123;</span>m1sery<span class="token punctuation">&#125;</span></span><span class="token string">]:print("strange?")'</span></span><span class="token punctuation">)</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        session<span class="token punctuation">[</span><span class="token string">'name'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"Doctor"</span>
+    <span class="token keyword">return</span> render_template<span class="token punctuation">(</span><span class="token string">"index.html"</span><span class="token punctuation">,</span>name<span class="token operator">=</span>session<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/read'</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">read</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token builtin">file</span> <span class="token operator">=</span> request<span class="token punctuation">.</span>args<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'file'</span><span class="token punctuation">)</span>
+        fileblacklist<span class="token operator">=</span>re<span class="token punctuation">.</span>findall<span class="token punctuation">(</span><span class="token string">"/flag|fl|ag/"</span><span class="token punctuation">,</span><span class="token builtin">file</span><span class="token punctuation">,</span> re<span class="token punctuation">.</span>IGNORECASE<span class="token punctuation">)</span>
+        <span class="token keyword">if</span> fileblacklist<span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token string">"bad hacker!"</span>
+        start<span class="token operator">=</span>request<span class="token punctuation">.</span>args<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"start"</span><span class="token punctuation">,</span><span class="token string">"0"</span><span class="token punctuation">)</span>
+        end<span class="token operator">=</span>request<span class="token punctuation">.</span>args<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"end"</span><span class="token punctuation">,</span><span class="token string">"0"</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> start<span class="token operator">==</span><span class="token string">"0"</span> <span class="token keyword">and</span> end<span class="token operator">==</span><span class="token string">"0"</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token builtin">file</span><span class="token punctuation">,</span><span class="token string">"rb"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            start<span class="token punctuation">,</span>end<span class="token operator">=</span><span class="token builtin">int</span><span class="token punctuation">(</span>start<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token builtin">int</span><span class="token punctuation">(</span>end<span class="token punctuation">)</span>
+            f<span class="token operator">=</span><span class="token builtin">open</span><span class="token punctuation">(</span><span class="token builtin">file</span><span class="token punctuation">,</span><span class="token string">"rb"</span><span class="token punctuation">)</span>
+            f<span class="token punctuation">.</span>seek<span class="token punctuation">(</span>start<span class="token punctuation">)</span>
+            data<span class="token operator">=</span>f<span class="token punctuation">.</span>read<span class="token punctuation">(</span>end<span class="token punctuation">)</span>
+            <span class="token keyword">return</span> data
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">"/&lt;path:path>"</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">render_page</span><span class="token punctuation">(</span>path<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>pardir<span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>path<span class="token punctuation">)</span>
+    <span class="token keyword">if</span> <span class="token keyword">not</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>exists<span class="token punctuation">(</span><span class="token string">"templates/"</span> <span class="token operator">+</span> path<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token string">"not found"</span><span class="token punctuation">,</span> <span class="token number">404</span>
+    <span class="token keyword">return</span> render_template<span class="token punctuation">(</span>path<span class="token punctuation">)</span>
+<span class="token keyword">if</span> __name__<span class="token operator">==</span><span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    app<span class="token punctuation">.</span>run<span class="token punctuation">(</span>
+        debug<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span>
+        host<span class="token operator">=</span><span class="token string">"0.0.0.0"</span>
+    <span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>app<span class="token punctuation">.</span>config<span class="token punctuation">[</span><span class="token string">'SECRET_KEY'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>非预期：<code>/read?file=/proc/1/environ</code></p>
+<hr>
 
     </div>
     
