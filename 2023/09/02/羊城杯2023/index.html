@@ -231,7 +231,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">949字</span>
+        <span class="post-count">1.1k字</span>
       </span>
     </span>
 
@@ -240,7 +240,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">5分</span>
+        <span class="post-count">6分</span>
       </span>
     </span>
     
@@ -399,7 +399,10 @@
 
 <p><img src="/blog/2023/09/02/%E7%BE%8A%E5%9F%8E%E6%9D%AF2023/image-20230902125522191.png" alt="image-20230902125522191"></p>
 <hr>
-<h2 id="Serpent"><a href="#Serpent" class="headerlink" title="Serpent"></a>Serpent</h2><p>访问&#x2F;<a target="_blank" rel="noopener" href="http://www.zip下载源码/">www.zip下载源码</a></p>
+<h2 id="Serpent"><a href="#Serpent" class="headerlink" title="Serpent"></a>Serpent</h2><blockquote>
+<p>jwt+pickle反序列化R绕过</p>
+</blockquote>
+<p>访问&#x2F;<a target="_blank" rel="noopener" href="http://www.zip下载源码/">www.zip下载源码</a></p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> flask <span class="token keyword">import</span> Flask<span class="token punctuation">,</span> session
 <span class="token keyword">from</span> secret <span class="token keyword">import</span> secret
 
@@ -435,6 +438,45 @@
 <p><code>eyJBdHRyaWJ1dGUiOnsiYWRtaW4iOjEsIm5hbWUiOiJhZG1pbiIsInNlY3JldF9rZXkiOiJHV0hUVWk2SG9tZXIwRSJ9fQ.ZPMstg.oW1TUIaJD-mmuvGiszk32M0dC4A</code></p>
 <p>带回session</p>
 <p><img src="/blog/2023/09/02/%E7%BE%8A%E5%9F%8E%E6%9D%AF2023/image-20230902204301517.png" alt="image-20230902204301517"></p>
+<p>注：访问&#x2F;ppppppppppick1e后，在响应头还有hint，但是我比赛时漏看了（</p>
+<p><img src="/blog/2023/09/02/%E7%BE%8A%E5%9F%8E%E6%9D%AF2023/image-20230915233224486.png" alt="image-20230915233224486"></p>
+<p>访问&#x2F;src0de，得到源码</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/src0de'</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">src0de</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    f <span class="token operator">=</span> <span class="token builtin">open</span><span class="token punctuation">(</span>__file__<span class="token punctuation">,</span> <span class="token string">'r'</span><span class="token punctuation">)</span>
+    rsp <span class="token operator">=</span> f<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    f<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> rsp<span class="token punctuation">[</span>rsp<span class="token punctuation">.</span>index<span class="token punctuation">(</span><span class="token string">"@app.route('/src0de')"</span><span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token punctuation">]</span>
+
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/ppppppppppick1e'</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">ppppppppppick1e</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        username <span class="token operator">=</span> <span class="token string">"admin"</span>
+        rsp <span class="token operator">=</span> make_response<span class="token punctuation">(</span><span class="token string">"Hello, %s "</span> <span class="token operator">%</span> username<span class="token punctuation">)</span>
+        rsp<span class="token punctuation">.</span>headers<span class="token punctuation">[</span><span class="token string">'hint'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"Source in /src0de"</span>
+        pick1e <span class="token operator">=</span> request<span class="token punctuation">.</span>cookies<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'pick1e'</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> pick1e <span class="token keyword">is</span> <span class="token keyword">not</span> <span class="token boolean">None</span><span class="token punctuation">:</span>
+            pick1e <span class="token operator">=</span> base64<span class="token punctuation">.</span>b64decode<span class="token punctuation">(</span>pick1e<span class="token punctuation">)</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> rsp
+        <span class="token keyword">if</span> check<span class="token punctuation">(</span>pick1e<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            pick1e <span class="token operator">=</span> pickle<span class="token punctuation">.</span>loads<span class="token punctuation">(</span>pick1e<span class="token punctuation">)</span>
+            <span class="token keyword">return</span> <span class="token string">"Go for it!!!"</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token string">"No Way!!!"</span>
+    <span class="token keyword">except</span> Exception <span class="token keyword">as</span> e<span class="token punctuation">:</span>
+        error_message <span class="token operator">=</span> <span class="token builtin">str</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> error_message
+
+    <span class="token keyword">return</span> rsp
+
+<span class="token keyword">class</span> <span class="token class-name">GWHT</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">pass</span>
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    app<span class="token punctuation">.</span>run<span class="token punctuation">(</span><span class="token string">'0.0.0.0'</span><span class="token punctuation">,</span> port<span class="token operator">=</span><span class="token number">80</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>接下来就是pickle反序列化了，<del>但是我还没学</del></p>
 <hr>
 <h2 id="ArkNights"><a href="#ArkNights" class="headerlink" title="ArkNights"></a>ArkNights</h2><p>源码</p>
