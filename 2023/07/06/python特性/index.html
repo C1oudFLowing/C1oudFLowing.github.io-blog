@@ -40,7 +40,9 @@
 <!-- 引入jQuery-->
 <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 <!-- 引入不蒜子-->
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>    
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    
         <script type="text/javascript" src="/blog/libs/codeBlock/codeBlockFuction.js"></script>
 <!-- 代码语言 -->
 <script type="text/javascript" src="/blog/libs/codeBlock/codeLang.js"></script>
@@ -86,7 +88,7 @@
             <div id="loading" v-show="loading">
                 <div id="loading-circle">
                     <h2>LOADING</h2>
-                    <p>第一次加载可能会花费较长时间，请耐心等待</p>
+                    <p>第一次加载文章图片可能会花费较长时间</p>
                     <p>要不挂个梯子试试？（x</p>
                     <p>加载过慢请开启缓存&ensp;浏览器默认开启</p>
                     <img src="/blog/images/loading.gif" />
@@ -220,7 +222,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/python/" style="color: #00a596">python</a>
+                <a href="/blog/tags/python/" style="color: #ffa2c4">python</a>
             </span>
             
         </span>
@@ -234,7 +236,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">878字</span>
+        <span class="post-count">914字</span>
       </span>
     </span>
 
@@ -333,7 +335,8 @@
 <p><code>locals()</code>：返回所有局部变量的函数</p>
 <p><code>__import__</code>：载入模块的函数，例如<code>import os</code> &#x3D; <code>__import__(&#39;os&#39;)</code>；</p>
 <p><code>__name__</code>：该变量指示当前运行环境位于哪个模块中</p>
-<p><code>__builtins__</code>：包含当前运行环境中默认的所有函数与类</p>
+<p><code>__builtins__</code>：包含当前运行环境中默认的所有函数与类，比如下面的这个<code>int</code>函数就是内置函数，Python解释器在启动时已经自动帮我们导入了builtins模块</p>
+<p><img src="/blog/2023/07/06/python%E7%89%B9%E6%80%A7/image-20230919205549932.png" alt="image-20230919205549932"></p>
 <p><code>__file__</code>：该变量指示当前运行代码所在路径，注：该变量仅在运行代码文件时会产生，在运行交互式终端时不会有此变量</p>
 <p><code>_</code>：该变量返回上一次运行的python语句结果。注：该变量仅在运行交互式终端时会产生，在运行代码文件时不会有此变量</p>
 
