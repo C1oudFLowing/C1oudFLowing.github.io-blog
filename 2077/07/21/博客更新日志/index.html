@@ -12,6 +12,7 @@
         <script src="https://cdn.staticfile.org/vue/3.2.45/vue.global.prod.min.js"></script>
 <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.2.1/css/all.min.css" />
 <link rel="stylesheet" href="/blog/css/fonts.min.css" />
+<link rel="stylesheet" href="/blog/css/search.css" />
 <script> const mixins = {}; </script>
 
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
@@ -73,7 +74,7 @@
     <div id="toc" class="toc-article">
     <h3><i class="fa-brands fa-readme"></i>  目录</h3>
       <div class="toc-title"></div>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Hello-%E8%BF%99%E6%98%AF%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97"><span class="toc-text">Hello,这是一篇博客更新日志</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2023-8-25"><span class="toc-text">2023.8.25</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2023-7-31"><span class="toc-text">2023.7.31</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2023-6-27"><span class="toc-text">2023.6.27</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2023-6-20"><span class="toc-text">2023.6.20</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2023-6-17"><span class="toc-text">2023.6.17</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2023-6-16"><span class="toc-text">2023.6.16</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2023-6-14"><span class="toc-text">2023.6.14</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2023-6-13"><span class="toc-text">2023.6.13</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2023-5-31"><span class="toc-text">2023.5.31</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2023-5-27"><span class="toc-text">2023.5.27</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2023-5-22"><span class="toc-text">2023.5.22</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2023-5-18"><span class="toc-text">2023.5.18</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2023-5-7"><span class="toc-text">2023.5.7</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2023-3-29"><span class="toc-text">2023.3.29</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2023-3-28"><span class="toc-text">2023.3.28</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2023-3-16"><span class="toc-text">2023.3.16</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2023-2-11-2023-3-15"><span class="toc-text">2023.2.11-2023.3.15</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Hello-%E8%BF%99%E6%98%AF%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97"><span class="toc-text">Hello,这是一篇博客更新日志</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2023-9-24"><span class="toc-text">2023.9.24</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2023-8-25"><span class="toc-text">2023.8.25</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2023-7-31"><span class="toc-text">2023.7.31</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2023-6-27"><span class="toc-text">2023.6.27</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2023-6-20"><span class="toc-text">2023.6.20</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2023-6-17"><span class="toc-text">2023.6.17</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2023-6-16"><span class="toc-text">2023.6.16</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2023-6-14"><span class="toc-text">2023.6.14</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2023-6-13"><span class="toc-text">2023.6.13</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2023-5-31"><span class="toc-text">2023.5.31</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2023-5-27"><span class="toc-text">2023.5.27</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2023-5-22"><span class="toc-text">2023.5.22</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2023-5-18"><span class="toc-text">2023.5.18</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2023-5-7"><span class="toc-text">2023.5.7</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2023-3-29"><span class="toc-text">2023.3.29</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2023-3-28"><span class="toc-text">2023.3.28</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2023-3-16"><span class="toc-text">2023.3.16</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2023-2-11-2023-3-15"><span class="toc-text">2023.2.11-2023.3.15</span></a></li></ol>
     </div>
   
         
@@ -131,6 +132,11 @@
         <a href="/blog/links">
             <i class="fa-solid fa-link fa-fw"></i>
             <span>&ensp;Links</span>
+        </a>
+        
+        <a href="/blog/search">
+            <i class="fa-solid fa-search fa-fw"></i>
+            <span>&ensp;Search</span>
         </a>
         
     </div>
@@ -197,6 +203,15 @@
                 </div>
             </a>
             
+            <a href="/blog/search">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-search fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Search</div>
+                </div>
+            </a>
+            
         </div>
         </transition>
     </div>
@@ -224,7 +239,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">330字</span>
+        <span class="post-count">345字</span>
       </span>
     </span>
 
@@ -252,6 +267,7 @@
 <p>于是这篇文章用于记录我的博客每次更新的东西</p>
 <span id="more"></span>
 
+<h1 id="2023-9-24"><a href="#2023-9-24" class="headerlink" title="2023.9.24"></a>2023.9.24</h1><p>添加了一个站内搜索的功能</p>
 <h1 id="2023-8-25"><a href="#2023-8-25" class="headerlink" title="2023.8.25"></a>2023.8.25</h1><p>优化了文章目录显示方式</p>
 <h1 id="2023-7-31"><a href="#2023-7-31" class="headerlink" title="2023.7.31"></a>2023.7.31</h1><p>添加公告栏</p>
 <h1 id="2023-6-27"><a href="#2023-6-27" class="headerlink" title="2023.6.27"></a>2023.6.27</h1><p>添加不蒜子统计访问量</p>
@@ -312,8 +328,11 @@
             <script>
                 new Valine({
                     el: '#vcomments',
-                    appId: 'U9mZLKunkRUTcBFthjXPjnZE-9Nh9j0Va',
-                    appKey: 'SzWOnY0PWLGNuL6jW8TZYc7j',
+                    app_id: 'U9mZLKunkRUTcBFthjXPjnZE-9Nh9j0Va',
+                    app_key: 'SzWOnY0PWLGNuL6jW8TZYc7j',
+                    visitor: 'true',
+                    placeholder: '写点什么吧(●ˇ∀ˇ●)',
+                    serverURLs: 'https://u9mzlkun.lc-cn-e1-shared.com',
                 });
             </script>
 

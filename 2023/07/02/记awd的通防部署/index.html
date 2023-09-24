@@ -12,6 +12,7 @@
         <script src="https://cdn.staticfile.org/vue/3.2.45/vue.global.prod.min.js"></script>
 <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.2.1/css/all.min.css" />
 <link rel="stylesheet" href="/blog/css/fonts.min.css" />
+<link rel="stylesheet" href="/blog/css/search.css" />
 <script> const mixins = {}; </script>
 
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
@@ -136,6 +137,11 @@
             <span>&ensp;Links</span>
         </a>
         
+        <a href="/blog/search">
+            <i class="fa-solid fa-search fa-fw"></i>
+            <span>&ensp;Search</span>
+        </a>
+        
     </div>
     <div id="mobile-menu">
         <div class="curtain" v-show="showMenu" @click="showMenu = !showMenu"></div>
@@ -197,6 +203,15 @@
                         <i class="fa-solid fa-link fa-fw"></i>
                     </div>
                     <div style="min-width: 100px; max-width: 150%; width: 20%">Links</div>
+                </div>
+            </a>
+            
+            <a href="/blog/search">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-search fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Search</div>
                 </div>
             </a>
             
@@ -265,7 +280,7 @@
         class="input"
         ref="crypto"
         placeholder="文章被加密，请输入密码"
-        data-encrypted="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"
+        data-encrypted="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"
         data-shasum="57669eb16f2291c8d8282121b22721f50d98ec84ac6031be01a739308251b899"
         v-model="crypto"
     />
@@ -306,8 +321,11 @@
             <script>
                 new Valine({
                     el: '#vcomments',
-                    appId: 'U9mZLKunkRUTcBFthjXPjnZE-9Nh9j0Va',
-                    appKey: 'SzWOnY0PWLGNuL6jW8TZYc7j',
+                    app_id: 'U9mZLKunkRUTcBFthjXPjnZE-9Nh9j0Va',
+                    app_key: 'SzWOnY0PWLGNuL6jW8TZYc7j',
+                    visitor: 'true',
+                    placeholder: '写点什么吧(●ˇ∀ˇ●)',
+                    serverURLs: 'https://u9mzlkun.lc-cn-e1-shared.com',
                 });
             </script>
 

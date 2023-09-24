@@ -12,6 +12,7 @@
         <script src="https://cdn.staticfile.org/vue/3.2.45/vue.global.prod.min.js"></script>
 <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.2.1/css/all.min.css" />
 <link rel="stylesheet" href="/blog/css/fonts.min.css" />
+<link rel="stylesheet" href="/blog/css/search.css" />
 <script> const mixins = {}; </script>
 
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
@@ -123,6 +124,11 @@
             <span>&ensp;Links</span>
         </a>
         
+        <a href="/blog/search">
+            <i class="fa-solid fa-search fa-fw"></i>
+            <span>&ensp;Search</span>
+        </a>
+        
     </div>
     <div id="mobile-menu">
         <div class="curtain" v-show="showMenu" @click="showMenu = !showMenu"></div>
@@ -187,6 +193,15 @@
                 </div>
             </a>
             
+            <a href="/blog/search">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-search fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Search</div>
+                </div>
+            </a>
+            
         </div>
         </transition>
     </div>
@@ -198,7 +213,7 @@
         
         
         <span>
-            <a href="/blog/categories/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="background: #ff7d73">
+            <a href="/blog/categories/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="background: #ffa2c4">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
@@ -227,7 +242,7 @@
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
                 渗透
-                <span class="count">9</span>
+                <span class="count">10</span>
             </a>
         </span>
         
@@ -236,7 +251,7 @@
         
         
         <span>
-            <a href="/blog/categories/REVERSE/" style="background: #ffa2c4">
+            <a href="/blog/categories/REVERSE/" style="background: #00a596">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
@@ -260,7 +275,7 @@
         
         
         <span>
-            <a href="/blog/categories/Crypto/" style="background: #00a596">
+            <a href="/blog/categories/Crypto/" style="background: #00bcd4">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
@@ -272,7 +287,7 @@
         
         
         <span>
-            <a href="/blog/categories/Linux/" style="background: #00bcd4">
+            <a href="/blog/categories/Linux/" style="background: #ff7d73">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
@@ -284,7 +299,7 @@
         
         
         <span>
-            <a href="/blog/categories/MISC/" style="background: #00a596">
+            <a href="/blog/categories/MISC/" style="background: #ffa2c4">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
@@ -296,7 +311,7 @@
         
         
         <span>
-            <a href="/blog/categories/Q-A/" style="background: #00bcd4">
+            <a href="/blog/categories/Q-A/" style="background: #00a596">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
@@ -318,6 +333,41 @@
         </span>
         
         
+    </div>
+    
+    <div class="timeline">
+        <div class="timeline-tail"></div>
+        <div class="timeline-content">
+            <div class="item-time">2023/9/24</div>
+            <a href="/blog/2023/09/24/HTB-Responder/">
+                <h3>HTB Responder</h3>
+            </a>
+            <div class="info">
+                
+                <span class="category">
+                    <a href="/blog/categories/%E6%B8%97%E9%80%8F/">
+                        <span class="icon">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </span>
+                        渗透
+                    </a>
+                </span>
+                
+                
+                <span class="tags">
+                    <span class="icon">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </span>
+                    
+                    <span class="tag">
+                        
+                        <a href="/blog/tags/HackTheBox/" style="color: #ff7d73">HackTheBox</a>
+                    </span>
+                    
+                </span>
+                
+            </div>
+        </div>
     </div>
     
     <div class="timeline">
@@ -346,7 +396,7 @@
                     
                     <span class="tag">
                         
-                        <a href="/blog/tags/HackTheBox/" style="color: #ffa2c4">HackTheBox</a>
+                        <a href="/blog/tags/HackTheBox/" style="color: #00a596">HackTheBox</a>
                     </span>
                     
                 </span>
@@ -381,7 +431,7 @@
                     
                     <span class="tag">
                         
-                        <a href="/blog/tags/HackTheBox/" style="color: #03a9f4">HackTheBox</a>
+                        <a href="/blog/tags/HackTheBox/" style="color: #00a596">HackTheBox</a>
                     </span>
                     
                 </span>
@@ -416,7 +466,7 @@
                     
                     <span class="tag">
                         
-                        <a href="/blog/tags/HackTheBox/" style="color: #00a596">HackTheBox</a>
+                        <a href="/blog/tags/HackTheBox/" style="color: #ffa2c4">HackTheBox</a>
                     </span>
                     
                 </span>
@@ -451,7 +501,7 @@
                     
                     <span class="tag">
                         
-                        <a href="/blog/tags/HackTheBox/" style="color: #03a9f4">HackTheBox</a>
+                        <a href="/blog/tags/HackTheBox/" style="color: #ffa2c4">HackTheBox</a>
                     </span>
                     
                 </span>
@@ -521,7 +571,7 @@
                     
                     <span class="tag">
                         
-                        <a href="/blog/tags/HackTheBox/" style="color: #ff7d73">HackTheBox</a>
+                        <a href="/blog/tags/HackTheBox/" style="color: #00bcd4">HackTheBox</a>
                     </span>
                     
                 </span>
@@ -556,7 +606,7 @@
                     
                     <span class="tag">
                         
-                        <a href="/blog/tags/HackTheBox/" style="color: #00bcd4">HackTheBox</a>
+                        <a href="/blog/tags/HackTheBox/" style="color: #ff7d73">HackTheBox</a>
                     </span>
                     
                 </span>
@@ -591,12 +641,12 @@
                     
                     <span class="tag">
                         
-                        <a href="/blog/tags/CVE/" style="color: #ff7d73">CVE</a>
+                        <a href="/blog/tags/CVE/" style="color: #03a9f4">CVE</a>
                     </span>
                     
                     <span class="tag">
                         
-                        <a href="/blog/tags/%E6%8F%90%E6%9D%83/" style="color: #00a596">提权</a>
+                        <a href="/blog/tags/%E6%8F%90%E6%9D%83/" style="color: #ffa2c4">提权</a>
                     </span>
                     
                 </span>
@@ -631,7 +681,7 @@
                     
                     <span class="tag">
                         
-                        <a href="/blog/tags/%E6%8F%90%E6%9D%83/" style="color: #03a9f4">提权</a>
+                        <a href="/blog/tags/%E6%8F%90%E6%9D%83/" style="color: #00a596">提权</a>
                     </span>
                     
                 </span>
@@ -659,8 +709,11 @@
             <script>
                 new Valine({
                     el: '#vcomments',
-                    appId: 'U9mZLKunkRUTcBFthjXPjnZE-9Nh9j0Va',
-                    appKey: 'SzWOnY0PWLGNuL6jW8TZYc7j',
+                    app_id: 'U9mZLKunkRUTcBFthjXPjnZE-9Nh9j0Va',
+                    app_key: 'SzWOnY0PWLGNuL6jW8TZYc7j',
+                    visitor: 'true',
+                    placeholder: '写点什么吧(●ˇ∀ˇ●)',
+                    serverURLs: 'https://u9mzlkun.lc-cn-e1-shared.com',
                 });
             </script>
 
