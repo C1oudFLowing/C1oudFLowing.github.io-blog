@@ -17,6 +17,31 @@
     
     
     <entry>
+      <title>HTB Three</title>
+      <link href="/blog/2023/09/24/HTB-Three/"/>
+      <url>/blog/2023/09/24/HTB-Three/</url>
+      
+        <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>第一层 Three</p><p>还没写完，别急（</p><span id="more"></span><h1 id="Task1"><a href="#Task1" class="headerlink" title="Task1"></a>Task1</h1><pre class="line-numbers language-txt" data-language="txt"><code class="language-txt">How many TCP ports are open?打开了多少个 TCP 端口？<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>A：<code>2</code></p><p>开扫</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">nmap <span class="token parameter variable">-A</span> <span class="token number">10.129</span>.141.55<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><img src="/blog/2023/09/24/HTB-Three/image-20230924195423252.png" alt="image-20230924195423252"></p><p>开了22和80两个端口</p><hr><h1 id="Task2"><a href="#Task2" class="headerlink" title="Task2"></a>Task2</h1><pre class="line-numbers language-txt" data-language="txt"><code class="language-txt">What is the domain of the email address provided in the "Contact" section of the website?网站“联系人”部分提供的电子邮件地址的域是什么？<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>A：<code>thetoppers.htb</code></p><p>访问网站，查看Contact</p><p><img src="/blog/2023/09/24/HTB-Three/image-20230924200054285.png" alt="image-20230924200054285"></p><hr><h1 id="Task3"><a href="#Task3" class="headerlink" title="Task3"></a>Task3</h1><pre class="line-numbers language-txt" data-language="txt"><code class="language-txt">In the absence of a DNS server, which Linux file can we use to resolve hostnames to IP addresses in order to be able to access the websites that point to those hostnames?在没有 DNS 服务器的情况下，我们可以使用哪个 Linux 文件将主机名解析为 IP 地址，以便能够访问指向这些主机名的网站？<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>A：<code>/etc/hosts</code></p><p>把域名写入到hosts，这样我们就能访问了</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">echo</span> <span class="token string">"10.129.141.55 thetoppers.htb"</span> <span class="token operator">>></span> /etc/hosts<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><hr><h1 id="Task4"><a href="#Task4" class="headerlink" title="Task4"></a>Task4</h1><pre class="line-numbers language-txt" data-language="txt"><code class="language-txt">Which sub-domain is discovered during further enumeration?在进一步枚举期间发现哪个子域？<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>A：<code>s3.thetoppers.htb</code></p><p>爆破子域名</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">gobuster vhost <span class="token parameter variable">-u</span> http://thetoppers.htb/ <span class="token parameter variable">-w</span> /usr/share/wordlists/dirb/big.txt --append-domain<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><img src="/blog/2023/09/24/HTB-Three/image-20230924210452496.png" alt="image-20230924210452496"></p><p>有个404，就是这个了</p><hr><h1 id="Task5"><a href="#Task5" class="headerlink" title="Task5"></a>Task5</h1><pre class="line-numbers language-txt" data-language="txt"><code class="language-txt">Which service is running on the discovered sub-domain?发现的子域上运行的是哪个服务？<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>A：&#96;&#96;</p><p>将上面的s3子域加入hosts文件中，并访问s3子域（我这里重启了靶机，ip变了</p><p><img src="/blog/2023/09/24/HTB-Three/image-20230924212012176.png" alt="image-20230924212012176"></p><hr><h1 id="Task6"><a href="#Task6" class="headerlink" title="Task6"></a>Task6</h1><pre class="line-numbers language-txt" data-language="txt"><code class="language-txt">How many TCP ports are open?打开了多少个 TCP 端口？<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>A：&#96;&#96;</p><hr><h1 id="Task7"><a href="#Task7" class="headerlink" title="Task7"></a>Task7</h1><pre class="line-numbers language-txt" data-language="txt"><code class="language-txt">How many TCP ports are open?打开了多少个 TCP 端口？<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>A：&#96;&#96;</p><hr><h1 id="Task8"><a href="#Task8" class="headerlink" title="Task8"></a>Task8</h1><pre class="line-numbers language-txt" data-language="txt"><code class="language-txt">How many TCP ports are open?打开了多少个 TCP 端口？<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>A：&#96;&#96;</p><hr><h1 id="Task9"><a href="#Task9" class="headerlink" title="Task9"></a>Task9</h1><pre class="line-numbers language-txt" data-language="txt"><code class="language-txt">How many TCP ports are open?打开了多少个 TCP 端口？<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>A：&#96;&#96;</p><hr>]]></content>
+      
+      
+      <categories>
+          
+          <category> 渗透 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> HackTheBox </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>HTB Responder</title>
       <link href="/blog/2023/09/24/HTB-Responder/"/>
       <url>/blog/2023/09/24/HTB-Responder/</url>
