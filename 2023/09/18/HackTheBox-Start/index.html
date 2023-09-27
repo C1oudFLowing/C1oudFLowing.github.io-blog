@@ -246,7 +246,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/HackTheBox/" style="color: #ffa2c4">HackTheBox</a>
+                <a href="/blog/tags/HackTheBox/" style="color: #00a596">HackTheBox</a>
             </span>
             
         </span>
@@ -294,11 +294,11 @@
 <p>首先注册一个账号并登录</p>
 <h1 id="Starting-Point"><a href="#Starting-Point" class="headerlink" title="Starting Point"></a>Starting Point</h1><p>使用实验室中的一切，首先需要使用 VPN 进行连接，作用是将我们本地机器和远程靶机置于同一网络中。HACKTHEBOX 提供两种方法 OpenVPN 和 Pwnbox</p>
 <h2 id="OpenVPN"><a href="#OpenVPN" class="headerlink" title="OpenVPN"></a>OpenVPN</h2><p>选择一个延迟还行的服务器，下载.opvn文件</p>
-<p><img src="/blog/2023/09/18/HackTheBox_Start/image-20230918105457287.png" alt="image-20230918105457287"></p>
+<p><img src="/blog/2023/09/18/HackTheBox-Start/image-20230918105457287.png" alt="image-20230918105457287"></p>
 <p>把这个文件传入kali，root模式下命令行输入</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">openvpn starting_point_C1oudfL0w0.ovpn<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p><img src="/blog/2023/09/18/HackTheBox_Start/image-20230918105853153.png" alt="image-20230918105853153"></p>
+<p><img src="/blog/2023/09/18/HackTheBox-Start/image-20230918105853153.png" alt="image-20230918105853153"></p>
 <p>出现这个就说明启动了，注意这里不要把这个终端关掉，否则要重新连接，这里把它最小化即可</p>
 <p>另开一个终端，输入<code>ip a</code>查看当前网络，如果你看到 <code>tun</code> 类型的网络接口，并且网络正常 ipv4 基本就成功</p>
 <hr>
@@ -322,7 +322,7 @@
 <blockquote>
 <p><strong>Ping</strong>是一种基于Internet控制消息协议（ICMP）的工具，用于测试主机之间的连接。 Ping命令向目标主机发送一个ICMP回显请求，目标主机收到请求后会发送回一个ICMP回显应答，从而告诉发起请求的主机连接是通畅的。  Ping命令可以用于测试主机是否在线，以及网络是否通畅。</p>
 </blockquote>
-<p><img src="/blog/2023/09/18/HackTheBox_Start/image-20230918112406254.png" alt="image-20230918112406254"></p>
+<p><img src="/blog/2023/09/18/HackTheBox-Start/image-20230918112406254.png" alt="image-20230918112406254"></p>
 <h3 id="Task5"><a href="#Task5" class="headerlink" title="Task5"></a>Task5</h3><pre class="line-numbers language-txt" data-language="txt"><code class="language-txt">What is the name of the most common tool for finding open ports on a target?
 用于查找目标上开放端口的最常见工具的名称是什么？<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
@@ -342,18 +342,18 @@
 </blockquote>
 <p>我们直接使用namp对目标机器进行端口扫描</p>
 <p><code>-Pn</code>：将所有主机视为在线的——跳过主机发现</p>
-<p><img src="/blog/2023/09/18/HackTheBox_Start/image-20230918112555620.png" alt="image-20230918112555620"></p>
+<p><img src="/blog/2023/09/18/HackTheBox-Start/image-20230918112555620.png" alt="image-20230918112555620"></p>
 <h3 id="Task7"><a href="#Task7" class="headerlink" title="Task7"></a>Task7</h3><pre class="line-numbers language-txt" data-language="txt"><code class="language-txt">What username is able to log into the target over telnet with a blank password?
 什么用户名能够使用空白密码通过 telnet 登录目标？<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>A：<code>root</code></p>
 <p>直接利用telnet工具进行连接，输入root（管理员用户名），如果对方没有设置密码，即能空密码进入</p>
-<p><img src="/blog/2023/09/18/HackTheBox_Start/image-20230918113035649.png" alt="image-20230918113035649"></p>
+<p><img src="/blog/2023/09/18/HackTheBox-Start/image-20230918113035649.png" alt="image-20230918113035649"></p>
 <h3 id="Submit-Flag"><a href="#Submit-Flag" class="headerlink" title="Submit Flag"></a>Submit Flag</h3><p>交flag</p>
 <p>ls查看目录，cat获取flag</p>
-<p><img src="/blog/2023/09/18/HackTheBox_Start/image-20230918113236432.png" alt="image-20230918113236432"></p>
+<p><img src="/blog/2023/09/18/HackTheBox-Start/image-20230918113236432.png" alt="image-20230918113236432"></p>
 <p>于是就打通了第一台靶机</p>
-<p><img src="/blog/2023/09/18/HackTheBox_Start/image-20230918113356193.png" alt="image-20230918113356193"></p>
+<p><img src="/blog/2023/09/18/HackTheBox-Start/image-20230918113356193.png" alt="image-20230918113356193"></p>
 <hr>
 
     </div>

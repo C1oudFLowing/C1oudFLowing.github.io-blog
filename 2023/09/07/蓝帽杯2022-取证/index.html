@@ -246,7 +246,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E5%8F%96%E8%AF%81/" style="color: #ff7d73">取证</a>
+                <a href="/blog/tags/%E5%8F%96%E8%AF%81/" style="color: #00bcd4">取证</a>
             </span>
             
         </span>
@@ -291,7 +291,7 @@
 请从网站源码中找出木马文件，并提交木马连接的密码。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>D盾扫描即可</p>
-<p><img src="/blog/2023/09/07/%E8%93%9D%E5%B8%BD%E6%9D%AF2022_%E5%8F%96%E8%AF%81/image-20230907000516906.png" alt="image-20230907000516906"></p>
+<p><img src="/blog/2023/09/07/%E8%93%9D%E5%B8%BD%E6%9D%AF2022-%E5%8F%96%E8%AF%81/image-20230907000516906.png" alt="image-20230907000516906"></p>
 <p>发现<code>assert</code>后门</p>
 <pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span> <span class="token function">assert</span><span class="token punctuation">(</span>@<span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'lanmaobei666'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
@@ -301,10 +301,10 @@
 <h1 id="蓝帽杯-2022-初赛-网站取证-2"><a href="#蓝帽杯-2022-初赛-网站取证-2" class="headerlink" title="[蓝帽杯 2022 初赛]网站取证_2"></a>[蓝帽杯 2022 初赛]网站取证_2</h1><pre class="line-numbers language-none"><code class="language-none">请提交数据库连接的明文密码<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>全局找sql相关的文件</p>
-<p><img src="/blog/2023/09/07/%E8%93%9D%E5%B8%BD%E6%9D%AF2022_%E5%8F%96%E8%AF%81/image-20230907164155385.png" alt="image-20230907164155385"></p>
+<p><img src="/blog/2023/09/07/%E8%93%9D%E5%B8%BD%E6%9D%AF2022-%E5%8F%96%E8%AF%81/image-20230907164155385.png" alt="image-20230907164155385"></p>
 <p>在database.php中找到password</p>
 <p>f12转到定义</p>
-<p><img src="/blog/2023/09/07/%E8%93%9D%E5%B8%BD%E6%9D%AF2022_%E5%8F%96%E8%AF%81/image-20230907164300204.png" alt="image-20230907164300204"></p>
+<p><img src="/blog/2023/09/07/%E8%93%9D%E5%B8%BD%E6%9D%AF2022-%E5%8F%96%E8%AF%81/image-20230907164300204.png" alt="image-20230907164300204"></p>
 <p>在PHP5环境下把return改成echo，然后执行这个方法可以得到密文<code>KBLT123</code></p>
 <hr>
 <h1 id="蓝帽杯-2022-初赛-网站取证-3"><a href="#蓝帽杯-2022-初赛-网站取证-3" class="headerlink" title="[蓝帽杯 2022 初赛]网站取证_3"></a>[蓝帽杯 2022 初赛]网站取证_3</h1><pre class="line-numbers language-none"><code class="language-none">请提交数据库金额加密混淆使用的盐值。<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -321,7 +321,7 @@
 <h2 id="AndroidManifest"><a href="#AndroidManifest" class="headerlink" title="AndroidManifest"></a>AndroidManifest</h2><p>AndroidManifest.xml文件是配置清单文件，也是编译过的文件，用来描述应用程序的清单信息。包括包名、应用名、权限、安卓四大组件、版本等重要信息都在这里面声名。</p>
 <p>当打包应用程序时，AndroidManifest.xml 文件会自动生成，并且会被打包进 APK 文件中。当你安装应用程序时，Android 系统会读取这个文件，以确定应用程序的基本信息和权限要求。</p>
 <p>开发者可以在 AndroidManifest.xml 文件中声明应用程序使用的权限，例如访问网络、访问文件、访问相机等。在应用程序安装时，用户会看到这些权限的描述信息，然后决定是否允许应用程序使用这些权限。</p>
-<p><img src="/blog/2023/09/07/%E8%93%9D%E5%B8%BD%E6%9D%AF2022_%E5%8F%96%E8%AF%81/image-20230907161231395.png" alt="image-20230907161231395"></p>
+<p><img src="/blog/2023/09/07/%E8%93%9D%E5%B8%BD%E6%9D%AF2022-%E5%8F%96%E8%AF%81/image-20230907161231395.png" alt="image-20230907161231395"></p>
 <hr>
 <h1 id="蓝帽杯-2022-初赛-程序分析-2"><a href="#蓝帽杯-2022-初赛-程序分析-2" class="headerlink" title="[蓝帽杯 2022 初赛]程序分析_2"></a>[蓝帽杯 2022 初赛]程序分析_2</h1><pre class="line-numbers language-none"><code class="language-none">本程序的入口是？<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
@@ -332,22 +332,22 @@
 <blockquote>
 <p>android.intent.category.LAUNCHER决定应用程序是否显示在程序列表里</p>
 </blockquote>
-<p><img src="/blog/2023/09/07/%E8%93%9D%E5%B8%BD%E6%9D%AF2022_%E5%8F%96%E8%AF%81/image-20230907162150968.png" alt="image-20230907162150968"></p>
+<p><img src="/blog/2023/09/07/%E8%93%9D%E5%B8%BD%E6%9D%AF2022-%E5%8F%96%E8%AF%81/image-20230907162150968.png" alt="image-20230907162150968"></p>
 <hr>
 <h1 id="蓝帽杯-2022-初赛-程序分析-3"><a href="#蓝帽杯-2022-初赛-程序分析-3" class="headerlink" title="[蓝帽杯 2022 初赛]程序分析_3"></a>[蓝帽杯 2022 初赛]程序分析_3</h1><pre class="line-numbers language-none"><code class="language-none">本程序的服务器地址的密文是？<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>上一题我们知道入口是<code>minmtta.hemjcbm.ahibyws.MainActivity</code></p>
 <p>跟踪过去</p>
-<p><img src="/blog/2023/09/07/%E8%93%9D%E5%B8%BD%E6%9D%AF2022_%E5%8F%96%E8%AF%81/image-20230907162429958.png" alt="image-20230907162429958"></p>
+<p><img src="/blog/2023/09/07/%E8%93%9D%E5%B8%BD%E6%9D%AF2022-%E5%8F%96%E8%AF%81/image-20230907162429958.png" alt="image-20230907162429958"></p>
 <p>发现一个像是密文的base64字符串</p>
-<p><img src="/blog/2023/09/07/%E8%93%9D%E5%B8%BD%E6%9D%AF2022_%E5%8F%96%E8%AF%81/image-20230907162605281.png" alt="image-20230907162605281"></p>
+<p><img src="/blog/2023/09/07/%E8%93%9D%E5%B8%BD%E6%9D%AF2022-%E5%8F%96%E8%AF%81/image-20230907162605281.png" alt="image-20230907162605281"></p>
 <p>解码发现确实是服务器地址</p>
 <hr>
 <h1 id="蓝帽杯-2022-初赛-程序分析-4"><a href="#蓝帽杯-2022-初赛-程序分析-4" class="headerlink" title="[蓝帽杯 2022 初赛]程序分析_4"></a>[蓝帽杯 2022 初赛]程序分析_4</h1><pre class="line-numbers language-none"><code class="language-none">本程序实现安全检测的类的名称是？<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>在MainActivity文件中发现引入了<code>d.a.a.h</code>模块</p>
 <p>跟踪过去</p>
-<p><img src="/blog/2023/09/07/%E8%93%9D%E5%B8%BD%E6%9D%AF2022_%E5%8F%96%E8%AF%81/image-20230907163445694.png" alt="image-20230907163445694"></p>
+<p><img src="/blog/2023/09/07/%E8%93%9D%E5%B8%BD%E6%9D%AF2022-%E5%8F%96%E8%AF%81/image-20230907163445694.png" alt="image-20230907163445694"></p>
 <p>找到安全检测相关的字符串</p>
 <p>则对应的类是<code>d.a.a.c.a.a()</code>，即名称为a</p>
 
