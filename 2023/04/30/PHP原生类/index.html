@@ -246,12 +246,12 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="color: #00a596">反序列化</a>
+                <a href="/blog/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="color: #ffa2c4">反序列化</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/blog/tags/PHP/" style="color: #ff7d73">PHP</a>
+                <a href="/blog/tags/PHP/" style="color: #ffa2c4">PHP</a>
             </span>
             
         </span>
@@ -265,7 +265,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">1.8k字</span>
+        <span class="post-count">1.9k字</span>
       </span>
     </span>
 
@@ -274,7 +274,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">6分</span>
+        <span class="post-count">7分</span>
       </span>
     </span>
     
@@ -407,12 +407,12 @@
 <h1 id="FilesystemIterator"><a href="#FilesystemIterator" class="headerlink" title="FilesystemIterator"></a>FilesystemIterator</h1><blockquote>
 <p>这个类继承了 <code>DirectoryIterator</code> 类，并提供了一些额外的功能，例如可以按照不同的排序方式对文件进行排序。</p>
 </blockquote>
+<p>可以显示当前目录下的文件结构，默认只显示第一个文件，需要遍历</p>
+<p><code>getcwd()</code>函数可用于返回当前路径</p>
+<p>然后直接访问即可</p>
 <hr>
 <h1 id="GlobIterator"><a href="#GlobIterator" class="headerlink" title="GlobIterator"></a>GlobIterator</h1><blockquote>
-<p>遍历一个文件系统行为类似于glob()，可以通过模式匹配来寻找文件路径</p>
-</blockquote>
-<blockquote>
-<p>(PHP 5 &gt;&#x3D; 5.3.0, PHP 7, PHP 8)</p>
+<p>遍历一个文件系统行为类似于glob()，可以通过模式匹配来寻找文件路径(PHP 5 &gt;&#x3D; 5.3.0, PHP 7, PHP 8)</p>
 </blockquote>
 <p>只需要知道部分名称就可以进行遍历</p>
 <p>eg:</p>
@@ -423,7 +423,8 @@
 
 
 <hr>
-<h1 id="Exception"><a href="#Exception" class="headerlink" title="Exception"></a>Exception</h1><blockquote>
+<h1 id="Exception"><a href="#Exception" class="headerlink" title="Exception"></a>Exception</h1><p><a target="_blank" rel="noopener" href="https://www.runoob.com/php/php-exception.html">菜鸟教程</a></p>
+<blockquote>
 <p>所有异常类的基类</p>
 </blockquote>
 <ol>
@@ -436,6 +437,7 @@
 <span class="token keyword">echo</span> <span class="token variable">$class</span><span class="token operator">-></span><span class="token function">__toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p>输出：Exception: test string in 路径:2 Stack trace: #0 {main}</p>
+<p>我们可以直接使用print或echo显示异常对象信息</p>
 </li>
 <li><p><code>Exception::getMessage()</code>：获取异常消息。</p>
 </li>
@@ -450,6 +452,13 @@
 <li><p><code>Exception::getPrevious()</code>：获取上一个异常对象。</p>
 </li>
 </ol>
+<p>eg：</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Exception</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"Value must be 1 or below"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+Fatal error<span class="token punctuation">:</span> Uncaught exception <span class="token string single-quoted-string">'Exception'</span> with message <span class="token string single-quoted-string">'Value must be 1 or below'</span> in <span class="token operator">/</span>www<span class="token operator">/</span>runoob<span class="token operator">/</span>test<span class="token operator">/</span>test<span class="token operator">.</span>php<span class="token punctuation">:</span><span class="token number">7</span> Stack trace<span class="token punctuation">:</span> <span class="token comment">#0 /www/runoob/test/test.php(13): checkNum(2) #1 &#123;main&#125; thrown in /www/runoob/test/test.php on line 7</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>因此可以在()中执行函数</p>
 <hr>
 <h1 id="Error"><a href="#Error" class="headerlink" title="Error"></a>Error</h1><blockquote>
 <p>所有错误类的基类。与异常不同，错误是在编译时或运行时发生的问题，通常不能恢复并且会导致程序终止</p>
