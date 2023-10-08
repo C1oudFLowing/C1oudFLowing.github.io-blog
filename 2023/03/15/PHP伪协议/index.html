@@ -332,10 +332,10 @@ php://filter/read=convert.iconv.UCS-2LE.UCS-2BE/resource=flag.php
 </blockquote>
 <p>在<code>enctype=&quot;multipart/form-data&quot;</code> 的时候<code>php://input </code>是无效的。</p>
 <ul>
-<li><p>利用条件：<code>绕过file_get_contents()</code></p>
-<h1 id="data-x2F-x2F-协议"><a href="#data-x2F-x2F-协议" class="headerlink" title="data:&#x2F;&#x2F;协议"></a>data:&#x2F;&#x2F;协议</h1></li>
+<li>利用条件：<code>绕过file_get_contents()</code></li>
 </ul>
-<blockquote>
+<hr>
+<h1 id="data-x2F-x2F-协议"><a href="#data-x2F-x2F-协议" class="headerlink" title="data:&#x2F;&#x2F;协议"></a>data:&#x2F;&#x2F;协议</h1><blockquote>
 <p>访问数据流，执行相应php代码</p>
 </blockquote>
 <p> 可用于flag被过滤的文件包含</p>
@@ -360,8 +360,7 @@ http<span class="token punctuation">:</span><span class="token comment">//127.0.
 http<span class="token punctuation">:</span><span class="token comment">//[网络路径和文件名]</span>
 http<span class="token punctuation">:</span><span class="token comment">//127.0.0.1/include.php?file=http://127.0.0.1/phpinfo.txt</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-
-
+<hr>
 <h1 id="zip-x2F-x2F-amp-bzip2-x2F-x2F-amp-zlib-x2F-x2F-协议"><a href="#zip-x2F-x2F-amp-bzip2-x2F-x2F-amp-zlib-x2F-x2F-协议" class="headerlink" title="zip:&#x2F;&#x2F; &amp; bzip2:&#x2F;&#x2F; &amp; zlib:&#x2F;&#x2F;协议"></a>zip:&#x2F;&#x2F; &amp; bzip2:&#x2F;&#x2F; &amp; zlib:&#x2F;&#x2F;协议</h1><blockquote>
 <p><code>zip:// &amp; bzip2:// &amp; zlib://</code> 均属于压缩流，可以访问压缩文件中的子文件，更重要的是不需要指定后缀名，可修改为任意后缀：<code>jpg png gif xxx</code> 等等</p>
 </blockquote>
@@ -382,8 +381,7 @@ compress<span class="token operator">.</span>zlib<span class="token punctuation"
 http<span class="token punctuation">:</span><span class="token comment">//127.0.0.1/include.php?file=compress.zlib://E:\phpStudy\PHPTutorial\WWW\phpinfo.gz</span>
 压缩 phpinfo<span class="token operator">.</span>txt 为 phpinfo<span class="token operator">.</span>gz 并上传（同样支持任意后缀名）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-
-
+<hr>
 <h1 id="phar-x2F-x2F-协议"><a href="#phar-x2F-x2F-协议" class="headerlink" title="phar:&#x2F;&#x2F; 协议"></a>phar:&#x2F;&#x2F; 协议</h1><blockquote>
 <p>与<code>zip://</code>类似，同样可以访问zip格式压缩包内容</p>
 </blockquote>

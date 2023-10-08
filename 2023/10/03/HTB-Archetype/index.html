@@ -74,7 +74,7 @@
     <div id="toc" class="toc-article">
     <h3><i class="fa-brands fa-readme"></i>  目录</h3>
       <div class="toc-title"></div>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Task1"><span class="toc-text">Task1</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Task2"><span class="toc-text">Task2</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Task3"><span class="toc-text">Task3</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Task4"><span class="toc-text">Task4</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Task5"><span class="toc-text">Task5</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Task6"><span class="toc-text">Task6</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Task7"><span class="toc-text">Task7</span></a></li></ol>
     </div>
   
         
@@ -246,7 +246,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/HackTheBox/" style="color: #00a596">HackTheBox</a>
+                <a href="/blog/tags/HackTheBox/" style="color: #00bcd4">HackTheBox</a>
             </span>
             
         </span>
@@ -260,7 +260,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">6字</span>
+        <span class="post-count">465字</span>
       </span>
     </span>
 
@@ -269,7 +269,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">1分</span>
+        <span class="post-count">2分</span>
       </span>
     </span>
     
@@ -287,6 +287,67 @@
         <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>第二层 Archetype</p>
 <span id="more"></span>
 
+<h1 id="Task1"><a href="#Task1" class="headerlink" title="Task1"></a>Task1</h1><pre class="line-numbers language-txt" data-language="txt"><code class="language-txt">Which TCP port is hosting a database server?
+哪个 TCP 端口托管数据库服务器？<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>A：<code>1433</code></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">nmap <span class="token parameter variable">-A</span> <span class="token number">10.129</span>.127.157<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>nmap开扫</p>
+<p><img src="/blog/2023/10/03/HTB-Archetype/image-20231004154532672.png" alt="image-20231004154532672"></p>
+<hr>
+<h1 id="Task2"><a href="#Task2" class="headerlink" title="Task2"></a>Task2</h1><pre class="line-numbers language-txt" data-language="txt"><code class="language-txt">What is the name of the non-Administrative share available over SMB?
+SMB 上可用的非管理共享的名称是什么？<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>A：<code>backups</code></p>
+<p>上面看到139端口和445端口就知道是SMB了</p>
+<p>那么从SMB下手使用<code>-L</code>命令列出共享文件夹</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">smbclient <span class="token parameter variable">-L</span> <span class="token number">10.129</span>.127.157<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/blog/2023/10/03/HTB-Archetype/image-20231004155124286.png" alt="image-20231004155124286"></p>
+<p>带美元符号的是管理员权限</p>
+<hr>
+<h1 id="Task3"><a href="#Task3" class="headerlink" title="Task3"></a>Task3</h1><pre class="line-numbers language-txt" data-language="txt"><code class="language-txt">What is the password identified in the file on the SMB share?
+SMB 共享上的文件中标识的密码是什么？<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>A：<code>M3g4c0rp123</code></p>
+<p>smb连接backups</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">smbclient <span class="token punctuation">\</span><span class="token punctuation">\</span><span class="token punctuation">\</span><span class="token punctuation">\</span><span class="token number">10.129</span>.127.157<span class="token punctuation">\</span><span class="token punctuation">\</span>backups<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/blog/2023/10/03/HTB-Archetype/image-20231004155626330.png" alt="image-20231004155626330"></p>
+<p>发现dtsConfig文件，这个文件是SSIS的配置文件，SSIS即SQL Server Integration Services，先get下来</p>
+<p><img src="/blog/2023/10/03/HTB-Archetype/image-20231004155800262.png" alt="image-20231004155800262"></p>
+<p>里面包括了SQL服务的账户密码，可以看到</p>
+<p>ID：<code>ARCHETYPE/sql_svc</code></p>
+<p>Password：<code>M3g4c0rp123</code></p>
+<hr>
+<h1 id="Task4"><a href="#Task4" class="headerlink" title="Task4"></a>Task4</h1><pre class="line-numbers language-txt" data-language="txt"><code class="language-txt">What script from Impacket collection can be used in order to establish an authenticated connection to a Microsoft SQL Server?
+可以使用 Impacket 集合中的哪些脚本来建立与Microsoft SQL Server 的经过身份验证的连接？<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>A：<code>mssqlclient.py</code></p>
+<p>kali上自带的mssql客户端impacket-mssqlclient可以用来连接靶机上的SQL服务</p>
+<p>结合上面nmap的扫描结果发现smb的系统是windows</p>
+<p><img src="/blog/2023/10/03/HTB-Archetype/image-20231004160603709.png" alt="image-20231004160603709"></p>
+<p>用上面得到的账户连接靶机并用Windows身份验证</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">impacket-mssqlclient ARCHETYPE/sql_svc@10.129.127.157 -windows-auth <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>寄，连接的时候报错<code>[-] [(&#39;SSL routines&#39;, &#39;&#39;, &#39;legacy sigalg disallowed or unsupported&#39;)]</code>，弄了半天还没解决</p>
+<hr>
+<h1 id="Task5"><a href="#Task5" class="headerlink" title="Task5"></a>Task5</h1><pre class="line-numbers language-txt" data-language="txt"><code class="language-txt">What extended stored procedure of Microsoft SQL Server can be used in order to spawn a Windows command shell?
+可以使用Microsoft SQL Server的哪些扩展存储过程来生成Windows命令外壳？<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>A：&#96;&#96;</p>
+<hr>
+<h1 id="Task6"><a href="#Task6" class="headerlink" title="Task6"></a>Task6</h1><pre class="line-numbers language-txt" data-language="txt"><code class="language-txt">What script can be used in order to search possible paths to escalate privileges on Windows hosts?
+可以使用什么脚本来搜索可能路径以提升 Windows 主机上的权限？<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>A：&#96;&#96;</p>
+<hr>
+<h1 id="Task7"><a href="#Task7" class="headerlink" title="Task7"></a>Task7</h1><pre class="line-numbers language-txt" data-language="txt"><code class="language-txt">What file contains the administrator's password?
+什么文件包含管理员的密码？<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>A：&#96;&#96;</p>
+<hr>
 
     </div>
     
