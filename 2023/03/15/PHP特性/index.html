@@ -246,7 +246,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/PHP/" style="color: #ffa2c4">PHP</a>
+                <a href="/blog/tags/PHP/" style="color: #ff7d73">PHP</a>
             </span>
             
         </span>
@@ -260,7 +260,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">4.2k字</span>
+        <span class="post-count">4.3k字</span>
       </span>
     </span>
 
@@ -269,7 +269,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">18分</span>
+        <span class="post-count">19分</span>
       </span>
     </span>
     
@@ -289,6 +289,28 @@
 <h2 id="PHP弱类型"><a href="#PHP弱类型" class="headerlink" title="PHP弱类型"></a>PHP弱类型</h2><blockquote>
 <p>在 PHP 中，不同类型的变量可以相互转换</p>
 </blockquote>
+<p>比较</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"admin"</span><span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>	<span class="token comment">// true</span>
+<span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"1admin"</span><span class="token operator">==</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 	<span class="token comment">// true</span>
+<span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"admin1"</span><span class="token operator">==</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>	<span class="token comment">// false</span>
+<span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"admin1"</span><span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>	<span class="token comment">// true</span>
+<span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"0e123456"</span><span class="token operator">==</span><span class="token string double-quoted-string">"0e4456789"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>	<span class="token comment">// true</span>
+<span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token constant boolean">True</span><span class="token operator">==</span><span class="token string double-quoted-string">"a"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>	<span class="token comment">// true</span>
+<span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token constant boolean">True</span><span class="token operator">==</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>	<span class="token comment">// true</span>
+<span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token constant boolean">False</span><span class="token operator">==</span><span class="token string double-quoted-string">"0"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>	<span class="token comment">// true</span>
+<span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token constant boolean">False</span><span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>	<span class="token comment">// true</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>运算</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token variable">$test</span><span class="token operator">=</span><span class="token number">1</span> <span class="token operator">+</span> <span class="token string double-quoted-string">"10.5"</span><span class="token punctuation">;</span> 	<span class="token comment">// $test=11.5(float)</span>
+<span class="token variable">$test</span><span class="token operator">=</span><span class="token number">1</span><span class="token operator">+</span><span class="token string double-quoted-string">"-1.3e3"</span><span class="token punctuation">;</span> 	<span class="token comment">// $test=-1299(float)</span>
+<span class="token variable">$test</span><span class="token operator">=</span><span class="token number">1</span><span class="token operator">+</span><span class="token string double-quoted-string">"bob-1.3e3"</span><span class="token punctuation">;</span>	<span class="token comment">// $test=1(int)</span>
+<span class="token variable">$test</span><span class="token operator">=</span><span class="token number">1</span><span class="token operator">+</span><span class="token string double-quoted-string">"2admin"</span><span class="token punctuation">;</span>	<span class="token comment">// $test=3(int)</span>
+<span class="token variable">$test</span><span class="token operator">=</span><span class="token number">1</span><span class="token operator">+</span><span class="token string double-quoted-string">"admin2"</span><span class="token punctuation">;</span>	<span class="token comment">// $test=1(int)</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>这种题可以在本地多调试调试来找到需要的payload</p>
 <p>例如将字符串转换为数字或将数字转换为字符串</p>
 <ul>
@@ -419,7 +441,7 @@
 <p>如果文件是常规的文件，该函数返回 TRUE。</p>
 </blockquote>
 <ul>
-<li>可运用伪协议</li>
+<li>可运用伪协议，不会将伪协议当作文件</li>
 <li>目录溢出：该函数最多能处理330位字符串（大概？），超出后会认为不是一个文件</li>
 </ul>
 <pre class="line-numbers language-none"><code class="language-none">&#x2F;proc&#x2F;self&#x2F;root&#x2F;proc&#x2F;self&#x2F;root&#x2F;proc&#x2F;self&#x2F;root&#x2F;proc&#x2F;self&#x2F;root&#x2F;proc&#x2F;self&#x2F;root&#x2F;p

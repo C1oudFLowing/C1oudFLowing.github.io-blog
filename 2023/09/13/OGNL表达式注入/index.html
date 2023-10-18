@@ -246,7 +246,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/Java/" style="color: #ff7d73">Java</a>
+                <a href="/blog/tags/Java/" style="color: #ffa2c4">Java</a>
             </span>
             
             <span class="tag">
@@ -265,7 +265,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">990字</span>
+        <span class="post-count">1k字</span>
       </span>
     </span>
 
@@ -425,6 +425,8 @@
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<p>换成一行的形式就是：<code>Ognl.getValue(&quot;@java.lang.Runtime@getRuntime().exec(\&quot;calc\&quot;)&quot;, context, context.getRoot());</code></p>
+<p>实际的题目环境要执行的往往是：<code>@java.lang.Runtime@getRuntime().exec(&quot;ls&quot;)</code></p>
 <hr>
 <h2 id="高版本下的黑名单"><a href="#高版本下的黑名单" class="headerlink" title="高版本下的黑名单"></a>高版本下的黑名单</h2><p>在OGNL&gt;&#x3D;3.1.25 3.1.12版本设置了黑名单：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">Object</span> <span class="token function">invokeMethod</span><span class="token punctuation">(</span><span class="token class-name">Object</span> target<span class="token punctuation">,</span> <span class="token class-name">Method</span> method<span class="token punctuation">,</span> <span class="token class-name">Object</span><span class="token punctuation">[</span><span class="token punctuation">]</span> argsArray<span class="token punctuation">)</span>
