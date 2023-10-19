@@ -74,7 +74,7 @@
     <div id="toc" class="toc-article">
     <h3><i class="fa-brands fa-readme"></i>  目录</h3>
       <div class="toc-title"></div>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B4%E6%95%B0%E6%BA%A2%E5%87%BA"><span class="toc-text">整数溢出</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B4%E6%95%B0%E6%BA%A2%E5%87%BA"><span class="toc-text">整数溢出</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#strconv-Atoi%E6%88%AA%E6%96%AD"><span class="toc-text">strconv.Atoi截断</span></a></li></ol></li></ol>
     </div>
   
         
@@ -239,6 +239,18 @@
         </span>
         
         
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/go/" style="color: #ff7d73">go</a>
+            </span>
+            
+        </span>
+        
         <!--文章字数统计-->
         
             
@@ -248,7 +260,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">15字</span>
+        <span class="post-count">526字</span>
       </span>
     </span>
 
@@ -257,7 +269,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">1分</span>
+        <span class="post-count">2分</span>
       </span>
     </span>
     
@@ -272,11 +284,80 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>参考博客：<a target="_blank" rel="noopener" href="https://blog.h4ck.fun/golang_vuln_share">https://blog.h4ck.fun/golang_vuln_share</a></p>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>目前只学习了整数溢出</p>
+<p>参考博客：<a target="_blank" rel="noopener" href="https://blog.h4ck.fun/golang_vuln_share">https://blog.h4ck.fun/golang_vuln_share</a></p>
+<p>Golang 是一门强类型的语言，在代码中不使用 cgo 的情况下默认使用静态编译，在编译过程中就能杜绝许多安全问题，因此 Golang 会出现的一些安全问题经常是因为依赖库中的issues和开发者自身操作不当</p>
 <span id="more"></span>
 
 <hr>
-<h1 id="整数溢出"><a href="#整数溢出" class="headerlink" title="整数溢出"></a>整数溢出</h1>
+<h1 id="整数溢出"><a href="#整数溢出" class="headerlink" title="整数溢出"></a>整数溢出</h1><p>无符号整型溢出：</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token keyword">package</span> main
+
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+	<span class="token string">"fmt"</span>
+	<span class="token string">"reflect"</span>
+<span class="token punctuation">)</span>	
+
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+	<span class="token keyword">var</span> a <span class="token builtin">uint16</span> <span class="token operator">=</span> <span class="token number">65535</span>
+	<span class="token keyword">var</span> b <span class="token builtin">uint16</span> <span class="token operator">=</span> <span class="token number">1</span>
+	<span class="token keyword">var</span> c <span class="token builtin">uint16</span> <span class="token operator">=</span> <span class="token number">2</span>
+	<span class="token keyword">var</span> sum1 <span class="token operator">=</span> a <span class="token operator">+</span> b
+	<span class="token keyword">var</span> sum2 <span class="token operator">=</span> b <span class="token operator">-</span> c
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>reflect<span class="token punctuation">.</span><span class="token function">TypeOf</span><span class="token punctuation">(</span>sum1<span class="token punctuation">)</span><span class="token punctuation">)</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>sum1<span class="token punctuation">)</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>sum2<span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>运行得到</p>
+<p><img src="/blog/2023/10/17/go%E6%BC%8F%E6%B4%9E%E5%AD%A6%E4%B9%A0/image-20231018170351727.png" alt="image-20231018170351727"></p>
+<p>因为uint16类型的范围为0~65535，对无符号数，65535向上溢出后会从0开始算溢出的部分，0向下溢出会从65535开始算溢出的部分</p>
+<p>如果定义时直接赋值一个大小已经溢出的数，编译器会编译不通过</p>
+<p>有符号数也是同理：</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token keyword">package</span> main
+
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+	<span class="token string">"fmt"</span>
+	<span class="token string">"reflect"</span>
+<span class="token punctuation">)</span>
+
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+	<span class="token keyword">var</span> a2 <span class="token builtin">int8</span> <span class="token operator">=</span> <span class="token number">127</span>
+	<span class="token keyword">var</span> b2 <span class="token builtin">int8</span> <span class="token operator">=</span> <span class="token number">1</span>
+	<span class="token keyword">var</span> sum1 <span class="token builtin">int8</span> <span class="token operator">=</span> a2 <span class="token operator">+</span> b2
+	<span class="token keyword">var</span> sum2 <span class="token builtin">int8</span> <span class="token operator">=</span> <span class="token operator">-</span>a2 <span class="token operator">-</span> b2 <span class="token operator">-</span> b2
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>reflect<span class="token punctuation">.</span><span class="token function">TypeOf</span><span class="token punctuation">(</span>sum1<span class="token punctuation">)</span><span class="token punctuation">)</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>sum1<span class="token punctuation">)</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>sum2<span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="/blog/2023/10/17/go%E6%BC%8F%E6%B4%9E%E5%AD%A6%E4%B9%A0/image-20231018171057653.png" alt="image-20231018171057653"></p>
+<p>int8的范围是-128~127，可以看到对127加1超出了int8的范围，翻转为了-128</p>
+<p>在类型转换中，也会出现较大整型向较小整型转换的截断问题，Golang 是一种强类型语言，但是 Golang 提供了类型强制转换的功能，来跳过该限制</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token keyword">package</span> main
+
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+	<span class="token string">"fmt"</span>
+<span class="token punctuation">)</span>
+
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+	<span class="token keyword">var</span> a3 <span class="token builtin">int16</span> <span class="token operator">=</span> <span class="token number">255</span>
+	<span class="token keyword">var</span> b3 <span class="token operator">=</span> <span class="token function">int8</span><span class="token punctuation">(</span>a3<span class="token punctuation">)</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>b3<span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="/blog/2023/10/17/go%E6%BC%8F%E6%B4%9E%E5%AD%A6%E4%B9%A0/image-20231018171432461.png" alt="image-20231018171432461"></p>
+<p>可以看到较大整型向较小整型转换会自动换算成溢出后的值</p>
+<h2 id="strconv-Atoi截断"><a href="#strconv-Atoi截断" class="headerlink" title="strconv.Atoi截断"></a>strconv.Atoi截断</h2><p>旧版本的<code>kubectl</code>命令行中出现了一个<code>strconv.Atoi</code>导致的截断问题。</p>
+<p>当我们传入port参数的对应字符串后,容器启动的端口这一参数会将经Atoi处理后的字符串进行int32的类型转换</p>
+<p>由于64位系统的int是int64类型。转int32的话会出现明显截断：</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go">v <span class="token punctuation">,</span> <span class="token boolean">_</span> <span class="token operator">:=</span> strconv<span class="token punctuation">.</span><span class="token function">Atoi</span><span class="token punctuation">(</span><span class="token string">"4294967377"</span><span class="token punctuation">)</span>
+s  <span class="token operator">:=</span> <span class="token function">int32</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span>
+fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span>
+<span class="token comment">// 81</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>这样就有可能导致81端口的服务启动，或者被停止</p>
+
     </div>
     
     
