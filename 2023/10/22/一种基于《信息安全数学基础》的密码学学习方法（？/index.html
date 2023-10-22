@@ -1,0 +1,442 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <title>一种基于《信息安全数学基础》的密码学学习方法（？ | 雲流のLowest World</title>
+        <meta name="author" content="C1oudfL0w0" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+        <link rel="icon" href="/blog/images/croppedImage_cropped.jpg" />
+        <script src="https://cdn.staticfile.org/vue/3.2.45/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.2.1/css/all.min.css" />
+<link rel="stylesheet" href="/blog/css/fonts.min.css" />
+<link rel="stylesheet" href="/blog/css/search.css" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+<!--改成了prismjs高亮-->
+
+<script src="/blog/js/lib/prism.js"></script>
+<link rel="stylesheet" href="/blog/css/prism.css" rel="stylesheet" />
+
+
+
+<script src="/blog/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+
+<script src="/blog/js/lib/home.js"></script>
+
+<link rel="stylesheet" href="/blog/css/main.css" />
+<!-- 引入jQuery-->
+<script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<!-- 引入不蒜子-->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    
+        <script type="text/javascript" src="/blog/libs/codeBlock/codeBlockFuction.js"></script>
+<!-- 代码语言 -->
+<script type="text/javascript" src="/blog/libs/codeBlock/codeLang.js"></script>
+<!-- 代码块复制 -->
+<!-- 引入clipboard -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+<script type="text/javascript" src="/blog/libs/codeBlock/codeCopy.js"></script>
+<!-- 代码块收缩 -->
+<script type="text/javascript" src="/blog/libs/codeBlock/codeShrink.js"></script> 
+<!-- 代码块折行 -->
+<style type="text/css">code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }</style>
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <!--flag{never_g0nna g1ve_you up}-->
+
+        <!-- 页面点击小红心与文字 -->
+        <script type = "text/javascript" src = "/blog/js/love-click.js"></script>
+
+        <!-- 浏览器标题 -->
+         <script type="text/javascript" src="/blog/js/FunnyTitle.js"></script>
+         
+        <!--动态背景-->
+        <script type="text/javascript"
+        color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+        <!--文章目录-->
+        
+    <div id="toc" class="toc-article">
+    <h3><i class="fa-brands fa-readme"></i>  目录</h3>
+      <div class="toc-title"></div>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC1%E7%AB%A0%EF%BC%9A%E6%95%B4%E6%95%B0%E7%9A%84%E5%8F%AF%E9%99%A4%E6%80%A7"><span class="toc-text">第1章：整数的可除性</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B4%E9%99%A4%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-text">整除的概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B4%A0%E6%95%B0"><span class="toc-text">素数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97%E9%99%A4%E6%B3%95"><span class="toc-text">欧几里得除法</span></a></li></ol></li></ol>
+    </div>
+  
+        
+        <!--返回顶部-->
+        <div id="totop" style="position:fixed;bottom:50px;right:60px;font-size: 48px;cursor: pointer;z-index: 10;">
+            <a title="返回顶部">↑</a>
+            </div>
+        <script src="/blog/js/totop.js"></script>
+
+        <div id="layout">
+            <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>第一次加载文章图片可能会花费较长时间</p>
+                    <p>要不挂个梯子试试？（x</p>
+                    <p>加载过慢请开启缓存&ensp;浏览器默认开启</p>
+                    <img src="/blog/images/loading.gif" />
+                </div>
+            </div>
+            </transition>
+            <transition name="into">
+            <div id="main" v-show="!loading">
+                <nav id="menu" ref="menu">
+    <div class="desktop-menu">
+        <a class="title" href="/blog/">
+            <span>雲流のLOWEST WORLD</span>
+        </a>
+        
+        <a href="/blog/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/blog/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/blog/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/blog/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/blog/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+        <a href="/blog/links">
+            <i class="fa-solid fa-link fa-fw"></i>
+            <span>&ensp;Links</span>
+        </a>
+        
+        <a href="/blog/search">
+            <i class="fa-solid fa-search fa-fw"></i>
+            <span>&ensp;Search</span>
+        </a>
+        
+    </div>
+    <div id="mobile-menu">
+        <div class="curtain" v-show="showMenu" @click="showMenu = !showMenu"></div>
+        <div class="title" @click="showMenu = !showMenu">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;雲流のLOWEST WORLD</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="showMenu">
+            
+            <a href="/blog/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                </div>
+            </a>
+            
+            <a href="/blog/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                </div>
+            </a>
+            
+            <a href="/blog/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                </div>
+            </a>
+            
+            <a href="/blog/categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                </div>
+            </a>
+            
+            <a href="/blog/tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                </div>
+            </a>
+            
+            <a href="/blog/links">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-link fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Links</div>
+                </div>
+            </a>
+            
+            <a href="/blog/search">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-search fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Search</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+
+                <div class="article">
+    <div>
+        <h1>一种基于《信息安全数学基础》的密码学学习方法（？</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/10/22
+        </span>
+        
+        <span class="category">
+            <a href="/blog/categories/Crypto/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                Crypto
+            </a>
+        </span>
+        
+        
+        <!--文章字数统计-->
+        
+            
+<div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <!-- 安装插件npm install hexo-wordcount --save -->
+        <span class="post-count">971字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">4分</span>
+      </span>
+    </span>
+    
+    <!--不蒜子统计访问数-->
+    <span id="busuanzi_container_page_pv">
+    &nbsp; | &nbsp;
+    总文章阅读量：<span id="busuanzi_value_page_pv"></span>次
+    </span>
+</div>
+
+          
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>人话：课程学习笔记（</p>
+<p>以一种调动个人积极性的方式学习或许会有所成效？</p>
+<p>Ps：本人的博客并不打算使用LateX语法，所以部分公式可能会上个图完事</p>
+<span id="more"></span>
+
+<hr>
+<h1 id="第1章：整数的可除性"><a href="#第1章：整数的可除性" class="headerlink" title="第1章：整数的可除性"></a>第1章：整数的可除性</h1><h2 id="整除的概念"><a href="#整除的概念" class="headerlink" title="整除的概念"></a>整除的概念</h2><blockquote>
+<p>设a，b是任意两个整数，其中b≠0。如果存在一个整数q使得等式<code>a=q*b</code>成立，就称<strong>b整除a</strong>或者a被b整除，记作<code>b | a</code>，并把b叫做a的<strong>因数</strong>，a叫做b的<strong>倍数</strong>，不能整除就是<code>b ∤ a</code></p>
+</blockquote>
+<p>根据上面的定义，有：</p>
+<ul>
+<li>0是任何非0整数的倍数</li>
+<li>1是任何整数的因数</li>
+<li>任何非零整数a是其自身的倍数，也是其自身的因数</li>
+</ul>
+<p>Tips：不要关心得到的商是多少，只要是整数就是整除</p>
+<p>定理：</p>
+<ul>
+<li><p>整数的传递性：设a，b≠0，c≠0是三个整数，<code>若b|a，c|b，则c|a</code></p>
+<p>个人翻译：我因数的因数还是我的因数（</p>
+</li>
+<li><p>设a，b，c≠0是三个整数。<code>若c|a，c|b，则c|a±b</code></p>
+<p>证明：</p>
+<p><img src="/blog/2023/10/22/%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E3%80%8A%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E3%80%8B%E7%9A%84%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%EF%BC%88%EF%BC%9F/image-20231022164843844.png" alt="image-20231022164843844"></p>
+</li>
+<li><p>设a，b，c≠0是三个整数。<code>若c|a，c|b，则对任意整数s、t，有c|(s*a+t*b)</code></p>
+<p>证明过程和上面一个类似</p>
+</li>
+<li><p>设整数c≠0，若整数a<sub>1</sub>，…，a<sub>n</sub>都是整数c的倍数，则对任意n个整数s<sub>1</sub>，…，s<sub>n</sub>，整数s<sub>1</sub>a<sub>1</sub>+…+s<sub>n</sub>a<sub>n</sub>是c的倍数</p>
+<p>这个是上一个定理推广为多个整数的线性组合的定理</p>
+</li>
+<li><p>若a，b都是非零整数。<code>若a|b，b|a，则a=±b</code></p>
+<p>个人翻译：总之绝对值是相等的</p>
+</li>
+</ul>
+<hr>
+<h2 id="素数"><a href="#素数" class="headerlink" title="素数"></a>素数</h2><blockquote>
+<p>设整数n≠0，±1。如果除了显然因数±1和±n外，n没有其他因数，那么，n就叫做<strong>素数</strong>（或质数或不可约数），否则，n就叫做<strong>合数</strong></p>
+</blockquote>
+<ul>
+<li><p>设n是一个正合数，p是n的一个大于1的最小正因数，则p一定是素数，且p≤√n</p>
+<p>个人翻译：不是素数的话p就还有因数可以再分解，那p就不是最小正因数了；至少有两个因数，最小的肯定不能比最中间的√n大</p>
+</li>
+</ul>
+<p>Eratoshenes筛法：</p>
+<blockquote>
+<p>设n是正整数，<code>如果对所有的素数p ≤ √n，都有p ∤ n，则n一定是素数</code></p>
+</blockquote>
+<p>具体的筛法：</p>
+<p><img src="/blog/2023/10/22/%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E3%80%8A%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E3%80%8B%E7%9A%84%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%EF%BC%88%EF%BC%9F/image-20231022172219710.png" alt="image-20231022172219710"></p>
+<p>没看懂？看看算法（代码来源：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44585839/article/details/97904912">https://blog.csdn.net/weixin_44585839/article/details/97904912</a></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
+
+<span class="token keyword">def</span> <span class="token function">eratosthenes</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    p <span class="token operator">=</span> np<span class="token punctuation">.</span>arange<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>  <span class="token comment"># 生成1—n数组</span>
+    p<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span>  <span class="token comment"># 数字1不是质数单独处理</span>
+    i <span class="token operator">=</span> <span class="token number">2</span>  <span class="token comment"># i表示当前最小质数</span>
+    <span class="token keyword">while</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">:</span>  <span class="token comment"># i小于n时，i倍数的数字都不是质数，因此类推</span>
+        <span class="token keyword">if</span> p<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">:</span>
+            j <span class="token operator">=</span> i <span class="token operator">*</span> <span class="token number">2</span>
+            <span class="token keyword">while</span> j <span class="token operator">&lt;</span> n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">:</span>
+                p<span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span>
+                j <span class="token operator">+=</span> i
+        i <span class="token operator">+=</span> <span class="token number">1</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span>
+
+eratosthenes<span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>运行后得到</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token punctuation">[</span> <span class="token number">0</span>  <span class="token number">2</span>  <span class="token number">3</span>  <span class="token number">0</span>  <span class="token number">5</span>  <span class="token number">0</span>  <span class="token number">7</span>  <span class="token number">0</span>  <span class="token number">0</span>  <span class="token number">0</span> <span class="token number">11</span>  <span class="token number">0</span> <span class="token number">13</span>  <span class="token number">0</span>  <span class="token number">0</span>  <span class="token number">0</span> <span class="token number">17</span>  <span class="token number">0</span> <span class="token number">19</span>  <span class="token number">0</span>  <span class="token number">0</span>  <span class="token number">0</span> <span class="token number">23</span>  <span class="token number">0</span>
+  <span class="token number">0</span>  <span class="token number">0</span>  <span class="token number">0</span>  <span class="token number">0</span> <span class="token number">29</span>  <span class="token number">0</span> <span class="token number">31</span>  <span class="token number">0</span>  <span class="token number">0</span>  <span class="token number">0</span>  <span class="token number">0</span>  <span class="token number">0</span> <span class="token number">37</span>  <span class="token number">0</span>  <span class="token number">0</span>  <span class="token number">0</span> <span class="token number">41</span>  <span class="token number">0</span> <span class="token number">43</span>  <span class="token number">0</span>  <span class="token number">0</span>  <span class="token number">0</span> <span class="token number">47</span>  <span class="token number">0</span>
+  <span class="token number">0</span>  <span class="token number">0</span>  <span class="token number">0</span>  <span class="token number">0</span> <span class="token number">53</span>  <span class="token number">0</span>  <span class="token number">0</span>  <span class="token number">0</span>  <span class="token number">0</span>  <span class="token number">0</span> <span class="token number">59</span>  <span class="token number">0</span> <span class="token number">61</span>  <span class="token number">0</span>  <span class="token number">0</span>  <span class="token number">0</span>  <span class="token number">0</span>  <span class="token number">0</span> <span class="token number">67</span>  <span class="token number">0</span>  <span class="token number">0</span>  <span class="token number">0</span> <span class="token number">71</span>  <span class="token number">0</span>
+ <span class="token number">73</span>  <span class="token number">0</span>  <span class="token number">0</span>  <span class="token number">0</span>  <span class="token number">0</span>  <span class="token number">0</span> <span class="token number">79</span>  <span class="token number">0</span>  <span class="token number">0</span>  <span class="token number">0</span> <span class="token number">83</span>  <span class="token number">0</span>  <span class="token number">0</span>  <span class="token number">0</span>  <span class="token number">0</span>  <span class="token number">0</span> <span class="token number">89</span>  <span class="token number">0</span>  <span class="token number">0</span>  <span class="token number">0</span>  <span class="token number">0</span>  <span class="token number">0</span>  <span class="token number">0</span>  <span class="token number">0</span>
+ <span class="token number">97</span>  <span class="token number">0</span>  <span class="token number">0</span>  <span class="token number">0</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>很明显，保留下来的都是素数，这个算法会依次删掉N&#x3D;100中2，3，5，7的倍数，2，3，5，7即不大于√N&#x3D;10的所有素数</p>
+<ul>
+<li><p>素数有无穷多个</p>
+<p>证明：</p>
+<p><img src="/blog/2023/10/22/%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E3%80%8A%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E3%80%8B%E7%9A%84%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%EF%BC%88%EF%BC%9F/image-20231022175321775.png" alt="image-20231022175321775"></p>
+</li>
+</ul>
+<hr>
+<h2 id="欧几里得除法"><a href="#欧几里得除法" class="headerlink" title="欧几里得除法"></a>欧几里得除法</h2><blockquote>
+<p>设a，b是两个整数，其中b&gt;0，则存在唯一的整数q，r使得<code>a = q*b+r，0 ≤ r &lt; b</code></p>
+</blockquote>
+<p>算法实现：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"计算两个非负整数的最大公约数"</span><span class="token punctuation">)</span>
+num_1 <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span><span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"请输入第一个非负整数："</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+num_2 <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span><span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"请输入第二个非负整数："</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token keyword">def</span> <span class="token function">gcd</span><span class="token punctuation">(</span>num_1<span class="token punctuation">,</span> num_2<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    p<span class="token punctuation">,</span> q <span class="token operator">=</span> <span class="token builtin">max</span><span class="token punctuation">(</span>num_1<span class="token punctuation">,</span> num_2<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token builtin">min</span><span class="token punctuation">(</span>num_1<span class="token punctuation">,</span> num_2<span class="token punctuation">)</span>
+    <span class="token keyword">if</span> q <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> p
+    r <span class="token operator">=</span> p <span class="token operator">%</span> q
+    <span class="token keyword">return</span> gcd<span class="token punctuation">(</span>q<span class="token punctuation">,</span> r<span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"\n%s和%s的最大公约数是%s"</span> <span class="token operator">%</span> <span class="token punctuation">(</span>num_1<span class="token punctuation">,</span> num_2<span class="token punctuation">,</span> gcd<span class="token punctuation">(</span>num_1<span class="token punctuation">,</span> num_2<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            </div>
+            </transition>
+            
+            <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+            </transition>
+            
+        </div>
+        <script src="/blog/js/main.js"></script>
+        
+        
+
+
+
+
+         
+        
+    <div id="vcomments"></div>
+    
+        <script src="/blog/js/lib/valine.min.js"></script>
+            <script>
+                new Valine({
+                    el: '#vcomments',
+                    app_id: 'U9mZLKunkRUTcBFthjXPjnZE-9Nh9j0Va',
+                    app_key: 'SzWOnY0PWLGNuL6jW8TZYc7j',
+                    visitor: 'true',
+                    placeholder: '写点什么吧(●ˇ∀ˇ●)',
+                    serverURLs: 'https://u9mzlkun.lc-cn-e1-shared.com',
+                });
+            </script>
+
+        <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2023 雲流のLowest World
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;C1oudfL0w0
+            <span id="busuanzi_container_site_uv"> 
+                本站访客数<span id="busuanzi_value_site_uv"></span>人次
+            </span>
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+    <script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/blog/live2dw/assets/z16.model.json"},"display":{"position":"left","width":150,"height":290},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
+
