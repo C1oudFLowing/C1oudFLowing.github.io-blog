@@ -246,7 +246,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/Sql/" style="color: #ff7d73">Sql</a>
+                <a href="/blog/tags/Sql/" style="color: #00bcd4">Sql</a>
             </span>
             
         </span>
@@ -382,7 +382,11 @@ F <span class="token operator">or</span> T <span class="token operator">=</span>
 </blockquote>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_49150931/article/details/111829828">外链</a></p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Kracxi?type=blog">脚本参考Kradress</a></p>
-<h2 id="布尔盲注"><a href="#布尔盲注" class="headerlink" title="布尔盲注"></a><a href="https://c1oudfl0w0.github.io/blog/2023/05/06/SQL%E5%B8%83%E5%B0%94%E7%9B%B2%E6%B3%A8/">布尔盲注</a></h2><h2 id="时间盲注"><a href="#时间盲注" class="headerlink" title="时间盲注"></a><a href="https://c1oudfl0w0.github.io/blog/2023/05/10/SQL%E6%97%B6%E9%97%B4%E7%9B%B2%E6%B3%A8/">时间盲注</a></h2><hr>
+<h2 id="布尔盲注"><a href="#布尔盲注" class="headerlink" title="布尔盲注"></a><a href="https://c1oudfl0w0.github.io/blog/2023/05/06/SQL%E5%B8%83%E5%B0%94%E7%9B%B2%E6%B3%A8/">布尔盲注</a></h2><p>测试回显语句</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token number">1</span><span class="token string">'and if(1>0,1,0)#
+1'</span><span class="token operator">and</span> <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token operator">></span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token comment">#</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h2 id="时间盲注"><a href="#时间盲注" class="headerlink" title="时间盲注"></a><a href="https://c1oudfl0w0.github.io/blog/2023/05/10/SQL%E6%97%B6%E9%97%B4%E7%9B%B2%E6%B3%A8/">时间盲注</a></h2><hr>
 <h1 id="堆叠注入"><a href="#堆叠注入" class="headerlink" title="堆叠注入"></a>堆叠注入</h1><blockquote>
 <p>使用<code>;</code>执行多条sql语句</p>
 </blockquote>

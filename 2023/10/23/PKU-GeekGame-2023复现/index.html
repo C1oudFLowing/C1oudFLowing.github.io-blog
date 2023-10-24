@@ -3,7 +3,7 @@
 <html lang="zh-CN">
     <head>
         <meta charset="UTF-8" />
-        <title>PKU GeekGame 2023 | 雲流のLowest World</title>
+        <title>PKU GeekGame 2023复现 | 雲流のLowest World</title>
         <meta name="author" content="C1oudfL0w0" />
         <meta name="description" content="" />
         <meta name="keywords" content="" />
@@ -74,7 +74,7 @@
     <div id="toc" class="toc-article">
     <h3><i class="fa-brands fa-readme"></i>  目录</h3>
       <div class="toc-title"></div>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Tutorial"><span class="toc-text">Tutorial</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E7%9C%BC%E7%9B%AF%E5%B8%A7"><span class="toc-text">一眼盯帧</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Tutorial"><span class="toc-text">Tutorial</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E7%9C%BC%E7%9B%AF%E5%B8%A7"><span class="toc-text">一眼盯帧</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Web"><span class="toc-text">Web</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Emoji-Wordle"><span class="toc-text">Emoji Wordle</span></a></li></ol></li></ol>
     </div>
   
         
@@ -219,7 +219,7 @@
 
                 <div class="article">
     <div>
-        <h1>PKU GeekGame 2023</h1>
+        <h1>PKU GeekGame 2023复现</h1>
     </div>
     <div class="info">
         <span class="date">
@@ -248,7 +248,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">278字</span>
+        <span class="post-count">596字</span>
       </span>
     </span>
 
@@ -257,7 +257,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">1分</span>
+        <span class="post-count">2分</span>
       </span>
     </span>
     
@@ -274,6 +274,7 @@
     <div class="content" v-pre>
         <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>北大的ctf，出的东西都好新，晚点再看看</p>
 <p>yysy题目的梗含量爆炸，全是阿宅，太爽了（</p>
+<p>官方wp：<a target="_blank" rel="noopener" href="https://github.com/PKU-GeekGame/geekgame-3rd/tree/master/official_writeup">https://github.com/PKU-GeekGame/geekgame-3rd/tree/master/official_writeup</a></p>
 <span id="more"></span>
 
 <h1 id="Tutorial"><a href="#Tutorial" class="headerlink" title="Tutorial"></a>Tutorial</h1><h2 id="一眼盯帧"><a href="#一眼盯帧" class="headerlink" title="一眼盯帧"></a>一眼盯帧</h2><p>hint：实在不知道该给什么提示。因为只需要把 GIF 里每个帧里的字母拼起来，然后做个 ROT13 就解出来了。</p>
@@ -313,6 +314,48 @@ ciphertext <span class="token operator">=</span> <span class="token string">"syn
     <span class="token keyword">print</span><span class="token punctuation">(</span>plaintext<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>得到flag：<code>flag&#123;enjoythegeekgame&#125;</code></p>
+<hr>
+<h1 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h1><h2 id="Emoji-Wordle"><a href="#Emoji-Wordle" class="headerlink" title="Emoji Wordle"></a>Emoji Wordle</h2><blockquote>
+<p>python爆破</p>
+</blockquote>
+<p>Q：你能在规定的次数之内猜出由 64 个 Emoji 组成的 Wordle 吗？猜测结果正确就能拿到 Flag。</p>
+<p>hint：</p>
+<ul>
+<li><p>本题使用了 Play Framework。这是一种无状态 Web 框架，其实服务器什么都没有存储。</p>
+</li>
+<li><p>可以看看 <a target="_blank" rel="noopener" href="https://www.playframework.com/documentation/2.8.x/SettingsSession">它的 Session 实现</a>，留意一下每次请求 Cookie 发生了什么变化。</p>
+</li>
+<li><p>另外，输入框里面的 Placeholder 是从 128 个 Emoji 中随机（有放回）抽取 64 个，但是答案只会涉及 64 种 Emoji。在知道答案涉及的 64 种 Emoji 的前提下，可以用 64 次猜测得到答案</p>
+</li>
+</ul>
+<p>这题有点离谱，真就是在规定次数内拿脚本硬爆64个字符</p>
+<p>level1~3均适用</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> requests
+
+<span class="token keyword">def</span> <span class="token function">solve</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    cookie <span class="token operator">=</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"https://prob14.geekgame.pku.edu.cn/level1"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>cookies
+    v <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token number">64</span>
+    x <span class="token operator">=</span> <span class="token punctuation">[</span>
+        <span class="token builtin">chr</span><span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token number">0x1F410</span><span class="token punctuation">)</span> <span class="token keyword">for</span> i <span class="token keyword">in</span>
+        <span class="token string">b"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"</span>
+    <span class="token punctuation">]</span>
+    <span class="token keyword">for</span> z <span class="token keyword">in</span> x<span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>x<span class="token punctuation">.</span>index<span class="token punctuation">(</span>z<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        p <span class="token operator">=</span> <span class="token punctuation">[</span>
+            <span class="token builtin">ord</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token keyword">for</span> i <span class="token keyword">in</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span>
+                <span class="token string">"https://prob14.geekgame.pku.edu.cn/level1?guess="</span> <span class="token operator">+</span> z <span class="token operator">*</span> <span class="token number">64</span><span class="token punctuation">,</span>
+                cookies<span class="token operator">=</span>cookie<span class="token punctuation">)</span><span class="token punctuation">.</span>text<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">28</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">14</span><span class="token punctuation">:</span><span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">]</span>
+        <span class="token punctuation">]</span>
+        <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">64</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">if</span> p<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">129001</span><span class="token punctuation">:</span>
+                v<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> z
+    <span class="token keyword">return</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"https://prob14.geekgame.pku.edu.cn/level1?guess="</span> <span class="token operator">+</span>
+                        <span class="token string">''</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span>v<span class="token punctuation">)</span><span class="token punctuation">,</span>
+                        cookies<span class="token operator">=</span>cookie<span class="token punctuation">)</span><span class="token punctuation">.</span>text
+
+solve<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>不过具体的思路应该是Gameover了可以用旧的cookie还原状态，但是这个硬爆还是挺离谱的</p>
 <hr>
 
     </div>

