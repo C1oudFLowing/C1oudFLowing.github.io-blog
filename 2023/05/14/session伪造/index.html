@@ -74,7 +74,7 @@
     <div id="toc" class="toc-article">
     <h3><i class="fa-brands fa-readme"></i>  目录</h3>
       <div class="toc-title"></div>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Session-ID"><span class="toc-text">Session ID</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%87%BA%E7%8E%B0%E5%9C%BA%E6%99%AF"><span class="toc-text">出现场景</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8E%9F%E5%A7%8B%E4%BB%A3%E7%A0%81"><span class="toc-text">原始代码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Session%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86"><span class="toc-text">Session加密解密</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E7%94%9F%E6%88%90Session"><span class="toc-text">本地生成Session</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Session-ID"><span class="toc-text">Session ID</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%87%BA%E7%8E%B0%E5%9C%BA%E6%99%AF"><span class="toc-text">出现场景</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8E%9F%E5%A7%8B%E4%BB%A3%E7%A0%81"><span class="toc-text">原始代码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#flask-session-cookie-manager%E8%BF%9B%E8%A1%8CSession%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86"><span class="toc-text">flask_session_cookie_manager进行Session加密解密</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#flask-unsign%E8%BF%9B%E8%A1%8Csecret-key%E7%88%86%E7%A0%B4%E4%B8%8Esession%E5%8A%A0%E8%A7%A3%E5%AF%86"><span class="toc-text">flask-unsign进行secret_key爆破与session加解密</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E7%94%9F%E6%88%90Session"><span class="toc-text">本地生成Session</span></a></li></ol>
     </div>
   
         
@@ -256,7 +256,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/session/" style="color: #00a596">session</a>
+                <a href="/blog/tags/session/" style="color: #ff7d73">session</a>
             </span>
             
         </span>
@@ -270,7 +270,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">397字</span>
+        <span class="post-count">460字</span>
       </span>
     </span>
 
@@ -279,7 +279,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">1分</span>
+        <span class="post-count">2分</span>
       </span>
     </span>
     
@@ -329,7 +329,7 @@ app<span class="token punctuation">.</span>secret_key <span class="token operato
 
 
 
-<h1 id="Session加密解密"><a href="#Session加密解密" class="headerlink" title="Session加密解密"></a>Session加密解密</h1><p><a target="_blank" rel="noopener" href="https://github.com/noraj/flask-session-cookie-manager">Github上的脚本</a></p>
+<h1 id="flask-session-cookie-manager进行Session加密解密"><a href="#flask-session-cookie-manager进行Session加密解密" class="headerlink" title="flask_session_cookie_manager进行Session加密解密"></a>flask_session_cookie_manager进行Session加密解密</h1><p><a target="_blank" rel="noopener" href="https://github.com/noraj/flask-session-cookie-manager">Github上的脚本</a></p>
 <p>在安装的文件夹中使用终端执行命令</p>
 <p>解密：</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">python flask_session_cookie_manager3.py decode <span class="token parameter variable">-s</span> <span class="token string">"secret_key"</span> <span class="token parameter variable">-c</span> <span class="token string">"需要解密的session值"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -338,6 +338,16 @@ app<span class="token punctuation">.</span>secret_key <span class="token operato
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">python flask_session_cookie_manager3.py encode <span class="token parameter variable">-s</span> <span class="token string">"secret_key"</span> <span class="token parameter variable">-t</span> <span class="token string">"需要加密的session值"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>由此可以抓包进行session伪造实现身份认证绕过</p>
+<hr>
+<h1 id="flask-unsign进行secret-key爆破与session加解密"><a href="#flask-unsign进行secret-key爆破与session加解密" class="headerlink" title="flask-unsign进行secret_key爆破与session加解密"></a>flask-unsign进行secret_key爆破与session加解密</h1><p>爆破key，dict.txt需要看情况自己生成，一般是固定位数的随机数</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">flask-unsign <span class="token parameter variable">--unsign</span> <span class="token parameter variable">--cookie</span> <span class="token string">"session值"</span> <span class="token parameter variable">--wordlist</span> dict.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>加密：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">flask-unsign <span class="token parameter variable">--sign</span> <span class="token parameter variable">--cookie</span> <span class="token string">"要加密的字符串"</span> <span class="token parameter variable">--secret</span> <span class="token string">'secret_key'</span> --no-literal-eval<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+<hr>
 <h1 id="本地生成Session"><a href="#本地生成Session" class="headerlink" title="本地生成Session"></a>本地生成Session</h1><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> base64
 <span class="token keyword">import</span> os
 <span class="token keyword">from</span> flask <span class="token keyword">import</span> <span class="token punctuation">(</span>Flask<span class="token punctuation">,</span> render_template<span class="token punctuation">,</span> request<span class="token punctuation">,</span> url_for<span class="token punctuation">,</span> redirect<span class="token punctuation">,</span> session<span class="token punctuation">,</span>

