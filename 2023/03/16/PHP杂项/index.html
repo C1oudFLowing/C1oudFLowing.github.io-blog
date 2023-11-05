@@ -246,7 +246,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/PHP/" style="color: #00bcd4">PHP</a>
+                <a href="/blog/tags/PHP/" style="color: #03a9f4">PHP</a>
             </span>
             
         </span>
@@ -260,7 +260,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">1.7k字</span>
+        <span class="post-count">1.8k字</span>
       </span>
     </span>
 
@@ -269,7 +269,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">6分</span>
+        <span class="post-count">7分</span>
       </span>
     </span>
     
@@ -349,6 +349,13 @@
 </ul>
 <h3 id="伪随机数漏洞"><a href="#伪随机数漏洞" class="headerlink" title="伪随机数漏洞"></a>伪随机数漏洞</h3><p>存在可预测性：</p>
 <p>知道种子后，可以确定输出伪随机数的序列<br>知道随机数序列，可以确定你的种子</p>
+<p>可以使用工具php_mt_seed爆破seed：下载地址<a target="_blank" rel="noopener" href="http://www.openwall.com/php_mt_seed">www.openwall.com/php_mt_seed</a></p>
+<p>用法：在php_mt_seed文件夹下执行命令</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">make</span>
+<span class="token function">time</span> ./php_mt_seed <span class="token number">123878781</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+
 <hr>
 <h2 id="parse-url函数"><a href="#parse-url函数" class="headerlink" title="parse_url函数"></a><a href="https://c1oudfl0w0.github.io/blog/2023/05/13/ctfshow%E5%91%A8%E6%9C%AB%E5%A4%A7%E6%8C%91%E6%88%98parse-url-%E4%B8%93%E5%9C%BA/">parse_url函数</a></h2><blockquote>
 <p>解析一个 URL 并返回一个关联数组，包含在 URL 中出现的各种组成部分</p>
