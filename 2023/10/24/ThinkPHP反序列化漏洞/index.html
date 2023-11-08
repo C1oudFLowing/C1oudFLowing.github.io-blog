@@ -74,7 +74,7 @@
     <div id="toc" class="toc-article">
     <h3><i class="fa-brands fa-readme"></i>  目录</h3>
       <div class="toc-title"></div>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-text">基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E5%92%8C%E5%AD%90%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4"><span class="toc-text">命名空间和子命名空间</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%9A%84%E7%BB%A7%E6%89%BF"><span class="toc-text">类的继承</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#trait%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="toc-text">trait修饰符</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ThinkPHP%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C"><span class="toc-text">ThinkPHP开发手册</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%EF%BC%886-0%EF%BC%89"><span class="toc-text">目录结构（6.0）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ThinkPHP6-0"><span class="toc-text">ThinkPHP6.0</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="toc-text">环境搭建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#V6-0-12LTS%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E"><span class="toc-text">V6.0.12LTS反序列化漏洞</span></a></li></ol></li></ol>
     </div>
   
         
@@ -239,7 +239,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">53字</span>
+        <span class="post-count">1.3k字</span>
       </span>
     </span>
 
@@ -248,7 +248,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">1分</span>
+        <span class="post-count">5分</span>
       </span>
     </span>
     
@@ -268,7 +268,191 @@
 <span id="more"></span>
 
 <hr>
+<h1 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h1><h2 id="命名空间和子命名空间"><a href="#命名空间和子命名空间" class="headerlink" title="命名空间和子命名空间"></a>命名空间和子命名空间</h2><p>了解c++的应该都知道namespace的概念</p>
+<p>我们可以把namespace理解为一个单独的空间，而子命名空间就是这个空间里再划分几个小空间</p>
+<p>demo：</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">namespace</span> <span class="token package">animal<span class="token punctuation">\</span>cat</span><span class="token punctuation">;</span>
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">cat</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">__construct</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token keyword">echo</span> <span class="token string double-quoted-string">"meow"</span><span class="token operator">.</span><span class="token string double-quoted-string">"\n"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">namespace</span> <span class="token package">animal<span class="token punctuation">\</span>dogA</span><span class="token punctuation">;</span>
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">dog</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">__construct</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token keyword">echo</span> <span class="token string double-quoted-string">"A:wooffff"</span><span class="token operator">.</span><span class="token string double-quoted-string">"\n"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">namespace</span> <span class="token package">animal<span class="token punctuation">\</span>dogB</span><span class="token punctuation">;</span>
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">dog</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">__construct</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token keyword">echo</span> <span class="token string double-quoted-string">"B:wooffff"</span><span class="token operator">.</span><span class="token string double-quoted-string">"\n"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">new</span> <span class="token class-name">dog</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">//下面输出的都是dogA</span>
+<span class="token keyword">new</span> <span class="token class-name class-name-fully-qualified"><span class="token punctuation">\</span>animal<span class="token punctuation">\</span>dogA<span class="token punctuation">\</span>dog</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">animal<span class="token punctuation">\</span>dogA</span><span class="token punctuation">;</span>
+<span class="token keyword">new</span> <span class="token class-name class-name-fully-qualified">dogA<span class="token punctuation">\</span>dog</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">animal<span class="token punctuation">\</span>dogA</span> <span class="token keyword">as</span> alias<span class="token punctuation">;</span>
+<span class="token keyword">new</span> <span class="token class-name class-name-fully-qualified">alias<span class="token punctuation">\</span>dog</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">//输出cat</span>
+<span class="token keyword">use</span> <span class="token package">animal<span class="token punctuation">\</span>cat<span class="token punctuation">\</span>cat</span><span class="token punctuation">;</span>
+<span class="token keyword">new</span> <span class="token class-name">cat</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<p><img src="/blog/2023/10/24/ThinkPHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/image-20231108204244808.png" alt="image-20231108204244808"></p>
+<p>animal在这里就是我们的命名空间，而<code>animal\cat</code> ，<code>animal\dogA</code>，<code>animal\dogB</code>都是其子命名空间，可以看到这样一共就存在三个命名空间，而使用各个命名空间的方法就是将命名空间的名字写完整，注：命名空间支持跨文件调用</p>
+<p>要实例化命名空间中的类有两种方法：一种是实例化时直接指定对应命名空间下的类，如<code>new \animal\dogA\dog()</code>和<code>new dogA\dog()</code>；另一种是在namespace下直接实例化，在上面的demo中，直接进行实例化<code>new dog()</code>时的命名空间是最后的<code>namespace animal\dogB</code></p>
+<p><code>use</code>在这里和include、require有点像，就是在<strong>当前命名空间引入其他命名空间的别名</strong>，比如<code>use animal\dogA as alias</code>其中的alias就是animal的别名，然后我们就可以用这个别名来调用</p>
+<p><code>use animal\cat\cat</code>这句话就是直接指定了animal\cat命名空间的cat类了，我们只需要直接new就可以创建cat对象，不需要在前面加命名空间</p>
+<hr>
+<h2 id="类的继承"><a href="#类的继承" class="headerlink" title="类的继承"></a>类的继承</h2><p>PHP类的继承是通过<code>extend</code>关键字来实现的，和java是一样的</p>
+<p>demo：</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">father</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token variable">$name</span><span class="token operator">=</span><span class="token string double-quoted-string">"Sensei"</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token variable">$age</span><span class="token operator">=</span><span class="token number">20</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token variable">$hobby</span><span class="token operator">=</span><span class="token string double-quoted-string">"game"</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">say</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">echo</span> <span class="token string double-quoted-string">"i am father \n"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">smoke</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">echo</span> <span class="token string double-quoted-string">"i got Yukka woxiangchou\n"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">child</span> <span class="token keyword">extends</span> <span class="token class-name">father</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token variable">$name</span><span class="token operator">=</span><span class="token string double-quoted-string">"Alice"</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token variable">$age</span><span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">say</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token keyword">echo</span> <span class="token string double-quoted-string">"i am child \n"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">parentsay</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword static-context">parent</span><span class="token operator">::</span><span class="token function">say</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token variable">$child</span><span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">child</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$child</span><span class="token operator">-></span><span class="token function">say</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$child</span><span class="token operator">-></span><span class="token function">smoke</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$child</span><span class="token operator">-></span><span class="token function">parentsay</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token variable">$child</span><span class="token operator">-></span><span class="token property">hobby</span><span class="token punctuation">;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="/blog/2023/10/24/ThinkPHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/image-20231108221049816.png" alt="image-20231108221049816"></p>
+<p>上面的demo中child继承了father，和java一样，属性和方法也被继承下来了，子类可以覆写父类的方法，子类也可以通过<code>parent::</code>关键字访问父类被覆盖的方法</p>
+<hr>
+<h2 id="trait修饰符"><a href="#trait修饰符" class="headerlink" title="trait修饰符"></a>trait修饰符</h2><p>使得被修饰的类可以进行复用，增加了代码的可复用性，使用这个修饰符就可以在一个类包含另一个类</p>
+<p>demo：</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">trait</span> <span class="token class-name-definition class-name">test</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">echo</span> <span class="token string double-quoted-string">"test\n"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">impl</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">use</span> <span class="token package">test</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">__construct</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token keyword">echo</span> <span class="token string double-quoted-string">"impl\n"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token variable">$t</span><span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">impl</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$t</span><span class="token operator">-></span><span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="/blog/2023/10/24/ThinkPHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/image-20231108221515538.png" alt="image-20231108221515538"></p>
+<p>test是一个用trait修饰的类，所以我们只要在impl类中use了test这个类，我们就可以调用其中的方法，类似于类的继承</p>
+<p>这里还有一个特性：</p>
+<p>1.php</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">namespace</span> <span class="token package">np1<span class="token punctuation">\</span>A</span><span class="token punctuation">;</span>
+
+<span class="token keyword">use</span> <span class="token package">np2<span class="token punctuation">\</span>A<span class="token punctuation">\</span>Aris</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">C1oud</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">use</span> <span class="token package">Aris</span><span class="token punctuation">;</span>	<span class="token comment">// 复用Aris类</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">__construct</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>2.php</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">namespace</span> <span class="token package">np2<span class="token punctuation">\</span>A</span><span class="token punctuation">;</span>
+<span class="token keyword">require</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"1.php"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">np1<span class="token punctuation">\</span>A<span class="token punctuation">\</span>C1oud</span><span class="token punctuation">;</span>
+<span class="token keyword">trait</span> <span class="token class-name-definition class-name">Aris</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">__toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token keyword">echo</span> <span class="token string double-quoted-string">"tostring\n"</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token string double-quoted-string">""</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token variable">$a</span><span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">C1oud</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token variable">$a</span><span class="token punctuation">;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="/blog/2023/10/24/ThinkPHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/image-20231108222205101.png" alt="image-20231108222205101"></p>
+<p>可以看到我们在C1oud类里面复用了Aris这个类，然后能够触发<code>__toString</code>魔术方法，这一点在tp5的反序列化漏洞中有出现过</p>
+<hr>
+<h1 id="ThinkPHP开发手册"><a href="#ThinkPHP开发手册" class="headerlink" title="ThinkPHP开发手册"></a>ThinkPHP开发手册</h1><p>官方文档：<a target="_blank" rel="noopener" href="https://www.thinkphp.cn/doc">https://www.thinkphp.cn/doc</a></p>
+<h2 id="目录结构（6-0）"><a href="#目录结构（6-0）" class="headerlink" title="目录结构（6.0）"></a>目录结构（6.0）</h2><blockquote>
+<p>相对于<code>5.1</code>来说，<code>6.0</code>版本目录结构的主要变化是核心框架纳入<code>vendor</code>目录，然后原来的<code>application</code>目录变成<code>app</code>目录。</p>
+</blockquote>
+<p>单应用模式：</p>
+<pre class="line-numbers language-txt" data-language="txt"><code class="language-txt">www  WEB部署目录（或者子目录）
+├─app           应用目录
+│  ├─controller      控制器目录
+│  ├─model           模型目录
+│  ├─ ...            更多类库目录
+│  │
+│  ├─common.php         公共函数文件
+│  └─event.php          事件定义文件
+│
+├─config                配置目录
+│  ├─app.php            应用配置
+│  ├─cache.php          缓存配置
+│  ├─console.php        控制台配置
+│  ├─cookie.php         Cookie配置
+│  ├─database.php       数据库配置
+│  ├─filesystem.php     文件磁盘配置
+│  ├─lang.php           多语言配置
+│  ├─log.php            日志配置
+│  ├─middleware.php     中间件配置
+│  ├─route.php          URL和路由配置
+│  ├─session.php        Session配置
+│  ├─trace.php          Trace配置
+│  └─view.php           视图配置
+│
+├─view            视图目录
+├─route                 路由定义目录
+│  ├─route.php          路由定义文件
+│  └─ ...   
+│
+├─public                WEB目录（对外访问目录）
+│  ├─index.php          入口文件
+│  ├─router.php         快速测试文件
+│  └─.htaccess          用于apache的重写
+│
+├─extend                扩展类库目录
+├─runtime               应用的运行时目录（可写，可定制）
+├─vendor                Composer类库目录
+├─.example.env          环境变量示例文件
+├─composer.json         composer 定义文件
+├─LICENSE.txt           授权说明文件
+├─README.md             README 文件
+├─think                 命令行入口文件<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<hr>
+<h1 id="ThinkPHP6-0"><a href="#ThinkPHP6-0" class="headerlink" title="ThinkPHP6.0"></a>ThinkPHP6.0</h1><h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><p>PHP &gt;&#x3D; 7.2.5</p>
+<p><code>6.0</code>版本开始，必须通过<code>Composer</code>方式安装和更新</p>
+<p>我这里先用小皮工具箱进行配置，参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41658925/article/details/123627909">https://blog.csdn.net/weixin_41658925/article/details/123627909</a></p>
+<p><img src="/blog/2023/10/24/ThinkPHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/image-20231108230447158.png" alt="image-20231108230447158"></p>
+<p>网站-管理-composer</p>
+<h2 id="V6-0-12LTS反序列化漏洞"><a href="#V6-0-12LTS反序列化漏洞" class="headerlink" title="V6.0.12LTS反序列化漏洞"></a>V6.0.12LTS反序列化漏洞</h2>
     </div>
     
     
