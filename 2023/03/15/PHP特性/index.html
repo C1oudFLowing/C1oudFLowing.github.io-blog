@@ -358,6 +358,11 @@
 <li><p><strong>漏洞</strong>：通过使用<strong>指定的进制</strong> <code>base</code> 转换（默认是十进制），返回变量 <code>var</code> 的 integer 数值。 intval() 不能用于 object，否则会产生 E_NOTICE 错误并返回 1。</p>
 <p>处理开头是数字的字符串时，返回值为开头的数</p>
 </li>
+<li><p>防止整数溢出：</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span> <span class="token keyword">echo</span> <span class="token function">intval</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'4200000000000000000000'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>回显：32位系统：2147483647；64位系统：9223372036854775807</p>
+</li>
 </ul>
 <blockquote>
 <p>利用方式</p>
@@ -401,6 +406,7 @@
 </ul>
 </li>
 </ul>
+<hr>
 <h2 id="strpos函数"><a href="#strpos函数" class="headerlink" title="strpos函数"></a><a href="#strpos">strpos函数</a></h2><ul>
 <li>开头添加<code>+</code>或<code>%0a</code>使返回数改变</li>
 </ul>
