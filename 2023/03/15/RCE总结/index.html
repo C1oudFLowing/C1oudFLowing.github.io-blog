@@ -246,7 +246,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/RCE/" style="color: #03a9f4">RCE</a>
+                <a href="/blog/tags/RCE/" style="color: #00a596">RCE</a>
             </span>
             
         </span>
@@ -591,7 +591,7 @@ Array( [0] => index.php [1] => test.php)<span aria-hidden="true" class="line-num
 </li>
 </ul>
 <h2 id="绕过被过滤的字符"><a href="#绕过被过滤的字符" class="headerlink" title="绕过被过滤的字符"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_45927819/article/details/109671655?ops_request_misc=%7B%22request_id%22:%22167003773216782428635305%22,%22scm%22:%2220140713.130102334..%22%7D&request_id=167003773216782428635305&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-1-109671655-null-null.142%5Ev67%5Epc_rank_34_queryrelevant25,201%5Ev3%5Econtrol,213%5Ev2%5Et3_esquery_v2&utm_term=ctf%20%E6%AD%A3%E5%88%99%E5%8C%B9%E9%85%8Dls%E8%A2%AB%E8%BF%87%E6%BB%A4&spm=1018.2226.3001.4187">绕过被过滤的字符</a></h2><h3 id="关键字绕过"><a href="#关键字绕过" class="headerlink" title="关键字绕过"></a>关键字绕过</h3><p><strong>下划线</strong>：“+”或“[”或“ ”或“.”</p>
-<p><strong>空格（\x09）</strong>：$IFS$9 、${IFS} 、%09(php环境下)、重定向符&lt;&gt;、&lt;、\x20</p>
+<p><strong>空格（\x09）</strong>：$IFS$9 、${IFS}(适用于linux命令下) 、%09(php环境下)、重定向符&lt;&gt;、&lt;、\x20</p>
 <p><strong>分号</strong>：%0a</p>
 <p><strong>&#x2F;</strong>:chr(47)</p>
 <p><strong>*号</strong>:先获取目标文件名称，然后通过<code>?通配符</code>匹配单个字母，也就是fla?????匹配flag.php(使用<code>&lt;</code>时不能使用<code>?</code>匹配)</p>
