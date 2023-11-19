@@ -74,7 +74,7 @@
     <div id="toc" class="toc-article">
     <h3><i class="fa-brands fa-readme"></i>  目录</h3>
       <div class="toc-title"></div>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-text">PHP反序列化</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%86%9F%E6%82%89PHP%E7%9A%84%E7%B1%BB%E5%92%8C%E6%96%B9%E6%B3%95"><span class="toc-text">熟悉PHP的类和方法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95"><span class="toc-text">语法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95"><span class="toc-text">魔术方法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8E%9F%E7%94%9F%E7%B1%BB"><span class="toc-text">原生类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BA%8F%E5%88%97%E5%8C%96%E7%9A%84%E6%B5%81%E7%A8%8B"><span class="toc-text">序列化的流程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#POP%E9%93%BE"><span class="toc-text">POP链</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%A7%BF%E5%8A%BF"><span class="toc-text">常用姿势</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#shell%E8%8E%B7%E5%8F%96%E5%88%A9%E7%94%A8"><span class="toc-text">shell获取利用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E8%BF%87%E6%BB%A4%E7%BB%95%E8%BF%87"><span class="toc-text">正则过滤绕过</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%80%83%E9%80%B8"><span class="toc-text">字符串逃逸</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#wakeup-%E7%BB%95%E8%BF%87"><span class="toc-text">__wakeup()绕过</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#fast-destruct"><span class="toc-text">fast-destruct</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2016-7124"><span class="toc-text">CVE-2016-7124</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C%E7%BB%95%E8%BF%87"><span class="toc-text">C绕过</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E7%94%A8%E8%B5%8B%E5%80%BC"><span class="toc-text">引用赋值</span></a></li></ol></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-text">PHP反序列化</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%86%9F%E6%82%89PHP%E7%9A%84%E7%B1%BB%E5%92%8C%E6%96%B9%E6%B3%95"><span class="toc-text">熟悉PHP的类和方法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95"><span class="toc-text">语法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95"><span class="toc-text">魔术方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95%E7%9A%84%E8%B0%83%E7%94%A8%E9%A1%BA%E5%BA%8F"><span class="toc-text">魔术方法的调用顺序</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8E%9F%E7%94%9F%E7%B1%BB"><span class="toc-text">原生类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BA%8F%E5%88%97%E5%8C%96-x2F-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E7%9A%84%E6%B5%81%E7%A8%8B"><span class="toc-text">序列化&#x2F;反序列化的流程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#POP%E9%93%BE"><span class="toc-text">POP链</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#phar%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-text">phar反序列化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#phar%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84"><span class="toc-text">phar文件结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#stub"><span class="toc-text">stub</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#manifest"><span class="toc-text">manifest</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#contents"><span class="toc-text">contents</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#signature"><span class="toc-text">signature</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9F%E6%88%90"><span class="toc-text">生成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A9%E7%94%A8"><span class="toc-text">利用</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%A7%BF%E5%8A%BF"><span class="toc-text">常用姿势</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#shell%E8%8E%B7%E5%8F%96%E5%88%A9%E7%94%A8"><span class="toc-text">shell获取利用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E8%BF%87%E6%BB%A4%E7%BB%95%E8%BF%87"><span class="toc-text">正则过滤绕过</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E8%AF%8D%E7%BB%95%E8%BF%87"><span class="toc-text">关键词绕过</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%80%83%E9%80%B8"><span class="toc-text">字符串逃逸</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#wakeup-%E7%BB%95%E8%BF%87"><span class="toc-text">__wakeup()绕过</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#fast-destruct"><span class="toc-text">fast-destruct</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CVE-2016-7124"><span class="toc-text">CVE-2016-7124</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C%E7%BB%95%E8%BF%87"><span class="toc-text">C绕过</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E7%94%A8%E8%B5%8B%E5%80%BC"><span class="toc-text">引用赋值</span></a></li></ol></li></ol></li></ol>
     </div>
   
         
@@ -246,7 +246,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="color: #03a9f4">反序列化</a>
+                <a href="/blog/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="color: #00bcd4">反序列化</a>
             </span>
             
         </span>
@@ -260,7 +260,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">1.5k字</span>
+        <span class="post-count">2.5k字</span>
       </span>
     </span>
 
@@ -269,7 +269,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">6分</span>
+        <span class="post-count">10分</span>
       </span>
     </span>
     
@@ -291,6 +291,7 @@
 <p>魔术方法的调用逻辑：如触发条件 </p>
 <p>语言原生类的调用逻辑：如SoapClient </p>
 <p>语言自身的安全缺陷：如CVE-2016-7124</p>
+<p>参考博客：<a target="_blank" rel="noopener" href="https://www.lewiserii.top/%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%80%BB%E7%BB%93.html">https://www.lewiserii.top/%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%80%BB%E7%BB%93.html</a></p>
 <span id="more"></span>
 
 <h1 id="熟悉PHP的类和方法"><a href="#熟悉PHP的类和方法" class="headerlink" title="熟悉PHP的类和方法"></a>熟悉PHP的类和方法</h1><p>public：公有的类成员可以在任何地方被访问</p>
@@ -311,26 +312,66 @@
 <p>运行后可以得到序列化的字符串<code>O:4:&quot;wllm&quot;:1:&#123;s:5:&quot;admin&quot;;s:10:&quot;C1oudfL0w0&quot;;&#125;</code></p>
 <h1 id="魔术方法"><a href="#魔术方法" class="headerlink" title="魔术方法"></a>魔术方法</h1><p>看我的另一篇文章：<a href="https://c1oudfl0w0.github.io/blog/2023/04/30/PHP%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95/">https://c1oudfl0w0.github.io/blog/2023/04/30/PHP%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95/</a></p>
 <p>是一组特殊的方法，它们在特定的情况下会自动调用，以提供对类的行为和属性的控制。这些方法的名称都以两个下划线 <code>__</code> 开头和结尾</p>
+<h2 id="魔术方法的调用顺序"><a href="#魔术方法的调用顺序" class="headerlink" title="魔术方法的调用顺序"></a>魔术方法的调用顺序</h2><p>demo：</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">test</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token variable">$value</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">function</span> <span class="token function-definition function">__construct</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token keyword">echo</span> <span class="token string double-quoted-string">"__construct\t"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">function</span> <span class="token function-definition function">__destruct</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token keyword">echo</span> <span class="token string double-quoted-string">"__destruct\t"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">function</span> <span class="token function-definition function">__wakeup</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token keyword">echo</span> <span class="token string double-quoted-string">"__wakeup\t"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">function</span> <span class="token function-definition function">__sleep</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token keyword">echo</span> <span class="token string double-quoted-string">"__sleep\t"</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token string single-quoted-string">'value'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">function</span> <span class="token function-definition function">__toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token keyword">echo</span> <span class="token string double-quoted-string">"__toString\t"</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token variable">$this</span><span class="token operator">-></span><span class="token property">value</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">function</span> <span class="token function-definition function">setValue</span><span class="token punctuation">(</span><span class="token variable">$parm</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token keyword">echo</span> <span class="token string double-quoted-string">"setValue\t"</span><span class="token punctuation">;</span>
+        <span class="token variable">$this</span><span class="token operator">-></span><span class="token property">value</span> <span class="token operator">=</span> <span class="token variable">$parm</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token variable">$test</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">test</span><span class="token punctuation">;</span>
+<span class="token variable">$test</span><span class="token operator">-></span><span class="token function">setValue</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"0w0"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$ser_test</span> <span class="token operator">=</span> <span class="token function">serialize</span><span class="token punctuation">(</span><span class="token variable">$test</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token variable">$ser_test</span> <span class="token operator">.</span> <span class="token string double-quoted-string">"\t"</span><span class="token punctuation">;</span>
+<span class="token variable">$obj</span> <span class="token operator">=</span> <span class="token function">unserialize</span><span class="token punctuation">(</span><span class="token variable">$ser_test</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token variable">$obj</span> <span class="token operator">.</span> <span class="token string double-quoted-string">"\t"</span><span class="token punctuation">;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>执行回显<code>__construct	setValue	__sleep	O:4:&quot;test&quot;:1:&#123;s:5:&quot;value&quot;;s:3:&quot;0w0&quot;;&#125;	__wakeup	__toString	0w0	__destruct	__destruct		</code></p>
+<p>说明序列化时的调用顺序是<code>构造方法__construct =&gt; __sleep =&gt; 析构方法__destruct</code></p>
+<p>反序列化时的调用顺序是<code>__wakeup =&gt; __toSring等可以被触发的函数 =&gt; __destruct</code></p>
+<p>而序列化和反序列化放在一起时，析构方法都会放在最后执行</p>
 <hr>
 <h1 id="原生类"><a href="#原生类" class="headerlink" title="原生类"></a><a href="https://c1oudfl0w0.github.io/blog/2023/04/30/PHP%E5%8E%9F%E7%94%9F%E7%B1%BB">原生类</a></h1><p>即内置类，PHP自带，是 PHP 本身提供的核心功能和特性的一部分</p>
 <hr>
-<h1 id="序列化的流程"><a href="#序列化的流程" class="headerlink" title="序列化的流程"></a>序列化的流程</h1><p>参考：<a target="_blank" rel="noopener" href="https://paper.seebug.org/866/#31-serialize">https://paper.seebug.org/866/#31-serialize</a></p>
-<p>demo：</p>
-<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
-<span class="token keyword">class</span> <span class="token class-name-definition class-name">ser</span><span class="token punctuation">&#123;</span>
-    <span class="token keyword">public</span> <span class="token variable">$x</span><span class="token operator">=</span><span class="token string single-quoted-string">'a'</span><span class="token punctuation">;</span>
-    <span class="token keyword">public</span> <span class="token variable">$y</span><span class="token operator">=</span><span class="token number">3.14</span><span class="token punctuation">;</span>
-
-    <span class="token keyword">function</span> <span class="token function-definition function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-        <span class="token keyword">echo</span> <span class="token string double-quoted-string">"114"</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
-
-<span class="token variable">$obj</span><span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">ser</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">echo</span> <span class="token function">serialize</span><span class="token punctuation">(</span><span class="token variable">$obj</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>当没有魔术方法时，序列化类名–&gt;利用递归序列化剩下的结构</p>
-<p>当存在魔术方法时，先调用魔术方法–&gt;利用ZEND_VM引擎解析PHP操作—&gt;返回需要序列化结构的数组–&gt;序列化类名–&gt;利用递归序列化魔术方法的返回值结构。</p>
+<h1 id="序列化-x2F-反序列化的流程"><a href="#序列化-x2F-反序列化的流程" class="headerlink" title="序列化&#x2F;反序列化的流程"></a>序列化&#x2F;反序列化的流程</h1><p>参考：<a target="_blank" rel="noopener" href="https://paper.seebug.org/866/#31-serialize">https://paper.seebug.org/866/#31-serialize</a></p>
+<p>php本质上还是由c语言开发编译过来的，所以要分析底层的话就需要下载php的c源码自行编译</p>
+<p>序列化：</p>
+<p>当没有魔术方法时，<code>序列化类名-&gt;利用递归序列化剩下的结构</code></p>
+<p>当存在魔术方法时，<code>先调用魔术方法-&gt;利用ZEND_VM引擎解析PHP操作-&gt;返回需要序列化结构的数组-&gt;序列化类名-&gt;利用递归序列化魔术方法的返回值结构</code></p>
+<p>反序列化：</p>
+<p><code>获取反序列化字符串-&gt;根据类型进行反序列化-&gt;查表找到对应的反序列化类-&gt;根据字符串判断元素个数-&gt;new出新实例-&gt;迭代解析化剩下的字符串-&gt;判断是否具有魔法函数__wakeup并标记-&gt;释放空间并判断是否具有具有标记-&gt;开启调用</code></p>
 <hr>
 <h1 id="POP链"><a href="#POP链" class="headerlink" title="POP链"></a>POP链</h1><blockquote>
 <p>它是一种面向属性编程，常用于构造调用链的方法。在题目中的代码里找到一系列能调用的指令，并将这些指令整合成一条有逻辑的能达到恶意攻击效果的代码</p>
@@ -346,7 +387,6 @@
 </ul>
 <p><a target="_blank" rel="noopener" href="https://www.ctfer.vip/problem/440">例题源码</a></p>
 <pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
-
 <span class="token function">error_reporting</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token function">show_source</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"index.php"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -385,7 +425,7 @@
 
 <span class="token variable">$w00m</span> <span class="token operator">=</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'w00m'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 <span class="token function">unserialize</span><span class="token punctuation">(</span><span class="token variable">$w00m</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token delimiter important">?></span></span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token delimiter important">?></span></span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>这里的入口是<code>__destruct</code>，而我们出口的目标方法是<code>w44m::Getflag</code>，但是整段代码中并没有直接调用这个方法的代码，所以我们需要借用题目中的其它魔术方法来实现最后调用<code>w44m::Getflag</code>的目的</p>
 <p>在本题中是<code>__toString</code>魔术方法，这个魔术方法把参数当成字符串的时候就会被调用，而<code>__destruct</code>里面有<code>echo $this-&gt;w00m;</code>把参数当作字符串输出，于是就让<code>w00m</code>的值<code>w33m</code>来调用里面的<code>__toString</code></p>
@@ -430,6 +470,38 @@
 <span class="token keyword">echo</span> <span class="token function">urlencode</span><span class="token punctuation">(</span><span class="token function">serialize</span><span class="token punctuation">(</span><span class="token variable">$b</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<hr>
+<h1 id="phar反序列化"><a href="#phar反序列化" class="headerlink" title="phar反序列化"></a>phar反序列化</h1><p>参考：<a target="_blank" rel="noopener" href="https://paper.seebug.org/680/">https://paper.seebug.org/680/</a></p>
+<p>在<strong>文件系统函数</strong>（file_exists()、is_dir()等）参数可控的情况下，配合<code>phar://伪协议</code>，可以不依赖unserialize()直接进行反序列化操作</p>
+<h2 id="phar文件结构"><a href="#phar文件结构" class="headerlink" title="phar文件结构"></a>phar文件结构</h2><h3 id="stub"><a href="#stub" class="headerlink" title="stub"></a>stub</h3><p>可以理解为一个标志，格式为<code>xxx&lt;?php xxx; __HALT_COMPILER();?&gt;</code>，前面内容不限，但必须以<code>__HALT_COMPILER();?&gt;</code>来结尾，否则phar扩展将无法识别这个文件为phar文件</p>
+<h3 id="manifest"><a href="#manifest" class="headerlink" title="manifest"></a>manifest</h3><p>phar文件本质上是一种压缩文件，其中每个被压缩文件的权限、属性等信息都放在这部分。这部分还会以<strong>序列化</strong>的形式存储用户自定义的meta-data，这是上述攻击手法最核心的地方，当我们用phar:&#x2F;&#x2F;协议去读取的时候会对这段内容进行反序列化</p>
+<h3 id="contents"><a href="#contents" class="headerlink" title="contents"></a>contents</h3><p>被压缩文件的内容</p>
+<h3 id="signature"><a href="#signature" class="headerlink" title="signature"></a>signature</h3><p>签名，放在文件末尾</p>
+<h2 id="生成"><a href="#生成" class="headerlink" title="生成"></a>生成</h2><p>php.ini中设置<code>phar.readonly = Off</code>，去掉前面的分号注释</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+    <span class="token keyword">class</span> <span class="token class-name-definition class-name">TestObject</span> <span class="token punctuation">&#123;</span>
+    <span class="token punctuation">&#125;</span>
+
+    @<span class="token function">unlink</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"phar.phar"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token variable">$phar</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Phar</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"phar.phar"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//后缀名必须为phar</span>
+    <span class="token variable">$phar</span><span class="token operator">-></span><span class="token function">startBuffering</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token variable">$phar</span><span class="token operator">-></span><span class="token function">setStub</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"&lt;?php __HALT_COMPILER(); ?>"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//设置stub</span>
+    <span class="token variable">$o</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">TestObject</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token variable">$phar</span><span class="token operator">-></span><span class="token function">setMetadata</span><span class="token punctuation">(</span><span class="token variable">$o</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//将自定义的meta-data存入manifest</span>
+    <span class="token variable">$phar</span><span class="token operator">-></span><span class="token function">addFromString</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"test.txt"</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">"test"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//添加要压缩的文件</span>
+    <span class="token comment">//签名自动计算</span>
+    <span class="token variable">$phar</span><span class="token operator">-></span><span class="token function">stopBuffering</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>这就是生成的phar文件，用010editor打开看看</p>
+<p><img src="/blog/2023/03/16/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231117192159070.png" alt="image-20231117192159070"></p>
+<p>可以看到开头就是<code>&lt;?php __HALT_COMPILER(); ?&gt;</code>，然后是序列化字符串的部分，即meta-data是以序列化的形式存储</p>
+<h2 id="利用"><a href="#利用" class="headerlink" title="利用"></a>利用</h2><p>既然有序列化就有反序列化，php一大部分的<a target="_blank" rel="noopener" href="http://php.net/manual/en/ref.filesystem.php">文件系统函数</a>在通过<code>phar://</code>伪协议解析phar文件时，都会将meta-data进行反序列化</p>
+<p>受影响的函数如下：</p>
+<p><img src="/blog/2023/03/16/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231117192936573.png" alt="image-20231117192936573"></p>
+<p>前面分析phar的文件结构时可以知道，php识别phar文件是通过其文件头的<code>__HALT_COMPILER();?&gt;</code>这段代码，对前面的内容或者后缀名是没有要求的。那么我们就可以通过添加任意的文件头+修改后缀名的方式将phar文件伪装成其他格式的文件</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">$phar->setStub("GIF89a"."<span class="token php language-php"><span class="token delimiter important">&lt;?php</span> <span class="token keyword">__HALT_COMPILER</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token delimiter important">?></span></span>"); //设置stub，增加gif文件头<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 
 
 <hr>
@@ -451,6 +523,19 @@
   <span class="token function">serialize</span><span class="token punctuation">(</span><span class="token keyword">array</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token function">unserialize</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'a:1:&#123;i:0;O:4:"test":1:&#123;s:1:"a";s:3:"abc";&#125;&#125;'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ul>
+<hr>
+<h2 id="关键词绕过"><a href="#关键词绕过" class="headerlink" title="关键词绕过"></a>关键词绕过</h2><p>当代码中存在对序列化字符串的关键词检测时，可以将表示字符类型的<code>s</code>改为大写，然后内容改为16进制来绕过检测</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">test</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token variable">$username</span><span class="token operator">=</span><span class="token string single-quoted-string">'admin'</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token variable">$password</span><span class="token operator">=</span><span class="token string single-quoted-string">'admin888'</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">echo</span> <span class="token function">serialize</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">//O:4:"test":2:&#123;s:8:"username";s:5:"admin";s:8:"password";s:8:"admin888";&#125;</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>如果过滤了关键字<code>admin</code>，可以将其替换成<code>O:4:&quot;test&quot;:2:&#123;s:8:&quot;username&quot;;S:5:&quot;\61dmin&quot;;s:8:&quot;password&quot;;S:8:&quot;\61dmin888&quot;;&#125;</code></p>
+<p>表示字符类型的s为大写时，就会被当成16进制解析</p>
 <hr>
 <h2 id="字符串逃逸"><a href="#字符串逃逸" class="headerlink" title="字符串逃逸"></a><a href="https://c1oudfl0w0.github.io/blog/2023/04/24/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%80%83%E9%80%B8/">字符串逃逸</a></h2><p>见文章</p>
 <hr>
