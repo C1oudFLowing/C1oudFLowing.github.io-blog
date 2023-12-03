@@ -248,7 +248,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">11k字</span>
+        <span class="post-count">11.1k字</span>
       </span>
     </span>
 
@@ -333,6 +333,7 @@
 <p><img src="/blog/2023/11/25/DASCTF-X-0psu3%E5%8D%81%E4%B8%80%E6%9C%88%E6%8C%91%E6%88%98%E8%B5%9B/image-20231201200916233.png" alt="image-20231201200916233"></p>
 <p>这里开启了时间戳验证，那么我们就需要获取时间，怎么获取呢？</p>
 <p>这时候想到前面的__FILE__，我们可以用<code>filemtime</code>获取文件的最后修改时间</p>
+<p>传入<code>?LuckyE=filemtime</code>即可返回文件最后修改的时间</p>
 <p>接下来我们在docker上面起一个同样版本的php环境</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> pull php:8.2.10-apache<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
@@ -342,7 +343,7 @@
 <p>重启一下apache服务成功安装扩展</p>
 <p>&#x2F;usr&#x2F;local&#x2F;etc&#x2F;php&#x2F;下新建php.ini（如果不存在），然后修改配置</p>
 <p><img src="/blog/2023/11/25/DASCTF-X-0psu3%E5%8D%81%E4%B8%80%E6%9C%88%E6%8C%91%E6%88%98%E8%B5%9B/image-20231201204831610.png" alt="image-20231201204831610"></p>
-<p>然后index.php写入一句话木马，访问一下生成index.php.bin文件</p>
+<p>然后index.php写入一句话木马，访问一下生成index.php.bin文件，等会我们会用这个来覆盖index.php使其直接访问我们的马</p>
 <p><img src="/blog/2023/11/25/DASCTF-X-0psu3%E5%8D%81%E4%B8%80%E6%9C%88%E6%8C%91%E6%88%98%E8%B5%9B/image-20231201205121122.png" alt="image-20231201205121122"></p>
 <p>下载下来，修改时间戳</p>
 <p>python脚本修改：（官方wp）</p>
