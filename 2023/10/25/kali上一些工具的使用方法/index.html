@@ -74,7 +74,7 @@
     <div id="toc" class="toc-article">
     <h3><i class="fa-brands fa-readme"></i>  目录</h3>
       <div class="toc-title"></div>
-      
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#wpscan"><span class="toc-text">wpscan</span></a></li></ol>
     </div>
   
         
@@ -239,7 +239,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">0字</span>
+        <span class="post-count">297字</span>
       </span>
     </span>
 
@@ -263,7 +263,77 @@
     </div>
     
     <div class="content" v-pre>
-        
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>记录一下kali tools上有的工具用法<a target="_blank" rel="noopener" href="https://www.kali.org/tools/">https://www.kali.org/tools/</a></p>
+<p>或许会偏渗透一点</p>
+<span id="more"></span>
+
+<h1 id="wpscan"><a href="#wpscan" class="headerlink" title="wpscan"></a>wpscan</h1><p>参考文章：<a target="_blank" rel="noopener" href="https://blog.csdn.net/guo15890025019/article/details/118548932">https://blog.csdn.net/guo15890025019/article/details/118548932</a></p>
+<blockquote>
+<p>WPScan是Kali Linux默认自带的一款漏洞扫描工具，它采用Ruby编写，能够扫描WordPress网站中的多种安全漏洞，其中包括主题漏洞、插件漏洞和WordPress本身的漏洞。</p>
+</blockquote>
+<p>最新版本WPScan的数据库中包含超过18000种插件漏洞和2600种主题漏洞，并且支持最新版本的WordPress。值得注意的是，它不仅能够扫描类似robots.txt这样的敏感文件，而且还能够检测当前已启用的插件和其他功能</p>
+<p>主要参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-h</td>
+<td>帮助文档</td>
+</tr>
+<tr>
+<td>–url</td>
+<td>扫描站点</td>
+</tr>
+<tr>
+<td>–update</td>
+<td>更新版本</td>
+</tr>
+<tr>
+<td>-e vp</td>
+<td>扫描插件漏洞</td>
+</tr>
+<tr>
+<td>-e ap</td>
+<td>扫描所有插件</td>
+</tr>
+<tr>
+<td>-e p</td>
+<td>扫描流行的插件</td>
+</tr>
+<tr>
+<td>-e vt</td>
+<td>扫描主题漏洞</td>
+</tr>
+<tr>
+<td>-e at</td>
+<td>扫描所有主题</td>
+</tr>
+<tr>
+<td>-e t</td>
+<td>更新流行的主题</td>
+</tr>
+<tr>
+<td>-U</td>
+<td>爆破指定的密码列表</td>
+</tr>
+<tr>
+<td>-P</td>
+<td>爆破指定的用户名列表</td>
+</tr>
+<tr>
+<td>- -api-token token值</td>
+<td>扫描主题、插件漏洞时，需要用到</td>
+</tr>
+</tbody></table>
+<p>通常使用：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">wpscan <span class="token parameter variable">--url</span> http://node4.buuoj.cn:29957/<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<hr>
+
     </div>
     
     
