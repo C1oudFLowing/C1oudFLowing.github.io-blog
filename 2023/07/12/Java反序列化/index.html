@@ -246,12 +246,12 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/Java/" style="color: #ff7d73">Java</a>
+                <a href="/blog/tags/Java/" style="color: #ffa2c4">Java</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="color: #03a9f4">反序列化</a>
+                <a href="/blog/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="color: #00a596">反序列化</a>
             </span>
             
         </span>
@@ -312,6 +312,7 @@
 </blockquote>
 <p>其中<code>readObject(Object obj)</code>方法会从源输入流中读取字节序列，并将它反序列化为一个java对象并返回。</p>
 <p>注：要实现序列化的类对象必须实现了Serializable类或Externalizable类才能被序列化，否则会抛出异常。</p>
+<p>大量的库</p>
 <h2 id="三种实现方法"><a href="#三种实现方法" class="headerlink" title="三种实现方法"></a>三种实现方法</h2><p>以student类为例</p>
 <ol>
 <li><p>若student类实现了serializable接口，则可以通过<code>objectOutputstream</code>和<code>objectinputstream</code>默认的序列化和反序列化方式，对非transient的实例变量进行序列化和反序列化</p>
