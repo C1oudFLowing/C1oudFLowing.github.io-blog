@@ -251,7 +251,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/flask/" style="color: #ffa2c4">flask</a>
+                <a href="/blog/tags/flask/" style="color: #ff7d73">flask</a>
             </span>
             
         </span>
@@ -481,7 +481,7 @@ app <span class="token operator">=</span> Flask<span class="token punctuation">(
 <span class="token punctuation">&#123;</span><span class="token punctuation">&#123;</span><span class="token number">2</span><span class="token operator">*</span><span class="token number">2</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span> <span class="token comment">#输出4</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>这也就是SSTI的来源</p>
-<p><code>&#123; ## &#125;</code>：表示未包含在模板输出中的注释（使用时去掉里面的空格，<del>博客渲染的时候也会被注释掉</del>）</p>
+<p><code>&#123;	##	&#125;</code>：表示未包含在模板输出中的注释（使用时去掉里面的空格，<del>博客渲染的时候也会被注释掉</del>）</p>
 <p><code>##</code>：有和<code>&#123;%%&#125;</code>相同的效果</p>
 <hr>
 <h1 id="后日谈"><a href="#后日谈" class="headerlink" title="后日谈"></a>后日谈</h1><p>咦，怎么和博客模板渲染差不多（</p>

