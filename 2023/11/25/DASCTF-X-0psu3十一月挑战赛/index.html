@@ -881,11 +881,10 @@ active_plugins~a:7:&#123;i:0;s:36:"contact-form-7/wp-contact-form-7.php";i:1;s:3
 <p><img src="/blog/2023/11/25/DASCTF-X-0psu3%E5%8D%81%E4%B8%80%E6%9C%88%E6%8C%91%E6%88%98%E8%B5%9B/image-20231212000808158.png" alt="image-20231212000808158"></p>
 <p>然后在插件编辑器中修改插件的php代码</p>
 <p>注意这里要先关闭一个已启用的插件（第一个的Akismet访问会返回403，直接改已启用的插件会返回”无法与站点通信来检查致命错误，因此PHP修改已被回滚。您需要采用其他方式（如SFTP）上传您修改的PHP文件。“），我这里选择<code>Count Per Day</code></p>
-<p>然后选择count-per-day&#x2F;counter.php进行修改</p>
+<p>然后选择count-per-day&#x2F;counter.php进行修改（测，图上错了，将就着看吧）</p>
 <p><img src="/blog/2023/11/25/DASCTF-X-0psu3%E5%8D%81%E4%B8%80%E6%9C%88%E6%8C%91%E6%88%98%E8%B5%9B/image-20231212002800428.png" alt="image-20231212002800428"></p>
 <p>在里面插入个一句话木马，然后更新文件，接着在已安装的插件中启用Count Per Day</p>
-<p>然后再次启用插件</p>
-<p>接着访问<code>/wp-content/plugins/count-per-day/counter.php</code>getshell</p>
+<p>最后访问<code>/wp-content/plugins/count-per-day/counter.php</code>getshell</p>
 <p><img src="/blog/2023/11/25/DASCTF-X-0psu3%E5%8D%81%E4%B8%80%E6%9C%88%E6%8C%91%E6%88%98%E8%B5%9B/image-20231212003403728.png" alt="image-20231212003403728"></p>
 <p><img src="/blog/2023/11/25/DASCTF-X-0psu3%E5%8D%81%E4%B8%80%E6%9C%88%E6%8C%91%E6%88%98%E8%B5%9B/image-20231212003438374.png" alt="image-20231212003438374"></p>
 <p>下班</p>
