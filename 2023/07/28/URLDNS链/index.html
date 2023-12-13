@@ -74,7 +74,7 @@
     <div id="toc" class="toc-article">
     <h3><i class="fa-brands fa-readme"></i>  目录</h3>
       <div class="toc-title"></div>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#URLDNS"><span class="toc-text">URLDNS</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E6%88%98"><span class="toc-text">实战</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ctfshow-web846"><span class="toc-text">ctfshow web846</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#URLDNS"><span class="toc-text">URLDNS</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%9F%E8%B8%AAHashMap%E7%B1%BB"><span class="toc-text">跟踪HashMap类</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E6%88%98"><span class="toc-text">实战</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ctfshow-web846"><span class="toc-text">ctfshow web846</span></a></li></ol></li></ol>
     </div>
   
         
@@ -246,7 +246,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/Java/" style="color: #ff7d73">Java</a>
+                <a href="/blog/tags/Java/" style="color: #00a596">Java</a>
             </span>
             
         </span>
@@ -260,7 +260,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">1.3k字</span>
+        <span class="post-count">1.4k字</span>
       </span>
     </span>
 
@@ -285,11 +285,13 @@
     
     <div class="content" v-pre>
         <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p><del>年轻人的第一条java反序列化链子</del></p>
-<p><a target="_blank" rel="noopener" href="https://boogipop.com/2023/03/02/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E7%A0%94%E7%A9%B6">参考Boogipop的博客</a></p>
+<p>这条利用链不能进行命令执行，只可以发送一次DNS请求，但它完全使用Java内置的类构造，对第三方库没有依赖，此外在目标没有回显的时候(java题里很常见)，能够通过DNS请求得知是否存在反序列化漏洞</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://boogipop.com/2023/03/02/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E7%A0%94%E7%A9%B6">Boogipop的博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://fushuling.com/index.php/2023/01/30/java%e5%ae%89%e5%85%a8%e7%ac%94%e8%ae%b0/">负数零的博客</a></p>
 <span id="more"></span>
 
-<h1 id="URLDNS"><a href="#URLDNS" class="headerlink" title="URLDNS"></a>URLDNS</h1><p>该payload的作用是校验target是否存在java反序列化漏洞</p>
-<p>直接看URLDNS.java的主体部分</p>
+<h1 id="URLDNS"><a href="#URLDNS" class="headerlink" title="URLDNS"></a>URLDNS</h1><p>直接看URLDNS.java的主体部分</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">ysoserial<span class="token punctuation">.</span>payloads</span><span class="token punctuation">;</span>
 
 <span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">IOException</span></span><span class="token punctuation">;</span>
@@ -342,7 +344,8 @@
         <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>先分析一下这段代码，</p>
+<p>在这个URLDNS类中，ysoserial会调用<code>getObject</code>方法来获得payload</p>
+<p>接下来我们分析一下这段代码，</p>
 <p>首先从URL的创建开始：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">URLStreamHandler</span> handler <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SilentURLStreamHandler</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -365,13 +368,15 @@
 
 <ul>
 <li>这里将url对象u的hashCode设置成了-1，为什么要这么做我们一会在分析具体的触发过程时会提到</li>
-<li>返回了哈希表对象ht，并用PayloadRunner运行该利用链</li>
+<li>最后返回了<code>HashMap</code>对象ht，并用PayloadRunner运行该利用链</li>
 </ul>
-<p>这段代码就干了这些事，而我们知道调用链需要满足重写<code>readObject</code>方法，因此我们f12查看java.util.HashMap的定义源码定义，找到其中的<code>readObject</code>方法</p>
+<h2 id="跟踪HashMap类"><a href="#跟踪HashMap类" class="headerlink" title="跟踪HashMap类"></a>跟踪HashMap类</h2><p>我们知道调用链需要满足重写<code>readObject</code>方法，因此我们f12查看java.util.HashMap的源码定义，找到其中的<code>readObject</code>方法</p>
 <p><img src="/blog/2023/07/28/URLDNS%E9%93%BE/image-20230822172730681.png" alt="image-20230822172730681"></p>
-<p>可以看到已经是重写了<code>readObject</code>方法，具体原因如下：</p>
-<p>HashMap中，由于Entry的存放位置是根据Key的Hash值来计算，然后存放到数组中的，对于同一个Key，在不同的JVM实现中计算得出的Hash值可能是不同的。<br>Hash值不同导致的结果就是：有可能一个HashMap对象的反序列化结果与序列化之前的结果不一致。即有可能序列化之前，Key&#x3D;’AAA’的元素放在数组的第0个位置，而反序列化值后，根据Key获取元素的时候，可能需要从数组为2的位置来获取，而此时获取到的数据与序列化之前肯定是不同的</p>
-<p>在<code>readObject</code>方法的最后调用了<code>putVal</code>方法，而<code>putVal</code>方法又调用了<code>hash</code>方法</p>
+<p>可以看到这里已经是重写了<code>readObject</code>方法，具体原因如下：</p>
+<blockquote>
+<p>HashMap中，由于Entry的存放位置是根据Key的Hash值来计算，然后存放到数组中的，对于同一个Key，在不同的JVM实现中计算得出的Hash值可能是不同的。Hash值不同导致的结果就是：有可能一个HashMap对象的反序列化结果与序列化之前的结果不一致。即有可能序列化之前，Key&#x3D;’AAA’的元素放在数组的第0个位置，而反序列化值后，根据Key获取元素的时候，可能需要从数组为2的位置来获取，而此时获取到的数据与序列化之前肯定是不同的</p>
+</blockquote>
+<p>在<code>readObject</code>方法的最后，可以看到将<code>HashMap</code>的键名计算了hash，然后调用了<code>putVal</code>方法，而<code>putVal</code>方法又调用了<code>hash</code>方法</p>
 <p><img src="/blog/2023/07/28/URLDNS%E9%93%BE/image-20230822173052048.png" alt="image-20230822173052048"></p>
 <p>继续跟踪<code>hash</code>方法</p>
 <p><img src="/blog/2023/07/28/URLDNS%E9%93%BE/image-20230822174016581.png" alt="image-20230822174016581"></p>

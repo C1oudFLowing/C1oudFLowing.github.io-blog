@@ -246,7 +246,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/Java/" style="color: #00bcd4">Java</a>
+                <a href="/blog/tags/Java/" style="color: #ffa2c4">Java</a>
             </span>
             
             <span class="tag">
@@ -265,7 +265,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">1.9k字</span>
+        <span class="post-count">2k字</span>
       </span>
     </span>
 
@@ -274,7 +274,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">8分</span>
+        <span class="post-count">9分</span>
       </span>
     </span>
     
@@ -312,7 +312,7 @@
 </blockquote>
 <p>其中<code>readObject(Object obj)</code>方法会从源输入流中读取字节序列，并将它反序列化为一个java对象并返回。</p>
 <p>注：要实现序列化的类对象必须实现了Serializable类或Externalizable类才能被序列化，否则会抛出异常。</p>
-<p>大量的库</p>
+<p>大量的库都会重写readObject方法</p>
 <h2 id="三种实现方法"><a href="#三种实现方法" class="headerlink" title="三种实现方法"></a>三种实现方法</h2><p>以student类为例</p>
 <ol>
 <li><p>若student类实现了serializable接口，则可以通过<code>objectOutputstream</code>和<code>objectinputstream</code>默认的序列化和反序列化方式，对非transient的实例变量进行序列化和反序列化</p>
@@ -438,11 +438,12 @@
 <h1 id="利用条件"><a href="#利用条件" class="headerlink" title="利用条件"></a>利用条件</h1><ul>
 <li>都继承了Serializeable接口</li>
 <li>入口类source(重写readObject、参数类型宽泛、jdk自带就更好、常见函数）</li>
-<li>调用链(gaget chain)</li>
+<li>调用链(gadget chain)</li>
 <li>执行类 sink(ssrf,rce….)</li>
 </ul>
 <h2 id="入口类"><a href="#入口类" class="headerlink" title="入口类"></a>入口类</h2><p>入口类一般是<code>Map,Hashmap,HashTable</code>这些集合类，因为集合类型宽泛（泛型），因此肯定继承了<code>Serializeable</code>接口</p>
 <h2 id="调用链"><a href="#调用链" class="headerlink" title="调用链"></a>调用链</h2><p>所谓调用链就是一条完整的命令执行流程，在入口类中的readObject方法中，最好有一些常见的方法，这样不管我们传什么东西进去，他都可以调用这个方法，也加大了进一步探索的可能<br>调用链中一般会使用很多<strong>重名函数</strong>，为了实现不同的效果</p>
+<p>可以类比PHP反序列化，连接的是从触发位置开始到执行命令的位置结束，在PHP中可能是<code>__desctruct</code>到<code>eval</code></p>
 <h2 id="执行类"><a href="#执行类" class="headerlink" title="执行类"></a>执行类</h2><p>就是最后RCE的地方，这一部分就至关重要了，要在调用链中找到一个可以执行命令的类，也是相对比较困难的</p>
 <hr>
 <h1 id="ysoseial"><a href="#ysoseial" class="headerlink" title="ysoseial"></a>ysoseial</h1><blockquote>
@@ -589,6 +590,10 @@
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>可以看到在Payloadrunner中，先将对象序列化再反序列化，其实就是用来运行我们的链，并生成相应的payload</p>
+<p>而ysoserial的使用也很简单，大部分gadget的参数都是一条命令</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">java</span> <span class="token parameter variable">-jar</span> ysoserial-all.jar CommonsCollections1 <span class="token string">"id"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>这样子就会生成cc1链的poc，这里执行的命令是id</p>
 
     </div>
     

