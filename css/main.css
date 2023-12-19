@@ -521,6 +521,20 @@
     overflow: auto;
     padding: 50px 30px 20px;
 }
+del {
+    position: relative;
+    text-decoration: none;
+  }
+  
+  del::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 40%;
+    width: 100%;
+    height: 2.5px; /* 可根据需要调整粗细 */
+    background-color: black; /* 可根据需要调整颜色 */
+  }
 .comment iframe,
 body::-webkit-scrollbar-track {
     border-radius: 0;
