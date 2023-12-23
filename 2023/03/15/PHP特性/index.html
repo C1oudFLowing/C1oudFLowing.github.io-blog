@@ -246,7 +246,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/PHP/" style="color: #ff7d73">PHP</a>
+                <a href="/blog/tags/PHP/" style="color: #00a596">PHP</a>
             </span>
             
         </span>
@@ -260,7 +260,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">5.3k字</span>
+        <span class="post-count">5.4k字</span>
       </span>
     </span>
 
@@ -962,6 +962,32 @@ psycho%0A%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%0
 <li><p>自身和md5后都是0e开头</p>
 <pre class="line-numbers language-none"><code class="language-none">0e215962017<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 </ul>
+<p>爆破开头：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> hashlib
+
+<span class="token keyword">def</span> <span class="token function">md5_hash</span><span class="token punctuation">(</span>text<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> hashlib<span class="token punctuation">.</span>md5<span class="token punctuation">(</span>text<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>hexdigest<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+target_prefix <span class="token operator">=</span> <span class="token string">"666"</span>
+found <span class="token operator">=</span> <span class="token boolean">False</span>
+
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1000000</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment"># 将当前数字作为字符串进行MD5哈希两次</span>
+    text <span class="token operator">=</span> <span class="token builtin">str</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+    hash1 <span class="token operator">=</span> md5_hash<span class="token punctuation">(</span>text<span class="token punctuation">)</span>
+    hash2 <span class="token operator">=</span> md5_hash<span class="token punctuation">(</span>hash1<span class="token punctuation">)</span>
+
+    <span class="token comment"># 检查哈希结果的开头是否为目标前缀</span>
+    <span class="token keyword">if</span> hash2<span class="token punctuation">.</span>startswith<span class="token punctuation">(</span>target_prefix<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"找到匹配的字符串："</span><span class="token punctuation">,</span> text<span class="token punctuation">)</span>
+        found <span class="token operator">=</span> <span class="token boolean">True</span>
+        <span class="token keyword">break</span>
+
+<span class="token keyword">if</span> <span class="token keyword">not</span> found<span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"未找到匹配的字符串。"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
 <h2 id="SHA1"><a href="#SHA1" class="headerlink" title="SHA1"></a>SHA1</h2><ul>
 <li><p>弱类型</p>
 <ul>

