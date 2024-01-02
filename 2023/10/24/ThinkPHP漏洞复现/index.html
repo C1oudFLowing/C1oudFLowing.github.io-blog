@@ -3,7 +3,7 @@
 <html lang="zh-CN">
     <head>
         <meta charset="UTF-8" />
-        <title>ThinkPHP反序列化漏洞 | 雲流のLowest World</title>
+        <title>ThinkPHP漏洞复现 | 雲流のLowest World</title>
         <meta name="author" content="C1oudfL0w0" />
         <meta name="description" content="" />
         <meta name="keywords" content="" />
@@ -74,7 +74,7 @@
     <div id="toc" class="toc-article">
     <h3><i class="fa-brands fa-readme"></i>  目录</h3>
       <div class="toc-title"></div>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-text">基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E5%92%8C%E5%AD%90%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4"><span class="toc-text">命名空间和子命名空间</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%9A%84%E7%BB%A7%E6%89%BF"><span class="toc-text">类的继承</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#trait%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="toc-text">trait修饰符</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ThinkPHP%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C"><span class="toc-text">ThinkPHP开发手册</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9D%97%E5%8C%96%E8%AE%BE%E8%AE%A1"><span class="toc-text">模块化设计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%EF%BC%886-0%EF%BC%89"><span class="toc-text">目录结构（6.0）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ThinkPHP3-2"><span class="toc-text">ThinkPHP3.2</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="toc-text">环境搭建</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ThinkPHP6-0"><span class="toc-text">ThinkPHP6.0</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA-1"><span class="toc-text">环境搭建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#V6-0-12LTS%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E"><span class="toc-text">V6.0.12LTS反序列化漏洞</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-text">基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4%E5%92%8C%E5%AD%90%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4"><span class="toc-text">命名空间和子命名空间</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%9A%84%E7%BB%A7%E6%89%BF"><span class="toc-text">类的继承</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#trait%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="toc-text">trait修饰符</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ThinkPHP%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C"><span class="toc-text">ThinkPHP开发手册</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9D%97%E5%8C%96%E8%AE%BE%E8%AE%A1"><span class="toc-text">模块化设计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-text">常用方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%EF%BC%886-0%EF%BC%89"><span class="toc-text">目录结构（6.0）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ThinkPHP3-2"><span class="toc-text">ThinkPHP3.2</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="toc-text">环境搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E9%85%8D%E7%BD%AE"><span class="toc-text">数据库配置</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ThinkPHP6-0"><span class="toc-text">ThinkPHP6.0</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA-1"><span class="toc-text">环境搭建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#V6-0-12LTS%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E"><span class="toc-text">V6.0.12LTS反序列化漏洞</span></a></li></ol></li></ol>
     </div>
   
         
@@ -219,7 +219,7 @@
 
                 <div class="article">
     <div>
-        <h1>ThinkPHP反序列化漏洞</h1>
+        <h1>ThinkPHP漏洞复现</h1>
     </div>
     <div class="info">
         <span class="date">
@@ -239,7 +239,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">1.7k字</span>
+        <span class="post-count">2k字</span>
       </span>
     </span>
 
@@ -248,7 +248,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">7分</span>
+        <span class="post-count">8分</span>
       </span>
     </span>
     
@@ -263,8 +263,9 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>参考pop✌的博客：<a target="_blank" rel="noopener" href="https://boogipop.com/2023/03/02/ThinkPHP5.x%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%85%A8%E5%A4%8D%E7%8E%B0/">https://boogipop.com/2023/03/02/ThinkPHP5.x%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%85%A8%E5%A4%8D%E7%8E%B0/</a></p>
-<p>我暂且先开个新坑不填（</p>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>参考：</p>
+<p>pop✌：<a target="_blank" rel="noopener" href="https://boogipop.com/2023/03/02/ThinkPHP5.x%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%85%A8%E5%A4%8D%E7%8E%B0/">https://boogipop.com/2023/03/02/ThinkPHP5.x%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%85%A8%E5%A4%8D%E7%8E%B0/</a></p>
+<p>y4✌：<a target="_blank" rel="noopener" href="https://y4er.com/posts/thinkphp3-vuln/">https://y4er.com/posts/thinkphp3-vuln/</a></p>
 <span id="more"></span>
 
 <hr>
@@ -305,7 +306,7 @@
 <span class="token keyword">use</span> <span class="token package">animal<span class="token punctuation">\</span>cat<span class="token punctuation">\</span>cat</span><span class="token punctuation">;</span>
 <span class="token keyword">new</span> <span class="token class-name">cat</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p><img src="/blog/2023/10/24/ThinkPHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/image-20231108204244808.png" alt="image-20231108204244808"></p>
+<p><img src="/blog/2023/10/24/ThinkPHP%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/image-20231108204244808.png" alt="image-20231108204244808"></p>
 <p>animal在这里就是我们的命名空间，而<code>animal\cat</code> ，<code>animal\dogA</code>，<code>animal\dogB</code>都是其子命名空间，可以看到这样一共就存在三个命名空间，而使用各个命名空间的方法就是将命名空间的名字写完整，注：命名空间支持跨文件调用</p>
 <p>要实例化命名空间中的类有两种方法：一种是实例化时直接指定对应命名空间下的类，如<code>new \animal\dogA\dog()</code>和<code>new dogA\dog()</code>；另一种是在namespace下直接实例化，在上面的demo中，直接进行实例化<code>new dog()</code>时的命名空间是最后的<code>namespace animal\dogB</code></p>
 <p><code>use</code>在这里和include、require有点像，就是在<strong>当前命名空间引入其他命名空间的别名</strong>，比如<code>use animal\dogA as alias</code>其中的alias就是animal的别名，然后我们就可以用这个别名来调用</p>
@@ -342,7 +343,7 @@
 <span class="token variable">$child</span><span class="token operator">-></span><span class="token function">parentsay</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">echo</span> <span class="token variable">$child</span><span class="token operator">-></span><span class="token property">hobby</span><span class="token punctuation">;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p><img src="/blog/2023/10/24/ThinkPHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/image-20231108221049816.png" alt="image-20231108221049816"></p>
+<p><img src="/blog/2023/10/24/ThinkPHP%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/image-20231108221049816.png" alt="image-20231108221049816"></p>
 <p>上面的demo中child继承了father，和java一样，属性和方法也被继承下来了，子类可以覆写父类的方法，子类也可以通过<code>parent::</code>关键字访问父类被覆盖的方法</p>
 <hr>
 <h2 id="trait修饰符"><a href="#trait修饰符" class="headerlink" title="trait修饰符"></a>trait修饰符</h2><p>使得被修饰的类可以进行复用，增加了代码的可复用性，使用这个修饰符就可以在一个类包含另一个类</p>
@@ -364,7 +365,7 @@
 <span class="token variable">$t</span><span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">impl</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token variable">$t</span><span class="token operator">-></span><span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p><img src="/blog/2023/10/24/ThinkPHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/image-20231108221515538.png" alt="image-20231108221515538"></p>
+<p><img src="/blog/2023/10/24/ThinkPHP%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/image-20231108221515538.png" alt="image-20231108221515538"></p>
 <p>test是一个用trait修饰的类，所以我们只要在impl类中use了test这个类，我们就可以调用其中的方法，类似于类的继承</p>
 <p>这里还有一个特性：</p>
 <p>1.php</p>
@@ -395,7 +396,7 @@
 <span class="token variable">$a</span><span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">C1oud</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">echo</span> <span class="token variable">$a</span><span class="token punctuation">;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p><img src="/blog/2023/10/24/ThinkPHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/image-20231108222205101.png" alt="image-20231108222205101"></p>
+<p><img src="/blog/2023/10/24/ThinkPHP%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/image-20231108222205101.png" alt="image-20231108222205101"></p>
 <p>可以看到我们在C1oud类里面复用了Aris这个类，然后能够触发<code>__toString</code>魔术方法，这一点在tp5的反序列化漏洞中有出现过</p>
 <hr>
 <h1 id="ThinkPHP开发手册"><a href="#ThinkPHP开发手册" class="headerlink" title="ThinkPHP开发手册"></a>ThinkPHP开发手册</h1><p>官方文档：<a target="_blank" rel="noopener" href="https://www.thinkphp.cn/doc">https://www.thinkphp.cn/doc</a></p>
@@ -447,7 +448,18 @@
 │  ... 更多分层目录可选
 │  └─View        视图目录<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-
+<hr>
+<h2 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h2><pre class="line-numbers language-txt" data-language="txt"><code class="language-txt">A 快速实例化Action类库
+B 执行行为类
+C 配置参数存取方法
+D 快速实例化Model类库
+F 快速简单文本数据存取方法
+L 语言参数存取方法
+M 快速高性能实例化模型
+R 快速远程调用Action类方法
+S 快速缓存存取方法
+U URL动态生成和重定向方法
+W 快速Widget输出方法<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <hr>
 <h2 id="目录结构（6-0）"><a href="#目录结构（6-0）" class="headerlink" title="目录结构（6.0）"></a>目录结构（6.0）</h2><blockquote>
@@ -501,15 +513,44 @@
 <h1 id="ThinkPHP3-2"><a href="#ThinkPHP3-2" class="headerlink" title="ThinkPHP3.2"></a>ThinkPHP3.2</h1><h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><p>官网下载404了，找不到3.2.3的版本，只有3.2.4和3.2.5版本能下载</p>
 <p>PHP版本要求：PHP5.3以上版本（<strong>注意：PHP5.3dev版本和PHP6均不支持</strong>）</p>
 <p>Github获取：<a target="_blank" rel="noopener" href="https://github.com/liu21st/thinkphp">https://github.com/liu21st/thinkphp</a></p>
-<p>composer获取：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">composer</span> create-project topthink/thinkphp tp3<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>composer获取3.2.3版本：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">composer</span> create-project topthink/thinkphp:v3.2.3 tp3<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>直接把下载的文件放在web根目录即可</p>
-<p><img src="/blog/2023/10/24/ThinkPHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/image-20231221224929450.png" alt="image-20231221224929450"></p>
+<p><img src="/blog/2023/10/24/ThinkPHP%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/image-20231226233817426.png" alt="image-20231226233817426"></p>
+<h3 id="数据库配置"><a href="#数据库配置" class="headerlink" title="数据库配置"></a>数据库配置</h3><p>数据库配置：配置当前模块配置文件(<code>Application/Home/Conf/config.php</code>)，也可以配置管理配置文件(<code>ThinkPHP/Conf/convention.php</code>)</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">return</span> <span class="token keyword">array</span><span class="token punctuation">(</span>
+	<span class="token comment">//'配置项'=>'配置值'</span>
+
+	<span class="token comment">//数据库配置信息</span>
+	<span class="token string single-quoted-string">'DB_TYPE'</span>   <span class="token operator">=></span> <span class="token string single-quoted-string">'mysql'</span><span class="token punctuation">,</span> <span class="token comment">// 数据库类型</span>
+	<span class="token string single-quoted-string">'DB_HOST'</span>   <span class="token operator">=></span> <span class="token string single-quoted-string">'127.0.0.1'</span><span class="token punctuation">,</span> <span class="token comment">// 服务器地址</span>
+	<span class="token string single-quoted-string">'DB_NAME'</span>   <span class="token operator">=></span> <span class="token string single-quoted-string">'TP3'</span><span class="token punctuation">,</span> <span class="token comment">// 数据库名</span>
+	<span class="token string single-quoted-string">'DB_USER'</span>   <span class="token operator">=></span> <span class="token string single-quoted-string">'tp3'</span><span class="token punctuation">,</span> <span class="token comment">// 用户名</span>
+	<span class="token string single-quoted-string">'DB_PWD'</span>    <span class="token operator">=></span> <span class="token string single-quoted-string">'tp3tp3'</span><span class="token punctuation">,</span> <span class="token comment">// 密码</span>
+	<span class="token string single-quoted-string">'DB_PORT'</span>   <span class="token operator">=></span> <span class="token number">3306</span><span class="token punctuation">,</span> <span class="token comment">// 端口</span>
+	<span class="token string single-quoted-string">'DB_PARAMS'</span> <span class="token operator">=></span>  <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token comment">// 数据库连接参数</span>
+	<span class="token string single-quoted-string">'DB_PREFIX'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'think_'</span><span class="token punctuation">,</span> <span class="token comment">// 数据库表前缀 </span>
+	<span class="token string single-quoted-string">'DB_CHARSET'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'utf8'</span><span class="token punctuation">,</span> <span class="token comment">// 字符集</span>
+	<span class="token string single-quoted-string">'DB_DEBUG'</span>  <span class="token operator">=></span>  <span class="token constant boolean">FALSE</span><span class="token punctuation">,</span> <span class="token comment">// 数据库调试模式 开启后可以记录SQL日志</span>
+
+<span class="token punctuation">)</span><span class="token punctuation">;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>数据库那里也要配置一下，注意数据库表的前缀<del>（喜报：懒狗终于用上navicat了）</del></p>
+<p><img src="/blog/2023/10/24/ThinkPHP%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/image-20231227004508160.png" alt="image-20231227004508160"></p>
+<p>检验：修改<code>Application/Home/Controller/IndexController.class.php</code>的index方法</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">index</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token variable">$data</span> <span class="token operator">=</span> <span class="token function">M</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'user'</span><span class="token punctuation">)</span><span class="token operator">-></span><span class="token function">find</span><span class="token punctuation">(</span><span class="token function">I</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'GET.id'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token variable">$data</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>传参得到我们的查询结果</p>
+<p><img src="/blog/2023/10/24/ThinkPHP%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/image-20231227004644539.png" alt="image-20231227004644539"></p>
 <h1 id="ThinkPHP6-0"><a href="#ThinkPHP6-0" class="headerlink" title="ThinkPHP6.0"></a>ThinkPHP6.0</h1><h2 id="环境搭建-1"><a href="#环境搭建-1" class="headerlink" title="环境搭建"></a>环境搭建</h2><p>PHP &gt;&#x3D; 7.2.5</p>
 <p><code>6.0</code>版本开始，必须通过<code>Composer</code>方式安装和更新</p>
 <p>我这里先用小皮工具箱进行配置，参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41658925/article/details/123627909">https://blog.csdn.net/weixin_41658925/article/details/123627909</a></p>
-<p><img src="/blog/2023/10/24/ThinkPHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/image-20231108230447158.png" alt="image-20231108230447158"></p>
+<p><img src="/blog/2023/10/24/ThinkPHP%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/image-20231108230447158.png" alt="image-20231108230447158"></p>
 <p>网站-管理-composer</p>
 <h2 id="V6-0-12LTS反序列化漏洞"><a href="#V6-0-12LTS反序列化漏洞" class="headerlink" title="V6.0.12LTS反序列化漏洞"></a>V6.0.12LTS反序列化漏洞</h2>
     </div>
@@ -559,7 +600,7 @@
     <div id="footer-wrap">
         <div>
             &copy;
-            2022 - 2023 雲流のLowest World
+            2022 - 2024 雲流のLowest World
             <span id="footer-icon">
                 <i class="fa-solid fa-font-awesome fa-fw"></i>
             </span>
