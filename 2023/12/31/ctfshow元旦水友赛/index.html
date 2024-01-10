@@ -72,7 +72,7 @@
     <div id="toc" class="toc-article">
     <h3><i class="fa-brands fa-readme"></i>  目录</h3>
       <div class="toc-title"></div>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Web"><span class="toc-text">Web</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#easy-include"><span class="toc-text">easy_include</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#easy-web-%E6%9C%AA%E5%AE%8C%E6%88%90"><span class="toc-text">easy_web(未完成)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%A4%E6%B3%A8%E4%B8%80%E6%8E%B7-%E6%9C%AA%E5%AE%8C%E6%88%90"><span class="toc-text">孤注一掷(未完成)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#easy-login"><span class="toc-text">easy_login</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#easy-api-%E4%B8%8D%E4%BC%9A"><span class="toc-text">easy_api(不会)</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Web"><span class="toc-text">Web</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#easy-include"><span class="toc-text">easy_include</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#easy-web-%E5%A4%8D%E7%8E%B0"><span class="toc-text">easy_web(复现)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#waf1"><span class="toc-text">waf1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#waf2"><span class="toc-text">waf2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%8F%E5%88%97%E5%8C%96%E5%A4%B4"><span class="toc-text">序列化头</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pop%E9%93%BE"><span class="toc-text">pop链</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%A4%E6%B3%A8%E4%B8%80%E6%8E%B7-%E6%9C%AA%E5%AE%8C%E6%88%90"><span class="toc-text">孤注一掷(未完成)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#easy-login"><span class="toc-text">easy_login</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#easy-api-%E4%B8%8D%E4%BC%9A"><span class="toc-text">easy_api(不会)</span></a></li></ol></li></ol>
     </div>
   
         
@@ -258,7 +258,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">1.2k字</span>
+        <span class="post-count">1.3k字</span>
       </span>
     </span>
 
@@ -267,7 +267,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">5分</span>
+        <span class="post-count">6分</span>
       </span>
     </span>
     
@@ -359,8 +359,8 @@ data<span class="token operator">=</span><span class="token punctuation">&#123;<
 <p><del>拿下五血，离pop神最近的一次</del></p>
 <p>不过都是文件包含的话，貌似还可以用pear来做</p>
 <hr>
-<h2 id="easy-web-未完成"><a href="#easy-web-未完成" class="headerlink" title="easy_web(未完成)"></a>easy_web(未完成)</h2><blockquote>
-<p>反序列化绕waf</p>
+<h2 id="easy-web-复现"><a href="#easy-web-复现" class="headerlink" title="easy_web(复现)"></a>easy_web(复现)</h2><blockquote>
+<p>反序列化+php特性+c绕过正则&amp;wakeup+base64去杂</p>
 </blockquote>
 <pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token function">header</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'Content-Type:text/html;charset=utf-8'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -464,10 +464,34 @@ data<span class="token operator">=</span><span class="token punctuation">&#123;<
 <span class="token punctuation">&#125;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>经典一堆waf</p>
+<h3 id="waf1"><a href="#waf1" class="headerlink" title="waf1"></a>waf1</h3><pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token keyword">function</span> <span class="token function-definition function">waf1</span><span class="token punctuation">(</span><span class="token variable">$Chu0</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token variable">$Chu0</span> <span class="token keyword">as</span> <span class="token variable">$name</span> <span class="token operator">=></span> <span class="token variable">$value</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">preg_match</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'/[a-z]/i'</span><span class="token punctuation">,</span> <span class="token variable">$value</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            <span class="token keyword">exit</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"waf1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+    
+<span class="token function">waf1</span><span class="token punctuation">(</span><span class="token variable">$_REQUEST</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>不允许有小写字母，对于序列化字符串来说肯定是过不去的</p>
+<p>不过这里有<a href="https://c1oudfl0w0.github.io/blog/2023/03/15/PHP%E7%89%B9%E6%80%A7/#REQUEST">$_REQUEST特性</a>，传post参数绕过即可</p>
+<h3 id="waf2"><a href="#waf2" class="headerlink" title="waf2"></a>waf2</h3><pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token keyword">function</span> <span class="token function-definition function">waf2</span><span class="token punctuation">(</span><span class="token variable">$Chu0</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">preg_match</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'/show/i'</span><span class="token punctuation">,</span> <span class="token variable">$Chu0</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token keyword">exit</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"waf2"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token function">waf2</span><span class="token punctuation">(</span><span class="token variable">$_SERVER</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'QUERY_STRING'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>匹配show，但是<a href="https://c1oudfl0w0.github.io/blog/2023/03/15/PHP%E7%89%B9%E6%80%A7/#SERVER-%E2%80%98QUERY-STRING%E2%80%99">$_SERVER[‘QUERY_STRING’]特性</a>，只能匹配没有url编码过的数据</p>
+<h3 id="序列化头"><a href="#序列化头" class="headerlink" title="序列化头"></a>序列化头</h3><p>然后看反序列化前的第一个正则</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token function">preg_match</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'/^[Oa]:[\d]/i'</span><span class="token punctuation">,</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'show_show.show'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>首先是非法传参<code>show[show.show</code></p>
-<p>然后看反序列化前的第一个正则，开头不能为O:数字或者a:数字，i模式直接%0a绕过就行</p>
-<p>接下来是pop链：<code>ctf::__destruct -&gt; show::__call -&gt; Chu0_write::__toString</code></p>
+<p>开头不能为O:数字或者a:数字（数组包装），可以确定是C绕过</p>
+<h3 id="pop链"><a href="#pop链" class="headerlink" title="pop链"></a>pop链</h3><p>接下来是pop链：<code>ctf::__destruct -&gt; show::__call -&gt; Chu0_write::__toString</code></p>
 <p>php版本5.5.9，绕过wakeup抛出异常的方法有CVE-2016-7124，因为反序列化的结果没赋值给变量，这里用不了fast_destruct</p>
+<p>不过我们在上面c绕过就把这个wakeup绕了（</p>
 <p>于是我们先构造出最基本的exp：</p>
 <pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 
@@ -489,7 +513,8 @@ data<span class="token operator">=</span><span class="token punctuation">&#123;<
 <span class="token variable">$a</span><span class="token operator">-></span><span class="token property">h1</span><span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token variable">$a</span><span class="token operator">-></span><span class="token property">h2</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Chu0_write</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>waf1不允许出现小写字母</p>
+
+
 <hr>
 <h2 id="孤注一掷-未完成"><a href="#孤注一掷-未完成" class="headerlink" title="孤注一掷(未完成)"></a>孤注一掷(未完成)</h2><blockquote>
 <p>thinkphp</p>
