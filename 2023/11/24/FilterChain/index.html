@@ -244,12 +244,12 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/PHP/" style="color: #ffa2c4">PHP</a>
+                <a href="/blog/tags/PHP/" style="color: #00a596">PHP</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/" style="color: #ffa2c4">文件包含</a>
+                <a href="/blog/tags/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/" style="color: #ff7d73">文件包含</a>
             </span>
             
         </span>
@@ -371,7 +371,7 @@ php<span class="token punctuation">:</span><span class="token comment">//filter/
 <p>这里就要介绍filter第一个特性了，也就是<strong>强制显示</strong>（<code>convert.base64-decode</code>的时候忽略了无效字符）</p>
 <p>拿上述输出结果中的第二条数据来看，我们已经看到了第一条输出结果中16进制是什么字符串</p>
 <p>而对于base64来说有效字符只有<code>Cbbb</code>，<code>convert.base64-decode</code>的时候解码出的虽然是乱码，但是只有3个字符，符合 base64 解码<code>4-&gt;3</code>的规则</p>
-<p>现在看第三条，我们只是base64编码了回去，但是此时的输出结果只有4个字节，实现了去除CSISO2022KR的字符，这就是<strong>去杂</strong>，同时还构造出了一个字符C</p>
+<p>现在看第三条，我们只是base64编码了回去，但是此时的输出结果只有4个字节，实现了去除CSISO2022KR的不可见字符和<code>)</code>（均不在base64的码表内），这就是<strong>去杂</strong>，同时还保留了一开始构造出的字符C</p>
 <hr>
 <h2 id="特性2：粘合性"><a href="#特性2：粘合性" class="headerlink" title="特性2：粘合性"></a>特性2：粘合性</h2><p>demo：</p>
 <pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
