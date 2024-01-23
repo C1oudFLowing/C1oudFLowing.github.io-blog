@@ -3,7 +3,7 @@
 <html lang="zh-CN">
     <head>
         <meta charset="UTF-8" />
-        <title>一种基于《信息安全数学基础》的密码学学习方法（？ | 雲流のLowest World</title>
+        <title>信息安全数学基础 | 雲流のLowest World</title>
         <meta name="author" content="C1oudfL0w0" />
         <meta name="description" content="" />
         <meta name="keywords" content="" />
@@ -70,9 +70,9 @@
         <!--文章目录-->
         
     <div id="toc" class="toc-article">
-    <h3><i class="fa-brands fa-readme"></i>  目录</h3>
+    <h3><i class="fas fa-stream"></i>  目录</h3>
       <div class="toc-title"></div>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC1%E7%AB%A0%EF%BC%9A%E6%95%B4%E6%95%B0%E7%9A%84%E5%8F%AF%E9%99%A4%E6%80%A7"><span class="toc-text">第1章：整数的可除性</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B4%E9%99%A4%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-text">整除的概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%A4%A7%E5%85%AC%E5%9B%A0%E6%95%B0-amp-%E6%9C%80%E5%B0%8F%E5%85%AC%E5%80%8D%E6%95%B0"><span class="toc-text">最大公因数&amp;最小公倍数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#gcd"><span class="toc-text">gcd</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#lcm"><span class="toc-text">lcm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%A4%E8%80%85%E4%B9%8B%E9%97%B4%E7%9A%84%E5%AE%9A%E7%90%86"><span class="toc-text">两者之间的定理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B4%A0%E6%95%B0"><span class="toc-text">素数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Eratoshenes%E7%AD%9B%E6%B3%95%EF%BC%88%E5%9F%83%E6%B0%8F%E7%AD%9B%EF%BC%89"><span class="toc-text">Eratoshenes筛法（埃氏筛）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B4%A0%E6%95%B0%E7%9A%84%E5%B9%B3%E5%87%A1%E5%88%A4%E5%88%AB"><span class="toc-text">素数的平凡判别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%97%E6%9C%AF%E5%9F%BA%E6%9C%AC%E5%AE%9A%E7%90%86"><span class="toc-text">算术基本定理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B4%A0%E6%95%B0%E5%AE%9A%E7%90%86"><span class="toc-text">素数定理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97%E9%99%A4%E6%B3%95-x2F-%E8%BE%97%E8%BD%AC%E7%9B%B8%E9%99%A4%E6%B3%95"><span class="toc-text">欧几里得除法&#x2F;辗转相除法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%BF%E4%B9%89%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97%E9%99%A4%E6%B3%95"><span class="toc-text">广义欧几里得除法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Bezout%E7%AD%89%E5%BC%8F%EF%BC%88%E8%B4%9D%E7%A5%96%E7%AD%89%E5%BC%8F%EF%BC%89"><span class="toc-text">Bézout等式（贝祖等式）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B4%E6%95%B0%E7%9A%84%E8%A1%A8%E7%A4%BA"><span class="toc-text">整数的表示</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#b%E8%BF%9B%E5%88%B6"><span class="toc-text">b进制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E6%80%A7"><span class="toc-text">复杂性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B4%E6%95%B0%E5%88%86%E8%A7%A3-x2F-%E5%88%86%E8%A7%A3%E7%B4%A0%E5%9B%A0%E6%95%B0"><span class="toc-text">整数分解&#x2F;分解素因数</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC2%E7%AB%A0%EF%BC%9A%E5%90%8C%E4%BD%99"><span class="toc-text">第2章：同余</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8C%E4%BD%99"><span class="toc-text">同余</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%A9%E4%BD%99%E7%B1%BB-x2F-%E5%90%8C%E4%BD%99%E7%B1%BB"><span class="toc-text">剩余类&#x2F;同余类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%8C%E5%85%A8%E5%89%A9%E4%BD%99%E7%B3%BB"><span class="toc-text">完全剩余系</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0%CF%86-N"><span class="toc-text">欧拉函数φ(N)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B4%B9%E9%A9%AC%E5%B0%8F%E5%AE%9A%E7%90%86"><span class="toc-text">费马小定理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AC%A7%E6%8B%89%E5%AE%9A%E7%90%86"><span class="toc-text">欧拉定理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Wilson%E5%AE%9A%E7%90%86"><span class="toc-text">Wilson定理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E9%87%8D%E5%A4%8D%E5%B9%B3%E6%96%B9%E8%AE%A1%E7%AE%97%E6%B3%95"><span class="toc-text">模重复平方计算法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC4%E7%AB%A0%EF%BC%9A%E4%BA%8C%E6%AC%A1%E5%90%8C%E4%BD%99%E5%BC%8F%E4%B8%8E%E5%B9%B3%E6%96%B9%E5%89%A9%E4%BD%99"><span class="toc-text">第4章：二次同余式与平方剩余</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E8%88%AC%E4%BA%8C%E6%AC%A1%E5%90%8C%E4%BD%99%E5%BC%8F"><span class="toc-text">一般二次同余式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%B3%E6%96%B9%E5%89%A9%E4%BD%99-x2F-%E4%BA%8C%E6%AC%A1%E5%89%A9%E4%BD%99"><span class="toc-text">平方剩余&#x2F;二次剩余</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8B%92%E8%AE%A9%E5%BE%97%E7%AC%A6%E5%8F%B7"><span class="toc-text">勒让得符号</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E7%90%86%EF%BC%9A%E6%AC%A7%E6%8B%89%E5%88%A4%E5%88%AB%E6%B3%95%E5%88%99"><span class="toc-text">定理：欧拉判别法则</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC5%E7%AB%A0%EF%BC%9A%E5%8E%9F%E6%A0%B9%E4%B8%8E%E6%8C%87%E6%A0%87"><span class="toc-text">第5章：原根与指标</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC1%E7%AB%A0%EF%BC%9A%E6%95%B4%E6%95%B0%E7%9A%84%E5%8F%AF%E9%99%A4%E6%80%A7"><span class="toc-number">2.</span> <span class="toc-text">第1章：整数的可除性</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B4%E9%99%A4%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">2.1.</span> <span class="toc-text">整除的概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%A4%A7%E5%85%AC%E5%9B%A0%E6%95%B0-amp-%E6%9C%80%E5%B0%8F%E5%85%AC%E5%80%8D%E6%95%B0"><span class="toc-number">2.2.</span> <span class="toc-text">最大公因数&amp;最小公倍数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#gcd"><span class="toc-number">2.2.1.</span> <span class="toc-text">gcd</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#lcm"><span class="toc-number">2.2.2.</span> <span class="toc-text">lcm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%A4%E8%80%85%E4%B9%8B%E9%97%B4%E7%9A%84%E5%AE%9A%E7%90%86"><span class="toc-number">2.2.3.</span> <span class="toc-text">两者之间的定理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B4%A0%E6%95%B0"><span class="toc-number">2.3.</span> <span class="toc-text">素数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Eratoshenes%E7%AD%9B%E6%B3%95%EF%BC%88%E5%9F%83%E6%B0%8F%E7%AD%9B%EF%BC%89"><span class="toc-number">2.3.1.</span> <span class="toc-text">Eratoshenes筛法（埃氏筛）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B4%A0%E6%95%B0%E7%9A%84%E5%B9%B3%E5%87%A1%E5%88%A4%E5%88%AB"><span class="toc-number">2.3.2.</span> <span class="toc-text">素数的平凡判别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%97%E6%9C%AF%E5%9F%BA%E6%9C%AC%E5%AE%9A%E7%90%86"><span class="toc-number">2.3.3.</span> <span class="toc-text">算术基本定理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B4%A0%E6%95%B0%E5%AE%9A%E7%90%86"><span class="toc-number">2.3.4.</span> <span class="toc-text">素数定理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97%E9%99%A4%E6%B3%95-x2F-%E8%BE%97%E8%BD%AC%E7%9B%B8%E9%99%A4%E6%B3%95"><span class="toc-number">2.4.</span> <span class="toc-text">欧几里得除法&#x2F;辗转相除法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%BF%E4%B9%89%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97%E9%99%A4%E6%B3%95"><span class="toc-number">2.4.1.</span> <span class="toc-text">广义欧几里得除法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Bezout%E7%AD%89%E5%BC%8F%EF%BC%88%E8%B4%9D%E7%A5%96%E7%AD%89%E5%BC%8F%EF%BC%89"><span class="toc-number">2.4.2.</span> <span class="toc-text">Bézout等式（贝祖等式）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B4%E6%95%B0%E7%9A%84%E8%A1%A8%E7%A4%BA"><span class="toc-number">2.5.</span> <span class="toc-text">整数的表示</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#b%E8%BF%9B%E5%88%B6"><span class="toc-number">2.5.1.</span> <span class="toc-text">b进制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E6%80%A7"><span class="toc-number">2.5.2.</span> <span class="toc-text">复杂性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B4%E6%95%B0%E5%88%86%E8%A7%A3-x2F-%E5%88%86%E8%A7%A3%E7%B4%A0%E5%9B%A0%E6%95%B0"><span class="toc-number">2.6.</span> <span class="toc-text">整数分解&#x2F;分解素因数</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC2%E7%AB%A0%EF%BC%9A%E5%90%8C%E4%BD%99"><span class="toc-number">3.</span> <span class="toc-text">第2章：同余</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8C%E4%BD%99"><span class="toc-number">3.1.</span> <span class="toc-text">同余</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%A9%E4%BD%99%E7%B1%BB-x2F-%E5%90%8C%E4%BD%99%E7%B1%BB"><span class="toc-number">3.2.</span> <span class="toc-text">剩余类&#x2F;同余类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%8C%E5%85%A8%E5%89%A9%E4%BD%99%E7%B3%BB"><span class="toc-number">3.2.1.</span> <span class="toc-text">完全剩余系</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0%CF%86-N"><span class="toc-number">3.3.</span> <span class="toc-text">欧拉函数φ(N)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B4%B9%E9%A9%AC%E5%B0%8F%E5%AE%9A%E7%90%86"><span class="toc-number">3.4.</span> <span class="toc-text">费马小定理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AC%A7%E6%8B%89%E5%AE%9A%E7%90%86"><span class="toc-number">3.5.</span> <span class="toc-text">欧拉定理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Wilson%E5%AE%9A%E7%90%86"><span class="toc-number">3.6.</span> <span class="toc-text">Wilson定理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E9%87%8D%E5%A4%8D%E5%B9%B3%E6%96%B9%E8%AE%A1%E7%AE%97%E6%B3%95"><span class="toc-number">3.7.</span> <span class="toc-text">模重复平方计算法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC3%E7%AB%A0%EF%BC%9A%E5%90%8C%E4%BD%99%E5%BC%8F"><span class="toc-number">4.</span> <span class="toc-text">第3章：同余式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E6%AC%A1%E5%90%8C%E4%BD%99%E5%BC%8F"><span class="toc-number">4.1.</span> <span class="toc-text">一次同余式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%86%E5%85%83%E6%B1%82%E8%A7%A3"><span class="toc-number">4.1.1.</span> <span class="toc-text">逆元求解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%A9%E5%B1%95%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3"><span class="toc-number">4.1.2.</span> <span class="toc-text">扩展欧几里得算法求解</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%AD%E5%9B%BD%E5%89%A9%E4%BD%99%E5%AE%9A%E7%90%86%EF%BC%88CRT%EF%BC%89"><span class="toc-number">4.2.</span> <span class="toc-text">中国剩余定理（CRT）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E5%85%A5%E2%80%94%E2%80%94%E2%80%9D%E7%89%A9%E4%B8%8D%E7%9F%A5%E6%95%B0%E2%80%9C%E9%97%AE%E9%A2%98"><span class="toc-number">4.2.1.</span> <span class="toc-text">引入——”物不知数“问题</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC4%E7%AB%A0%EF%BC%9A%E4%BA%8C%E6%AC%A1%E5%90%8C%E4%BD%99%E5%BC%8F%E4%B8%8E%E5%B9%B3%E6%96%B9%E5%89%A9k%E4%BD%99"><span class="toc-number">5.</span> <span class="toc-text">第4章：二次同余式与平方剩k余</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E8%88%AC%E4%BA%8C%E6%AC%A1%E5%90%8C%E4%BD%99%E5%BC%8F"><span class="toc-number">5.1.</span> <span class="toc-text">一般二次同余式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%B3%E6%96%B9%E5%89%A9%E4%BD%99-x2F-%E4%BA%8C%E6%AC%A1%E5%89%A9%E4%BD%99"><span class="toc-number">5.1.1.</span> <span class="toc-text">平方剩余&#x2F;二次剩余</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8B%92%E8%AE%A9%E5%BE%97%E7%AC%A6%E5%8F%B7"><span class="toc-number">5.2.</span> <span class="toc-text">勒让得符号</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E7%90%86%EF%BC%9A%E6%AC%A7%E6%8B%89%E5%88%A4%E5%88%AB%E6%B3%95%E5%88%99"><span class="toc-number">5.2.1.</span> <span class="toc-text">定理：欧拉判别法则</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC5%E7%AB%A0%EF%BC%9A%E5%8E%9F%E6%A0%B9%E4%B8%8E%E6%8C%87%E6%A0%87"><span class="toc-number">6.</span> <span class="toc-text">第5章：原根与指标</span></a></li></ol>
     </div>
   
         
@@ -217,7 +217,7 @@
 
                 <div class="article">
     <div>
-        <h1>一种基于《信息安全数学基础》的密码学学习方法（？</h1>
+        <h1>信息安全数学基础</h1>
     </div>
     <div class="info">
         <span class="date">
@@ -246,7 +246,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">3.1k字</span>
+        <span class="post-count">3.8k字</span>
       </span>
     </span>
 
@@ -255,7 +255,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">13分</span>
+        <span class="post-count">15分</span>
       </span>
     </span>
     
@@ -300,7 +300,7 @@
 </li>
 <li><p>设a，b，c≠0是三个整数。<code>若c|a，c|b，则c|a±b</code></p>
 <p>证明：</p>
-<p><img src="/blog/%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E3%80%8A%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E3%80%8B%E7%9A%84%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%EF%BC%88%EF%BC%9F/image-20231022164843844.png" alt="image-20231022164843844"></p>
+<p><img src="/blog/2023/10/22/%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E3%80%8A%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E3%80%8B%E7%9A%84%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%EF%BC%88%EF%BC%9F/image-20231022164843844.png" alt="image-20231022164843844"></p>
 </li>
 <li><p>设a，b，c≠0是三个整数。<code>若c|a，c|b，则对任意整数s、t，有c|(s*a+t*b)</code>。此性质可推广到n个整数的情况（即设整数c≠0，若整数a<sub>1</sub>，…，a<sub>n</sub>都是整数c的倍数，则对任意n个整数s<sub>1</sub>，…，s<sub>n</sub>，整数s<sub>1</sub>a<sub>1</sub>+…+s<sub>n</sub>a<sub>n</sub>是c的倍数）</p>
 <p>证明过程和上面一个类似</p>
@@ -327,7 +327,7 @@
 <h3 id="lcm"><a href="#lcm" class="headerlink" title="lcm"></a>lcm</h3><p>一组整数的公倍数，是指同时是这组数中每一个数的倍数的数。</p>
 <p>0 是任意一组整数的公倍数。</p>
 <p>一组整数的最小公倍数，是指所有正的公倍数里面，最小的一个数。</p>
-<h3 id="两者之间的定理"><a href="#两者之间的定理" class="headerlink" title="两者之间的定理"></a>两者之间的定理</h3><p><img src="/blog/%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E3%80%8A%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E3%80%8B%E7%9A%84%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%EF%BC%88%EF%BC%9F/image-20240101123433762.png" alt="image-20240101123433762"></p>
+<h3 id="两者之间的定理"><a href="#两者之间的定理" class="headerlink" title="两者之间的定理"></a>两者之间的定理</h3><p><img src="/blog/2023/10/22/%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E3%80%8A%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E3%80%8B%E7%9A%84%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%EF%BC%88%EF%BC%9F/image-20240101123433762.png" alt="image-20240101123433762"></p>
 <hr>
 <h2 id="素数"><a href="#素数" class="headerlink" title="素数"></a>素数</h2><blockquote>
 <p>设整数n≠0，±1。如果除了显然因数±1和±n外，n没有其他因数，那么，n就叫做<strong>素数</strong>（或质数或不可约数），否则，n就叫做<strong>合数</strong></p>
@@ -345,7 +345,7 @@
 <p>设n是正整数，<code>如果对所有的素数p ≤ √n，都有p ∤ n，则n一定是素数</code></p>
 </blockquote>
 <p>具体的筛法：</p>
-<p><img src="/blog/%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E3%80%8A%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E3%80%8B%E7%9A%84%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%EF%BC%88%EF%BC%9F/image-20231022172219710.png" alt="image-20231022172219710"></p>
+<p><img src="/blog/2023/10/22/%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E3%80%8A%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E3%80%8B%E7%9A%84%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%EF%BC%88%EF%BC%9F/image-20231022172219710.png" alt="image-20231022172219710"></p>
 <p>因为对于任意一个大于1的正整数 ，不是质数的话其倍数一定不是质数，而质数的倍数也一定不是质数，所以只要从小到大考虑每个数，然后同时把当前这个数的所有（比自己大的）倍数记为合数，那么遍历结束的时候没有被标记的数就是素数了</p>
 <p>而要找到直到n为止的所有素数，只要对不超过√n的素数进行筛选就够了</p>
 <p>算法如下：</p>
@@ -384,7 +384,7 @@ Eratosthenes<span class="token punctuation">(</span><span class="token number">1
 <p>但是我们知道对于给定正整数N，如果x是N的因数，那么<code>N/x</code>也是N的因数</p>
 <p>那么对每一对（x,N&#x2F;x），只需要检验其中一个就行了</p>
 <p>于是设<strong>不大于√N的所有素数</strong>为p₁，p₂，…，pₛ，如果N被所有pᵢ除的余数都不为0，即<code>pᵢ∤n</code>，1≤i≤s，则N是素数</p>
-<p><img src="/blog/%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E3%80%8A%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E3%80%8B%E7%9A%84%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%EF%BC%88%EF%BC%9F/image-20231217230715384.png" alt="image-20231217230715384"></p>
+<p><img src="/blog/2023/10/22/%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E3%80%8A%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E3%80%8B%E7%9A%84%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%EF%BC%88%EF%BC%9F/image-20231217230715384.png" alt="image-20231217230715384"></p>
 <p>算法实现：</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">isPrime</span><span class="token punctuation">(</span>N<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">if</span> N <span class="token operator">&lt;</span> <span class="token number">2</span><span class="token punctuation">:</span>
@@ -396,20 +396,20 @@ Eratosthenes<span class="token punctuation">(</span><span class="token number">1
 
 <h3 id="算术基本定理"><a href="#算术基本定理" class="headerlink" title="算术基本定理"></a>算术基本定理</h3><p>算术基本引理：设p是素数，<code>p|a₁a₂</code>，那么<code>p|a₁</code>和<code>p|a₂</code>至少有一个成立</p>
 <p>算术基本定理（唯一分解定理）：</p>
-<p><img src="/blog/%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E3%80%8A%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E3%80%8B%E7%9A%84%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%EF%BC%88%EF%BC%9F/image-20240101014555751.png" alt="image-20240101014555751"></p>
+<p><img src="/blog/2023/10/22/%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E3%80%8A%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E3%80%8B%E7%9A%84%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%EF%BC%88%EF%BC%9F/image-20240101014555751.png" alt="image-20240101014555751"></p>
 <h3 id="素数定理"><a href="#素数定理" class="headerlink" title="素数定理"></a>素数定理</h3><p>π(x)用于表示不超过x的素数个数</p>
-<p><img src="/blog/%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E3%80%8A%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E3%80%8B%E7%9A%84%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%EF%BC%88%EF%BC%9F/image-20240101121134568.png" alt="image-20240101121134568"></p>
+<p><img src="/blog/2023/10/22/%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E3%80%8A%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E3%80%8B%E7%9A%84%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%EF%BC%88%EF%BC%9F/image-20240101121134568.png" alt="image-20240101121134568"></p>
 <p>即随着x的增大，有这样的近似结果</p>
-<p><img src="/blog/%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E3%80%8A%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E3%80%8B%E7%9A%84%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%EF%BC%88%EF%BC%9F/image-20240101121412107.png" alt="image-20240101121412107"></p>
+<p><img src="/blog/2023/10/22/%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E3%80%8A%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E3%80%8B%E7%9A%84%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%EF%BC%88%EF%BC%9F/image-20240101121412107.png" alt="image-20240101121412107"></p>
 <hr>
 <h2 id="欧几里得除法-x2F-辗转相除法"><a href="#欧几里得除法-x2F-辗转相除法" class="headerlink" title="欧几里得除法&#x2F;辗转相除法"></a>欧几里得除法&#x2F;辗转相除法</h2><blockquote>
 <p>设a，b是两个整数，其中b&gt;0，则存在唯一的整数q，r使得<code>a = q*b+r，0 ≤ r &lt; b</code></p>
 </blockquote>
 <p>求最大公因数</p>
 <p>原理：两个整数的最大公因数（gcd）等于其中<strong>较小的数和两数相除余数</strong>的最大公因数（gcd）</p>
-<p><img src="/blog/%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E3%80%8A%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E3%80%8B%E7%9A%84%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%EF%BC%88%EF%BC%9F/image-20231217231731398.png" alt="image-20231217231731398"></p>
+<p><img src="/blog/2023/10/22/%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E3%80%8A%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E3%80%8B%E7%9A%84%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%EF%BC%88%EF%BC%9F/image-20231217231731398.png" alt="image-20231217231731398"></p>
 <p>证明：</p>
-<p><img src="/blog/%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E3%80%8A%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E3%80%8B%E7%9A%84%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%EF%BC%88%EF%BC%9F/image-20240101015211479.png" alt="image-20240101015211479"></p>
+<p><img src="/blog/2023/10/22/%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E3%80%8A%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E3%80%8B%E7%9A%84%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%EF%BC%88%EF%BC%9F/image-20240101015211479.png" alt="image-20240101015211479"></p>
 <p>这里两个数的大小是不会增大的，那么有递归算法实现：</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">gcd</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">if</span> b <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
@@ -424,7 +424,7 @@ Eratosthenes<span class="token punctuation">(</span><span class="token number">1
     <span class="token keyword">return</span> a<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h3 id="广义欧几里得除法"><a href="#广义欧几里得除法" class="headerlink" title="广义欧几里得除法"></a>广义欧几里得除法</h3><p>将两个较大整数的最大公因数计算转化为两个较小整数的计算</p>
-<p><img src="/blog/%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E3%80%8A%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E3%80%8B%E7%9A%84%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%EF%BC%88%EF%BC%9F/image-20231217231021853.png" alt="image-20231217231021853"></p>
+<p><img src="/blog/2023/10/22/%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E3%80%8A%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E3%80%8B%E7%9A%84%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%EF%BC%88%EF%BC%9F/image-20231217231021853.png" alt="image-20231217231021853"></p>
 <p>算法实现：</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"计算两个非负整数的最大公因数"</span><span class="token punctuation">)</span>
 num_1 <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span><span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"请输入第一个非负整数："</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
@@ -440,17 +440,17 @@ num_2 <span class="token operator">=</span> <span class="token builtin">int</spa
 <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"\n%s和%s的最大公因数是%s"</span> <span class="token operator">%</span> <span class="token punctuation">(</span>num_1<span class="token punctuation">,</span> num_2<span class="token punctuation">,</span> Exgcd<span class="token punctuation">(</span>num_1<span class="token punctuation">,</span> num_2<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>测试：</p>
-<p><img src="/blog/%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E3%80%8A%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E3%80%8B%E7%9A%84%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%EF%BC%88%EF%BC%9F/image-20240101021127462.png" alt="image-20240101021127462"></p>
+<p><img src="/blog/2023/10/22/%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E3%80%8A%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E3%80%8B%E7%9A%84%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%EF%BC%88%EF%BC%9F/image-20240101021127462.png" alt="image-20240101021127462"></p>
 <p>手工过程：</p>
-<p><img src="/blog/%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E3%80%8A%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E3%80%8B%E7%9A%84%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%EF%BC%88%EF%BC%9F/image-20240101021157687.png" alt="image-20240101021157687"></p>
+<p><img src="/blog/2023/10/22/%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E3%80%8A%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E3%80%8B%E7%9A%84%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%EF%BC%88%EF%BC%9F/image-20240101021157687.png" alt="image-20240101021157687"></p>
 <h3 id="Bezout等式（贝祖等式）"><a href="#Bezout等式（贝祖等式）" class="headerlink" title="Bézout等式（贝祖等式）"></a>Bézout等式（贝祖等式）</h3><p>从上面的广义欧几里得算法中可以发现我们可以在逐步消去的过程中找到整数s，t使<code>s*a+t*b=gcd(a,b)</code></p>
-<p><img src="/blog/%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E3%80%8A%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E3%80%8B%E7%9A%84%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%EF%BC%88%EF%BC%9F/image-20231217232707411.png" alt="image-20231217232707411"></p>
+<p><img src="/blog/2023/10/22/%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E3%80%8A%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E3%80%8B%E7%9A%84%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%EF%BC%88%EF%BC%9F/image-20231217232707411.png" alt="image-20231217232707411"></p>
 <p>那么同样的以上面的例子进行延伸，把这个求出来的最大公因数进行逆推</p>
-<p><img src="/blog/%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E3%80%8A%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E3%80%8B%E7%9A%84%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%EF%BC%88%EF%BC%9F/image-20240101021247219.png" alt="image-20240101021247219"></p>
+<p><img src="/blog/2023/10/22/%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E3%80%8A%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E3%80%8B%E7%9A%84%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%EF%BC%88%EF%BC%9F/image-20240101021247219.png" alt="image-20240101021247219"></p>
 <p>重要推论：a,b互质的充分必要条件是存在整数x,y使ax+by&#x3D;1</p>
 <hr>
 <h2 id="整数的表示"><a href="#整数的表示" class="headerlink" title="整数的表示"></a>整数的表示</h2><h3 id="b进制"><a href="#b进制" class="headerlink" title="b进制"></a>b进制</h3><p>整数n的b进制表示：（运用欧几里得除法）</p>
-<p><img src="/blog/%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E3%80%8A%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E3%80%8B%E7%9A%84%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%EF%BC%88%EF%BC%9F/image-20231217234752597.png" alt="image-20231217234752597"></p>
+<p><img src="/blog/2023/10/22/%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E3%80%8A%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E3%80%8B%E7%9A%84%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%EF%BC%88%EF%BC%9F/image-20231217234752597.png" alt="image-20231217234752597"></p>
 <p>经典的进制转换：（代码来源：<a target="_blank" rel="noopener" href="https://plutoacharon.github.io/2020/02/23/Python%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0-%E4%BB%BB%E6%84%8F%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2/%EF%BC%89">https://plutoacharon.github.io/2020/02/23/Python%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0-%E4%BB%BB%E6%84%8F%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2/）</a></p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">f</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token comment"># n为待转换的十进制数，x为机制，取值为2-16</span>
@@ -478,7 +478,7 @@ ans <span class="token operator">=</span> f<span class="token punctuation">(</sp
 <span class="token keyword">print</span><span class="token punctuation">(</span>ans<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>换算表：</p>
-<p><img src="/blog/%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E3%80%8A%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E3%80%8B%E7%9A%84%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%EF%BC%88%EF%BC%9F/image-20231218000620990.png" alt="image-20231218000620990"></p>
+<p><img src="/blog/2023/10/22/%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E3%80%8A%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E3%80%8B%E7%9A%84%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%EF%BC%88%EF%BC%9F/image-20231218000620990.png" alt="image-20231218000620990"></p>
 <hr>
 <h3 id="复杂性"><a href="#复杂性" class="headerlink" title="复杂性"></a>复杂性</h3><p>即复杂度，符号大O和小o</p>
 <p>加法：<code>时间(a+b)=O(max(log₂a, log₂b))</code>，减法同理取最大值</p>
@@ -489,7 +489,7 @@ ans <span class="token operator">=</span> f<span class="token punctuation">(</sp
 <p>将一个正整数写成几个约数的乘积</p>
 </blockquote>
 <p>整数分解定理：</p>
-<p><img src="/blog/%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E3%80%8A%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E3%80%8B%E7%9A%84%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%EF%BC%88%EF%BC%9F/image-20240101123550041.png" alt="image-20240101123550041"></p>
+<p><img src="/blog/2023/10/22/%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E3%80%8A%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E3%80%8B%E7%9A%84%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%EF%BC%88%EF%BC%9F/image-20240101123550041.png" alt="image-20240101123550041"></p>
 <p>算法：</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">breakdown</span><span class="token punctuation">(</span>N<span class="token punctuation">)</span><span class="token punctuation">:</span>
     result <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
@@ -506,14 +506,14 @@ ans <span class="token operator">=</span> f<span class="token punctuation">(</sp
 <h1 id="第2章：同余"><a href="#第2章：同余" class="headerlink" title="第2章：同余"></a>第2章：同余</h1><h2 id="同余"><a href="#同余" class="headerlink" title="同余"></a>同余</h2><blockquote>
 <p>两个整数a，b，若它们除以正整数m所得的余数相等，则称<strong>a，b对于模m同余</strong></p>
 </blockquote>
-<p><img src="/blog/%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E3%80%8A%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E3%80%8B%E7%9A%84%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%EF%BC%88%EF%BC%9F/image-20231217104054622.png" alt="image-20231217104054622"></p>
+<p><img src="/blog/2023/10/22/%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E3%80%8A%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E3%80%8B%E7%9A%84%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%EF%BC%88%EF%BC%9F/image-20231217104054622.png" alt="image-20231217104054622"></p>
 <p>以凯撒密码为例：</p>
 <p>我们知道凯撒密码是通过移位变换进行加密的，设key（即偏移量）为3，则有</p>
 <pre class="line-numbers language-txt" data-language="txt"><code class="language-txt">明文字母表：ABCDEFGHIJKLMNOPQRSTUVWXYZ
 密文字母表：DEFGHIJKLMNOPQRSTUVWXYZABC<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<p>此时我们可以用一个数学函数来表示这个变换<code>a↔(a+3)mod 26</code></p>
-<p>由此可以得到算法如下（这里仅展示字母全为大写的情况）：</p>
+<p>此时我们可以用一个数学函数来表示这个变换<code>a ↔ (a+3)mod 26</code></p>
+<p>由此可以得到算法实现如下（这里仅展示字母全为大写的情况）：</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">en</span><span class="token punctuation">(</span>text<span class="token punctuation">,</span> shift<span class="token punctuation">)</span><span class="token punctuation">:</span>
     cipher <span class="token operator">=</span> <span class="token string">""</span>
     <span class="token keyword">for</span> char <span class="token keyword">in</span> text<span class="token punctuation">:</span>
@@ -524,14 +524,15 @@ ans <span class="token operator">=</span> f<span class="token punctuation">(</sp
 <span class="token keyword">print</span><span class="token punctuation">(</span>en<span class="token punctuation">(</span><span class="token string">"HELLOWORLD"</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>注：根据整除的性质，上面的同余式也等价于</p>
-<p><img src="/blog/%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E3%80%8A%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E3%80%8B%E7%9A%84%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%EF%BC%88%EF%BC%9F/image-20240103001523363.png" alt="image-20240103001523363"></p>
+<p><img src="/blog/2023/10/22/%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E3%80%8A%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E3%80%8B%E7%9A%84%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%EF%BC%88%EF%BC%9F/image-20240103001523363.png" alt="image-20240103001523363"></p>
 <p>同余的性质：</p>
-<p><img src="/blog/%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E3%80%8A%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E3%80%8B%E7%9A%84%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%EF%BC%88%EF%BC%9F/image-20240103001709554.png" alt="image-20240103001709554"></p>
+<p>主要是自反性、对称性、传递性和线性运算</p>
+<p><img src="/blog/2023/10/22/%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E3%80%8A%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E3%80%8B%E7%9A%84%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%EF%BC%88%EF%BC%9F/image-20240103001709554.png" alt="image-20240103001709554"></p>
 <h2 id="剩余类-x2F-同余类"><a href="#剩余类-x2F-同余类" class="headerlink" title="剩余类&#x2F;同余类"></a>剩余类&#x2F;同余类</h2><blockquote>
 <p>全体整数按照对一个正整数的同余关系（等价关系）而分成的类</p>
 </blockquote>
 <p>模m的a的剩余类：</p>
-<p><img src="/blog/%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E3%80%8A%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E3%80%8B%E7%9A%84%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%EF%BC%88%EF%BC%9F/image-20231217105229919.png" alt="image-20231217105229919"></p>
+<p><img src="/blog/2023/10/22/%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E3%80%8A%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E3%80%8B%E7%9A%84%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%EF%BC%88%EF%BC%9F/image-20231217105229919.png" alt="image-20231217105229919"></p>
 <p>其中的任意一个数都叫做该类的<strong>剩余</strong>或<strong>代表元</strong></p>
 <p>求解剩余类的算法：</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">find_congruence_class</span><span class="token punctuation">(</span>number<span class="token punctuation">,</span> modulus<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -555,7 +556,7 @@ congruence_class <span class="token operator">=</span> find_congruence_class<spa
 <p><strong>小于等于n和n互质</strong>的数的个数</p>
 </blockquote>
 <p>性质：</p>
-<p><img src="/blog/%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E3%80%8A%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E3%80%8B%E7%9A%84%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%EF%BC%88%EF%BC%9F/image-20240103013311808.png" alt="image-20240103013311808"></p>
+<p><img src="/blog/2023/10/22/%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E3%80%8A%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E3%80%8B%E7%9A%84%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%EF%BC%88%EF%BC%9F/image-20240103013311808.png" alt="image-20240103013311808"></p>
 <p>算法实现：</p>
 <p>求一个数的话，只要根据定义，在质因数分解的同时求出来即可，即质因数的倍数均不与这个数互质</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> math
@@ -574,30 +575,81 @@ congruence_class <span class="token operator">=</span> find_congruence_class<spa
 <p>对于任意整数a，有<code>aᵖ≡a(mod p)</code></p>
 <h2 id="欧拉定理"><a href="#欧拉定理" class="headerlink" title="欧拉定理"></a>欧拉定理</h2><p>若gcd(a,m)&#x3D;1，则<code>aᵠ⁽ᵐ⁾≡1(mod m)</code></p>
 <h2 id="Wilson定理"><a href="#Wilson定理" class="headerlink" title="Wilson定理"></a>Wilson定理</h2><p>设p是一个素数，则<code>(p-1)!≡-1(mod p)</code></p>
-<h2 id="模重复平方计算法"><a href="#模重复平方计算法" class="headerlink" title="模重复平方计算法"></a>模重复平方计算法</h2><p>在计算<code>bⁿ(mod m)</code>时，可以把n写成二进制，即</p>
-<p><img src="/blog/%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E3%80%8A%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E3%80%8B%E7%9A%84%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%EF%BC%88%EF%BC%9F/image-20240103112959265.png" alt="image-20240103112959265"></p>
+<h2 id="模重复平方计算法"><a href="#模重复平方计算法" class="headerlink" title="模重复平方计算法"></a>模重复平方计算法</h2><p>在计算<code>bⁿ(mod m)</code>时，</p>
+<p>由同余的性质可知：</p>
+<ul>
+<li><em>ab</em> (mod <em>m</em>) &#x3D;(<em>a</em> mod <em>m</em>) (<em>b</em> mod <em>m</em>) (mod <em>m</em>)</li>
+<li><em>a</em><sup>2</sup> (mod <em>m</em>) &#x3D;(<em>a</em> mod <em>m</em>)<sup>2</sup>(mod <em>m</em>)</li>
+<li><em>a</em><sup>n</sup>(mod <em>m</em>) &#x3D;(<em>a</em> mod <em>m</em>)<sup>n-1</sup>(<em>a</em> mod <em>m</em>) (mod <em>m</em>)</li>
+</ul>
+<p>在m很小的时候，上述的方法是可行的，但是当m，n都很大的时候，需要计算n-1次模乘（平方），是不可行的</p>
+<p>可以把指数n写成二进制，即</p>
+<p><em>n</em> &#x3D; <em>n</em><sub>0</sub> + <em>n</em><sub>1</sub><sup>2</sup> + ⋯ + <em>n</em><sub>k-1</sub><sup>2<sup>k-1</sup></sup> , <em>n</em> <em>i</em>∈{0, 1}, <em>i</em> &#x3D; 0, 1, … ,<em>k</em>−1</p>
+<p><img src="/blog/2023/10/22/%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E3%80%8A%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E3%80%8B%E7%9A%84%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%EF%BC%88%EF%BC%9F/image-20240103112959265.png" alt="image-20240103112959265"></p>
+<p>把指数转换成二进制的形式，再按位拆成<strong>多组底数相同的指数幂</strong>相乘</p>
+<p>接下来就是对每组指数幂取模进行同余运算</p>
 <p>具体算法：</p>
-<p><img src="/blog/%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E3%80%8A%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E3%80%8B%E7%9A%84%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%EF%BC%88%EF%BC%9F/image-20240103113741016.png" alt="image-20240103113741016"></p>
+<p><img src="/blog/2023/10/22/%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E3%80%8A%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E3%80%8B%E7%9A%84%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%EF%BC%88%EF%BC%9F/image-20240103113741016.png" alt="image-20240103113741016"></p>
+<p><img src="/blog/2023/10/22/%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E3%80%8A%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E3%80%8B%E7%9A%84%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%EF%BC%88%EF%BC%9F/image-20240120233858424.png" alt="img"></p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">fast_mod</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> n<span class="token punctuation">,</span> m<span class="token punctuation">)</span><span class="token punctuation">:</span>
     a <span class="token operator">=</span> <span class="token number">1</span>
-    b <span class="token operator">=</span> x
+    b <span class="token operator">=</span> x	<span class="token comment"># 底数</span>
     <span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
-        temp <span class="token operator">=</span> n
-        <span class="token keyword">if</span> n <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
+        temp <span class="token operator">=</span> n	<span class="token comment"># 决定循环次数，循环次数为指数转化成二进制的位数，即计算的次数</span>
+        <span class="token keyword">if</span> n <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>	<span class="token comment"># 对应算法步骤里n=1时才进行的运算</span>
             a <span class="token operator">=</span> a <span class="token operator">*</span> b <span class="token operator">%</span> m
         b <span class="token operator">=</span> b <span class="token operator">*</span> b <span class="token operator">%</span> m
         n <span class="token operator">=</span> n <span class="token operator">//</span> <span class="token number">2</span>
         <span class="token keyword">if</span> temp <span class="token operator">&lt;</span> <span class="token number">1</span><span class="token punctuation">:</span>
             <span class="token keyword">return</span> a<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<hr>
+<h1 id="第3章：同余式"><a href="#第3章：同余式" class="headerlink" title="第3章：同余式"></a>第3章：同余式</h1><h2 id="一次同余式"><a href="#一次同余式" class="headerlink" title="一次同余式"></a>一次同余式</h2><p>即同余下对<strong>多项式</strong>的求解</p>
+<p><img src="/blog/2023/10/22/%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E3%80%8A%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E3%80%8B%E7%9A%84%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%EF%BC%88%EF%BC%9F/image-20240120235125864.png" alt="image-20240120235125864"></p>
+<p>则<code>f(x) ≡ 0(mod m)</code>，叫做<strong>模m同余式</strong></p>
+<p>次数：若 a<sub>n</sub> ≢ 0(mod m)，则n叫做f(x)的次数，记为deg f，那么就可以叫做模m的n次同余式</p>
+<p>同余式求解：</p>
+<ol>
+<li>求解归约：f(x)(mod m) ← f(x)(mod p<sup>α</sup>) ← f(x)(mod p)</li>
+<li>解的存在性：m是一个正整数，a是一个满足m ∤ a的整数，<code>ax ≡ b(mod m)</code>有解的充要条件是<code>(a,m) | b</code></li>
+<li>解的个数</li>
+<li>具体求解</li>
+</ol>
+<h3 id="逆元求解"><a href="#逆元求解" class="headerlink" title="逆元求解"></a>逆元求解</h3><p>存在 a’ 使<code>a * a&#39; ≡ a&#39; * a ≡ 1(mod m)</code>成立，则a叫做模m的<strong>可逆元</strong>，a’叫做a的模m<strong>逆元</strong></p>
+<p>记作 a’ &#x3D; a<sup>-1</sup>(mod m)</p>
+<p>所以同余式的解可写成 x ≡ a<sup>-1</sup>(mod m) </p>
+<h3 id="扩展欧几里得算法求解"><a href="#扩展欧几里得算法求解" class="headerlink" title="扩展欧几里得算法求解"></a>扩展欧几里得算法求解</h3><ol>
+<li><p>用欧几里得除法计算(<em>a</em>, <em>m</em>), 判断(<em>a</em>, <em>m</em>) | <em>b</em> 是否成立. </p>
+</li>
+<li><p>若成立,，用广义欧几里德除法求出同余式 <em>a</em><sub>1</sub><em>x</em>≡1 (mod <em>m</em><sub>1</sub>)的一个解<em>x</em>≡<em>x</em><sub>0</sub> (mod <em>m</em><sub>1</sub>), 其中<em>a</em>1 &#x3D;<em>a</em>&#x2F;(<em>a</em>, <em>m</em>), <em>m</em>1&#x3D;<em>m</em>&#x2F;(<em>a</em>, <em>m</em>). </p>
+</li>
+<li><p>然后求ax ≡ b(mod m)的一个特解 y ≡ x<sub>0</sub>b&#x2F;(a,m)(mod m)</p>
+</li>
+<li><p>最后写出全部解 x &#x3D; y + t*m&#x2F;(a,m) (mod m)，t&#x3D;0,1,…,(a,m)-1</p>
+</li>
+</ol>
+<hr>
+<h2 id="中国剩余定理（CRT）"><a href="#中国剩余定理（CRT）" class="headerlink" title="中国剩余定理（CRT）"></a>中国剩余定理（CRT）</h2><h3 id="引入——”物不知数“问题"><a href="#引入——”物不知数“问题" class="headerlink" title="引入——”物不知数“问题"></a>引入——”物不知数“问题</h3><p>求满足以下条件的整数：除以3余2，除以5余3，除以7余2</p>
+<p>这个问题可以用<strong>同余式组</strong>来表示：</p>
+<p><img src="/blog/2023/10/22/%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E3%80%8A%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E3%80%8B%E7%9A%84%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%EF%BC%88%EF%BC%9F/image-20240121112111794.png" alt="image-20240121112111794"></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">CRT</span><span class="token punctuation">(</span>k<span class="token punctuation">,</span> a<span class="token punctuation">,</span> r<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    n <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> ans <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> k <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        n <span class="token operator">=</span> n <span class="token operator">*</span> r<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> k <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        m <span class="token operator">=</span> n <span class="token operator">//</span> r<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span> b <span class="token operator">=</span> y <span class="token operator">=</span> <span class="token number">0</span>
+        exgcd<span class="token punctuation">(</span>m<span class="token punctuation">,</span> r<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> b<span class="token punctuation">,</span> y<span class="token punctuation">)</span> <span class="token comment"># b * m mod r[i] = 1</span>
+        ans <span class="token operator">=</span> <span class="token punctuation">(</span>ans <span class="token operator">+</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">*</span> m <span class="token operator">*</span> b <span class="token operator">%</span> n<span class="token punctuation">)</span> <span class="token operator">%</span> n
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>ans <span class="token operator">%</span> n <span class="token operator">+</span> n<span class="token punctuation">)</span> <span class="token operator">%</span> n<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 
 
 <hr>
-<h1 id="第4章：二次同余式与平方剩余"><a href="#第4章：二次同余式与平方剩余" class="headerlink" title="第4章：二次同余式与平方剩余"></a>第4章：二次同余式与平方剩余</h1><blockquote>
+<h1 id="第4章：二次同余式与平方剩k余"><a href="#第4章：二次同余式与平方剩k余" class="headerlink" title="第4章：二次同余式与平方剩k余"></a>第4章：二次同余式与平方剩k余</h1><blockquote>
 <p>二次同余式：关于未知数的二次多项式的同余方程</p>
 </blockquote>
 <h2 id="一般二次同余式"><a href="#一般二次同余式" class="headerlink" title="一般二次同余式"></a>一般二次同余式</h2><p>一般形式</p>
-<p><img src="/blog/%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E3%80%8A%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E3%80%8B%E7%9A%84%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%EF%BC%88%EF%BC%9F/image-20231217103444240.png" alt="image-20231217103444240"></p>
+<p><img src="/blog/2023/10/22/%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E3%80%8A%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E3%80%8B%E7%9A%84%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%EF%BC%88%EF%BC%9F/image-20231217103444240.png" alt="image-20231217103444240"></p>
 <h3 id="平方剩余-x2F-二次剩余"><a href="#平方剩余-x2F-二次剩余" class="headerlink" title="平方剩余&#x2F;二次剩余"></a>平方剩余&#x2F;二次剩余</h3><blockquote>
 <p>一个整数x对另一个整数m的二次剩余指<strong>x的平方除以m得到的余数a</strong></p>
 </blockquote>
@@ -605,7 +657,7 @@ congruence_class <span class="token operator">=</span> find_congruence_class<spa
 <p>否则就是平方非剩余</p>
 <hr>
 <h2 id="勒让得符号"><a href="#勒让得符号" class="headerlink" title="勒让得符号"></a>勒让得符号</h2><p>设p为素数</p>
-<p><img src="/blog/%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E3%80%8A%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E3%80%8B%E7%9A%84%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%EF%BC%88%EF%BC%9F/image-20231217110730713.png" alt="image-20231217110730713"></p>
+<p><img src="/blog/2023/10/22/%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E3%80%8A%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%E3%80%8B%E7%9A%84%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%EF%BC%88%EF%BC%9F/image-20231217110730713.png" alt="image-20231217110730713"></p>
 <p>如果勒让得符号<code>(a|p) = 1</code>，a便称为二次剩余，此时<code>x²≡a(mod p)</code>有解</p>
 <p>如果<code>(a|p) = −1</code>，则a称为二次非剩余，此时<code>x²≡a(mod p)</code>无解</p>
 <h3 id="定理：欧拉判别法则"><a href="#定理：欧拉判别法则" class="headerlink" title="定理：欧拉判别法则"></a>定理：欧拉判别法则</h3><hr>

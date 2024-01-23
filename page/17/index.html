@@ -253,17 +253,17 @@
             
 
 <div class="post">
-    <a href="/blog/2023/05/10/SQL%E6%97%B6%E9%97%B4%E7%9B%B2%E6%B3%A8/">
-        <h2 class="post-title">SQL时间盲注</h2>
+    <a href="/blog/2023/05/21/%E7%BB%B4%E5%90%89%E5%B0%BC%E4%BA%9A%E5%AF%86%E7%A0%81/">
+        <h2 class="post-title">维吉尼亚密码</h2>
     </a>
     <div class="category-and-date">
         
         <span class="category">
-            <a href="/blog/categories/Web/">
+            <a href="/blog/categories/Crypto/">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
-                Web
+                Crypto
             </a>
         </span>
         
@@ -271,7 +271,7 @@
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2023/5/10
+            2023/5/21
         </span>
         
         
@@ -279,15 +279,8 @@
     <div class="description">
         <div class="content" v-pre>
             
-            <h1 id="时间盲注"><a href="#时间盲注" class="headerlink" title="时间盲注"></a>时间盲注</h1><blockquote>
-<p>页面的显示信息是固定的，即不会出现查询的信息，也不会出现报错信息。但可以根据页面响应的时间，来判断输入的信息是否正确</p>
-</blockquote>
-<p>通过构造的语句查看<strong>页面延迟响应时间</strong>来判断，出现延迟则说明payload匹配成功</p>
-<p>以下是可能用到的函数</p>
-<p>语句返回值：if</p>
-<p>截取字符：substr、left、right、mid（等价于substr或substring）、lpad</p>
-<p>字符编码：ascii、ord、hex</p>
-<p>关键函数：sleep、benchmark</p>
+            <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>维吉尼亚密码（Vigenère cipher）是一种多表代换密码，也称为多重代换密码</p>
+<p>维吉尼亚密码的加密过程是将明文按照关键词（密钥）重复排列，然后用不同的<strong>凯撒密码</strong>表对每个字符进行加密。每个凯撒密码表是由26个字母构成的，其中每个字母按照固定的偏移量进行置换。关键词的长度可以与明文的长度不同。解密时，需要使用相同的关键词和偏移量，依次对密文中的每个字符进行解密。</p>
             
         </div>
     </div>
@@ -300,18 +293,70 @@
         
         <span class="tag">
             
-            <a href="/blog/tags/Sql/" style="color: #00a596">
-                Sql
+            <a href="/blog/tags/%E5%8F%A4%E5%85%B8%E5%AF%86%E7%A0%81/" style="color: #03a9f4">
+                古典密码
             </a>
         </span>
         
     </div>
-    <a href="/blog/2023/05/10/SQL%E6%97%B6%E9%97%B4%E7%9B%B2%E6%B3%A8/" class="go-post">阅读全文</a>
+    <a href="/blog/2023/05/21/%E7%BB%B4%E5%90%89%E5%B0%BC%E4%BA%9A%E5%AF%86%E7%A0%81/" class="go-post">阅读全文</a>
 </div>
 
 <div class="post">
-    <a href="/blog/2023/05/10/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/">
-        <h2 class="post-title">信息收集</h2>
+    <a href="/blog/2023/05/20/%E5%88%A9%E7%94%A8john%E5%AF%B9shadow%E6%96%87%E4%BB%B6%E4%B8%AD%E7%9A%84%E5%93%88%E5%B8%8C%E5%AF%86%E7%A0%81%E8%BF%9B%E8%A1%8C%E7%88%86%E7%A0%B4/">
+        <h2 class="post-title">利用john对shadow文件中的哈希密码进行爆破</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/blog/categories/%E6%B8%97%E9%80%8F/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                渗透
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/5/20
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>以<a target="_blank" rel="noopener" href="https://www.nssctf.cn/problem/4014">[NSSRound#12 Basic]Secrets in Shadow</a>为例</p>
+<blockquote>
+<p>工具：WindTerm(ssh连接用)，john(对哈希密码进行爆破)</p>
+</blockquote>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/blog/tags/%E6%8F%90%E6%9D%83/" style="color: #ffa2c4">
+                提权
+            </a>
+        </span>
+        
+    </div>
+    <a href="/blog/2023/05/20/%E5%88%A9%E7%94%A8john%E5%AF%B9shadow%E6%96%87%E4%BB%B6%E4%B8%AD%E7%9A%84%E5%93%88%E5%B8%8C%E5%AF%86%E7%A0%81%E8%BF%9B%E8%A1%8C%E7%88%86%E7%A0%B4/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/blog/2023/05/20/%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%BC%8F%E6%B4%9E/">
+        <h2 class="post-title">任意文件读取</h2>
     </a>
     <div class="category-and-date">
         
@@ -328,7 +373,7 @@
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2023/5/10
+            2023/5/20
         </span>
         
         
@@ -336,7 +381,151 @@
     <div class="description">
         <div class="content" v-pre>
             
-            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>记录一些常见的源码泄露情况</p>
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>页面上通过传参读取到的某些文件、图片，其参数处就存在任意文件读取</p>
+<p>本篇会收集一些常读取的目录，主要会侧重于&#x2F;proc目录的利用</p>
+<h1 id="利用方式"><a href="#利用方式" class="headerlink" title="利用方式"></a>利用方式</h1><p>直接读取指定文件或使用<code>file://</code>协议进行读取一些特殊路径</p>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/blog/tags/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/" style="color: #00bcd4">
+                文件包含
+            </a>
+        </span>
+        
+    </div>
+    <a href="/blog/2023/05/20/%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%BC%8F%E6%B4%9E/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/blog/2023/05/19/python%E5%87%A0%E4%B8%AA%E8%A7%A3%E6%9E%90%E7%BD%91%E9%A1%B5%E7%9A%84%E5%BA%93/">
+        <h2 class="post-title">python几个解析网页的库</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/5/19
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <p>本篇介绍一些python中解析网页html的库</p>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/blog/tags/python/" style="color: #ffa2c4">
+                python
+            </a>
+        </span>
+        
+    </div>
+    <a href="/blog/2023/05/19/python%E5%87%A0%E4%B8%AA%E8%A7%A3%E6%9E%90%E7%BD%91%E9%A1%B5%E7%9A%84%E5%BA%93/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/blog/2023/05/18/%E5%87%AF%E6%92%92%E5%AF%86%E7%A0%81/">
+        <h2 class="post-title">凯撒密码</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/blog/categories/Crypto/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                Crypto
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/5/18
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>一种替换密码，即将明文中的每个字母都替换为字母表中固定数量的字母</p>
+<p>例如，如果将明文中的每个字母向右移动3个位置，那么字母”A”将被替换为字母”D”，字母”B”将被替换为字母”E”，以此类推。这个固定的移动量被称为密钥或偏移量。</p>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/blog/tags/%E5%8F%A4%E5%85%B8%E5%AF%86%E7%A0%81/" style="color: #00bcd4">
+                古典密码
+            </a>
+        </span>
+        
+    </div>
+    <a href="/blog/2023/05/18/%E5%87%AF%E6%92%92%E5%AF%86%E7%A0%81/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/blog/2023/05/18/pwn%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">
+        <h2 class="post-title">pwn环境搭建</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/blog/categories/Pwn/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                Pwn
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/5/18
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>这边建议直接用ctfshow pwn入门提供的虚拟机镜像，已经帮我们配置好了</p>
+<p>本篇以博主个人经历结合网上已有教程来进行配置</p>
+<p>IDApro，pwntools，pwndbg</p>
+<p>系统是wsl2上的Ubuntu20.04</p>
             
         </div>
     </div>
@@ -344,12 +533,12 @@
         
         
     </div>
-    <a href="/blog/2023/05/10/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/" class="go-post">阅读全文</a>
+    <a href="/blog/2023/05/18/pwn%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="go-post">阅读全文</a>
 </div>
 
 <div class="post">
-    <a href="/blog/2023/05/08/curl%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0%E4%B8%8E%E4%BD%BF%E7%94%A8/">
-        <h2 class="post-title">curl命令学习与使用</h2>
+    <a href="/blog/2023/05/18/nano%E7%BC%96%E8%BE%91%E5%99%A8/">
+        <h2 class="post-title">nano编辑器</h2>
     </a>
     <div class="category-and-date">
         
@@ -366,7 +555,7 @@
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2023/5/8
+            2023/5/18
         </span>
         
         
@@ -374,10 +563,9 @@
     <div class="description">
         <div class="content" v-pre>
             
-            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>怎么会有web手在安卓移动端上打ctf啊（x</p>
-<p>因为安卓13的杀后台特性，博主板子linux图形化的目标迟迟未完成555</p>
-<p>为了打ctf，本篇专门学习一下kali终端下curl命令的使用（</p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/angle_chen123/article/details/120675472">外链</a></p>
+            <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>一个文本编辑器，跟vim类似且比vim更直观好用一点</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/WalterBrien/article/details/125836576">参考文章</a></p>
+
             
         </div>
     </div>
@@ -385,62 +573,12 @@
         
         
     </div>
-    <a href="/blog/2023/05/08/curl%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0%E4%B8%8E%E4%BD%BF%E7%94%A8/" class="go-post">阅读全文</a>
+    <a href="/blog/2023/05/18/nano%E7%BC%96%E8%BE%91%E5%99%A8/" class="go-post">阅读全文</a>
 </div>
 
 <div class="post">
-    <a href="/blog/2023/05/08/%E5%AF%B9MySQL%E5%BC%B1%E7%B1%BB%E5%9E%8B%E6%AF%94%E8%BE%83%E7%9A%84%E6%8E%A2%E7%B4%A2/">
-        <h2 class="post-title">对MySQL弱类型比较的探索</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/blog/categories/Web/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                Web
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/5/8
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>做ctfshow web188遇到的一种类似php的特性，遂记之</p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_30877227/article/details/97155107">外链</a></p>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        <span class="tag">
-            
-            <a href="/blog/tags/Sql/" style="color: #ff7d73">
-                Sql
-            </a>
-        </span>
-        
-    </div>
-    <a href="/blog/2023/05/08/%E5%AF%B9MySQL%E5%BC%B1%E7%B1%BB%E5%9E%8B%E6%AF%94%E8%BE%83%E7%9A%84%E6%8E%A2%E7%B4%A2/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/blog/2023/05/08/Vim%E7%BC%96%E8%BE%91%E5%99%A8%E7%9A%84%E5%AD%A6%E4%B9%A0%E4%B8%8E%E4%BD%BF%E7%94%A8/">
-        <h2 class="post-title">Vim编辑器的学习与使用</h2>
+    <a href="/blog/2023/05/18/base64%E6%8C%87%E4%BB%A4/">
+        <h2 class="post-title">base64指令</h2>
     </a>
     <div class="category-and-date">
         
@@ -457,7 +595,7 @@
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2023/5/8
+            2023/5/18
         </span>
         
         
@@ -465,10 +603,7 @@
     <div class="description">
         <div class="content" v-pre>
             
-            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>博主整了块板子，第一件事想着怎么安上kali（</p>
-<p>但是限于安卓13杀后台的原因搞不了vscode（悲</p>
-<p>于是这里选择基于命令行的编程，也就是vim编辑器了</p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/hsforpyp/article/details/113833465">外链</a></p>
+            <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>在Linux中，<code>base64</code>命令可以将二进制数据编码为Base64格式，或者将Base64编码的数据解码为二进制格式。</p>
             
         </div>
     </div>
@@ -476,20 +611,29 @@
         
         
     </div>
-    <a href="/blog/2023/05/08/Vim%E7%BC%96%E8%BE%91%E5%99%A8%E7%9A%84%E5%AD%A6%E4%B9%A0%E4%B8%8E%E4%BD%BF%E7%94%A8/" class="go-post">阅读全文</a>
+    <a href="/blog/2023/05/18/base64%E6%8C%87%E4%BB%A4/" class="go-post">阅读全文</a>
 </div>
 
 <div class="post">
-    <a href="/blog/2023/05/06/python-%E5%B8%B8%E9%87%8F%E5%AD%97%E7%AC%A6%E4%B8%B2/">
-        <h2 class="post-title">python 常量字符串</h2>
+    <a href="/blog/2023/05/14/LitCTF2023-Writeup/">
+        <h2 class="post-title">LitCTF2023 Writeup</h2>
     </a>
     <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/blog/categories/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                CTF线上赛
+            </a>
+        </span>
         
         <span class="date">
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2023/5/6
+            2023/5/14
         </span>
         
         
@@ -497,33 +641,27 @@
     <div class="description">
         <div class="content" v-pre>
             
-            <h1 id="常量字符串"><a href="#常量字符串" class="headerlink" title="常量字符串"></a>常量字符串</h1><blockquote>
-<p>python内置string模块</p>
-</blockquote>
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p><del>探姬杯好耶</del></p>
+<p>评价：</p>
+<p><del>年轻人的第一次ak</del>，就web而言大多数题目很简单而且考点还是挺明显的，同时也能学到一点新的知识，对新生还是非常友好的，</p>
+<p>mc服务器挺好玩的，</p>
+<p>尝试用GPT4做KOH（x</p>
+<p><del>让我狠狠的社探姬</del></p>
+<p><img src="/blog/2023/05/14/LitCTF2023-Writeup/1684412143599.jpg" alt="image"></p>
+<p><img src="/blog/2023/05/14/LitCTF2023-Writeup/image-20230518201803887.png" alt="image-20230518201803887"></p>
             
         </div>
     </div>
     <div class="post-tags">
         
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        <span class="tag">
-            
-            <a href="/blog/tags/python/" style="color: #00a596">
-                python
-            </a>
-        </span>
         
     </div>
-    <a href="/blog/2023/05/06/python-%E5%B8%B8%E9%87%8F%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="go-post">阅读全文</a>
+    <a href="/blog/2023/05/14/LitCTF2023-Writeup/" class="go-post">阅读全文</a>
 </div>
 
 <div class="post">
-    <a href="/blog/2023/05/06/SQL%E5%B8%83%E5%B0%94%E7%9B%B2%E6%B3%A8/">
-        <h2 class="post-title">SQL布尔盲注</h2>
+    <a href="/blog/2023/05/14/session%E4%BC%AA%E9%80%A0/">
+        <h2 class="post-title">session伪造</h2>
     </a>
     <div class="category-and-date">
         
@@ -540,7 +678,7 @@
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2023/5/6
+            2023/5/14
         </span>
         
         
@@ -548,72 +686,16 @@
     <div class="description">
         <div class="content" v-pre>
             
-            <h1 id="布尔盲注"><a href="#布尔盲注" class="headerlink" title="布尔盲注"></a>布尔盲注</h1><blockquote>
-<p>盲注查询是不需要返回结果的，仅判断语句是否正常执行即可，所以其返回可以看到一个布尔值，正常显示为true，报错或者是其他不正常显示为False</p>
-</blockquote>
-<p>本篇尽可能结合题目进行说明</p>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        <span class="tag">
-            
-            <a href="/blog/tags/Sql/" style="color: #ffa2c4">
-                Sql
-            </a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/blog/tags/python/" style="color: #03a9f4">
-                python
-            </a>
-        </span>
-        
-    </div>
-    <a href="/blog/2023/05/06/SQL%E5%B8%83%E5%B0%94%E7%9B%B2%E6%B3%A8/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/blog/2023/05/05/python-long-to-bytes-%E5%87%BD%E6%95%B0/">
-        <h2 class="post-title">python long_to_bytes()函数</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/blog/categories/REVERSE/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                REVERSE
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/5/5
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h1 id="long-to-bytes-函数"><a href="#long-to-bytes-函数" class="headerlink" title="long_to_bytes()函数"></a>long_to_bytes()函数</h1><blockquote>
-<p>from Crypto.Util.number import *</p>
+            <blockquote>
+<p>个人总结，可能有些地方有误</p>
 </blockquote>
 <blockquote>
-<p>用于将一个长整型数值转换成一组字节（bytes）数据</p>
+<p><a target="_blank" rel="noopener" href="https://paoka1.top/2022/05/28/Flask-%E7%9A%84-SESSION-%E4%BC%AA%E9%80%A0/">外链</a></p>
 </blockquote>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">long_to_bytes<span class="token punctuation">(</span>n<span class="token punctuation">,</span> byteorder<span class="token operator">=</span><span class="token string">'big'</span><span class="token punctuation">,</span> signed<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h1 id="Session-ID"><a href="#Session-ID" class="headerlink" title="Session ID"></a>Session ID</h1><p>是服务器为每个用户在登录时生成的一个随机字符串，用于标识用户身份和会话状态，通常存储在Cookie中</p>
+<p>一般是以json格式</p>
+<h1 id="出现场景"><a href="#出现场景" class="headerlink" title="出现场景"></a>出现场景</h1><p>响应头中存在<code>Vary: cookie</code>且cookie中存在相关的session参数</p>
+<p>使用Flask框架：因为Session变量的内容一般保存在服务端，但是Flask并不包含数据库框架的操作，于是Flask通过一个<code>secret_key</code>来解决这类问题，换言之只要知道了<code>secret_key</code>就能进行session伪造</p>
             
         </div>
     </div>
@@ -626,112 +708,27 @@
         
         <span class="tag">
             
-            <a href="/blog/tags/python/" style="color: #ff7d73">
-                python
+            <a href="/blog/tags/flask/" style="color: #00a596">
+                flask
             </a>
         </span>
-        
-    </div>
-    <a href="/blog/2023/05/05/python-long-to-bytes-%E5%87%BD%E6%95%B0/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/blog/2023/05/05/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E5%88%9D%E6%AD%A5%E5%AD%A6%E4%B9%A0/">
-        <h2 class="post-title">汇编语言初步学习</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/blog/categories/Basic/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                Basic
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/5/5
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>关于汇编，博主目前并没有什么很好的学习思路ww，只能学了啥就记点啥吧。。。</p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/a8471760/article/details/101500360?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522168329330816800182791498%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=168329330816800182791498&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-101500360-null-null.142%5Ev86%5Ekoosearch_v1,239%5Ev2%5Einsert_chatgpt&utm_term=x86%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80&spm=1018.2226.3001.4187">引用</a></p>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
         
         <span class="tag">
             
-            <a href="/blog/tags/x86%E6%B1%87%E7%BC%96/" style="color: #03a9f4">
-                x86汇编
+            <a href="/blog/tags/jwt/" style="color: #ff7d73">
+                jwt
             </a>
         </span>
-        
-    </div>
-    <a href="/blog/2023/05/05/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E5%88%9D%E6%AD%A5%E5%AD%A6%E4%B9%A0/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/blog/2023/05/05/CISCN%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/">
-        <h2 class="post-title">CISCN刷题记录</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/blog/categories/Web/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                Web
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/5/5
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>备战CISCN，先在NSS上看看前几年的题</p>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
         
         <span class="tag">
             
-            <a href="/blog/tags/%E5%88%B7%E9%A2%98/" style="color: #03a9f4">
-                刷题
+            <a href="/blog/tags/session/" style="color: #00a596">
+                session
             </a>
         </span>
         
     </div>
-    <a href="/blog/2023/05/05/CISCN%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/" class="go-post">阅读全文</a>
+    <a href="/blog/2023/05/14/session%E4%BC%AA%E9%80%A0/" class="go-post">阅读全文</a>
 </div>
 
 
@@ -768,7 +765,7 @@
             
             
             <span class="page-omit">...</span>
-            <a class="page-num" href="/blog/page/22">22</a>
+            <a class="page-num" href="/blog/page/23">23</a>
             
         </span>
         
@@ -848,7 +845,7 @@
     <div class="card-style" style="width: 300px;margin-top: 20px;">
         <span style="font-size: 20px; text-align: left;"><i class="fas fa-chart-line"></i> 网站资讯</span>
         <div style="margin-top: 15px;margin-left: 10px;text-align: left;line-height: 30px;font-size: 15px">
-            <span id="TotalArtical">文章总数：214</span>
+            <span id="TotalArtical">文章总数：226</span>
             <br>
             <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
             <script>

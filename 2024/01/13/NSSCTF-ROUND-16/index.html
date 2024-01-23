@@ -70,9 +70,9 @@
         <!--文章目录-->
         
     <div id="toc" class="toc-article">
-    <h3><i class="fa-brands fa-readme"></i>  目录</h3>
+    <h3><i class="fas fa-stream"></i>  目录</h3>
       <div class="toc-title"></div>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Web"><span class="toc-text">Web</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#RCE%E4%BD%86%E6%98%AF%E6%B2%A1%E6%9C%89%E5%AE%8C%E5%85%A8RCE"><span class="toc-text">RCE但是没有完全RCE</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%86%E8%A7%A3%E8%BF%87PHP%E7%89%B9%E6%80%A7%E5%90%97"><span class="toc-text">了解过PHP特性吗</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Pwn"><span class="toc-text">Pwn</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#nc-pwnre"><span class="toc-text">nc_pwnre</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ret-text"><span class="toc-text">ret_text</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reverse"><span class="toc-text">Reverse</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#test-your-Debugger"><span class="toc-text">test your Debugger</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CompileMe-%EF%BC%88%E5%A4%8D%E7%8E%B0%EF%BC%89"><span class="toc-text">CompileMe!!!（复现）</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Web"><span class="toc-number">2.</span> <span class="toc-text">Web</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#RCE%E4%BD%86%E6%98%AF%E6%B2%A1%E6%9C%89%E5%AE%8C%E5%85%A8RCE"><span class="toc-number">2.1.</span> <span class="toc-text">RCE但是没有完全RCE</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%86%E8%A7%A3%E8%BF%87PHP%E7%89%B9%E6%80%A7%E5%90%97"><span class="toc-number">2.2.</span> <span class="toc-text">了解过PHP特性吗</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Pwn"><span class="toc-number">3.</span> <span class="toc-text">Pwn</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#nc-pwnre"><span class="toc-number">3.1.</span> <span class="toc-text">nc_pwnre</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ret-text"><span class="toc-number">3.2.</span> <span class="toc-text">ret_text</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reverse"><span class="toc-number">4.</span> <span class="toc-text">Reverse</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#test-your-Debugger"><span class="toc-number">4.1.</span> <span class="toc-text">test your Debugger</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CompileMe-%EF%BC%88%E5%A4%8D%E7%8E%B0%EF%BC%89"><span class="toc-number">4.2.</span> <span class="toc-text">CompileMe!!!（复现）</span></a></li></ol></li></ol>
     </div>
   
         
@@ -244,7 +244,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/NSS/" style="color: #03a9f4">NSS</a>
+                <a href="/blog/tags/NSS/" style="color: #00bcd4">NSS</a>
             </span>
             
         </span>
@@ -285,7 +285,10 @@
         <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>挺简单的这次round赛，除了流量分析，misc会不了一点</p>
 <span id="more"></span>
 
-<h1 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h1><h2 id="RCE但是没有完全RCE"><a href="#RCE但是没有完全RCE" class="headerlink" title="RCE但是没有完全RCE"></a>RCE但是没有完全RCE</h2><pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<h1 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h1><h2 id="RCE但是没有完全RCE"><a href="#RCE但是没有完全RCE" class="headerlink" title="RCE但是没有完全RCE"></a>RCE但是没有完全RCE</h2><blockquote>
+<p>md5+rce</p>
+</blockquote>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token function">error_reporting</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token function">highlight_file</span><span class="token punctuation">(</span>__file__<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">include</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'level2.php'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -329,7 +332,10 @@ md5_3<span class="token operator">=</span><span class="token number">0e215962017
 shell<span class="token operator">=</span>urldecode<span class="token operator">&amp;</span><span class="token number">1</span><span class="token operator">=</span>cat <span class="token operator">/</span>flag<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <hr>
-<h2 id="了解过PHP特性吗"><a href="#了解过PHP特性吗" class="headerlink" title="了解过PHP特性吗"></a>了解过PHP特性吗</h2><pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<h2 id="了解过PHP特性吗"><a href="#了解过PHP特性吗" class="headerlink" title="了解过PHP特性吗"></a>了解过PHP特性吗</h2><blockquote>
+<p>php特性</p>
+</blockquote>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token function">error_reporting</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token function">highlight_file</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">include</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"rce.php"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -399,7 +405,7 @@ ctype<span class="token operator">=</span><span class="token constant">OZDCKNQ</
 
 <hr>
 <h1 id="Pwn"><a href="#Pwn" class="headerlink" title="Pwn"></a>Pwn</h1><h2 id="nc-pwnre"><a href="#nc-pwnre" class="headerlink" title="nc_pwnre"></a>nc_pwnre</h2><blockquote>
-<p>异或</p>
+<p>汇编审计+异或</p>
 </blockquote>
 <p>nc连上靶机，给了个汇编代码</p>
 <pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">pwn? re?no no no,this is just an easy nc-test.
@@ -443,7 +449,7 @@ res <span class="token operator">=</span> <span class="token string">""</span>
 <p><img src="/blog/2024/01/13/NSSCTF-ROUND-16/image-20240113150010339.png" alt="image-20240113150010339"></p>
 <hr>
 <h2 id="ret-text"><a href="#ret-text" class="headerlink" title="ret_text"></a>ret_text</h2><blockquote>
-<p>ret2text</p>
+<p>整型溢出+ret2text</p>
 </blockquote>
 <p>32位程序</p>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">vulnerable</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -538,9 +544,12 @@ LABEL_9<span class="token operator">:</span>
 <p><img src="/blog/2024/01/13/NSSCTF-ROUND-16/image-20240113153718353.png" alt="image-20240113153718353"></p>
 <p>找到flag：<code>NSSCTF&#123;44d52a77-92ea-413e-98c4-ff5846fd387d&#125;</code></p>
 <hr>
-<h2 id="CompileMe-（复现）"><a href="#CompileMe-（复现）" class="headerlink" title="CompileMe!!!（复现）"></a>CompileMe!!!（复现）</h2><p>先配个c#环境，教程：<a target="_blank" rel="noopener" href="https://dotnet.microsoft.com/zh-cn/learn/dotnet/hello-world-tutorial/install">https://dotnet.microsoft.com/zh-cn/learn/dotnet/hello-world-tutorial/install</a></p>
+<h2 id="CompileMe-（复现）"><a href="#CompileMe-（复现）" class="headerlink" title="CompileMe!!!（复现）"></a>CompileMe!!!（复现）</h2><blockquote>
+<p>c#编译</p>
+</blockquote>
+<p>先配个c#环境，教程：<a target="_blank" rel="noopener" href="https://dotnet.microsoft.com/zh-cn/learn/dotnet/hello-world-tutorial/install">https://dotnet.microsoft.com/zh-cn/learn/dotnet/hello-world-tutorial/install</a></p>
 <p>然后尝试把附件直接编译，报了个貌似是线程池炸了的错</p>
-<p>赛后出题人说1w多个类编译器会栈溢出</p>
+<p>赛后出题人说1w多个类的话编译器会栈溢出</p>
 <p>所以我们需要把这1w多个类归并到1个类里面</p>
 <p>我是手动用正则替换整理完的，然后用gpt帮我修一下细节</p>
 <pre class="line-numbers language-c#" data-language="c#"><code class="language-c#">&#x2F;&#x2F;NET8.0
@@ -635,7 +644,7 @@ namespace NSSCTF
             val &#x3D; val + 0x79013C0BD7467DC;
             val &#x3D; val - 0x78D23D50E23FC98;
             ...
-                        val &#x3D; val ^ 0x7C11B919EB627F7;
+            val &#x3D; val ^ 0x7C11B919EB627F7;
             val &#x3D; val + 0x413FD584E295889;
             return val;
         &#125;
