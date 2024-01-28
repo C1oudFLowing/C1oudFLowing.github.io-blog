@@ -72,7 +72,7 @@
     <div id="toc" class="toc-article">
     <h3><i class="fas fa-stream"></i>  目录</h3>
       <div class="toc-title"></div>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#payload"><span class="toc-number">2.</span> <span class="toc-text">payload</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86"><span class="toc-number">3.</span> <span class="toc-text">预备知识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Transformer"><span class="toc-number">3.1.</span> <span class="toc-text">Transformer</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#demo"><span class="toc-number">2.</span> <span class="toc-text">demo</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%87%86%E5%A4%87"><span class="toc-number">3.</span> <span class="toc-text">准备</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E6%8E%A5%E5%8F%A3%E5%92%8C%E7%B1%BB"><span class="toc-number">3.1.</span> <span class="toc-text">相关接口和类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Transformer"><span class="toc-number">3.1.1.</span> <span class="toc-text">Transformer</span></a></li></ol></li></ol></li></ol>
     </div>
   
         
@@ -244,7 +244,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/Java/" style="color: #00bcd4">Java</a>
+                <a href="/blog/tags/Java/" style="color: #03a9f4">Java</a>
             </span>
             
         </span>
@@ -258,7 +258,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">308字</span>
+        <span class="post-count">341字</span>
       </span>
     </span>
 
@@ -288,7 +288,7 @@
 <p>以及p神的《java安全漫谈》</p>
 <span id="more"></span>
 
-<h1 id="payload"><a href="#payload" class="headerlink" title="payload"></a>payload</h1><p>p牛的极简payload</p>
+<h1 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h1><p>p牛的极简payload</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span></span><span class="token constant">CC</span><span class="token punctuation">;</span>
 
 <span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>commons<span class="token punctuation">.</span>collections<span class="token punctuation">.</span></span><span class="token class-name">Transformer</span></span><span class="token punctuation">;</span>
@@ -313,7 +313,7 @@
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h1 id="预备知识"><a href="#预备知识" class="headerlink" title="预备知识"></a>预备知识</h1><p>CC链全称CommonsCollections（Java常用的一个库）</p>
+<h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><p>CC链全称CommonsCollections（Java常用的一个库）</p>
 <p>pom.xml</p>
 <pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8"?></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>project</span> <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://maven.apache.org/POM/4.0.0<span class="token punctuation">"</span></span>
@@ -340,7 +340,8 @@
 
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>project</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="Transformer"><a href="#Transformer" class="headerlink" title="Transformer"></a>Transformer</h2>
+<h2 id="相关接口和类"><a href="#相关接口和类" class="headerlink" title="相关接口和类"></a>相关接口和类</h2><p>稍微看一下p牛的demo或者ysoserial的cc1都可以发现，cc1链会涉及到以下的接口和类</p>
+<h3 id="Transformer"><a href="#Transformer" class="headerlink" title="Transformer"></a>Transformer</h3>
     </div>
     
     
