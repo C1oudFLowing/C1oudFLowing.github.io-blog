@@ -244,7 +244,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/Java/" style="color: #00a596">Java</a>
+                <a href="/blog/tags/Java/" style="color: #03a9f4">Java</a>
             </span>
             
         </span>
@@ -433,13 +433,14 @@
 <p><img src="/blog/2023/07/28/URLDNS%E9%93%BE/image-20230822175253235.png" alt="image-20230822175253235"></p>
 <p>观察到了<code>getHostAddress(u)</code>函数，根据函数名也知道这是<strong>获取主机地址</strong>的函数，在网络上也就是一次dns查询</p>
 <p>也就是说，假如存在反序列化漏洞，那么我可以传入我们VPS的地址，并开启一个监听，这样就可以校验是否存在Java反序列化漏洞</p>
-<h2 id="Gadget"><a href="#Gadget" class="headerlink" title="Gadget"></a>Gadget</h2><ol>
-<li><code>HashMap-&gt;readObject()</code></li>
-<li><code>HashMap-&gt;hash()</code></li>
+<h2 id="Gadget"><a href="#Gadget" class="headerlink" title="Gadget"></a>Gadget</h2><p>思维导图 by huamang</p>
+<p><img src="/blog/URLDNS%E9%93%BE/image-20240129114830466.png" alt="image-20240129114830466"></p>
+<ol>
+<li><code>HashMap-&gt;readObject()-&gt;hash(URL)</code></li>
 <li><code>URL-&gt;hashCode()</code></li>
-<li><code>URLStreamHandler-&gt;hashCode()</code></li>
-<li><code>URLStreamHandler-&gt;getHostAddress()</code></li>
-<li><code>InetAddress-&gt;getByName()</code></li>
+<li><code>URLStreamHandler-&gt;hashCode(url)</code></li>
+<li><code>URLStreamHandler-&gt;getHostAddress(u)</code></li>
+<li><code>InetAddress-&gt;getByName(host)</code></li>
 </ol>
 <h2 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h2><p>仿照ysoserial写一个urldns链序列化与反序列化的demo</p>
 <p>Main.java</p>
@@ -536,7 +537,7 @@
                     app_key: 'SzWOnY0PWLGNuL6jW8TZYc7j',
                     visitor: 'true',
                     placeholder: '写点什么吧(●ˇ∀ˇ●)',
-                    serverURLs: 'https://u9mzlkun.lc-cn-e1-shared.com',
+                    serverURLs: 'https://u9mzlkun.lc-cn-n1-shared.com',
                 });
             </script>
 

@@ -244,7 +244,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/NSS/" style="color: #00bcd4">NSS</a>
+                <a href="/blog/tags/NSS/" style="color: #ffa2c4">NSS</a>
             </span>
             
         </span>
@@ -446,7 +446,7 @@ res <span class="token operator">=</span> <span class="token string">""</span>
 
 <p>得到的结果base64解码一下得到<code>NSSCTF&#123;WELc0M_T0_pWn_w0r1d!&#125;</code>，输入进去</p>
 <p>然后就getshell了</p>
-<p><img src="/blog/2024/01/13/NSSCTF-Round-16/image-20240113150010339.png" alt="image-20240113150010339"></p>
+<p><img src="/blog/2024/01/13/NSSCTF-ROUND-16/image-20240113150010339.png" alt="image-20240113150010339"></p>
 <hr>
 <h2 id="ret-text"><a href="#ret-text" class="headerlink" title="ret_text"></a>ret_text</h2><blockquote>
 <p>整型溢出+ret2text</p>
@@ -477,7 +477,7 @@ res <span class="token operator">=</span> <span class="token string">""</span>
 <p>那么v2就为-2147483648</p>
 <p>接下来打ret2text</p>
 <p>偏移量0x20 + 0x4</p>
-<p><img src="/blog/2024/01/13/NSSCTF-Round-16/image-20240113154517972.png" alt="image-20240113154517972"></p>
+<p><img src="/blog/2024/01/13/NSSCTF-ROUND-16/image-20240113154517972.png" alt="image-20240113154517972"></p>
 <p>进入地址0x0804932C</p>
 <p>exp：</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> pwn <span class="token keyword">import</span> <span class="token operator">*</span>
@@ -539,9 +539,9 @@ LABEL_9<span class="token operator">:</span>
 <p>给了我们一个下断点的位置，打上断点，然后f9运行程序</p>
 <p>随便输点什么</p>
 <p>f8跟进到cmp比较这里</p>
-<p><img src="/blog/2024/01/13/NSSCTF-Round-16/image-20240113153620854.png" alt="image-20240113153620854"></p>
+<p><img src="/blog/2024/01/13/NSSCTF-ROUND-16/image-20240113153620854.png" alt="image-20240113153620854"></p>
 <p>看一下rsi寄存器这里</p>
-<p><img src="/blog/2024/01/13/NSSCTF-Round-16/image-20240113153718353.png" alt="image-20240113153718353"></p>
+<p><img src="/blog/2024/01/13/NSSCTF-ROUND-16/image-20240113153718353.png" alt="image-20240113153718353"></p>
 <p>找到flag：<code>NSSCTF&#123;44d52a77-92ea-413e-98c4-ff5846fd387d&#125;</code></p>
 <hr>
 <h2 id="CompileMe-（复现）"><a href="#CompileMe-（复现）" class="headerlink" title="CompileMe!!!（复现）"></a>CompileMe!!!（复现）</h2><blockquote>
@@ -652,7 +652,7 @@ namespace NSSCTF
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>这样子就可以编译了</p>
-<p><img src="/blog/2024/01/13/NSSCTF-Round-16/image-20240113181145859.png" alt="image-20240113181145859"></p>
+<p><img src="/blog/2024/01/13/NSSCTF-ROUND-16/image-20240113181145859.png" alt="image-20240113181145859"></p>
 <p>flag：<code>NSSCTF&#123;58MtU4iTx4uKu8PVHEYyY9a7tZ0daqVIfJVV9kpMRZ7uvDGYHRuJ58Mz&#125; </code></p>
 
     </div>
@@ -694,7 +694,7 @@ namespace NSSCTF
                     app_key: 'SzWOnY0PWLGNuL6jW8TZYc7j',
                     visitor: 'true',
                     placeholder: '写点什么吧(●ˇ∀ˇ●)',
-                    serverURLs: 'https://u9mzlkun.lc-cn-e1-shared.com',
+                    serverURLs: 'https://u9mzlkun.lc-cn-n1-shared.com',
                 });
             </script>
 
