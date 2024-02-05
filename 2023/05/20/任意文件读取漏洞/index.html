@@ -244,7 +244,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/" style="color: #00bcd4">文件包含</a>
+                <a href="/blog/tags/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/" style="color: #00a596">文件包含</a>
             </span>
             
         </span>
@@ -360,7 +360,8 @@
 
 maps<span class="token operator">=</span><span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">'test.txt'</span><span class="token punctuation">)</span>
 b <span class="token operator">=</span> maps<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token builtin">list</span> <span class="token operator">=</span> b<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'\\n'</span><span class="token punctuation">)</span><span class="token keyword">for</span> line <span class="token keyword">in</span> <span class="token builtin">list</span><span class="token punctuation">:</span>
+<span class="token builtin">list</span> <span class="token operator">=</span> b<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'\\n'</span><span class="token punctuation">)</span>
+<span class="token keyword">for</span> line <span class="token keyword">in</span> <span class="token builtin">list</span><span class="token punctuation">:</span>
     <span class="token keyword">if</span> <span class="token string">'rw'</span> <span class="token keyword">in</span> line<span class="token punctuation">:</span>
         addr <span class="token operator">=</span> re<span class="token punctuation">.</span>search<span class="token punctuation">(</span><span class="token string">'([0-9a-f]+)-([0-9a-f]+)'</span><span class="token punctuation">,</span>line<span class="token punctuation">)</span>
         <span class="token comment">#正则匹配地址,地址格式为十六进制数[0-9a-f],reserch会返回一个re.Match对象，用括号括起来是为了使用group()处理返回结果。</span>
@@ -373,7 +374,7 @@ b <span class="token operator">=</span> maps<span class="token punctuation">.</s
         secret_key <span class="token operator">=</span> re<span class="token punctuation">.</span>findall<span class="token punctuation">(</span><span class="token string">"[a-z0-9]&#123;32&#125;\*abcdefgh"</span><span class="token punctuation">,</span> response<span class="token punctuation">.</span>text<span class="token punctuation">)</span>  <span class="token comment">#uuid4()生成的字符串除去-符号后为固定的32字节（128bit），find</span>
         <span class="token keyword">if</span> secret_key<span class="token punctuation">:</span>
             <span class="token keyword">print</span><span class="token punctuation">(</span>secret_key<span class="token punctuation">)</span>
-            <span class="token keyword">break</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+            <span class="token keyword">break</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h3 id="攻防世界-cat-cat-new"><a href="#攻防世界-cat-cat-new" class="headerlink" title="攻防世界-cat_cat_new"></a>攻防世界-cat_cat_new</h3><p>咕咕咕</p>
 
