@@ -1,0 +1,350 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <title>躺平杯2024 | 雲流のLowest World</title>
+        <meta name="author" content="C1oudfL0w0" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+        <link rel="icon" href="/blog/images/croppedImage_cropped.jpg" />
+        <script src="https://cdn.staticfile.org/vue/3.2.45/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.2.1/css/all.min.css" />
+<link rel="stylesheet" href="/blog/css/fonts.min.css" />
+<link rel="stylesheet" href="/blog/css/search.css" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+<!--改成了prismjs高亮-->
+
+<script src="/blog/js/lib/prism.js"></script>
+<link rel="stylesheet" href="/blog/css/prism.css" rel="stylesheet" />
+
+
+
+<script src="/blog/js/lib/preview.js"></script>
+
+
+<script src="https://cdn.staticfile.org/crypto-js/4.1.1/crypto-js.min.js"></script>
+<script src="/blog/js/lib/crypto.js"></script>
+
+
+
+
+
+
+
+
+
+<script src="/blog/js/lib/home.js"></script>
+
+<link rel="stylesheet" href="/blog/css/main.css" />
+<!-- 引入jQuery-->
+<script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<!-- 引入不蒜子-->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>    
+        <script type="text/javascript" src="/blog/libs/codeBlock/codeBlockFuction.js"></script>
+<!-- 代码语言 -->
+<script type="text/javascript" src="/blog/libs/codeBlock/codeLang.js"></script>
+<!-- 代码块复制 -->
+<!-- 引入clipboard -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+<script type="text/javascript" src="/blog/libs/codeBlock/codeCopy.js"></script>
+<!-- 代码块收缩 -->
+<script type="text/javascript" src="/blog/libs/codeBlock/codeShrink.js"></script> 
+<!-- 代码块折行 -->
+<style type="text/css">code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }</style>
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <!--flag{never_g0nna g1ve_you up}-->
+        
+        <!-- 页面点击特效 -->
+        <script type = "text/javascript" src = "/blog/js/love-click.js"></script>
+
+        <!-- 浏览器标题 -->
+         <script async type="text/javascript" src="/blog/js/FunnyTitle.js"></script>
+         
+        <!--动态背景-->
+        <script type="text/javascript"
+        color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+        <!--文章目录-->
+        
+    <div id="toc" class="toc-article">
+    <h3><i class="fas fa-stream"></i>  目录</h3>
+      <div class="toc-title"></div>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Web"><span class="toc-number">2.</span> <span class="toc-text">Web</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BA%BA%E5%B9%B3%E8%AE%BA%E5%9D%9B"><span class="toc-number">2.1.</span> <span class="toc-text">躺平论坛</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9C%8B%E4%B8%8D%E8%A7%81%E7%9A%84flag"><span class="toc-number">2.1.1.</span> <span class="toc-text">看不见的flag</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%BE%E4%B8%8D%E5%88%B0%E7%9A%84flag-Unsolved"><span class="toc-number">2.1.2.</span> <span class="toc-text">找不到的flag (Unsolved)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#X%E2%80%A6%E4%BB%80%E4%B9%88%EF%BC%9F-Unsolved"><span class="toc-number">2.2.</span> <span class="toc-text">X…什么？(Unsolved)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Misc"><span class="toc-number">3.</span> <span class="toc-text">Misc</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BA%BA%E5%B9%B3%E9%97%AE%E7%AD%94"><span class="toc-number">3.1.</span> <span class="toc-text">躺平问答</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%9E%E5%B8%B8%E5%A5%BD%E5%BF%BD%E6%82%A0%E6%B7%B7%E5%90%88"><span class="toc-number">3.2.</span> <span class="toc-text">非常好忽悠混合</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%A0%E5%92%8B%E7%9F%A5%E9%81%93"><span class="toc-number">3.2.1.</span> <span class="toc-text">你咋知道?</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reverse"><span class="toc-number">4.</span> <span class="toc-text">Reverse</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#HIT-%E5%87%86%E5%85%A5%E8%AE%A4%E8%AF%81"><span class="toc-number">4.1.</span> <span class="toc-text">HIT! 准入认证!</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B4%E8%B5%B0%E5%B0%B1%E8%B5%B0%E7%9A%84%E6%97%85%E8%A1%8C"><span class="toc-number">4.1.1.</span> <span class="toc-text">说走就走的旅行</span></a></li></ol></li></ol></li></ol>
+    </div>
+  
+        
+        <!--返回顶部-->
+        <div id="totop" style="position:fixed;bottom:50px;right:60px;font-size: 48px;cursor: pointer;z-index: 10;">
+            <a title="返回顶部">↑</a>
+            </div>
+        <script src="/blog/js/totop.js"></script>
+
+        <div id="layout">
+            <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>第一次加载文章图片可能会花费较长时间</p>
+                    <p>要不挂个梯子试试？（x</p>
+                    <p>加载过慢请开启缓存&ensp;浏览器默认开启</p>
+                    <img src="/blog/images/loading.gif" />
+                </div>
+            </div>
+            </transition>
+            <transition name="into">
+            <div id="main" v-show="!loading">
+                <nav id="menu" ref="menu">
+    <div class="desktop-menu">
+        <a class="title" href="/blog/">
+            <span>雲流のLOWEST WORLD</span>
+        </a>
+        
+        <a href="/blog/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/blog/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/blog/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/blog/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/blog/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+        <a href="/blog/links">
+            <i class="fa-solid fa-link fa-fw"></i>
+            <span>&ensp;Links</span>
+        </a>
+        
+        <a href="/blog/search">
+            <i class="fa-solid fa-search fa-fw"></i>
+            <span>&ensp;Search</span>
+        </a>
+        
+    </div>
+    <div id="mobile-menu">
+        <div class="curtain" v-show="showMenu" @click="showMenu = !showMenu"></div>
+        <div class="title" @click="showMenu = !showMenu">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;雲流のLOWEST WORLD</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="showMenu">
+            
+            <a href="/blog/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                </div>
+            </a>
+            
+            <a href="/blog/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                </div>
+            </a>
+            
+            <a href="/blog/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                </div>
+            </a>
+            
+            <a href="/blog/categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                </div>
+            </a>
+            
+            <a href="/blog/tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                </div>
+            </a>
+            
+            <a href="/blog/links">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-link fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Links</div>
+                </div>
+            </a>
+            
+            <a href="/blog/search">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-search fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Search</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+
+                <div class="article">
+    <div>
+        <h1>躺平杯2024</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/2/10
+        </span>
+        
+        <span class="category">
+            <a href="/blog/categories/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                CTF线上赛
+            </a>
+        </span>
+        
+        
+        <!--文章字数统计-->
+        
+            
+<div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <!-- 安装插件npm install hexo-wordcount --save -->
+        <span class="post-count">688字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">2分</span>
+      </span>
+    </span>
+    
+    <!--不蒜子统计访问数-->
+    <span id="busuanzi_container_page_pv">
+    &nbsp; | &nbsp;
+    总文章阅读量：<span id="busuanzi_value_page_pv"></span>次
+    </span>
+</div>
+
+          
+    </div>
+    
+    
+    <input
+        id="crypto"
+        class="input"
+        ref="crypto"
+        placeholder="文章被加密，请输入密码"
+        data-encrypted="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"
+        data-shasum="d5a62de6bf7e2b9409f4af2b84114a13014b0fd040e8635bf1e81d66f76d3724"
+        v-model="crypto"
+    />
+    <transition name="fade">
+    <div class="content" ref="content" v-show="check"></div>
+    </transition>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            </div>
+            </transition>
+            
+            <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+            </transition>
+            
+        </div>
+        <script src="/blog/js/main.js"></script>
+        
+        
+
+
+
+
+         
+        
+    <div id="vcomments"></div>
+    
+        <script src="/blog/js/lib/valine.min.js"></script>
+            <script>
+                new Valine({
+                    el: '#vcomments',
+                    app_id: 'U9mZLKunkRUTcBFthjXPjnZE-9Nh9j0Va',
+                    app_key: 'SzWOnY0PWLGNuL6jW8TZYc7j',
+                    visitor: 'true',
+                    placeholder: '写点什么吧(●ˇ∀ˇ●)',
+                    serverURLs: 'https://u9mzlkun.lc-cn-n1-shared.com',
+                });
+            </script>
+
+        <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2024 雲流のLowest World
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;C1oudfL0w0
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+    <script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/blog/live2dw/assets/z16.model.json"},"display":{"position":"left","width":150,"height":290},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
+

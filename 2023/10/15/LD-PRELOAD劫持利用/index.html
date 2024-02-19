@@ -72,7 +72,7 @@
     <div id="toc" class="toc-article">
     <h3><i class="fas fa-stream"></i>  目录</h3>
       <div class="toc-title"></div>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%93%BE%E6%8E%A5"><span class="toc-number">2.</span> <span class="toc-text">链接</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LD-PRELOAD-Hook"><span class="toc-number">3.</span> <span class="toc-text">LD_PRELOAD Hook</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8A%AB%E6%8C%81linux%E7%B3%BB%E7%BB%9F%E5%91%BD%E4%BB%A4"><span class="toc-number">4.</span> <span class="toc-text">劫持linux系统命令</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%95disabled-function"><span class="toc-number">5.</span> <span class="toc-text">绕disabled_function</span></a></li></ol>
     </div>
   
         
@@ -246,7 +246,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">13字</span>
+        <span class="post-count">1k字</span>
       </span>
     </span>
 
@@ -255,7 +255,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">1分</span>
+        <span class="post-count">4分</span>
       </span>
     </span>
     
@@ -270,11 +270,114 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>参考文章：<a target="_blank" rel="noopener" href="https://www.anquanke.com/post/id/254388">https://www.anquanke.com/post/id/254388</a></p>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>参考文章：</p>
+<p><a target="_blank" rel="noopener" href="https://www.anquanke.com/post/id/254388">https://www.anquanke.com/post/id/254388</a></p>
+<p><code>LD_PRELOAD</code> 是 Linux 系统中的一个环境变量，它可以影响程序的运行时的链接（Runtime linker），它允许你定义在程序运行前优先加载的动态链接库</p>
+<p>总之，<code>LD_PRELOAD</code>，是个环境变量，用于动态库的加载，而动态库加载的优先级最高，因此我们可以抢先在正常函数执行之前率先执行我们的用代码写的函数</p>
 <span id="more"></span>
 
 <hr>
+<h1 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h1><ul>
+<li><p>静态链接：在程序运行之前先将各个目标模块以及所需要的库函数链接成一个完整的可执行程序，之后不再拆开。</p>
+<p>在linux中，对应的是 <code>.a</code> 后缀的文件</p>
+<p>而动态链接对应的是 <code>.so</code> 后缀的文件</p>
+</li>
+<li><p>装入时动态链接：源程序编译后所得到的一组目标模块，在装入内存时，边装入边链接。</p>
+</li>
+<li><p>运行时动态链接：原程序编译后得到的目标模块，在程序执行过程中需要用到时才对它进行链接。</p>
+</li>
+</ul>
+<hr>
+<h1 id="LD-PRELOAD-Hook"><a href="#LD-PRELOAD-Hook" class="headerlink" title="LD_PRELOAD Hook"></a>LD_PRELOAD Hook</h1><p>由于 <code>LD_PRELOAD</code> 可以指定在<strong>程序运行前优先加载</strong>的动态链接库，那么我们可以<strong>重写程序运行过程中所调用的函数</strong>并编译成动态链接库文件，然后通过指定 <code>LD_PRELOAD</code>  让程序优先加载的这个恶意的动态链接库，最后当程序再次运行时便会加载动态链接库中的恶意函数</p>
+<p>具体操作：</p>
+<ol>
+<li>定义与目标函数完全一样的函数，包括名称、变量及类型、返回值及类型等</li>
+<li>将包含替换函数的源码编译为动态链接库</li>
+<li>通过命令 <code>export LD_PRELOAD=&quot;库文件路径&quot;</code>，设置要优先替换动态链接库</li>
+<li>替换结束，要还原函数调用关系，用命令<code>unset LD_PRELOAD</code> 解除</li>
+</ol>
+<p>demo：</p>
+<p>这里给了一段简单用<code>strcmp</code>进行比较的代码</p>
+<p>test.c</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;string.h></span></span>
 
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token operator">*</span>argv<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">char</span> passwd<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"password"</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>argc <span class="token operator">&lt;</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"usage: %s &lt;given-password>\n"</span><span class="token punctuation">,</span> argv<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">strcmp</span><span class="token punctuation">(</span>passwd<span class="token punctuation">,</span> argv<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"\033[0;32;32mPassword Correct!\n\033[m"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"\033[0;32;31mPassword Wrong!\n\033[m"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>直接编译并运行</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">gcc test.c <span class="token parameter variable">-o</span> <span class="token builtin class-name">test</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/blog/2023/10/15/LD-PRELOAD%E5%8A%AB%E6%8C%81%E5%88%A9%E7%94%A8/image-20240217164120947.png" alt="image-20240217164120947"></p>
+<p>很明显当我们输入正确的密码时回返回Correct，错误则返回Wrong</p>
+<p>而标准库里的<code>strcmp</code>函数是一个外部调用的函数，如果我们重写一个与<code>strcmp</code>同名的函数，并编译成动态链接库，就能实现类似java里面覆写的效果，从而做到劫持原函数</p>
+<p>hook_strcmp.c</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;string.h></span></span>
+<span class="token keyword">int</span> <span class="token function">strcmp</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>s1<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>s2<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">getenv</span><span class="token punctuation">(</span><span class="token string">"LD_PRELOAD"</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token constant">NULL</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token function">unsetenv</span><span class="token punctuation">(</span><span class="token string">"LD_PRELOAD"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>这里把strcmp覆写了，失去原本的比较功能</p>
+<p>最后调用了<code>unsetenv(&quot;LD_PRELOAD&quot;)</code>，因为我们通过 LD_PRELOAD 劫持了函数，劫持后启动了一个新进程，若不在新进程启动前取消 LD_PRELOAD，则将陷入无限循环，所以必须得删除环境变量 LD_PRELOAD</p>
+<p>编译生成so文件</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">gcc <span class="token parameter variable">-shared</span> <span class="token parameter variable">-fPIC</span> hook_strcmp.c <span class="token parameter variable">-o</span> hook_strcmp.so<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>然后设置LD_PRELOAD环境变量使其优先加载</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">export</span> <span class="token assign-left variable">LD_PRELOAD</span><span class="token operator">=</span>./hook_strcmp.so<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>再次执行我们的demo，发现这次不管输什么都会返回Correct，即成功劫持了</p>
+<p><img src="/blog/2023/10/15/LD-PRELOAD%E5%8A%AB%E6%8C%81%E5%88%A9%E7%94%A8/image-20240217165218163.png" alt="image-20240217165218163"></p>
+<hr>
+<h1 id="劫持linux系统命令"><a href="#劫持linux系统命令" class="headerlink" title="劫持linux系统命令"></a>劫持linux系统命令</h1><p>当我们得知了一个系统命令所调用的<strong>库函数</strong>后，我们可以重写指定的库函数进行劫持</p>
+<p>以<code>ls</code>命令进行演示</p>
+<p>查看库函数调用：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">readelf <span class="token parameter variable">-Ws</span> /usr/bin/ls<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/blog/2023/10/15/LD-PRELOAD%E5%8A%AB%E6%8C%81%E5%88%A9%E7%94%A8/image-20240217165605546.png" alt="image-20240217165605546"></p>
+<p>库函数挺多，这里以<code>strncmp</code>进行演示</p>
+<p>hook_strncmp.c</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;string.h></span></span>
+
+<span class="token keyword">void</span> <span class="token function">payload</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token function">system</span><span class="token punctuation">(</span><span class="token string">"id"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">int</span> <span class="token function">strncmp</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>__s1<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>__s2<span class="token punctuation">,</span> <span class="token class-name">size_t</span> __n<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>    <span class="token comment">// 这里函数的定义可以根据报错信息进行确定</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">getenv</span><span class="token punctuation">(</span><span class="token string">"LD_PRELOAD"</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token constant">NULL</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token function">unsetenv</span><span class="token punctuation">(</span><span class="token string">"LD_PRELOAD"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">payload</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>这里把 strncmp 覆写成执行<code>id</code>命令</p>
+<p>编译生成，设置为环境变量</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">gcc <span class="token parameter variable">-shared</span> <span class="token parameter variable">-fPIC</span> hook_strncmp.c <span class="token parameter variable">-o</span> hook_strncmp.so
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">LD_PRELOAD</span><span class="token operator">=</span>./hook_strncmp.so<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>此时ls就会一起执行id命令了</p>
+<p><img src="/blog/2023/10/15/LD-PRELOAD%E5%8A%AB%E6%8C%81%E5%88%A9%E7%94%A8/image-20240217170028041.png" alt="image-20240217170028041"></p>
+<hr>
+<h1 id="绕disabled-function"><a href="#绕disabled-function" class="headerlink" title="绕disabled_function"></a>绕disabled_function</h1>
     </div>
     
     
