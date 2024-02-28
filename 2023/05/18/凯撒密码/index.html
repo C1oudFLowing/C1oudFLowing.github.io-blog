@@ -3,7 +3,7 @@
 <html lang="zh-CN">
     <head>
         <meta charset="UTF-8" />
-        <title>凯撒密码 | 雲流のLowest World</title>
+        <title>古典密码 | 雲流のLowest World</title>
         <meta name="author" content="C1oudfL0w0" />
         <meta name="description" content="" />
         <meta name="keywords" content="" />
@@ -72,7 +72,7 @@
     <div id="toc" class="toc-article">
     <h3><i class="fas fa-stream"></i>  目录</h3>
       <div class="toc-title"></div>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90"><span class="toc-number">2.</span> <span class="toc-text">例子</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A7%A3%E5%AF%86%E8%84%9A%E6%9C%AC"><span class="toc-number">3.</span> <span class="toc-text">解密脚本</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%95%E8%A1%A8%E4%BB%A3%E6%8D%A2%E5%AF%86%E7%A0%81"><span class="toc-number">2.</span> <span class="toc-text">单表代换密码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%AF%E6%92%92%E5%AF%86%E7%A0%81"><span class="toc-number">2.1.</span> <span class="toc-text">凯撒密码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90"><span class="toc-number">2.1.1.</span> <span class="toc-text">例子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E5%AF%86%E8%84%9A%E6%9C%AC"><span class="toc-number">2.1.2.</span> <span class="toc-text">解密脚本</span></a></li></ol></li></ol></li></ol>
     </div>
   
         
@@ -217,7 +217,7 @@
 
                 <div class="article">
     <div>
-        <h1>凯撒密码</h1>
+        <h1>古典密码</h1>
     </div>
     <div class="info">
         <span class="date">
@@ -237,18 +237,6 @@
         </span>
         
         
-        <span class="tags">
-            <span class="icon">
-                <i class="fa-solid fa-tags fa-fw"></i>
-            </span>
-            
-            <span class="tag">
-                
-                <a href="/blog/tags/%E5%8F%A4%E5%85%B8%E5%AF%86%E7%A0%81/" style="color: #ff7d73">古典密码</a>
-            </span>
-            
-        </span>
-        
         <!--文章字数统计-->
         
             
@@ -258,7 +246,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">337字</span>
+        <span class="post-count">347字</span>
       </span>
     </span>
 
@@ -282,12 +270,12 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>一种替换密码，即将明文中的每个字母都替换为字母表中固定数量的字母</p>
-<p>例如，如果将明文中的每个字母向右移动3个位置，那么字母”A”将被替换为字母”D”，字母”B”将被替换为字母”E”，以此类推。这个固定的移动量被称为密钥或偏移量。</p>
-<span id="more"></span>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><span id="more"></span>
 
-<h1 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h1><p>假设我们要加密明文”HELLO”并使用偏移量3。首先，我们将明文中的每个字母向右移动3个位置。这将产生密文”KHOOR”。解密就是将密文中的每个字母向左移动3个位置，即将偏移量取反，以还原原始明文。</p>
-<h1 id="解密脚本"><a href="#解密脚本" class="headerlink" title="解密脚本"></a>解密脚本</h1><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">caesar_decrypt</span><span class="token punctuation">(</span>ciphertext<span class="token punctuation">,</span> shift<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<h1 id="单表代换密码"><a href="#单表代换密码" class="headerlink" title="单表代换密码"></a>单表代换密码</h1><h2 id="凯撒密码"><a href="#凯撒密码" class="headerlink" title="凯撒密码"></a>凯撒密码</h2><p>一种替换密码，即将明文中的每个字母都替换为字母表中固定数量的字母</p>
+<p>例如，如果将明文中的每个字母向右移动3个位置，那么字母”A”将被替换为字母”D”，字母”B”将被替换为字母”E”，以此类推。这个固定的移动量被称为密钥或偏移量。</p>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><p>假设我们要加密明文”HELLO”并使用偏移量3。首先，我们将明文中的每个字母向右移动3个位置。这将产生密文”KHOOR”。解密就是将密文中的每个字母向左移动3个位置，即将偏移量取反，以还原原始明文。</p>
+<h3 id="解密脚本"><a href="#解密脚本" class="headerlink" title="解密脚本"></a>解密脚本</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">caesar_decrypt</span><span class="token punctuation">(</span>ciphertext<span class="token punctuation">,</span> shift<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token triple-quoted-string string">"""
     凯撒密码解密函数
     :param ciphertext: 密文

@@ -72,7 +72,7 @@
     <div id="toc" class="toc-article">
     <h3><i class="fas fa-stream"></i>  目录</h3>
       <div class="toc-title"></div>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ECS%E5%85%A5%E9%97%A8"><span class="toc-number">2.</span> <span class="toc-text">ECS入门</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ECS%E6%A6%82%E8%BF%B0"><span class="toc-number">3.</span> <span class="toc-text">ECS概述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5"><span class="toc-number">4.</span> <span class="toc-text">远程连接</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%83%A8%E7%BD%B2LAMP"><span class="toc-number">5.</span> <span class="toc-text">部署LAMP</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ECS%E5%85%A5%E9%97%A8"><span class="toc-number">2.</span> <span class="toc-text">ECS入门</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ECS%E6%A6%82%E8%BF%B0"><span class="toc-number">3.</span> <span class="toc-text">ECS概述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5"><span class="toc-number">4.</span> <span class="toc-text">远程连接</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%83%A8%E7%BD%B2LAMP"><span class="toc-number">5.</span> <span class="toc-text">部署LAMP</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Apache"><span class="toc-number">5.1.</span> <span class="toc-text">Apache</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Mysql"><span class="toc-number">5.2.</span> <span class="toc-text">Mysql</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PHP"><span class="toc-number">5.3.</span> <span class="toc-text">PHP</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85WordPress"><span class="toc-number">6.</span> <span class="toc-text">安装WordPress</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%87%8A%E6%94%BE%E5%AE%9E%E4%BE%8B"><span class="toc-number">7.</span> <span class="toc-text">释放实例</span></a></li></ol>
     </div>
   
         
@@ -246,7 +246,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">543字</span>
+        <span class="post-count">962字</span>
       </span>
     </span>
 
@@ -255,7 +255,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">1分</span>
+        <span class="post-count">3分</span>
       </span>
     </span>
     
@@ -310,54 +310,92 @@
 </li>
 </ol>
 <hr>
-<h1 id="ECS概述"><a href="#ECS概述" class="headerlink" title="ECS概述"></a>ECS概述</h1><p><img src="/blog/VPS%E6%90%AD%E5%BB%BA/image-20240220184550733.png" alt="image-20240220184550733"></p>
-<p><img src="/blog/VPS%E6%90%AD%E5%BB%BA/image-20240220184607838.png" alt="image-20240220184607838"></p>
+<h1 id="ECS概述"><a href="#ECS概述" class="headerlink" title="ECS概述"></a>ECS概述</h1><p><img src="/blog/2024/02/03/VPS%E6%90%AD%E5%BB%BA/image-20240220184550733.png" alt="image-20240220184550733"></p>
+<p><img src="/blog/2024/02/03/VPS%E6%90%AD%E5%BB%BA/image-20240220184607838.png" alt="image-20240220184607838"></p>
 <p>用途：</p>
 <ol>
 <li><p><strong>网站建设</strong></p>
-</li>
-<li><ul>
-<li>搭建个人应用：博客、论坛、网盘</li>
-<li>搭建企业门户网站</li>
-<li>搭建游戏私服</li>
-</ul>
+<p>搭建个人应用：博客、论坛、网盘</p>
+<p>搭建企业门户网站</p>
+<p>搭建游戏私服</p>
 </li>
 <li><p><strong>测试学习</strong></p>
-</li>
-<li><ul>
-<li>Linux操作系统学习</li>
-<li>应用软件开发、部署与测试</li>
-</ul>
+<p>Linux操作系统学习</p>
+<p>应用软件开发、部署与测试</p>
 </li>
 <li><p><strong>数据管理</strong></p>
-</li>
-<li><ul>
-<li>存储、共享和管理数据</li>
-</ul>
-</li>
-<li><ul>
-<li>数据开发、数据分析等大数据场景</li>
-</ul>
+<p>存储、共享和管理数据</p>
+<p>数据开发、数据分析等大数据场景</p>
 </li>
 <li><p><strong>制图渲染</strong></p>
-</li>
-<li><ul>
-<li>搭建 AIGC 应用</li>
-</ul>
-</li>
-<li><ul>
-<li>实时渲染云端游戏画面</li>
-</ul>
-</li>
-<li><ul>
-<li>实时渲染AR&#x2F;VR图像</li>
-</ul>
+<p>搭建 AIGC 应用</p>
+<p>实时渲染云端游戏画面</p>
+<p>实时渲染AR&#x2F;VR图像</p>
 </li>
 </ol>
 <hr>
 <h1 id="远程连接"><a href="#远程连接" class="headerlink" title="远程连接"></a>远程连接</h1><p>我这里使用 Xshell 来连接</p>
 <hr>
-<h1 id="部署LAMP"><a href="#部署LAMP" class="headerlink" title="部署LAMP"></a>部署LAMP</h1>
+<h1 id="部署LAMP"><a href="#部署LAMP" class="headerlink" title="部署LAMP"></a>部署LAMP</h1><p>LAMP：</p>
+<ul>
+<li>“L”为Linux的缩写，是<strong>操作系统软件</strong>，是服务器中其它软件运行的基础，常见的CentOS、Ubuntu等；</li>
+<li>“A&#x2F;N”为Apache&#x2F;Nginx的缩写，是<strong>Web服务器软件</strong>，用来运行网站页面以及响应处理用户请求；</li>
+<li>“M”为MySQL的缩写，是<strong>数据库软件</strong>，用来存放网站运行必要的系统数据和用户数据；</li>
+<li>“P”为PHP的缩写，是<strong>编程软件</strong>，如用来运行WordPress软件的代码。</li>
+</ul>
+<h2 id="Apache"><a href="#Apache" class="headerlink" title="Apache"></a>Apache</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 安装 Apache</span>
+yum <span class="token parameter variable">-y</span> <span class="token function">install</span> httpd
+<span class="token comment"># 设置 Apache 开机自启动</span>
+systemctl <span class="token builtin class-name">enable</span> httpd
+<span class="token comment"># 启动 Apache</span>
+systemctl start httpd
+<span class="token comment"># 查看 Apache 运行状态</span>
+systemctl status httpd<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="Mysql"><a href="#Mysql" class="headerlink" title="Mysql"></a>Mysql</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 更新 YUM 源</span>
+<span class="token function">rpm</span> <span class="token parameter variable">-Uvh</span> http://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm
+<span class="token comment"># 安装 MySQL 数据库</span>
+yum <span class="token parameter variable">-y</span> <span class="token function">install</span> mysql-community-server <span class="token parameter variable">--nogpgcheck</span>
+<span class="token comment"># 设置 MySQL 开机自启动</span>
+systemctl <span class="token builtin class-name">enable</span> mysqld
+<span class="token comment"># 启动 </span>
+MySQLsystemctl start mysqld
+<span class="token comment"># 查看 MySQL 运行状态</span>
+systemctl status mysqld
+<span class="token comment"># 查看 MySQL root用户默认密码</span>
+<span class="token function">grep</span> <span class="token string">'temporary password'</span> /var/log/mysqld.log <span class="token operator">|</span><span class="token function">awk</span> <span class="token string">'&#123;print $11&#125;'</span>
+<span class="token comment"># 执行MySQL 数据库初始化命令</span>
+mysql_secure_installation<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="PHP"><a href="#PHP" class="headerlink" title="PHP"></a>PHP</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 更新YUM源</span>
+yum <span class="token parameter variable">-y</span> <span class="token function">install</span> epel-releaseyum <span class="token parameter variable">-y</span> <span class="token function">install</span> http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+<span class="token comment"># 安装 PHP</span>
+yum-config-manager <span class="token parameter variable">--enable</span> remi-php82yum <span class="token parameter variable">-y</span> <span class="token function">install</span> php php-cli php-common php-devel php-embedded php-fpm php-gd php-ldap php-mbstring php-mcrypt php-fpm php-mysqlnd php-pdo php-opcache php-xml php-soap php-redis php-mongodb
+<span class="token comment"># 查看 PHP 安装版本</span>
+php <span class="token parameter variable">-v</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<hr>
+<h1 id="安装WordPress"><a href="#安装WordPress" class="headerlink" title="安装WordPress"></a>安装WordPress</h1><p>我这里直接用实验给的wp镜像</p>
+<p>先启动一下apache和mysql</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">systemctl start httpd
+systemctl <span class="token builtin class-name">enable</span> httpd
+systemctl status httpd
+systemctl start mysqld
+systemctl <span class="token builtin class-name">enable</span> mysqld
+systemctl status mysqld<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>访问实验实例的公网ip</p>
+<p><img src="/blog/2024/02/03/VPS%E6%90%AD%E5%BB%BA/image-20240228164222859.png" alt="image-20240228164222859"></p>
+<p>安装完成后直接登录</p>
+<p><img src="/blog/2024/02/03/VPS%E6%90%AD%E5%BB%BA/image-20240228164440718.png" alt="image-20240228164440718"></p>
+<p>接下来就进后台了</p>
+<p>想起来之前打的某道wordpress题发现插件编辑器没了打不了（</p>
+<p><img src="/blog/2024/02/03/VPS%E6%90%AD%E5%BB%BA/image-20240228165146080.png" alt="image-20240228165146080"></p>
+<hr>
+<h1 id="释放实例"><a href="#释放实例" class="headerlink" title="释放实例"></a>释放实例</h1><p><img src="/blog/2024/02/03/VPS%E6%90%AD%E5%BB%BA/image-20240228165514742.png" alt="image-20240228165514742"></p>
+<p><img src="/blog/2024/02/03/VPS%E6%90%AD%E5%BB%BA/image-20240228165540287.png" alt="image-20240228165540287"></p>
+<hr>
+
     </div>
     
     

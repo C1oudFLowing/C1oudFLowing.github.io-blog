@@ -237,7 +237,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">458字</span>
+        <span class="post-count">472字</span>
       </span>
     </span>
 
@@ -273,6 +273,9 @@
 <p><a target="_blank" rel="noopener" href="https://termux.xyz/how-to-fix-termux-error-process-completed-signal-9-press-enter/">https://termux.xyz/how-to-fix-termux-error-process-completed-signal-9-press-enter/</a></p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/babytiger/article/details/122883528">https://blog.csdn.net/babytiger/article/details/122883528</a></p>
 <p>说白了就是安卓12之后的特性“影子杀手”会杀子进程，默认为32，我们用adb修改一下最大进程数即可</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">adb shell dumpsys activity settings <span class="token operator">|</span> findstr max_phantom_processes
+adb shell device_config put activity_manager max_phantom_processes <span class="token number">1024</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <p><img src="/blog/2023/11/30/Termux%E4%BD%BF%E7%94%A8%E5%B0%8F%E8%AE%B0/image-20231130003927969.png" alt="image-20231130003927969"></p>
 <hr>
 <h1 id="kali系统"><a href="#kali系统" class="headerlink" title="kali系统"></a>kali系统</h1><h2 id="换源"><a href="#换源" class="headerlink" title="换源"></a>换源</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> /etc/apt/sources.list<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
