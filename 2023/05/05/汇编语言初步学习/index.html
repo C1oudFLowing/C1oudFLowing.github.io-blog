@@ -3,7 +3,7 @@
 <html lang="zh-CN">
     <head>
         <meta charset="UTF-8" />
-        <title>汇编语言初步学习 | 雲流のLowest World</title>
+        <title>汇编基础 | 雲流のLowest World</title>
         <meta name="author" content="C1oudfL0w0" />
         <meta name="description" content="" />
         <meta name="keywords" content="" />
@@ -72,7 +72,7 @@
     <div id="toc" class="toc-article">
     <h3><i class="fas fa-stream"></i>  目录</h3>
       <div class="toc-title"></div>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">2.</span> <span class="toc-text">寄存器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#EBP"><span class="toc-number">2.1.</span> <span class="toc-text">EBP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ESP"><span class="toc-number">2.2.</span> <span class="toc-text">ESP</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AB%8B%E5%8D%B3%E6%95%B0"><span class="toc-number">3.</span> <span class="toc-text">立即数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8C%87%E4%BB%A4"><span class="toc-number">4.</span> <span class="toc-text">指令</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#db"><span class="toc-number">4.1.</span> <span class="toc-text">db</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mov"><span class="toc-number">4.2.</span> <span class="toc-text">mov</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#add"><span class="toc-number">4.3.</span> <span class="toc-text">add</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sub"><span class="toc-number">4.4.</span> <span class="toc-text">sub</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E5%88%86%E6%94%AF%E6%8C%87%E4%BB%A4"><span class="toc-number">5.</span> <span class="toc-text">条件分支指令</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">2.</span> <span class="toc-text">寄存器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E7%94%A8%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">2.1.</span> <span class="toc-text">通用寄存器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#EBP"><span class="toc-number">2.1.1.</span> <span class="toc-text">EBP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ESP"><span class="toc-number">2.1.2.</span> <span class="toc-text">ESP</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%87%E4%BB%A4%E6%8C%87%E9%92%88%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">2.2.</span> <span class="toc-text">指令指针寄存器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F%E7%8A%B6%E6%80%81%E4%B8%8E%E6%8E%A7%E5%88%B6%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">2.3.</span> <span class="toc-text">程序状态与控制寄存器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AE%B5%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">2.4.</span> <span class="toc-text">段寄存器</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AB%8B%E5%8D%B3%E6%95%B0"><span class="toc-number">3.</span> <span class="toc-text">立即数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8C%87%E4%BB%A4"><span class="toc-number">4.</span> <span class="toc-text">指令</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#db"><span class="toc-number">4.1.</span> <span class="toc-text">db</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mov"><span class="toc-number">4.2.</span> <span class="toc-text">mov</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#add"><span class="toc-number">4.3.</span> <span class="toc-text">add</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sub"><span class="toc-number">4.4.</span> <span class="toc-text">sub</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E5%88%86%E6%94%AF%E6%8C%87%E4%BB%A4"><span class="toc-number">4.5.</span> <span class="toc-text">条件分支指令</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A0%88%E5%B8%A7"><span class="toc-number">5.</span> <span class="toc-text">栈帧</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#IDA%E5%9F%BA%E7%A1%80"><span class="toc-number">6.</span> <span class="toc-text">IDA基础</span></a></li></ol>
     </div>
   
         
@@ -217,7 +217,7 @@
 
                 <div class="article">
     <div>
-        <h1>汇编语言初步学习</h1>
+        <h1>汇编基础</h1>
     </div>
     <div class="info">
         <span class="date">
@@ -244,7 +244,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/x86%E6%B1%87%E7%BC%96/" style="color: #ffa2c4">x86汇编</a>
+                <a href="/blog/tags/asm/" style="color: #00a596">asm</a>
             </span>
             
         </span>
@@ -258,7 +258,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">1.3k字</span>
+        <span class="post-count">1.6k字</span>
       </span>
     </span>
 
@@ -267,7 +267,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">4分</span>
+        <span class="post-count">5分</span>
       </span>
     </span>
     
@@ -282,55 +282,91 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>关于汇编，博主目前并没有什么很好的学习思路ww，只能学了啥就记点啥吧。。。</p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/a8471760/article/details/101500360?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522168329330816800182791498%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=168329330816800182791498&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-101500360-null-null.142%5Ev86%5Ekoosearch_v1,239%5Ev2%5Einsert_chatgpt&utm_term=x86%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80&spm=1018.2226.3001.4187">引用</a></p>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/a8471760/article/details/101500360?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522168329330816800182791498%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=168329330816800182791498&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-101500360-null-null.142%5Ev86%5Ekoosearch_v1,239%5Ev2%5Einsert_chatgpt&utm_term=x86%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80&spm=1018.2226.3001.4187">引用</a></p>
 <span id="more"></span>
 
-<h1 id="寄存器"><a href="#寄存器" class="headerlink" title="寄存器"></a>寄存器</h1><blockquote>
+<h1 id="寄存器"><a href="#寄存器" class="headerlink" title="寄存器"></a>寄存器</h1><h2 id="通用寄存器"><a href="#通用寄存器" class="headerlink" title="通用寄存器"></a>通用寄存器</h2><blockquote>
 <p>是用于存储和处理数据的重要组成部分。每个CPU架构都有一组特定的寄存器，这些寄存器在汇编语言中通常用作操作数、临时存储器和地址指针。</p>
 </blockquote>
 <p><img src="/blog/2023/05/05/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E5%88%9D%E6%AD%A5%E5%AD%A6%E4%B9%A0/image-20230505213645550.png" alt="image-20230505213645550"></p>
-<p>EAX通常用于计算</p>
-<p>ECX通常用于循环变量计数</p>
-<p>ESP和EBP有专门用途</p>
-<p>ESP指示栈指针(用于指示栈顶位置)</p>
-<p>EBP是基址指针（用于指示子程序或函数调用的基址指针）</p>
+<p>EAX：（针对操作数和结果数据的）累加器</p>
+<p>EBX：（DS段的数据指针）基址寄存器</p>
+<p>ECX：（字符串和循环操作的）计数器</p>
+<p>EDX：（I&#x2F;O指针）数据寄存器</p>
+<p>ESI：（字符串操作源指针）源变址寄存器</p>
+<p>EDI：（字符串操作目标指针）目的变址寄存器</p>
+<p>ESP：（SS段中栈指针）栈指针寄存器 [指向栈顶]</p>
+<p>EBP：（SS段中栈内数据指针）扩展基址指针寄存器 [栈帧寄存器、栈底指针寄存器]</p>
 <p>应用寄存器时，其名称大小写是不敏感的</p>
-<h2 id="EBP"><a href="#EBP" class="headerlink" title="EBP"></a>EBP</h2><blockquote>
+<h3 id="EBP"><a href="#EBP" class="headerlink" title="EBP"></a>EBP</h3><blockquote>
 <p>通常用作基址指针，基址指针是一个寄存器，用于指向当前函数的栈帧（stack frame）的基地址，以便在函数内部访问函数的局部变量、函数参数和返回地址等信息。</p>
 </blockquote>
 <p>通常，EBP相对于ESP的偏移量可以用来访问栈帧中的<strong>局部变量</strong>和<strong>函数参数</strong>。</p>
 <p>例如，</p>
-<p>偏移量为-4表示相对于EBP向左偏移4个字节，可以访问EBP指向的位置的前4个字节，通常用来访问<strong>函数的第一个参数</strong>。</p>
-<p>偏移量为8表示相对于EBP向右偏移8个字节，可以访问EBP指向的位置的后8个字节，通常用来访问<strong>函数的第一个局部变量</strong>。</p>
-<h2 id="ESP"><a href="#ESP" class="headerlink" title="ESP"></a>ESP</h2><blockquote>
+<p>偏移量为 -4 表示相对于EBP向左偏移4个字节，可以访问EBP指向的位置的前4个字节，通常用来访问<strong>函数的第一个参数</strong>。</p>
+<p>偏移量为 8 表示相对于EBP向右偏移8个字节，可以访问EBP指向的位置的后8个字节，通常用来访问<strong>函数的第一个局部变量</strong>。</p>
+<h3 id="ESP"><a href="#ESP" class="headerlink" title="ESP"></a>ESP</h3><blockquote>
 <p>通常用作堆栈指针（Stack Pointer）。堆栈指针是一个寄存器，用于指向当前栈顶的地址，以便在函数调用和返回时动态地调整堆栈的大小和位置。</p>
 </blockquote>
 <p>在汇编语言中，使用ESP相对于EBP的偏移量来访问栈帧中的<strong>局部变量</strong>和<strong>函数参数</strong>。</p>
 <p>例如，偏移量为-4表示相对于ESP向上偏移4个字节，可以访问栈顶位置的前4个字节，通常用来访问<strong>函数的返回地址</strong>。</p>
 <p>偏移量为8表示相对于ESP向下偏移8个字节，可以访问栈顶位置的后8个字节，通常用来访问<strong>函数的第一个局部变量</strong>。</p>
 <hr>
+<h2 id="指令指针寄存器"><a href="#指令指针寄存器" class="headerlink" title="指令指针寄存器"></a>指令指针寄存器</h2><p>EIP &#x2F; RIP：保存CPU要执行的指令地址</p>
+<p><img src="/blog/2023/05/05/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E5%88%9D%E6%AD%A5%E5%AD%A6%E4%B9%A0/image-20240311200516116.png" alt="image-20240311200516116"></p>
+<p>如图，RIP所保存的地址 401550 即接下来要执行的位置，此时向下运行则会变成 401551 main+1</p>
+<hr>
+<h2 id="程序状态与控制寄存器"><a href="#程序状态与控制寄存器" class="headerlink" title="程序状态与控制寄存器"></a>程序状态与控制寄存器</h2><ul>
+<li>EFLAGS：标志寄存器，32个位元的01控制</li>
+<li>ZF(零标志器，运算结果为0时置1)</li>
+<li>CF(进位标志，运算结果向最高位以上进位时置1)</li>
+<li>OF(溢出标志)</li>
+<li>AF(辅助进位标志，运算结果在第3位的时候置1)</li>
+<li>SF(符号标志，有符号整型的符号位为1时置1)</li>
+</ul>
+<hr>
+<h2 id="段寄存器"><a href="#段寄存器" class="headerlink" title="段寄存器"></a>段寄存器</h2><ul>
+<li>CS：代码段寄存器</li>
+<li>SS：栈段寄存器</li>
+<li>DS：数据段寄存器</li>
+<li>FS：数据段寄存器</li>
+<li>ES：附加数据寄存器</li>
+<li>GS：数据段寄存器</li>
+</ul>
+<hr>
 <h1 id="立即数"><a href="#立即数" class="headerlink" title="立即数"></a>立即数</h1><blockquote>
 <p>指令中直接包含的、不需要从内存或寄存器中获取的常数</p>
 </blockquote>
-<p>通常用于立即寻址（immediate addressing）方式，即直接将一个常数值作为操作数传递给指令</p>
+<p>通常用于立即寻址（immediate addressing）方式，即直接将一个<strong>常数值</strong>作为操作数传递给指令</p>
 <hr>
-<h1 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h1><p>此内容by GPT</p>
+<h1 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h1><p>基本格式：<code>操作码 目的操作数 源操作数</code></p>
+<p>如<code>cmp rax,19h</code></p>
 <ol>
-<li>MOV：将数据从一个地方移动到另一个地方。例如，MOV AX, BX 将 BX 中的值移动到 AX 中。</li>
-<li>ADD&#x2F;SUB：执行加法或减法操作。例如，ADD AX, BX 将 AX 和 BX 中的值相加。</li>
-<li>CMP：比较两个值并设置标志位，以便后续的条件分支指令可以使用。例如，CMP AX, BX 比较 AX 和 BX 的值。</li>
-<li>JMP：无条件跳转到指定的地址。例如，JMP LABEL 将程序的控制权转移到标记为 LABEL 的位置。</li>
-<li>JE&#x2F;JNE：根据先前的 CMP 指令设置的标志位，执行条件跳转。JE 指令在相等时跳转，JNE 指令在不相等时跳转。</li>
-<li>CALL&#x2F;RET：调用和返回子程序。CALL 指令将程序的控制权转移到指定的子程序，RET 指令将程序的控制权返回到调用它的位置。</li>
-<li>PUSH&#x2F;POP：压入和弹出数据。PUSH 指令将数据压入堆栈，POP 指令将数据从堆栈中弹出。</li>
-<li>AND&#x2F;OR&#x2F;XOR：执行逻辑运算。AND&#x2F;OR&#x2F;XOR 分别执行按位与、按位或和按位异或操作。</li>
-<li>INC&#x2F;DEC：增加或减少一个值。INC 和 DEC 分别将一个值增加 1 或减少 1。</li>
-<li>LOOP：根据计数器的值执行循环。LOOP 指令将计数器减少 1，然后跳转到指定的标记处，直到计数器为零。</li>
+<li><p>PUSH&#x2F;POP：压栈 &#x2F; 出栈。PUSH 指令将数据压入堆栈，POP 指令将数据从堆栈中弹出</p>
+</li>
+<li><p>CMP：<strong>比较</strong>两个值并设置标志位，以便后续的条件分支指令可以使用</p>
+<p>例如，<code>CMP AX, BX</code>：比较 AX 和 BX 的值</p>
+</li>
+<li><p>MOV&#x2F;CALL&#x2F;RET&#x2F;LEA&#x2F;INT&#x2F;EMD：传送 &#x2F; 调用 &#x2F; 返回 &#x2F; 加载 &#x2F; 中断 &#x2F; 结束</p>
+</li>
+<li><p>运算指令：</p>
+<p>ADD&#x2F;SUB&#x2F;SHL&#x2F;SHR&#x2F;ROL&#x2F;ROR：加 &#x2F; 减 &#x2F; 逻辑左移 &#x2F; 逻辑右移 &#x2F; 循环左移 &#x2F; 循环右移</p>
+<p>INC&#x2F;DEC：加一 &#x2F; 减一</p>
+<p>AND&#x2F;XOR&#x2F;OR&#x2F;NOT：与 &#x2F; 异或 &#x2F; 或 &#x2F; 取反</p>
+<p>MUL&#x2F;IMUL：无符号乘法、整数乘法</p>
+<p>DIV&#x2F;IDIV：无符号除法、整数除法</p>
+</li>
+<li><p>跳转指令：</p>
+<p>JMP：无条件跳转到指定的地址。例如，<code>JMP LABEL</code> 将程序的控制权转移到标记为 LABEL 的位置</p>
+<p>JE&#x2F;JNE：根据先前的 CMP 指令设置的标志位，执行条件跳转。JE 指令在相等时跳转，JNE 指令在不相等时跳转</p>
+</li>
+<li><p>LOOP：根据计数器的值执行循环。LOOP 指令将计数器减少 1，然后跳转到指定的标记处，直到计数器为零。</p>
+</li>
 </ol>
 <h2 id="db"><a href="#db" class="headerlink" title="db"></a>db</h2><blockquote>
 <p>表示定义一个字节（byte）类型的数据</p>
 </blockquote>
+<p>反汇编出来的内容有db的即为字节码</p>
 <h2 id="mov"><a href="#mov" class="headerlink" title="mov"></a>mov</h2><blockquote>
 <p>将数据从一个位置移动到另一个位置</p>
 </blockquote>
@@ -347,7 +383,7 @@
 <p>将两个操作数相减，并将结果存储到一个目标操作数中</p>
 </blockquote>
 <hr>
-<h1 id="条件分支指令"><a href="#条件分支指令" class="headerlink" title="条件分支指令"></a>条件分支指令</h1><blockquote>
+<h2 id="条件分支指令"><a href="#条件分支指令" class="headerlink" title="条件分支指令"></a>条件分支指令</h2><blockquote>
 <p>实现if语句功能</p>
 </blockquote>
 <ol>
@@ -370,7 +406,18 @@ greater_than_zero:
 end:
     ; 程序结束<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<hr>
+<h1 id="栈帧"><a href="#栈帧" class="headerlink" title="栈帧"></a>栈帧</h1><pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">PUSH EBP          ;函数开始
+MOV  EBP,ESP      ;将栈顶地址存入EBP中
 
+....              ;函数执行，期间EBP地址不变
+
+MOV  ESP,EBP      ;基准点地址给到ESP
+POP EBP           ;栈状态恢复，弹出EBP
+RETN              ;函<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<hr>
+<h1 id="IDA基础"><a href="#IDA基础" class="headerlink" title="IDA基础"></a>IDA基础</h1>
     </div>
     
     
