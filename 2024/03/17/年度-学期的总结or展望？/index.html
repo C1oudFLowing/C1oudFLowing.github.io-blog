@@ -1,0 +1,350 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <title>年度&amp;学期的总结or展望？ | 雲流のLowest World</title>
+        <meta name="author" content="C1oudfL0w0" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+        <link rel="icon" href="/blog/images/croppedImage_cropped.jpg" />
+        <script src="https://cdn.staticfile.org/vue/3.2.45/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.2.1/css/all.min.css" />
+<link rel="stylesheet" href="/blog/css/fonts.min.css" />
+<link rel="stylesheet" href="/blog/css/search.css" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+<!--改成了prismjs高亮-->
+
+<script src="/blog/js/lib/prism.js"></script>
+<link rel="stylesheet" href="/blog/css/prism.css" rel="stylesheet" />
+
+
+
+<script src="/blog/js/lib/preview.js"></script>
+
+
+<script src="https://cdn.staticfile.org/crypto-js/4.1.1/crypto-js.min.js"></script>
+<script src="/blog/js/lib/crypto.js"></script>
+
+
+
+
+
+
+
+
+
+<script src="/blog/js/lib/home.js"></script>
+
+<link rel="stylesheet" href="/blog/css/main.css" />
+<!-- 引入jQuery-->
+<script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<!-- 引入不蒜子-->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>    
+        <script type="text/javascript" src="/blog/libs/codeBlock/codeBlockFuction.js"></script>
+<!-- 代码语言 -->
+<script type="text/javascript" src="/blog/libs/codeBlock/codeLang.js"></script>
+<!-- 代码块复制 -->
+<!-- 引入clipboard -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+<script type="text/javascript" src="/blog/libs/codeBlock/codeCopy.js"></script>
+<!-- 代码块收缩 -->
+<script type="text/javascript" src="/blog/libs/codeBlock/codeShrink.js"></script> 
+<!-- 代码块折行 -->
+<style type="text/css">code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }</style>
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <!--flag{never_g0nna g1ve_you up}-->
+        
+        <!-- 页面点击特效 -->
+        <script type = "text/javascript" src = "/blog/js/love-click.js"></script>
+
+        <!-- 浏览器标题 -->
+         <script async type="text/javascript" src="/blog/js/FunnyTitle.js"></script>
+         
+        <!--动态背景-->
+        <script type="text/javascript"
+        color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+        <!--文章目录-->
+        
+    <div id="toc" class="toc-article">
+    <h3><i class="fas fa-stream"></i>  目录</h3>
+      <div class="toc-title"></div>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B3%E4%BA%8Ectf"><span class="toc-number">2.</span> <span class="toc-text">关于ctf</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AF%94%E8%B5%9B"><span class="toc-number">2.1.</span> <span class="toc-text">比赛</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%98%E9%98%9F"><span class="toc-number">2.2.</span> <span class="toc-text">战队</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%8F%E4%BC%9A"><span class="toc-number">2.3.</span> <span class="toc-text">协会</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E8%87%AA%E5%B7%B1"><span class="toc-number">3.</span> <span class="toc-text">关于自己</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E5%AD%A6%E4%B8%9A"><span class="toc-number">4.</span> <span class="toc-text">关于学业</span></a></li></ol>
+    </div>
+  
+        
+        <!--返回顶部-->
+        <div id="totop" style="position:fixed;bottom:50px;right:60px;font-size: 48px;cursor: pointer;z-index: 10;">
+            <a title="返回顶部">↑</a>
+            </div>
+        <script src="/blog/js/totop.js"></script>
+
+        <div id="layout">
+            <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>第一次加载文章图片可能会花费较长时间</p>
+                    <p>要不挂个梯子试试？（x</p>
+                    <p>加载过慢请开启缓存&ensp;浏览器默认开启</p>
+                    <img src="/blog/images/loading.gif" />
+                </div>
+            </div>
+            </transition>
+            <transition name="into">
+            <div id="main" v-show="!loading">
+                <nav id="menu" ref="menu">
+    <div class="desktop-menu">
+        <a class="title" href="/blog/">
+            <span>雲流のLOWEST WORLD</span>
+        </a>
+        
+        <a href="/blog/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/blog/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/blog/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/blog/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/blog/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+        <a href="/blog/links">
+            <i class="fa-solid fa-link fa-fw"></i>
+            <span>&ensp;Links</span>
+        </a>
+        
+        <a href="/blog/search">
+            <i class="fa-solid fa-search fa-fw"></i>
+            <span>&ensp;Search</span>
+        </a>
+        
+    </div>
+    <div id="mobile-menu">
+        <div class="curtain" v-show="showMenu" @click="showMenu = !showMenu"></div>
+        <div class="title" @click="showMenu = !showMenu">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;雲流のLOWEST WORLD</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="showMenu">
+            
+            <a href="/blog/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                </div>
+            </a>
+            
+            <a href="/blog/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                </div>
+            </a>
+            
+            <a href="/blog/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                </div>
+            </a>
+            
+            <a href="/blog/categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                </div>
+            </a>
+            
+            <a href="/blog/tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                </div>
+            </a>
+            
+            <a href="/blog/links">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-link fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Links</div>
+                </div>
+            </a>
+            
+            <a href="/blog/search">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-search fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Search</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+
+                <div class="article">
+    <div>
+        <h1>年度&amp;学期的总结or展望？</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/3/17
+        </span>
+        
+        <span class="category">
+            <a href="/blog/categories/Thinking/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                Thinking
+            </a>
+        </span>
+        
+        
+        <!--文章字数统计-->
+        
+            
+<div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <!-- 安装插件npm install hexo-wordcount --save -->
+        <span class="post-count">1.4k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">4分</span>
+      </span>
+    </span>
+    
+    <!--不蒜子统计访问数-->
+    <span id="busuanzi_container_page_pv">
+    &nbsp; | &nbsp;
+    总文章阅读量：<span id="busuanzi_value_page_pv"></span>次
+    </span>
+</div>
+
+          
+    </div>
+    
+    
+    <input
+        id="crypto"
+        class="input"
+        ref="crypto"
+        placeholder="文章被加密，请输入密码"
+        data-encrypted="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"
+        data-shasum="32ce08b19fe12c684d7d0439637b78a79aaf5594b159339205eb511992119736"
+        v-model="crypto"
+    />
+    <transition name="fade">
+    <div class="content" ref="content" v-show="check"></div>
+    </transition>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            </div>
+            </transition>
+            
+            <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+            </transition>
+            
+        </div>
+        <script src="/blog/js/main.js"></script>
+        
+        
+
+
+
+
+         
+        
+    <div id="vcomments"></div>
+    
+        <script src="/blog/js/lib/valine.min.js"></script>
+            <script>
+                new Valine({
+                    el: '#vcomments',
+                    app_id: 'U9mZLKunkRUTcBFthjXPjnZE-9Nh9j0Va',
+                    app_key: 'SzWOnY0PWLGNuL6jW8TZYc7j',
+                    visitor: 'true',
+                    placeholder: '写点什么吧(●ˇ∀ˇ●)',
+                    serverURLs: 'https://u9mzlkun.lc-cn-n1-shared.com',
+                });
+            </script>
+
+        <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2024 雲流のLowest World
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;C1oudfL0w0
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+    <script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/blog/live2dw/assets/z16.model.json"},"display":{"position":"left","width":150,"height":290},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
+

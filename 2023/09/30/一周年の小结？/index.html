@@ -27,9 +27,6 @@
 <script src="/blog/js/lib/preview.js"></script>
 
 
-<script src="https://cdn.staticfile.org/crypto-js/4.1.1/crypto-js.min.js"></script>
-<script src="/blog/js/lib/crypto.js"></script>
-
 
 
 
@@ -230,6 +227,15 @@
             2023/9/30
         </span>
         
+        <span class="category">
+            <a href="/blog/categories/Thinking/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                Thinking
+            </a>
+        </span>
+        
         
         <!--文章字数统计-->
         
@@ -263,19 +269,52 @@
           
     </div>
     
-    
-    <input
-        id="crypto"
-        class="input"
-        ref="crypto"
-        placeholder="文章被加密，请输入密码"
-        data-encrypted="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"
-        data-shasum="53241cc7878fa7fdbc4c5d4618b841dc6df82a89066e08ba382c3a5c62e19f26"
-        v-model="crypto"
-    />
-    <transition name="fade">
-    <div class="content" ref="content" v-show="check"></div>
-    </transition>
+    <div class="content" v-pre>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>如你所见，这是一篇小作文，聊点五毛钱的东西，不过是个人的一些胡言乱语罢了</p>
+<span id="more"></span>
+
+<p>说是小作文，其实并没有什么印象特别深的事能聊的，打一年ctf下来给我留下比较深印象的居然是一些段子</p>
+<blockquote>
+<p>哈哈，高考结束了，等我进了大学肯定不会像网上那些人一样，整天窝在机房打ctf，经常翘课，几乎不参加班级活动社团活动毫无交际圈导致根本认识不到同学，什么职务都没有只有野鸡竞赛奖项所以评优什么的跟自己毫无关系，从来不去图书馆，到了期末才开始翻书运气好就少挂几门几年里什么都没学到，连女朋友都找不到。</p>
+</blockquote>
+<p>那就从这篇段子出发聊聊个人的一些感受</p>
+<hr>
+<h1 id="为什么打ctf"><a href="#为什么打ctf" class="headerlink" title="为什么打ctf"></a>为什么打ctf</h1><p>这个问题还得从我为什么选了网络空间安全专业说起，事实上，高考完之后我填志愿的最主要目标就是优先选能进计算机专业的学校，各种比较选择之后，最后放弃去比较偏的一些211，选择了fjnu，然后当时志愿专业填的顺序是：计科、软工、AI，最后才是网安，接着emmm…我就进了网安专业，说实话当时是完全没想到会顺位到网安的</p>
+<p>不过网安毕竟也是算在计网学院里的（最近才发现网安不算计算机大类），对这个结果也不会特别不满意就是了</p>
+<p>然后呢，说来惭愧，本人在初二的时候就了解过oi，当时好像还试图自学python和c++来着，高二的时候才注册的洛谷，但是最后都由于各种原因都搁置了没有下文，打算大学的时候再打打（x</p>
+<p>后来，看到了新生群里发的《网安基础软件要求》</p>
+<p><img src="/blog/2023/09/30/%E4%B8%80%E5%91%A8%E5%B9%B4%E3%81%AE%E5%B0%8F%E7%BB%93%EF%BC%9F/image-20230930233537676.png" alt="image-20230930233537676"></p>
+<p>CTF？那是什么，csdn上搜了一下，得到的答案并不能解开全部的疑惑，只记得当时看到web方向需要学html和php，然后就在开学前稍微学了一下html，<del>在此之前我还在每天看c++</del>，安了个burpsuite，<del>发现这个工具好像以前被我用来研究绕过防沉迷来着</del></p>
+<p>再后来就到协会面试了，只记得我当时还没有做过任何一道ctf题，只是学了点html和php，看到当时面试的人好像一个个都是有着独门绝技的，有一说一是有点慌的，不过因为当时招的多最后还是进去了</p>
+<p>接着，于9.30注册了NSSCTF的账号</p>
+<p>至此，本人的ctf旅途算是正是开始了，没有什么特殊的原因和崇高的理由，只是阴差阳错间成为了一名ctfer和web狗</p>
+<hr>
+<h1 id="经历（流水账警告⚠）"><a href="#经历（流水账警告⚠）" class="headerlink" title="经历（流水账警告⚠）"></a>经历（流水账警告⚠）</h1><h2 id="入坑"><a href="#入坑" class="headerlink" title="入坑"></a>入坑</h2><p>一开始的话不记得从哪里搞到了个nss的激活码和萌新赛道的密码，于是接触了生涯的第一场比赛HNCTF，战绩如下</p>
+<p><img src="/blog/2023/09/30/%E4%B8%80%E5%91%A8%E5%B9%B4%E3%81%AE%E5%B0%8F%E7%BB%93%EF%BC%9F/image-20231226012940851.png" alt="image-20231226012940851"></p>
+<p>看得出来顶多算是接触了一下web最简单的几种题型，但是确确实实花掉了整个国庆假期，毕竟那时搜索能力和理解能力还是有限</p>
+<p><img src="/blog/2023/09/30/%E4%B8%80%E5%91%A8%E5%B9%B4%E3%81%AE%E5%B0%8F%E7%BB%93%EF%BC%9F/image-20231226013607199.png" alt="image-20231226013607199"></p>
+<p>然后就是漫无目的的刷一刷各个方向的签到题（对，就是这么没有目标的刷🤣）</p>
+<p><img src="/blog/2023/09/30/%E4%B8%80%E5%91%A8%E5%B9%B4%E3%81%AE%E5%B0%8F%E7%BB%93%EF%BC%9F/image-20231226012623416.png" alt="image-20231226012623416"></p>
+<h2 id="首次团队赛"><a href="#首次团队赛" class="headerlink" title="首次团队赛"></a>首次团队赛</h2><p>接下来就到了第一次团队赛——ISCTF，和两个舍友组了一队，我负责打web，然后顺带把pwn的nc还有re的f5与简单异或做了<del>（那个时候甚至还是用c语言敲的脚本）</del>，<del>打最多的题，拿最少的分</del>，感受到了和同校laffey带队的<strong>绿意火花</strong>之间的可怕差距，不过最后也是成功挤进新生赛道前20喜提awd的机会，结果emmm….</p>
+<p><img src="/blog/2023/09/30/%E4%B8%80%E5%91%A8%E5%B9%B4%E3%81%AE%E5%B0%8F%E7%BB%93%EF%BC%9F/image-20231226014621590.png" alt="image-20231226014621590"></p>
+<h2 id="几乎没有进展的时期"><a href="#几乎没有进展的时期" class="headerlink" title="几乎没有进展的时期"></a>几乎没有进展的时期</h2><p>再之后没过多久就是SkyNico三校联赛，我除了福利签到题以外是一题没出，在这之后呢，我就开始思考怎么才能打好ctf，于是找了一份web题单开刷<del>（确实就这）</del></p>
+<p><img src="/blog/2023/09/30/%E4%B8%80%E5%91%A8%E5%B9%B4%E3%81%AE%E5%B0%8F%E7%BB%93%EF%BC%9F/image-20231226014923107.png" alt="image-20231226014923107"></p>
+<p>刷掉之后呢，时间就来到了寒假<del>（区区28题用了一个月时间果然很丢人吧）</del>，尝试了一下杭电的Hgame，成功爆0（其实没啥难的，就是我当时学的东西又散又少）</p>
+<p>接着就是西湖论剑，瞎组了个10人队，然后喜报：全队只出签到题（同时期早我两个月入坑的pop✌此时已经能够在web上独当一面了）</p>
+<h2 id="正式系统学习"><a href="#正式系统学习" class="headerlink" title="正式系统学习"></a>正式系统学习</h2><p>时间来到大一下学期，我在开学前把自己的博客搭起来了，顺带一提上学期我把高数和线代挂了，把牢甩给现在的我来坐了属于是</p>
+<p>也不知道为什么下定了决心要打web，氪了600买下ctfshow的web入门（大概是觉得投资自己总是不亏的），然后就进入了一段比较平稳的web实力上升期（每天要刷个七八题的成长速度），主要是系统学了rce和php特性，期间也是经历了VNCTF和NKCTF，成绩一般，但感觉这两场解出的题目应该是对得起我当时做过的题的</p>
+<p>但是和同期的人比起来，我实在是太——菜——了——，感觉大伙这个时候都进了战队开始突飞猛进的发展啊。。</p>
+<p>四月初脑子一抽想摸一摸re，于是web就暂时放了几天，然后打了校赛（个人赛），最后喜提11名。。。三等奖，web只出了两题，虽然嘴上说没什么，但终究还是有点难受，毕竟感觉已经在ctf上比其他人多花了不少时间（</p>
+<h2 id="大一结束"><a href="#大一结束" class="headerlink" title="大一结束"></a>大一结束</h2><p>反正接下来的日子就是一边刷题，一边在三哈的站上找比赛打，然后复现一些自己能看懂但是没做出来的题，日子就这么过去了，来到大一的期末，web都学了啥东西具体如下，这就是当时我写的个人简历（作为打了一年的web狗果然还是学的太少了吧）</p>
+<p><img src="/blog/2023/09/30/%E4%B8%80%E5%91%A8%E5%B9%B4%E3%81%AE%E5%B0%8F%E7%BB%93%EF%BC%9F/image-20231226211446638.png" alt="image-20231226211446638"></p>
+<p>在期末结束，大一算是尘埃落定之后，我也尝试投了个简历给某联合战队，然后emmm…..没下文了，果然还是太菜了啊</p>
+<p>当然，由于协会里面原先打web的基本都润去渗透了，理论上的纯web手也只剩我，于是就去当了协会的web部长</p>
+<p>然后下定决心在暑假沉淀，直接说结果，两个月来确实是做到了闭门不出，但是提升并没有我想象中来得多，java这块只学了个urldns链，不过sql倒是学的比较全了一点，学了点docker达到能够出题的程度，打了几场比赛，学了几个trick，没了</p>
+<hr>
+<h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>整点活（</p>
+<p>你这辈子就是被CTF给害了，没法跟正经妹子处事，跟妹子吃饭的时候，总是在想，她要是CTFer就好了，能全栈的那种。送她回家的时候，总是在想，她要是能随手日掉门禁、路由器就好了，坐在她家沙发上的时候，她说进房间换个衣服，你的心怦怦跳，总是在想，她要是出来的时候拿出了她的CISCN国一证书怎么办，她要是靠过来问你要不要参加defcon技术沙龙怎么办。然后妹子穿着睡衣出来了，还穿着白丝吊带袜猫耳，问你要不要陪她做点好玩的事，你打开了BUU和NSS说111现在能打CTF吗，她沉默了一会儿说我说的不是CTF。</p>
+
+    </div>
     
     
     
