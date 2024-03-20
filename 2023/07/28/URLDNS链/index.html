@@ -72,7 +72,7 @@
     <div id="toc" class="toc-article">
     <h3><i class="fas fa-stream"></i>  目录</h3>
       <div class="toc-title"></div>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#URLDNS"><span class="toc-number">2.</span> <span class="toc-text">URLDNS</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%9F%E8%B8%AAHashMap%E7%B1%BB"><span class="toc-number">2.1.</span> <span class="toc-text">跟踪HashMap类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hash%E5%87%BD%E6%95%B0"><span class="toc-number">2.2.</span> <span class="toc-text">hash函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Gadget"><span class="toc-number">2.3.</span> <span class="toc-text">Gadget</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#demo"><span class="toc-number">2.4.</span> <span class="toc-text">demo</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E6%88%98"><span class="toc-number">3.</span> <span class="toc-text">实战</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ctfshow-web846"><span class="toc-number">3.1.</span> <span class="toc-text">ctfshow web846</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#URLDNS"><span class="toc-number">2.</span> <span class="toc-text">URLDNS</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ysoserial-poc"><span class="toc-number">2.1.</span> <span class="toc-text">ysoserial poc</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%9F%E8%B8%AAHashMap%E7%B1%BB"><span class="toc-number">2.2.</span> <span class="toc-text">跟踪HashMap类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hash%E5%87%BD%E6%95%B0"><span class="toc-number">2.3.</span> <span class="toc-text">hash函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Gadget"><span class="toc-number">2.4.</span> <span class="toc-text">Gadget</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#demo"><span class="toc-number">2.5.</span> <span class="toc-text">demo</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E6%88%98"><span class="toc-number">3.</span> <span class="toc-text">实战</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ctfshow-web846"><span class="toc-number">3.1.</span> <span class="toc-text">ctfshow web846</span></a></li></ol></li></ol>
     </div>
   
         
@@ -244,7 +244,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/Java/" style="color: #00bcd4">Java</a>
+                <a href="/blog/tags/Java/" style="color: #00a596">Java</a>
             </span>
             
         </span>
@@ -291,7 +291,7 @@
 <p>vscode</p>
 <span id="more"></span>
 
-<h1 id="URLDNS"><a href="#URLDNS" class="headerlink" title="URLDNS"></a>URLDNS</h1><p>直接看URLDNS.java的主体部分</p>
+<h1 id="URLDNS"><a href="#URLDNS" class="headerlink" title="URLDNS"></a>URLDNS</h1><h2 id="ysoserial-poc"><a href="#ysoserial-poc" class="headerlink" title="ysoserial poc"></a>ysoserial poc</h2><p>直接看URLDNS.java的主体部分</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">ysoserial<span class="token punctuation">.</span>payloads</span><span class="token punctuation">;</span>
 
 <span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">IOException</span></span><span class="token punctuation">;</span>
@@ -434,7 +434,7 @@
 <p>观察到了<code>getHostAddress(u)</code>函数，根据函数名也知道这是<strong>获取主机地址</strong>的函数，在网络上也就是一次dns查询</p>
 <p>也就是说，假如存在反序列化漏洞，那么我可以传入我们VPS的地址，并开启一个监听，这样就可以校验是否存在Java反序列化漏洞</p>
 <h2 id="Gadget"><a href="#Gadget" class="headerlink" title="Gadget"></a>Gadget</h2><p>思维导图 by huamang</p>
-<p><img src="/blog/URLDNS%E9%93%BE/image-20240129114830466.png" alt="image-20240129114830466"></p>
+<p><img src="/blog/2023/07/28/URLDNS%E9%93%BE/image-20240129114830466.png" alt="image-20240129114830466"></p>
 <ol>
 <li><code>HashMap-&gt;readObject()-&gt;hash(URL)</code></li>
 <li><code>URL-&gt;hashCode()</code></li>
