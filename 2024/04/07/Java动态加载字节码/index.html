@@ -244,7 +244,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/Java/" style="color: #ffa2c4">Java</a>
+                <a href="/blog/tags/Java/" style="color: #00a596">Java</a>
             </span>
             
         </span>
@@ -326,7 +326,7 @@
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p><img src="/blog/com.exampleimage-20240407230437407.png" alt="image-20240407230437407"></p>
+<p><img src="/blog/2024/04/07/Java%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD%E5%AD%97%E8%8A%82%E7%A0%81/image-20240407230437407.png" alt="image-20240407230437407"></p>
 <p>成功请求并执行了Hello.class</p>
 <p>所以，作为攻击者，如果我们能够控制目标 Java ClassLoader 的基础路径为一个http服务器，则可以利用远程加载的方式执行任意代码</p>
 <hr>
@@ -356,7 +356,7 @@
 
 <p>其中的base64部分是字节码的<code>System.out.println(&quot;Hello World&quot;)</code></p>
 <p>注意：在<code>defineClass</code>被调用的时候类对象是不会被初始化的，只有这个对象显式地调用其<strong>构造函数</strong>才能继续执行初始化代码，即使我们将初始化代码放在类的static块中也无法被直接调用到。所以需要想办法调用构造构造函数，在这里就是<code>hello.newInstance()</code></p>
-<p><img src="/blog/com.exampleimage-20240408014027461.png" alt="image-20240408014027461"></p>
+<p><img src="/blog/2024/04/07/Java%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD%E5%AD%97%E8%8A%82%E7%A0%81/image-20240408014027461.png" alt="image-20240408014027461"></p>
 <p>当然，<code>ClassLoader#defineClass</code>是一个保护属性，我们没法在外部直接访问，只能使用反射来进行调用</p>
 <p>实际情形里defineClass方法作用域不开放，但它却是攻击链<strong>TemplatesImpl</strong>里非常重要的一环</p>
 <hr>
@@ -406,7 +406,7 @@
 <span class="token class-name">TransletClassLoader</span>#<span class="token function">defineClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>看最前面的两个方法：<code>TemplatesImpl#getOutputProperties()</code>和<code>TemplatesImpl#newTransformer()</code></p>
-<p><img src="/blog/com.exampleimage-20240408015355003.png" alt="image-20240408015355003"></p>
+<p><img src="/blog/2024/04/07/Java%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD%E5%AD%97%E8%8A%82%E7%A0%81/image-20240408015355003.png" alt="image-20240408015355003"></p>
 <p>这两个的作用域都是public，可以被外部调用，我们尝试用<code>newTransformer()</code>构造poc：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>example</span><span class="token punctuation">;</span>
 
@@ -437,17 +437,17 @@
 <p>这里我们使用了<code>setFieldValue</code>方法设置私有属性，分别是<code>_bytecodes</code>、<code>_name</code>和<code>_tfactory</code></p>
 <ul>
 <li><p><code>_bytecodes</code>：不能为空</p>
-<p><img src="/blog/com.exampleimage-20240408212610015.png" alt="image-20240408212610015"></p>
+<p><img src="/blog/2024/04/07/Java%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD%E5%AD%97%E8%8A%82%E7%A0%81/image-20240408212610015.png" alt="image-20240408212610015"></p>
 </li>
 <li><p><code>_name</code>：可以是任意字符串，只要不为null即可</p>
-<p><img src="/blog/com.exampleimage-20240408212101523.png" alt="image-20240408212101523"></p>
+<p><img src="/blog/2024/04/07/Java%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD%E5%AD%97%E8%8A%82%E7%A0%81/image-20240408212101523.png" alt="image-20240408212101523"></p>
 </li>
 <li><p><code>_tfactory</code>：需要是一个 TransformerFactoryImpl 对象，因为 TemplatesImpl#defineTransletClasses() 方法里有调用到<code>_tfactory.getExternalExtensionsMap()</code> ，如果是null会出错</p>
-<p><img src="/blog/com.exampleimage-20240408212324150.png" alt="image-20240408212324150"></p>
+<p><img src="/blog/2024/04/07/Java%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD%E5%AD%97%E8%8A%82%E7%A0%81/image-20240408212324150.png" alt="image-20240408212324150"></p>
 </li>
 </ul>
 <p>但这个POC没法直接运行，因为TemplatesImpl对加载的字节码是有要求的：这个字节码对应的类必须是 <code>com.sun.org.apache.xalan.internal.xsltc.runtime.AbstractTranslet</code> 的子类</p>
-<p><img src="/blog/com.exampleimage-20240408204446337.png" alt="image-20240408204446337"></p>
+<p><img src="/blog/2024/04/07/Java%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD%E5%AD%97%E8%8A%82%E7%A0%81/image-20240408204446337.png" alt="image-20240408204446337"></p>
 <p>所以我们需要构造一个继承了<code>AbstractTranslet</code>的类，在他的构造方法里去写我们要执行的代码</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">com<span class="token punctuation">.</span>sun<span class="token punctuation">.</span>org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>xalan<span class="token punctuation">.</span>internal<span class="token punctuation">.</span>xsltc<span class="token punctuation">.</span></span><span class="token class-name">DOM</span></span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token import"><span class="token namespace">com<span class="token punctuation">.</span>sun<span class="token punctuation">.</span>org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>xalan<span class="token punctuation">.</span>internal<span class="token punctuation">.</span>xsltc<span class="token punctuation">.</span></span><span class="token class-name">TransletException</span></span><span class="token punctuation">;</span>
@@ -521,7 +521,7 @@
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p><img src="/blog/com.exampleimage-20240408213644231.png" alt="image-20240408213644231"></p>
+<p><img src="/blog/2024/04/07/Java%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD%E5%AD%97%E8%8A%82%E7%A0%81/image-20240408213644231.png" alt="image-20240408213644231"></p>
 <p>成功执行</p>
 <p>之后在多个Java反序列化利用链，以及fastjson、jackson的漏洞中，都会出现 TemplatesImpl 的身影</p>
 <hr>
