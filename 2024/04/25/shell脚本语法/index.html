@@ -1,0 +1,474 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <title>shell脚本语法 | 雲流のLowest World</title>
+        <meta name="author" content="C1oudfL0w0" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+        <link rel="icon" href="/blog/images/croppedImage_cropped.jpg" />
+        <!-- cdn挂掉的时候要可以引用本地 -->
+<!-- <script src="https://cdn.staticfile.org/vue/3.2.45/vue.global.prod.min.js"></script> -->
+<script src="/blog/js/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.2.1/css/all.min.css" />
+<!--<link rel="stylesheet" href="/blog/css/all.min.css" />-->
+<link rel="stylesheet" href="/blog/css/fonts.min.css" />
+<link rel="stylesheet" href="/blog/css/search.css" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+<!--改成了prismjs高亮-->
+
+<script src="/blog/js/lib/prism.js"></script>
+<link rel="stylesheet" href="/blog/css/prism.css" rel="stylesheet" />
+
+
+
+<script src="/blog/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+
+<script src="/blog/js/lib/home.js"></script>
+
+<link rel="stylesheet" href="/blog/css/main.css" />
+<!-- 引入jQuery-->
+<script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<!--<script src="/blog/js/jquery.min.js"></script>-->
+<!-- 引入不蒜子-->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>    
+        <script type="text/javascript" src="/blog/libs/codeBlock/codeBlockFuction.js"></script>
+<!-- 代码语言 -->
+<script type="text/javascript" src="/blog/libs/codeBlock/codeLang.js"></script>
+<!-- 代码块复制 -->
+<!-- 引入clipboard -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+<script type="text/javascript" src="/blog/libs/codeBlock/codeCopy.js"></script>
+<!-- 代码块收缩 -->
+<script type="text/javascript" src="/blog/libs/codeBlock/codeShrink.js"></script> 
+<!-- 代码块折行 -->
+<style type="text/css">code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }</style>
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <!--flag{never_g0nna g1ve_you up}-->
+        
+        <!-- 页面点击特效 -->
+        <script type = "text/javascript" src = "/blog/js/love-click.js"></script>
+
+        <!-- 浏览器标题 -->
+         <script async type="text/javascript" src="/blog/js/FunnyTitle.js"></script>
+         
+        <!--动态背景-->
+        <script type="text/javascript"
+        color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+        <!--文章目录-->
+        
+    <div id="toc" class="toc-article">
+    <h3><i class="fas fa-stream"></i>  目录</h3>
+      <div class="toc-title"></div>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Hello-World"><span class="toc-number">2.</span> <span class="toc-text">Hello World</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%98%E9%87%8F"><span class="toc-number">3.</span> <span class="toc-text">变量</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%8F%98%E9%87%8F"><span class="toc-number">3.1.</span> <span class="toc-text">使用变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%AA%E8%AF%BB%E5%8F%98%E9%87%8F"><span class="toc-number">3.2.</span> <span class="toc-text">只读变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E5%8F%98%E9%87%8F"><span class="toc-number">3.3.</span> <span class="toc-text">删除变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B"><span class="toc-number">3.4.</span> <span class="toc-text">变量类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#shell%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">3.5.</span> <span class="toc-text">shell字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E5%BC%95%E5%8F%B7"><span class="toc-number">3.5.1.</span> <span class="toc-text">单引号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8C%E5%BC%95%E5%8F%B7"><span class="toc-number">3.5.2.</span> <span class="toc-text">双引号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8B%BC%E6%8E%A5%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">3.5.3.</span> <span class="toc-text">拼接字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%95%BF%E5%BA%A6"><span class="toc-number">3.5.4.</span> <span class="toc-text">获取字符串长度</span></a></li></ol></li></ol></li></ol>
+    </div>
+  
+        
+        <!--返回顶部-->
+        <div id="totop" style="position:fixed;bottom:50px;right:60px;font-size: 48px;cursor: pointer;z-index: 10;">
+            <a title="返回顶部">↑</a>
+            </div>
+        <script src="/blog/js/totop.js"></script>
+
+        <div id="layout">
+            <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>第一次加载文章图片可能会花费较长时间</p>
+                    <p>要不挂个梯子试试？（x</p>
+                    <p>加载过慢请开启缓存&ensp;浏览器默认开启</p>
+                    <img src="/blog/images/loading.gif" />
+                </div>
+            </div>
+            </transition>
+            <transition name="into">
+            <div id="main" v-show="!loading">
+                <nav id="menu" ref="menu">
+    <div class="desktop-menu">
+        <a class="title" href="/blog/">
+            <span>雲流のLOWEST WORLD</span>
+        </a>
+        
+        <a href="/blog/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/blog/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/blog/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/blog/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/blog/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+        <a href="/blog/links">
+            <i class="fa-solid fa-link fa-fw"></i>
+            <span>&ensp;Links</span>
+        </a>
+        
+        <a href="/blog/search">
+            <i class="fa-solid fa-search fa-fw"></i>
+            <span>&ensp;Search</span>
+        </a>
+        
+    </div>
+    <div id="mobile-menu">
+        <div class="curtain" v-show="showMenu" @click="showMenu = !showMenu"></div>
+        <div class="title" @click="showMenu = !showMenu">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;雲流のLOWEST WORLD</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="showMenu">
+            
+            <a href="/blog/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                </div>
+            </a>
+            
+            <a href="/blog/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                </div>
+            </a>
+            
+            <a href="/blog/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                </div>
+            </a>
+            
+            <a href="/blog/categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                </div>
+            </a>
+            
+            <a href="/blog/tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                </div>
+            </a>
+            
+            <a href="/blog/links">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-link fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Links</div>
+                </div>
+            </a>
+            
+            <a href="/blog/search">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-search fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Search</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+
+                <div class="article">
+    <div>
+        <h1>shell脚本语法</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/4/25
+        </span>
+        
+        <span class="category">
+            <a href="/blog/categories/Basic/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                Basic
+            </a>
+        </span>
+        
+        
+        <!--文章字数统计-->
+        
+            
+<div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <!-- 安装插件npm install hexo-wordcount --save -->
+        <span class="post-count">947字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">3分</span>
+      </span>
+    </span>
+    
+    <!--不蒜子统计访问数-->
+    <span id="busuanzi_container_page_pv">
+    &nbsp; | &nbsp;
+    总文章阅读量：<span id="busuanzi_value_page_pv"></span>次
+    </span>
+</div>
+
+          
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>不出意外的话都会用sh语法</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://www.runoob.com/linux/linux-shell.html">https://www.runoob.com/linux/linux-shell.html</a></p>
+<span id="more"></span>
+
+<hr>
+<h1 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h1><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#!/bin/sh</span>
+<span class="token builtin class-name">echo</span> <span class="token string">"Hello World !"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p><code>#!</code>是一个约定的标记，它告诉系统这个脚本需要什么解释器来执行，即使用哪一种 Shell</p>
+<p>运行shell脚本：</p>
+<ol>
+<li><p>作为可执行程序：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">chmod</span> +x ./test.sh  <span class="token comment">#使脚本具有执行权限</span>
+./test.sh  <span class="token comment">#执行脚本</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+<li><p>作为解释器参数：即直接运行解释器</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">/bin/sh test.sh
+/bin/php test.php<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+</ol>
+<hr>
+<h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1><p>在 Shell 编程中，变量是用于存储数据值的名称</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token assign-left variable">your_name</span><span class="token operator">=</span><span class="token string">"runoob"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>注意：<strong>变量名和等号之间不能有空格</strong></p>
+<p>遵循以下规则：</p>
+<ul>
+<li><strong>只包含字母、数字和下划线：</strong> 变量名可以包含字母（大小写敏感）、数字和下划线 _，不能包含其他特殊字符。</li>
+<li><strong>不能以数字开头：</strong> 变量名不能以数字开头，但可以包含数字。</li>
+<li><strong>避免使用 Shell 关键字：</strong> 不要使用Shell的关键字（例如 if、then、else、fi、for、while 等）作为变量名，以免引起混淆。</li>
+<li><strong>使用大写字母表示常量：</strong> 习惯上，常量的变量名通常使用大写字母，例如 PI&#x3D;3.14。</li>
+<li><strong>避免使用特殊符号：</strong>  尽量避免在变量名中使用特殊符号，因为它们可能与 Shell 的语法产生冲突。</li>
+<li><strong>避免使用空格：</strong> 变量名中不应该包含空格，因为空格通常用于分隔命令和参数。</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token assign-left variable">RUNOOB</span><span class="token operator">=</span><span class="token string">"www.runoob.com"</span>
+<span class="token assign-left variable">LD_LIBRARY_PATH</span><span class="token operator">=</span><span class="token string">"/bin/"</span>
+<span class="token assign-left variable">_var</span><span class="token operator">=</span><span class="token string">"123"</span>
+<span class="token assign-left variable">var2</span><span class="token operator">=</span><span class="token string">"abc"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>除了显式地直接赋值，还可以用语句给变量赋值，如：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token keyword">for</span> <span class="token for-or-select variable">file</span> <span class="token keyword">in</span> <span class="token variable"><span class="token variable">`</span><span class="token function">ls</span> /etc<span class="token variable">`</span></span>
+或
+<span class="token keyword">for</span> <span class="token for-or-select variable">file</span> <span class="token keyword">in</span> <span class="token variable"><span class="token variable">$(</span><span class="token function">ls</span> /etc<span class="token variable">)</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>以上语句会将 &#x2F;etc 下目录的文件名循环出来</p>
+<hr>
+<h2 id="使用变量"><a href="#使用变量" class="headerlink" title="使用变量"></a>使用变量</h2><p>用<code>$</code></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token assign-left variable">your_name</span><span class="token operator">=</span><span class="token string">"0w0"</span>
+<span class="token builtin class-name">echo</span> <span class="token variable">$your_name</span>
+<span class="token builtin class-name">echo</span> <span class="token variable">$&#123;your_name&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>加花括号只是为了帮助解释器识别变量的边界，如下，识别的就不是 skillScript 而是 skill</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token keyword">for</span> <span class="token for-or-select variable">skill</span> <span class="token keyword">in</span> Ada Coffe Action Java<span class="token punctuation">;</span> <span class="token keyword">do</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">"I am good at <span class="token variable">$&#123;skill&#125;</span>Script"</span>
+<span class="token keyword">done</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="只读变量"><a href="#只读变量" class="headerlink" title="只读变量"></a>只读变量</h2><p>使用 readonly 命令可以将变量定义为只读变量，只读变量的值不能被改变</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#!/bin/sh</span>
+
+<span class="token assign-left variable">myUrl</span><span class="token operator">=</span><span class="token string">"https://www.google.com"</span>
+<span class="token builtin class-name">readonly</span> myUrl
+<span class="token assign-left variable">myUrl</span><span class="token operator">=</span><span class="token string">"https://www.runoob.com"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="/blog/2024/04/25/shell%E8%84%9A%E6%9C%AC%E8%AF%AD%E6%B3%95/image-20240425152511216.png" alt="image-20240425152511216"></p>
+<h2 id="删除变量"><a href="#删除变量" class="headerlink" title="删除变量"></a>删除变量</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#!/bin/sh</span>
+
+<span class="token assign-left variable">myUrl</span><span class="token operator">=</span><span class="token string">"https://www.runoob.com"</span>
+<span class="token builtin class-name">unset</span> myUrl
+<span class="token builtin class-name">echo</span> <span class="token variable">$myUrl</span>	<span class="token comment"># 无输出</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<hr>
+<h2 id="变量类型"><a href="#变量类型" class="headerlink" title="变量类型"></a>变量类型</h2><p>字符串变量：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token assign-left variable">my_string</span><span class="token operator">=</span><span class="token string">'Hello, World!'</span>
+或者
+<span class="token assign-left variable">my_string</span><span class="token operator">=</span><span class="token string">"Hello, World!"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>整数变量：在一些Shell中，你可以使用 <strong>declare</strong> 或 <strong>typeset</strong> 命令来声明整数变量</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">declare</span> <span class="token parameter variable">-i</span> <span class="token assign-left variable">my_integer</span><span class="token operator">=</span><span class="token number">42</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>如果尝试将非整数值赋给它，Shell会尝试将其转换为整数（有的shell会报错）</p>
+<p>数组变量：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token assign-left variable">my_array</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token number">2</span> <span class="token number">3</span> <span class="token number">4</span> <span class="token number">5</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>关联数组：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">declare</span> <span class="token parameter variable">-A</span> associative_array
+associative_array<span class="token punctuation">[</span><span class="token string">"name"</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">"John"</span>
+associative_array<span class="token punctuation">[</span><span class="token string">"age"</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">30</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>环境变量：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">echo</span> <span class="token environment constant">$PATH</span>	<span class="token comment"># 操作系统搜索可执行文件的路径</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>特殊变量：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token variable">$0</span>	<span class="token comment"># 脚本的名称</span>
+<span class="token variable">$1</span>,<span class="token variable">$2</span>	<span class="token comment"># 脚本的参数</span>
+<span class="token variable">$#</span>	<span class="token comment"># 传递给脚本的参数</span>
+<span class="token variable">$?</span>	<span class="token comment"># 表示上一个命令的退出状态</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<hr>
+<h2 id="shell字符串"><a href="#shell字符串" class="headerlink" title="shell字符串"></a>shell字符串</h2><h3 id="单引号"><a href="#单引号" class="headerlink" title="单引号"></a>单引号</h3><p>限制：</p>
+<ul>
+<li>单引号里的任何字符都会原样输出，<strong>单引号字符串中的变量是无效的</strong></li>
+<li>单引号字符串中不能出现单独一个的单引号（对单引号使用转义符后也不行），但可成对出现，作为字符串拼接使用</li>
+</ul>
+<h3 id="双引号"><a href="#双引号" class="headerlink" title="双引号"></a>双引号</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token assign-left variable">your_name</span><span class="token operator">=</span><span class="token string">"runoob"</span>
+<span class="token assign-left variable">str</span><span class="token operator">=</span><span class="token string">"Hello, I know you are <span class="token entity" title="\&quot;">\"</span><span class="token variable">$your_name</span><span class="token entity" title="\&quot;">\"</span>! <span class="token entity" title="\n">\n</span>"</span>
+<span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token variable">$str</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>输出：<code>Hello, I know you are &quot;runoob&quot;! </code></p>
+<ul>
+<li>双引号里可以有变量</li>
+<li>双引号里可以出现转义字符</li>
+</ul>
+<p>这里感觉和其他语言差不多</p>
+<h3 id="拼接字符串"><a href="#拼接字符串" class="headerlink" title="拼接字符串"></a>拼接字符串</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token assign-left variable">your_name</span><span class="token operator">=</span><span class="token string">"runoob"</span>
+<span class="token comment"># 使用双引号拼接</span>
+<span class="token assign-left variable">greeting</span><span class="token operator">=</span><span class="token string">"hello, "</span><span class="token variable">$your_name</span><span class="token string">" !"</span>
+<span class="token assign-left variable">greeting_1</span><span class="token operator">=</span><span class="token string">"hello, <span class="token variable">$&#123;your_name&#125;</span> !"</span>
+<span class="token builtin class-name">echo</span> <span class="token variable">$greeting</span>  <span class="token variable">$greeting_1</span>
+
+<span class="token comment"># 使用单引号拼接</span>
+<span class="token assign-left variable">greeting_2</span><span class="token operator">=</span><span class="token string">'hello, '</span><span class="token variable">$your_name</span><span class="token string">' !'</span>
+<span class="token assign-left variable">greeting_3</span><span class="token operator">=</span><span class="token string">'hello, $&#123;your_name&#125; !'</span>	<span class="token comment"># 无法拼接</span>
+<span class="token builtin class-name">echo</span> <span class="token variable">$greeting_2</span>  <span class="token variable">$greeting_3</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>输出：</p>
+<pre class="line-numbers language-txt" data-language="txt"><code class="language-txt">hello, runoob ! hello, runoob !
+hello, runoob ! hello, $&#123;your_name&#125; !<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="获取字符串长度"><a href="#获取字符串长度" class="headerlink" title="获取字符串长度"></a>获取字符串长度</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token assign-left variable">string</span><span class="token operator">=</span><span class="token string">"abcd"</span>
+<span class="token builtin class-name">echo</span> <span class="token variable">$&#123;<span class="token operator">#</span>string&#125;</span>   <span class="token comment"># 输出 4</span>
+<span class="token builtin class-name">echo</span> <span class="token variable">$&#123;<span class="token operator">#</span>string<span class="token punctuation">[</span>0<span class="token punctuation">]</span>&#125;</span>   <span class="token comment"># 输出 4</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>变量为字符串时，&#96;$</p>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            </div>
+            </transition>
+            
+            <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+            </transition>
+            
+        </div>
+        <script src="/blog/js/main.js"></script>
+        
+        
+
+
+
+
+         
+        
+    <div id="vcomments"></div>
+    
+        <script src="/blog/js/lib/valine.min.js"></script>
+            <script>
+                new Valine({
+                    el: '#vcomments',
+                    app_id: 'U9mZLKunkRUTcBFthjXPjnZE-9Nh9j0Va',
+                    app_key: 'SzWOnY0PWLGNuL6jW8TZYc7j',
+                    visitor: 'true',
+                    placeholder: '写点什么吧(●ˇ∀ˇ●)',
+                    serverURLs: 'https://u9mzlkun.lc-cn-n1-shared.com',
+                });
+            </script>
+
+        <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2024 雲流のLowest World
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;C1oudfL0w0
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+    <script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/blog/live2dw/assets/z16.model.json"},"display":{"position":"left","width":150,"height":290},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
+
