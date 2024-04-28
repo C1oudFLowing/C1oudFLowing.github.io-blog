@@ -30,9 +30,6 @@
 <script src="/blog/js/lib/preview.js"></script>
 
 
-<script src="https://cdn.staticfile.org/crypto-js/4.1.1/crypto-js.min.js"></script>
-<script src="/blog/js/lib/crypto.js"></script>
-
 
 
 
@@ -79,7 +76,7 @@
     <div id="toc" class="toc-article">
     <h3><i class="fas fa-stream"></i>  目录</h3>
       <div class="toc-title"></div>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Web"><span class="toc-number">2.</span> <span class="toc-text">Web</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%CE%B5Z-%C2%BF%D0%BC-K%CE%B5%C2%BF-%EF%BC%88Unsolved%EF%BC%89"><span class="toc-number">2.1.</span> <span class="toc-text">εZ?¿м@Kε¿?（Unsolved）</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Web"><span class="toc-number">2.</span> <span class="toc-text">Web</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%CE%B5Z-%C2%BF%D0%BC-K%CE%B5%C2%BF"><span class="toc-number">2.1.</span> <span class="toc-text">εZ?¿м@Kε¿?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A3%E8%A7%A3"><span class="toc-number">2.1.1.</span> <span class="toc-text">正解</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#baby-unserialize"><span class="toc-number">2.2.</span> <span class="toc-text">baby_unserialize</span></a></li></ol></li></ol>
     </div>
   
         
@@ -244,6 +241,18 @@
         </span>
         
         
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/Makefile/" style="color: #00a596">Makefile</a>
+            </span>
+            
+        </span>
+        
         <!--文章字数统计-->
         
             
@@ -253,7 +262,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">147字</span>
+        <span class="post-count">297字</span>
       </span>
     </span>
 
@@ -276,19 +285,52 @@
           
     </div>
     
-    
-    <input
-        id="crypto"
-        class="input"
-        ref="crypto"
-        placeholder="文章被加密，请输入密码"
-        data-encrypted="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"
-        data-shasum="3baeda823a3ce6346c7357978eefe42cca6def72649a6cc00f87c9f2d0aeca55"
-        v-model="crypto"
-    />
-    <transition name="fade">
-    <div class="content" ref="content" v-show="check"></div>
-    </transition>
+    <div class="content" v-pre>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>听说有java题就来看一眼，挑几题感兴趣的复现一下</p>
+<span id="more"></span>
+
+<h1 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h1><h2 id="εZ-¿м-Kε¿"><a href="#εZ-¿м-Kε¿" class="headerlink" title="εZ?¿м@Kε¿?"></a>εZ?¿м@Kε¿?</h2><blockquote>
+<p>Makefile 自动变量 + 报错读文件</p>
+</blockquote>
+<p>hint.php</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token operator">/</span><span class="token operator">^</span><span class="token punctuation">[</span>$<span class="token operator">|</span>\<span class="token punctuation">(</span><span class="token operator">|</span>\<span class="token punctuation">)</span><span class="token operator">|</span>\@<span class="token operator">|</span>\<span class="token punctuation">[</span><span class="token operator">|</span>\<span class="token punctuation">]</span><span class="token operator">|</span>\<span class="token punctuation">&#123;</span><span class="token operator">|</span>\<span class="token punctuation">&#125;</span><span class="token operator">|</span>\<span class="token operator">&lt;</span><span class="token operator">|</span>\<span class="token operator">></span><span class="token operator">|</span>\<span class="token operator">-</span><span class="token punctuation">]</span><span class="token operator">+</span>$<span class="token operator">/</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>猜测是可用字符，有<code>$</code>、<code>(</code>、<code>)</code>、<code>@</code>、<code>[</code>、<code>]</code>、<code>&#123;</code>、<code>&#125;</code>、<code>&lt;</code>、<code>&gt;</code> 和 <code>-</code></p>
+<p>瞎测了一下</p>
+<p><img src="/blog/2024/04/25/XYCTF-2024/image-20240425181434567.png" alt="image-20240425181434567"></p>
+<p>发现是<code>make</code>命令，makefile文件：</p>
+<pre class="line-numbers language-makefile" data-language="makefile"><code class="language-makefile">SHELL <span class="token operator">:=</span> /bin/bash
+
+<span class="token keyword">ifndef</span> PATH
+<span class="token keyword">override</span> PATH <span class="token operator">:=</span>
+<span class="token keyword">else</span>
+<span class="token keyword">override</span> PATH <span class="token operator">:=</span>
+<span class="token keyword">endif</span>
+
+<span class="token builtin-target builtin">.PHONY</span><span class="token punctuation">:</span> FLAG
+<span class="token target symbol">FLAG</span><span class="token punctuation">:</span> /flag<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>测试又发现：<code>|</code>也可以用，但是限制长度为7个字符</p>
+<p>那么就是参考7字符的写shell，但是没字母怎么写？</p>
+<pre class="line-numbers language-makefile" data-language="makefile"><code class="language-makefile"><span class="token variable">$&lt;：目标依赖列表中的第一个依赖，这里是/flag，但是没权限读</span>
+<span class="token variable">$@：目标，输出FLAG，也没权限</span>
+<span class="token variable">$$-：即$-，返回字符串hBc，shell启动了hBc模式</span>
+<span class="token variable">$$[]：即$[]，代表0</span>
+<span class="token variable">$$$：即$$，代表进程id？</span>
+<span class="token variable">$$</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>：即<span class="token variable">$</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+<span class="token variable">$^：所有目标依赖，此处不可用</span>
+<span class="token variable">$?：所有目标依赖中被修改过的文件，此处不可用</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><del>那么就是参考7字符的写shell，但是没字母怎么写？</del></p>
+<h3 id="正解"><a href="#正解" class="headerlink" title="正解"></a>正解</h3><p>这里有个坑点：不要试<code>$&gt;</code>，会导致重定向输出创建新文件，然后会影响后续判断依赖是FLAG导致读不了&#x2F;flag</p>
+<p>payload：利用<code>$&#123;&lt;/flag&#125;</code>报错带出flag</p>
+<pre class="line-numbers language-makefile" data-language="makefile"><code class="language-makefile"><span class="token variable">$$</span><span class="token punctuation">(</span>&lt;<span class="token variable">$&lt;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/blog/2024/04/25/XYCTF-2024/image-20240429003328517.png" alt="image-20240429003328517"></p>
+<hr>
+<h2 id="baby-unserialize"><a href="#baby-unserialize" class="headerlink" title="baby_unserialize"></a>baby_unserialize</h2><p>晚点再复现</p>
+
+    </div>
     
     
     

@@ -570,9 +570,9 @@ frame <span class="token operator">=</span> sys<span class="token punctuation">.
 <blockquote>
 <p>可以利用指针，把内存的内容读出来，但需要定位一个大致的范围，盲目读取浪费时间</p>
 </blockquote>
-<p>先利用栈帧逃逸到全局，后续需要用到全局的<code>flag</code>的地址。</p>
-<p>接着是利用 <code>ctypes</code>模块的指针，将<code>flag</code>地址周围的值读一下，实现一个从内存读源码的操作。</p>
-<p>这里我用了 char 指针，读出来的是一个字符串，再加上flag头作为判断，可以很快读出flag。</p>
+<p>先利用栈帧逃逸到全局，后续需要用到全局的<code>flag</code>的地址。（这里可以参考L3HCTF2024 intractable problem）</p>
+<p>接着是利用<code>ctypes</code>模块的指针，将<code>flag</code>地址周围的值读一下，实现一个从内存读源码的操作。</p>
+<p>这里用了 char 指针，读出来的是一个字符串，再加上flag头作为判断，可以很快读出flag。</p>
 <p>每次位移8的倍数。（可以自行对比任意两个变量的地址，可以发现它们的差值都是8的倍数）</p>
 <p>payload：</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
