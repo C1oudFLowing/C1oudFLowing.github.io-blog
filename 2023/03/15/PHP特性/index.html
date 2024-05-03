@@ -248,7 +248,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/PHP/" style="color: #ff7d73">PHP</a>
+                <a href="/blog/tags/PHP/" style="color: #ffa2c4">PHP</a>
             </span>
             
         </span>
@@ -262,7 +262,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">5.5k字</span>
+        <span class="post-count">5.6k字</span>
       </span>
     </span>
 
@@ -435,6 +435,11 @@
 <h3 id="strpos"><a href="#strpos" class="headerlink" title="strpos()"></a>strpos()</h3><ul>
 <li>开头添加<code>+</code>或<code>%0a</code>使返回数改变</li>
 </ul>
+<p><code>strpos(&#39;01234&#39;, 0)</code> 返回的结果是 0 对应的索引 0, 也就是 false</p>
+<p>如果是 <code>!strpos()</code> 这种则会返回 true</p>
+<p>代码使用了 <code>if(!strpos($str, 0))</code> 对八进制进行过滤, 可以在字符串开头加空格绕过</p>
+<p>strpos() 遇到数组返回 null</p>
+<p>strrpos() stripos() strripos() 同理</p>
 <hr>
 <h3 id="in-array-函数"><a href="#in-array-函数" class="headerlink" title="in_array()函数"></a>in_array()函数</h3><blockquote>
 <p>判断一个值是否在数组中</p>
