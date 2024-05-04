@@ -387,7 +387,7 @@ app<span class="token punctuation">.</span>run<span class="token punctuation">(<
 <p><del>根本没用到的反编译wasm工具：<a target="_blank" rel="noopener" href="https://github.com/WebAssembly/wabt">https://github.com/WebAssembly/wabt</a></del></p>
 <p>wasm可以看看la佬的博客：<a target="_blank" rel="noopener" href="https://lazzzaro.github.io/2021/04/03/reverse-WebAssembly/">https://lazzzaro.github.io/2021/04/03/reverse-WebAssembly/</a></p>
 <p>这题并不考 WebAssembly 逆向，首先这是个游戏，而要抵达一个不可能的分数，一般我们得靠<strong>作弊</strong></p>
-<h3 id="法一：CheatEngine"><a href="#法一：CheatEngine" class="headerlink" title="法一：CheatEngine"></a>法一：CheatEngine</h3><p>那么预期解之一就是拿CheatEngine对着浏览器器进程挨个扫，但是浏览器进程一大堆，跑这个 wasm 的只有其中一个，而且浏览器时不时垃圾回收，对象内存地址经常变，扫描会很困难</p>
+<h3 id="法一：CheatEngine"><a href="#法一：CheatEngine" class="headerlink" title="法一：CheatEngine"></a>法一：CheatEngine</h3><p>那么预期解之一就是拿CheatEngine对着浏览器进程挨个扫，但是浏览器进程一大堆，跑这个 wasm 的只有其中一个，而且浏览器时不时垃圾回收，对象内存地址经常变，扫描会很困难</p>
 <h3 id="法二：访问wasm的内存对象"><a href="#法二：访问wasm的内存对象" class="headerlink" title="法二：访问wasm的内存对象"></a>法二：访问wasm的内存对象</h3><blockquote>
 <p><code>WebAssembly.Memory()</code> 构造函数创建一个新的 Memory 对象。该对象的 buffer (en-US) 属性是一个可调整大小的 ArrayBuffer ，其内存储的是 WebAssembly 实例所访问内存的原始字节码。	——MDN：<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/WebAssembly/JavaScript_interface/Memory">https://developer.mozilla.org/zh-CN/docs/WebAssembly/JavaScript_interface/Memory</a></p>
 </blockquote>
