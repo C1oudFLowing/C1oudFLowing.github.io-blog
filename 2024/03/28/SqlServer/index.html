@@ -248,7 +248,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/Sql/" style="color: #00a596">Sql</a>
+                <a href="/blog/tags/Sql/" style="color: #00bcd4">Sql</a>
             </span>
             
         </span>
@@ -387,10 +387,10 @@
 </ul>
 <p><img src="/blog/2024/03/28/SqlServer/Screenshot_2024-04-07-08-34-08-817_com.orion.notein-edit.jpg" alt="Screenshot_2024-04-07-08-34-08-817_com.orion.notein-edit"></p>
 <h2 id="关系运算"><a href="#关系运算" class="headerlink" title="关系运算"></a>关系运算</h2><ol>
-<li><p>选择（限制）：在关系R中选择满足给定条件的诸<strong>元组</strong>。**σ<sub>F</sub>(R) &#x3D; {t | t ∈ R∧F(t) &#x3D; &#39;真&#39;}**，其中F表示选择条件，是一个逻辑表达式，取 true 或 false</p>
+<li><p>选择（限制）：在关系R中选择满足给定条件的诸<strong>元组</strong>。σ<sub>F</sub>(R) &#x3D; {t | t ∈ R∧F(t) &#x3D; &#39;真&#39;}，其中F表示选择条件，是一个逻辑表达式，取 true 或 false</p>
 <p><img src="/blog/2024/03/28/SqlServer/Screenshot_2024-04-07-08-50-48-722_com.orion.notein-edit.jpg" alt="Screenshot_2024-04-07-08-50-48-722_com.orion.notein-edit"></p>
 </li>
-<li><p>投影：从R中选择出若干<strong>属性列</strong>组成新的关系。**Π<sub>A</sub>(R) &#x3D; {t[A] | t∈R}**，其中A为R中的属性列</p>
+<li><p>投影：从R中选择出若干<strong>属性列</strong>组成新的关系。Π<sub>A</sub>(R) &#x3D; {t[A] | t∈R}，其中A为R中的属性列</p>
 <p><img src="/blog/2024/03/28/SqlServer/Screenshot_2024-04-07-08-52-13-115_com.orion.notein-edit.jpg" alt="Screenshot_2024-04-07-08-52-13-115_com.orion.notein-edit"></p>
 </li>
 <li><p>连接：从两个关系的<strong>笛卡尔积</strong>中选取属性间满足一定条件的元组</p>
@@ -457,7 +457,7 @@
                   <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
                   <span class="token punctuation">[</span><span class="token punctuation">,</span><span class="token operator">&lt;</span>表级完整性约束条件<span class="token operator">></span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>例：建立一个”学生“表Student：</p>
+<p>例：建立一个“学生”表Student：</p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> Student
 <span class="token punctuation">(</span>Sno <span class="token keyword">CHAR</span><span class="token punctuation">(</span><span class="token number">9</span><span class="token punctuation">)</span> <span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span><span class="token punctuation">,</span>	<span class="token comment">/*列级完整性约束条件，Sno是主码*/</span>
  Sname <span class="token keyword">CHAR</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span> <span class="token keyword">UNIQUE</span><span class="token punctuation">,</span>		<span class="token comment">/*Sname取唯一值*/</span>
