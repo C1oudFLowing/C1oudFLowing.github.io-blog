@@ -248,17 +248,17 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/CMS/" style="color: #00bcd4">CMS</a>
+                <a href="/blog/tags/CMS/" style="color: #00a596">CMS</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/blog/tags/python/" style="color: #00bcd4">python</a>
+                <a href="/blog/tags/python/" style="color: #ff7d73">python</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E6%B2%99%E7%AE%B1%E9%80%83%E9%80%B8/" style="color: #00a596">沙箱逃逸</a>
+                <a href="/blog/tags/%E6%B2%99%E7%AE%B1%E9%80%83%E9%80%B8/" style="color: #ff7d73">沙箱逃逸</a>
             </span>
             
         </span>
@@ -761,7 +761,7 @@ app<span class="token punctuation">.</span>static<span class="token punctuation"
 <p><img src="/blog/2024/05/18/CISCN2024/image-20240523010018167.png" alt="image-20240523010018167"></p>
 <p>从handler入手，可以发现<code>directory_handler</code>中的<code>directory</code>和<code>directory_view</code>变量</p>
 <p>这里的name要多跟进几次得到<code>__mp_main__.static</code>（或许是因为此时sanic服务才正式启动？，又或者这个才是最后覆盖static变量的name？）</p>
-<p>于是连上我们前面的链子：（奇怪的是）</p>
+<p>于是连上我们前面的链子：</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">app<span class="token punctuation">.</span>router<span class="token punctuation">.</span>name_index<span class="token punctuation">[</span><span class="token string">'__mp_main__.static'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>handler<span class="token punctuation">.</span>keywords<span class="token punctuation">[</span><span class="token string">'directory_handler'</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="/blog/2024/05/18/CISCN2024/image-20240523010432983.png" alt="image-20240523010432983"></p>
