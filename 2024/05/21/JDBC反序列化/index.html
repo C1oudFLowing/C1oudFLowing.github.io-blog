@@ -248,12 +248,12 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/Java/" style="color: #ff7d73">Java</a>
+                <a href="/blog/tags/Java/" style="color: #ffa2c4">Java</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="color: #ff7d73">反序列化</a>
+                <a href="/blog/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="color: #00bcd4">反序列化</a>
             </span>
             
         </span>
@@ -469,17 +469,17 @@
 <p>懒得配环境了，这里直接拿别的师傅的图（</p>
 <p>mysql也是有类似tcp一样的认证系统的，有Request和Response</p>
 <p>分析<code>Response OK</code>的数据包</p>
-<p><img src="/blog/JDBC%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20240530113241054.png" alt="image-20240530113241054"></p>
+<p><img src="/blog/2024/05/21/JDBC%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20240530113241054.png" alt="image-20240530113241054"></p>
 <p>可以看到MYSQL Protocol的认证报文为：<code>0700000200000002000000</code></p>
 <p>也就是说我们恶意服务端只需要将该数据返回给Request即可完成认证，再看看Request报文：</p>
-<p><img src="/blog/JDBC%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20240530113435915.png" alt="image-20240530113435915"></p>
+<p><img src="/blog/2024/05/21/JDBC%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20240530113435915.png" alt="image-20240530113435915"></p>
 <p>直接发送原始数据即可，恶意服务端可以将这部分改为恶意payload，之后进行反序列化</p>
 <hr>
 <h2 id="show-session-status响应包的编写"><a href="#show-session-status响应包的编写" class="headerlink" title="show session status响应包的编写"></a>show session status响应包的编写</h2><p>从流量中可以看出来<code>show session status</code>属于<strong>request Query</strong> 报文</p>
 <p>对于查询数据包的响应包可以分为四种：错误包（ERR Packet）、正确包（OK Packet）、 Protocol::LOCAL_INFILE_Request、结果集（ProtocolText::Resultset）</p>
 <p>流量里看到的<strong>Response OK</strong>数据包就是<strong>OK packet</strong></p>
 <p>我们这里要用的是<strong>结果集</strong>的数据包，结果集响应包的结构：</p>
-<p><img src="/blog/JDBC%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20240531005812275.png" alt="image-20240531005812275"></p>
+<p><img src="/blog/2024/05/21/JDBC%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/image-20240531005812275.png" alt="image-20240531005812275"></p>
 <ul>
 <li>数据段1：说明下面的结果集有多少列</li>
 <li>数据段2：列的定义</li>

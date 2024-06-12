@@ -248,7 +248,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/RCE/" style="color: #00bcd4">RCE</a>
+                <a href="/blog/tags/RCE/" style="color: #00a596">RCE</a>
             </span>
             
         </span>
@@ -288,7 +288,10 @@
     <div class="content" v-pre>
         <h1 id="RCE-命令执行"><a href="#RCE-命令执行" class="headerlink" title="RCE(命令执行)"></a>RCE(命令执行)</h1><span id="more"></span>
 
-<h2 id="危险函数"><a href="#危险函数" class="headerlink" title="危险函数"></a>危险函数</h2><pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token function">assert</span><span class="token punctuation">(</span><span class="token punctuation">)</span>    <span class="token comment">//判断一个表达式是否成立。返回true or false; </span>
+<h2 id="危险函数"><a href="#危险函数" class="headerlink" title="危险函数"></a>危险函数</h2><blockquote>
+<p>eval并非PHP函数，放在disable_functions中是无法禁用的，若要禁用需要用到PHP的扩展Suhosin</p>
+</blockquote>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token function">assert</span><span class="token punctuation">(</span><span class="token punctuation">)</span>    <span class="token comment">//判断一个表达式是否成立。返回true or false; </span>
 
 <span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token punctuation">)</span>   <span class="token comment">//函数是用来执行一个正则表达式的搜索和替换的  preg_replace(要搜索的字符串，用于替换的字符串，要搜索替换的字符串)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
