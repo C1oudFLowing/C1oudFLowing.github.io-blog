@@ -1,0 +1,464 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <title>图片隐写 | 雲流のLowest World</title>
+        <meta name="author" content="C1oudfL0w0" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+        <link rel="icon" href="/blog/images/croppedImage_cropped.jpg" />
+        <!-- cdn挂掉的时候要可以引用本地 -->
+<!-- <script src="https://cdn.staticfile.org/vue/3.2.45/vue.global.prod.min.js"></script> -->
+<script src="/blog/js/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.2.1/css/all.min.css" />
+<!--<link rel="stylesheet" href="/blog/css/all.min.css" />-->
+<link rel="stylesheet" href="/blog/css/fonts.min.css" />
+<link rel="stylesheet" href="/blog/css/search.css" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+<!--改成了prismjs高亮-->
+
+<script src="/blog/js/lib/prism.js"></script>
+<link rel="stylesheet" href="/blog/css/prism.css" rel="stylesheet" />
+
+
+
+<script src="/blog/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+
+<script src="/blog/js/lib/home.js"></script>
+
+<link rel="stylesheet" href="/blog/css/main.css" />
+<!-- 引入jQuery-->
+<script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<!--<script src="/blog/js/jquery.min.js"></script>-->
+<!-- 引入不蒜子-->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>    
+        <script type="text/javascript" src="/blog/libs/codeBlock/codeBlockFuction.js"></script>
+<!-- 代码语言 -->
+<script type="text/javascript" src="/blog/libs/codeBlock/codeLang.js"></script>
+<!-- 代码块复制 -->
+<!-- 引入clipboard -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+<script type="text/javascript" src="/blog/libs/codeBlock/codeCopy.js"></script>
+<!-- 代码块收缩 -->
+<script type="text/javascript" src="/blog/libs/codeBlock/codeShrink.js"></script> 
+<!-- 代码块折行 -->
+<style type="text/css">code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }</style>
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <!--flag{never_g0nna g1ve_you up}-->
+        
+        <!-- 页面点击特效 -->
+        <script type = "text/javascript" src = "/blog/js/love-click.js"></script>
+
+        <!-- 浏览器标题 -->
+         <script async type="text/javascript" src="/blog/js/FunnyTitle.js"></script>
+         
+        <!--动态背景-->
+        <script type="text/javascript"
+        color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+        <!--文章目录-->
+        
+    <div id="toc" class="toc-article">
+    <h3><i class="fas fa-stream"></i>  目录</h3>
+      <div class="toc-title"></div>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">2.</span> <span class="toc-text">基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84"><span class="toc-number">2.1.</span> <span class="toc-text">文件结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#png"><span class="toc-number">2.1.1.</span> <span class="toc-text">png</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#IHDR"><span class="toc-number">2.1.1.1.</span> <span class="toc-text">IHDR</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#jpg"><span class="toc-number">2.1.2.</span> <span class="toc-text">jpg</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#zip"><span class="toc-number">2.1.3.</span> <span class="toc-text">zip</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LSB"><span class="toc-number">2.2.</span> <span class="toc-text">LSB</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B7%A5%E5%85%B7"><span class="toc-number">3.</span> <span class="toc-text">工具</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#zsteg"><span class="toc-number">3.1.</span> <span class="toc-text">zsteg</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#foremost"><span class="toc-number">3.2.</span> <span class="toc-text">foremost</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stegsolve"><span class="toc-number">3.3.</span> <span class="toc-text">Stegsolve</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Data-Extract%E2%80%94%E2%80%94%E6%A3%80%E6%B5%8BLSB%EF%BC%88%E6%9C%80%E4%BD%8E%E6%9C%89%E6%95%88%E4%BD%8D%EF%BC%89%E9%9A%90%E5%86%99"><span class="toc-number">3.3.1.</span> <span class="toc-text">Data Extract——检测LSB（最低有效位）隐写</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Image-Combiner%E2%80%94%E2%80%94%E5%8F%8C%E5%9B%BE%E6%93%8D%E4%BD%9C"><span class="toc-number">3.3.2.</span> <span class="toc-text">Image Combiner——双图操作</span></a></li></ol></li></ol></li></ol>
+    </div>
+  
+        
+        <!--返回顶部-->
+        <div id="totop" style="position:fixed;bottom:50px;right:60px;font-size: 48px;cursor: pointer;z-index: 10;">
+            <a title="返回顶部">↑</a>
+            </div>
+        <script src="/blog/js/totop.js"></script>
+
+        <div id="layout">
+            <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>第一次加载文章图片可能会花费较长时间</p>
+                    <p>要不挂个梯子试试？（x</p>
+                    <p>加载过慢请开启缓存&ensp;浏览器默认开启</p>
+                    <img src="/blog/images/loading.gif" />
+                </div>
+            </div>
+            </transition>
+            <transition name="into">
+            <div id="main" v-show="!loading">
+                <nav id="menu" ref="menu">
+    <div class="desktop-menu">
+        <a class="title" href="/blog/">
+            <span>雲流のLOWEST WORLD</span>
+        </a>
+        
+        <a href="/blog/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/blog/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/blog/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/blog/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/blog/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+        <a href="/blog/links">
+            <i class="fa-solid fa-link fa-fw"></i>
+            <span>&ensp;Links</span>
+        </a>
+        
+        <a href="/blog/search">
+            <i class="fa-solid fa-search fa-fw"></i>
+            <span>&ensp;Search</span>
+        </a>
+        
+    </div>
+    <div id="mobile-menu">
+        <div class="curtain" v-show="showMenu" @click="showMenu = !showMenu"></div>
+        <div class="title" @click="showMenu = !showMenu">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;雲流のLOWEST WORLD</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="showMenu">
+            
+            <a href="/blog/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                </div>
+            </a>
+            
+            <a href="/blog/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                </div>
+            </a>
+            
+            <a href="/blog/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                </div>
+            </a>
+            
+            <a href="/blog/categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                </div>
+            </a>
+            
+            <a href="/blog/tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                </div>
+            </a>
+            
+            <a href="/blog/links">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-link fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Links</div>
+                </div>
+            </a>
+            
+            <a href="/blog/search">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-search fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Search</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+
+                <div class="article">
+    <div>
+        <h1>图片隐写</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/6/18
+        </span>
+        
+        <span class="category">
+            <a href="/blog/categories/MISC/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                MISC
+            </a>
+        </span>
+        
+        
+        <!--文章字数统计-->
+        
+            
+<div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <!-- 安装插件npm install hexo-wordcount --save -->
+        <span class="post-count">1k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">4分</span>
+      </span>
+    </span>
+    
+    <!--不蒜子统计访问数-->
+    <span id="busuanzi_container_page_pv">
+    &nbsp; | &nbsp;
+    总文章阅读量：<span id="busuanzi_value_page_pv"></span>次
+    </span>
+</div>
+
+          
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本着有接触过就稍微记录一下的原则，于是就有了这个</p>
+<span id="more"></span>
+
+<hr>
+<h1 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h1><h2 id="文件结构"><a href="#文件结构" class="headerlink" title="文件结构"></a>文件结构</h2><h3 id="png"><a href="#png" class="headerlink" title="png"></a>png</h3><p>参考：<a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/others-articles/265879.html">https://www.freebuf.com/articles/others-articles/265879.html</a></p>
+<p>文件头：<code>89 50 4E 47 0D 0A 1A 0A</code></p>
+<h4 id="IHDR"><a href="#IHDR" class="headerlink" title="IHDR"></a>IHDR</h4><blockquote>
+<p>文件头数据块IHDR(header chunk)：它包含有PNG文件中存储的图像数据的基本信息，并要作为第一个数据块出现在PNG数据流中，而且一个PNG数据流中只能有一个文件头数据块。</p>
+</blockquote>
+<p>文件头数据块由13字节组成，它的格式如下表所示：</p>
+<table>
+<thead>
+<tr>
+<th><strong>域的名称</strong></th>
+<th><strong>字节数</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Width</td>
+<td>4 bytes</td>
+<td>图像宽度，以像素为单位</td>
+</tr>
+<tr>
+<td>Height</td>
+<td>4 bytes</td>
+<td>图像高度，以像素为单位</td>
+</tr>
+<tr>
+<td>Bit depth</td>
+<td>1 byte</td>
+<td>图像深度： 索引彩色图像：1，2，4或8 灰度图像：1，2，4，8或16 真彩色图像：8或16</td>
+</tr>
+<tr>
+<td>ColorType</td>
+<td>1 byte</td>
+<td>颜色类型： 0：灰度图像, 1，2，4，8或16 2：真彩色图像，8或16 3：索引彩色图像，1，2，4或8 4：带α通道数据的灰度图像，8或16 6：带α通道数据的真彩色图像，8或16</td>
+</tr>
+<tr>
+<td>Compression method</td>
+<td>1 byte</td>
+<td>压缩方法(LZ77派生算法)</td>
+</tr>
+<tr>
+<td>Filter method</td>
+<td>1 byte</td>
+<td>滤波器方法</td>
+</tr>
+<tr>
+<td>Interlace method</td>
+<td>1 byte</td>
+<td>隔行扫描方法： 0：非隔行扫描 1： Adam7(由Adam M. Costello开发的7遍隔行扫描方法)</td>
+</tr>
+</tbody></table>
+<p>IHDR（49 48 44 52）数据块关键字之后紧接的就是定义宽与高的字节块，具体可以先看图片属性中的宽高然后转为16进制后再搜索发现对应的字节块（同样也适用于jpg）</p>
+<hr>
+<h3 id="jpg"><a href="#jpg" class="headerlink" title="jpg"></a>jpg</h3><hr>
+<h3 id="zip"><a href="#zip" class="headerlink" title="zip"></a>zip</h3><p>参考：<a target="_blank" rel="noopener" href="https://goodapple.top/archives/700">https://goodapple.top/archives/700</a></p>
+<p>实体文件头：包含着文件的各种信息，包括文件名称、解压缩版本、压缩方式、CRC等等，固定值<code>50 4B 03 04</code></p>
+<hr>
+<h2 id="LSB"><a href="#LSB" class="headerlink" title="LSB"></a>LSB</h2><blockquote>
+<p>LSB替换写基本思路是用嵌入的秘密信息取代载体图像的最低比特位，原来的7个高位平面与替代秘密信息的最低为平面组合成含隐藏信息的新图形。</p>
+</blockquote>
+<ol>
+<li>像素三原色（RGB）</li>
+<li>通过修改像素中最低位的1bit来达到隐藏的效果。</li>
+<li>工具：stegsolve、zsteg、python脚本</li>
+</ol>
+<hr>
+<h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><h2 id="zsteg"><a href="#zsteg" class="headerlink" title="zsteg"></a>zsteg</h2><p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/Amherstieae/article/details/107512398">https://blog.csdn.net/Amherstieae/article/details/107512398</a></p>
+<blockquote>
+<p>可以检测并提取出PNG和BMP图片里的隐写数据</p>
+</blockquote>
+<p>github：<a target="_blank" rel="noopener" href="https://github.com/zed-0xff/zsteg">https://github.com/zed-0xff/zsteg</a></p>
+<p>安装：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> gem <span class="token function">install</span> zsteg<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>查看lsb数据：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">zsteg xxx.bmp
+zsteg xxx.png
+zsteg <span class="token parameter variable">-a</span> <span class="token punctuation">(</span>文件名<span class="token punctuation">)</span>    <span class="token comment">#查看各个通道的lsb</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="/blog/2024/06/18/%E5%9B%BE%E7%89%87%E9%9A%90%E5%86%99/image-20240618153734927.png" alt="image-20240618153734927"></p>
+<p>检测zlib：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#-b的位数是从1开始的</span>
+zsteg zlib.bmp <span class="token parameter variable">-b</span> <span class="token number">1</span> <span class="token parameter variable">-o</span> xy <span class="token parameter variable">-v</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>提取图片对应通道的内容，根据对应通道的文件类型确定后缀名：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">zsteg <span class="token parameter variable">-E</span> b1,rgb,lsb,xy <span class="token number">1</span>.png <span class="token operator">></span> out.zip<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<hr>
+<h2 id="foremost"><a href="#foremost" class="headerlink" title="foremost"></a>foremost</h2><p>参考：<a target="_blank" rel="noopener" href="https://www.freebuf.com/sectool/359063.html">https://www.freebuf.com/sectool/359063.html</a></p>
+<blockquote>
+<p>将图片中的隐藏文件拆分出来</p>
+</blockquote>
+<p>安装：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">apt</span> <span class="token function">install</span> foremost<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>分析文件，然后输出到output文件夹：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">foremost <span class="token parameter variable">-I</span> <span class="token function">file</span> <span class="token parameter variable">-o</span> output<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>audit.txt分析报告也会一并输出到文件夹中</p>
+<hr>
+<h2 id="Stegsolve"><a href="#Stegsolve" class="headerlink" title="Stegsolve"></a>Stegsolve</h2><p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/dyw_666666/article/details/88650738">https://blog.csdn.net/dyw_666666/article/details/88650738</a></p>
+<p>下载地址：<a target="_blank" rel="noopener" href="http://www.caesum.com/handbook/Stegsolve.jar">http://www.caesum.com/handbook/Stegsolve.jar</a></p>
+<p>Analyse下的功能：</p>
+<ul>
+<li><p>File Format：文件格式，这个主要是查看图片的具体信息</p>
+</li>
+<li><p>Data Extract：数据抽取，图片中隐藏数据的抽取</p>
+</li>
+<li><p>Frame Browser：帧浏览器，主要是对GIF之类的动图进行分解，动图变成一张张图片，便于查看</p>
+</li>
+<li><p>Image Combiner：拼图，图片拼接</p>
+</li>
+</ul>
+<h3 id="Data-Extract——检测LSB（最低有效位）隐写"><a href="#Data-Extract——检测LSB（最低有效位）隐写" class="headerlink" title="Data Extract——检测LSB（最低有效位）隐写"></a>Data Extract——检测LSB（最低有效位）隐写</h3><p>参考：<a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/1090023">https://developer.aliyun.com/article/1090023</a></p>
+<p>Data Extract下调整Bit Planes、Bit Order、Bit Plane Order</p>
+<p>一般Bit Planes都是把rgb通道设置为0，然后调整剩下的几个选项</p>
+<h3 id="Image-Combiner——双图操作"><a href="#Image-Combiner——双图操作" class="headerlink" title="Image Combiner——双图操作"></a>Image Combiner——双图操作</h3><p>参考：<a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/1090023">https://developer.aliyun.com/article/1090023</a></p>
+<p>当两张 jpg 图片外观、大小、像素都基本相同时，可以考虑进行综合分析，即将两个文件的像素RGB值进行XOR、ADD、SUB等操作，看能否得到有用的信息</p>
+<p>这里使用Image Combiner</p>
+<p>只需要在弹出的窗口中点击左右按钮选择处理方式，有两张图片的RGB值进行XOR、ADD、SUB等操作</p>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            </div>
+            </transition>
+            
+            <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+            </transition>
+            
+        </div>
+        <script src="/blog/js/main.js"></script>
+        
+        
+
+
+
+
+         
+        
+    <div id="vcomments"></div>
+    
+        <script src="/blog/js/lib/valine.min.js"></script>
+            <script>
+                new Valine({
+                    el: '#vcomments',
+                    app_id: 'U9mZLKunkRUTcBFthjXPjnZE-9Nh9j0Va',
+                    app_key: 'SzWOnY0PWLGNuL6jW8TZYc7j',
+                    visitor: 'true',
+                    placeholder: '写点什么吧(●ˇ∀ˇ●)',
+                    serverURLs: 'https://u9mzlkun.lc-cn-n1-shared.com',
+                });
+            </script>
+
+        <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2024 雲流のLowest World
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;C1oudfL0w0
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+    <script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/blog/live2dw/assets/z16.model.json"},"display":{"position":"left","width":150,"height":290},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
+
