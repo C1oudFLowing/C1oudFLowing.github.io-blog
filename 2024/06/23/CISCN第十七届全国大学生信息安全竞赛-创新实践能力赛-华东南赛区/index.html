@@ -57,7 +57,8 @@
 <script type="text/javascript" src="/blog/libs/codeBlock/codeShrink.js"></script> 
 <!-- 代码块折行 -->
 <style type="text/css">code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }</style>
-    <meta name="generator" content="Hexo 6.3.0"></head>
+    <meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/blog/atom.xml" title="雲流のLowest World" type="application/atom+xml">
+</head>
     <body>
         <!--flag{never_g0nna g1ve_you up}-->
         
@@ -241,7 +242,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">3k字</span>
+        <span class="post-count">3.4k字</span>
       </span>
     </span>
 
@@ -250,7 +251,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">16分</span>
+        <span class="post-count">18分</span>
       </span>
     </span>
     
@@ -406,7 +407,8 @@ if ($username &amp;&amp; $id) &#123;
 &lt;button type&#x3D;&quot;submit&quot; onclick&#x3D;&quot;submitData()&quot;&gt;更改&lt;&#x2F;button&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <hr>
-<h1 id="Polluted"><a href="#Polluted" class="headerlink" title="Polluted"></a>Polluted</h1><h2 id="BREAK-2"><a href="#BREAK-2" class="headerlink" title="BREAK"></a>BREAK</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> flask <span class="token keyword">import</span> Flask<span class="token punctuation">,</span> session<span class="token punctuation">,</span> redirect<span class="token punctuation">,</span> url_for<span class="token punctuation">,</span>request<span class="token punctuation">,</span>render_template
+<h1 id="Polluted"><a href="#Polluted" class="headerlink" title="Polluted"></a>Polluted</h1><h2 id="BREAK-2"><a href="#BREAK-2" class="headerlink" title="BREAK"></a>BREAK</h2><p>斩下二血</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> flask <span class="token keyword">import</span> Flask<span class="token punctuation">,</span> session<span class="token punctuation">,</span> redirect<span class="token punctuation">,</span> url_for<span class="token punctuation">,</span>request<span class="token punctuation">,</span>render_template
 <span class="token keyword">import</span> os
 <span class="token keyword">import</span> hashlib
 <span class="token keyword">import</span> json
@@ -882,6 +884,22 @@ app<span class="token punctuation">.</span><span class="token function">listen</
 <p>开局pwn和web的题目上反了一道，还以为web什么时候也用二进制文件跑了（</p>
 <p>不过居然真的有webpwn，当然fix不能用web的方法fix，虽然我也不明白为什么要对一个ctf题搞fix。。。</p>
 <p>华东南web的题目难度跟初赛比真的低太多了，还好没java，不然真得寄</p>
+<p>然后是一些需要注意的事：</p>
+<ul>
+<li>本地 vscode 的commit ID会经常改变，于是建议在开赛当天还能联网的时候先下载好对应的ssh连接包</li>
+<li>开发和安全缺一不可，别attack嘎嘎做然后waf写不动（</li>
+</ul>
+<p>接下来就是思考怎么准备决赛了，先立几个要完成的目标：</p>
+<ul>
+<li>CTF部分：因为到现在hw面试连个着落都没有，所以试图一个月内跟着<a target="_blank" rel="noopener" href="https://github.com/Drun1baby/JavaSecurityLearning?tab=readme-ov-file">Drun1baby师傅的java学习路线</a>搞定java（x；然后是复现之前比赛屯下的题目，那些比赛的题，很难，但得会；还有少刷点视频，多看看知识星球</li>
+<li>渗透：有巨魔在，渗透压力会小一点，但是我自己也得去学一下内网代理，打打春秋云境和vulhub，然后准备自己的漏洞库，这个估计得多看看狗佬的博客了</li>
+<li>AWD：吸取大b哥的经验，提前造轮子打批量，不然到时候有咱急的；然后就是记得把jar和war包打包明白（</li>
+<li>Build：？</li>
+<li>期末考：别挂，别挂，别挂，再挂下去会似</li>
+<li>整点阳间的作息吧哥，放假了就别熬夜了，还是享受当下重要！</li>
+<li>别成天惦记凹你那总力战&#x2F;深渊&#x2F;肉鸽了，还有很多事没做，有这时间都能推几个ap了，steam上还有一堆galgame没推呢（（</li>
+</ul>
+<p><del>什么，我一个月搞定这些，真的假的？</del></p>
 
     </div>
     
