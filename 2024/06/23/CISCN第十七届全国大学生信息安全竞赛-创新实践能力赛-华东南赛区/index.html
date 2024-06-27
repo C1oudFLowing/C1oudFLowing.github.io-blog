@@ -45,7 +45,8 @@
 <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 <!--<script src="/blog/js/jquery.min.js"></script>-->
 <!-- 引入不蒜子-->
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>    
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
         <script type="text/javascript" src="/blog/libs/codeBlock/codeBlockFuction.js"></script>
 <!-- 代码语言 -->
 <script type="text/javascript" src="/blog/libs/codeBlock/codeLang.js"></script>
@@ -744,6 +745,7 @@ app<span class="token punctuation">.</span><span class="token function">listen</
 <p>然后去前面任意文件读取那边读取&#x2F;tmp&#x2F;1.txt即可</p>
 <h2 id="FIX（Failed）"><a href="#FIX（Failed）" class="headerlink" title="FIX（Failed）"></a>FIX（Failed）</h2><p>有好几个洞，猜测是差一个xss的洞，一直不会修</p>
 <p>据说xss是22年的黑盾杯的方法：<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/F9v9-8s2_mJhlEWRICzVvg">https://mp.weixin.qq.com/s/F9v9-8s2_mJhlEWRICzVvg</a></p>
+<p>复现xss参考：<a target="_blank" rel="noopener" href="https://blog.mo60.cn/index.php/archives/487.html">https://blog.mo60.cn/index.php/archives/487.html</a></p>
 <pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> express <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'express'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'path'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">const</span> fs <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'fs'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
