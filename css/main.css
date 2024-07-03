@@ -1354,6 +1354,7 @@ code[class*="language-"] {
     border: none;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(217, 217, 217, 0.8);
+    background-color:rgba(245, 245, 245, 0.522);
 }
 
 .toc-item {
@@ -1463,4 +1464,17 @@ img.vimg:hover {
     width: 100px;
     height: 100px;
     margin-right: 10px;
+}
+
+#content-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    /* background-image: url(""); */
+    background-size: cover;
+    background-position: center;
+    opacity: 0.3;
+    z-index: -1;
 }

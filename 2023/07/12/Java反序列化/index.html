@@ -1,15 +1,16 @@
 
 <!DOCTYPE html>
 <html lang="zh-CN">
-    <head>
-        <meta charset="UTF-8" />
-        <title>Java内置反序列化 | 雲流のLowest World</title>
-        <meta name="author" content="C1oudfL0w0" />
-        <meta name="description" content="" />
-        <meta name="keywords" content="" />
-        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
-        <link rel="icon" href="/blog/images/croppedImage_cropped.jpg" />
-        <!-- cdn挂掉的时候要可以引用本地 -->
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Java内置反序列化 | 雲流のLowest World</title>
+    <meta name="author" content="C1oudfL0w0" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <link rel="icon" href="/blog/images/croppedImage_cropped.jpg" />
+    <!-- cdn挂掉的时候要可以引用本地 -->
 <!-- <script src="https://cdn.staticfile.org/vue/3.2.45/vue.global.prod.min.js"></script> -->
 <script src="/blog/js/vue.global.prod.min.js"></script>
 <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.2.1/css/all.min.css" />
@@ -44,8 +45,8 @@
 <!--<script src="/blog/js/jquery.min.js"></script>-->
 <!-- 引入不蒜子-->
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    
-        <script type="text/javascript" src="/blog/libs/codeBlock/codeBlockFuction.js"></script>
+
+    <script type="text/javascript" src="/blog/libs/codeBlock/codeBlockFuction.js"></script>
 <!-- 代码语言 -->
 <script type="text/javascript" src="/blog/libs/codeBlock/codeLang.js"></script>
 <!-- 代码块复制 -->
@@ -56,38 +57,41 @@
 <script type="text/javascript" src="/blog/libs/codeBlock/codeShrink.js"></script> 
 <!-- 代码块折行 -->
 <style type="text/css">code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }</style>
-    <meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/blog/atom.xml" title="雲流のLowest World" type="application/atom+xml">
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/blog/atom.xml" title="雲流のLowest World" type="application/atom+xml">
 </head>
-    <body>
-        <!--flag{never_g0nna g1ve_you up}-->
-        
-        <!-- 页面点击特效 -->
-        <script type = "text/javascript" src = "/blog/js/love-click.js"></script>
 
-        <!-- 浏览器标题 -->
-         <script async type="text/javascript" src="/blog/js/FunnyTitle.js"></script>
-         
-        <!--动态背景-->
-        <script type="text/javascript"
-        color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+<body>
+    <!--flag{never_g0nna g1ve_you up}-->
 
-        <!--文章目录-->
-        
+    <!-- 页面点击特效 -->
+    <script type="text/javascript" src="/blog/js/love-click.js"></script>
+
+    <!-- 浏览器标题 -->
+    <script async type="text/javascript" src="/blog/js/FunnyTitle.js"></script>
+
+    <!-- 动态背景 -->
+    
+
+    <!--文章目录-->
+    
     <div id="toc" class="toc-article">
     <h3><i class="fas fa-stream"></i>  目录</h3>
       <div class="toc-title"></div>
       <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5"><span class="toc-number">2.</span> <span class="toc-text">概念</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0"><span class="toc-number">3.</span> <span class="toc-text">实现</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95"><span class="toc-number">3.1.</span> <span class="toc-text">三种实现方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4-serializable%E6%8E%A5%E5%8F%A3"><span class="toc-number">3.2.</span> <span class="toc-text">步骤(serializable接口)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BC%94%E7%A4%BA"><span class="toc-number">3.3.</span> <span class="toc-text">演示</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#transient%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-number">4.</span> <span class="toc-text">transient关键字</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Externalizable%E6%8E%A5%E5%8F%A3"><span class="toc-number">5.</span> <span class="toc-text">Externalizable接口</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%A9%E7%94%A8%E6%9D%A1%E4%BB%B6"><span class="toc-number">6.</span> <span class="toc-text">利用条件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%A5%E5%8F%A3%E7%B1%BB"><span class="toc-number">6.1.</span> <span class="toc-text">入口类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B0%83%E7%94%A8%E9%93%BE"><span class="toc-number">6.2.</span> <span class="toc-text">调用链</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%A7%E8%A1%8C%E7%B1%BB"><span class="toc-number">6.3.</span> <span class="toc-text">执行类</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ysoseial"><span class="toc-number">7.</span> <span class="toc-text">ysoseial</span></a></li></ol>
     </div>
   
-        
-        <!--返回顶部-->
-        <div id="totop" style="position:fixed;bottom:50px;right:60px;font-size: 48px;cursor: pointer;z-index: 10;">
-            <a title="返回顶部">↑</a>
-            </div>
-        <script src="/blog/js/totop.js"></script>
 
-        <div id="layout">
-            <transition name="fade">
+    <!--返回顶部-->
+    <div id="totop" style="position:fixed;bottom:50px;right:60px;font-size: 48px;cursor: pointer;z-index: 10;">
+        <a title="返回顶部">↑</a>
+    </div>
+    <script src="/blog/js/totop.js"></script>
+
+    <div id="layout">
+        
+            <div id="content-background" ref="contentBackground" data-images="https://pic.imgdb.cn/item/65d61d809f345e8d03b8bc7a.png"></div>
+            
+        <transition name="fade">
             <div id="loading" v-show="loading">
                 <div id="loading-circle">
                     <h2>LOADING</h2>
@@ -97,8 +101,8 @@
                     <img src="/blog/images/loading.gif" />
                 </div>
             </div>
-            </transition>
-            <transition name="into">
+        </transition>
+        <transition name="into">
             <div id="main" v-show="!loading">
                 <nav id="menu" ref="menu">
     <div class="desktop-menu">
@@ -253,7 +257,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="color: #ffa2c4">反序列化</a>
+                <a href="/blog/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="color: #00bcd4">反序列化</a>
             </span>
             
         </span>
@@ -608,24 +612,24 @@
 </div>
 
             </div>
-            </transition>
-            
-            <transition name="fade">
+        </transition>
+        
+        <transition name="fade">
             <div id="preview" ref="preview" v-show="previewShow">
                 <img id="preview-content" ref="previewContent" />
             </div>
-            </transition>
-            
-        </div>
-        <script src="/blog/js/main.js"></script>
+        </transition>
         
-        
+    </div>
+    <script src="/blog/js/main.js"></script>
+    
+    
 
 
 
 
-         
-        
+    
+    
     <div id="vcomments"></div>
     
         <script src="/blog/js/lib/valine.min.js"></script>
@@ -640,7 +644,7 @@
                 });
             </script>
 
-        <footer id="footer">
+    <footer id="footer">
     <div id="footer-wrap">
         <div>
             &copy;
@@ -658,6 +662,6 @@
     </div>
 </footer>
 
-    <script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/blog/live2dw/assets/z16.model.json"},"display":{"position":"left","width":150,"height":290},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
-</html>
+<script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/blog/live2dw/assets/z16.model.json"},"display":{"position":"left","width":150,"height":290},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 
+</html>

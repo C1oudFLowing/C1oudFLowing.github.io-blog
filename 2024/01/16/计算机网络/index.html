@@ -1,15 +1,16 @@
 
 <!DOCTYPE html>
 <html lang="zh-CN">
-    <head>
-        <meta charset="UTF-8" />
-        <title>计算机网络 | 雲流のLowest World</title>
-        <meta name="author" content="C1oudfL0w0" />
-        <meta name="description" content="" />
-        <meta name="keywords" content="" />
-        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
-        <link rel="icon" href="/blog/images/croppedImage_cropped.jpg" />
-        <!-- cdn挂掉的时候要可以引用本地 -->
+
+<head>
+    <meta charset="UTF-8" />
+    <title>计算机网络 | 雲流のLowest World</title>
+    <meta name="author" content="C1oudfL0w0" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <link rel="icon" href="/blog/images/croppedImage_cropped.jpg" />
+    <!-- cdn挂掉的时候要可以引用本地 -->
 <!-- <script src="https://cdn.staticfile.org/vue/3.2.45/vue.global.prod.min.js"></script> -->
 <script src="/blog/js/vue.global.prod.min.js"></script>
 <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.2.1/css/all.min.css" />
@@ -44,8 +45,8 @@
 <!--<script src="/blog/js/jquery.min.js"></script>-->
 <!-- 引入不蒜子-->
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    
-        <script type="text/javascript" src="/blog/libs/codeBlock/codeBlockFuction.js"></script>
+
+    <script type="text/javascript" src="/blog/libs/codeBlock/codeBlockFuction.js"></script>
 <!-- 代码语言 -->
 <script type="text/javascript" src="/blog/libs/codeBlock/codeLang.js"></script>
 <!-- 代码块复制 -->
@@ -56,38 +57,41 @@
 <script type="text/javascript" src="/blog/libs/codeBlock/codeShrink.js"></script> 
 <!-- 代码块折行 -->
 <style type="text/css">code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }</style>
-    <meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/blog/atom.xml" title="雲流のLowest World" type="application/atom+xml">
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/blog/atom.xml" title="雲流のLowest World" type="application/atom+xml">
 </head>
-    <body>
-        <!--flag{never_g0nna g1ve_you up}-->
-        
-        <!-- 页面点击特效 -->
-        <script type = "text/javascript" src = "/blog/js/love-click.js"></script>
 
-        <!-- 浏览器标题 -->
-         <script async type="text/javascript" src="/blog/js/FunnyTitle.js"></script>
-         
-        <!--动态背景-->
-        <script type="text/javascript"
-        color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+<body>
+    <!--flag{never_g0nna g1ve_you up}-->
 
-        <!--文章目录-->
-        
+    <!-- 页面点击特效 -->
+    <script type="text/javascript" src="/blog/js/love-click.js"></script>
+
+    <!-- 浏览器标题 -->
+    <script async type="text/javascript" src="/blog/js/FunnyTitle.js"></script>
+
+    <!-- 动态背景 -->
+    
+
+    <!--文章目录-->
+    
     <div id="toc" class="toc-article">
     <h3><i class="fas fa-stream"></i>  目录</h3>
       <div class="toc-title"></div>
       <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82"><span class="toc-number">2.</span> <span class="toc-text">数据链路层</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E4%B8%AA%E5%9F%BA%E6%9C%AC%E9%97%AE%E9%A2%98"><span class="toc-number">2.1.</span> <span class="toc-text">三个基本问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%81%E8%A3%85%E6%88%90%E5%B8%A7"><span class="toc-number">2.1.1.</span> <span class="toc-text">封装成帧</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%8F%E6%98%8E%E4%BC%A0%E8%BE%93"><span class="toc-number">2.1.2.</span> <span class="toc-text">透明传输</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%AE%E9%94%99%E6%A3%80%E6%B5%8B"><span class="toc-number">2.1.3.</span> <span class="toc-text">差错检测</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BE%AA%E7%8E%AF%E5%86%97%E4%BD%99%E6%A3%80%E9%AA%8CCRC"><span class="toc-number">2.1.3.1.</span> <span class="toc-text">循环冗余检验CRC</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%82%B9%E5%AF%B9%E7%82%B9PPP%E5%8D%8F%E8%AE%AE"><span class="toc-number">2.2.</span> <span class="toc-text">点对点PPP协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%A7%E6%A0%BC%E5%BC%8F"><span class="toc-number">2.2.1.</span> <span class="toc-text">帧格式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A5%E5%A4%AA%E7%BD%91%E6%A0%87%E5%87%86"><span class="toc-number">2.3.</span> <span class="toc-text">以太网标准</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#MAC%E5%B1%82"><span class="toc-number">2.3.1.</span> <span class="toc-text">MAC层</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A1%AC%E4%BB%B6%E5%9C%B0%E5%9D%80-x2F-%E7%89%A9%E7%90%86%E5%9C%B0%E5%9D%80-x2F-MAC%E5%9C%B0%E5%9D%80"><span class="toc-number">2.3.1.1.</span> <span class="toc-text">硬件地址&#x2F;物理地址&#x2F;MAC地址</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F"><span class="toc-number">2.3.1.2.</span> <span class="toc-text">格式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%A9%E5%B1%95%E4%BB%A5%E5%A4%AA%E7%BD%91"><span class="toc-number">2.3.2.</span> <span class="toc-text">扩展以太网</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%A4%E6%8D%A2%E6%9C%BA"><span class="toc-number">2.3.2.1.</span> <span class="toc-text">交换机</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E5%B1%80%E5%9F%9F%E7%BD%91VLAN"><span class="toc-number">2.3.3.</span> <span class="toc-text">虚拟局域网VLAN</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSMA-x2F-CD%E5%8D%8F%E8%AE%AE"><span class="toc-number">2.4.</span> <span class="toc-text">CSMA&#x2F;CD协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%80%E9%81%BF%E7%AE%97%E6%B3%95"><span class="toc-number">2.4.1.</span> <span class="toc-text">退避算法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E9%9B%86%E7%BA%BF%E5%99%A8%E7%9A%84%E6%98%9F%E5%9E%8B%E6%8B%93%E6%89%91"><span class="toc-number">2.5.</span> <span class="toc-text">使用集线器的星型拓扑</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E5%B1%82"><span class="toc-number">3.</span> <span class="toc-text">网络层</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E5%8A%9F%E8%83%BD"><span class="toc-number">3.1.</span> <span class="toc-text">主要功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%A4%E7%A7%8D%E6%9C%8D%E5%8A%A1"><span class="toc-number">3.2.</span> <span class="toc-text">两种服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E9%99%85%E5%8D%8F%E8%AE%AEIP"><span class="toc-number">3.3.</span> <span class="toc-text">网际协议IP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#IP%E5%9C%B0%E5%9D%80"><span class="toc-number">3.3.1.</span> <span class="toc-text">IP地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E7%B1%BB"><span class="toc-number">3.3.2.</span> <span class="toc-text">分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A0%E5%88%86%E7%B1%BB%E7%BC%96%E5%9D%80CIDR"><span class="toc-number">3.3.3.</span> <span class="toc-text">无分类编址CIDR</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E5%89%8D%E7%BC%80"><span class="toc-number">3.3.3.1.</span> <span class="toc-text">网络前缀</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%B0%E5%9D%80%E5%9D%97"><span class="toc-number">3.3.3.2.</span> <span class="toc-text">地址块</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%B0%E5%9D%80%E6%8E%A9%E7%A0%81-x2F-%E5%AD%90%E7%BD%91%E6%8E%A9%E7%A0%81"><span class="toc-number">3.3.3.3.</span> <span class="toc-text">地址掩码&#x2F;子网掩码</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IP%E5%9C%B0%E5%9D%80%E4%B8%8EMAC%E5%9C%B0%E5%9D%80%E5%8C%BA%E5%88%AB"><span class="toc-number">3.3.4.</span> <span class="toc-text">IP地址与MAC地址区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%B0%E5%9D%80%E8%A7%A3%E6%9E%90%E5%8D%8F%E8%AE%AEARP"><span class="toc-number">3.3.5.</span> <span class="toc-text">地址解析协议ARP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IP%E6%95%B0%E6%8D%AE%E6%8A%A5%E6%A0%BC%E5%BC%8F"><span class="toc-number">3.3.6.</span> <span class="toc-text">IP数据报格式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IP%E5%B1%82%E5%88%86%E7%BB%84%E8%BD%AC%E5%8F%91"><span class="toc-number">3.4.</span> <span class="toc-text">IP层分组转发</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E7%BB%88%E7%82%B9%E7%9A%84%E8%BD%AC%E5%8F%91"><span class="toc-number">3.4.1.</span> <span class="toc-text">基于终点的转发</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E9%95%BF%E5%89%8D%E7%BC%80%E5%8C%B9%E9%85%8D"><span class="toc-number">3.4.2.</span> <span class="toc-text">最长前缀匹配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E7%BB%84%E8%BD%AC%E5%8F%91%E7%AE%97%E6%B3%95"><span class="toc-number">3.4.3.</span> <span class="toc-text">分组转发算法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E9%99%85%E6%8E%A7%E5%88%B6%E6%8A%A5%E6%96%87%E5%8D%8F%E8%AE%AEICMP"><span class="toc-number">3.5.</span> <span class="toc-text">网际控制报文协议ICMP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%A5%E6%96%87%E7%A7%8D%E7%B1%BB"><span class="toc-number">3.5.1.</span> <span class="toc-text">报文种类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E2%80%94%E2%80%94PING"><span class="toc-number">3.5.2.</span> <span class="toc-text">应用——PING</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E2%80%94%E2%80%94traceroute"><span class="toc-number">3.5.3.</span> <span class="toc-text">应用——traceroute</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1%E9%80%89%E6%8B%A9%E5%8D%8F%E8%AE%AE"><span class="toc-number">3.6.</span> <span class="toc-text">路由选择协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E9%83%A8%E7%BD%91%E5%85%B3%E5%8D%8F%E8%AE%AERIP"><span class="toc-number">3.6.1.</span> <span class="toc-text">内部网关协议RIP</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B7%9D%E7%A6%BB%E5%90%91%E9%87%8F%E7%AE%97%E6%B3%95"><span class="toc-number">3.6.1.1.</span> <span class="toc-text">距离向量算法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E9%83%A8%E7%BD%91%E5%85%B3%E5%8D%8F%E8%AE%AEOSPF"><span class="toc-number">3.6.2.</span> <span class="toc-text">内部网关协议OSPF</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%90%E8%BE%93%E5%B1%82"><span class="toc-number">4.</span> <span class="toc-text">运输层</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E6%95%B0%E6%8D%AE%E6%8A%A5%E5%8D%8F%E8%AE%AEUDP"><span class="toc-number">4.1.</span> <span class="toc-text">用户数据报协议UDP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A6%96%E9%83%A8%E6%A0%BC%E5%BC%8F"><span class="toc-number">4.1.1.</span> <span class="toc-text">首部格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%A3%80%E9%AA%8C%E5%92%8C"><span class="toc-number">4.1.2.</span> <span class="toc-text">计算检验和</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%A0%E8%BE%93%E6%8E%A7%E5%88%B6%E5%8D%8F%E8%AE%AETCP"><span class="toc-number">4.2.</span> <span class="toc-text">传输控制协议TCP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9E%E6%8E%A5"><span class="toc-number">4.2.1.</span> <span class="toc-text">连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A6%96%E9%83%A8%E6%A0%BC%E5%BC%8F-1"><span class="toc-number">4.2.2.</span> <span class="toc-text">首部格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E9%9D%A0%E4%BC%A0%E8%BE%93"><span class="toc-number">4.2.3.</span> <span class="toc-text">可靠传输</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%81%9C%E6%AD%A2%E7%AD%89%E5%BE%85%E5%8D%8F%E8%AE%AE-x2F-%E8%87%AA%E5%8A%A8%E9%87%8D%E4%BC%A0%E5%8D%8F%E8%AE%AEARQ"><span class="toc-number">4.2.3.1.</span> <span class="toc-text">停止等待协议&#x2F;自动重传协议ARQ</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9E%E7%BB%ADARQ%E5%8D%8F%E8%AE%AE"><span class="toc-number">4.2.3.2.</span> <span class="toc-text">连续ARQ协议</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E2%80%94%E2%80%94%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E6%9C%BA%E5%88%B6"><span class="toc-number">4.2.3.3.</span> <span class="toc-text">实现——滑动窗口机制</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6"><span class="toc-number">4.2.4.</span> <span class="toc-text">流量控制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6"><span class="toc-number">4.2.5.</span> <span class="toc-text">拥塞控制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%85%A2%E5%BC%80%E5%A7%8B"><span class="toc-number">4.2.5.1.</span> <span class="toc-text">慢开始</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8B%A5%E5%A1%9E%E9%81%BF%E5%85%8D"><span class="toc-number">4.2.5.2.</span> <span class="toc-text">拥塞避免</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BF%AB%E9%87%8D%E4%BC%A0-amp-%E5%BF%AB%E6%81%A2%E5%A4%8D"><span class="toc-number">4.2.5.3.</span> <span class="toc-text">快重传&amp;快恢复</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E8%BE%93%E8%BF%9E%E6%8E%A5%E7%AE%A1%E7%90%86"><span class="toc-number">4.2.6.</span> <span class="toc-text">运输连接管理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9E%E6%8E%A5%E5%BB%BA%E7%AB%8B%E2%80%94%E2%80%94%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B"><span class="toc-number">4.2.6.1.</span> <span class="toc-text">连接建立——三次握手</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9E%E6%8E%A5%E9%87%8A%E6%94%BE%E2%80%94%E2%80%94%E4%B8%A4%E6%AC%A1%E4%BA%8C%E6%AC%A1%E6%8F%A1%E6%89%8B"><span class="toc-number">4.2.6.2.</span> <span class="toc-text">连接释放——两次二次握手</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AB%AF%E5%8F%A3%E5%8F%B7"><span class="toc-number">4.3.</span> <span class="toc-text">端口号</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%EF%BC%9A%E8%BF%90%E8%BE%93%E5%B1%82%E7%AB%AF%E5%8F%A3%E8%A7%82%E5%AF%9F%E5%AE%9E%E9%AA%8C"><span class="toc-number">4.3.1.</span> <span class="toc-text">实验：运输层端口观察实验</span></a></li></ol></li></ol></li></ol>
     </div>
   
-        
-        <!--返回顶部-->
-        <div id="totop" style="position:fixed;bottom:50px;right:60px;font-size: 48px;cursor: pointer;z-index: 10;">
-            <a title="返回顶部">↑</a>
-            </div>
-        <script src="/blog/js/totop.js"></script>
 
-        <div id="layout">
-            <transition name="fade">
+    <!--返回顶部-->
+    <div id="totop" style="position:fixed;bottom:50px;right:60px;font-size: 48px;cursor: pointer;z-index: 10;">
+        <a title="返回顶部">↑</a>
+    </div>
+    <script src="/blog/js/totop.js"></script>
+
+    <div id="layout">
+        
+            <div id="content-background" ref="contentBackground" data-images="https://pic.imgdb.cn/item/65d61d809f345e8d03b8bc7a.png"></div>
+            
+        <transition name="fade">
             <div id="loading" v-show="loading">
                 <div id="loading-circle">
                     <h2>LOADING</h2>
@@ -97,8 +101,8 @@
                     <img src="/blog/images/loading.gif" />
                 </div>
             </div>
-            </transition>
-            <transition name="into">
+        </transition>
+        <transition name="into">
             <div id="main" v-show="!loading">
                 <nav id="menu" ref="menu">
     <div class="desktop-menu">
@@ -957,24 +961,24 @@ RIP 520<span aria-hidden="true" class="line-numbers-rows"><span></span><span></s
 </div>
 
             </div>
-            </transition>
-            
-            <transition name="fade">
+        </transition>
+        
+        <transition name="fade">
             <div id="preview" ref="preview" v-show="previewShow">
                 <img id="preview-content" ref="previewContent" />
             </div>
-            </transition>
-            
-        </div>
-        <script src="/blog/js/main.js"></script>
+        </transition>
         
-        
+    </div>
+    <script src="/blog/js/main.js"></script>
+    
+    
 
 
 
 
-         
-        
+    
+    
     <div id="vcomments"></div>
     
         <script src="/blog/js/lib/valine.min.js"></script>
@@ -989,7 +993,7 @@ RIP 520<span aria-hidden="true" class="line-numbers-rows"><span></span><span></s
                 });
             </script>
 
-        <footer id="footer">
+    <footer id="footer">
     <div id="footer-wrap">
         <div>
             &copy;
@@ -1007,6 +1011,6 @@ RIP 520<span aria-hidden="true" class="line-numbers-rows"><span></span><span></s
     </div>
 </footer>
 
-    <script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/blog/live2dw/assets/z16.model.json"},"display":{"position":"left","width":150,"height":290},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
-</html>
+<script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/blog/live2dw/assets/z16.model.json"},"display":{"position":"left","width":150,"height":290},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 
+</html>

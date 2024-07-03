@@ -1,15 +1,16 @@
 
 <!DOCTYPE html>
 <html lang="zh-CN">
-    <head>
-        <meta charset="UTF-8" />
-        <title>PHP杂项 | 雲流のLowest World</title>
-        <meta name="author" content="C1oudfL0w0" />
-        <meta name="description" content="" />
-        <meta name="keywords" content="" />
-        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
-        <link rel="icon" href="/blog/images/croppedImage_cropped.jpg" />
-        <!-- cdn挂掉的时候要可以引用本地 -->
+
+<head>
+    <meta charset="UTF-8" />
+    <title>PHP杂项 | 雲流のLowest World</title>
+    <meta name="author" content="C1oudfL0w0" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <link rel="icon" href="/blog/images/croppedImage_cropped.jpg" />
+    <!-- cdn挂掉的时候要可以引用本地 -->
 <!-- <script src="https://cdn.staticfile.org/vue/3.2.45/vue.global.prod.min.js"></script> -->
 <script src="/blog/js/vue.global.prod.min.js"></script>
 <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.2.1/css/all.min.css" />
@@ -44,8 +45,8 @@
 <!--<script src="/blog/js/jquery.min.js"></script>-->
 <!-- 引入不蒜子-->
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    
-        <script type="text/javascript" src="/blog/libs/codeBlock/codeBlockFuction.js"></script>
+
+    <script type="text/javascript" src="/blog/libs/codeBlock/codeBlockFuction.js"></script>
 <!-- 代码语言 -->
 <script type="text/javascript" src="/blog/libs/codeBlock/codeLang.js"></script>
 <!-- 代码块复制 -->
@@ -56,38 +57,41 @@
 <script type="text/javascript" src="/blog/libs/codeBlock/codeShrink.js"></script> 
 <!-- 代码块折行 -->
 <style type="text/css">code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }</style>
-    <meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/blog/atom.xml" title="雲流のLowest World" type="application/atom+xml">
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/blog/atom.xml" title="雲流のLowest World" type="application/atom+xml">
 </head>
-    <body>
-        <!--flag{never_g0nna g1ve_you up}-->
-        
-        <!-- 页面点击特效 -->
-        <script type = "text/javascript" src = "/blog/js/love-click.js"></script>
 
-        <!-- 浏览器标题 -->
-         <script async type="text/javascript" src="/blog/js/FunnyTitle.js"></script>
-         
-        <!--动态背景-->
-        <script type="text/javascript"
-        color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+<body>
+    <!--flag{never_g0nna g1ve_you up}-->
 
-        <!--文章目录-->
-        
+    <!-- 页面点击特效 -->
+    <script type="text/javascript" src="/blog/js/love-click.js"></script>
+
+    <!-- 浏览器标题 -->
+    <script async type="text/javascript" src="/blog/js/FunnyTitle.js"></script>
+
+    <!-- 动态背景 -->
+    
+
+    <!--文章目录-->
+    
     <div id="toc" class="toc-article">
     <h3><i class="fas fa-stream"></i>  目录</h3>
       <div class="toc-title"></div>
       <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#PHP"><span class="toc-number">1.</span> <span class="toc-text">PHP</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#phpinfo-%E5%87%BD%E6%95%B0"><span class="toc-number">1.1.</span> <span class="toc-text">phpinfo()函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#system-%E5%87%BD%E6%95%B0"><span class="toc-number">1.2.</span> <span class="toc-text">system()函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#parse-url%E5%87%BD%E6%95%B0"><span class="toc-number">1.3.</span> <span class="toc-text">parse_url函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#php%E9%A2%84%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F-SERVER"><span class="toc-number">1.4.</span> <span class="toc-text">php预定义变量$_SERVER</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#create-function%E5%87%BD%E6%95%B0"><span class="toc-number">1.5.</span> <span class="toc-text">create_function函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#foreach-%E5%87%BD%E6%95%B0"><span class="toc-number">1.6.</span> <span class="toc-text">foreach()函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mb-substr-%E5%87%BD%E6%95%B0"><span class="toc-number">1.7.</span> <span class="toc-text">mb_substr()函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mb-strpos-%E5%87%BD%E6%95%B0"><span class="toc-number">1.8.</span> <span class="toc-text">mb_strpos()函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#strstr-%E5%87%BD%E6%95%B0"><span class="toc-number">1.9.</span> <span class="toc-text">strstr()函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#strrev-%E5%87%BD%E6%95%B0"><span class="toc-number">1.10.</span> <span class="toc-text">strrev()函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#str-ireplace-%E5%87%BD%E6%95%B0"><span class="toc-number">1.11.</span> <span class="toc-text">str_ireplace()函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#lcfirst-%E5%87%BD%E6%95%B0"><span class="toc-number">1.12.</span> <span class="toc-text">lcfirst()函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#glob-%E5%87%BD%E6%95%B0"><span class="toc-number">1.13.</span> <span class="toc-text">glob()函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#print%E4%B8%8Eprint-r"><span class="toc-number">1.14.</span> <span class="toc-text">print与print_r</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#file-put-contents-%E5%87%BD%E6%95%B0"><span class="toc-number">1.15.</span> <span class="toc-text">file_put_contents()函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#explode-%E5%87%BD%E6%95%B0"><span class="toc-number">1.16.</span> <span class="toc-text">explode()函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#array-push-%E5%87%BD%E6%95%B0"><span class="toc-number">1.17.</span> <span class="toc-text">array_push()函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#array-pop-%E5%87%BD%E6%95%B0"><span class="toc-number">1.18.</span> <span class="toc-text">array_pop()函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#array-walk-%E5%87%BD%E6%95%B0"><span class="toc-number">1.19.</span> <span class="toc-text">array_walk()函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hexdec-%E5%87%BD%E6%95%B0"><span class="toc-number">1.20.</span> <span class="toc-text">hexdec()函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hex2bin-%E5%87%BD%E6%95%B0"><span class="toc-number">1.21.</span> <span class="toc-text">hex2bin()函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#error-reporting-0"><span class="toc-number">1.22.</span> <span class="toc-text">error_reporting(0)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#assert-%E5%87%BD%E6%95%B0"><span class="toc-number">1.23.</span> <span class="toc-text">assert()函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#extract-%E5%87%BD%E6%95%B0"><span class="toc-number">1.24.</span> <span class="toc-text">extract()函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#stripos-%E5%87%BD%E6%95%B0"><span class="toc-number">1.25.</span> <span class="toc-text">stripos()函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.26.</span> <span class="toc-text">@</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#-1"><span class="toc-number">1.27.</span> <span class="toc-text"></span></a></li></ol></li></ol>
     </div>
   
-        
-        <!--返回顶部-->
-        <div id="totop" style="position:fixed;bottom:50px;right:60px;font-size: 48px;cursor: pointer;z-index: 10;">
-            <a title="返回顶部">↑</a>
-            </div>
-        <script src="/blog/js/totop.js"></script>
 
-        <div id="layout">
-            <transition name="fade">
+    <!--返回顶部-->
+    <div id="totop" style="position:fixed;bottom:50px;right:60px;font-size: 48px;cursor: pointer;z-index: 10;">
+        <a title="返回顶部">↑</a>
+    </div>
+    <script src="/blog/js/totop.js"></script>
+
+    <div id="layout">
+        
+            <div id="content-background" ref="contentBackground" data-images="https://pic.imgdb.cn/item/65d61d809f345e8d03b8bc7a.png"></div>
+            
+        <transition name="fade">
             <div id="loading" v-show="loading">
                 <div id="loading-circle">
                     <h2>LOADING</h2>
@@ -97,8 +101,8 @@
                     <img src="/blog/images/loading.gif" />
                 </div>
             </div>
-            </transition>
-            <transition name="into">
+        </transition>
+        <transition name="into">
             <div id="main" v-show="!loading">
                 <nav id="menu" ref="menu">
     <div class="desktop-menu">
@@ -248,7 +252,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/PHP/" style="color: #00a596">PHP</a>
+                <a href="/blog/tags/PHP/" style="color: #ffa2c4">PHP</a>
             </span>
             
         </span>
@@ -594,24 +598,24 @@ data 要写入的数据<span class="token punctuation">(</span>支持伪协议<s
 </div>
 
             </div>
-            </transition>
-            
-            <transition name="fade">
+        </transition>
+        
+        <transition name="fade">
             <div id="preview" ref="preview" v-show="previewShow">
                 <img id="preview-content" ref="previewContent" />
             </div>
-            </transition>
-            
-        </div>
-        <script src="/blog/js/main.js"></script>
+        </transition>
         
-        
+    </div>
+    <script src="/blog/js/main.js"></script>
+    
+    
 
 
 
 
-         
-        
+    
+    
     <div id="vcomments"></div>
     
         <script src="/blog/js/lib/valine.min.js"></script>
@@ -626,7 +630,7 @@ data 要写入的数据<span class="token punctuation">(</span>支持伪协议<s
                 });
             </script>
 
-        <footer id="footer">
+    <footer id="footer">
     <div id="footer-wrap">
         <div>
             &copy;
@@ -644,6 +648,6 @@ data 要写入的数据<span class="token punctuation">(</span>支持伪协议<s
     </div>
 </footer>
 
-    <script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/blog/live2dw/assets/z16.model.json"},"display":{"position":"left","width":150,"height":290},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
-</html>
+<script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/blog/live2dw/assets/z16.model.json"},"display":{"position":"left","width":150,"height":290},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 
+</html>

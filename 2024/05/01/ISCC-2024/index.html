@@ -1,15 +1,16 @@
 
 <!DOCTYPE html>
 <html lang="zh-CN">
-    <head>
-        <meta charset="UTF-8" />
-        <title>ISCC 2024 | 雲流のLowest World</title>
-        <meta name="author" content="C1oudfL0w0" />
-        <meta name="description" content="" />
-        <meta name="keywords" content="" />
-        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
-        <link rel="icon" href="/blog/images/croppedImage_cropped.jpg" />
-        <!-- cdn挂掉的时候要可以引用本地 -->
+
+<head>
+    <meta charset="UTF-8" />
+    <title>ISCC 2024 | 雲流のLowest World</title>
+    <meta name="author" content="C1oudfL0w0" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <link rel="icon" href="/blog/images/croppedImage_cropped.jpg" />
+    <!-- cdn挂掉的时候要可以引用本地 -->
 <!-- <script src="https://cdn.staticfile.org/vue/3.2.45/vue.global.prod.min.js"></script> -->
 <script src="/blog/js/vue.global.prod.min.js"></script>
 <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.2.1/css/all.min.css" />
@@ -44,8 +45,8 @@
 <!--<script src="/blog/js/jquery.min.js"></script>-->
 <!-- 引入不蒜子-->
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    
-        <script type="text/javascript" src="/blog/libs/codeBlock/codeBlockFuction.js"></script>
+
+    <script type="text/javascript" src="/blog/libs/codeBlock/codeBlockFuction.js"></script>
 <!-- 代码语言 -->
 <script type="text/javascript" src="/blog/libs/codeBlock/codeLang.js"></script>
 <!-- 代码块复制 -->
@@ -56,38 +57,41 @@
 <script type="text/javascript" src="/blog/libs/codeBlock/codeShrink.js"></script> 
 <!-- 代码块折行 -->
 <style type="text/css">code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }</style>
-    <meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/blog/atom.xml" title="雲流のLowest World" type="application/atom+xml">
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/blog/atom.xml" title="雲流のLowest World" type="application/atom+xml">
 </head>
-    <body>
-        <!--flag{never_g0nna g1ve_you up}-->
-        
-        <!-- 页面点击特效 -->
-        <script type = "text/javascript" src = "/blog/js/love-click.js"></script>
 
-        <!-- 浏览器标题 -->
-         <script async type="text/javascript" src="/blog/js/FunnyTitle.js"></script>
-         
-        <!--动态背景-->
-        <script type="text/javascript"
-        color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+<body>
+    <!--flag{never_g0nna g1ve_you up}-->
 
-        <!--文章目录-->
-        
+    <!-- 页面点击特效 -->
+    <script type="text/javascript" src="/blog/js/love-click.js"></script>
+
+    <!-- 浏览器标题 -->
+    <script async type="text/javascript" src="/blog/js/FunnyTitle.js"></script>
+
+    <!-- 动态背景 -->
+    
+
+    <!--文章目录-->
+    
     <div id="toc" class="toc-article">
     <h3><i class="fas fa-stream"></i>  目录</h3>
       <div class="toc-title"></div>
       <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Web"><span class="toc-number">2.</span> <span class="toc-text">Web</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%98%E6%B2%A1%E6%83%B3%E5%A5%BD%E5%90%8D%E5%AD%97%E7%9A%84%E5%A1%94%E9%98%B2%E6%B8%B8%E6%88%8F"><span class="toc-number">2.1.</span> <span class="toc-text">还没想好名字的塔防游戏</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Flask%E4%B8%AD%E7%9A%84pin%E5%80%BC%E8%AE%A1%E7%AE%97"><span class="toc-number">2.2.</span> <span class="toc-text">Flask中的pin值计算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8E%E6%97%B6%E4%BF%B1%E8%BF%9B"><span class="toc-number">2.3.</span> <span class="toc-text">与时俱进</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1"><span class="toc-number">2.4.</span> <span class="toc-text">代码审计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E7%A5%9E%E5%90%AF%E5%8A%A8"><span class="toc-number">2.5.</span> <span class="toc-text">原神启动</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%99%E9%A2%98%E6%88%91%E5%87%BA%E4%B8%8D%E4%BA%86%E4%BA%86"><span class="toc-number">2.6.</span> <span class="toc-text">这题我出不了了</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9E%E6%9D%A5%E5%90%A7%E6%B0%B8%E8%BF%9C%E6%BB%B4%E7%A5%9E"><span class="toc-number">2.7.</span> <span class="toc-text">回来吧永远滴神</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SSTI"><span class="toc-number">2.7.1.</span> <span class="toc-text">SSTI</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%BE%97flag1%EF%BC%8C2"><span class="toc-number">2.7.2.</span> <span class="toc-text">获得flag1，2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E5%AF%86flag3"><span class="toc-number">2.7.3.</span> <span class="toc-text">解密flag3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flag0"><span class="toc-number">2.7.4.</span> <span class="toc-text">flag0</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%89%E8%BF%9B%E9%98%BF%E5%B8%95%E5%A5%87%E7%9A%84%E5%B7%A5%E8%B5%84"><span class="toc-number">2.8.</span> <span class="toc-text">掉进阿帕奇的工资</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BA%90%E7%A0%81%E6%B1%87%E6%80%BB"><span class="toc-number">2.8.1.</span> <span class="toc-text">源码汇总</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#continue%E2%80%A6"><span class="toc-number">2.8.2.</span> <span class="toc-text">continue…</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E9%81%93%E6%99%AE%E9%80%9A%E7%9A%84XSS%E9%A2%98%E7%9B%AE"><span class="toc-number">2.9.</span> <span class="toc-text">一道普通的XSS题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%8A%E7%8B%82%E9%A3%99%E3%80%8B%E7%9F%A5%E5%A4%9A%E5%B0%91%EF%BC%88%E6%93%82%E5%8F%B0%EF%BC%89"><span class="toc-number">2.10.</span> <span class="toc-text">《狂飙》知多少（擂台）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%96%9C%E6%AC%A2%E7%9A%84%E4%B8%80%E9%9B%86%EF%BC%88%E6%93%82%E5%8F%B0%EF%BC%89"><span class="toc-number">2.11.</span> <span class="toc-text">最喜欢的一集（擂台）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Pwn"><span class="toc-number">3.</span> <span class="toc-text">Pwn</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ISCC-easy"><span class="toc-number">3.1.</span> <span class="toc-text">ISCC_easy</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#easyshell"><span class="toc-number">3.2.</span> <span class="toc-text">easyshell</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reverse"><span class="toc-number">4.</span> <span class="toc-text">Reverse</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%B7%E5%A4%B1%E4%B9%8B%E9%97%A8"><span class="toc-number">4.1.</span> <span class="toc-text">迷失之门</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Badcode"><span class="toc-number">4.2.</span> <span class="toc-text">Badcode</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CrypticConundrum"><span class="toc-number">4.3.</span> <span class="toc-text">CrypticConundrum</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WinterBegins"><span class="toc-number">4.4.</span> <span class="toc-text">WinterBegins</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Misc"><span class="toc-number">5.</span> <span class="toc-text">Misc</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Number-is-the-key"><span class="toc-number">5.1.</span> <span class="toc-text">Number_is_the_key</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#FunZip"><span class="toc-number">5.2.</span> <span class="toc-text">FunZip</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RSA-KU"><span class="toc-number">5.3.</span> <span class="toc-text">RSA_KU</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%90%E8%AF%AD%E5%AD%A6%E4%B9%A0"><span class="toc-number">5.4.</span> <span class="toc-text">成语学习</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Mobile"><span class="toc-number">6.</span> <span class="toc-text">Mobile</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Puzzle-Game"><span class="toc-number">6.1.</span> <span class="toc-text">Puzzle_Game</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E6%88%98%E9%A2%98"><span class="toc-number">7.</span> <span class="toc-text">实战题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%B6%E6%AE%B5%E4%B8%80"><span class="toc-number">7.1.</span> <span class="toc-text">阶段一</span></a></li></ol></li></ol>
     </div>
   
-        
-        <!--返回顶部-->
-        <div id="totop" style="position:fixed;bottom:50px;right:60px;font-size: 48px;cursor: pointer;z-index: 10;">
-            <a title="返回顶部">↑</a>
-            </div>
-        <script src="/blog/js/totop.js"></script>
 
-        <div id="layout">
-            <transition name="fade">
+    <!--返回顶部-->
+    <div id="totop" style="position:fixed;bottom:50px;right:60px;font-size: 48px;cursor: pointer;z-index: 10;">
+        <a title="返回顶部">↑</a>
+    </div>
+    <script src="/blog/js/totop.js"></script>
+
+    <div id="layout">
+        
+            <div id="content-background" ref="contentBackground" data-images="https://pic.imgdb.cn/item/65d61d809f345e8d03b8bc7a.png"></div>
+            
+        <transition name="fade">
             <div id="loading" v-show="loading">
                 <div id="loading-circle">
                     <h2>LOADING</h2>
@@ -97,8 +101,8 @@
                     <img src="/blog/images/loading.gif" />
                 </div>
             </div>
-            </transition>
-            <transition name="into">
+        </transition>
+        <transition name="into">
             <div id="main" v-show="!loading">
                 <nav id="menu" ref="menu">
     <div class="desktop-menu">
@@ -248,12 +252,12 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/RCE/" style="color: #03a9f4">RCE</a>
+                <a href="/blog/tags/RCE/" style="color: #ffa2c4">RCE</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/blog/tags/Android/" style="color: #ffa2c4">Android</a>
+                <a href="/blog/tags/Android/" style="color: #00a596">Android</a>
             </span>
             
             <span class="tag">
@@ -263,7 +267,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/XSS/" style="color: #00a596">XSS</a>
+                <a href="/blog/tags/XSS/" style="color: #00bcd4">XSS</a>
             </span>
             
             <span class="tag">
@@ -273,12 +277,12 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/fmt/" style="color: #03a9f4">fmt</a>
+                <a href="/blog/tags/fmt/" style="color: #ffa2c4">fmt</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/blog/tags/flask/" style="color: #ffa2c4">flask</a>
+                <a href="/blog/tags/flask/" style="color: #00a596">flask</a>
             </span>
             
             <span class="tag">
@@ -293,12 +297,12 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/RSA/" style="color: #ffa2c4">RSA</a>
+                <a href="/blog/tags/RSA/" style="color: #00a596">RSA</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/" style="color: #00bcd4">流量分析</a>
+                <a href="/blog/tags/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/" style="color: #ffa2c4">流量分析</a>
             </span>
             
         </span>
@@ -1486,7 +1490,7 @@ _<span class="token punctuation">,</span>data <span class="token operator">=</sp
 
 <p>解码一下debug的内容得到<code>fs.readFile(&#39;printFlag&#39;, &#39;utf8&#39;, (err, data) =&gt; &#123;console.log(data);&#125;);</code></p>
 <p>即flag文件为<code>printFlag</code></p>
-<p>这里的waf拉满了，怎么办呢，注意到<a href="mailto:&#112;&#103;&#x40;&#55;&#46;&#x30;&#x2e;&#x32;">&#112;&#103;&#x40;&#55;&#46;&#x30;&#x2e;&#x32;</a>，即postgresql注入，又因为是nodejs起的服务，有p神的文章：<a target="_blank" rel="noopener" href="https://www.leavesongs.com/PENETRATION/node-postgres-code-execution-vulnerability.html">https://www.leavesongs.com/PENETRATION/node-postgres-code-execution-vulnerability.html</a></p>
+<p>这里的waf拉满了，怎么办呢，注意到<a href="mailto:&#112;&#x67;&#x40;&#x37;&#x2e;&#x30;&#x2e;&#x32;">&#112;&#x67;&#x40;&#x37;&#x2e;&#x30;&#x2e;&#x32;</a>，即postgresql注入，又因为是nodejs起的服务，有p神的文章：<a target="_blank" rel="noopener" href="https://www.leavesongs.com/PENETRATION/node-postgres-code-execution-vulnerability.html">https://www.leavesongs.com/PENETRATION/node-postgres-code-execution-vulnerability.html</a></p>
 <p>又找到一篇文章也是打这个注入的：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/701e6342cd71">[hitcon2017] Sql-so-hard 复现</a></p>
 <p>exp：</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> random <span class="token keyword">import</span> randint
@@ -3692,24 +3696,24 @@ document=this.constructor.constructor("return process")().mainModule.require("ch
 </div>
 
             </div>
-            </transition>
-            
-            <transition name="fade">
+        </transition>
+        
+        <transition name="fade">
             <div id="preview" ref="preview" v-show="previewShow">
                 <img id="preview-content" ref="previewContent" />
             </div>
-            </transition>
-            
-        </div>
-        <script src="/blog/js/main.js"></script>
+        </transition>
         
-        
+    </div>
+    <script src="/blog/js/main.js"></script>
+    
+    
 
 
 
 
-         
-        
+    
+    
     <div id="vcomments"></div>
     
         <script src="/blog/js/lib/valine.min.js"></script>
@@ -3724,7 +3728,7 @@ document=this.constructor.constructor("return process")().mainModule.require("ch
                 });
             </script>
 
-        <footer id="footer">
+    <footer id="footer">
     <div id="footer-wrap">
         <div>
             &copy;
@@ -3742,6 +3746,6 @@ document=this.constructor.constructor("return process")().mainModule.require("ch
     </div>
 </footer>
 
-    <script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/blog/live2dw/assets/z16.model.json"},"display":{"position":"left","width":150,"height":290},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
-</html>
+<script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/blog/live2dw/assets/z16.model.json"},"display":{"position":"left","width":150,"height":290},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 
+</html>
