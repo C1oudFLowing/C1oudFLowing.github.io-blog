@@ -245,6 +245,18 @@
         </span>
         
         
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/%E5%86%85%E7%BD%91/" style="color: #ffa2c4">内网</a>
+            </span>
+            
+        </span>
+        
         <!--文章字数统计-->
         
             
@@ -254,7 +266,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">795字</span>
+        <span class="post-count">794字</span>
       </span>
     </span>
 
@@ -309,7 +321,7 @@
 <h1 id="利用chisel建立socks5代理"><a href="#利用chisel建立socks5代理" class="headerlink" title="利用chisel建立socks5代理"></a>利用chisel建立socks5代理</h1><p>上面的用ssh搭建代理有个很麻烦的地方，就是只能一个一个转发流量，用chisel就可以把所以流量全部转发了</p>
 <hr>
 <h1 id="利用Stowaway搭建网络代理"><a href="#利用Stowaway搭建网络代理" class="headerlink" title="利用Stowaway搭建网络代理"></a>利用Stowaway搭建网络代理</h1><p><a target="_blank" rel="noopener" href="https://github.com/ph4ntonn/Stowaway">https://github.com/ph4ntonn/Stowaway</a></p>
-<h2 id="单层代理"><a href="#单层代理" class="headerlink" title="单层代理"></a>单层代理</h2><p>服务器端运行：</p>
+<h2 id="单层代理"><a href="#单层代理" class="headerlink" title="单层代理"></a>单层代理</h2><p>控制端运行：</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">./linux_x64_admin <span class="token parameter variable">-l</span> <span class="token number">1234</span> <span class="token parameter variable">-s</span> <span class="token number">123</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>监听1234端口并且连接key为123</p>
@@ -325,9 +337,11 @@ socks <span class="token number">6666</span><span aria-hidden="true" class="line
 <h2 id="多层代理"><a href="#多层代理" class="headerlink" title="多层代理"></a>多层代理</h2><p><strong>控制端</strong>运行：</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">./linux_x64_admin <span class="token parameter variable">-l</span> <span class="token number">1234</span> <span class="token parameter variable">-s</span> <span class="token number">123</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
+<p><img src="/blog/2024/04/21/%E5%86%85%E7%BD%91%E4%BB%A3%E7%90%86%E6%90%AD%E5%BB%BA/image-20240720212443757.png" alt="image-20240720212443757"></p>
 <p><strong>VPS1</strong>运行：</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">./linux_x64_agent <span class="token parameter variable">-c</span> 控制端ip:1234 <span class="token parameter variable">-s</span> <span class="token number">123</span> <span class="token parameter variable">--reconnect</span> <span class="token number">8</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
+<p><img src="/blog/2024/04/21/%E5%86%85%E7%BD%91%E4%BB%A3%E7%90%86%E6%90%AD%E5%BB%BA/image-20240720212501307.png" alt="image-20240720212501307"></p>
 <p>建立连接后在<strong>控制端</strong>运行：</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">use <span class="token number">0</span>
 listen
@@ -335,6 +349,7 @@ listen
 <span class="token number">1234</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>相当于在<strong>VPS1</strong>上建立了一个监听1234端口的连接</p>
+<p><img src="/blog/2024/04/21/%E5%86%85%E7%BD%91%E4%BB%A3%E7%90%86%E6%90%AD%E5%BB%BA/image-20240720212516978.png" alt="image-20240720212516978"></p>
 <p>然后用<strong>VPS2</strong>连接VPS1的1234端口</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">./linux_x64_agent <span class="token parameter variable">-c</span> VPS1:1234 <span class="token parameter variable">-s</span> <span class="token number">123</span> <span class="token parameter variable">--reconnect</span> <span class="token number">8</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
