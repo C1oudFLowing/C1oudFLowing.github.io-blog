@@ -1233,7 +1233,7 @@ pre[class*="language-"] {
 .line-numbers {
     padding: 1.5rem 1.5rem 1.5rem 3.2rem !important;
     margin: 1rem 0 !important;
-    background: #272822;
+    /*background: #272822;*/
     overflow: auto;
     border-radius: 0.35rem;
     tab-size: 4;

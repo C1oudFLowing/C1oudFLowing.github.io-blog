@@ -19,6 +19,10 @@
 <link rel="stylesheet" href="/blog/css/search.css" />
 <script> const mixins = {}; </script>
 
+<!-- 引入jQuery-->
+<script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<!--<script src="/blog/js/jquery.min.js"></script>-->
+
 <!--改成了prismjs高亮-->
 
 <script src="/blog/js/lib/prism.js"></script>
@@ -36,13 +40,10 @@
 <script src="/blog/js/lib/home.js"></script>
 
 <link rel="stylesheet" href="/blog/css/main.css" />
-<!-- 引入jQuery-->
-<script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-<!--<script src="/blog/js/jquery.min.js"></script>-->
 <!-- 引入不蒜子-->
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
-    <script type="text/javascript" src="/blog/libs/codeBlock/codeBlockFuction.js"></script>
+<script type="text/javascript" src="/blog/libs/codeBlock/codeBlockFuction.js"></script>
 <!-- 代码语言 -->
 <script type="text/javascript" src="/blog/libs/codeBlock/codeLang.js"></script>
 <!-- 代码块复制 -->
@@ -53,6 +54,7 @@
 <script type="text/javascript" src="/blog/libs/codeBlock/codeShrink.js"></script> 
 <!-- 代码块折行 -->
 <style type="text/css">code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }</style>
+
 <meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/blog/atom.xml" title="雲流のLowest World" type="application/atom+xml">
 </head>
 
@@ -261,6 +263,69 @@
             
 
 <div class="post">
+    <a href="/blog/2023/06/29/Nodejs%E6%BC%8F%E6%B4%9E%E5%AD%A6%E4%B9%A0/">
+        <h2 class="post-title">Nodejs漏洞学习</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/blog/categories/Web/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                Web
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/6/29
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>目前包括语言特性，命令执行，原型链污染，vm沙箱逃逸，反序列化</p>
+<p>部分trick已单独拆分为一篇文章</p>
+<p>参考文章：</p>
+<p><a target="_blank" rel="noopener" href="https://forum.butian.net/share/1561">https://forum.butian.net/share/1561</a></p>
+<p><a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/7184#toc-12">https://xz.aliyun.com/t/7184#toc-12</a></p>
+<p><a target="_blank" rel="noopener" href="https://boogipop.com/2023/03/02/Node.Js%E5%AE%89%E5%85%A8%E5%88%86%E6%9E%90/">https://boogipop.com/2023/03/02/Node.Js%E5%AE%89%E5%85%A8%E5%88%86%E6%9E%90/</a></p>
+<p><a target="_blank" rel="noopener" href="https://zer0peach.github.io/2023/11/20/vm%E6%B2%99%E7%AE%B1%E9%80%83%E9%80%B8%E5%88%9D%E8%AF%86/">https://zer0peach.github.io/2023/11/20/vm%E6%B2%99%E7%AE%B1%E9%80%83%E9%80%B8%E5%88%9D%E8%AF%86/</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.anquanke.com/post/id/237032">https://www.anquanke.com/post/id/237032</a></p>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/blog/tags/Nodejs/" style="color: #00a596">
+                Nodejs
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/blog/tags/%E6%B2%99%E7%AE%B1%E9%80%83%E9%80%B8/" style="color: #03a9f4">
+                沙箱逃逸
+            </a>
+        </span>
+        
+    </div>
+    <a href="/blog/2023/06/29/Nodejs%E6%BC%8F%E6%B4%9E%E5%AD%A6%E4%B9%A0/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
     <a href="/blog/2023/06/28/ctfshow-Nodejs%E4%B8%93%E9%A2%98/">
         <h2 class="post-title">ctfshow Nodejs专题</h2>
     </a>
@@ -300,14 +365,14 @@
         
         <span class="tag">
             
-            <a href="/blog/tags/Nodejs/" style="color: #00a596">
+            <a href="/blog/tags/Nodejs/" style="color: #00bcd4">
                 Nodejs
             </a>
         </span>
         
         <span class="tag">
             
-            <a href="/blog/tags/ctfshow/" style="color: #ffa2c4">
+            <a href="/blog/tags/ctfshow/" style="color: #03a9f4">
                 ctfshow
             </a>
         </span>
@@ -358,7 +423,7 @@
         
         <span class="tag">
             
-            <a href="/blog/tags/Nodejs/" style="color: #00bcd4">
+            <a href="/blog/tags/Nodejs/" style="color: #ff7d73">
                 Nodejs
             </a>
         </span>
@@ -399,7 +464,7 @@
         
         <span class="tag">
             
-            <a href="/blog/tags/%E5%88%B7%E9%A2%98/" style="color: #00bcd4">
+            <a href="/blog/tags/%E5%88%B7%E9%A2%98/" style="color: #ffa2c4">
                 刷题
             </a>
         </span>
@@ -576,21 +641,21 @@
         
         <span class="tag">
             
-            <a href="/blog/tags/python/" style="color: #ff7d73">
+            <a href="/blog/tags/python/" style="color: #00bcd4">
                 python
             </a>
         </span>
         
         <span class="tag">
             
-            <a href="/blog/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="color: #ffa2c4">
+            <a href="/blog/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="color: #00bcd4">
                 反序列化
             </a>
         </span>
         
         <span class="tag">
             
-            <a href="/blog/tags/Yaml/" style="color: #00a596">
+            <a href="/blog/tags/Yaml/" style="color: #ffa2c4">
                 Yaml
             </a>
         </span>
@@ -669,67 +734,13 @@
         
         <span class="tag">
             
-            <a href="/blog/tags/%E5%88%B7%E9%A2%98/" style="color: #ff7d73">
+            <a href="/blog/tags/%E5%88%B7%E9%A2%98/" style="color: #ffa2c4">
                 刷题
             </a>
         </span>
         
     </div>
     <a href="/blog/2023/06/16/NUSTCTF-2022/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/blog/2023/06/15/RSA%E5%85%A5%E9%97%A8/">
-        <h2 class="post-title">RSA入门</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/blog/categories/Crypto/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                Crypto
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/6/15
-        </span>
-        
-        <span class="special">
-            <i class="fa-solid fa-lock fa-fw"></i>
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在NSS上攒金币买的Xenny的<a target="_blank" rel="noopener" href="https://www.nssctf.cn/problem/sheet/7142">RSA教程</a></p>
-<p>这篇文章加密，仅供自用</p>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        <span class="tag">
-            
-            <a href="/blog/tags/RSA/" style="color: #00bcd4">
-                RSA
-            </a>
-        </span>
-        
-    </div>
-    <a href="/blog/2023/06/15/RSA%E5%85%A5%E9%97%A8/" class="go-post">阅读全文</a>
 </div>
 
 
@@ -853,9 +864,9 @@
     <div class="card-style" style="width: 300px;margin-top: 20px;">
         <span style="font-size: 20px; text-align: left;"><i class="fas fa-chart-line"></i> 网站资讯</span>
         <div style="margin-top: 15px;margin-left: 10px;text-align: left;line-height: 30px;font-size: 15px">
-            <span id="TotalArtical">文章总数：305</span>
+            <span id="TotalArtical">文章总数：306</span>
             <br>
-            <span id="TotalArtical">本站总字数：657.9k</span>
+            <span id="TotalArtical">本站总字数：659.7k</span>
             <br>
             <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
             <script>
