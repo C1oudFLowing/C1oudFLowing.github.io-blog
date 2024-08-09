@@ -617,7 +617,8 @@ base64 data.txt<span aria-hidden="true" class="line-numbers-rows"><span></span><
 <span class="token keyword">echo</span> <span class="token function">base64_encode</span><span class="token punctuation">(</span><span class="token variable">$payload</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <hr>
-<h2 id="thinkshopping（未完成）"><a href="#thinkshopping（未完成）" class="headerlink" title="thinkshopping（未完成）"></a>thinkshopping（未完成）</h2><hr>
+<h2 id="thinkshopping（未完成）"><a href="#thinkshopping（未完成）" class="headerlink" title="thinkshopping（未完成）"></a>thinkshopping（未完成）</h2><p>和前一题的区别在于把 goods_edit.html 中的反序列化入口删掉了</p>
+<hr>
 <h2 id="easyphp（未完成）"><a href="#easyphp（未完成）" class="headerlink" title="easyphp（未完成）"></a>easyphp（未完成）</h2><blockquote>
 <p>xcache逆向</p>
 </blockquote>
@@ -671,6 +672,10 @@ apt update &amp;&amp; apt install -y software-properties-common &amp;&amp; add-a
 <span class="token instruction"><span class="token keyword">RUN</span> ln -sf /proc/self/fd/1 /var/log/apache2/access.log &amp;&amp; <span class="token operator">\</span>
     ln -sf /proc/self/fd/1 /var/log/apache2/error.log</span>
 <span class="token instruction"><span class="token keyword">CMD</span> apachectl -D FOREGROUND -X</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> run –name dump –network<span class="token operator">=</span>host –privileged –rm <span class="token parameter variable">-it</span> <span class="token parameter variable">-v</span> /tmp/clean_b3_mod:/tmp/clean_b3:ro test1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
 
 
 
