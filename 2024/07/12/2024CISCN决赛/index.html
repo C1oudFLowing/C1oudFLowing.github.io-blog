@@ -254,7 +254,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/Nodejs/" style="color: #03a9f4">Nodejs</a>
+                <a href="/blog/tags/Nodejs/" style="color: #ffa2c4">Nodejs</a>
             </span>
             
             <span class="tag">
@@ -264,17 +264,17 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/Java/" style="color: #00bcd4">Java</a>
+                <a href="/blog/tags/Java/" style="color: #ffa2c4">Java</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E5%86%85%E7%BD%91/" style="color: #00a596">内网</a>
+                <a href="/blog/tags/%E5%86%85%E7%BD%91/" style="color: #00bcd4">内网</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E6%B2%99%E7%AE%B1%E9%80%83%E9%80%B8/" style="color: #03a9f4">沙箱逃逸</a>
+                <a href="/blog/tags/%E6%B2%99%E7%AE%B1%E9%80%83%E9%80%B8/" style="color: #00a596">沙箱逃逸</a>
             </span>
             
             <span class="tag">
@@ -293,7 +293,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">17.9k字</span>
+        <span class="post-count">18.1k字</span>
       </span>
     </span>
 
@@ -302,7 +302,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">90分</span>
+        <span class="post-count">91分</span>
       </span>
     </span>
     
@@ -2026,7 +2026,7 @@ python app.py<span aria-hidden="true" class="line-numbers-rows"><span></span><sp
 <p>这时候就又想到前面的 ssti 了，虽然不能直接调用，但是可以访问属性，我们可以利用这一点获取rsakey</p>
 <p>现在想办法在沙盒内拿到一个全局属性，注意到<code>return safer_render_template(&quot;created.html&quot;, share_url=share_url, share_img=share_img)</code>，意味着我们可以用<code>share_url</code>或者<code>share_img</code>来获取属性，同理下面的<code>info</code>也可以</p>
 <p><img src="/blog/2024/07/12/2024CISCN%E5%86%B3%E8%B5%9B/image-20240809180407291.png" alt="image-20240809180407291"></p>
-<p>这里的话要取 info 的属性，因为 info 是调用<code>Info</code>类得到的，Info类下有<code>parse_avatar</code>这个全局方法，然后查看style的需要在 &#x2F;showCard 路由下查看，因为这里才有info，而 &#x2F;createCard 则会报错但没关系</p>
+<p>这里的话要取 info 的属性，因为 info 是调用<code>Info</code>类得到的，Info类下有<code>parse_avatar</code>这个全局方法，然后需要在 &#x2F;showCard 路由下查看style，因为这里才有info，而 &#x2F;createCard 则会报错但没关系</p>
 <p>那么读rsakey</p>
 <pre class="line-numbers language-django" data-language="django"><code class="language-django"><span class="token django language-django"><span class="token delimiter punctuation">&#123;&#123;</span><span class="token variable">info</span><span class="token punctuation">.</span><span class="token variable">__class__</span><span class="token punctuation">.</span><span class="token variable">parse_avatar</span><span class="token punctuation">.</span><span class="token variable">__globals__</span><span class="token punctuation">.</span><span class="token variable">rsakey</span><span class="token punctuation">.</span><span class="token variable">__dict__</span><span class="token delimiter punctuation">&#125;&#125;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
@@ -2303,6 +2303,57 @@ python app.py<span aria-hidden="true" class="line-numbers-rows"><span></span><sp
 <h1 id="Pwn-PHP（Unsolved）"><a href="#Pwn-PHP（Unsolved）" class="headerlink" title="Pwn-PHP（Unsolved）"></a>Pwn-PHP（Unsolved）</h1><p><img src="/blog/2024/07/12/2024CISCN%E5%86%B3%E8%B5%9B/image-20240721224758509.png" alt="image-20240721224758509"></p>
 <p>CVE-2024-2961？</p>
 <p>fix貌似把iconv的so文件扬了就行</p>
+<p>起docker</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> load <span class="token operator">&lt;</span> 2024_ciscn_final_php.tar
+<span class="token function">docker</span> run <span class="token parameter variable">-tid</span> <span class="token parameter variable">--name</span> final_php <span class="token parameter variable">-p</span> <span class="token number">9998</span>:9999 <span class="token parameter variable">-e</span> <span class="token assign-left variable">FLAG</span><span class="token operator">=</span>flag<span class="token punctuation">&#123;</span>test_flag<span class="token punctuation">&#125;</span> 2024_ciscn_final_php<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>看一下data.php</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+
+<span class="token keyword">function</span> <span class="token function-definition function">base64_decode_data</span><span class="token punctuation">(</span><span class="token variable">$data</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token function">base64_decode</span><span class="token punctuation">(</span><span class="token variable">$data</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">// AES加密和解密函数</span>
+<span class="token keyword">function</span> <span class="token function-definition function">aes_encrypt</span><span class="token punctuation">(</span><span class="token variable">$data</span><span class="token punctuation">,</span> <span class="token variable">$key</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token variable">$key</span> <span class="token operator">=</span> <span class="token function">hash</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'sha256'</span><span class="token punctuation">,</span> <span class="token variable">$key</span><span class="token punctuation">,</span> <span class="token constant boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token variable">$iv</span> <span class="token operator">=</span> <span class="token function">openssl_random_pseudo_bytes</span><span class="token punctuation">(</span><span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token variable">$encrypted</span> <span class="token operator">=</span> <span class="token function">openssl_encrypt</span><span class="token punctuation">(</span><span class="token variable">$data</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'aes-256-cbc'</span><span class="token punctuation">,</span> <span class="token variable">$key</span><span class="token punctuation">,</span> <span class="token constant">OPENSSL_RAW_DATA</span><span class="token punctuation">,</span> <span class="token variable">$iv</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token variable">$encrypted</span> <span class="token operator">=</span> <span class="token variable">$iv</span> <span class="token operator">.</span> <span class="token variable">$encrypted</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token function">base64_encode</span><span class="token punctuation">(</span><span class="token variable">$encrypted</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">function</span> <span class="token function-definition function">is_blacklisted</span><span class="token punctuation">(</span><span class="token variable">$path</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token variable">$blacklist</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string single-quoted-string">'/root'</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'/home'</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'/media'</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'/mnt'</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'/lib64'</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'/lib'</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// 添加其他黑名单目录</span>
+    <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token variable">$blacklist</span> <span class="token keyword">as</span> <span class="token variable">$blacklisted_dir</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">strpos</span><span class="token punctuation">(</span><span class="token function">realpath</span><span class="token punctuation">(</span><span class="token variable">$path</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token variable">$blacklisted_dir</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> <span class="token constant boolean">true</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">return</span> <span class="token constant boolean">false</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">// 获取Base64编码的文件路径并进行Base64解码</span>
+<span class="token variable">$encoded_file</span> <span class="token operator">=</span> <span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'file'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token variable">$file</span> <span class="token operator">=</span> <span class="token function">base64_decode_data</span><span class="token punctuation">(</span><span class="token variable">$encoded_file</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">is_blacklisted</span><span class="token punctuation">(</span><span class="token variable">$file</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'Access to this directory is not allowed.'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">// 获取文件内容</span>
+<span class="token variable">$data</span> <span class="token operator">=</span> <span class="token function">file_get_contents</span><span class="token punctuation">(</span><span class="token variable">$file</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 加密文件内容</span>
+<span class="token variable">$key</span> <span class="token operator">=</span> <span class="token string single-quoted-string">'Welcome_to_CISCN_2024_Final'</span><span class="token punctuation">;</span>  <span class="token comment">// Actual key</span>
+<span class="token variable">$encrypted_data</span> <span class="token operator">=</span> <span class="token function">aes_encrypt</span><span class="token punctuation">(</span><span class="token variable">$data</span><span class="token punctuation">,</span> <span class="token variable">$key</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">echo</span> <span class="token string double-quoted-string">"This is your encrypted file : <span class="token interpolation"><span class="token variable">$encrypted_data</span></span>"</span><span class="token punctuation">;</span>
+
+
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>文件输出的内容加密了一层aes</p>
 <hr>
 <h1 id="渗透"><a href="#渗透" class="headerlink" title="渗透"></a>渗透</h1><p>我不会渗透也没打过云境，内网代理还是前一天现学的，但是根本没建立起一个内网代理的思路，代理还是等巨魔从酒店拿拓展坞回来才开张的（</p>
 <p><img src="/blog/2024/07/12/2024CISCN%E5%86%B3%E8%B5%9B/image-20240721140100586.png" alt="image-20240721140100586"></p>
