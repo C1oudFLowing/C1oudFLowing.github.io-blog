@@ -79,7 +79,7 @@
     <div id="toc" class="toc-article">
     <h3><i class="fas fa-stream"></i>  目录</h3>
       <div class="toc-title"></div>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%97%E8%8A%82%E7%A0%81"><span class="toc-number">2.</span> <span class="toc-text">字节码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%A9%E7%94%A8-URLClassLoader-%E5%8A%A0%E8%BD%BD%E8%BF%9C%E7%A8%8Bclass%E6%96%87%E4%BB%B6"><span class="toc-number">3.</span> <span class="toc-text">利用 URLClassLoader 加载远程class文件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%A9%E7%94%A8-ClassLoader-defineClass-%E7%9B%B4%E6%8E%A5%E5%8A%A0%E8%BD%BD%E5%AD%97%E8%8A%82%E7%A0%81"><span class="toc-number">4.</span> <span class="toc-text">利用 ClassLoader#defineClass 直接加载字节码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#TemlatesImpl-%E5%8A%A0%E8%BD%BD%E5%AD%97%E8%8A%82%E7%A0%81"><span class="toc-number">5.</span> <span class="toc-text">TemlatesImpl 加载字节码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%A9%E7%94%A8-BCEL-ClassLoader-%E5%8A%A0%E8%BD%BD%E5%AD%97%E8%8A%82%E7%A0%81"><span class="toc-number">6.</span> <span class="toc-text">利用 BCEL ClassLoader 加载字节码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#BCEL"><span class="toc-number">6.1.</span> <span class="toc-text">BCEL</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A9%E7%94%A8"><span class="toc-number">6.2.</span> <span class="toc-text">利用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8%E5%90%84%E4%B8%AA%E9%93%BE%E5%AD%90%E4%B8%AD%E7%9A%84%E5%88%A9%E7%94%A8"><span class="toc-number">6.3.</span> <span class="toc-text">在各个链子中的利用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#FastJson-BCEL"><span class="toc-number">6.3.1.</span> <span class="toc-text">FastJson BCEL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Thymeleaf-SSTI-BCEL"><span class="toc-number">6.3.2.</span> <span class="toc-text">Thymeleaf SSTI BCEL</span></a></li></ol></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%97%E8%8A%82%E7%A0%81"><span class="toc-number">2.</span> <span class="toc-text">字节码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%A9%E7%94%A8-URLClassLoader-%E5%8A%A0%E8%BD%BD%E8%BF%9C%E7%A8%8Bclass%E6%96%87%E4%BB%B6"><span class="toc-number">3.</span> <span class="toc-text">利用 URLClassLoader 加载远程class文件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%A9%E7%94%A8-ClassLoader-defineClass-%E7%9B%B4%E6%8E%A5%E5%8A%A0%E8%BD%BD%E5%AD%97%E8%8A%82%E7%A0%81"><span class="toc-number">4.</span> <span class="toc-text">利用 ClassLoader#defineClass 直接加载字节码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#TemplatesImpl-%E5%8A%A0%E8%BD%BD%E5%AD%97%E8%8A%82%E7%A0%81"><span class="toc-number">5.</span> <span class="toc-text">TemplatesImpl 加载字节码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%A9%E7%94%A8-BCEL-ClassLoader-%E5%8A%A0%E8%BD%BD%E5%AD%97%E8%8A%82%E7%A0%81"><span class="toc-number">6.</span> <span class="toc-text">利用 BCEL ClassLoader 加载字节码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#BCEL"><span class="toc-number">6.1.</span> <span class="toc-text">BCEL</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A9%E7%94%A8"><span class="toc-number">6.2.</span> <span class="toc-text">利用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8%E5%90%84%E4%B8%AA%E9%93%BE%E5%AD%90%E4%B8%AD%E7%9A%84%E5%88%A9%E7%94%A8"><span class="toc-number">6.3.</span> <span class="toc-text">在各个链子中的利用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#FastJson-BCEL"><span class="toc-number">6.3.1.</span> <span class="toc-text">FastJson BCEL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Thymeleaf-SSTI-BCEL"><span class="toc-number">6.3.2.</span> <span class="toc-text">Thymeleaf SSTI BCEL</span></a></li></ol></li></ol></li></ol>
     </div>
   
 
@@ -254,7 +254,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/Java/" style="color: #00a596">Java</a>
+                <a href="/blog/tags/Java/" style="color: #ff7d73">Java</a>
             </span>
             
         </span>
@@ -268,7 +268,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">3.1k字</span>
+        <span class="post-count">3.4k字</span>
       </span>
     </span>
 
@@ -277,7 +277,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">14分</span>
+        <span class="post-count">15分</span>
       </span>
     </span>
     
@@ -370,7 +370,7 @@
 <p>当然，<code>ClassLoader#defineClass</code>是一个保护属性，我们没法在外部直接访问，只能使用反射来进行调用</p>
 <p>实际情形里defineClass方法作用域不开放，但它却是攻击链<strong>TemplatesImpl</strong>里非常重要的一环</p>
 <hr>
-<h1 id="TemlatesImpl-加载字节码"><a href="#TemlatesImpl-加载字节码" class="headerlink" title="TemlatesImpl 加载字节码"></a>TemlatesImpl 加载字节码</h1><p>defineClass 比较底层，java开发很少使用到这个东西，不过还是有一些类使用了这个方法，这就是<code>TemplatesImpl</code></p>
+<h1 id="TemplatesImpl-加载字节码"><a href="#TemplatesImpl-加载字节码" class="headerlink" title="TemplatesImpl 加载字节码"></a>TemplatesImpl 加载字节码</h1><p>defineClass 比较底层，java开发很少使用到这个东西，不过还是有一些类使用了这个方法，这就是<code>TemplatesImpl</code></p>
 <p><code>com.sun.org.apache.xalan.internal.xsltc.trax.TemplatesImpl</code>这个类中定义了一个内部类 TransletClassLoader</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">class</span> <span class="token class-name">TransletClassLoader</span> <span class="token keyword">extends</span> <span class="token class-name">ClassLoader</span> <span class="token punctuation">&#123;</span>
     <span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span><span class="token class-name">Class</span><span class="token punctuation">></span></span> _loadedExternalExtensionFunctions<span class="token punctuation">;</span>
@@ -436,7 +436,7 @@
         obj<span class="token punctuation">.</span><span class="token function">newTransformer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 
-    <span class="token comment">// 利用反射给私有变量赋值如下</span>
+    <span class="token comment">// 利用反射给私有变量赋值的方法</span>
     <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">setFieldValue</span><span class="token punctuation">(</span><span class="token class-name">Object</span> obj<span class="token punctuation">,</span> <span class="token class-name">String</span> fieldName<span class="token punctuation">,</span> <span class="token class-name">Object</span> value<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span><span class="token punctuation">&#123;</span>
         <span class="token class-name">Field</span> field <span class="token operator">=</span> obj<span class="token punctuation">.</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getDeclaredField</span><span class="token punctuation">(</span>fieldName<span class="token punctuation">)</span><span class="token punctuation">;</span>
         field<span class="token punctuation">.</span><span class="token function">setAccessible</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -446,18 +446,34 @@
 
 <p>这里我们使用了<code>setFieldValue</code>方法设置私有属性，分别是<code>_bytecodes</code>、<code>_name</code>和<code>_tfactory</code></p>
 <ul>
-<li><p><code>_bytecodes</code>：不能为空</p>
+<li><p><code>_bytecodes</code>：不能为空，需要一个二维数组</p>
 <p><img src="/blog/2024/04/07/Java%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD%E5%AD%97%E8%8A%82%E7%A0%81/image-20240408212610015.png" alt="image-20240408212610015"></p>
+<p>但是 <code>_bytecodes</code> 作为传递进 defineClass 方法的值是一个一维数组，而这个一维数组里面我们需要存放恶意的字节码</p>
+<p>写法如下：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> evil <span class="token operator">=</span> <span class="token class-name">Files</span><span class="token punctuation">.</span><span class="token function">readAllBytes</span><span class="token punctuation">(</span><span class="token class-name">Paths</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"evil.class"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+<span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> codes <span class="token operator">=</span> <span class="token punctuation">&#123;</span>evil<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 </li>
 <li><p><code>_name</code>：可以是任意字符串，只要不为null即可</p>
 <p><img src="/blog/2024/04/07/Java%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD%E5%AD%97%E8%8A%82%E7%A0%81/image-20240408212101523.png" alt="image-20240408212101523"></p>
 </li>
 <li><p><code>_tfactory</code>：需要是一个 TransformerFactoryImpl 对象，因为 TemplatesImpl#defineTransletClasses() 方法里有调用到<code>_tfactory.getExternalExtensionsMap()</code> ，如果是null会出错</p>
 <p><img src="/blog/2024/04/07/Java%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD%E5%AD%97%E8%8A%82%E7%A0%81/image-20240408212324150.png" alt="image-20240408212324150"></p>
+<p>注意到 <code>_tfactory</code> 的关键字是 <code>transient</code>，这就导致了这个变量在序列化之后无法被访问，类中的定义如下：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">private</span> <span class="token keyword">transient</span> <span class="token class-name">TransformerFactoryImpl</span> _tfactory <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>直接修改是不行的，但是我们这里的利用要求比较低，只要让 <code>_tfactory</code> 不为 null 即可，我们去看一看 <code>_tfactory</code> 的其他定义如何</p>
+<p><img src="/blog/2024/04/07/Java%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD%E5%AD%97%E8%8A%82%E7%A0%81/image-20240903203926601.png" alt="image-20240903203926601"></p>
+<p>在 <code>readObject()</code> 方法中，找到了 <code>_tfactory</code> 的初始化定义，所以这里直接在反射中将其赋值为 <code>TransformerFactortImpl</code> 即可</p>
 </li>
 </ul>
-<p>但这个POC没法直接运行，因为TemplatesImpl对加载的字节码是有要求的：这个字节码对应的类必须是 <code>com.sun.org.apache.xalan.internal.xsltc.runtime.AbstractTranslet</code> 的子类</p>
-<p><img src="/blog/2024/04/07/Java%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD%E5%AD%97%E8%8A%82%E7%A0%81/image-20240408204446337.png" alt="image-20240408204446337"></p>
+<br>
+
+<p>但这个POC没法直接运行，跑了会报错，顺着报错在 TemplatesImpl 下个断点就能发现问题</p>
+<p><img src="/blog/2024/04/07/Java%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD%E5%AD%97%E8%8A%82%E7%A0%81/image-20240903204755345.png" alt="image-20240903204755345"></p>
+<p><img src="/blog/2024/04/07/Java%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD%E5%AD%97%E8%8A%82%E7%A0%81/image-20240903204631675.png" alt="image-20240903204631675"></p>
+<p>418行这里检测了传入的字节码是否继承 <code>ABSTRACT_TRANSLET</code> 这个父类，没有则抛出异常</p>
+<p>即TemplatesImpl对加载的字节码是有要求的：这个字节码对应的类必须是 <code>com.sun.org.apache.xalan.internal.xsltc.runtime.AbstractTranslet</code> 的子类</p>
+<p><img src="/blog/2024/04/07/Java%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD%E5%AD%97%E8%8A%82%E7%A0%81/image-20240903205038575.png" alt="image-20240903205038575"></p>
 <p>所以我们需要构造一个继承了<code>AbstractTranslet</code>的类，在他的构造方法里去写我们要执行的代码</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">com<span class="token punctuation">.</span>sun<span class="token punctuation">.</span>org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>xalan<span class="token punctuation">.</span>internal<span class="token punctuation">.</span>xsltc<span class="token punctuation">.</span></span><span class="token class-name">DOM</span></span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token import"><span class="token namespace">com<span class="token punctuation">.</span>sun<span class="token punctuation">.</span>org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>xalan<span class="token punctuation">.</span>internal<span class="token punctuation">.</span>xsltc<span class="token punctuation">.</span></span><span class="token class-name">TransletException</span></span><span class="token punctuation">;</span>
