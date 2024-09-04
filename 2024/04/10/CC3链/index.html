@@ -257,6 +257,11 @@
                 <a href="/blog/tags/Java/" style="color: #03a9f4">Java</a>
             </span>
             
+            <span class="tag">
+                
+                <a href="/blog/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="color: #ff7d73">反序列化</a>
+            </span>
+            
         </span>
         
         <!--文章字数统计-->
@@ -454,7 +459,7 @@
 <h2 id="TrAXFilter类"><a href="#TrAXFilter类" class="headerlink" title="TrAXFilter类"></a>TrAXFilter类</h2><p><img src="/blog/2024/04/10/CC3%E9%93%BE/image-20240410010818032.png" alt="image-20240410010818032"></p>
 <p>这个类没实现 Serializable，不能直接序列化</p>
 <p>但是这个类的构造方法中调用了<code>(TransformerImpl) templates.newTransformer()</code>，免去了我们使用<code>InvokerTransformer</code>手工调用<code>newTransformer()</code>方法这⼀步</p>
-<p>所以我们只要执行这个类的构造函数即可命令执行</p>
+<p>所以我们只要执行这个类的构造函数，拼上 TemplatesImpl 即可实现类加载命令执行</p>
 <h2 id="利用InstantiateTransformer调用TrAXFilter"><a href="#利用InstantiateTransformer调用TrAXFilter" class="headerlink" title="利用InstantiateTransformer调用TrAXFilter"></a>利用InstantiateTransformer调用TrAXFilter</h2><p>不过，缺少 InvokerTransformer，<code>TrAXFilter</code>的构造方法也是无法调用的。这里会用到⼀个新的 Transformer：<code>org.apache.commons.collections.functors.InstantiateTransformer</code></p>
 <p><code>InstantiateTransformer</code>也是⼀个实现了Transformer接口的类，他的作用是调用构造方法</p>
 <p><img src="/blog/2024/04/10/CC3%E9%93%BE/image-20240903214911276.png" alt="image-20240903214911276"></p>
@@ -601,7 +606,7 @@
 <span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">HashMap</span></span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">Map</span></span><span class="token punctuation">;</span>
 
-<span class="token keyword">public</span> <span class="token keyword">class</span> cc6Half <span class="token punctuation">&#123;</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> cc6Ver <span class="token punctuation">&#123;</span>
     <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">&#123;</span>
         <span class="token class-name">Transformer</span><span class="token punctuation">[</span><span class="token punctuation">]</span> fakeTransformers <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Transformer</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">&#123;</span><span class="token keyword">new</span> <span class="token class-name">ConstantTransformer</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
 
