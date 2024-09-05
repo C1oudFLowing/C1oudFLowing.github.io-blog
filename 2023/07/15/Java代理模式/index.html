@@ -254,7 +254,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/Java/" style="color: #03a9f4">Java</a>
+                <a href="/blog/tags/Java/" style="color: #00a596">Java</a>
             </span>
             
         </span>
@@ -268,7 +268,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">1.5k字</span>
+        <span class="post-count">1.7k字</span>
       </span>
     </span>
 
@@ -277,7 +277,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">5分</span>
+        <span class="post-count">6分</span>
       </span>
     </span>
     
@@ -448,9 +448,15 @@
 </blockquote>
 <p>和 JDK 动态代理不同，CGLIB 通过<strong>继承</strong>方式实现代理。CGLIB通过继承目标类，创建它的子类，在子类中重写父类中<strong>非 final</strong> 的方法，实现功能的修改。</p>
 <hr>
-<h1 id="和反序列化的关系"><a href="#和反序列化的关系" class="headerlink" title="和反序列化的关系"></a>和反序列化的关系</h1><p>举个例子吧，假如你想要执行的危险命令为<code>B.danger</code>，刚好有一个入口类是<code>A(Object)</code>，这个Object就是我们可控的参数，我们让Object为B类，但是A中的方法没有danger，只有<code>A.abc</code>&#x3D;&gt;<code>B.abc</code>，也就是不能执行命令</p>
-<p>但是假如我们可控类是个代理类型的<code>O(Object)</code>，然后O里的可控参数O2刚好调用了danger，那也只需要让O2为B类即可</p>
-<p>emmm还挺抽象的。。等后面遇到了再举个具体一点的例子吧</p>
+<h1 id="和反序列化的关系"><a href="#和反序列化的关系" class="headerlink" title="和反序列化的关系"></a>和反序列化的关系</h1><p>参考：<a target="_blank" rel="noopener" href="https://drun1baby.top/2022/06/01/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%9F%BA%E7%A1%80%E7%AF%87-04-JDK%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/#0x02-%E5%9C%A8%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%AD%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86%E7%9A%84%E4%BD%9C%E7%94%A8">https://drun1baby.top/2022/06/01/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%9F%BA%E7%A1%80%E7%AF%87-04-JDK%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/#0x02-%E5%9C%A8%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%AD%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86%E7%9A%84%E4%BD%9C%E7%94%A8</a></p>
+<p>我们先假设存在一个能够漏洞利用的类为 <code>B.f</code>，比如 <code>Runtime.exec</code> 这种。<br>我们将入口类定义为 <code>A</code>，我们最理想的情况是 <code>A[O] -&gt; O.f</code>，那么我们将传进去的参数 <code>O</code> 替换为 <code>B</code> 即可。但是在实战的情况下这种情况是极少的。</p>
+<p>回到实战情况，比如我们的入口类 <code>A</code> 存在 <code>O.abc</code> 这个方法，也就是 <code>A[O] -&gt; O.abc</code>；而 O 呢，如果是一个动态代理类，<code>O</code> 的 <code>invoke</code> 方法里存在 <code>.f</code> 的方法，便可以漏洞利用了：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">A</span><span class="token punctuation">[</span><span class="token class-name">O</span><span class="token punctuation">]</span> <span class="token operator">-></span> <span class="token class-name">O</span><span class="token punctuation">.</span>abc
+<span class="token class-name">O</span><span class="token punctuation">[</span><span class="token constant">O2</span><span class="token punctuation">]</span> invoke <span class="token operator">-></span> <span class="token constant">O2</span><span class="token punctuation">.</span>f <span class="token comment">// 此时将 B 去替换 O2</span>
+最后  <span class="token operator">--</span><span class="token operator">--</span><span class="token operator">></span>
+<span class="token class-name">O</span><span class="token punctuation">[</span><span class="token class-name">B</span><span class="token punctuation">]</span> invoke <span class="token operator">-></span> <span class="token class-name">B</span><span class="token punctuation">.</span>f <span class="token comment">// 达到漏洞利用效果</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>动态代理在反序列化当中的利用和 <code>readObject</code> 是异曲同工的：<code>readObject</code> 方法在反序列化当中会被自动执行，而 <code>invoke</code> 方法在动态代理当中会自动执行</p>
 
     </div>
     
