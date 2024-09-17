@@ -254,12 +254,12 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/Java/" style="color: #ffa2c4">Java</a>
+                <a href="/blog/tags/Java/" style="color: #00bcd4">Java</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="color: #ffa2c4">反序列化</a>
+                <a href="/blog/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="color: #00a596">反序列化</a>
             </span>
             
         </span>
@@ -332,7 +332,7 @@
     <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">LazyMap</span><span class="token punctuation">(</span>map<span class="token punctuation">,</span> factory<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<p>这个方法不过就是 LazyMap 构造函数的⼀个包装，⽽在4中其实只是改了个名字叫 <code>lazyMap</code></p>
+<p>这个方法不过就是 LazyMap 构造函数的⼀个包装，而在4中其实只是改了个名字叫 <code>lazyMap</code></p>
 <p><img src="/blog/2024/09/04/CC4%E9%93%BE/image-20240904162648794.png" alt="image-20240904162648794"></p>
 <p>所以只要把<code>LazyMap.decorate</code>替换成<code>LazyMap.lazyMap</code>即可弹计算器，cc1、cc3同理</p>
 <p><img src="/blog/2024/09/04/CC4%E9%93%BE/image-20240904163015938.png" alt="image-20240904163015938"></p>
