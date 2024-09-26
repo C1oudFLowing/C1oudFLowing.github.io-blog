@@ -254,7 +254,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="color: #00bcd4">反序列化</a>
+                <a href="/blog/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="color: #ff7d73">反序列化</a>
             </span>
             
             <span class="tag">
@@ -273,7 +273,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">1.9k字</span>
+        <span class="post-count">2.2k字</span>
       </span>
     </span>
 
@@ -282,7 +282,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">7分</span>
+        <span class="post-count">9分</span>
       </span>
     </span>
     
@@ -300,7 +300,9 @@
         <blockquote>
 <p>个人对php原生类的总结</p>
 </blockquote>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_52988816/article/details/124573109">参考文章</a></p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_52988816/article/details/124573109">https://blog.csdn.net/qq_52988816/article/details/124573109</a></p>
+<p><a target="_blank" rel="noopener" href="https://longlone.top/%E5%AE%89%E5%85%A8/%E5%AE%89%E5%85%A8%E7%A0%94%E7%A9%B6/%E4%BB%BB%E6%84%8F%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E4%B8%8B%E7%9A%84php%E5%8E%9F%E7%94%9F%E7%B1%BB%E5%88%A9%E7%94%A8/">https://longlone.top/%E5%AE%89%E5%85%A8/%E5%AE%89%E5%85%A8%E7%A0%94%E7%A9%B6/%E4%BB%BB%E6%84%8F%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E4%B8%8B%E7%9A%84php%E5%8E%9F%E7%94%9F%E7%B1%BB%E5%88%A9%E7%94%A8/</a></p>
 <span id="more"></span>
 
 <h1 id="读取PHP中存在的原生类"><a href="#读取PHP中存在的原生类" class="headerlink" title="读取PHP中存在的原生类"></a>读取PHP中存在的原生类</h1><pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
@@ -326,6 +328,116 @@
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span> </span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<p>php7如下：</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token class-name static-context">Exception</span><span class="token operator">::</span><span class="token constant">__wakeup</span>
+<span class="token class-name static-context">Exception</span><span class="token operator">::</span><span class="token constant">__toString</span>
+<span class="token class-name static-context">ErrorException</span><span class="token operator">::</span><span class="token constant">__wakeup</span>
+<span class="token class-name static-context">ErrorException</span><span class="token operator">::</span><span class="token constant">__toString</span>
+<span class="token class-name static-context">Error</span><span class="token operator">::</span><span class="token constant">__wakeup</span>
+<span class="token class-name static-context">Error</span><span class="token operator">::</span><span class="token constant">__toString</span>
+<span class="token class-name static-context">CompileError</span><span class="token operator">::</span><span class="token constant">__wakeup</span>
+<span class="token class-name static-context">CompileError</span><span class="token operator">::</span><span class="token constant">__toString</span>
+<span class="token class-name static-context">ParseError</span><span class="token operator">::</span><span class="token constant">__wakeup</span>
+<span class="token class-name static-context">ParseError</span><span class="token operator">::</span><span class="token constant">__toString</span>
+<span class="token class-name static-context">TypeError</span><span class="token operator">::</span><span class="token constant">__wakeup</span>
+<span class="token class-name static-context">TypeError</span><span class="token operator">::</span><span class="token constant">__toString</span>
+<span class="token class-name static-context">ArgumentCountError</span><span class="token operator">::</span><span class="token constant">__wakeup</span>
+<span class="token class-name static-context">ArgumentCountError</span><span class="token operator">::</span><span class="token constant">__toString</span>
+<span class="token class-name static-context">ArithmeticError</span><span class="token operator">::</span><span class="token constant">__wakeup</span>
+<span class="token class-name static-context">ArithmeticError</span><span class="token operator">::</span><span class="token constant">__toString</span>
+<span class="token class-name static-context">DivisionByZeroError</span><span class="token operator">::</span><span class="token constant">__wakeup</span>
+<span class="token class-name static-context">DivisionByZeroError</span><span class="token operator">::</span><span class="token constant">__toString</span>
+<span class="token class-name static-context">ClosedGeneratorException</span><span class="token operator">::</span><span class="token constant">__wakeup</span>
+<span class="token class-name static-context">ClosedGeneratorException</span><span class="token operator">::</span><span class="token constant">__toString</span>
+<span class="token class-name static-context">DateTime</span><span class="token operator">::</span><span class="token constant">__wakeup</span>
+<span class="token class-name static-context">DateTime</span><span class="token operator">::</span><span class="token constant">__set_state</span>
+<span class="token class-name static-context">DateTimeImmutable</span><span class="token operator">::</span><span class="token constant">__wakeup</span>
+<span class="token class-name static-context">DateTimeImmutable</span><span class="token operator">::</span><span class="token constant">__set_state</span>
+<span class="token class-name static-context">DateTimeZone</span><span class="token operator">::</span><span class="token constant">__wakeup</span>
+<span class="token class-name static-context">DateTimeZone</span><span class="token operator">::</span><span class="token constant">__set_state</span>
+<span class="token class-name static-context">DateInterval</span><span class="token operator">::</span><span class="token constant">__wakeup</span>
+<span class="token class-name static-context">DateInterval</span><span class="token operator">::</span><span class="token constant">__set_state</span>
+<span class="token class-name static-context">DatePeriod</span><span class="token operator">::</span><span class="token constant">__wakeup</span>
+<span class="token class-name static-context">DatePeriod</span><span class="token operator">::</span><span class="token constant">__set_state</span>
+<span class="token class-name static-context">JsonException</span><span class="token operator">::</span><span class="token constant">__wakeup</span>
+<span class="token class-name static-context">JsonException</span><span class="token operator">::</span><span class="token constant">__toString</span>
+<span class="token class-name static-context">LogicException</span><span class="token operator">::</span><span class="token constant">__wakeup</span>
+<span class="token class-name static-context">LogicException</span><span class="token operator">::</span><span class="token constant">__toString</span>
+<span class="token class-name static-context">BadFunctionCallException</span><span class="token operator">::</span><span class="token constant">__wakeup</span>
+<span class="token class-name static-context">BadFunctionCallException</span><span class="token operator">::</span><span class="token constant">__toString</span>
+<span class="token class-name static-context">BadMethodCallException</span><span class="token operator">::</span><span class="token constant">__wakeup</span>
+<span class="token class-name static-context">BadMethodCallException</span><span class="token operator">::</span><span class="token constant">__toString</span>
+<span class="token class-name static-context">DomainException</span><span class="token operator">::</span><span class="token constant">__wakeup</span>
+<span class="token class-name static-context">DomainException</span><span class="token operator">::</span><span class="token constant">__toString</span>
+<span class="token class-name static-context">InvalidArgumentException</span><span class="token operator">::</span><span class="token constant">__wakeup</span>
+<span class="token class-name static-context">InvalidArgumentException</span><span class="token operator">::</span><span class="token constant">__toString</span>
+<span class="token class-name static-context">LengthException</span><span class="token operator">::</span><span class="token constant">__wakeup</span>
+<span class="token class-name static-context">LengthException</span><span class="token operator">::</span><span class="token constant">__toString</span>
+<span class="token class-name static-context">OutOfRangeException</span><span class="token operator">::</span><span class="token constant">__wakeup</span>
+<span class="token class-name static-context">OutOfRangeException</span><span class="token operator">::</span><span class="token constant">__toString</span>
+<span class="token class-name static-context">RuntimeException</span><span class="token operator">::</span><span class="token constant">__wakeup</span>
+<span class="token class-name static-context">RuntimeException</span><span class="token operator">::</span><span class="token constant">__toString</span>
+<span class="token class-name static-context">OutOfBoundsException</span><span class="token operator">::</span><span class="token constant">__wakeup</span>
+<span class="token class-name static-context">OutOfBoundsException</span><span class="token operator">::</span><span class="token constant">__toString</span>
+<span class="token class-name static-context">OverflowException</span><span class="token operator">::</span><span class="token constant">__wakeup</span>
+<span class="token class-name static-context">OverflowException</span><span class="token operator">::</span><span class="token constant">__toString</span>
+<span class="token class-name static-context">RangeException</span><span class="token operator">::</span><span class="token constant">__wakeup</span>
+<span class="token class-name static-context">RangeException</span><span class="token operator">::</span><span class="token constant">__toString</span>
+<span class="token class-name static-context">UnderflowException</span><span class="token operator">::</span><span class="token constant">__wakeup</span>
+<span class="token class-name static-context">UnderflowException</span><span class="token operator">::</span><span class="token constant">__toString</span>
+<span class="token class-name static-context">UnexpectedValueException</span><span class="token operator">::</span><span class="token constant">__wakeup</span>
+<span class="token class-name static-context">UnexpectedValueException</span><span class="token operator">::</span><span class="token constant">__toString</span>
+<span class="token class-name static-context">CachingIterator</span><span class="token operator">::</span><span class="token constant">__toString</span>
+<span class="token class-name static-context">RecursiveCachingIterator</span><span class="token operator">::</span><span class="token constant">__toString</span>
+<span class="token class-name static-context">SplFileInfo</span><span class="token operator">::</span><span class="token constant">__toString</span>
+<span class="token class-name static-context">DirectoryIterator</span><span class="token operator">::</span><span class="token constant">__toString</span>
+<span class="token class-name static-context">FilesystemIterator</span><span class="token operator">::</span><span class="token constant">__toString</span>
+<span class="token class-name static-context">RecursiveDirectoryIterator</span><span class="token operator">::</span><span class="token constant">__toString</span>
+<span class="token class-name static-context">GlobIterator</span><span class="token operator">::</span><span class="token constant">__toString</span>
+<span class="token class-name static-context">SplFileObject</span><span class="token operator">::</span><span class="token constant">__toString</span>
+<span class="token class-name static-context">SplTempFileObject</span><span class="token operator">::</span><span class="token constant">__toString</span>
+<span class="token class-name static-context">SplFixedArray</span><span class="token operator">::</span><span class="token constant">__wakeup</span>
+<span class="token class-name static-context">ReflectionException</span><span class="token operator">::</span><span class="token constant">__wakeup</span>
+<span class="token class-name static-context">ReflectionException</span><span class="token operator">::</span><span class="token constant">__toString</span>
+<span class="token class-name static-context">ReflectionFunctionAbstract</span><span class="token operator">::</span><span class="token constant">__toString</span>
+<span class="token class-name static-context">ReflectionFunction</span><span class="token operator">::</span><span class="token constant">__toString</span>
+<span class="token class-name static-context">ReflectionParameter</span><span class="token operator">::</span><span class="token constant">__toString</span>
+<span class="token class-name static-context">ReflectionType</span><span class="token operator">::</span><span class="token constant">__toString</span>
+<span class="token class-name static-context">ReflectionNamedType</span><span class="token operator">::</span><span class="token constant">__toString</span>
+<span class="token class-name static-context">ReflectionMethod</span><span class="token operator">::</span><span class="token constant">__toString</span>
+<span class="token class-name static-context">ReflectionClass</span><span class="token operator">::</span><span class="token constant">__toString</span>
+<span class="token class-name static-context">ReflectionObject</span><span class="token operator">::</span><span class="token constant">__toString</span>
+<span class="token class-name static-context">ReflectionProperty</span><span class="token operator">::</span><span class="token constant">__toString</span>
+<span class="token class-name static-context">ReflectionClassConstant</span><span class="token operator">::</span><span class="token constant">__toString</span>
+<span class="token class-name static-context">ReflectionExtension</span><span class="token operator">::</span><span class="token constant">__toString</span>
+<span class="token class-name static-context">ReflectionZendExtension</span><span class="token operator">::</span><span class="token constant">__toString</span>
+<span class="token class-name static-context">AssertionError</span><span class="token operator">::</span><span class="token constant">__wakeup</span>
+<span class="token class-name static-context">AssertionError</span><span class="token operator">::</span><span class="token constant">__toString</span>
+<span class="token class-name static-context">DOMException</span><span class="token operator">::</span><span class="token constant">__wakeup</span>
+<span class="token class-name static-context">DOMException</span><span class="token operator">::</span><span class="token constant">__toString</span>
+<span class="token class-name static-context">PDOException</span><span class="token operator">::</span><span class="token constant">__wakeup</span>
+<span class="token class-name static-context">PDOException</span><span class="token operator">::</span><span class="token constant">__toString</span>
+<span class="token class-name static-context">SimpleXMLElement</span><span class="token operator">::</span><span class="token constant">__toString</span>
+<span class="token class-name static-context">SimpleXMLIterator</span><span class="token operator">::</span><span class="token constant">__toString</span>
+<span class="token class-name static-context">mysqli_sql_exception</span><span class="token operator">::</span><span class="token constant">__wakeup</span>
+<span class="token class-name static-context">mysqli_sql_exception</span><span class="token operator">::</span><span class="token constant">__toString</span>
+<span class="token class-name static-context">PharException</span><span class="token operator">::</span><span class="token constant">__wakeup</span>
+<span class="token class-name static-context">PharException</span><span class="token operator">::</span><span class="token constant">__toString</span>
+<span class="token class-name static-context">Phar</span><span class="token operator">::</span><span class="token constant">__destruct</span>
+<span class="token class-name static-context">Phar</span><span class="token operator">::</span><span class="token constant">__toString</span>
+<span class="token class-name static-context">PharData</span><span class="token operator">::</span><span class="token constant">__destruct</span>
+<span class="token class-name static-context">PharData</span><span class="token operator">::</span><span class="token constant">__toString</span>
+<span class="token class-name static-context">PharFileInfo</span><span class="token operator">::</span><span class="token constant">__destruct</span>
+<span class="token class-name static-context">PharFileInfo</span><span class="token operator">::</span><span class="token constant">__toString</span>
+<span class="token class-name static-context">SoapClient</span><span class="token operator">::</span><span class="token constant">__call</span>
+<span class="token class-name static-context">SoapFault</span><span class="token operator">::</span><span class="token constant">__toString</span>
+<span class="token class-name static-context">SoapFault</span><span class="token operator">::</span><span class="token constant">__wakeup</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+
+
+<hr>
 <h1 id="SoapClient"><a href="#SoapClient" class="headerlink" title="SoapClient"></a>SoapClient</h1><blockquote>
 <p>php在安装php-soap拓展后，可以反序列化原生类SoapClient，来发送http post请求。</p>
 </blockquote>

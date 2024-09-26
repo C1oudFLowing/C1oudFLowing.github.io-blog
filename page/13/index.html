@@ -329,10 +329,11 @@
         <div class="content" v-pre>
             
             <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>RMI，全称Remote Method Invocation，远程方法调用</p>
-<p>RMI有客户端和服务端，在Java中客户端可以通过RMI调用来服务端的方法，危险程度无需多言</p>
+<p>也是后续漏洞中最为基本的利用手段之一，需要注意的是 RMI 当中的攻击手法只在 jdk8u121 之前才可以进行攻击，因为在 8u121 之后，<code>bind</code>、<code>rebind</code>、<code>unbind</code>这三个方法只能对 localhost 进行攻击</p>
 <p>参考文章：</p>
 <p>负数零：<a target="_blank" rel="noopener" href="https://fushuling.com/index.php/2023/01/30/java%e5%ae%89%e5%85%a8%e7%ac%94%e8%ae%b0/">https://fushuling.com/index.php/2023/01/30/java%e5%ae%89%e5%85%a8%e7%ac%94%e8%ae%b0/</a></p>
 <p>Boogipop：<a target="_blank" rel="noopener" href="https://boogipop.com/2023/03/02/%E6%B5%85%E5%AD%A6RMI%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96">https://boogipop.com/2023/03/02/%E6%B5%85%E5%AD%A6RMI%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96</a></p>
+<p>Drunkbaby：<a target="_blank" rel="noopener" href="https://drun1baby.top/2022/07/19/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E4%B9%8BRMI%E4%B8%93%E9%A2%9801-RMI%E5%9F%BA%E7%A1%80/">https://drun1baby.top/2022/07/19/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E4%B9%8BRMI%E4%B8%93%E9%A2%9801-RMI%E5%9F%BA%E7%A1%80/</a></p>
 <p>以及p神的《java安全漫谈》</p>
             
         </div>
@@ -346,7 +347,7 @@
         
         <span class="tag">
             
-            <a href="/blog/tags/Java/" style="color: #ff7d73">
+            <a href="/blog/tags/Java/" style="color: #00a596">
                 Java
             </a>
         </span>
@@ -404,7 +405,7 @@
         
         <span class="tag">
             
-            <a href="/blog/tags/python/" style="color: #ffa2c4">
+            <a href="/blog/tags/python/" style="color: #ff7d73">
                 python
             </a>
         </span>
@@ -653,7 +654,7 @@
         
         <span class="tag">
             
-            <a href="/blog/tags/HackTheBox/" style="color: #03a9f4">
+            <a href="/blog/tags/HackTheBox/" style="color: #ffa2c4">
                 HackTheBox
             </a>
         </span>
@@ -825,7 +826,7 @@
         <div style="margin-top: 15px;margin-left: 10px;text-align: left;line-height: 30px;font-size: 15px">
             <span id="TotalArtical">文章总数：321</span>
             <br>
-            <span id="TotalArtical">本站总字数：701.4k</span>
+            <span id="TotalArtical">本站总字数：709.4k</span>
             <br>
             <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
             <script>
