@@ -256,7 +256,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">10.7k字</span>
+        <span class="post-count">10.8k字</span>
       </span>
     </span>
 
@@ -287,6 +287,7 @@
 <p><a target="_blank" rel="noopener" href="https://hackmd.io/@sahuang/H1A2qvIAR#SycServer20">https://hackmd.io/@sahuang/H1A2qvIAR#SycServer20</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/qOueXdU3UaKiJoUnuUjBEA">https://mp.weixin.qq.com/s/qOueXdU3UaKiJoUnuUjBEA</a></p>
 <p><a target="_blank" rel="noopener" href="https://blog.xmcve.com/2024/10/01/SCTF-2024-Writeup/">https://blog.xmcve.com/2024/10/01/SCTF-2024-Writeup/</a></p>
+<p><a target="_blank" rel="noopener" href="https://quick-mascara-699.notion.site/2024SCTF-wp-d34600322f1141e680e837abce5795ef?pvs=74">https://quick-mascara-699.notion.site/2024SCTF-wp-d34600322f1141e680e837abce5795ef?pvs=74</a></p>
 <span id="more"></span>
 
 <p><img src="/blog/2024/09/28/SCTF-2024/image-20241001193841563.png" alt="image-20241001193841563"></p>
@@ -780,7 +781,7 @@ Disallow: /ExP0rtApi?v=static&amp;f=1.jpeg<span aria-hidden="true" class="line-n
 <p>然后尝试抓包自己加密个rsa注入万能密码</p>
 <p><img src="/blog/2024/09/28/SCTF-2024/image-20240930130155926.png" alt="image-20240930130155926"></p>
 <p><img src="/blog/2024/09/28/SCTF-2024/image-20240930130208952.png" alt="image-20240930130208952"></p>
-<p>不行，看来加密逻辑对不上</p>
+<p>不行，看来加密逻辑对不上，后面得知这个库默认是用 PKCS1 加密的</p>
 <p>因为<code>wafsql</code>是前端函数，那么尝试在控制台覆写这个函数，然后前端注入sql</p>
 <pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">wafsql</span><span class="token punctuation">(</span><span class="token parameter">str</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
     <span class="token keyword">return</span> str<span class="token punctuation">;</span>
@@ -2358,7 +2359,7 @@ foo
 <span class="token assign-left variable"><span class="token environment constant">OLDPWD</span></span><span class="token operator">=</span>/app/
 <span class="token assign-left variable">ez_tex_</span><span class="token operator">=</span>/usr/bin/cat<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>注意到里面有个jerrywww账户，预期解是尝试爆破jerrywww的密码？</p>
+<p>注意到里面有个jerrywww账户，预期解是扫出22端口，尝试爆破jerrywww的密码，权限和 www 是一样的（？</p>
 <p>怎么爆呢，我不会（</p>
 <p>看了下wm和s1um4i两个战队的wp，都是提权各显神通</p>
 <h2 id="提权1：CVE-2023-4911"><a href="#提权1：CVE-2023-4911" class="headerlink" title="提权1：CVE-2023-4911"></a>提权1：CVE-2023-4911</h2><p>看一下glibc的版本</p>
