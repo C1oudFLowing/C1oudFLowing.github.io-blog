@@ -13,15 +13,16 @@
     <!-- cdn挂掉的时候要可以引用本地 -->
 <!-- <script src="https://cdn.staticfile.org/vue/3.2.45/vue.global.prod.min.js"></script> -->
 <script src="/blog/js/vue.global.prod.min.js"></script>
+
 <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.2.1/css/all.min.css" />
-<!--<link rel="stylesheet" href="/blog/css/all.min.css" />-->
+<link rel="stylesheet" href="/blog/css/all.min.css" />
 <link rel="stylesheet" href="/blog/css/fonts.min.css" />
 <link rel="stylesheet" href="/blog/css/search.css" />
 <script> const mixins = {}; </script>
 
 <!-- 引入jQuery-->
-<script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-<!--<script src="/blog/js/jquery.min.js"></script>-->
+<!-- <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script> -->
+<script src="/blog/js/jquery.min.js"></script>
 
 <!--改成了prismjs高亮-->
 
@@ -41,6 +42,7 @@
 
 <link rel="stylesheet" href="/blog/css/main.css" />
 <!-- 引入不蒜子-->
+
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 <script type="text/javascript" src="/blog/libs/codeBlock/codeBlockFuction.js"></script>
@@ -54,7 +56,6 @@
 <script type="text/javascript" src="/blog/libs/codeBlock/codeShrink.js"></script> 
 <!-- 代码块折行 -->
 <style type="text/css">code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }</style>
-
 <meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/blog/atom.xml" title="雲流のLowest World" type="application/atom+xml">
 </head>
 
@@ -216,7 +217,9 @@
 </nav>
 
                 <div id="home-head">
+    
     <div id="home-background" ref="homeBackground" data-image="https://pic.imgdb.cn/item/648dd72c1ddac507cc80082e.jpg,https://pic.imgdb.cn/item/648dd72c1ddac507cc80077c.png,https://pic.imgdb.cn/item/648dd72b1ddac507cc8005dc.png,https://pic.imgdb.cn/item/6581d4cec458853aef847b82.jpg,https://pic.imgdb.cn/item/6581d619c458853aef87abc9.jpg,https://pic.imgdb.cn/item/65d617299f345e8d03a2adcf.jpg,https://pic.imgdb.cn/item/668515b2d9c307b7e91d1895.jpg,https://pic.imgdb.cn/item/672108f1d29ded1a8c7ea240.png"></div>
+    
     
     <div id="home-info" @click="homeClick">
         <span class="loop"></span>
@@ -229,28 +232,9 @@
                 <h4 id="hitokoto"><span id="hitokoto_text">:D 获取中...</span></h4>
                 <div id="info" style="font-size: larger;"></div>
                 <!--一言接口-->
-                <script>
-                    window.onload = function() {
-                        var hitokoto = document.getElementById("hitokoto_text");
-                        var info = document.getElementById("info");
-                        var xhr = new XMLHttpRequest();
-                        xhr.open('get', 'https://v1.hitokoto.cn/?encode=json&charset=utf-8&c=a&c=c&c=f', true);
-                        xhr.onreadystatechange = function() {
-                            if (xhr.readyState === 4 && xhr.status === 200) {
-                                var data = JSON.parse(xhr.responseText);
-                                hitokoto.innerText = data.hitokoto;
-                                if (data.from_who) {
-                                    info.innerText = data.from_who + ' · ' + data.from;
-                                } else {
-                                    info.innerText = '「' + data.from + '」';
-                                }
-                            } else {
-                                hitokoto.innerText = '获取失败';
-                            }
-                        };
-                        xhr.send();
-                    };
-                </script>
+                
+                <script src="/blog/js/hitokoto.js"></script>
+                
                 <h6></h6>
             </div>
         </span>
@@ -297,6 +281,142 @@
 </div>
 
 <div class="post">
+    <a href="/blog/2024/11/11/ctfshow-%E5%8D%95%E8%BA%AB%E6%9D%AF/">
+        <h2 class="post-title">ctfshow 2024单身杯</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/blog/categories/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                CTF线上赛
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/11/11
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>官方wp：<a target="_blank" rel="noopener" href="https://ctf-show.feishu.cn/docx/R6udd58bxoQGQMxFphncZq8rn5e">https://ctf-show.feishu.cn/docx/R6udd58bxoQGQMxFphncZq8rn5e</a></p>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/blog/2024/11/11/ctfshow-%E5%8D%95%E8%BA%AB%E6%9D%AF/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/blog/2024/11/08/Oracle%E6%95%B0%E6%8D%AE%E5%BA%93%E9%85%8D%E7%BD%AE/">
+        <h2 class="post-title">Oracle数据库配置</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/11/8
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7063141828706435085">https://juejin.cn/post/7063141828706435085</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/javaboyweng/article/details/125486242">https://blog.csdn.net/javaboyweng/article/details/125486242</a></p>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/blog/2024/11/08/Oracle%E6%95%B0%E6%8D%AE%E5%BA%93%E9%85%8D%E7%BD%AE/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/blog/2024/11/07/2024%E6%95%B0%E4%BF%A1%E6%9D%AF%E5%86%B3%E8%B5%9B/">
+        <h2 class="post-title">2024数信杯决赛</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/11/7
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>想去打 hackergame 了（</p>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/blog/2024/11/07/2024%E6%95%B0%E4%BF%A1%E6%9D%AF%E5%86%B3%E8%B5%9B/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/blog/2024/11/04/Hackergame-2024/">
+        <h2 class="post-title">Hackergame 2024</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/blog/categories/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                CTF线上赛
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/11/4
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>太忙了，没时间打</p>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/blog/2024/11/04/Hackergame-2024/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
     <a href="/blog/2024/11/02/%E5%BC%BA%E7%BD%91%E6%9D%AFS8/">
         <h2 class="post-title">强网杯S8</h2>
     </a>
@@ -325,6 +445,10 @@
             
             <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>好饿，早知道不打web了</p>
 <p><img src="/blog/2024/11/02/%E5%BC%BA%E7%BD%91%E6%9D%AFS8/image-20241103225651837.png" alt="image-20241103225651837"></p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/vV_II8TpyaGL4HUlUS57RQ">https://mp.weixin.qq.com/s/vV_II8TpyaGL4HUlUS57RQ</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.wm-team.cn/index.php/archives/85/#EzCalc">https://blog.wm-team.cn/index.php/archives/85/#EzCalc</a></p>
+<p><a target="_blank" rel="noopener" href="http://blog.yllhwa.com/qwb-2024-proxy-revenge-wp/">http://blog.yllhwa.com/qwb-2024-proxy-revenge-wp/</a></p>
             
         </div>
     </div>
@@ -495,183 +619,6 @@
     <a href="/blog/2024/10/19/DASCTF-2024-%E5%8D%81%E6%9C%88%E8%B5%9B/" class="go-post">阅读全文</a>
 </div>
 
-<div class="post">
-    <a href="/blog/2024/10/13/GeekGame-2024/">
-        <h2 class="post-title">GeekGame 2024</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/blog/categories/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                CTF线上赛
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/10/13
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>前端苦手啊苦呀西</p>
-<p>玩得也是挺开心的，是兴趣的话就没办法了（</p>
-<p>清北✌恐怖如斯，最终排名：校外81&#x2F;总176</p>
-<p>本比赛ID包括但不限于以下要素：</p>
-<ul>
-<li>mzk5箱啊啊啊😭</li>
-<li>关注异世界情绪小姐谢谢喵😋</li>
-<li>群众里有广p和莉莉娅p啊</li>
-<li>唉唉引诱吃，我褪色了</li>
-</ul>
-<p>官方wp：</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/PKU-GeekGame/geekgame-4th/tree/master/official_writeup">https://github.com/PKU-GeekGame/geekgame-4th/tree/master/official_writeup</a></p>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-    </div>
-    <a href="/blog/2024/10/13/GeekGame-2024/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/blog/2024/10/11/PP2RCE/">
-        <h2 class="post-title">PP2RCE</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/blog/categories/Web/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                Web
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/10/11
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>参考：</p>
-<p><a target="_blank" rel="noopener" href="http://xz.aliyun.com/t/6755">http://xz.aliyun.com/t/6755</a></p>
-<p><a target="_blank" rel="noopener" href="https://research.securitum.com/prototype-pollution-rce-kibana-cve-2019-7609/">https://research.securitum.com/prototype-pollution-rce-kibana-cve-2019-7609/</a></p>
-<p><a target="_blank" rel="noopener" href="https://book.hacktricks.xyz/cn/pentesting-web/deserialization/nodejs-proto-prototype-pollution/prototype-pollution-to-rce">https://book.hacktricks.xyz/cn/pentesting-web/deserialization/nodejs-proto-prototype-pollution/prototype-pollution-to-rce</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.sonarsource.com/blog/blitzjs-prototype-pollution/">https://www.sonarsource.com/blog/blitzjs-prototype-pollution/</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.yuque.com/cnily03/tech/lg05qpua2gz8yf89#">https://www.yuque.com/cnily03/tech/lg05qpua2gz8yf89#</a></p>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        <span class="tag">
-            
-            <a href="/blog/tags/Nodejs/" style="color: #ff7d73">
-                Nodejs
-            </a>
-        </span>
-        
-    </div>
-    <a href="/blog/2024/10/11/PP2RCE/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/blog/2024/09/28/SCTF-2024/">
-        <h2 class="post-title">SCTF 2024</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/blog/categories/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                CTF线上赛
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/9/28
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>并非不可战胜</p>
-<p>参考：</p>
-<p><a target="_blank" rel="noopener" href="https://blog.wm-team.cn/index.php/archives/82/">https://blog.wm-team.cn/index.php/archives/82/</a></p>
-<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=Mzg5OTUzNDY2Nw==&mid=2247484351&idx=1&sn=1a28c6baf473829b19bd2cc4992bd752&chksm=c1a154f6c9957c6f0ec29a9d139598afd6d56a31ae55c9d9deab543a8c810253586788cbb9e9&mpshare=1&scene=23&srcid=1001ghiPHORztFCWZYpppfOp&sharer_shareinfo=f76b8b69af4cfafe5da55fbff445acdc&sharer_shareinfo_first=f76b8b69af4cfafe5da55fbff445acdc#rd">https://mp.weixin.qq.com/s?__biz=Mzg5OTUzNDY2Nw==&amp;mid=2247484351&amp;idx=1&amp;sn=1a28c6baf473829b19bd2cc4992bd752&amp;chksm=c1a154f6c9957c6f0ec29a9d139598afd6d56a31ae55c9d9deab543a8c810253586788cbb9e9&amp;mpshare=1&amp;scene=23&amp;srcid=1001ghiPHORztFCWZYpppfOp&amp;sharer_shareinfo=f76b8b69af4cfafe5da55fbff445acdc&amp;sharer_shareinfo_first=f76b8b69af4cfafe5da55fbff445acdc#rd</a></p>
-<p><a target="_blank" rel="noopener" href="https://hackmd.io/@sahuang/H1A2qvIAR#SycServer20">https://hackmd.io/@sahuang/H1A2qvIAR#SycServer20</a></p>
-<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/qOueXdU3UaKiJoUnuUjBEA">https://mp.weixin.qq.com/s/qOueXdU3UaKiJoUnuUjBEA</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.xmcve.com/2024/10/01/SCTF-2024-Writeup/">https://blog.xmcve.com/2024/10/01/SCTF-2024-Writeup/</a></p>
-<p><a target="_blank" rel="noopener" href="https://quick-mascara-699.notion.site/2024SCTF-wp-d34600322f1141e680e837abce5795ef?pvs=74">https://quick-mascara-699.notion.site/2024SCTF-wp-d34600322f1141e680e837abce5795ef?pvs=74</a></p>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-    </div>
-    <a href="/blog/2024/09/28/SCTF-2024/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/blog/2024/09/27/%E5%8C%BA%E5%9D%97%E9%93%BE%E5%AE%9E%E8%AE%AD/">
-        <h2 class="post-title">区块链实训</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/9/27
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>技术栈：springboot + sqlite</p>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-    </div>
-    <a href="/blog/2024/09/27/%E5%8C%BA%E5%9D%97%E9%93%BE%E5%AE%9E%E8%AE%AD/" class="go-post">阅读全文</a>
-</div>
-
 
             <div class="page-current">
     <div class="prev">
@@ -688,7 +635,7 @@
             
             
             <span class="page-omit">...</span>
-            <a class="page-num" href="/blog/page/33">33</a>
+            <a class="page-num" href="/blog/page/34">34</a>
             
         </span>
         
@@ -766,7 +713,7 @@
     <div class="card-style" style="width: 300px;margin-top: 20px;">
         <span style="font-size: 20px; text-align: left;"><i class="fas fa-bullhorn fa-shake"></i> 公告</span>
         <div class="announcement_content">
-            <p>2024.7.3 暂停使用canvas_nest<br>新增了博客全局背景</p>
+            <p>2024.11.6 优化了一些史山代码（</p>
 
         </div>
     </div>
@@ -775,9 +722,9 @@
     <div class="card-style" style="width: 300px;margin-top: 20px;">
         <span style="font-size: 20px; text-align: left;"><i class="fas fa-chart-line"></i> 网站资讯</span>
         <div style="margin-top: 15px;margin-left: 10px;text-align: left;line-height: 30px;font-size: 15px">
-            <span id="TotalArtical">文章总数：330</span>
+            <span id="TotalArtical">文章总数：334</span>
             <br>
-            <span id="TotalArtical">本站总字数：764.5k</span>
+            <span id="TotalArtical">本站总字数：772.8k</span>
             <br>
             <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
             <script>
@@ -828,17 +775,18 @@
     <script src="/blog/js/main.js"></script>
     
     
-        <script src="/blog/js/lib/valine.min.js"></script>
-            <script>
-                new Valine({
-                    el: '#vcomments',
-                    app_id: 'U9mZLKunkRUTcBFthjXPjnZE-9Nh9j0Va',
-                    app_key: 'SzWOnY0PWLGNuL6jW8TZYc7j',
-                    visitor: 'true',
-                    placeholder: '写点什么吧(●ˇ∀ˇ●)',
-                    serverURLs: 'https://u9mzlkun.lc-cn-n1-shared.com',
-                });
-            </script>
+
+<script src="/blog/js/lib/valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: 'U9mZLKunkRUTcBFthjXPjnZE-9Nh9j0Va',
+        app_key: 'SzWOnY0PWLGNuL6jW8TZYc7j',
+        visitor: 'true',
+        placeholder: '写点什么吧(●ˇ∀ˇ●)',
+        serverURLs: 'https://u9mzlkun.lc-cn-n1-shared.com',
+    });
+</script>
 
     <footer id="footer">
     <div id="footer-wrap">

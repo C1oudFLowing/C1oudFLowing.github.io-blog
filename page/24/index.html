@@ -13,15 +13,16 @@
     <!-- cdn挂掉的时候要可以引用本地 -->
 <!-- <script src="https://cdn.staticfile.org/vue/3.2.45/vue.global.prod.min.js"></script> -->
 <script src="/blog/js/vue.global.prod.min.js"></script>
+
 <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.2.1/css/all.min.css" />
-<!--<link rel="stylesheet" href="/blog/css/all.min.css" />-->
+<link rel="stylesheet" href="/blog/css/all.min.css" />
 <link rel="stylesheet" href="/blog/css/fonts.min.css" />
 <link rel="stylesheet" href="/blog/css/search.css" />
 <script> const mixins = {}; </script>
 
 <!-- 引入jQuery-->
-<script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-<!--<script src="/blog/js/jquery.min.js"></script>-->
+<!-- <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script> -->
+<script src="/blog/js/jquery.min.js"></script>
 
 <!--改成了prismjs高亮-->
 
@@ -41,6 +42,7 @@
 
 <link rel="stylesheet" href="/blog/css/main.css" />
 <!-- 引入不蒜子-->
+
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 <script type="text/javascript" src="/blog/libs/codeBlock/codeBlockFuction.js"></script>
@@ -54,7 +56,6 @@
 <script type="text/javascript" src="/blog/libs/codeBlock/codeShrink.js"></script> 
 <!-- 代码块折行 -->
 <style type="text/css">code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }</style>
-
 <meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/blog/atom.xml" title="雲流のLowest World" type="application/atom+xml">
 </head>
 
@@ -216,7 +217,9 @@
 </nav>
 
                 <div id="home-head">
+    
     <div id="home-background" ref="homeBackground" data-image="https://pic.imgdb.cn/item/648dd72c1ddac507cc80082e.jpg,https://pic.imgdb.cn/item/648dd72c1ddac507cc80077c.png,https://pic.imgdb.cn/item/648dd72b1ddac507cc8005dc.png,https://pic.imgdb.cn/item/6581d4cec458853aef847b82.jpg,https://pic.imgdb.cn/item/6581d619c458853aef87abc9.jpg,https://pic.imgdb.cn/item/65d617299f345e8d03a2adcf.jpg,https://pic.imgdb.cn/item/668515b2d9c307b7e91d1895.jpg,https://pic.imgdb.cn/item/672108f1d29ded1a8c7ea240.png"></div>
+    
     
     <div id="home-info" @click="homeClick">
         <span class="loop"></span>
@@ -229,28 +232,9 @@
                 <h4 id="hitokoto"><span id="hitokoto_text">:D 获取中...</span></h4>
                 <div id="info" style="font-size: larger;"></div>
                 <!--一言接口-->
-                <script>
-                    window.onload = function() {
-                        var hitokoto = document.getElementById("hitokoto_text");
-                        var info = document.getElementById("info");
-                        var xhr = new XMLHttpRequest();
-                        xhr.open('get', 'https://v1.hitokoto.cn/?encode=json&charset=utf-8&c=a&c=c&c=f', true);
-                        xhr.onreadystatechange = function() {
-                            if (xhr.readyState === 4 && xhr.status === 200) {
-                                var data = JSON.parse(xhr.responseText);
-                                hitokoto.innerText = data.hitokoto;
-                                if (data.from_who) {
-                                    info.innerText = data.from_who + ' · ' + data.from;
-                                } else {
-                                    info.innerText = '「' + data.from + '」';
-                                }
-                            } else {
-                                hitokoto.innerText = '获取失败';
-                            }
-                        };
-                        xhr.send();
-                    };
-                </script>
+                
+                <script src="/blog/js/hitokoto.js"></script>
+                
                 <h6></h6>
             </div>
         </span>
@@ -261,6 +245,206 @@
     <div id="home-posts">
         <div id="posts">
             
+
+<div class="post">
+    <a href="/blog/2023/07/06/python%E7%89%B9%E6%80%A7/">
+        <h2 class="post-title">python特性</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/7/6
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>突然意识到自己对python的类，魔术方法和一些特性尚不明晰</p>
+<p>对pyjail和ssti的解题会造成一定影响，所以这篇文章就记录一下python的一些特性</p>
+<p>使用python的交互环境进行测试</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/578966149">参考春哥的文章</a></p>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/blog/tags/python/" style="color: #00bcd4">
+                python
+            </a>
+        </span>
+        
+    </div>
+    <a href="/blog/2023/07/06/python%E7%89%B9%E6%80%A7/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/blog/2023/07/04/flask%E5%9F%BA%E7%A1%80/">
+        <h2 class="post-title">flask基础</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/blog/categories/Basic/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                Basic
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/7/4
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>突然意识到自己做了不少flask框架的题还没有好好学一下flask基础</p>
+<p>而且ssti的题没学flask基础的话感觉学得不是特别明白</p>
+<p>那就开个坑进行一个学</p>
+<p><a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/12163#toc-0">参考先知社区的文章</a></p>
+<p><a target="_blank" rel="noopener" href="https://dormousehole.readthedocs.io/en/latest/quickstart.html">官方文档</a></p>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/blog/tags/python/" style="color: #ffa2c4">
+                python
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/blog/tags/flask/" style="color: #03a9f4">
+                flask
+            </a>
+        </span>
+        
+    </div>
+    <a href="/blog/2023/07/04/flask%E5%9F%BA%E7%A1%80/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/blog/2023/07/03/Java%E5%8F%8D%E5%B0%84/">
+        <h2 class="post-title">Java反射</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/blog/categories/Web/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                Web
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/7/3
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>类似于java版的<code>__proto__</code>（？</p>
+<p>虽然学校专业已经教了java的基础内容，但是对于安全方面并没有什么介绍</p>
+<p>于是在各种ctf比赛被java题拷打了无数遍555，所以接下来开始对java安全进行一个比较系统的学习</p>
+<p>我这里尚不清楚java的学习路线，那么就先从java反射开始学习摸索一下</p>
+<p>据说java反序列化漏洞就是从反射开始的</p>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/blog/tags/Java/" style="color: #ff7d73">
+                Java
+            </a>
+        </span>
+        
+    </div>
+    <a href="/blog/2023/07/03/Java%E5%8F%8D%E5%B0%84/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/blog/2023/07/02/%E8%AE%B0awd%E7%9A%84%E9%80%9A%E9%98%B2%E9%83%A8%E7%BD%B2/">
+        <h2 class="post-title">记awd的通防部署</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/blog/categories/AWD/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                AWD
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/7/2
+        </span>
+        
+        <span class="special">
+            <i class="fa-solid fa-lock fa-fw"></i>
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>通防太赖皮了，这里仅作个人学习用</p>
+<p>比赛时遇到有人开了通防，于是自己在比赛的最后一轮尝试部署了一下，发现全防住了<del>（你先开的</del>，对别人来说就不怎么好玩了</p>
+<p>所以就不公开了（虽然网上要搜还是能搜到的）</p>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/blog/2023/07/02/%E8%AE%B0awd%E7%9A%84%E9%80%9A%E9%98%B2%E9%83%A8%E7%BD%B2/" class="go-post">阅读全文</a>
+</div>
 
 <div class="post">
     <a href="/blog/2023/07/02/%E8%AE%B0NSS%E7%9A%84%E4%B8%80%E6%AC%A1awd/">
@@ -314,7 +498,7 @@
         
         <span class="tag">
             
-            <a href="/blog/tags/NSS/" style="color: #ff7d73">
+            <a href="/blog/tags/NSS/" style="color: #00a596">
                 NSS
             </a>
         </span>
@@ -365,14 +549,14 @@
         
         <span class="tag">
             
-            <a href="/blog/tags/SSRF/" style="color: #ff7d73">
+            <a href="/blog/tags/SSRF/" style="color: #00a596">
                 SSRF
             </a>
         </span>
         
         <span class="tag">
             
-            <a href="/blog/tags/ctfshow/" style="color: #ffa2c4">
+            <a href="/blog/tags/ctfshow/" style="color: #00a596">
                 ctfshow
             </a>
         </span>
@@ -423,7 +607,7 @@
         
         <span class="tag">
             
-            <a href="/blog/tags/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/" style="color: #00a596">
+            <a href="/blog/tags/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/" style="color: #00bcd4">
                 流量分析
             </a>
         </span>
@@ -520,14 +704,14 @@
         
         <span class="tag">
             
-            <a href="/blog/tags/Nodejs/" style="color: #03a9f4">
+            <a href="/blog/tags/Nodejs/" style="color: #00bcd4">
                 Nodejs
             </a>
         </span>
         
         <span class="tag">
             
-            <a href="/blog/tags/%E6%B2%99%E7%AE%B1%E9%80%83%E9%80%B8/" style="color: #ff7d73">
+            <a href="/blog/tags/%E6%B2%99%E7%AE%B1%E9%80%83%E9%80%B8/" style="color: #00a596">
                 沙箱逃逸
             </a>
         </span>
@@ -576,189 +760,20 @@
         
         <span class="tag">
             
-            <a href="/blog/tags/Nodejs/" style="color: #00bcd4">
+            <a href="/blog/tags/Nodejs/" style="color: #00a596">
                 Nodejs
             </a>
         </span>
         
         <span class="tag">
             
-            <a href="/blog/tags/ctfshow/" style="color: #00bcd4">
+            <a href="/blog/tags/ctfshow/" style="color: #ff7d73">
                 ctfshow
             </a>
         </span>
         
     </div>
     <a href="/blog/2023/06/28/ctfshow-Nodejs%E4%B8%93%E9%A2%98/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/blog/2023/06/26/Nodejs%E5%9F%BA%E7%A1%80/">
-        <h2 class="post-title">Nodejs基础</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/blog/categories/Basic/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                Basic
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/6/26
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>尽量从ctf角度出发来快速上手</p>
-<p><a target="_blank" rel="noopener" href="https://www.runoob.com/nodejs/nodejs-tutorial.html">菜鸟教程</a></p>
-<p>官方文档：<a target="_blank" rel="noopener" href="https://nodejs.cn/api/">https://nodejs.cn/api/</a></p>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        <span class="tag">
-            
-            <a href="/blog/tags/Nodejs/" style="color: #00a596">
-                Nodejs
-            </a>
-        </span>
-        
-    </div>
-    <a href="/blog/2023/06/26/Nodejs%E5%9F%BA%E7%A1%80/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/blog/2023/06/23/NISACTF-2022/">
-        <h2 class="post-title">NISACTF 2022</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/6/23
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>屑博主之前刷题的时候没写wp，现在才想起来，那么顺便慢慢补一下吧</p>
-<p>现在重做的感觉…还挺难的（x</p>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        <span class="tag">
-            
-            <a href="/blog/tags/%E5%88%B7%E9%A2%98/" style="color: #ff7d73">
-                刷题
-            </a>
-        </span>
-        
-    </div>
-    <a href="/blog/2023/06/23/NISACTF-2022/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/blog/2023/06/23/Linux%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E4%B8%AD%E7%9A%84PLT%E5%92%8CGOT/">
-        <h2 class="post-title">Linux动态链接中的PLT和GOT</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/blog/categories/Pwn/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                Pwn
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/6/23
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <p>参考文章：<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/linyt/article/details/51635768">聊聊Linux动态链接中的PLT和GOT（１）——何谓PLT与GOT</a><br><a target="_blank" rel="noopener" href="https://linyt.blog.csdn.net/article/details/51636753">聊聊Linux动态链接中的PLT和GOT（２）——延迟重定位</a><br><a target="_blank" rel="noopener" href="https://linyt.blog.csdn.net/article/details/51637832">聊聊Linux动态链接中的PLT和GOT（３）——公共GOT表项</a></p>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-    </div>
-    <a href="/blog/2023/06/23/Linux%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E4%B8%AD%E7%9A%84PLT%E5%92%8CGOT/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/blog/2023/06/21/vscode%E6%89%A9%E5%B1%95%E9%A1%B5%E9%9D%A2%E6%8A%A5%E9%94%99/">
-        <h2 class="post-title">vscode扩展页面报错</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/blog/categories/Q-A/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                Q&amp;A
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/6/21
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h1 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h1><p>如图，报错如下，重装vscode无法解决</p>
-<p><img src="/blog/2023/06/21/vscode%E6%89%A9%E5%B1%95%E9%A1%B5%E9%9D%A2%E6%8A%A5%E9%94%99/image-20230621010030877.png" alt="image-20230621010030877"></p>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        
-    </div>
-    <a href="/blog/2023/06/21/vscode%E6%89%A9%E5%B1%95%E9%A1%B5%E9%9D%A2%E6%8A%A5%E9%94%99/" class="go-post">阅读全文</a>
 </div>
 
 
@@ -795,7 +810,7 @@
             
             
             <span class="page-omit">...</span>
-            <a class="page-num" href="/blog/page/33">33</a>
+            <a class="page-num" href="/blog/page/34">34</a>
             
         </span>
         
@@ -873,7 +888,7 @@
     <div class="card-style" style="width: 300px;margin-top: 20px;">
         <span style="font-size: 20px; text-align: left;"><i class="fas fa-bullhorn fa-shake"></i> 公告</span>
         <div class="announcement_content">
-            <p>2024.7.3 暂停使用canvas_nest<br>新增了博客全局背景</p>
+            <p>2024.11.6 优化了一些史山代码（</p>
 
         </div>
     </div>
@@ -882,9 +897,9 @@
     <div class="card-style" style="width: 300px;margin-top: 20px;">
         <span style="font-size: 20px; text-align: left;"><i class="fas fa-chart-line"></i> 网站资讯</span>
         <div style="margin-top: 15px;margin-left: 10px;text-align: left;line-height: 30px;font-size: 15px">
-            <span id="TotalArtical">文章总数：330</span>
+            <span id="TotalArtical">文章总数：334</span>
             <br>
-            <span id="TotalArtical">本站总字数：764.5k</span>
+            <span id="TotalArtical">本站总字数：772.8k</span>
             <br>
             <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
             <script>
@@ -935,17 +950,18 @@
     <script src="/blog/js/main.js"></script>
     
     
-        <script src="/blog/js/lib/valine.min.js"></script>
-            <script>
-                new Valine({
-                    el: '#vcomments',
-                    app_id: 'U9mZLKunkRUTcBFthjXPjnZE-9Nh9j0Va',
-                    app_key: 'SzWOnY0PWLGNuL6jW8TZYc7j',
-                    visitor: 'true',
-                    placeholder: '写点什么吧(●ˇ∀ˇ●)',
-                    serverURLs: 'https://u9mzlkun.lc-cn-n1-shared.com',
-                });
-            </script>
+
+<script src="/blog/js/lib/valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: 'U9mZLKunkRUTcBFthjXPjnZE-9Nh9j0Va',
+        app_key: 'SzWOnY0PWLGNuL6jW8TZYc7j',
+        visitor: 'true',
+        placeholder: '写点什么吧(●ˇ∀ˇ●)',
+        serverURLs: 'https://u9mzlkun.lc-cn-n1-shared.com',
+    });
+</script>
 
     <footer id="footer">
     <div id="footer-wrap">
