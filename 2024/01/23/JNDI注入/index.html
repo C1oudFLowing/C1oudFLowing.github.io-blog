@@ -255,12 +255,12 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/CVE/" style="color: #03a9f4">CVE</a>
+                <a href="/blog/tags/Java/" style="color: #ff7d73">Java</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/blog/tags/Java/" style="color: #ffa2c4">Java</a>
+                <a href="/blog/tags/CVE/" style="color: #00a596">CVE</a>
             </span>
             
         </span>
@@ -274,7 +274,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">2.5k字</span>
+        <span class="post-count">2.6k字</span>
       </span>
     </span>
 
@@ -546,6 +546,18 @@ factoryLocation  提供classes数据的地址可以是file/ftp/http协议
 <hr>
 <h2 id="LDAP注入"><a href="#LDAP注入" class="headerlink" title="LDAP注入"></a>LDAP注入</h2><p>在rmi注入被修复之后的版本，客户端执行上面的操作会报错<code>Exception in thread &quot;main&quot; javax.naming.ConfigurationException: The object  factory is untrusted. Set the system property  &#39;com.sun.jndi.rmi.object.trustURLCodebase&#39; to &#39;true&#39;.</code>，因为<code>trustURLCodebase</code>默认变为了false，因此无法实例化恶意类了</p>
 <p>这种情况可以用ldap进行绕过</p>
+<p>导入依赖：</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>  
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>com.unboundid<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>  
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>unboundid-ldapsdk<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>  
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>3.2.0<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>  
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>scope</span><span class="token punctuation">></span></span>test<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>scope</span><span class="token punctuation">></span></span>  
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+
+
 <hr>
 <h1 id="log4j2-RCE（CVE-2021-44228）"><a href="#log4j2-RCE（CVE-2021-44228）" class="headerlink" title="log4j2 RCE（CVE-2021-44228）"></a>log4j2 RCE（CVE-2021-44228）</h1><p>Apache Log4j2是一个基于Java的日志记录工具。</p>
 <p>由于Apache Log4j2某些功能存在递归解析功能，攻击者可直接构造恶意请求，触发远程代码执行漏洞</p>
