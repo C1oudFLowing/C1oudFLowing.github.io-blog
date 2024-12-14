@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>Categories: Reverse | 雲流のLowest World</title>
+    <title>Chrome扩展攻击 | 雲流のLowest World</title>
     <meta name="author" content="C1oudfL0w0" />
     <meta name="description" content="" />
     <meta name="keywords" content="" />
@@ -35,6 +35,10 @@
 
 
 <script src="/blog/js/lib/preview.js"></script>
+
+
+
+
 
 
 
@@ -78,6 +82,12 @@
 
     <!--文章目录-->
     
+    <div id="toc" class="toc-article">
+    <h3><i class="fas fa-stream"></i>  目录</h3>
+      <div class="toc-title"></div>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">2.</span> <span class="toc-text">基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6%E4%BB%8B%E7%BB%8D"><span class="toc-number">2.1.</span> <span class="toc-text">组件介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#manifest-json"><span class="toc-number">2.2.</span> <span class="toc-text">manifest.json</span></a></li></ol></li></ol>
+    </div>
+  
 
     <!--返回顶部-->
     <div id="totop" style="position:fixed;bottom:50px;right:60px;font-size: 48px;cursor: pointer;z-index: 10;">
@@ -221,228 +231,76 @@
     </div>
 </nav>
 
-                <div id="archives">
-    
-    <div class="categories-tags">
-        
-        
-        <span>
-            <a href="/blog/categories/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/" style="background: #03a9f4">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                CTF线上赛
-                <span class="count">105</span>
-            </a>
+                <div class="article">
+    <div>
+        <h1>Chrome扩展攻击</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/12/15
         </span>
         
-        
-        
-        <span>
-            <a href="/blog/categories/%E7%BA%BF%E4%B8%8B%E8%B5%9B/" style="background: #00bcd4">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                线下赛
-                <span class="count">10</span>
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/blog/categories/AWDP/" style="background: #00a596">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                AWDP
-                <span class="count">2</span>
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/blog/categories/Web/" style="background: #ffa2c4">
+        <span class="category">
+            <a href="/blog/categories/Web/">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
                 Web
-                <span class="count">102</span>
             </a>
         </span>
         
         
+        <!--文章字数统计-->
         
-        <span>
-            <a href="/blog/categories/Thinking/" style="background: #00bcd4">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                Thinking
-                <span class="count">3</span>
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/blog/categories/Basic/" style="background: #03a9f4">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                Basic
-                <span class="count">28</span>
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/blog/categories/AWD/" style="background: #03a9f4">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                AWD
-                <span class="count">7</span>
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/blog/categories/%E6%B8%97%E9%80%8F/" style="background: #ff7d73">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                渗透
-                <span class="count">19</span>
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/blog/categories/Pwn/" style="background: #ffa2c4">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                Pwn
-                <span class="count">6</span>
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/blog/categories/Reverse/" style="background: linear-gradient(120deg, #9abbf7 0%, #ffbbf4 100%)">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                Reverse
-                <span class="count">1</span>
-            </a>
-        </span>
-        
-        
-        
-        
-        
-        <span>
-            <a href="/blog/categories/Crypto/" style="background: #ffa2c4">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                Crypto
-                <span class="count">5</span>
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/blog/categories/Linux/" style="background: #03a9f4">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                Linux
-                <span class="count">7</span>
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/blog/categories/Q-A/" style="background: #03a9f4">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                Q&amp;A
-                <span class="count">7</span>
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/blog/categories/Blockchain/" style="background: #00a596">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                Blockchain
-                <span class="count">2</span>
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/blog/categories/Misc/" style="background: #03a9f4">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                Misc
-                <span class="count">5</span>
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/blog/categories/Rev/" style="background: #00bcd4">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                Rev
-                <span class="count">14</span>
-            </a>
-        </span>
-        
-        
+            
+<div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <!-- 安装插件npm install hexo-wordcount --save -->
+        <span class="post-count">70字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">1分</span>
+      </span>
+    </span>
+    
+    <!--不蒜子统计访问数-->
+    <span id="busuanzi_container_page_pv">
+    &nbsp; | &nbsp;
+    总文章阅读量：<span id="busuanzi_value_page_pv"></span>次
+    </span>
+</div>
+
+          
     </div>
     
-    <div class="timeline">
-        <div class="timeline-tail"></div>
-        <div class="timeline-content">
-            <div class="item-time">2024/11/14</div>
-            <a href="/blog/2024/11/14/%E8%BD%AF%E4%BB%B6APP%E9%80%86%E5%90%91/">
-                <h3>软件APP逆向</h3>
-            </a>
-            <div class="info">
-                
-                <span class="category">
-                    <a href="/blog/categories/Reverse/">
-                        <span class="icon">
-                            <i class="fa-solid fa-bookmark fa-fw"></i>
-                        </span>
-                        Reverse
-                    </a>
-                </span>
-                
-                
-            </div>
-        </div>
+    <div class="content" v-pre>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>之前打 GeekGame 的时候就遇到过利用 chrome 扩展进行 xss 的题，正好看到有相关的文章，遂学习一下</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.xlab.app/p/4db211d1/">https://blog.xlab.app/p/4db211d1/</a></p>
+<span id="more"></span>
+
+<hr>
+<h1 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h1><h2 id="组件介绍"><a href="#组件介绍" class="headerlink" title="组件介绍"></a>组件介绍</h2><p>edge 的扩展位置在 <code>%localappdata%\Microsoft\Edge\User Data\Default\Extensions</code></p>
+<h2 id="manifest-json"><a href="#manifest-json" class="headerlink" title="manifest.json"></a>manifest.json</h2>
     </div>
+    
+    
+    
+    
+    
+    
     
 </div>
 
@@ -459,6 +317,14 @@
     <script src="/blog/js/main.js"></script>
     
     
+
+
+
+
+    
+    
+
+<div id="vcomments"></div>
 
 <script src="/blog/js/lib/valine.min.js"></script>
 <script>
