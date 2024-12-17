@@ -523,7 +523,7 @@ Navigating to: &lt;span class="relocate-location">&lt;/span>...
 
 <p>结束后试了一下直接在 &#x2F;tmp 写马 index.php，然后 fpm 起 phpserver 开在 &#x2F;tmp 下，密码填 &#x2F;tmp&#x2F;index.php 的即可绕过 disable_function 且正常连接</p>
 <p>接下来找flag，本来以为要提权的，找了半天没提权点</p>
-<p><code>find / -type f -name &quot;/flag&quot; 2&gt;/dev/null</code>找到了神人flag路径</p>
+<p><code>find / -type f -name &quot;flag&quot; 2&gt;/dev/null</code>找到了神人flag路径</p>
 <p><img src="/blog/2024/12/15/CISCN-CCB2024/image-20241215204605743.png" alt="image-20241215204605743"></p>
 <hr>
 <h1 id="safeproxy"><a href="#safeproxy" class="headerlink" title="safeproxy"></a>safeproxy</h1><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> flask <span class="token keyword">import</span> Flask<span class="token punctuation">,</span> request<span class="token punctuation">,</span> render_template_string
