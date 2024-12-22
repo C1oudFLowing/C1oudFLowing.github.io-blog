@@ -1,0 +1,565 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>DASCTF x 0psu3 2024最后一战 | 雲流のLowest World</title>
+    <meta name="author" content="C1oudfL0w0" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <link rel="icon" href="/blog/images/croppedImage_cropped.jpg" />
+    <!-- cdn挂掉的时候要可以引用本地 -->
+<!-- <script src="https://cdn.staticfile.org/vue/3.2.45/vue.global.prod.min.js"></script> -->
+<script src="/blog/js/vue.global.prod.min.js"></script>
+
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.2.1/css/all.min.css" />
+
+
+<link rel="stylesheet" href="/blog/css/all.min.css" />
+<link rel="stylesheet" href="/blog/css/fonts.min.css" />
+<link rel="stylesheet" href="/blog/css/search.css" />
+<script> const mixins = {}; </script>
+
+<!-- 引入jQuery-->
+<!-- <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script> -->
+<script src="/blog/js/jquery.min.js"></script>
+
+<!--改成了prismjs高亮-->
+
+<script src="/blog/js/lib/prism.js"></script>
+<link rel="stylesheet" href="/blog/css/prism.css" rel="stylesheet" />
+
+
+
+<script src="/blog/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+
+<script src="/blog/js/lib/home.js"></script>
+
+<link rel="stylesheet" href="/blog/css/main.css" />
+<!-- 引入不蒜子-->
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script type="text/javascript" src="/blog/libs/codeBlock/codeBlockFuction.js"></script>
+<!-- 代码语言 -->
+<script type="text/javascript" src="/blog/libs/codeBlock/codeLang.js"></script>
+<!-- 代码块复制 -->
+<!-- 引入clipboard -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+
+<script type="text/javascript" src="/blog/libs/codeBlock/codeCopy.js"></script>
+<!-- 代码块收缩 -->
+<script type="text/javascript" src="/blog/libs/codeBlock/codeShrink.js"></script> 
+<!-- 代码块折行 -->
+<style type="text/css">code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }</style>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/blog/atom.xml" title="雲流のLowest World" type="application/atom+xml">
+</head>
+
+<body>
+    <!--flag{never_g0nna g1ve_you up}-->
+
+    <!-- 页面点击特效 -->
+    <script type="text/javascript" src="/blog/js/love-click.js"></script>
+
+    <!-- 浏览器标题 -->
+    <script async type="text/javascript" src="/blog/js/FunnyTitle.js"></script>
+
+    <!-- 动态背景 -->
+    
+
+    <!--文章目录-->
+    
+    <div id="toc" class="toc-article">
+    <h3><i class="fas fa-stream"></i>  目录</h3>
+      <div class="toc-title"></div>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AD%BE%E5%88%B0%E9%A2%98"><span class="toc-number">2.</span> <span class="toc-text">签到题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%91%E9%82%80%E8%AF%B7%E5%87%BD%E8%8E%B7%E5%8F%96%E5%99%A8"><span class="toc-number">3.</span> <span class="toc-text">西湖论剑邀请函获取器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#const-python%EF%BC%88Unsolved%EF%BC%89"><span class="toc-number">4.</span> <span class="toc-text">const_python（Unsolved）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#yaml-matser%EF%BC%88Unsolved%EF%BC%89"><span class="toc-number">5.</span> <span class="toc-text">yaml_matser（Unsolved）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#strange-php%EF%BC%88Unsolved%EF%BC%89"><span class="toc-number">6.</span> <span class="toc-text">strange_php（Unsolved）</span></a></li></ol>
+    </div>
+  
+
+    <!--返回顶部-->
+    <div id="totop" style="position:fixed;bottom:50px;right:60px;font-size: 48px;cursor: pointer;z-index: 10;">
+        <a title="返回顶部">↑</a>
+    </div>
+    <script src="/blog/js/totop.js"></script>
+
+    <div id="layout">
+        
+            <div id="content-background" ref="contentBackground" data-images="https://pic.imgdb.cn/item/65d61d809f345e8d03b8bc7a.png"></div>
+            
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>第一次加载文章图片可能会花费较长时间</p>
+                    <p>要不挂个梯子试试？（x</p>
+                    <p>加载过慢请开启缓存&ensp;浏览器默认开启</p>
+                    <img src="/blog/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <transition name="into">
+            <div id="main" v-show="!loading">
+                <nav id="menu" ref="menu">
+    <div class="desktop-menu">
+        <a class="title" href="/blog/">
+            <span>雲流のLOWEST WORLD</span>
+        </a>
+        
+        <a href="/blog/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/blog/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/blog/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/blog/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/blog/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+        <a href="/blog/links">
+            <i class="fa-solid fa-link fa-fw"></i>
+            <span>&ensp;Links</span>
+        </a>
+        
+        <a href="/blog/search">
+            <i class="fa-solid fa-search fa-fw"></i>
+            <span>&ensp;Search</span>
+        </a>
+        
+    </div>
+    <div id="mobile-menu">
+        <div class="curtain" v-show="showMenu" @click="showMenu = !showMenu"></div>
+        <div class="title" @click="showMenu = !showMenu">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;雲流のLOWEST WORLD</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="showMenu">
+            
+            <a href="/blog/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                </div>
+            </a>
+            
+            <a href="/blog/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                </div>
+            </a>
+            
+            <a href="/blog/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                </div>
+            </a>
+            
+            <a href="/blog/categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                </div>
+            </a>
+            
+            <a href="/blog/tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                </div>
+            </a>
+            
+            <a href="/blog/links">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-link fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Links</div>
+                </div>
+            </a>
+            
+            <a href="/blog/search">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-search fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Search</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+
+                <div class="article">
+    <div>
+        <h1>DASCTF x 0psu3 2024最后一战</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/12/21
+        </span>
+        
+        <span class="category">
+            <a href="/blog/categories/CTF%E7%BA%BF%E4%B8%8A%E8%B5%9B/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                CTF线上赛
+            </a>
+        </span>
+        
+        
+        <!--文章字数统计-->
+        
+            
+<div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <!-- 安装插件npm install hexo-wordcount --save -->
+        <span class="post-count">815字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">4分</span>
+      </span>
+    </span>
+    
+    <!--不蒜子统计访问数-->
+    <span id="busuanzi_container_page_pv">
+    &nbsp; | &nbsp;
+    总文章阅读量：<span id="busuanzi_value_page_pv"></span>次
+    </span>
+</div>
+
+          
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>时隔一年，这次连签到都差点做不来了</p>
+<p>唉唉web又爆零了，埋了，得了一种打 DAS 就做不动题的病</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/gxngxngxn/p/18620905">https://www.cnblogs.com/gxngxngxn/p/18620905</a></p>
+<span id="more"></span>
+
+<hr>
+<h1 id="签到题"><a href="#签到题" class="headerlink" title="签到题"></a>签到题</h1><blockquote>
+<p>请仔细观察这个链接，会先到 <a target="_blank" rel="noopener" href="http://game.wetolink.com/">game.wetolink.com</a>，那么，稍微扫描一下能有什么发现呢？</p>
+</blockquote>
+<p>公网 https 我哪敢直接扫啊（</p>
+<p>它给的网站并非真实的报名网站</p>
+<p>扫一下发现有robots.txt</p>
+<p><img src="/blog/2024/12/21/DASCTF-x-0psu3-2024%E6%9C%80%E5%90%8E%E4%B8%80%E6%88%98/image-20241221170034012.png" alt="image-20241221170034012"></p>
+<hr>
+<h1 id="西湖论剑邀请函获取器"><a href="#西湖论剑邀请函获取器" class="headerlink" title="西湖论剑邀请函获取器"></a>西湖论剑邀请函获取器</h1><blockquote>
+<p>提交截图那里，队名好像可以 81 ？但好像不是 Python 写的，是 Rust 吗（喜）；不用RCE，拿到环境变量FLAG的内容即可。</p>
+</blockquote>
+<p><img src="/blog/2024/12/21/DASCTF-x-0psu3-2024%E6%9C%80%E5%90%8E%E4%B8%80%E6%88%98/image-20241221170314887.png" alt="image-20241221170314887"></p>
+<p>有ssti</p>
+<p><img src="/blog/2024/12/21/DASCTF-x-0psu3-2024%E6%9C%80%E5%90%8E%E4%B8%80%E6%88%98/image-20241221171013243.png" alt="image-20241221171013243"></p>
+<p>浅浅测一下发现确实是 tera 模板，此事在三峡杯初赛中亦有记载</p>
+<p>无过滤那就直接读</p>
+<pre class="line-numbers language-rust" data-language="rust"><code class="language-rust"><span class="token punctuation">&#123;</span><span class="token punctuation">&#123;</span> <span class="token function">get_env</span><span class="token punctuation">(</span>name<span class="token operator">=</span><span class="token string">"FLAG"</span><span class="token punctuation">)</span> <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/blog/2024/12/21/DASCTF-x-0psu3-2024%E6%9C%80%E5%90%8E%E4%B8%80%E6%88%98/image-20241221171243779.png" alt="image-20241221171243779"></p>
+<hr>
+<h1 id="const-python（Unsolved）"><a href="#const-python（Unsolved）" class="headerlink" title="const_python（Unsolved）"></a>const_python（Unsolved）</h1><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> builtins
+<span class="token keyword">import</span> io
+<span class="token keyword">import</span> sys
+<span class="token keyword">import</span> uuid
+<span class="token keyword">from</span> flask <span class="token keyword">import</span> Flask<span class="token punctuation">,</span> request<span class="token punctuation">,</span>jsonify<span class="token punctuation">,</span>session
+<span class="token keyword">import</span> pickle
+<span class="token keyword">import</span> base64
+
+
+app <span class="token operator">=</span> Flask<span class="token punctuation">(</span>__name__<span class="token punctuation">)</span>
+
+app<span class="token punctuation">.</span>config<span class="token punctuation">[</span><span class="token string">'SECRET_KEY'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token builtin">str</span><span class="token punctuation">(</span>uuid<span class="token punctuation">.</span>uuid4<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"-"</span><span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">class</span> <span class="token class-name">User</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> username<span class="token punctuation">,</span> password<span class="token punctuation">,</span> auth<span class="token operator">=</span><span class="token string">'ctfer'</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>username <span class="token operator">=</span> username
+        self<span class="token punctuation">.</span>password <span class="token operator">=</span> password
+        self<span class="token punctuation">.</span>auth <span class="token operator">=</span> auth
+
+password <span class="token operator">=</span> <span class="token builtin">str</span><span class="token punctuation">(</span>uuid<span class="token punctuation">.</span>uuid4<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"-"</span><span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">)</span>
+Admin <span class="token operator">=</span> User<span class="token punctuation">(</span><span class="token string">'admin'</span><span class="token punctuation">,</span> password<span class="token punctuation">,</span><span class="token string">"admin"</span><span class="token punctuation">)</span>
+
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">index</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token string">"Welcome to my application"</span>
+
+
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/login'</span><span class="token punctuation">,</span> methods<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'GET'</span><span class="token punctuation">,</span> <span class="token string">'POST'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">post_login</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> request<span class="token punctuation">.</span>method <span class="token operator">==</span> <span class="token string">'POST'</span><span class="token punctuation">:</span>
+
+        username <span class="token operator">=</span> request<span class="token punctuation">.</span>form<span class="token punctuation">[</span><span class="token string">'username'</span><span class="token punctuation">]</span>
+        password <span class="token operator">=</span> request<span class="token punctuation">.</span>form<span class="token punctuation">[</span><span class="token string">'password'</span><span class="token punctuation">]</span>
+
+
+        <span class="token keyword">if</span> username <span class="token operator">==</span> <span class="token string">'admin'</span> <span class="token punctuation">:</span>
+            <span class="token keyword">if</span> password <span class="token operator">==</span> admin<span class="token punctuation">.</span>password<span class="token punctuation">:</span>
+                session<span class="token punctuation">[</span><span class="token string">'username'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"admin"</span>
+                <span class="token keyword">return</span> <span class="token string">"Welcome Admin"</span>
+            <span class="token keyword">else</span><span class="token punctuation">:</span>
+                <span class="token keyword">return</span> <span class="token string">"Invalid Credentials"</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            session<span class="token punctuation">[</span><span class="token string">'username'</span><span class="token punctuation">]</span> <span class="token operator">=</span> username
+
+
+    <span class="token keyword">return</span> <span class="token triple-quoted-string string">'''
+        &lt;form method="post">
+        &lt;!-- /src may help you>
+            Username: &lt;input type="text" name="username">&lt;br>
+            Password: &lt;input type="password" name="password">&lt;br>
+            &lt;input type="submit" value="Login">
+        &lt;/form>
+    '''</span>
+
+
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/ppicklee'</span><span class="token punctuation">,</span> methods<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'POST'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">ppicklee</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    data <span class="token operator">=</span> request<span class="token punctuation">.</span>form<span class="token punctuation">[</span><span class="token string">'data'</span><span class="token punctuation">]</span>
+
+    sys<span class="token punctuation">.</span>modules<span class="token punctuation">[</span><span class="token string">'os'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"not allowed"</span>
+    sys<span class="token punctuation">.</span>modules<span class="token punctuation">[</span><span class="token string">'sys'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"not allowed"</span>
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+
+        pickle_data <span class="token operator">=</span> base64<span class="token punctuation">.</span>b64decode<span class="token punctuation">(</span>data<span class="token punctuation">)</span>
+        <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token punctuation">&#123;</span><span class="token string">"os"</span><span class="token punctuation">,</span> <span class="token string">"system"</span><span class="token punctuation">,</span> <span class="token string">"eval"</span><span class="token punctuation">,</span> <span class="token string">'setstate'</span><span class="token punctuation">,</span> <span class="token string">"globals"</span><span class="token punctuation">,</span> <span class="token string">'exec'</span><span class="token punctuation">,</span> <span class="token string">'__builtins__'</span><span class="token punctuation">,</span> <span class="token string">'template'</span><span class="token punctuation">,</span> <span class="token string">'render'</span><span class="token punctuation">,</span> <span class="token string">'\\'</span><span class="token punctuation">,</span>
+                 <span class="token string">'compile'</span><span class="token punctuation">,</span> <span class="token string">'requests'</span><span class="token punctuation">,</span> <span class="token string">'exit'</span><span class="token punctuation">,</span>  <span class="token string">'pickle'</span><span class="token punctuation">,</span><span class="token string">"class"</span><span class="token punctuation">,</span><span class="token string">"mro"</span><span class="token punctuation">,</span><span class="token string">"flask"</span><span class="token punctuation">,</span><span class="token string">"sys"</span><span class="token punctuation">,</span><span class="token string">"base"</span><span class="token punctuation">,</span><span class="token string">"init"</span><span class="token punctuation">,</span><span class="token string">"config"</span><span class="token punctuation">,</span><span class="token string">"session"</span><span class="token punctuation">&#125;</span><span class="token punctuation">:</span>
+            <span class="token keyword">if</span> i<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">in</span> pickle_data<span class="token punctuation">:</span>
+                <span class="token keyword">return</span> i<span class="token operator">+</span><span class="token string">" waf !!!!!!!"</span>
+
+        pickle<span class="token punctuation">.</span>loads<span class="token punctuation">(</span>pickle_data<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> <span class="token string">"success pickle"</span>
+    <span class="token keyword">except</span> Exception <span class="token keyword">as</span> e<span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token string">"fail pickle"</span>
+
+
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/admin'</span><span class="token punctuation">,</span> methods<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'POST'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">admin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    username <span class="token operator">=</span> session<span class="token punctuation">[</span><span class="token string">'username'</span><span class="token punctuation">]</span>
+    <span class="token keyword">if</span> username <span class="token operator">!=</span> <span class="token string">"admin"</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> jsonify<span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token string">"message"</span><span class="token punctuation">:</span> <span class="token string">'You are not admin!'</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> <span class="token string">"Welcome Admin"</span>
+
+
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/src'</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">src</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span>  <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">"app.py"</span><span class="token punctuation">,</span> <span class="token string">"r"</span><span class="token punctuation">,</span>encoding<span class="token operator">=</span><span class="token string">"utf-8"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    app<span class="token punctuation">.</span>run<span class="token punctuation">(</span>host<span class="token operator">=</span><span class="token string">'0.0.0.0'</span><span class="token punctuation">,</span> debug<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> port<span class="token operator">=</span><span class="token number">5000</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>flag路径已知在&#x2F;flag，根本逻辑就是 pickle 绕 waf 打文件包含</p>
+<p>值得注意的是开头引入了 builtins 和 io 两个库</p>
+<p>观察一下waf</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token string">"os"</span><span class="token punctuation">,</span> <span class="token string">"system"</span><span class="token punctuation">,</span> <span class="token string">"eval"</span><span class="token punctuation">,</span> <span class="token string">'setstate'</span><span class="token punctuation">,</span> <span class="token string">"globals"</span><span class="token punctuation">,</span> <span class="token string">'exec'</span><span class="token punctuation">,</span>
+<span class="token string">'__builtins__'</span><span class="token punctuation">,</span> <span class="token string">'template'</span><span class="token punctuation">,</span> <span class="token string">'render'</span><span class="token punctuation">,</span> <span class="token string">'\\'</span><span class="token punctuation">,</span> <span class="token string">'compile'</span><span class="token punctuation">,</span> <span class="token string">'requests'</span><span class="token punctuation">,</span>
+<span class="token string">'exit'</span><span class="token punctuation">,</span> <span class="token string">'pickle'</span><span class="token punctuation">,</span> <span class="token string">"class"</span><span class="token punctuation">,</span> <span class="token string">"mro"</span><span class="token punctuation">,</span> <span class="token string">"flask"</span><span class="token punctuation">,</span> <span class="token string">"sys"</span><span class="token punctuation">,</span> <span class="token string">"base"</span><span class="token punctuation">,</span> <span class="token string">"init"</span><span class="token punctuation">,</span>
+<span class="token string">"config"</span><span class="token punctuation">,</span> <span class="token string">"session"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>观察一下，引入的库里也就 builtins 和 io 没被ban</p>
+<hr>
+<h1 id="yaml-matser（Unsolved）"><a href="#yaml-matser（Unsolved）" class="headerlink" title="yaml_matser（Unsolved）"></a>yaml_matser（Unsolved）</h1><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> os
+<span class="token keyword">import</span> re
+<span class="token keyword">import</span> yaml
+<span class="token keyword">from</span> flask <span class="token keyword">import</span> Flask<span class="token punctuation">,</span> request<span class="token punctuation">,</span> jsonify<span class="token punctuation">,</span> render_template
+
+
+app <span class="token operator">=</span> Flask<span class="token punctuation">(</span>__name__<span class="token punctuation">,</span> template_folder<span class="token operator">=</span><span class="token string">'templates'</span><span class="token punctuation">)</span>
+
+UPLOAD_FOLDER <span class="token operator">=</span> <span class="token string">'uploads'</span>
+os<span class="token punctuation">.</span>makedirs<span class="token punctuation">(</span>UPLOAD_FOLDER<span class="token punctuation">,</span> exist_ok<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">waf</span><span class="token punctuation">(</span>input_str<span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+
+    blacklist_terms <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token string">'apply'</span><span class="token punctuation">,</span> <span class="token string">'subprocess'</span><span class="token punctuation">,</span><span class="token string">'os'</span><span class="token punctuation">,</span><span class="token string">'map'</span><span class="token punctuation">,</span> <span class="token string">'system'</span><span class="token punctuation">,</span> <span class="token string">'popen'</span><span class="token punctuation">,</span> <span class="token string">'eval'</span><span class="token punctuation">,</span> <span class="token string">'sleep'</span><span class="token punctuation">,</span> <span class="token string">'setstate'</span><span class="token punctuation">,</span>
+                       <span class="token string">'command'</span><span class="token punctuation">,</span><span class="token string">'static'</span><span class="token punctuation">,</span><span class="token string">'templates'</span><span class="token punctuation">,</span><span class="token string">'session'</span><span class="token punctuation">,</span><span class="token string">'&amp;'</span><span class="token punctuation">,</span><span class="token string">'globals'</span><span class="token punctuation">,</span><span class="token string">'builtins'</span>
+                       <span class="token string">'run'</span><span class="token punctuation">,</span> <span class="token string">'ntimeit'</span><span class="token punctuation">,</span> <span class="token string">'bash'</span><span class="token punctuation">,</span> <span class="token string">'zsh'</span><span class="token punctuation">,</span> <span class="token string">'sh'</span><span class="token punctuation">,</span> <span class="token string">'curl'</span><span class="token punctuation">,</span> <span class="token string">'nc'</span><span class="token punctuation">,</span> <span class="token string">'env'</span><span class="token punctuation">,</span> <span class="token string">'before_request'</span><span class="token punctuation">,</span> <span class="token string">'after_request'</span><span class="token punctuation">,</span>
+                       <span class="token string">'error_handler'</span><span class="token punctuation">,</span> <span class="token string">'add_url_rule'</span><span class="token punctuation">,</span><span class="token string">'teardown_request'</span><span class="token punctuation">,</span><span class="token string">'teardown_appcontext'</span><span class="token punctuation">,</span><span class="token string">'\\u'</span><span class="token punctuation">,</span><span class="token string">'\\x'</span><span class="token punctuation">,</span><span class="token string">'+'</span><span class="token punctuation">,</span><span class="token string">'base64'</span><span class="token punctuation">,</span><span class="token string">'join'</span><span class="token punctuation">&#125;</span>
+
+    input_str_lower <span class="token operator">=</span> <span class="token builtin">str</span><span class="token punctuation">(</span>input_str<span class="token punctuation">)</span><span class="token punctuation">.</span>lower<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+
+    <span class="token keyword">for</span> term <span class="token keyword">in</span> blacklist_terms<span class="token punctuation">:</span>
+        <span class="token keyword">if</span> term <span class="token keyword">in</span> input_str_lower<span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"Found blacklisted term: </span><span class="token interpolation"><span class="token punctuation">&#123;</span>term<span class="token punctuation">&#125;</span></span><span class="token string">"</span></span><span class="token punctuation">)</span>
+            <span class="token keyword">return</span> <span class="token boolean">True</span>
+    <span class="token keyword">return</span> <span class="token boolean">False</span>
+
+
+
+file_pattern <span class="token operator">=</span> re<span class="token punctuation">.</span><span class="token builtin">compile</span><span class="token punctuation">(</span><span class="token string">r'.*\.yaml$'</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> <span class="token function">is_yaml_file</span><span class="token punctuation">(</span>filename<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token builtin">bool</span><span class="token punctuation">(</span>file_pattern<span class="token punctuation">.</span><span class="token keyword">match</span><span class="token punctuation">(</span>filename<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">index</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token triple-quoted-string string">'''
+    Welcome to DASCTF X 0psu3
+    &lt;br>
+    Here is the challenge &lt;a href="/upload">Upload file&lt;/a>
+    &lt;br>
+    Enjoy it &lt;a href="/Yam1">Yam1&lt;/a>
+    '''</span>
+
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/upload'</span><span class="token punctuation">,</span> methods<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'GET'</span><span class="token punctuation">,</span> <span class="token string">'POST'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">upload_file</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> request<span class="token punctuation">.</span>method <span class="token operator">==</span> <span class="token string">'POST'</span><span class="token punctuation">:</span>
+        <span class="token keyword">try</span><span class="token punctuation">:</span>
+            uploaded_file <span class="token operator">=</span> request<span class="token punctuation">.</span>files<span class="token punctuation">[</span><span class="token string">'file'</span><span class="token punctuation">]</span>
+
+            <span class="token keyword">if</span> uploaded_file <span class="token keyword">and</span> is_yaml_file<span class="token punctuation">(</span>uploaded_file<span class="token punctuation">.</span>filename<span class="token punctuation">)</span><span class="token punctuation">:</span>
+                file_path <span class="token operator">=</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>UPLOAD_FOLDER<span class="token punctuation">,</span> uploaded_file<span class="token punctuation">.</span>filename<span class="token punctuation">)</span>
+                uploaded_file<span class="token punctuation">.</span>save<span class="token punctuation">(</span>file_path<span class="token punctuation">)</span>
+
+                <span class="token keyword">return</span> jsonify<span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token string">"message"</span><span class="token punctuation">:</span> <span class="token string">"uploaded successfully"</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">200</span>
+            <span class="token keyword">else</span><span class="token punctuation">:</span>
+                <span class="token keyword">return</span> jsonify<span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token string">"error"</span><span class="token punctuation">:</span> <span class="token string">"Just YAML file"</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">400</span>
+
+        <span class="token keyword">except</span> Exception <span class="token keyword">as</span> e<span class="token punctuation">:</span>
+            <span class="token keyword">return</span> jsonify<span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token string">"error"</span><span class="token punctuation">:</span> <span class="token builtin">str</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">500</span>
+
+
+    <span class="token keyword">return</span> render_template<span class="token punctuation">(</span><span class="token string">'upload.html'</span><span class="token punctuation">)</span>
+
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/Yam1'</span><span class="token punctuation">,</span> methods<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'GET'</span><span class="token punctuation">,</span> <span class="token string">'POST'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">Yam1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    filename <span class="token operator">=</span> request<span class="token punctuation">.</span>args<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'filename'</span><span class="token punctuation">,</span><span class="token string">''</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> filename<span class="token punctuation">:</span>
+        <span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f'uploads/</span><span class="token interpolation"><span class="token punctuation">&#123;</span>filename<span class="token punctuation">&#125;</span></span><span class="token string">.yaml'</span></span><span class="token punctuation">,</span> <span class="token string">'rb'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
+            file_content <span class="token operator">=</span> f<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> <span class="token keyword">not</span> waf<span class="token punctuation">(</span>file_content<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            test <span class="token operator">=</span> yaml<span class="token punctuation">.</span>load<span class="token punctuation">(</span>file_content<span class="token punctuation">)</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span>test<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> <span class="token string">'welcome'</span>
+
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    app<span class="token punctuation">.</span>run<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<hr>
+<h1 id="strange-php（Unsolved）"><a href="#strange-php（Unsolved）" class="headerlink" title="strange_php（Unsolved）"></a>strange_php（Unsolved）</h1>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            </div>
+        </transition>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/blog/js/main.js"></script>
+    
+    
+
+
+
+
+    
+    
+
+<div id="vcomments"></div>
+
+<script src="/blog/js/lib/valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: 'U9mZLKunkRUTcBFthjXPjnZE-9Nh9j0Va',
+        app_key: 'SzWOnY0PWLGNuL6jW8TZYc7j',
+        visitor: 'true',
+        placeholder: '写点什么吧(●ˇ∀ˇ●)',
+        serverURLs: 'https://u9mzlkun.lc-cn-n1-shared.com',
+    });
+</script>
+
+    <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2024 雲流のLowest World
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;C1oudfL0w0
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+<script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/blog/live2dw/assets/z16.model.json"},"display":{"position":"left","width":150,"height":290},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+</html>
