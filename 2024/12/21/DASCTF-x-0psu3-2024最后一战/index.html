@@ -262,7 +262,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">815字</span>
+        <span class="post-count">850字</span>
       </span>
     </span>
 
@@ -413,6 +413,9 @@ Admin <span class="token operator">=</span> User<span class="token punctuation">
 <span class="token string">"config"</span><span class="token punctuation">,</span> <span class="token string">"session"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>观察一下，引入的库里也就 builtins 和 io 没被ban</p>
+ <br>
+
+<p>天塌了，想了半天怎么把 io 读取的文件对象带出来，结果直接用<code>subprocess</code>库 cp 到 app.py 就行了</p>
 <hr>
 <h1 id="yaml-matser（Unsolved）"><a href="#yaml-matser（Unsolved）" class="headerlink" title="yaml_matser（Unsolved）"></a>yaml_matser（Unsolved）</h1><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> os
 <span class="token keyword">import</span> re
