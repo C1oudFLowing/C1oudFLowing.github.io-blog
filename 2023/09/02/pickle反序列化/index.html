@@ -260,12 +260,12 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="color: #ffa2c4">反序列化</a>
+                <a href="/blog/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="color: #ff7d73">反序列化</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/blog/tags/python/" style="color: #ffa2c4">python</a>
+                <a href="/blog/tags/python/" style="color: #00bcd4">python</a>
             </span>
             
         </span>
@@ -663,7 +663,9 @@ fake<span class="token operator">=</span>pickle<span class="token punctuation">.
 <p>由于在pickle中，反序列化后的数据会以key-value的形式存储，所以secret模块中的变量<code>secret=&quot;This is a key&quot;</code>，是以<code>&#123;&#39;secret&#39;:&#39;This is a key&#39;&#125;</code>形式存储的。</p>
 <p>最后再通过字节码b来执行<code>__dict__.update()</code>，即<code>&#123;&#39;secret&#39;:&#39;This is a key&#39;&#125;.update(&#123;&#39;secret&#39;:&#39;ciallo&#39;&#125;)</code>，因此最终secret变量的值被覆盖成了<code>ciallo</code>。</p>
 <hr>
-<h1 id="生成序列化的opcode"><a href="#生成序列化的opcode" class="headerlink" title="生成序列化的opcode"></a>生成序列化的opcode</h1><h2 id="重写-reduce-方法生成"><a href="#重写-reduce-方法生成" class="headerlink" title="重写__reduce__方法生成"></a>重写__reduce__方法生成</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> pickle  
+<h1 id="生成序列化的opcode"><a href="#生成序列化的opcode" class="headerlink" title="生成序列化的opcode"></a>生成序列化的opcode</h1><p>先确定自己想要执行一个什么样的命令，再根据这个命令进行构造</p>
+<p>注意：pickle 语法里没有对对象的 <code>.</code> 操作，如果想要读取文件对象，如<code>f.read()</code>，需要使用 <code>getattr</code> 获取 read：<code>getattr(f,&#39;read&#39;)()</code></p>
+<h2 id="重写-reduce-方法生成"><a href="#重写-reduce-方法生成" class="headerlink" title="重写__reduce__方法生成"></a>重写__reduce__方法生成</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> pickle  
   
 <span class="token keyword">class</span> <span class="token class-name">opcode</span><span class="token punctuation">(</span><span class="token builtin">object</span><span class="token punctuation">)</span><span class="token punctuation">:</span>  
     <span class="token keyword">def</span> <span class="token function">__reduce__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>  

