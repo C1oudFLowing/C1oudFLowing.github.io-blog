@@ -288,7 +288,7 @@
     <div class="content" v-pre>
         <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p><img src="/blog/2023/04/22/HDCTF-2023-Writeup(%E5%90%AB%E5%A4%8D%E7%8E%B0)/image-20230422214141007.png" alt="image-20230422214141007"></p>
 <p>打不动，python，java框架是完全没头绪。。。</p>
-<p><a target="_blank" rel="noopener" href="https://boogipop.com/2023/04/22/HDCTF2023%20Web%E9%A2%98%E5%87%BA%E9%A2%98%E8%AE%B0%E5%BD%95/">官方web wp</a></p>
+<p><a target="_blank" rel="noopener" href="https://boogipop.com/2024/02/12/HDCTF2023%20Web%E9%A2%98%E5%87%BA%E9%A2%98%E8%AE%B0%E5%BD%95/">官方web wp</a></p>
 <span id="more"></span>
 
 <h1 id="WEB"><a href="#WEB" class="headerlink" title="WEB"></a>WEB</h1><h2 id="Welcome-To-HDCTF-2023"><a href="#Welcome-To-HDCTF-2023" class="headerlink" title="Welcome To HDCTF 2023"></a>Welcome To HDCTF 2023</h2><blockquote>
@@ -440,7 +440,7 @@ app<span class="token punctuation">.</span>config<span class="token punctuation"
 <blockquote>
 <p>在 python 中使用 uuid 模块生成 UUID（通用唯一识别码）。可以使用 uuid.getnode() 方法来获取计算机的硬件地址，这个地址将作为 UUID 的一部分。</p>
 </blockquote>
-<p><code>/sys/class/net/eth0/address</code>，这个就是网卡的位置，读取他进行伪造即可</p>
+<p><code>/sys/class/net/eth0/address</code>，这个就是网卡的位置，读取它，然后用同样的逻辑获取 SECRET_KEY 进行伪造即可</p>
 <p>之后就是Yaml反序列化：</p>
 <pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token tag">!!python/object/new:str</span>
     <span class="token key atrule">args</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>

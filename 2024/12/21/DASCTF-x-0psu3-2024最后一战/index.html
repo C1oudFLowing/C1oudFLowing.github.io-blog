@@ -262,7 +262,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">2.1k字</span>
+        <span class="post-count">2.2k字</span>
       </span>
     </span>
 
@@ -271,7 +271,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">10分</span>
+        <span class="post-count">11分</span>
       </span>
     </span>
     
@@ -689,8 +689,13 @@ file_pattern <span class="token operator">=</span> re<span class="token punctuat
 <span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
     app<span class="token punctuation">.</span>run<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<p>很明显是打 pyyaml 反序列化，只需要考虑绕 waf 即可</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">blacklist_terms <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token string">'apply'</span><span class="token punctuation">,</span> <span class="token string">'subprocess'</span><span class="token punctuation">,</span><span class="token string">'os'</span><span class="token punctuation">,</span><span class="token string">'map'</span><span class="token punctuation">,</span> <span class="token string">'system'</span><span class="token punctuation">,</span> <span class="token string">'popen'</span><span class="token punctuation">,</span> <span class="token string">'eval'</span><span class="token punctuation">,</span> <span class="token string">'sleep'</span><span class="token punctuation">,</span> <span class="token string">'setstate'</span><span class="token punctuation">,</span>
+                       <span class="token string">'command'</span><span class="token punctuation">,</span><span class="token string">'static'</span><span class="token punctuation">,</span><span class="token string">'templates'</span><span class="token punctuation">,</span><span class="token string">'session'</span><span class="token punctuation">,</span><span class="token string">'&amp;'</span><span class="token punctuation">,</span><span class="token string">'globals'</span><span class="token punctuation">,</span><span class="token string">'builtins'</span>
+                       <span class="token string">'run'</span><span class="token punctuation">,</span> <span class="token string">'ntimeit'</span><span class="token punctuation">,</span> <span class="token string">'bash'</span><span class="token punctuation">,</span> <span class="token string">'zsh'</span><span class="token punctuation">,</span> <span class="token string">'sh'</span><span class="token punctuation">,</span> <span class="token string">'curl'</span><span class="token punctuation">,</span> <span class="token string">'nc'</span><span class="token punctuation">,</span> <span class="token string">'env'</span><span class="token punctuation">,</span> <span class="token string">'before_request'</span><span class="token punctuation">,</span> <span class="token string">'after_request'</span><span class="token punctuation">,</span>
+                       <span class="token string">'error_handler'</span><span class="token punctuation">,</span> <span class="token string">'add_url_rule'</span><span class="token punctuation">,</span><span class="token string">'teardown_request'</span><span class="token punctuation">,</span><span class="token string">'teardown_appcontext'</span><span class="token punctuation">,</span><span class="token string">'\\u'</span><span class="token punctuation">,</span><span class="token string">'\\x'</span><span class="token punctuation">,</span><span class="token string">'+'</span><span class="token punctuation">,</span><span class="token string">'base64'</span><span class="token punctuation">,</span><span class="token string">'join'</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-
+<p>ban了很多，但是</p>
 <hr>
 <h1 id="strange-php（Unsolved）"><a href="#strange-php（Unsolved）" class="headerlink" title="strange_php（Unsolved）"></a>strange_php（Unsolved）</h1>
     </div>
