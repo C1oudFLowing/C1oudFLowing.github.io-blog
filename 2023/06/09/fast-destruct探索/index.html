@@ -260,7 +260,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="color: #00bcd4">反序列化</a>
+                <a href="/blog/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="color: #03a9f4">反序列化</a>
             </span>
             
         </span>
@@ -274,7 +274,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">1.1k字</span>
+        <span class="post-count">1.2k字</span>
       </span>
     </span>
 
@@ -376,10 +376,10 @@
 <span class="token variable">$a</span><span class="token operator">=</span><span class="token function">unserialize</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'O:1:"A":2:&#123;s:4:"info";O:1:"B":1:&#123;s:3:"znd";N;&#125;s:3:"end";s:1:"1";&#125;'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Exception</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"Ciallo!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>正常的序列化字符串执行之后只返回了<code>B::wakeup </code>和后面抛出的异常信息</p>
+<p>这里把反序列化得到的字符串赋值给了变量$a</p>
+<p>正常的序列化字符串执行之后只返回了<code>B::wakeup </code>和后面抛出的异常信息，因为 throw 抛出异常，导致 $a 还没来得及销毁就程序终止了，没能轮到 __destruct 执行</p>
 <p>但是当我们传入上述的那两个操作后，得到了<code>B::call A::des B::wakeup</code>这整段输出信息和后面抛出的异常信息</p>
-<p>可见最后抛出的异常会影响到前面除了<code>__wakeup()</code>方法的内容的回显</p>
-<p>而利用fast_destruct可以实现绕过</p>
+<p>可见最后抛出的异常会影响到前面除了<code>__wakeup()</code>方法的内容的回显，而利用 fast_destruct 可以实现绕过，让 __destruct 提前至 __wakeup 前触发</p>
 
     </div>
     

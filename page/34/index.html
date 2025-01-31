@@ -252,6 +252,64 @@
             
 
 <div class="post">
+    <a href="/blog/2023/04/09/RE%E5%88%9D%E6%8E%A2%E7%B4%A20x06/">
+        <h2 class="post-title">RE初探索0x06</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/blog/categories/Rev/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                Rev
+            </a>
+        </span>
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/4/9
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>NSS上的<a target="_blank" rel="noopener" href="https://www.nssctf.cn/problem/405">[SWPUCTF 2021 新生赛]非常简单的逻辑题</a></p>
+<h1 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h1><p>python</p>
+<p>爆破</p>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/blog/tags/python/" style="color: #00a596">
+                python
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/blog/tags/%E7%88%86%E7%A0%B4/" style="color: #00bcd4">
+                爆破
+            </a>
+        </span>
+        
+    </div>
+    <a href="/blog/2023/04/09/RE%E5%88%9D%E6%8E%A2%E7%B4%A20x06/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
     <a href="/blog/2023/04/08/RE%E5%88%9D%E6%8E%A2%E7%B4%A20x05/">
         <h2 class="post-title">RE初探索0x05</h2>
     </a>
@@ -341,7 +399,7 @@
         
         <span class="tag">
             
-            <a href="/blog/tags/RC4/" style="color: #00bcd4">
+            <a href="/blog/tags/RC4/" style="color: #03a9f4">
                 RC4
             </a>
         </span>
@@ -523,7 +581,7 @@
         
         <span class="tag">
             
-            <a href="/blog/tags/PHP/" style="color: #03a9f4">
+            <a href="/blog/tags/PHP/" style="color: #ff7d73">
                 PHP
             </a>
         </span>
@@ -618,7 +676,7 @@
         
         <span class="tag">
             
-            <a href="/blog/tags/PHP/" style="color: #00a596">
+            <a href="/blog/tags/PHP/" style="color: #ffa2c4">
                 PHP
             </a>
         </span>
@@ -675,71 +733,13 @@
         
         <span class="tag">
             
-            <a href="/blog/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="color: #00bcd4">
+            <a href="/blog/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="color: #ff7d73">
                 反序列化
             </a>
         </span>
         
     </div>
     <a href="/blog/2023/03/16/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/blog/2023/03/16/mysql%E6%B3%A8%E5%85%A5/">
-        <h2 class="post-title">mysql注入</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/blog/categories/Web/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                Web
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/3/16
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h1 id="MySQL注入"><a href="#MySQL注入" class="headerlink" title="MySQL注入"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44159028/article/details/114325805">MySQL注入</a></h1><p><a target="_blank" rel="noopener" href="http://sqlwiki.radare.cn/#/injectionTypes/errorBased">wiki</a></p>
-<p>如无特殊说明，本篇都是基于mysql数据库的注入</p>
-<p>原型</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">//拼接sql语句查找指定ID用户</span>
-$<span class="token keyword">sql</span> <span class="token operator">=</span> <span class="token string">"select username,password from table_name where username !='flag' and id = '"</span><span class="token punctuation">.</span>$_GET<span class="token punctuation">[</span><span class="token string">'id'</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token string">"' limit 1;"</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<p>PS:此语句中存在<code>limit 1</code>即只回显一行</p>
-<p>基本思路</p>
-<p>用<code>1&#39;</code>闭合前面的语句，执行自己构造的语句</p>
-<p>参考：</p>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        <span class="tag">
-            
-            <a href="/blog/tags/Sql/" style="color: #00a596">
-                Sql
-            </a>
-        </span>
-        
-    </div>
-    <a href="/blog/2023/03/16/mysql%E6%B3%A8%E5%85%A5/" class="go-post">阅读全文</a>
 </div>
 
 
@@ -860,9 +860,9 @@ $<span class="token keyword">sql</span> <span class="token operator">=</span> <s
     <div class="card-style" style="width: 300px;margin-top: 20px;">
         <span style="font-size: 20px; text-align: left;"><i class="fas fa-chart-line"></i> 网站资讯</span>
         <div style="margin-top: 15px;margin-left: 10px;text-align: left;line-height: 30px;font-size: 15px">
-            <span id="TotalArtical">文章总数：352</span>
+            <span id="TotalArtical">文章总数：353</span>
             <br>
-            <span id="TotalArtical">本站总字数：851.9k</span>
+            <span id="TotalArtical">本站总字数：855.4k</span>
             <br>
             <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
             <script>
