@@ -85,7 +85,7 @@
     <div id="toc" class="toc-article">
     <h3><i class="fas fa-stream"></i>  目录</h3>
       <div class="toc-title"></div>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Jeopardy"><span class="toc-number">2.</span> <span class="toc-text">Jeopardy</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Pharaoh%E2%80%99s-Pyramid"><span class="toc-number">2.1.</span> <span class="toc-text">Pharaoh’s Pyramid</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ezlogin"><span class="toc-number">2.2.</span> <span class="toc-text">ezlogin</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#anniversary%EF%BC%880-Solved%EF%BC%89"><span class="toc-number">2.3.</span> <span class="toc-text">anniversary（0 Solved）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#RW"><span class="toc-number">3.</span> <span class="toc-text">RW</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#TS-%EF%BC%88Unsolved%EF%BC%89"><span class="toc-number">3.1.</span> <span class="toc-text">TS++（Unsolved）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B8%B8%E8%AE%B0%EF%BC%88to-be-continued%EF%BC%89"><span class="toc-number">4.</span> <span class="toc-text">游记（to be continued）</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Jeopardy"><span class="toc-number">2.</span> <span class="toc-text">Jeopardy</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Pharaoh%E2%80%99s-Pyramid"><span class="toc-number">2.1.</span> <span class="toc-text">Pharaoh’s Pyramid</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%95%E4%BA%8C%EF%BC%9Apyramid%E5%86%85%E5%AD%98%E9%A9%AC"><span class="toc-number">2.1.1.</span> <span class="toc-text">法二：pyramid内存马</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ezlogin"><span class="toc-number">2.2.</span> <span class="toc-text">ezlogin</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#anniversary%EF%BC%880-Solved%EF%BC%89"><span class="toc-number">2.3.</span> <span class="toc-text">anniversary（0 Solved）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#RW"><span class="toc-number">3.</span> <span class="toc-text">RW</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#TS-%EF%BC%88Unsolved%EF%BC%89"><span class="toc-number">3.1.</span> <span class="toc-text">TS++（Unsolved）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B8%B8%E8%AE%B0%EF%BC%88to-be-continued%EF%BC%89"><span class="toc-number">4.</span> <span class="toc-text">游记（to be continued）</span></a></li></ol>
     </div>
   
 
@@ -525,6 +525,7 @@ is_valid <span class="token operator">=</span> verify_signature<span class="toke
 
 <p><img src="/blog/2024/12/05/%E5%BC%BA%E7%BD%91%E6%9D%AFS8-Final/image-20241205132441508.png" alt="image-20241205132441508"></p>
 <p>然后随便访问一个调用了 read_html 接口即可回显</p>
+<h3 id="法二：pyramid内存马"><a href="#法二：pyramid内存马" class="headerlink" title="法二：pyramid内存马"></a>法二：pyramid内存马</h3><p>参考：<a target="_blank" rel="noopener" href="https://forum.butian.net/share/3974">https://forum.butian.net/share/3974</a></p>
 <hr>
 <h2 id="ezlogin"><a href="#ezlogin" class="headerlink" title="ezlogin"></a>ezlogin</h2><p>尝试登录可以得到账密 guest:guest</p>
 <p>登录后得到 token，解码得到</p>
@@ -690,6 +691,10 @@ RangeError<span class="token punctuation">:</span> Invalid time value<span aria-
 5. 尝试类型混淆<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>测不出来，什么nodejs模板会只渲染<code>&#123;&#123;&#125;&#125;</code>，<code>[]</code>能返回一个 object 啊</p>
+<br>
+
+<p>可能的模板：</p>
+<p>Handlebars：<a target="_blank" rel="noopener" href="https://xz.aliyun.com/news/4327">https://xz.aliyun.com/news/4327</a></p>
 <hr>
 <h1 id="RW"><a href="#RW" class="headerlink" title="RW"></a>RW</h1><h2 id="TS-（Unsolved）"><a href="#TS-（Unsolved）" class="headerlink" title="TS++（Unsolved）"></a>TS++（Unsolved）</h2><p>thinkshop 还在追我</p>
 <p>和 thinkshopping 一样的操作打 memcached 进后台</p>
