@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>西湖论剑2022 复现 | 雲流のLowest World</title>
+    <title>西湖论剑2023 复现 | 雲流のLowest World</title>
     <meta name="author" content="C1oudfL0w0" />
     <meta name="description" content="" />
     <meta name="keywords" content="" />
@@ -233,7 +233,7 @@
 
                 <div class="article">
     <div>
-        <h1>西湖论剑2022 复现</h1>
+        <h1>西湖论剑2023 复现</h1>
     </div>
     <div class="info">
         <span class="date">
@@ -262,7 +262,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">3.4k字</span>
+        <span class="post-count">3.7k字</span>
       </span>
     </span>
 
@@ -271,7 +271,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">18分</span>
+        <span class="post-count">19分</span>
       </span>
     </span>
     
@@ -867,8 +867,45 @@ miaotony
 
 <hr>
 <h1 id="easy-api（待复现）"><a href="#easy-api（待复现）" class="headerlink" title="easy_api（待复现）"></a>easy_api（待复现）</h1><blockquote>
-<p>fastjson反序列化</p>
+<p>fastjson反序列化 toString链</p>
 </blockquote>
+<p>先看一下主要路由</p>
+<p><img src="/blog/%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%912022-%E5%A4%8D%E7%8E%B0/image-20250213124132804.png" alt="image-20250213124132804"></p>
+<p>&#x2F;api&#x2F;test 直接给了一个反序列化</p>
+<p>然后看一下 waf：</p>
+<p>web.xml</p>
+<p><img src="/blog/%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%912022-%E5%A4%8D%E7%8E%B0/image-20250213125644613.png" alt="image-20250213125644613"></p>
+<p>首先是这两个filter，</p>
+<p><img src="/blog/%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%912022-%E5%A4%8D%E7%8E%B0/image-20250213125810201.png" alt="image-20250213125810201"></p>
+<p>匹配 <code>/*</code> ，检测路径中的 <code>;</code> 和 <code>./</code></p>
+<p><img src="/blog/%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%912022-%E5%A4%8D%E7%8E%B0/image-20250213130217385.png" alt="image-20250213130217385"></p>
+<p>这个匹配 <code>/api/*</code> ，直接返回403</p>
+<p>但是可以用 <code>//api/test</code> 进行绕过，参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/z69183787/article/details/84848751">https://blog.csdn.net/z69183787/article/details/84848751</a></p>
+<p>然后看一下它这里反序列化用的方法<code>CustomObjectInputStream</code></p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">CustomObjectInputStream</span> <span class="token keyword">extends</span> <span class="token class-name">ObjectInputStream</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token class-name">CustomObjectInputStream</span><span class="token punctuation">(</span><span class="token class-name">InputStream</span> in<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">IOException</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span>in<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">protected</span> <span class="token class-name">Class</span> <span class="token function">resolveClass</span><span class="token punctuation">(</span><span class="token class-name">ObjectStreamClass</span> desc<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">IOException</span><span class="token punctuation">,</span> <span class="token class-name">ClassNotFoundException</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">String</span> className <span class="token operator">=</span> desc<span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> denyClasses <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">&#123;</span><span class="token string">"java.lang.reflect.Proxy"</span><span class="token punctuation">,</span> <span class="token string">"javax.management.BadAttributeValueExpException"</span><span class="token punctuation">,</span> <span class="token string">"sun.rmi.server.UnicastRef"</span><span class="token punctuation">,</span> <span class="token string">"sun.rmi.transport.LiveRef"</span><span class="token punctuation">,</span> <span class="token string">"sun.rmi.transport.tcp.TCPEndpoint"</span><span class="token punctuation">,</span> <span class="token string">"java.rmi.server.RemoteObject"</span><span class="token punctuation">,</span> <span class="token string">"java.rmi.server.RemoteRef"</span><span class="token punctuation">,</span> <span class="token string">"java.rmi.server.ObjID"</span><span class="token punctuation">,</span> <span class="token string">"java.rmi.RemoteObjectInvocationHandler"</span><span class="token punctuation">,</span> <span class="token string">"java.rmi.server.UnicastRemoteObject"</span><span class="token punctuation">,</span> <span class="token string">"java.rmi.registry.Registry"</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+        <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> var4 <span class="token operator">=</span> denyClasses<span class="token punctuation">;</span>
+        <span class="token keyword">int</span> var5 <span class="token operator">=</span> denyClasses<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> var6 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> var6 <span class="token operator">&lt;</span> var5<span class="token punctuation">;</span> <span class="token operator">++</span>var6<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token class-name">String</span> denyClass <span class="token operator">=</span> var4<span class="token punctuation">[</span>var6<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>className<span class="token punctuation">.</span><span class="token function">startsWith</span><span class="token punctuation">(</span>denyClass<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">InvalidClassException</span><span class="token punctuation">(</span><span class="token string">"Unauthorized deserialization attempt"</span><span class="token punctuation">,</span> className<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+
+        <span class="token keyword">return</span> <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">resolveClass</span><span class="token punctuation">(</span>desc<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>ban了这几个类</p>
+<p>观察一下引入的依赖，这里是 fastjson-1.2.48</p>
 <p>poc：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">com<span class="token punctuation">.</span>alibaba<span class="token punctuation">.</span>fastjson<span class="token punctuation">.</span></span><span class="token class-name">JSONObject</span></span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token import"><span class="token namespace">com<span class="token punctuation">.</span>sun<span class="token punctuation">.</span>org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>xalan<span class="token punctuation">.</span>internal<span class="token punctuation">.</span>xsltc<span class="token punctuation">.</span>trax<span class="token punctuation">.</span></span><span class="token class-name">TemplatesImpl</span></span><span class="token punctuation">;</span>
