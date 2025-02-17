@@ -262,7 +262,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">2.4k字</span>
+        <span class="post-count">2.5k字</span>
       </span>
     </span>
 
@@ -352,7 +352,7 @@
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>很明显是要在不用 com.sun.org.apache.xalan.internal.xsltc.trax , javax.management , com.fasterxml.jackson 的情况下打java反序列化，这ban的都是 templates 和 jackson 链</p>
+<p>很明显是要在不用 com.sun.org.apache.xalan.internal.xsltc.trax , javax.management , com.fasterxml.jackson 的情况下打java反序列化，这ban的都是 templates 和 jackson 链，还有 BadAttributeValueExpException 这个入口</p>
 <p>看一下有什么依赖</p>
 <p><img src="/blog/2025/02/08/VNCTF2025/image-20250208104311548.png" alt="image-20250208104311548"></p>
 <p>没cc也是java反序列化的第一步吗（</p>
