@@ -662,7 +662,7 @@ app<span class="token punctuation">.</span>config<span class="token punctuation"
 
 <p><img src="/blog/2023/04/22/HDCTF-2023-Writeup(%E5%90%AB%E5%A4%8D%E7%8E%B0)/image-20250220112037969.png" alt="image-20250220112037969"></p>
 <p>看依赖，发现了 ROME 和 FastJson 依赖，并且都是比较低的版本，因此入口点肯定在这里</p>
-<p>Rome 和 FastJson 都是触发任意 getter 的，而且对于Rome，它自己单独就可以打出完整的一条链，但是这里把一些类ban了，比如ToStringBean 和 Hotswapper、Xstring、BadAttribute 等等，那么 Rome 链到 <code>EqualsBean.beanHashCode</code> 那里就断掉了</p>
+<p>Rome 和 FastJson 都是触发任意 getter 的，而且对于Rome，它自己单独就可以打出完整的一条链，但是这里把一些类ban了，比如 ToStringBean 和 Hotswapper、Xstring、BadAttribute 等等，那么 Rome 链到 <code>EqualsBean.beanHashCode</code> 那里就断掉了</p>
 <p>不过还有 fastjson，fastjson 的 <code>JSON.toString</code> 也是可以触发任意 getter 的，用 EqualsBean.beanHashCode 触发 JSON.toString，这样链子就凑上去了</p>
 <p>这里把 TemplatesImpl 和 JdbcRowImpl 也ban了，没这两个的话最后没法rce，这个时候就需要二次反序列化了，对于 Rome 的话就需要 SignObject 类了</p>
 <p>注意 <code>SignObject.getObject</code> 是 Protected 属性，不过这里题目给了一个起到同样效果的 HDCTF 类</p>
