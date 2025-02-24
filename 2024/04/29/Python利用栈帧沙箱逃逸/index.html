@@ -265,7 +265,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/python/" style="color: #03a9f4">python</a>
+                <a href="/blog/tags/python/" style="color: #00a596">python</a>
             </span>
             
         </span>
@@ -279,7 +279,7 @@
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
         <!-- 安装插件npm install hexo-wordcount --save -->
-        <span class="post-count">1.5k字</span>
+        <span class="post-count">1.6k字</span>
       </span>
     </span>
 
@@ -360,6 +360,19 @@ frame <span class="token operator">=</span> gen<span class="token punctuation">.
 <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Instruction Pointer:"</span><span class="token punctuation">,</span> frame<span class="token punctuation">.</span>f_lasti<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p><img src="/blog/2024/04/29/Python%E5%88%A9%E7%94%A8%E6%A0%88%E5%B8%A7%E6%B2%99%E7%AE%B1%E9%80%83%E9%80%B8/image-20240429010312936.png" alt="image-20240429010312936"></p>
+<br>
+
+<p>貌似也可以通过抛出报错搜索 traceback 来获得栈帧：<a target="_blank" rel="noopener" href="https://pullp.github.io/writeup/2020/12/26/hxp2020-audited.html">https://pullp.github.io/writeup/2020/12/26/hxp2020-audited.html</a></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">try</span><span class="token punctuation">:</span>
+    <span class="token keyword">raise</span> Exception<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">except</span> Exception <span class="token keyword">as</span> e<span class="token punctuation">:</span>
+    _<span class="token punctuation">,</span> _<span class="token punctuation">,</span> tb <span class="token operator">=</span> sys<span class="token punctuation">.</span>exc_info<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    nxt_frame <span class="token operator">=</span> tb<span class="token punctuation">.</span>tb_frame
+    <span class="token builtin">globals</span> <span class="token operator">=</span> nxt_frame<span class="token punctuation">.</span>f_globals
+    builtin <span class="token operator">=</span> <span class="token builtin">globals</span><span class="token punctuation">[</span><span class="token string">"__builtins__"</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
 <hr>
 <h1 id="栈帧"><a href="#栈帧" class="headerlink" title="栈帧"></a>栈帧</h1><p>栈帧（stack frame）是Python虚拟机执行的载体之一，它是一个数据结构，用于存储代码运行时的数据</p>
 <p>每个栈帧都有自己的局部变量、操作数栈、异常处理信息等</p>
