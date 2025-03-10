@@ -1,0 +1,1642 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>网络工程实训 | 雲流のLowest World</title>
+    <meta name="author" content="C1oudfL0w0" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <link rel="icon" href="/blog/images/croppedImage_cropped.jpg" />
+    <!-- cdn挂掉的时候要可以引用本地 -->
+<!-- <script src="https://cdn.staticfile.org/vue/3.2.45/vue.global.prod.min.js"></script> -->
+<script src="/blog/js/vue.global.prod.min.js"></script>
+
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.2.1/css/all.min.css" />
+
+
+<link rel="stylesheet" href="/blog/css/all.min.css" />
+<link rel="stylesheet" href="/blog/css/fonts.min.css" />
+<link rel="stylesheet" href="/blog/css/search.css" />
+<script> const mixins = {}; </script>
+
+<!-- 引入jQuery-->
+<!-- <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script> -->
+<script src="/blog/js/jquery.min.js"></script>
+
+<!--改成了prismjs高亮-->
+
+<script src="/blog/js/lib/prism.js"></script>
+<link rel="stylesheet" href="/blog/css/prism.css" rel="stylesheet" />
+
+
+
+<script src="/blog/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+
+<script src="/blog/js/lib/home.js"></script>
+
+<link rel="stylesheet" href="/blog/css/main.css" />
+<!-- 引入不蒜子-->
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script type="text/javascript" src="/blog/libs/codeBlock/codeBlockFuction.js"></script>
+<!-- 代码语言 -->
+<script type="text/javascript" src="/blog/libs/codeBlock/codeLang.js"></script>
+<!-- 代码块复制 -->
+<!-- 引入clipboard -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+
+<script type="text/javascript" src="/blog/libs/codeBlock/codeCopy.js"></script>
+<!-- 代码块收缩 -->
+<script type="text/javascript" src="/blog/libs/codeBlock/codeShrink.js"></script> 
+<!-- 代码块折行 -->
+<style type="text/css">code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }</style>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/blog/atom.xml" title="雲流のLowest World" type="application/atom+xml">
+</head>
+
+<body>
+    <!--flag{never_g0nna g1ve_you up}-->
+
+    <!-- 页面点击特效 -->
+    <script type="text/javascript" src="/blog/js/love-click.js"></script>
+
+    <!-- 浏览器标题 -->
+    <script async type="text/javascript" src="/blog/js/FunnyTitle.js"></script>
+
+    <!-- 动态背景 -->
+    
+
+    <!--文章目录-->
+    
+    <div id="toc" class="toc-article">
+    <h3><i class="fas fa-stream"></i>  目录</h3>
+      <div class="toc-title"></div>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-number">2.</span> <span class="toc-text">案例</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9C%80%E6%B1%82"><span class="toc-number">2.1.</span> <span class="toc-text">需求</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8B%93%E6%89%91%E6%9E%84%E5%BB%BA%E4%B8%8EIP%E5%9C%B0%E5%9D%80%E8%A7%84%E5%88%92"><span class="toc-number">3.</span> <span class="toc-text">拓扑构建与IP地址规划</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%84%E5%BB%BA%E6%8B%93%E6%89%91%E5%9B%BE"><span class="toc-number">3.1.</span> <span class="toc-text">构建拓扑图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IP%E5%88%92%E5%88%86"><span class="toc-number">3.2.</span> <span class="toc-text">IP划分</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE"><span class="toc-number">4.</span> <span class="toc-text">基本配置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E6%9C%BA%E5%91%BD%E5%90%8D%E4%BF%AE%E6%94%B9"><span class="toc-number">4.1.</span> <span class="toc-text">主机命名修改</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E7%89%B9%E6%9D%83%E5%AF%86%E7%A0%81"><span class="toc-number">4.2.</span> <span class="toc-text">配置特权密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Console%E7%AB%AF%E5%8F%A3%E5%AF%86%E7%A0%81"><span class="toc-number">4.3.</span> <span class="toc-text">Console端口密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEVTY%E7%9A%84%E5%AF%86%E7%A0%81"><span class="toc-number">4.4.</span> <span class="toc-text">配置VTY的密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%9D%E5%AD%98%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">4.5.</span> <span class="toc-text">保存配置文件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1%E5%99%A8%E9%85%8D%E7%BD%AE"><span class="toc-number">5.</span> <span class="toc-text">路由器配置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#loopback%E5%9C%B0%E5%9D%80%E8%A7%84%E5%88%92"><span class="toc-number">5.1.</span> <span class="toc-text">loopback地址规划</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%A4%E6%8D%A2%E6%9C%BAVLAN%E9%85%8D%E7%BD%AE"><span class="toc-number">6.</span> <span class="toc-text">交换机VLAN配置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E5%B1%82%E2%80%94%E2%80%94%E4%BA%92%E8%81%94%E5%9C%B0%E5%9D%80%E8%A7%84%E5%88%92"><span class="toc-number">6.1.</span> <span class="toc-text">三层——互联地址规划</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E4%B8%89%E5%B1%82%E2%80%94%E2%80%94%E9%85%8D%E7%BD%AEtrunk%E9%93%BE%E6%8E%A5"><span class="toc-number">6.2.</span> <span class="toc-text">二三层——配置trunk链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E4%B8%89%E5%B1%82%E2%80%94%E2%80%94%E9%85%8D%E7%BD%AEVTP%E5%9F%9F"><span class="toc-number">6.3.</span> <span class="toc-text">二三层——配置VTP域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E4%B8%89%E5%B1%82%E2%80%94%E2%80%94%E4%B8%9A%E5%8A%A1%E5%9C%B0%E5%9D%80%E8%A7%84%E5%88%92"><span class="toc-number">6.4.</span> <span class="toc-text">二三层——业务地址规划</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%B1%82%E2%80%94%E2%80%94%E7%AB%AF%E5%8F%A3%E5%88%92%E5%88%86%E5%88%B0VLAN"><span class="toc-number">6.5.</span> <span class="toc-text">二层——端口划分到VLAN</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%88%E7%AB%AF%E6%9C%BA%E9%85%8D%E7%BD%AE"><span class="toc-number">7.</span> <span class="toc-text">终端机配置</span></a></li></ol>
+    </div>
+  
+
+    <!--返回顶部-->
+    <div id="totop" style="position:fixed;bottom:50px;right:60px;font-size: 48px;cursor: pointer;z-index: 10;">
+        <a title="返回顶部">↑</a>
+    </div>
+    <script src="/blog/js/totop.js"></script>
+
+    <div id="layout">
+        
+            <div id="content-background" ref="contentBackground" data-images="https://pic.imgdb.cn/item/65d61d809f345e8d03b8bc7a.png"></div>
+            
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>第一次加载文章图片可能会花费较长时间</p>
+                    <p>要不挂个梯子试试？（x</p>
+                    <p>加载过慢请开启缓存&ensp;浏览器默认开启</p>
+                    <img src="/blog/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <transition name="into">
+            <div id="main" v-show="!loading">
+                <nav id="menu" ref="menu">
+    <div class="desktop-menu">
+        <a class="title" href="/blog/">
+            <span>雲流のLOWEST WORLD</span>
+        </a>
+        
+        <a href="/blog/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/blog/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/blog/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/blog/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/blog/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+        <a href="/blog/links">
+            <i class="fa-solid fa-link fa-fw"></i>
+            <span>&ensp;Links</span>
+        </a>
+        
+        <a href="/blog/search">
+            <i class="fa-solid fa-search fa-fw"></i>
+            <span>&ensp;Search</span>
+        </a>
+        
+    </div>
+    <div id="mobile-menu">
+        <div class="curtain" v-show="showMenu" @click="showMenu = !showMenu"></div>
+        <div class="title" @click="showMenu = !showMenu">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;雲流のLOWEST WORLD</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="showMenu">
+            
+            <a href="/blog/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                </div>
+            </a>
+            
+            <a href="/blog/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                </div>
+            </a>
+            
+            <a href="/blog/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                </div>
+            </a>
+            
+            <a href="/blog/categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                </div>
+            </a>
+            
+            <a href="/blog/tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                </div>
+            </a>
+            
+            <a href="/blog/links">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-link fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Links</div>
+                </div>
+            </a>
+            
+            <a href="/blog/search">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-search fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Search</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+
+                <div class="article">
+    <div>
+        <h1>网络工程实训</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/2/18
+        </span>
+        
+        
+        <!--文章字数统计-->
+        
+            
+<div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <!-- 安装插件npm install hexo-wordcount --save -->
+        <span class="post-count">4.2k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">22分</span>
+      </span>
+    </span>
+    
+    <!--不蒜子统计访问数-->
+    <span id="busuanzi_container_page_pv">
+    &nbsp; | &nbsp;
+    总文章阅读量：<span id="busuanzi_value_page_pv"></span>次
+    </span>
+</div>
+
+          
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>必可活用于工控配交换机（</p>
+<span id="more"></span>
+
+<h1 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h1><p>某公司在A、B两地分别设有总公司和分公司。现需要为该公司建设企业网络，需要将总公司和分公司互联，以实现企业内部安全、高效的数据通信及资源共享；同时，总公司和分公司都需要接入Internet网络。目前，公司只申请到有限数量的公网IP地址，企业网络内部需要使用私有IP地址，但需全网接入Internet。</p>
+<h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><ol>
+<li>总公司包括<strong>财务部、开发部、销售部以及服务器区</strong>，分公司包括<strong>开发部和销售部</strong>，为了提高数据传输效率、保证数据传输安全等因素，需要按照部门对公司内部网络进行广播域分割，公司所有服务器需要在一个独立的广播域内。（使用VLAN技术）</li>
+<li>内部均使用私有IP地址，但需要与Internet网络通信。（使用NAT技术）</li>
+<li>为了保证内部网络安全，以及内部网络各部门之间访问权限的限制，需要根据公司具体要求过滤内部网络与外部网络之间的数据包，以及内部网络各部门之间的数据包。（使用访问控制列表ACL）</li>
+<li>使用路由协议或者静态&#x2F;默认路由，实现内部网络的连通以及对Internet网络的访问。（OSPF协议+静态路由+ 默认路由）</li>
+<li>需要实现总公司与分公司之间安全、可靠的传输内部数据。（使用VPN技术）</li>
+</ol>
+<hr>
+<h1 id="拓扑构建与IP地址规划"><a href="#拓扑构建与IP地址规划" class="headerlink" title="拓扑构建与IP地址规划"></a>拓扑构建与IP地址规划</h1><h2 id="构建拓扑图"><a href="#构建拓扑图" class="headerlink" title="构建拓扑图"></a>构建拓扑图</h2><p>路由器这一层需要三个路由器，分别对应<strong>总公司、分公司和公网 Internet</strong></p>
+<p>此处选择 2811 型号的路由器，模块采用 HWIC-2T，用于通过WAN接口与互联网通信，注意关闭电源才能加模块</p>
+<p><img src="/blog/2025/02/18/%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%AE%AD/image-20250226203646856.png" alt="image-20250226203646856"></p>
+<p>然后路由器之间使用串行 DCE 连接</p>
+<br>
+
+<p>三层交换机，总公司和分公司都需要多层交换机</p>
+<p>这里选择 3560 24PS 型号</p>
+<br>
+
+<p>二层交换机，几个部门就对应几个二层交换机</p>
+<p>这里选择 2960 型号</p>
+<br>
+
+<p>最底层的终端设备，两个公司除了服务器区为 Server 以外均为 PC，Internet 网络上通过交换机有 Server 和 PC</p>
+<p>基本拓扑图：</p>
+<p><img src="/blog/2025/02/18/%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%AE%AD/image-20250227200406712.png" alt="image-20250227200406712"></p>
+<hr>
+<h2 id="IP划分"><a href="#IP划分" class="headerlink" title="IP划分"></a>IP划分</h2><ol>
+<li><p>为总公司和分公司分别分配17位子网掩码的地址段</p>
+<table>
+<thead>
+<tr>
+<th>公司名称</th>
+<th>IP 地址段</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>总公司</td>
+<td>172.16.0.0&#x2F;17</td>
+</tr>
+<tr>
+<td>分公司</td>
+<td>172.16.128.0&#x2F;17</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>总公司和分公司内部可使用 24 位掩码的 IP 地址段</p>
+<p>总公司<strong>三层设备</strong>的互联地址使用 172.16.126.0&#x2F;24 的地址段；分公司三层设备的互联地址使用 172.16.254.0&#x2F;24 的地址段。为了节省 IP 地址，三层设备的互联地址均使用 30 位子网掩码</p>
+<table>
+<thead>
+<tr>
+<th>公司名称</th>
+<th>网关路由器</th>
+<th>核心交换机1</th>
+<th>子网掩码</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>总公司</td>
+<td>172.16.126.1</td>
+<td>172.16.126.2</td>
+<td>255.255.255.252</td>
+</tr>
+<tr>
+<td>分公司</td>
+<td>172.16.254.1</td>
+<td>172.16.254.2</td>
+<td>255.255.255.252</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>为总公司和分公司的<strong>网关路由器</strong>分别配置 loopback 接口的 IP 地址，作为其管理地址</p>
+<table>
+<thead>
+<tr>
+<th>公司名称</th>
+<th>IP 地址</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>总公司</td>
+<td>192.168.0.1&#x2F;32</td>
+</tr>
+<tr>
+<td>分公司</td>
+<td>192.168.0.2&#x2F;32</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>为总公司的可管理交换机规划管理IP地址，这里使用的 IP 地址网段为总公司网段 172.16.0.0&#x2F;17 中最小的一个 24 位子网掩码的网段 172.16.1.0&#x2F;24</p>
+<p>C段下主机标识的最高位“1”代表核心交换机，“2”代表接入交换机；最低位的数字代表该交换机在这类交换机中的编号</p>
+<table>
+<thead>
+<tr>
+<th>部门</th>
+<th>IP 地址</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>核心交换机1</td>
+<td>172.16.1.101&#x2F;24</td>
+</tr>
+<tr>
+<td>接入交换机1</td>
+<td>172.16.1.201&#x2F;24</td>
+</tr>
+<tr>
+<td>接入交换机2</td>
+<td>172.16.1.202&#x2F;24</td>
+</tr>
+<tr>
+<td>接入交换机3</td>
+<td>172.16.1.203&#x2F;24</td>
+</tr>
+<tr>
+<td>接入交换机4</td>
+<td>172.16.1.204&#x2F;24</td>
+</tr>
+</tbody></table>
+<p>分公司如下：</p>
+<table>
+<thead>
+<tr>
+<th>交换机名称</th>
+<th>IP 地址</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>核心交换机</td>
+<td>172.16.129.101&#x2F;24</td>
+</tr>
+<tr>
+<td>接入交换机</td>
+<td>172.16.129.201&#x2F;24</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>配置 VLAN，为每个部门分配一个 24 位子网掩码的网络号，每个网段的网关 IP 地址统一使用 .254</p>
+<p>总公司</p>
+<table>
+<thead>
+<tr>
+<th>部门</th>
+<th>VLAN 名</th>
+<th>VLAN ID</th>
+<th>IP 地址段</th>
+<th>网关 IP 地址</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>服务器区</td>
+<td>VLAN_Server</td>
+<td>2</td>
+<td>172.16.2.0&#x2F;24</td>
+<td>172.16.2.254</td>
+</tr>
+<tr>
+<td>开发部</td>
+<td>VLAN_KFB</td>
+<td>3</td>
+<td>172.16.3.0&#x2F;24</td>
+<td>172.16.3.254</td>
+</tr>
+<tr>
+<td>销售部</td>
+<td>VLAN_XSB</td>
+<td>4</td>
+<td>172.16.4.0&#x2F;24</td>
+<td>172.16.4.254</td>
+</tr>
+<tr>
+<td>财务部</td>
+<td>VLAN_CWB</td>
+<td>5</td>
+<td>172.16.5.0&#x2F;24</td>
+<td>172.16.5.254</td>
+</tr>
+</tbody></table>
+<p>分公司</p>
+<table>
+<thead>
+<tr>
+<th>部门</th>
+<th>VLAN 名</th>
+<th>VLAN ID</th>
+<th>IP 地址段</th>
+<th>网关 IP 地址</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>开发部</td>
+<td>VLAN_Sub_KFB</td>
+<td>30</td>
+<td>172.16.130.0&#x2F;24</td>
+<td>172.16.130.254</td>
+</tr>
+<tr>
+<td>销售部</td>
+<td>VLAN_Sub_XSB</td>
+<td>40</td>
+<td>172.16.131.0&#x2F;24</td>
+<td>172.16.131.254</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>模拟Internet网络</p>
+<table>
+<thead>
+<tr>
+<th>Internet</th>
+<th>总公司</th>
+<th>分公司</th>
+<th>子网掩码</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>23.1.1.254</td>
+<td>23.1.1.1</td>
+<td></td>
+<td>255.255.255.0</td>
+</tr>
+<tr>
+<td>23.1.2.254</td>
+<td></td>
+<td>23.1.2.1</td>
+<td>255.255.255.0</td>
+</tr>
+<tr>
+<td>23.1.3.254</td>
+<td>PC：23.1.3.1</td>
+<td></td>
+<td>255.255.255.0</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+<p>结合设备，最终的IP划分：</p>
+<table>
+<thead>
+<tr>
+<th>分布</th>
+<th>设备名称</th>
+<th>接口</th>
+<th>Vlan</th>
+<th>IP地址</th>
+<th>子网掩码</th>
+<th>所接设备及接口</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>总公司</td>
+<td>Router-2811-0</td>
+<td>F0&#x2F;0</td>
+<td></td>
+<td>172.16.126.1</td>
+<td>255.255.255.252</td>
+<td>Switch-3560-24PS-0 F0&#x2F;1</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>S0&#x2F;0&#x2F;0</td>
+<td></td>
+<td>23.1.1.1</td>
+<td>255.255.255.0</td>
+<td>Router-2811-2 S0&#x2F;0&#x2F;0</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>loopback0</td>
+<td></td>
+<td>192.168.0.1</td>
+<td>255.255.255.255</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Switch-3560-24PS-0</td>
+<td>F0&#x2F;1</td>
+<td></td>
+<td>172.16.126.2</td>
+<td>255.255.255.252</td>
+<td>Router-2811-0 F0&#x2F;0</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>F0&#x2F;2</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Switch-2960-24TT-0 F0&#x2F;1</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>F0&#x2F;3</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Switch-2960-24TT-1 F0&#x2F;1</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>F0&#x2F;4</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Switch-2960-24TT-2 F0&#x2F;1</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>F0&#x2F;5</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Switch-2960-24TT-3 F0&#x2F;1</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Vlan1</td>
+<td></td>
+<td>172.16.1.101</td>
+<td>255.255.255.0</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Vlan2</td>
+<td></td>
+<td>172.16.2.254</td>
+<td>255.255.255.0</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Vlan3</td>
+<td></td>
+<td>172.16.3.254</td>
+<td>255.255.255.0</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Vlan4</td>
+<td></td>
+<td>172.16.4.254</td>
+<td>255.255.255.0</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Vlan5</td>
+<td></td>
+<td>172.16.5.254</td>
+<td>255.255.255.0</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Switch-2960-24TT-0</td>
+<td>F0&#x2F;1</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Switch-3560-24PS-0 F0&#x2F;2</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>F0&#x2F;2</td>
+<td>2</td>
+<td></td>
+<td></td>
+<td>Server-PT-0 F0</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>F0&#x2F;3</td>
+<td>2</td>
+<td></td>
+<td></td>
+<td>Server-PT-1 F0</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Vlan1</td>
+<td></td>
+<td>172.16.1.201</td>
+<td>255.255.255.0</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Switch-2960-24TT-1</td>
+<td>F0&#x2F;1</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Switch-3560-24PS-0 F0&#x2F;3</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>F0&#x2F;2</td>
+<td>3</td>
+<td></td>
+<td></td>
+<td>PC-PT-0 F0</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Vlan1</td>
+<td></td>
+<td>172.16.1.202</td>
+<td>255.255.255.0</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Switch-2960-24TT-2</td>
+<td>F0&#x2F;1</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Switch-3560-24PS-0 F0&#x2F;4</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>F0&#x2F;2</td>
+<td>4</td>
+<td></td>
+<td></td>
+<td>PC-PT-1 F0</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Vlan1</td>
+<td></td>
+<td>172.16.1.203</td>
+<td>255.255.255.0</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Switch-2960-24TT-3</td>
+<td>F0&#x2F;1</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Switch-3560-24PS-0 F0&#x2F;5</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>F0&#x2F;2</td>
+<td>5</td>
+<td></td>
+<td></td>
+<td>PC-PT-2 F0</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Vlan1</td>
+<td></td>
+<td>172.16.1.204</td>
+<td>255.255.255.0</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Server-PT-0</td>
+<td>F0</td>
+<td></td>
+<td>172.16.2.1</td>
+<td>255.255.0.0</td>
+<td>Switch-2960-24TT-0 F0&#x2F;2</td>
+</tr>
+<tr>
+<td></td>
+<td>Server-PT-1</td>
+<td>F0</td>
+<td></td>
+<td>172.16.2.2</td>
+<td>255.255.0.0</td>
+<td>Switch-2960-24TT-0 F0&#x2F;3</td>
+</tr>
+<tr>
+<td></td>
+<td>PC-PT-0</td>
+<td>F0</td>
+<td></td>
+<td>172.16.3.1</td>
+<td>255.255.0.0</td>
+<td>Switch-2960-24TT-1 F0&#x2F;2</td>
+</tr>
+<tr>
+<td></td>
+<td>PC-PT-1</td>
+<td>F0</td>
+<td></td>
+<td>172.16.4.1</td>
+<td>255.255.0.0</td>
+<td>Switch-2960-24TT-2 F0&#x2F;2</td>
+</tr>
+<tr>
+<td></td>
+<td>PC-PT-2</td>
+<td>F0</td>
+<td></td>
+<td>172.16.5.1</td>
+<td>255.255.0.0</td>
+<td>Switch-2960-24TT-3 F0&#x2F;2</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>分公司</td>
+<td>Router-2811-1</td>
+<td>F0&#x2F;0</td>
+<td></td>
+<td>172.16.254.1</td>
+<td>255.255.255.252</td>
+<td>Switch-3560-24PS-1 F0&#x2F;1</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>S0&#x2F;0&#x2F;1</td>
+<td></td>
+<td>23.1.2.1</td>
+<td>255.255.255.0</td>
+<td>Router-2811-2 S0&#x2F;0&#x2F;1</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>loopback0</td>
+<td></td>
+<td>192.168.0.2</td>
+<td>255.255.255.255</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Switch-3560-24PS-1</td>
+<td>F0&#x2F;1</td>
+<td></td>
+<td>172.16.254.2</td>
+<td>255.255.255.252</td>
+<td>Router-2811-1 F0&#x2F;0</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>F0&#x2F;2</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Switch-2960-24TT-4 F0&#x2F;1</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>F0&#x2F;3</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Switch-2960-24TT-5 F0&#x2F;1</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Vlan1</td>
+<td></td>
+<td>172.16.129.101</td>
+<td>255.255.255.0</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Vlan30</td>
+<td></td>
+<td>172.16.130.254</td>
+<td>255.255.255.0</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Vlan40</td>
+<td></td>
+<td>172.16.131.254</td>
+<td>255.255.255.0</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Switch-2960-24TT-4</td>
+<td>F0&#x2F;1</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Switch-3560-24PS-1 F0&#x2F;2</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>F0&#x2F;2</td>
+<td>30</td>
+<td></td>
+<td></td>
+<td>PC-PT-3 F0</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Vlan1</td>
+<td></td>
+<td>172.16.129.201</td>
+<td>255.255.255.0</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Switch-2960-24TT-5</td>
+<td>F0&#x2F;1</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Switch-3560-24PS-1 F0&#x2F;3</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>F0&#x2F;2</td>
+<td>40</td>
+<td></td>
+<td></td>
+<td>PC-PT-4 F0</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Vlan1</td>
+<td></td>
+<td>172.16.129.202</td>
+<td>255.255.255.0</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>PC-PT-3</td>
+<td>F0</td>
+<td></td>
+<td>172.16.130.1</td>
+<td>255.255.0.0</td>
+<td>Switch-2960-24TT-4 F0&#x2F;2</td>
+</tr>
+<tr>
+<td></td>
+<td>PC-PT-4</td>
+<td>F0</td>
+<td></td>
+<td>172.16.131.1</td>
+<td>255.255.0.0</td>
+<td>Switch-2960-24TT-5 F0&#x2F;2</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>外网Internet</td>
+<td>Router-2811-2</td>
+<td>S0&#x2F;0&#x2F;0</td>
+<td></td>
+<td>23.1.1.254</td>
+<td>255.255.255.0</td>
+<td>Router-2811-0 S0&#x2F;0&#x2F;0</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>S0&#x2F;0&#x2F;1</td>
+<td></td>
+<td>23.1.2.254</td>
+<td>255.255.255.0</td>
+<td>Router-2811-1 S0&#x2F;0&#x2F;1</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>F0&#x2F;0</td>
+<td></td>
+<td>23.1.3.254</td>
+<td>255.255.255.0</td>
+<td>Switch-2960-24TT-6 F0&#x2F;1</td>
+</tr>
+<tr>
+<td></td>
+<td>Switch-2960-24TT-6</td>
+<td>F0&#x2F;1</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Router-2811-2 F0&#x2F;0</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>F0&#x2F;2</td>
+<td></td>
+<td></td>
+<td></td>
+<td>PC-PT-5 F0</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>F0&#x2F;3</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Server-PT-2 F0</td>
+</tr>
+<tr>
+<td></td>
+<td>PC-PT-5</td>
+<td>F0</td>
+<td></td>
+<td>23.1.3.1</td>
+<td>255.255.255.0</td>
+<td>Switch-2960-24TT-6 F0&#x2F;2</td>
+</tr>
+<tr>
+<td></td>
+<td>Server-PT-2</td>
+<td>F0</td>
+<td></td>
+<td>23.1.3.2</td>
+<td>255.255.255.0</td>
+<td>Switch-2960-24TT-6 F0&#x2F;3</td>
+</tr>
+</tbody></table>
+<hr>
+<h1 id="基本配置"><a href="#基本配置" class="headerlink" title="基本配置"></a>基本配置</h1><p>关闭域名查询</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Router-2811-0<span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token comment">#no ip domain-lookup</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+<h2 id="主机命名修改"><a href="#主机命名修改" class="headerlink" title="主机命名修改"></a>主机命名修改</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">old_hostname<span class="token operator">></span>enable
+old_hostname<span class="token comment">#configure terminal</span>
+old_hostname<span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token comment">#hostname new_name</span>
+new_name<span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token comment">#</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>规范示例：设备地理位置-设备类型&#x2F;网络位置-设备型号-设备编号</p>
+<h2 id="配置特权密码"><a href="#配置特权密码" class="headerlink" title="配置特权密码"></a>配置特权密码</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">hostname<span class="token operator">></span>enable
+<span class="token function">hostname</span><span class="token comment">#configure terminal</span>
+hostname<span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token comment">#enable password 123456</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="/blog/2025/02/18/%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%AE%AD/image-20250227201025606.png" alt="image-20250227201025606"></p>
+<h2 id="Console端口密码"><a href="#Console端口密码" class="headerlink" title="Console端口密码"></a>Console端口密码</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Router-2811-0<span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token comment">#line console 0</span>
+Router-2811-0<span class="token punctuation">(</span>config-line<span class="token punctuation">)</span><span class="token comment">#password 111111</span>
+Router-2811-0<span class="token punctuation">(</span>config-line<span class="token punctuation">)</span><span class="token comment">#login</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>使用 配置线 连接电脑的 COM&#x2F;RS232 接口和路由器的 Console 接口</p>
+<p><img src="/blog/2025/02/18/%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%AE%AD/image-20250227183815860.png" alt="image-20250227183815860"></p>
+<p>然后在笔记本配置终端，主要是波特率，这里是默认的9600</p>
+<p><img src="/blog/2025/02/18/%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%AE%AD/image-20250227183955525.png" alt="image-20250227183955525"></p>
+<p>确定即可连接上路由器</p>
+<p><img src="/blog/2025/02/18/%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%AE%AD/image-20250227195957859.png" alt="image-20250227195957859"></p>
+<h2 id="配置VTY的密码"><a href="#配置VTY的密码" class="headerlink" title="配置VTY的密码"></a>配置VTY的密码</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Switch-3560-24PS-0<span class="token punctuation">(</span>config-line<span class="token punctuation">)</span><span class="token comment">#line vty 0</span>
+Switch-3560-24PS-0<span class="token punctuation">(</span>config-line<span class="token punctuation">)</span><span class="token comment">#password aaaaaa</span>
+Switch-3560-24PS-0<span class="token punctuation">(</span>config-line<span class="token punctuation">)</span><span class="token comment">#login</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="/blog/2025/02/18/%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%AE%AD/image-20250227195607185.png" alt="image-20250227195607185"></p>
+<h2 id="保存配置文件"><a href="#保存配置文件" class="headerlink" title="保存配置文件"></a>保存配置文件</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Router-2811-0<span class="token comment">#copy running-config startup-config</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<hr>
+<h1 id="路由器配置"><a href="#路由器配置" class="headerlink" title="路由器配置"></a>路由器配置</h1><table>
+<thead>
+<tr>
+<th>设备名称</th>
+<th>接口</th>
+<th>IP地址</th>
+<th>子网掩码</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Router-2811-0</td>
+<td>F0&#x2F;0</td>
+<td>172.16.126.1</td>
+<td>255.255.255.252</td>
+</tr>
+<tr>
+<td></td>
+<td>S0&#x2F;0&#x2F;0</td>
+<td>23.1.1.1</td>
+<td>255.255.255.0</td>
+</tr>
+<tr>
+<td></td>
+<td>loopback0</td>
+<td>192.168.0.1</td>
+<td>255.255.255.255</td>
+</tr>
+<tr>
+<td>Router-2811-1</td>
+<td>F0&#x2F;0</td>
+<td>172.16.254.1</td>
+<td>255.255.255.252</td>
+</tr>
+<tr>
+<td></td>
+<td>S0&#x2F;0&#x2F;1</td>
+<td>23.1.2.1</td>
+<td>255.255.255.0</td>
+</tr>
+<tr>
+<td></td>
+<td>loopback0</td>
+<td>192.168.0.2</td>
+<td>255.255.255.255</td>
+</tr>
+<tr>
+<td>Router-2811-2</td>
+<td>S0&#x2F;0&#x2F;0</td>
+<td>23.1.1.254</td>
+<td>255.255.255.0</td>
+</tr>
+<tr>
+<td></td>
+<td>S0&#x2F;0&#x2F;1</td>
+<td>23.1.2.254</td>
+<td>255.255.255.0</td>
+</tr>
+<tr>
+<td></td>
+<td>F0&#x2F;0</td>
+<td>23.1.3.254</td>
+<td>255.255.255.0</td>
+</tr>
+</tbody></table>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Router-2811-0<span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token comment">#interface fa0/0</span>
+Router-2811-0<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#ip address 172.16.126.1 255.255.255.252</span>
+Router-2811-0<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#no shutdown</span>
+Router-2811-0<span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token comment">#interface Serial0/0/0</span>
+Router-2811-0<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#ip address 23.1.1.1 255.255.255.0</span>
+Router-2811-0<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#no shutdown</span>
+
+Router-2811-1<span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token comment">#interface fa0/0</span>
+Router-2811-1<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#ip address 172.16.254.1 255.255.255.252</span>
+Router-2811-1<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#no shutdown</span>
+Router-2811-1<span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token comment">#interface Serial0/0/1</span>
+Router-2811-1<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#ip address 23.1.2.1 255.255.255.0</span>
+Router-2811-1<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#no shutdown</span>
+
+Router-2811-2<span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token comment">#interface Serial0/0/0</span>
+Router-2811-2<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#ip address 23.1.1.254 255.255.255.0</span>
+Router-2811-2<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#no shutdown</span>
+Router-2811-2<span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token comment">#interface Serial0/0/1</span>
+Router-2811-2<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#ip address 23.1.2.254 255.255.255.0</span>
+Router-2811-2<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#no shutdown</span>
+Router-2811-2<span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token comment">#interface FastEthernet0/0</span>
+Router-2811-2<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#ip address 23.1.3.254 255.255.255.0</span>
+Router-2811-2<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#no shutdown</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="loopback地址规划"><a href="#loopback地址规划" class="headerlink" title="loopback地址规划"></a>loopback地址规划</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Router-2811-0<span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token comment">#interface loopback 0</span>
+Router-2811-0<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#ip address 192.168.0.1 255.255.255.255</span>
+Router-2811-0<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#no shutdown </span>
+
+Router-2811-1<span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token comment">#interface loopback 0</span>
+Router-2811-1<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#ip address 192.168.0.2 255.255.255.255</span>
+Router-2811-1<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#no shutdown</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<hr>
+<h1 id="交换机VLAN配置"><a href="#交换机VLAN配置" class="headerlink" title="交换机VLAN配置"></a>交换机VLAN配置</h1><h2 id="三层——互联地址规划"><a href="#三层——互联地址规划" class="headerlink" title="三层——互联地址规划"></a>三层——互联地址规划</h2><table>
+<thead>
+<tr>
+<th>设备名称</th>
+<th>接口</th>
+<th>IP地址</th>
+<th>子网掩码</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Switch-3560-24PS-0</td>
+<td>F0&#x2F;1</td>
+<td>172.16.126.2</td>
+<td>255.255.255.252</td>
+</tr>
+<tr>
+<td>Switch-3560-24PS-1</td>
+<td>F0&#x2F;1</td>
+<td>172.16.254.2</td>
+<td>255.255.255.252</td>
+</tr>
+</tbody></table>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Switch-3560-24PS-0<span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token comment">#interface f0/1</span>
+Switch-3560-24PS-0<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#no switchport</span>
+Switch-3560-24PS-0<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#ip address 172.16.126.2 255.255.255.252</span>
+Switch-3560-24PS-0<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#no shutdown</span>
+
+Switch-3560-24PS-1<span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token comment">#int f0/1</span>
+Switch-3560-24PS-1<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#no switchport</span>
+Switch-3560-24PS-1<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#ip address 172.16.254.2 255.255.255.252</span>
+Switch-3560-24PS-1<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#no shutdown </span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="二三层——配置trunk链接"><a href="#二三层——配置trunk链接" class="headerlink" title="二三层——配置trunk链接"></a>二三层——配置trunk链接</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Switch-3560-24PS-0<span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token comment">#int f0/2</span>
+Switch-3560-24PS-0<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#switchport trunk encapsulation dot1q</span>
+Switch-3560-24PS-0<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#switchport mode trunk</span>
+Switch-3560-24PS-0<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#int f0/3</span>
+Switch-3560-24PS-0<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#switchport trunk encapsulation dot1q</span>
+Switch-3560-24PS-0<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#switchport mode trunk</span>
+Switch-3560-24PS-0<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#int f0/4</span>
+Switch-3560-24PS-0<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#switchport trunk encapsulation dot1q</span>
+Switch-3560-24PS-0<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#switchport mode trunk</span>
+Switch-3560-24PS-0<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#int f0/5</span>
+Switch-3560-24PS-0<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#switchport trunk encapsulation dot1q</span>
+Switch-3560-24PS-0<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#switchport mode trunk</span>
+
+Switch-3560-24PS-1<span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token comment">#int f0/2</span>
+Switch-3560-24PS-1<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#switchport trunk encapsulation dot1q</span>
+Switch-3560-24PS-1<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#switchport mode trunk</span>
+Switch-3560-24PS-1<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#int f0/3</span>
+Switch-3560-24PS-1<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#switchport trunk encapsulation dot1q</span>
+Switch-3560-24PS-1<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#switchport mode trunk</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>执行完三层后二层对应的端口会自动变成trunk</p>
+<h2 id="二三层——配置VTP域"><a href="#二三层——配置VTP域" class="headerlink" title="二三层——配置VTP域"></a>二三层——配置VTP域</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Switch-3560-24PS-0<span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token comment">#vtp domain Parent_Com</span>
+Switch-3560-24PS-0<span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token comment">#vtp mode server</span>
+
+Switch-2960-24TT-0<span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token comment">#vtp mod client</span>
+Switch-2960-24TT-1<span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token comment">#vtp mod client</span>
+Switch-2960-24TT-2<span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token comment">#vtp mod client</span>
+Switch-2960-24TT-3<span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token comment">#vtp mod client</span>
+
+Switch-3560-24PS-1<span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token comment">#vtp domain Sub_Com</span>
+Switch-3560-24PS-1<span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token comment">#vtp mode server</span>
+
+Switch-2960-24TT-4<span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token comment">#vtp mod client</span>
+Switch-2960-24TT-5<span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token comment">#vtp mod client</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="二三层——业务地址规划"><a href="#二三层——业务地址规划" class="headerlink" title="二三层——业务地址规划"></a>二三层——业务地址规划</h2><table>
+<thead>
+<tr>
+<th>设备名称</th>
+<th>接口</th>
+<th>IP 地址</th>
+<th>子网掩码</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Switch-3560-24PS-0</td>
+<td>Vlan1</td>
+<td>172.16.1.101</td>
+<td>255.255.255.0</td>
+</tr>
+<tr>
+<td>Switch-2960-24TT-0</td>
+<td>Vlan1</td>
+<td>172.16.1.201</td>
+<td>255.255.255.0</td>
+</tr>
+<tr>
+<td>Switch-2960-24TT-1</td>
+<td>Vlan1</td>
+<td>172.16.1.202</td>
+<td>255.255.255.0</td>
+</tr>
+<tr>
+<td>Switch-2960-24TT-2</td>
+<td>Vlan1</td>
+<td>172.16.1.203</td>
+<td>255.255.255.0</td>
+</tr>
+<tr>
+<td>Switch-2960-24TT-3</td>
+<td>Vlan1</td>
+<td>172.16.1.204</td>
+<td>255.255.255.0</td>
+</tr>
+<tr>
+<td>总公司↑<br />分公司↓</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Switch-3560-24PS-1</td>
+<td>Vlan1</td>
+<td>172.16.129.101</td>
+<td>255.255.255.0</td>
+</tr>
+<tr>
+<td>Switch-2960-24TT-4</td>
+<td>Vlan1</td>
+<td>172.16.129.201</td>
+<td>255.255.255.0</td>
+</tr>
+<tr>
+<td>Switch-2960-24TT-5</td>
+<td>Vlan1</td>
+<td>172.16.129.202</td>
+<td>255.255.255.0</td>
+</tr>
+</tbody></table>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Switch-3560-24PS-0<span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token comment">#ip routing</span>
+Switch-3560-24PS-0<span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token comment">#interface vlan1</span>
+Switch-3560-24PS-0<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#ip address 172.16.1.101 255.255.255.0</span>
+Switch-3560-24PS-0<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#no shutdown</span>
+
+Switch-3560-24PS-1<span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token comment">#ip routing</span>
+Switch-3560-24PS-1<span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token comment">#interface vlan1</span>
+Switch-3560-24PS-1<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#ip address 172.16.129.101 255.255.255.0</span>
+Switch-3560-24PS-1<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#no shutdown</span>
+
+Switch-2960-24TT-0<span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token comment">#interface vlan1</span>
+Switch-2960-24TT-0<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#ip address 172.16.1.201 255.255.255.0</span>
+Switch-2960-24TT-0<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#no shutdown</span>
+
+Switch-2960-24TT-1<span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token comment">#int vlan1</span>
+Switch-2960-24TT-1<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#ip address 172.16.1.202 255.255.255.0</span>
+Switch-2960-24TT-1<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#no shutdown</span>
+
+Switch-2960-24TT-2<span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token comment">#int vlan1</span>
+Switch-2960-24TT-2<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#ip address 172.16.1.203 255.255.255.0</span>
+Switch-2960-24TT-2<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#no shutdown</span>
+
+Switch-2960-24TT-3<span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token comment">#int vlan1</span>
+Switch-2960-24TT-3<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#ip address 172.16.1.204 255.255.255.0</span>
+Switch-2960-24TT-3<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#no shutdown</span>
+
+
+Switch-3560-24PS-1<span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token comment">#int vlan1</span>
+Switch-3560-24PS-1<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#ip add 172.16.129.101 255.255.255.0</span>
+Switch-3560-24PS-1<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#no shutdown </span>
+
+Switch-2960-24TT-4<span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token comment">#int vlan1</span>
+Switch-2960-24TT-4<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#ip add 172.16.129.201 255.255.255.0</span>
+Switch-2960-24TT-4<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#no shutdown</span>
+
+Switch-2960-24TT-5<span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token comment">#int vlan1</span>
+Switch-2960-24TT-5<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#ip add 172.16.129.202 255.255.255.0</span>
+Switch-2960-24TT-5<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#no shutdown</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<table>
+<thead>
+<tr>
+<th>部门</th>
+<th>VLAN 名</th>
+<th>VLAN ID</th>
+<th>IP 地址段</th>
+<th>网关 IP 地址</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>服务器区</td>
+<td>VLAN_Server</td>
+<td>2</td>
+<td>172.16.2.0&#x2F;24</td>
+<td>172.16.2.254</td>
+</tr>
+<tr>
+<td>开发部</td>
+<td>VLAN_KFB</td>
+<td>3</td>
+<td>172.16.3.0&#x2F;24</td>
+<td>172.16.3.254</td>
+</tr>
+<tr>
+<td>销售部</td>
+<td>VLAN_XSB</td>
+<td>4</td>
+<td>172.16.4.0&#x2F;24</td>
+<td>172.16.4.254</td>
+</tr>
+<tr>
+<td>财务部</td>
+<td>VLAN_CWB</td>
+<td>5</td>
+<td>172.16.5.0&#x2F;24</td>
+<td>172.16.5.254</td>
+</tr>
+<tr>
+<td>总公司↑<br />分公司↓</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>开发部</td>
+<td>VLAN_Sub_KFB</td>
+<td>30</td>
+<td>172.16.130.0&#x2F;24</td>
+<td>172.16.130.254</td>
+</tr>
+<tr>
+<td>销售部</td>
+<td>VLAN_Sub_XSB</td>
+<td>40</td>
+<td>172.16.131.0&#x2F;24</td>
+<td>172.16.131.254</td>
+</tr>
+</tbody></table>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Switch-3560-24PS-0<span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token comment">#vlan 2</span>
+Switch-3560-24PS-0<span class="token punctuation">(</span>config-vlan<span class="token punctuation">)</span><span class="token comment">#name VLAN_Server</span>
+Switch-3560-24PS-0<span class="token punctuation">(</span>config-vlan<span class="token punctuation">)</span><span class="token comment">#vlan 3</span>
+Switch-3560-24PS-0<span class="token punctuation">(</span>config-vlan<span class="token punctuation">)</span><span class="token comment">#name VLAN_KFB</span>
+Switch-3560-24PS-0<span class="token punctuation">(</span>config-vlan<span class="token punctuation">)</span><span class="token comment">#vlan 4</span>
+Switch-3560-24PS-0<span class="token punctuation">(</span>config-vlan<span class="token punctuation">)</span><span class="token comment">#name VLAN_XSB</span>
+Switch-3560-24PS-0<span class="token punctuation">(</span>config-vlan<span class="token punctuation">)</span><span class="token comment">#vlan 5</span>
+Switch-3560-24PS-0<span class="token punctuation">(</span>config-vlan<span class="token punctuation">)</span><span class="token comment">#name VLAN_CWB</span>
+Switch-3560-24PS-0<span class="token punctuation">(</span>config-vlan<span class="token punctuation">)</span><span class="token comment">#ex</span>
+Switch-3560-24PS-0<span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token comment">#int vlan2</span>
+Switch-3560-24PS-0<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#ip address 172.16.2.254 255.255.255.0</span>
+Switch-3560-24PS-0<span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token comment">#int vlan3</span>
+Switch-3560-24PS-0<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#ip address 172.16.3.254 255.255.255.0</span>
+Switch-3560-24PS-0<span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token comment">#int vlan4</span>
+Switch-3560-24PS-0<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#ip address 172.16.4.254 255.255.255.0</span>
+Switch-3560-24PS-0<span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token comment">#int vlan5</span>
+Switch-3560-24PS-0<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#ip address 172.16.5.254 255.255.255.0</span>
+
+Switch-3560-24PS-1<span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token comment">#vlan 30</span>
+Switch-3560-24PS-1<span class="token punctuation">(</span>config-vlan<span class="token punctuation">)</span><span class="token comment">#name VLAN_Sub_KFB</span>
+Switch-3560-24PS-1<span class="token punctuation">(</span>config-vlan<span class="token punctuation">)</span><span class="token comment">#vlan 40</span>
+Switch-3560-24PS-1<span class="token punctuation">(</span>config-vlan<span class="token punctuation">)</span><span class="token comment">#name VLAN_Sub_XSB</span>
+Switch-3560-24PS-1<span class="token punctuation">(</span>config-vlan<span class="token punctuation">)</span><span class="token comment">#int vlan30</span>
+Switch-3560-24PS-1<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#ip address 172.16.130.254 255.255.255.0</span>
+Switch-3560-24PS-1<span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token comment">#int vlan40</span>
+Switch-3560-24PS-1<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#ip address 172.16.131.254 255.255.255.0</span>
+
+
+Switch-2960-24TT-0<span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token comment">#ip default-gateway 172.16.2.254</span>
+
+Switch-2960-24TT-1<span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token comment">#ip default-gateway 172.16.3.254</span>
+
+Switch-2960-24TT-2<span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token comment">#ip default-gateway 172.16.4.254</span>
+
+Switch-2960-24TT-3<span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token comment">#ip default-gateway 172.16.5.254</span>
+
+Switch-2960-24TT-4<span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token comment">#ip default-gateway 172.16.130.254</span>
+
+Switch-2960-24TT-5<span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token comment">#ip default-gateway 172.16.131.254</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="二层——端口划分到VLAN"><a href="#二层——端口划分到VLAN" class="headerlink" title="二层——端口划分到VLAN"></a>二层——端口划分到VLAN</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Switch-2960-24TT-0<span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token comment">#interface f0/2</span>
+Switch-2960-24TT-0<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#switchport access vlan 2</span>
+Switch-2960-24TT-0<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#interface f0/3</span>
+Switch-2960-24TT-0<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#switchport access vlan 2</span>
+
+Switch-2960-24TT-1<span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token comment">#int f0/2</span>
+Switch-2960-24TT-1<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#switchport access vlan 3</span>
+
+Switch-2960-24TT-2<span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token comment">#int f0/2</span>
+Switch-2960-24TT-2<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#switchport access vlan 4</span>
+
+Switch-2960-24TT-3<span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token comment">#int f0/2</span>
+Switch-2960-24TT-3<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#switchport access vlan 5</span>
+
+
+Switch-2960-24TT-4<span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token comment">#int f0/2</span>
+Switch-2960-24TT-4<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#switchport access vlan 30</span>
+
+Switch-2960-24TT-5<span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token comment">#int f0/2</span>
+Switch-2960-24TT-5<span class="token punctuation">(</span>config-if<span class="token punctuation">)</span><span class="token comment">#switchport access vlan 40</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<hr>
+<h1 id="终端机配置"><a href="#终端机配置" class="headerlink" title="终端机配置"></a>终端机配置</h1><table>
+<thead>
+<tr>
+<th>设备名称</th>
+<th>接口</th>
+<th>IP地址</th>
+<th>子网掩码</th>
+<th>默认网关</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Server-PT-0</td>
+<td>F0</td>
+<td>172.16.2.1</td>
+<td>255.255.0.0</td>
+<td>172.16.2.254</td>
+</tr>
+<tr>
+<td>Server-PT-1</td>
+<td>F0</td>
+<td>172.16.2.2</td>
+<td>255.255.0.0</td>
+<td>172.16.2.254</td>
+</tr>
+<tr>
+<td>PC-PT-0</td>
+<td>F0</td>
+<td>172.16.3.1</td>
+<td>255.255.0.0</td>
+<td>172.16.3.254</td>
+</tr>
+<tr>
+<td>PC-PT-1</td>
+<td>F0</td>
+<td>172.16.4.1</td>
+<td>255.255.0.0</td>
+<td>172.16.4.254</td>
+</tr>
+<tr>
+<td>PC-PT-2</td>
+<td>F0</td>
+<td>172.16.5.1</td>
+<td>255.255.0.0</td>
+<td>172.16.5.254</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>PC-PT-3</td>
+<td>F0</td>
+<td>172.16.130.1</td>
+<td>255.255.0.0</td>
+<td>172.16.130.254</td>
+</tr>
+<tr>
+<td>PC-PT-4</td>
+<td>F0</td>
+<td>172.16.131.1</td>
+<td>255.255.0.0</td>
+<td>172.16.131.254</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>PC-PT-5</td>
+<td>F0</td>
+<td>23.1.3.1</td>
+<td>255.255.255.0</td>
+<td>23.1.3.254</td>
+</tr>
+<tr>
+<td>Server-PT-2</td>
+<td>F0</td>
+<td>23.1.3.2</td>
+<td>255.255.255.0</td>
+<td>23.1.3.254</td>
+</tr>
+</tbody></table>
+<p><img src="/blog/2025/02/18/%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%AE%AD/image-20250227120149490.png" alt="image-20250227120149490"></p>
+<p><img src="/blog/2025/02/18/%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%AE%AD/image-20250227120404130.png" alt="image-20250227120404130"></p>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            </div>
+        </transition>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/blog/js/main.js"></script>
+    
+    
+
+
+
+
+    
+    
+
+<div id="vcomments"></div>
+
+<script src="/blog/js/lib/valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: 'U9mZLKunkRUTcBFthjXPjnZE-9Nh9j0Va',
+        app_key: 'SzWOnY0PWLGNuL6jW8TZYc7j',
+        visitor: 'true',
+        placeholder: '写点什么吧(●ˇ∀ˇ●)',
+        serverURLs: 'https://u9mzlkun.lc-cn-n1-shared.com',
+    });
+</script>
+
+    <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2025 雲流のLowest World
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;C1oudfL0w0
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+<script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/blog/live2dw/assets/z16.model.json"},"display":{"position":"left","width":150,"height":290},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+</html>

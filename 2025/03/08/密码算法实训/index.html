@@ -1,0 +1,623 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>密码算法实训 | 雲流のLowest World</title>
+    <meta name="author" content="C1oudfL0w0" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <link rel="icon" href="/blog/images/croppedImage_cropped.jpg" />
+    <!-- cdn挂掉的时候要可以引用本地 -->
+<!-- <script src="https://cdn.staticfile.org/vue/3.2.45/vue.global.prod.min.js"></script> -->
+<script src="/blog/js/vue.global.prod.min.js"></script>
+
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.2.1/css/all.min.css" />
+
+
+<link rel="stylesheet" href="/blog/css/all.min.css" />
+<link rel="stylesheet" href="/blog/css/fonts.min.css" />
+<link rel="stylesheet" href="/blog/css/search.css" />
+<script> const mixins = {}; </script>
+
+<!-- 引入jQuery-->
+<!-- <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script> -->
+<script src="/blog/js/jquery.min.js"></script>
+
+<!--改成了prismjs高亮-->
+
+<script src="/blog/js/lib/prism.js"></script>
+<link rel="stylesheet" href="/blog/css/prism.css" rel="stylesheet" />
+
+
+
+<script src="/blog/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+
+<script src="/blog/js/lib/home.js"></script>
+
+<link rel="stylesheet" href="/blog/css/main.css" />
+<!-- 引入不蒜子-->
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script type="text/javascript" src="/blog/libs/codeBlock/codeBlockFuction.js"></script>
+<!-- 代码语言 -->
+<script type="text/javascript" src="/blog/libs/codeBlock/codeLang.js"></script>
+<!-- 代码块复制 -->
+<!-- 引入clipboard -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+
+<script type="text/javascript" src="/blog/libs/codeBlock/codeCopy.js"></script>
+<!-- 代码块收缩 -->
+<script type="text/javascript" src="/blog/libs/codeBlock/codeShrink.js"></script> 
+<!-- 代码块折行 -->
+<style type="text/css">code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }</style>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/blog/atom.xml" title="雲流のLowest World" type="application/atom+xml">
+</head>
+
+<body>
+    <!--flag{never_g0nna g1ve_you up}-->
+
+    <!-- 页面点击特效 -->
+    <script type="text/javascript" src="/blog/js/love-click.js"></script>
+
+    <!-- 浏览器标题 -->
+    <script async type="text/javascript" src="/blog/js/FunnyTitle.js"></script>
+
+    <!-- 动态背景 -->
+    
+
+    <!--文章目录-->
+    
+    <div id="toc" class="toc-article">
+    <h3><i class="fas fa-stream"></i>  目录</h3>
+      <div class="toc-title"></div>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%A4%E5%85%B8%E5%AF%86%E7%A0%81"><span class="toc-number">2.</span> <span class="toc-text">古典密码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A7%BB%E4%BD%8D%E5%AF%86%E7%A0%81"><span class="toc-number">2.1.</span> <span class="toc-text">移位密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E8%A1%A8%E7%BD%AE%E6%8D%A2%E5%AF%86%E7%A0%81"><span class="toc-number">2.2.</span> <span class="toc-text">单表置换密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A9%B7%E4%B8%BE%E6%B3%95%E6%94%BB%E5%87%BB%E7%A7%BB%E4%BD%8D%E5%AF%86%E7%A0%81"><span class="toc-number">2.3.</span> <span class="toc-text">穷举法攻击移位密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%8D%E9%A2%91%E5%88%86%E6%9E%90%E6%94%BB%E5%87%BB%E7%BD%AE%E6%8D%A2%E5%AF%86%E7%A0%81"><span class="toc-number">2.4.</span> <span class="toc-text">词频分析攻击置换密码</span></a></li></ol></li></ol>
+    </div>
+  
+
+    <!--返回顶部-->
+    <div id="totop" style="position:fixed;bottom:50px;right:60px;font-size: 48px;cursor: pointer;z-index: 10;">
+        <a title="返回顶部">↑</a>
+    </div>
+    <script src="/blog/js/totop.js"></script>
+
+    <div id="layout">
+        
+            <div id="content-background" ref="contentBackground" data-images="https://pic.imgdb.cn/item/65d61d809f345e8d03b8bc7a.png"></div>
+            
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>第一次加载文章图片可能会花费较长时间</p>
+                    <p>要不挂个梯子试试？（x</p>
+                    <p>加载过慢请开启缓存&ensp;浏览器默认开启</p>
+                    <img src="/blog/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <transition name="into">
+            <div id="main" v-show="!loading">
+                <nav id="menu" ref="menu">
+    <div class="desktop-menu">
+        <a class="title" href="/blog/">
+            <span>雲流のLOWEST WORLD</span>
+        </a>
+        
+        <a href="/blog/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/blog/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/blog/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/blog/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/blog/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+        <a href="/blog/links">
+            <i class="fa-solid fa-link fa-fw"></i>
+            <span>&ensp;Links</span>
+        </a>
+        
+        <a href="/blog/search">
+            <i class="fa-solid fa-search fa-fw"></i>
+            <span>&ensp;Search</span>
+        </a>
+        
+    </div>
+    <div id="mobile-menu">
+        <div class="curtain" v-show="showMenu" @click="showMenu = !showMenu"></div>
+        <div class="title" @click="showMenu = !showMenu">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;雲流のLOWEST WORLD</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="showMenu">
+            
+            <a href="/blog/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                </div>
+            </a>
+            
+            <a href="/blog/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                </div>
+            </a>
+            
+            <a href="/blog/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                </div>
+            </a>
+            
+            <a href="/blog/categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                </div>
+            </a>
+            
+            <a href="/blog/tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                </div>
+            </a>
+            
+            <a href="/blog/links">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-link fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Links</div>
+                </div>
+            </a>
+            
+            <a href="/blog/search">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-search fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Search</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+
+                <div class="article">
+    <div>
+        <h1>密码算法实训</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/3/8
+        </span>
+        
+        <span class="category">
+            <a href="/blog/categories/Crypto/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                Crypto
+            </a>
+        </span>
+        
+        
+        <!--文章字数统计-->
+        
+            
+<div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <!-- 安装插件npm install hexo-wordcount --save -->
+        <span class="post-count">1.7k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">9分</span>
+      </span>
+    </span>
+    
+    <!--不蒜子统计访问数-->
+    <span id="busuanzi_container_page_pv">
+    &nbsp; | &nbsp;
+    总文章阅读量：<span id="busuanzi_value_page_pv"></span>次
+    </span>
+</div>
+
+          
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>学学密码算法</p>
+<span id="more"></span>
+
+<hr>
+<h1 id="古典密码"><a href="#古典密码" class="headerlink" title="古典密码"></a>古典密码</h1><h2 id="移位密码"><a href="#移位密码" class="headerlink" title="移位密码"></a>移位密码</h2><blockquote>
+<p>将英文字母向前或向后移动一个固定位置。例如向后移动3个位置，即对字母表作置换（不分大小写）。</p>
+</blockquote>
+<p>此时的数学函数：a &#x3D; (a+3) mod 26</p>
+<p>初步思路：</p>
+<p>遍历明文的每个字符，逐个字符取 ascii 码与起始字符的 ascii 码相减即为起始序号，加密后的字符 ascii 即 (起始序号+偏移量) mod 26 + 起始字符的 ascii</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">cipher <span class="token operator">=</span> <span class="token string">""</span>
+<span class="token keyword">for</span> c <span class="token keyword">in</span> plaintext<span class="token punctuation">:</span>
+    ser_num <span class="token operator">=</span> <span class="token builtin">ord</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token builtin">ord</span><span class="token punctuation">(</span><span class="token string">'A'</span><span class="token punctuation">)</span>
+    ser_num <span class="token operator">=</span> <span class="token punctuation">(</span>ser_num <span class="token operator">+</span> shift<span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">26</span>
+    cipher_char <span class="token operator">=</span> <span class="token builtin">chr</span><span class="token punctuation">(</span>ser_num <span class="token operator">+</span> <span class="token builtin">ord</span><span class="token punctuation">(</span><span class="token string">'A'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    cipher <span class="token operator">+=</span> cipher_char<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>接下来考虑明文存在大小写字母的情况，采用三目运算符进行判断</p>
+<p>那么加密部分：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">enc</span><span class="token punctuation">(</span>plaintext<span class="token punctuation">,</span> shift<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    cipher <span class="token operator">=</span> <span class="token string">""</span>
+    <span class="token keyword">for</span> c <span class="token keyword">in</span> plaintext<span class="token punctuation">:</span>
+        ser_num <span class="token operator">=</span> <span class="token builtin">ord</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token builtin">ord</span><span class="token punctuation">(</span><span class="token string">'A'</span><span class="token punctuation">)</span> <span class="token keyword">if</span> <span class="token builtin">ord</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token builtin">ord</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span> <span class="token keyword">else</span> <span class="token builtin">ord</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token builtin">ord</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span>
+        ser_num <span class="token operator">=</span> <span class="token punctuation">(</span>ser_num <span class="token operator">+</span> shift<span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">26</span>
+        cipher_char <span class="token operator">=</span> <span class="token builtin">chr</span><span class="token punctuation">(</span>ser_num <span class="token operator">+</span> <span class="token builtin">ord</span><span class="token punctuation">(</span><span class="token string">'A'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">if</span> <span class="token builtin">ord</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token builtin">ord</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span> <span class="token keyword">else</span> <span class="token builtin">chr</span><span class="token punctuation">(</span>ser_num <span class="token operator">+</span> <span class="token builtin">ord</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        cipher <span class="token operator">+=</span> cipher_char
+    <span class="token keyword">return</span> cipher<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>解密部分只需要用同样的方式减去偏移量：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">dec</span><span class="token punctuation">(</span>ciphertext<span class="token punctuation">,</span>shift<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    plain <span class="token operator">=</span> <span class="token string">""</span>
+    <span class="token keyword">for</span> c <span class="token keyword">in</span> ciphertext<span class="token punctuation">:</span>
+        ser_num <span class="token operator">=</span> <span class="token builtin">ord</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token builtin">ord</span><span class="token punctuation">(</span><span class="token string">'A'</span><span class="token punctuation">)</span> <span class="token keyword">if</span> <span class="token builtin">ord</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token builtin">ord</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span> <span class="token keyword">else</span> <span class="token builtin">ord</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token builtin">ord</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span>
+        ser_num <span class="token operator">=</span> <span class="token punctuation">(</span>ser_num <span class="token operator">-</span> shift<span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">26</span>
+        plain_char <span class="token operator">=</span> <span class="token builtin">chr</span><span class="token punctuation">(</span>ser_num <span class="token operator">+</span> <span class="token builtin">ord</span><span class="token punctuation">(</span><span class="token string">'A'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">if</span> <span class="token builtin">ord</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token builtin">ord</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span> <span class="token keyword">else</span> <span class="token builtin">chr</span><span class="token punctuation">(</span>ser_num <span class="token operator">+</span> <span class="token builtin">ord</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        plain <span class="token operator">+=</span> plain_char
+    <span class="token keyword">return</span> plain<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>最终的代码：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">Text <span class="token operator">=</span> <span class="token string">"FlagisHere"</span>
+
+
+<span class="token keyword">def</span> <span class="token function">enc</span><span class="token punctuation">(</span>plaintext<span class="token punctuation">,</span> shift<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    cipher <span class="token operator">=</span> <span class="token string">""</span>
+    <span class="token keyword">for</span> c <span class="token keyword">in</span> plaintext<span class="token punctuation">:</span>
+        ser_num <span class="token operator">=</span> <span class="token builtin">ord</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token builtin">ord</span><span class="token punctuation">(</span><span class="token string">'A'</span><span class="token punctuation">)</span> <span class="token keyword">if</span> <span class="token builtin">ord</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token builtin">ord</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span> <span class="token keyword">else</span> <span class="token builtin">ord</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token builtin">ord</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span>
+        ser_num <span class="token operator">=</span> <span class="token punctuation">(</span>ser_num <span class="token operator">+</span> shift<span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">26</span>
+        cipher_char <span class="token operator">=</span> <span class="token builtin">chr</span><span class="token punctuation">(</span>ser_num <span class="token operator">+</span> <span class="token builtin">ord</span><span class="token punctuation">(</span><span class="token string">'A'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">if</span> <span class="token builtin">ord</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token builtin">ord</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span> <span class="token keyword">else</span> <span class="token builtin">chr</span><span class="token punctuation">(</span>ser_num <span class="token operator">+</span> <span class="token builtin">ord</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        cipher <span class="token operator">+=</span> cipher_char
+    <span class="token keyword">return</span> cipher
+
+<span class="token keyword">def</span> <span class="token function">dec</span><span class="token punctuation">(</span>ciphertext<span class="token punctuation">,</span>shift<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    plain <span class="token operator">=</span> <span class="token string">""</span>
+    <span class="token keyword">for</span> c <span class="token keyword">in</span> ciphertext<span class="token punctuation">:</span>
+        ser_num <span class="token operator">=</span> <span class="token builtin">ord</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token builtin">ord</span><span class="token punctuation">(</span><span class="token string">'A'</span><span class="token punctuation">)</span> <span class="token keyword">if</span> <span class="token builtin">ord</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token builtin">ord</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span> <span class="token keyword">else</span> <span class="token builtin">ord</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token builtin">ord</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span>
+        ser_num <span class="token operator">=</span> <span class="token punctuation">(</span>ser_num <span class="token operator">-</span> shift<span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">26</span>
+        plain_char <span class="token operator">=</span> <span class="token builtin">chr</span><span class="token punctuation">(</span>ser_num <span class="token operator">+</span> <span class="token builtin">ord</span><span class="token punctuation">(</span><span class="token string">'A'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">if</span> <span class="token builtin">ord</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token builtin">ord</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span> <span class="token keyword">else</span> <span class="token builtin">chr</span><span class="token punctuation">(</span>ser_num <span class="token operator">+</span> <span class="token builtin">ord</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        plain <span class="token operator">+=</span> plain_char
+    <span class="token keyword">return</span> plain
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>enc<span class="token punctuation">(</span>Text<span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>dec<span class="token punctuation">(</span>enc<span class="token punctuation">(</span>Text<span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="/blog/2025/03/08/%E5%AF%86%E7%A0%81%E7%AE%97%E6%B3%95%E5%AE%9E%E8%AE%AD/image-20250309183614959.png" alt="image-20250309183614959"></p>
+<hr>
+<h2 id="单表置换密码"><a href="#单表置换密码" class="headerlink" title="单表置换密码"></a>单表置换密码</h2><blockquote>
+<p>单表置换密码就是根据字母表的置换对明文进行变换的方法</p>
+</blockquote>
+<p>给定置换</p>
+<pre class="line-numbers language-txt" data-language="txt"><code class="language-txt">A  B  C  D  E  F  G  H  I  J  K  L  M  N  O  P  Q  R  S  T  U  V  W  X  Y  Z
+H  K  W  T  X  Y  S  G  B  P  Q  E  J  A  Z  M  L  N  O  F  C  I  D  V  U  R<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>使用字典存储置换表，这里先用 zip 转成元组再遍历到字典中：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">original <span class="token operator">=</span> <span class="token string">"A B C D E F G H I J K L M N O P Q R S T U V W X Y Z"</span>
+substitute <span class="token operator">=</span> <span class="token string">"H K W T X Y S G B P Q E J A Z M L N O F C I D V U R"</span>
+
+substitution_table <span class="token operator">=</span> <span class="token punctuation">&#123;</span>o<span class="token punctuation">:</span> s <span class="token keyword">for</span> o<span class="token punctuation">,</span> s <span class="token keyword">in</span> <span class="token builtin">zip</span><span class="token punctuation">(</span>original<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> substitute<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>然后设计加密过程：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">enc</span><span class="token punctuation">(</span>plaintext<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    cipher<span class="token operator">=</span><span class="token string">""</span>
+    <span class="token keyword">for</span> c <span class="token keyword">in</span> plaintext<span class="token punctuation">:</span>
+        <span class="token keyword">if</span> c <span class="token keyword">in</span> substitute<span class="token punctuation">:</span>
+            cipher <span class="token operator">+=</span> substitution_table<span class="token punctuation">[</span>c<span class="token punctuation">]</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            cipher <span class="token operator">+=</span> c
+    <span class="token keyword">return</span> cipher<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>解密需要创建一个反向置换表：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">rev_substitution_table <span class="token operator">=</span> <span class="token punctuation">&#123;</span>o<span class="token punctuation">:</span> s <span class="token keyword">for</span> o<span class="token punctuation">,</span> s <span class="token keyword">in</span> <span class="token builtin">zip</span><span class="token punctuation">(</span>original<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> substitute<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>同样的解密过程：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">dec</span><span class="token punctuation">(</span>ciphertext<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    plain<span class="token operator">=</span><span class="token string">""</span>
+    <span class="token keyword">for</span> c <span class="token keyword">in</span> ciphertext<span class="token punctuation">:</span>
+        <span class="token keyword">if</span> c <span class="token keyword">in</span> rev_substitution_table<span class="token punctuation">:</span>
+            plain <span class="token operator">+=</span> rev_substitution_table<span class="token punctuation">[</span>c<span class="token punctuation">]</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            plain <span class="token operator">+=</span> c
+    <span class="token keyword">return</span> plain<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>最终的代码：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">Text <span class="token operator">=</span> <span class="token string">"IOJEDWNFGVEDIOUJWFN"</span>
+
+original <span class="token operator">=</span> <span class="token string">"A B C D E F G H I J K L M N O P Q R S T U V W X Y Z"</span>
+substitute <span class="token operator">=</span> <span class="token string">"H K W T X Y S G B P Q E J A Z M L N O F C I D V U R"</span>
+
+substitution_table <span class="token operator">=</span> <span class="token punctuation">&#123;</span>o<span class="token punctuation">:</span> s <span class="token keyword">for</span> o<span class="token punctuation">,</span> s <span class="token keyword">in</span> <span class="token builtin">zip</span><span class="token punctuation">(</span>original<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> substitute<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#125;</span>
+
+<span class="token keyword">def</span> <span class="token function">enc</span><span class="token punctuation">(</span>plaintext<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    cipher<span class="token operator">=</span><span class="token string">""</span>
+    <span class="token keyword">for</span> c <span class="token keyword">in</span> plaintext<span class="token punctuation">:</span>
+        <span class="token keyword">if</span> c <span class="token keyword">in</span> substitute<span class="token punctuation">:</span>
+            cipher <span class="token operator">+=</span> substitution_table<span class="token punctuation">[</span>c<span class="token punctuation">]</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            cipher <span class="token operator">+=</span> c
+    <span class="token keyword">return</span> cipher
+
+rev_substitution_table <span class="token operator">=</span> <span class="token punctuation">&#123;</span>v <span class="token punctuation">:</span> k <span class="token keyword">for</span> k<span class="token punctuation">,</span>v <span class="token keyword">in</span> substitution_table<span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#125;</span>
+
+<span class="token keyword">def</span> <span class="token function">dec</span><span class="token punctuation">(</span>ciphertext<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    plain<span class="token operator">=</span><span class="token string">""</span>
+    <span class="token keyword">for</span> c <span class="token keyword">in</span> ciphertext<span class="token punctuation">:</span>
+        <span class="token keyword">if</span> c <span class="token keyword">in</span> rev_substitution_table<span class="token punctuation">:</span>
+            plain <span class="token operator">+=</span> rev_substitution_table<span class="token punctuation">[</span>c<span class="token punctuation">]</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            plain <span class="token operator">+=</span> c
+    <span class="token keyword">return</span> plain
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>enc<span class="token punctuation">(</span>Text<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>dec<span class="token punctuation">(</span>enc<span class="token punctuation">(</span>Text<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="/blog/2025/03/08/%E5%AF%86%E7%A0%81%E7%AE%97%E6%B3%95%E5%AE%9E%E8%AE%AD/image-20250309183552872.png" alt="image-20250309183552872"></p>
+<hr>
+<h2 id="穷举法攻击移位密码"><a href="#穷举法攻击移位密码" class="headerlink" title="穷举法攻击移位密码"></a>穷举法攻击移位密码</h2><blockquote>
+<p>有效密钥空间只有25，穷举密钥即可实现</p>
+</blockquote>
+<p>实际上就是爆破偏移量，解密方法不变</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> Shift_Cipher <span class="token keyword">import</span> <span class="token operator">*</span>
+
+cipher <span class="token operator">=</span> <span class="token string">"MshnpzOlyl"</span>
+
+
+<span class="token keyword">def</span> <span class="token function">brute_force</span><span class="token punctuation">(</span>ciphertext<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    text <span class="token operator">=</span> <span class="token string">""</span>
+    <span class="token keyword">for</span> shift <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">25</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        text <span class="token operator">=</span> dec<span class="token punctuation">(</span>ciphertext<span class="token punctuation">,</span> shift<span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>text<span class="token punctuation">,</span> shift<span class="token punctuation">)</span>
+
+
+brute_force<span class="token punctuation">(</span>cipher<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="/blog/2025/03/08/%E5%AF%86%E7%A0%81%E7%AE%97%E6%B3%95%E5%AE%9E%E8%AE%AD/image-20250309174730193.png" alt="image-20250309174730193"></p>
+<p>如图，明文为 FlagisHere，密钥（偏移量）为 7</p>
+<hr>
+<h2 id="词频分析攻击置换密码"><a href="#词频分析攻击置换密码" class="headerlink" title="词频分析攻击置换密码"></a>词频分析攻击置换密码</h2><blockquote>
+<p>统计密文的词频特征对照自然语言进行试译</p>
+</blockquote>
+<p>使用 collections 库进行词频分析：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> collections <span class="token keyword">import</span> <span class="token operator">*</span>
+<span class="token keyword">import</span> re
+
+text <span class="token operator">=</span> <span class="token string">"SIC GCBSPNA XPMHACQ JB GPYXSMEPNXIY JR SINS MF SPNBRQJSSJBE JBFMPQNSJMB FPMQ N XMJBS N SM N XMJBS H HY QCNBR MF N XMRRJHAY JBRCGZPC GINBBCA JB RZGI N VNY SINS SIC MPJEJBNA QCRRNEC GNB MBAY HC PCGMTCPCD HY SIC PJEISFZA PCGJXJCBSR SIC XNPSJGJXNBSR JB SIC SPNBRNGSJMB NPC NAJGC SIC MPJEJBNSMP MF SIC QCRRNEC HMH SIC PCGCJTCP NBD MRGNP N XMRRJHAC MXXMBCBS VIM VJRICR SM ENJB ZBNZSIMPJOCD GMBSPMA MF SIC QCRRNEC"</span>
+
+
+<span class="token keyword">def</span> <span class="token function">word_frequency</span><span class="token punctuation">(</span>text<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    words <span class="token operator">=</span> re<span class="token punctuation">.</span>findall<span class="token punctuation">(</span><span class="token string">r'\b\w+\b'</span><span class="token punctuation">,</span> text<span class="token punctuation">)</span>
+    frequency <span class="token operator">=</span> Counter<span class="token punctuation">(</span>words<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> frequency
+
+
+frequency <span class="token operator">=</span> word_frequency<span class="token punctuation">(</span>text<span class="token punctuation">)</span>
+<span class="token keyword">for</span> word<span class="token punctuation">,</span> count <span class="token keyword">in</span> frequency<span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"</span><span class="token interpolation"><span class="token punctuation">&#123;</span>word<span class="token punctuation">&#125;</span></span><span class="token string">: </span><span class="token interpolation"><span class="token punctuation">&#123;</span>count<span class="token punctuation">&#125;</span></span><span class="token string">"</span></span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="/blog/2025/03/08/%E5%AF%86%E7%A0%81%E7%AE%97%E6%B3%95%E5%AE%9E%E8%AE%AD/image-20250309180244062.png" alt="image-20250309180244062"></p>
+<pre class="line-numbers language-txt" data-language="txt"><code class="language-txt">SIC: 9
+GCBSPNA: 1
+XPMHACQ: 1
+JB: 3
+GPYXSMEPNXIY: 1
+JR: 1
+SINS: 2
+MF: 4
+SPNBRQJSSJBE: 1
+JBFMPQNSJMB: 1
+FPMQ: 1
+N: 6
+XMJBS: 2
+SM: 2
+H: 1
+HY: 2
+QCNBR: 1
+XMRRJHAY: 1
+JBRCGZPC: 1
+GINBBCA: 1
+RZGI: 1
+VNY: 1
+MPJEJBNA: 1
+QCRRNEC: 3
+GNB: 1
+MBAY: 1
+HC: 1
+PCGMTCPCD: 1
+PJEISFZA: 1
+PCGJXJCBSR: 1
+XNPSJGJXNBSR: 1
+SPNBRNGSJMB: 1
+NPC: 1
+NAJGC: 1
+MPJEJBNSMP: 1
+HMH: 1
+PCGCJTCP: 1
+NBD: 1
+MRGNP: 1
+XMRRJHAC: 1
+MXXMBCBS: 1
+VIM: 1
+VJRICR: 1
+ENJB: 1
+ZBNZSIMPJOCD: 1
+GMBSPMA: 1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>猜测 SIC 对应 THE，N 对应 A</p>
+<p>然后进行替换，这里把替换的字符换成小写</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> EN_Words_Frequency <span class="token keyword">import</span> <span class="token operator">*</span>
+
+text <span class="token operator">=</span> <span class="token string">"SIC GCBSPNA XPMHACQ JB GPYXSMEPNXIY JR SINS MF SPNBRQJSSJBE JBFMPQNSJMB FPMQ N XMJBS N SM N XMJBS H HY QCNBR MF N XMRRJHAY JBRCGZPC GINBBCA JB RZGI N VNY SINS SIC MPJEJBNA QCRRNEC GNB MBAY HC PCGMTCPCD HY SIC PJEISFZA PCGJXJCBSR SIC XNPSJGJXNBSR JB SIC SPNBRNGSJMB NPC NAJGC SIC MPJEJBNSMP MF SIC QCRRNEC HMH SIC PCGCJTCP NBD MRGNP N XMRRJHAC MXXMBCBS VIM VJRICR SM ENJB ZBNZSIMPJOCD GMBSPMA MF SIC QCRRNEC"</span>
+
+text <span class="token operator">=</span> text<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"S"</span><span class="token punctuation">,</span><span class="token string">"t"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"I"</span><span class="token punctuation">,</span><span class="token string">"h"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"C"</span><span class="token punctuation">,</span><span class="token string">"e"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"N"</span><span class="token punctuation">,</span><span class="token string">"a"</span><span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>word_frequency<span class="token punctuation">(</span>text<span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">Counter<span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token string">'the'</span><span class="token punctuation">:</span> <span class="token number">9</span><span class="token punctuation">,</span> <span class="token string">'a'</span><span class="token punctuation">:</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token string">'MF'</span><span class="token punctuation">:</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token string">'JB'</span><span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token string">'QeRRaEe'</span><span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token string">'that'</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">'XMJBt'</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">'tM'</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">'HY'</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">'GeBtPaA'</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'XPMHAeQ'</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'GPYXtMEPaXhY'</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'JR'</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'tPaBRQJttJBE'</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'JBFMPQatJMB'</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'FPMQ'</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'H'</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'QeaBR'</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'XMRRJHAY'</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'JBReGZPe'</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'GhaBBeA'</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'RZGh'</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'VaY'</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'MPJEJBaA'</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'GaB'</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'MBAY'</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'He'</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'PeGMTePeD'</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'PJEhtFZA'</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'PeGJXJeBtR'</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'XaPtJGJXaBtR'</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'tPaBRaGtJMB'</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'aPe'</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'aAJGe'</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'MPJEJBatMP'</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'HMH'</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'PeGeJTeP'</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'aBD'</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'MRGaP'</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'XMRRJHAe'</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'MXXMBeBt'</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'VhM'</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'VJRheR'</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'EaJB'</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'ZBaZthMPJOeD'</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'GMBtPMA'</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>观察发现 tM 对应 to，aPe 对应 are</p>
+<p>按这种方式反复进行替换，直到语义正确为止</p>
+<p>最终的替换表</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> EN_Words_Frequency <span class="token keyword">import</span> <span class="token operator">*</span>
+
+text <span class="token operator">=</span> <span class="token string">"SIC GCBSPNA XPMHACQ JB GPYXSMEPNXIY JR SINS MF SPNBRQJSSJBE JBFMPQNSJMB FPMQ N XMJBS N SM N XMJBS H HY QCNBR MF N XMRRJHAY JBRCGZPC GINBBCA JB RZGI N VNY SINS SIC MPJEJBNA QCRRNEC GNB MBAY HC PCGMTCPCD HY SIC PJEISFZA PCGJXJCBSR SIC XNPSJGJXNBSR JB SIC SPNBRNGSJMB NPC NAJGC SIC MPJEJBNSMP MF SIC QCRRNEC HMH SIC PCGCJTCP NBD MRGNP N XMRRJHAC MXXMBCBS VIM VJRICR SM ENJB ZBNZSIMPJOCD GMBSPMA MF SIC QCRRNEC"</span>
+
+text <span class="token operator">=</span> text<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"S"</span><span class="token punctuation">,</span><span class="token string">"t"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"I"</span><span class="token punctuation">,</span><span class="token string">"h"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"C"</span><span class="token punctuation">,</span><span class="token string">"e"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"N"</span><span class="token punctuation">,</span><span class="token string">"a"</span><span class="token punctuation">)</span>
+text <span class="token operator">=</span> text<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"M"</span><span class="token punctuation">,</span><span class="token string">"o"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"P"</span><span class="token punctuation">,</span><span class="token string">"r"</span><span class="token punctuation">)</span>
+text <span class="token operator">=</span> text<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"F"</span><span class="token punctuation">,</span><span class="token string">"f"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"V"</span><span class="token punctuation">,</span><span class="token string">"w"</span><span class="token punctuation">)</span>
+text <span class="token operator">=</span> text<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"J"</span><span class="token punctuation">,</span><span class="token string">"i"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"R"</span><span class="token punctuation">,</span><span class="token string">"s"</span><span class="token punctuation">)</span>
+text <span class="token operator">=</span> text<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"Q"</span><span class="token punctuation">,</span><span class="token string">"m"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"E"</span><span class="token punctuation">,</span><span class="token string">"g"</span><span class="token punctuation">)</span>
+text <span class="token operator">=</span> text<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"X"</span><span class="token punctuation">,</span><span class="token string">"p"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"H"</span><span class="token punctuation">,</span><span class="token string">"b"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"A"</span><span class="token punctuation">,</span><span class="token string">"l"</span><span class="token punctuation">)</span>
+text <span class="token operator">=</span> text<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"Y"</span><span class="token punctuation">,</span><span class="token string">"y"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"B"</span><span class="token punctuation">,</span><span class="token string">"n"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"D"</span><span class="token punctuation">,</span><span class="token string">"d"</span><span class="token punctuation">)</span>
+text <span class="token operator">=</span> text<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"G"</span><span class="token punctuation">,</span><span class="token string">"c"</span><span class="token punctuation">)</span>
+text <span class="token operator">=</span> text<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"T"</span><span class="token punctuation">,</span><span class="token string">"v"</span><span class="token punctuation">)</span>
+text <span class="token operator">=</span> text<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"Z"</span><span class="token punctuation">,</span><span class="token string">"u"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"O"</span><span class="token punctuation">,</span><span class="token string">"z"</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>word_frequency<span class="token punctuation">(</span>text<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>text<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>明文：</p>
+<pre class="line-numbers language-txt" data-language="txt"><code class="language-txt">the central problem in cryptography is that of transmitting information from a point a to a point b by means of a possibly insecure channel in such a way that the original message can only be recovered by the rightful recipients the participants in the transaction are alice the originator of the message bob the receiver and oscar a possible opponent who wishes to gain unauthorized control of the message<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>置换表</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token punctuation">&#123;</span>
+    <span class="token string">'A'</span><span class="token punctuation">:</span> <span class="token string">'l'</span><span class="token punctuation">,</span>   <span class="token string">'B'</span><span class="token punctuation">:</span> <span class="token string">'n'</span><span class="token punctuation">,</span>   <span class="token string">'C'</span><span class="token punctuation">:</span> <span class="token string">'e'</span><span class="token punctuation">,</span>   <span class="token string">'D'</span><span class="token punctuation">:</span> <span class="token string">'d'</span><span class="token punctuation">,</span>
+    <span class="token string">'E'</span><span class="token punctuation">:</span> <span class="token string">'g'</span><span class="token punctuation">,</span>   <span class="token string">'F'</span><span class="token punctuation">:</span> <span class="token string">'f'</span><span class="token punctuation">,</span>   <span class="token string">'G'</span><span class="token punctuation">:</span> <span class="token string">'c'</span><span class="token punctuation">,</span>   <span class="token string">'H'</span><span class="token punctuation">:</span> <span class="token string">'b'</span><span class="token punctuation">,</span>
+    <span class="token string">'I'</span><span class="token punctuation">:</span> <span class="token string">'h'</span><span class="token punctuation">,</span>   <span class="token string">'J'</span><span class="token punctuation">:</span> <span class="token string">'i'</span><span class="token punctuation">,</span>   
+    <span class="token string">'M'</span><span class="token punctuation">:</span> <span class="token string">'o'</span><span class="token punctuation">,</span>   <span class="token string">'N'</span><span class="token punctuation">:</span> <span class="token string">'a'</span><span class="token punctuation">,</span>   <span class="token string">'O'</span><span class="token punctuation">:</span> <span class="token string">'z'</span><span class="token punctuation">,</span>   <span class="token string">'P'</span><span class="token punctuation">:</span> <span class="token string">'r'</span><span class="token punctuation">,</span>
+    <span class="token string">'Q'</span><span class="token punctuation">:</span> <span class="token string">'m'</span><span class="token punctuation">,</span>   <span class="token string">'R'</span><span class="token punctuation">:</span> <span class="token string">'s'</span><span class="token punctuation">,</span>   <span class="token string">'S'</span><span class="token punctuation">:</span> <span class="token string">'t'</span><span class="token punctuation">,</span>   <span class="token string">'T'</span><span class="token punctuation">:</span> <span class="token string">'v'</span><span class="token punctuation">,</span>
+    <span class="token string">'V'</span><span class="token punctuation">:</span> <span class="token string">'w'</span><span class="token punctuation">,</span>   <span class="token string">'X'</span><span class="token punctuation">:</span> <span class="token string">'p'</span><span class="token punctuation">,</span>
+    <span class="token string">'Y'</span><span class="token punctuation">:</span> <span class="token string">'y'</span><span class="token punctuation">,</span>   <span class="token string">'Z'</span><span class="token punctuation">:</span> <span class="token string">'u'</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            </div>
+        </transition>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/blog/js/main.js"></script>
+    
+    
+
+
+
+
+    
+    
+
+<div id="vcomments"></div>
+
+<script src="/blog/js/lib/valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: 'U9mZLKunkRUTcBFthjXPjnZE-9Nh9j0Va',
+        app_key: 'SzWOnY0PWLGNuL6jW8TZYc7j',
+        visitor: 'true',
+        placeholder: '写点什么吧(●ˇ∀ˇ●)',
+        serverURLs: 'https://u9mzlkun.lc-cn-n1-shared.com',
+    });
+</script>
+
+    <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2025 雲流のLowest World
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;C1oudfL0w0
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+<script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/blog/live2dw/assets/z16.model.json"},"display":{"position":"left","width":150,"height":290},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+</html>
